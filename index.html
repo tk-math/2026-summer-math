@@ -3,22 +3,28 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>夏期数学課題｜第1回 解説一覧</title>
+  <title>2026年 夏期数学課題 解説サイト</title>
+  <meta name="description" content="医進・サイエンスコース 夏期数学課題 No.1〜No.71の解説一覧です。">
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     body {
       font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
     }
     .problem-card {
-      transition: transform .16s ease, box-shadow .16s ease;
+      transition: transform .16s ease, box-shadow .16s ease, border-color .16s ease;
     }
     .problem-card:hover {
       transform: translateY(-3px);
       box-shadow: 0 12px 24px rgba(15, 23, 42, .12);
     }
-    .problem-card:focus-within {
+    .problem-card:focus-visible {
       outline: 3px solid rgba(37, 99, 235, .35);
       outline-offset: 3px;
+    }
+    .filter-button[aria-pressed="true"] {
+      background: #1d4ed8;
+      color: white;
+      border-color: #1d4ed8;
     }
   </style>
 </head>
@@ -33,13 +39,13 @@
           医進・サイエンスコース
         </p>
         <h1 class="mt-4 text-3xl font-bold leading-tight sm:text-4xl">
-          夏期数学課題　解説サイト
+          2026年 夏期数学課題 解説サイト
         </h1>
         <p class="mt-3 text-lg text-blue-100">
-          第1回　No.1〜No.19
+          高２の夏は君たちの分岐点
         </p>
         <div class="mt-6 flex flex-wrap gap-3 text-sm">
-          <span class="rounded-full bg-white/15 px-4 py-2">全19問</span>
+          <span class="rounded-full bg-white/15 px-4 py-2">全71問</span>
           <span class="rounded-full bg-white/15 px-4 py-2">解説・図解・アクティブリコール</span>
           <span class="rounded-full bg-white/15 px-4 py-2">スマホ・iPad対応</span>
         </div>
@@ -68,117 +74,124 @@
       </div>
     </section>
 
+    <!-- 検索・絞り込み -->
+    <section class="mt-7 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm sm:p-6">
+      <div class="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+        <div class="w-full lg:max-w-xl">
+          <label for="search" class="text-sm font-bold text-slate-700">問題を探す</label>
+          <input id="search" type="search" placeholder="例：確率、三角関数、No.25"
+                 class="mt-2 w-full rounded-xl border border-slate-300 px-4 py-3 text-base outline-none transition focus:border-blue-600 focus:ring-4 focus:ring-blue-100">
+        </div>
+        <div>
+          <p class="mb-2 text-sm font-bold text-slate-700">難易度</p>
+          <div class="flex flex-wrap gap-2">
+            <button type="button" class="filter-button rounded-full border border-blue-700 px-4 py-2 text-sm font-bold text-blue-800" data-filter="all" aria-pressed="true">すべて</button>
+            <button type="button" class="filter-button rounded-full border border-slate-300 px-4 py-2 text-sm font-bold text-slate-700" data-filter="基礎" aria-pressed="false">基礎</button>
+            <button type="button" class="filter-button rounded-full border border-slate-300 px-4 py-2 text-sm font-bold text-slate-700" data-filter="標準" aria-pressed="false">標準</button>
+            <button type="button" class="filter-button rounded-full border border-slate-300 px-4 py-2 text-sm font-bold text-slate-700" data-filter="発展" aria-pressed="false">発展</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- 問題一覧 -->
     <section class="mt-7">
       <div class="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
         <div>
-          <h2 class="text-2xl font-bold text-slate-900">第1回　問題一覧</h2>
+          <h2 class="text-2xl font-bold text-slate-900">問題一覧</h2>
           <p class="mt-1 text-sm text-slate-600">番号をタップすると、それぞれの解説ページが開きます。</p>
         </div>
-        <p class="text-sm font-semibold text-slate-500">No.1〜No.19</p>
+        <p id="count" class="text-sm font-semibold text-slate-500"></p>
       </div>
 
-      <div class="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <div id="problem-list" class="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3"></div>
 
-        <!-- No.1 -->
-        <a href="no01.html" class="problem-card block rounded-2xl border border-blue-200 bg-white p-5 shadow-sm">
-          <div class="flex items-start justify-between gap-3">
-            <span class="rounded-lg bg-blue-700 px-3 py-1 text-sm font-bold text-white">No.1</span>
-            <span class="rounded-full bg-amber-100 px-3 py-1 text-xs font-bold text-amber-800">標準</span>
-          </div>
-          <h3 class="mt-4 text-lg font-bold text-slate-900">図形と方程式</h3>
-          <p class="mt-1 text-sm leading-relaxed text-slate-600">円の対称移動と距離の平方和</p>
-          <div class="mt-4 border-t pt-3 text-sm font-semibold text-blue-700">解説を見る　→</div>
-        </a>
-
-        <!-- No.2〜No.19：題名は後から書き換えてください -->
-        <a href="no02.html" class="problem-card block rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-          <div class="flex items-start justify-between gap-3"><span class="rounded-lg bg-slate-700 px-3 py-1 text-sm font-bold text-white">No.2</span><span class="rounded-full bg-slate-100 px-3 py-1 text-xs font-bold text-slate-600">解説へ</span></div>
-          <h3 class="mt-4 text-lg font-bold text-slate-900">問題 No.2</h3><p class="mt-1 text-sm text-slate-600">単元名をここに入れます</p><div class="mt-4 border-t pt-3 text-sm font-semibold text-blue-700">解説を見る　→</div>
-        </a>
-        <a href="no03.html" class="problem-card block rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-          <div class="flex items-start justify-between gap-3"><span class="rounded-lg bg-slate-700 px-3 py-1 text-sm font-bold text-white">No.3</span><span class="rounded-full bg-slate-100 px-3 py-1 text-xs font-bold text-slate-600">解説へ</span></div>
-          <h3 class="mt-4 text-lg font-bold text-slate-900">問題 No.3</h3><p class="mt-1 text-sm text-slate-600">単元名をここに入れます</p><div class="mt-4 border-t pt-3 text-sm font-semibold text-blue-700">解説を見る　→</div>
-        </a>
-        <a href="no04.html" class="problem-card block rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-          <div class="flex items-start justify-between gap-3"><span class="rounded-lg bg-slate-700 px-3 py-1 text-sm font-bold text-white">No.4</span><span class="rounded-full bg-slate-100 px-3 py-1 text-xs font-bold text-slate-600">解説へ</span></div>
-          <h3 class="mt-4 text-lg font-bold text-slate-900">問題 No.4</h3><p class="mt-1 text-sm text-slate-600">単元名をここに入れます</p><div class="mt-4 border-t pt-3 text-sm font-semibold text-blue-700">解説を見る　→</div>
-        </a>
-        <a href="no05.html" class="problem-card block rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-          <div class="flex items-start justify-between gap-3"><span class="rounded-lg bg-slate-700 px-3 py-1 text-sm font-bold text-white">No.5</span><span class="rounded-full bg-slate-100 px-3 py-1 text-xs font-bold text-slate-600">解説へ</span></div>
-          <h3 class="mt-4 text-lg font-bold text-slate-900">問題 No.5</h3><p class="mt-1 text-sm text-slate-600">単元名をここに入れます</p><div class="mt-4 border-t pt-3 text-sm font-semibold text-blue-700">解説を見る　→</div>
-        </a>
-        <a href="no06.html" class="problem-card block rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-          <div class="flex items-start justify-between gap-3"><span class="rounded-lg bg-slate-700 px-3 py-1 text-sm font-bold text-white">No.6</span><span class="rounded-full bg-slate-100 px-3 py-1 text-xs font-bold text-slate-600">解説へ</span></div>
-          <h3 class="mt-4 text-lg font-bold text-slate-900">問題 No.6</h3><p class="mt-1 text-sm text-slate-600">単元名をここに入れます</p><div class="mt-4 border-t pt-3 text-sm font-semibold text-blue-700">解説を見る　→</div>
-        </a>
-        <a href="no07.html" class="problem-card block rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-          <div class="flex items-start justify-between gap-3"><span class="rounded-lg bg-slate-700 px-3 py-1 text-sm font-bold text-white">No.7</span><span class="rounded-full bg-slate-100 px-3 py-1 text-xs font-bold text-slate-600">解説へ</span></div>
-          <h3 class="mt-4 text-lg font-bold text-slate-900">問題 No.7</h3><p class="mt-1 text-sm text-slate-600">単元名をここに入れます</p><div class="mt-4 border-t pt-3 text-sm font-semibold text-blue-700">解説を見る　→</div>
-        </a>
-        <a href="no08.html" class="problem-card block rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-          <div class="flex items-start justify-between gap-3"><span class="rounded-lg bg-slate-700 px-3 py-1 text-sm font-bold text-white">No.8</span><span class="rounded-full bg-slate-100 px-3 py-1 text-xs font-bold text-slate-600">解説へ</span></div>
-          <h3 class="mt-4 text-lg font-bold text-slate-900">問題 No.8</h3><p class="mt-1 text-sm text-slate-600">単元名をここに入れます</p><div class="mt-4 border-t pt-3 text-sm font-semibold text-blue-700">解説を見る　→</div>
-        </a>
-        <a href="no09.html" class="problem-card block rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-          <div class="flex items-start justify-between gap-3"><span class="rounded-lg bg-slate-700 px-3 py-1 text-sm font-bold text-white">No.9</span><span class="rounded-full bg-slate-100 px-3 py-1 text-xs font-bold text-slate-600">解説へ</span></div>
-          <h3 class="mt-4 text-lg font-bold text-slate-900">問題 No.9</h3><p class="mt-1 text-sm text-slate-600">単元名をここに入れます</p><div class="mt-4 border-t pt-3 text-sm font-semibold text-blue-700">解説を見る　→</div>
-        </a>
-        <a href="no10.html" class="problem-card block rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-          <div class="flex items-start justify-between gap-3"><span class="rounded-lg bg-slate-700 px-3 py-1 text-sm font-bold text-white">No.10</span><span class="rounded-full bg-slate-100 px-3 py-1 text-xs font-bold text-slate-600">解説へ</span></div>
-          <h3 class="mt-4 text-lg font-bold text-slate-900">問題 No.10</h3><p class="mt-1 text-sm text-slate-600">単元名をここに入れます</p><div class="mt-4 border-t pt-3 text-sm font-semibold text-blue-700">解説を見る　→</div>
-        </a>
-        <a href="no11.html" class="problem-card block rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-          <div class="flex items-start justify-between gap-3"><span class="rounded-lg bg-slate-700 px-3 py-1 text-sm font-bold text-white">No.11</span><span class="rounded-full bg-slate-100 px-3 py-1 text-xs font-bold text-slate-600">解説へ</span></div>
-          <h3 class="mt-4 text-lg font-bold text-slate-900">問題 No.11</h3><p class="mt-1 text-sm text-slate-600">単元名をここに入れます</p><div class="mt-4 border-t pt-3 text-sm font-semibold text-blue-700">解説を見る　→</div>
-        </a>
-        <a href="no12.html" class="problem-card block rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-          <div class="flex items-start justify-between gap-3"><span class="rounded-lg bg-slate-700 px-3 py-1 text-sm font-bold text-white">No.12</span><span class="rounded-full bg-slate-100 px-3 py-1 text-xs font-bold text-slate-600">解説へ</span></div>
-          <h3 class="mt-4 text-lg font-bold text-slate-900">問題 No.12</h3><p class="mt-1 text-sm text-slate-600">単元名をここに入れます</p><div class="mt-4 border-t pt-3 text-sm font-semibold text-blue-700">解説を見る　→</div>
-        </a>
-        <a href="no13.html" class="problem-card block rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-          <div class="flex items-start justify-between gap-3"><span class="rounded-lg bg-slate-700 px-3 py-1 text-sm font-bold text-white">No.13</span><span class="rounded-full bg-slate-100 px-3 py-1 text-xs font-bold text-slate-600">解説へ</span></div>
-          <h3 class="mt-4 text-lg font-bold text-slate-900">問題 No.13</h3><p class="mt-1 text-sm text-slate-600">単元名をここに入れます</p><div class="mt-4 border-t pt-3 text-sm font-semibold text-blue-700">解説を見る　→</div>
-        </a>
-        <a href="no14.html" class="problem-card block rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-          <div class="flex items-start justify-between gap-3"><span class="rounded-lg bg-slate-700 px-3 py-1 text-sm font-bold text-white">No.14</span><span class="rounded-full bg-slate-100 px-3 py-1 text-xs font-bold text-slate-600">解説へ</span></div>
-          <h3 class="mt-4 text-lg font-bold text-slate-900">問題 No.14</h3><p class="mt-1 text-sm text-slate-600">単元名をここに入れます</p><div class="mt-4 border-t pt-3 text-sm font-semibold text-blue-700">解説を見る　→</div>
-        </a>
-        <a href="no15.html" class="problem-card block rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-          <div class="flex items-start justify-between gap-3"><span class="rounded-lg bg-slate-700 px-3 py-1 text-sm font-bold text-white">No.15</span><span class="rounded-full bg-slate-100 px-3 py-1 text-xs font-bold text-slate-600">解説へ</span></div>
-          <h3 class="mt-4 text-lg font-bold text-slate-900">問題 No.15</h3><p class="mt-1 text-sm text-slate-600">単元名をここに入れます</p><div class="mt-4 border-t pt-3 text-sm font-semibold text-blue-700">解説を見る　→</div>
-        </a>
-        <a href="no16.html" class="problem-card block rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-          <div class="flex items-start justify-between gap-3"><span class="rounded-lg bg-slate-700 px-3 py-1 text-sm font-bold text-white">No.16</span><span class="rounded-full bg-slate-100 px-3 py-1 text-xs font-bold text-slate-600">解説へ</span></div>
-          <h3 class="mt-4 text-lg font-bold text-slate-900">問題 No.16</h3><p class="mt-1 text-sm text-slate-600">単元名をここに入れます</p><div class="mt-4 border-t pt-3 text-sm font-semibold text-blue-700">解説を見る　→</div>
-        </a>
-        <a href="no17.html" class="problem-card block rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-          <div class="flex items-start justify-between gap-3"><span class="rounded-lg bg-slate-700 px-3 py-1 text-sm font-bold text-white">No.17</span><span class="rounded-full bg-slate-100 px-3 py-1 text-xs font-bold text-slate-600">解説へ</span></div>
-          <h3 class="mt-4 text-lg font-bold text-slate-900">問題 No.17</h3><p class="mt-1 text-sm text-slate-600">単元名をここに入れます</p><div class="mt-4 border-t pt-3 text-sm font-semibold text-blue-700">解説を見る　→</div>
-        </a>
-        <a href="no18.html" class="problem-card block rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-          <div class="flex items-start justify-between gap-3"><span class="rounded-lg bg-slate-700 px-3 py-1 text-sm font-bold text-white">No.18</span><span class="rounded-full bg-slate-100 px-3 py-1 text-xs font-bold text-slate-600">解説へ</span></div>
-          <h3 class="mt-4 text-lg font-bold text-slate-900">問題 No.18</h3><p class="mt-1 text-sm text-slate-600">単元名をここに入れます</p><div class="mt-4 border-t pt-3 text-sm font-semibold text-blue-700">解説を見る　→</div>
-        </a>
-        <a href="no19.html" class="problem-card block rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-          <div class="flex items-start justify-between gap-3"><span class="rounded-lg bg-slate-700 px-3 py-1 text-sm font-bold text-white">No.19</span><span class="rounded-full bg-slate-100 px-3 py-1 text-xs font-bold text-slate-600">解説へ</span></div>
-          <h3 class="mt-4 text-lg font-bold text-slate-900">問題 No.19</h3><p class="mt-1 text-sm text-slate-600">単元名をここに入れます</p><div class="mt-4 border-t pt-3 text-sm font-semibold text-blue-700">解説を見る　→</div>
-        </a>
-      </div>
-    </section>
-
-    <!-- 連絡 -->
-    <section class="mt-8 rounded-2xl bg-slate-800 p-6 text-slate-100 sm:p-8">
-      <h2 class="text-xl font-bold">解説を見る前に</h2>
-      <p class="mt-3 leading-relaxed text-slate-200">
-        分からない問題があっても、すぐに答えを見ないこと。まずは問題文から分かることを書き出し、
-        解法の候補を考えてください。解説を読んだ後は、必ず自分の手で解き直しましょう。
+      <p id="no-result" class="mt-8 hidden rounded-2xl border border-slate-200 bg-white p-6 text-center text-slate-600">
+        該当する問題が見つかりませんでした。
       </p>
     </section>
 
-    <footer class="py-8 text-center text-sm text-slate-500">
-      医進・サイエンスコース　夏期数学課題
+    <footer class="py-10 text-center text-sm text-slate-500">
+      医進・サイエンスコース　夏期数学課題 解説サイト
     </footer>
   </main>
+
+  <script>
+    const problems = [{"no": 1, "title": "確率", "level": "標準", "time": "20分", "href": "no01.html", "ready": true}, {"no": 2, "title": "指数関数と方程式", "level": "基礎", "time": "20分", "href": "no02.html", "ready": true}, {"no": 3, "title": "図形と方程式", "level": "基礎", "time": "15分", "href": "no03.html", "ready": true}, {"no": 4, "title": "高次方程式", "level": "標準", "time": "20分", "href": "no04.html", "ready": true}, {"no": 5, "title": "三角関数", "level": "標準", "time": "20分", "href": "no05.html", "ready": true}, {"no": 6, "title": "ベクトル", "level": "標準", "time": "25分", "href": "no06.html", "ready": true}, {"no": 7, "title": "図形と計量", "level": "標準", "time": "20分", "href": "no07.html", "ready": true}, {"no": 8, "title": "図形と方程式", "level": "発展", "time": "25分", "href": "no08.html", "ready": true}, {"no": 9, "title": "三角関数", "level": "基礎", "time": "20分", "href": "no09.html", "ready": true}, {"no": 10, "title": "場合の数と確率", "level": "標準", "time": "25分", "href": "no10.html", "ready": true}, {"no": 11, "title": "三角関数", "level": "標準", "time": "20分", "href": "no11.html", "ready": true}, {"no": 12, "title": "2次関数", "level": "基礎", "time": "15分", "href": "no12.html", "ready": true}, {"no": 13, "title": "指数関数", "level": "標準", "time": "20分", "href": "no13.html", "ready": true}, {"no": 14, "title": "データの分析", "level": "基礎", "time": "15分", "href": "no14.html", "ready": true}, {"no": 15, "title": "図形と計量", "level": "標準", "time": "20分", "href": "no15.html", "ready": true}, {"no": 16, "title": "データの分析", "level": "発展", "time": "30分", "href": "no16.html", "ready": true}, {"no": 17, "title": "対数関数", "level": "標準", "time": "20分", "href": "no17.html", "ready": true}, {"no": 18, "title": "図形と計量", "level": "発展", "time": "25分", "href": "no18.html", "ready": true}, {"no": 19, "title": "三角関数", "level": "標準", "time": "20分", "href": "no19.html", "ready": true}, {"no": 20, "title": "図形と方程式", "level": "標準", "time": "25分", "href": "no20.html", "ready": true}, {"no": 21, "title": "確率", "level": "基礎", "time": "15分", "href": "no21.html", "ready": true}, {"no": 22, "title": "図形と方程式", "level": "標準", "time": "25分", "href": "no22.html", "ready": true}, {"no": 23, "title": "三角関数", "level": "発展", "time": "25分", "href": "no23.html", "ready": true}, {"no": 24, "title": "平面ベクトル", "level": "標準", "time": "25分", "href": "no24.html", "ready": true}, {"no": 25, "title": "対数関数", "level": "標準", "time": "20分", "href": "no25.html", "ready": true}, {"no": 26, "title": "平面ベクトル", "level": "標準", "time": "25分", "href": "no26.html", "ready": true}, {"no": 27, "title": "図形と方程式", "level": "標準", "time": "20分", "href": "no27.html", "ready": true}, {"no": 28, "title": "場合の数", "level": "基礎", "time": "20分", "href": "no28.html", "ready": true}, {"no": 29, "title": "小問集合", "level": "標準", "time": "25分", "href": "no29.html", "ready": true}, {"no": 30, "title": "図形と計量", "level": "標準", "time": "25分", "href": "no30.html", "ready": true}, {"no": 31, "title": "図形と計量", "level": "発展", "time": "25分", "href": "no31.html", "ready": true}, {"no": 32, "title": "高次方程式と軌跡", "level": "標準", "time": "25分", "href": "no32.html", "ready": true}, {"no": 33, "title": "三角関数", "level": "標準", "time": "20分", "href": "no33.html", "ready": true}, {"no": 34, "title": "対数関数", "level": "標準", "time": "20分", "href": "no34.html", "ready": true}, {"no": 35, "title": "空間ベクトル", "level": "標準", "time": "20分", "href": "no35.html", "ready": true}, {"no": 36, "title": "小問集合", "level": "標準", "time": "20分", "href": "no36.html", "ready": true}, {"no": 37, "title": "高次方程式", "level": "標準", "time": "25分", "href": "no37.html", "ready": true}, {"no": 38, "title": "確率と期待値", "level": "基礎", "time": "15分", "href": "no38.html", "ready": true}, {"no": 39, "title": "空間ベクトル", "level": "発展", "time": "25分", "href": "no39.html", "ready": true}, {"no": 40, "title": "小問集合", "level": "基礎", "time": "15分", "href": "no40.html", "ready": true}, {"no": 41, "title": "図形と方程式", "level": "発展", "time": "25分", "href": "no41.html", "ready": true}, {"no": 42, "title": "確率", "level": "標準", "time": "20分", "href": "no42.html", "ready": true}, {"no": 43, "title": "高次方程式と剰余の定理", "level": "標準", "time": "25分", "href": "no43.html", "ready": true}, {"no": 44, "title": "三角関数と図形", "level": "標準", "time": "25分", "href": "no44.html", "ready": true}, {"no": 45, "title": "平面ベクトル", "level": "標準", "time": "20分", "href": "no45.html", "ready": true}, {"no": 46, "title": "三角関数と図形", "level": "基礎", "time": "20分", "href": "no46.html", "ready": true}, {"no": 47, "title": "対数関数", "level": "標準", "time": "20分", "href": "no47.html", "ready": true}, {"no": 48, "title": "図形と方程式", "level": "標準", "time": "20分", "href": "no48.html", "ready": true}, {"no": 49, "title": "平面ベクトル", "level": "標準", "time": "25分", "href": "no49.html", "ready": true}, {"no": 50, "title": "小問集合", "level": "標準", "time": "25分", "href": "no50.html", "ready": true}, {"no": 51, "title": "小問集合", "level": "標準", "time": "25分", "href": "no51.html", "ready": true}, {"no": 52, "title": "三角関数と方程式", "level": "発展", "time": "25分", "href": "no52.html", "ready": true}, {"no": 53, "title": "空間ベクトル", "level": "標準", "time": "25分", "href": "no53.html", "ready": true}, {"no": 54, "title": "対数関数と図形", "level": "標準", "time": "25分", "href": "no54.html", "ready": true}, {"no": 55, "title": "高次方程式", "level": "標準", "time": "25分", "href": "no55.html", "ready": true}, {"no": 56, "title": "図形と方程式", "level": "標準", "time": "20分", "href": "no56.html", "ready": true}, {"no": 57, "title": "確率", "level": "標準", "time": "25分", "href": "no57.html", "ready": true}, {"no": 58, "title": "図形と計量", "level": "基礎", "time": "20分", "href": "no58.html", "ready": true}, {"no": 59, "title": "2次方程式", "level": "標準", "time": "20分", "href": "no59.html", "ready": true}, {"no": 60, "title": "図形と方程式", "level": "標準", "time": "25分", "href": "no60.html", "ready": true}, {"no": 61, "title": "高次方程式", "level": "発展", "time": "25分", "href": "no61.html", "ready": true}, {"no": 62, "title": "高次方程式", "level": "基礎", "time": "20分", "href": "no62.html", "ready": true}, {"no": 63, "title": "図形と方程式", "level": "標準", "time": "25分", "href": "no63.html", "ready": true}, {"no": 64, "title": "空間ベクトル", "level": "標準", "time": "25分", "href": "no64.html", "ready": true}, {"no": 65, "title": "三角関数", "level": "基礎", "time": "15分", "href": "no65.html", "ready": true}, {"no": 66, "title": "対数関数", "level": "基礎", "time": "15分", "href": "no66.html", "ready": true}, {"no": 67, "title": "高次方程式と剰余の定理", "level": "標準", "time": "25分", "href": "no67.html", "ready": true}, {"no": 68, "title": "空間ベクトル", "level": "発展", "time": "30分", "href": "no68.html", "ready": true}, {"no": 69, "title": "指数関数と対数関数", "level": "標準", "time": "25分", "href": "no69.html", "ready": true}, {"no": 70, "title": "高次方程式と複素数", "level": "基礎", "time": "15分", "href": "no70.html", "ready": true}, {"no": 71, "title": "場合の数", "level": "基礎", "time": "20分", "href": "no71.html", "ready": true}, {"no": 72, "title": "準備中", "level": "", "time": "", "href": "", "ready": false}];
+    const list = document.getElementById("problem-list");
+    const search = document.getElementById("search");
+    const count = document.getElementById("count");
+    const noResult = document.getElementById("no-result");
+    let activeFilter = "all";
+
+    function levelClass(level) {
+      if (level === "基礎") return "bg-emerald-100 text-emerald-800";
+      if (level === "標準") return "bg-amber-100 text-amber-800";
+      if (level === "発展") return "bg-rose-100 text-rose-800";
+      return "bg-slate-100 text-slate-600";
+    }
+
+    function escapeHTML(value) {
+      return String(value)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+
+    function render() {
+      const keyword = search.value.trim().toLowerCase();
+      const shown = problems.filter(problem => {
+        const text = `no.${problem.no} no${problem.no} ${problem.title} ${problem.level} ${problem.time}`.toLowerCase();
+        const keywordMatch = text.includes(keyword);
+        const filterMatch = activeFilter === "all" || problem.level === activeFilter;
+        return keywordMatch && filterMatch;
+      });
+
+      list.innerHTML = shown.map(problem => {
+        const number = String(problem.no).padStart(2, "0");
+        if (!problem.ready) {
+          return `
+            <div class="rounded-2xl border border-dashed border-slate-300 bg-slate-50 p-5 opacity-75">
+              <div class="flex items-start justify-between gap-3">
+                <span class="rounded-lg bg-slate-400 px-3 py-1 text-sm font-bold text-white">No.${problem.no}</span>
+                <span class="rounded-full bg-slate-200 px-3 py-1 text-xs font-bold text-slate-600">準備中</span>
+              </div>
+              <h3 class="mt-4 text-lg font-bold text-slate-600">${escapeHTML(problem.title)}</h3>
+              <p class="mt-1 text-sm text-slate-500">解説ページを作成後に公開します。</p>
+              <div class="mt-4 border-t border-slate-200 pt-3 text-sm font-semibold text-slate-400">公開準備中</div>
+            </div>`;
+        }
+
+        return `
+          <a href="${problem.href}" class="problem-card block rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
+            <div class="flex items-start justify-between gap-3">
+              <span class="rounded-lg bg-blue-700 px-3 py-1 text-sm font-bold text-white">No.${problem.no}</span>
+              <span class="rounded-full px-3 py-1 text-xs font-bold ${levelClass(problem.level)}">${escapeHTML(problem.level)}</span>
+            </div>
+            <h3 class="mt-4 text-lg font-bold text-slate-900">${escapeHTML(problem.title)}</h3>
+            <p class="mt-1 text-sm leading-relaxed text-slate-600">目標解答時間：${escapeHTML(problem.time)}</p>
+            <div class="mt-4 border-t pt-3 text-sm font-semibold text-blue-700">解説を見る　→</div>
+          </a>`;
+      }).join("");
+
+      count.textContent = `表示：${shown.length}問 / 全${problems.length}問`;
+      noResult.classList.toggle("hidden", shown.length !== 0);
+    }
+
+    document.querySelectorAll(".filter-button").forEach(button => {
+      button.addEventListener("click", () => {
+        activeFilter = button.dataset.filter;
+        document.querySelectorAll(".filter-button").forEach(item => {
+          item.setAttribute("aria-pressed", String(item === button));
+        });
+        render();
+      });
+    });
+
+    search.addEventListener("input", render);
+    render();
+  </script>
 </body>
 </html>

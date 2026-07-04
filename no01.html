@@ -3,595 +3,435 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>夏期課題No.1｜図形と方程式</title>
-    <meta name="description" content="医進・サイエンスコース 夏期数学課題 No.1の解説ページです。">
-    <!-- Tailwind CSS -->
+    <title>夏期課題No.1 解説 | 医進・サイエンスコース</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Polyfill (Cloudflare版) -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/3.37.1/minified.js"></script>
-    <!-- MathJax -->
     <script>
         window.MathJax = {
             tex: {
-                inlineMath: [['$', '$'], ['\\(', '\\)']],
-                displayMath: [['$$', '$$'], ['\\[', '\\]']],
-                tags: 'ams'
-            },
-            startup: {
-                pageReady: () => {
-                    return MathJax.startup.defaultPageReady().then(() => {
-                        // Typeset complete
-                    });
-                }
+                inlineMath: [['$', '$']],
+                displayMath: [['$$', '$$']]
             }
         };
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
-    <!-- Plotly.js (Specific Version) -->
-    <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
-
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <style>
-        body { font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif; }
-        .answer-font { font-family: "Yu Mincho", "MS Mincho", serif; }
+        body { background-color: #f8fafc; }
+        .card { background-color: white; border-radius: 0.75rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06); padding: 1.5rem; margin-bottom: 1.5rem; }
+        .header-bg { background-color: #1e3a8a; }
+        .footer-bg { background-color: #1e3a8a; color: white; }
+        details > summary { list-style: none; }
+        details > summary::-webkit-details-marker { display: none; }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-800 antialiased">
+<body class="text-slate-800 font-sans leading-relaxed">
 
-<div class="max-w-5xl mx-auto p-4 sm:p-6 lg:p-8">
-
-    <!-- サイト共通ナビゲーション -->
-    <nav aria-label="教材ナビゲーション" class="mb-4 flex flex-col gap-3 rounded-2xl border border-slate-200 bg-white p-3 shadow-sm sm:flex-row sm:items-center sm:justify-between">
-        <a href="index.html" class="inline-flex items-center justify-center rounded-xl bg-slate-800 px-4 py-2 font-bold text-white transition hover:bg-slate-700">
-            ← 解説一覧へ戻る
-        </a>
-        <div class="text-center text-sm text-slate-600">
-            夏期数学課題　第1回　<span class="font-bold text-slate-800">No.1 / 19</span>
+    <!-- ヘッダー -->
+    <header class="header-bg text-white p-5 md:p-6 shadow-md">
+        <div class="max-w-4xl mx-auto flex flex-col md:flex-row md:justify-between md:items-end">
+            <div>
+                <h1 class="text-2xl font-bold tracking-wide">夏期課題 No.1</h1>
+                <p class="text-blue-200 mt-2 text-sm font-medium">対象：医進・サイエンスコース</p>
+            </div>
+            <div class="mt-3 md:mt-0 text-sm text-blue-100 flex gap-4">
+                <span>単元：確率</span>
+                <span>難易度：標準</span>
+                <span>目標時間：20分</span>
+            </div>
         </div>
-        <a href="no02.html" class="inline-flex items-center justify-center rounded-xl bg-blue-700 px-4 py-2 font-bold text-white transition hover:bg-blue-600">
-            次の問題へ →
-        </a>
-    </nav>
-
-    <!-- Header -->
-    <header class="bg-blue-800 text-white rounded-2xl p-6 md:p-8 shadow-lg">
-        <h1 class="text-3xl font-bold mb-2">夏期課題No.1：図形と方程式（円の対称移動と距離の平方和）</h1>
-        <p class="text-blue-200">対象レベル：医進・サイエンスコース</p>
     </header>
 
-    <!-- 1. 問題文と条件整理 -->
-    <section class="bg-white p-6 md:p-8 shadow-md rounded-2xl mb-8">
-        <h2 class="text-xl font-bold border-b-4 border-blue-500 pb-2 mb-4">1. 問題文と条件整理</h2>
+    <main class="max-w-4xl mx-auto p-4 md:p-6">
         
-        <div class="bg-gray-50 border border-gray-200 p-6 rounded-lg mb-6">
-            <p class="mb-4 text-lg">
-                $xy$ 平面上に 2 点 $\text{A}(-2, 3)$, $\text{B}(2, 5)$ と<br>
-                円 $C: x^2 + y^2 - 8x - 2y + 13 = 0$<br>
-                がある。
-            </p>
-            <ol class="list-decimal pl-6 space-y-2 text-lg">
-                <li>$C$ の中心の座標と半径を求めよ。</li>
-                <li>線分 $\text{AB}$ の垂直二等分線を $l$ とする。$l$ の方程式を求めよ。</li>
-                <li>(2) の $l$ に関して円 $C$ を対称移動して得られる円を $E$ とする。$E$ の方程式を求めよ。</li>
-                <li>点 $\text{P}$ が (3) で定めた円 $E$ 上を動くとき、$\text{PA}^2 + \text{PB}^2$ の最小値を求めよ。</li>
-            </ol>
-        </div>
+        <!-- 0. 上部ナビゲーション -->
+        <nav class="flex justify-between items-center mb-6 text-sm md:text-base">
+            <a href="index.html" class="text-blue-800 font-semibold hover:text-blue-600 transition-colors">← 解説一覧へ戻る</a>
+            <span class="text-slate-500 font-medium hidden md:inline">医進・サイエンスコース　2年夏期課題(数学)</span>
+            <a href="#" class="text-blue-800 font-semibold hover:text-blue-600 transition-colors">次の問題へ →</a>
+        </nav>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div class="bg-green-50 p-4 rounded-lg border border-green-200">
-                <h3 class="font-bold text-green-800 mb-2">【条件の整理】</h3>
-                <ul class="list-disc pl-5 space-y-1 text-green-900">
-                    <li>定点：$\text{A}(-2, 3)$, $\text{B}(2, 5)$</li>
-                    <li>円 $C$ の方程式（展開形）</li>
-                    <li>動点：$\text{P}$ (円 $E$ 上)</li>
-                </ul>
-            </div>
-            <div class="bg-orange-50 p-4 rounded-lg border border-orange-200">
-                <h3 class="font-bold text-orange-800 mb-2">【最終的な目標】</h3>
-                <ul class="list-disc pl-5 space-y-1 text-orange-900">
-                    <li>$\text{PA}^2 + \text{PB}^2$ の最小値を求めること。</li>
-                    <li>2定点からの距離の2乗の和を、いかに扱いやすい形に変換するかが鍵。</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <!-- 2. 解法選択のトリガー -->
-    <section class="bg-white p-6 md:p-8 shadow-md rounded-2xl mb-8">
-        <h2 class="text-xl font-bold border-b-4 border-yellow-500 pb-2 mb-4">2. 解法選択のトリガー</h2>
-        <div class="space-y-4">
-            <div class="flex items-start">
-                <div class="flex-shrink-0 bg-yellow-100 text-yellow-800 font-bold px-3 py-1 rounded shadow-sm mr-4 mt-1">トリガー 1</div>
-                <div>
-                    <h3 class="font-bold text-lg mb-1">円の方程式の展開形を見た瞬間</h3>
-                    <p class="text-gray-700">直ちに <strong>「平方完成」</strong> を行い、図形的な特徴（中心と半径）を視覚化できるようにします。</p>
-                </div>
-            </div>
-            <div class="flex items-start">
-                <div class="flex-shrink-0 bg-yellow-100 text-yellow-800 font-bold px-3 py-1 rounded shadow-sm mr-4 mt-1">トリガー 2</div>
-                <div>
-                    <h3 class="font-bold text-lg mb-1">図形の対称移動を見た瞬間</h3>
-                    <p class="text-gray-700">式全体に代入して計算すると泥沼化します。円の対称移動は <strong>「中心の点のみを対称移動させ、半径はそのまま引き継ぐ」</strong> という図形的アプローチに切り替えます。</p>
-                </div>
-            </div>
-            <div class="flex items-start">
-                <div class="flex-shrink-0 bg-yellow-100 text-yellow-800 font-bold px-3 py-1 rounded shadow-sm mr-4 mt-1">トリガー 3</div>
-                <div>
-                    <h3 class="font-bold text-lg mb-1">「$\text{PA}^2 + \text{PB}^2$」の最大・最小を見た瞬間</h3>
-                    <p class="text-gray-700">2定点からの距離の平方和は、直ちに <strong>「中線定理（パップスの定理）」</strong> を連想してください。2つの変動する線分を、1つの変動する線分（中点との距離）に集約するのが定石です。</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 3. 思考プロセス -->
-    <section class="bg-indigo-50 border-l-8 border-indigo-400 p-6 md:p-8 shadow-md rounded-r-2xl mb-8">
-        <h2 class="text-xl font-bold text-indigo-900 pb-2 mb-4">3. 思考プロセス（頭の中で考えること）</h2>
-        <p class="mb-4 text-indigo-800">答案には書きませんが、以下のように方針を立てます。</p>
-        
-        <ol class="list-decimal pl-5 space-y-4 text-indigo-900">
-            <li>
-                <strong>(1) と (2) は基本の確認</strong><br>
-                平方完成して中心を出し、線分ABの中点と傾きから垂直二等分線を出す。ここは計算ミスさえしなければ確実にとれる。
-            </li>
-            <li>
-                <strong>(3) 点の対称移動の立式</strong><br>
-                求める円 $E$ の中心を $(p, q)$ と置く。(1)で求めた中心と $(p, q)$ の<strong>中点が直線 $l$ 上にある</strong>こと、そして結んだ線分の<strong>傾きが直線 $l$ と直交する</strong>こと。この2条件で連立方程式を立てれば $(p, q)$ が出る。
-            </li>
-            <li>
-                <strong>(4) 変数の集約と図形的考察</strong><br>
-                $\text{P}$ を座標でおいて $\text{PA}^2 + \text{PB}^2$ を計算しても解けるが、計算量が多くなる。中線定理を使うと $\text{PA}^2 + \text{PB}^2 = 2(\text{PM}^2 + \text{AM}^2)$ となる（$\text{M}$ は線分$\text{AB}$の中点）。<br>
-                $\text{A}$ と $\text{M}$ は固定されているので、$\text{AM}^2$ は定数。つまり <strong>$\text{PM}$ の長さが最小になるときを探せばよい</strong>。<br>
-                円 $E$ 上の点 $\text{P}$ と定点 $\text{M}$ の距離が最小になるのは、$\text{M}$ と円の中心を結んだ直線上に $\text{P}$ があるとき。つまり「中心間の距離から半径を引く」だけで求まる。これで計算量が劇的に減る。
-            </li>
-        </ol>
-    </section>
-
-    <!-- 4. 実際の答案 -->
-    <section class="bg-white p-6 md:p-8 shadow-xl rounded-2xl mb-8 border border-gray-300 relative">
-        <div class="absolute top-0 left-0 bg-blue-600 text-white font-bold py-1 px-4 rounded-br-lg rounded-tl-2xl shadow">
-            【ここから実際の答案】
-        </div>
-        <div class="mt-8 text-lg answer-font leading-loose space-y-8">
+        <!-- 1. 問題文と条件整理 -->
+        <section class="card border-l-4 border-slate-400">
+            <h2 class="text-xl font-bold mb-4 text-slate-700 flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
+                1. 問題文と条件整理
+            </h2>
             
-            <!-- (1) -->
-            <div>
-                <h3 class="font-bold border-b border-gray-300 pb-1 mb-3">(1)</h3>
-                <p>円 $C$ の方程式を変形して平方完成を行う。</p>
-                <div class="overflow-x-auto">
-                    \begin{align*}
-                    (x^2 - 8x) + (y^2 - 2y) + 13 &= 0 \\
-                    (x - 4)^2 - 16 + (y - 1)^2 - 1 + 13 &= 0 \\
-                    (x - 4)^2 + (y - 1)^2 &= 4
-                    \end{align*}
+            <div class="mb-6 p-5 bg-slate-50 rounded-lg border border-slate-200 text-slate-800 leading-relaxed">
+                <div class="flex items-center gap-2 mb-3 border-b border-slate-300 pb-2">
+                    <span class="font-bold text-lg border-2 border-slate-600 px-2 rounded">1</span>
+                    <span class="font-semibold">(確率)</span>
                 </div>
-                <p>したがって、円 $C$ の<strong>中心の座標は $(4, 1)$、半径は $2$</strong> である。</p>
+                <p class="mb-3">袋の中に5枚のカードがあり、それぞれのカードには数字 0, 0, 1, 1, 2 が1つずつ書かれている。この袋から1枚のカードを取り出し、そのカードに書かれている数字を記録してから元へ戻す。この試行を3回繰り返すとき、1回目に記録した数字を $x$、2回目に記録した数字を $y$、3回目に記録した数字を $z$ とする。</p>
+                <p class="mb-3">$N = x+y+z$ として、$N$ を3で割った余りを $r$ とする。</p>
+                <ul class="space-y-2 ml-4">
+                    <li>(1) $N=6$ となる確率を求めよ。</li>
+                    <li>(2) $N=1$ となる確率を求めよ。また、$r=1$ となる確率を求めよ。</li>
+                    <li>(3) $r$ の期待値を求めよ。</li>
+                </ul>
             </div>
 
-            <!-- (2) -->
-            <div>
-                <h3 class="font-bold border-b border-gray-300 pb-1 mb-3">(2)</h3>
-                <p>線分 $\text{AB}$ の中点を $\text{M}$ とすると、その座標は</p>
-                <div class="overflow-x-auto">
-                    \begin{align*}
-                    \left( \frac{-2 + 2}{2}, \frac{3 + 5}{2} \right) = (0, 4)
-                    \end{align*}
+            <details class="text-sm text-slate-500 mb-6 group cursor-pointer">
+                <summary class="hover:text-slate-700 flex items-center gap-1">
+                    <span class="group-open:rotate-90 transition-transform">▶</span>
+                    元の問題画像を確認する
+                </summary>
+                <img src="image_57b864.png" alt="問題画像" class="mt-3 max-w-full h-auto border rounded shadow-sm">
+            </details>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="bg-emerald-50 p-4 rounded-lg border border-emerald-100">
+                    <h3 class="font-bold text-emerald-800 mb-2 border-b border-emerald-200 pb-1">条件の整理</h3>
+                    <ul class="list-disc list-inside text-sm text-emerald-900 space-y-1">
+                        <li>カードの構成: $\{0, 0, 1, 1, 2\}$ の計5枚</li>
+                        <li>試行: 1枚引いて<strong>元に戻す</strong>を3回繰り返す（反復試行・独立）</li>
+                        <li>各数字が出る確率: <br>
+                            $P(0) = \frac{2}{5}, P(1) = \frac{2}{5}, P(2) = \frac{1}{5}$</li>
+                        <li>変数: $N = x+y+z$</li>
+                        <li>$r$ の定義: $N$ を3で割った余り ($r = N \pmod 3$)</li>
+                    </ul>
                 </div>
-                <p>である。また、直線 $\text{AB}$ の傾き $m$ は</p>
-                <div class="overflow-x-auto">
-                    \begin{align*}
-                    m = \frac{5 - 3}{2 - (-2)} = \frac{2}{4} = \frac{1}{2}
-                    \end{align*}
+                <div class="bg-orange-50 p-4 rounded-lg border border-orange-100">
+                    <h3 class="font-bold text-orange-800 mb-2 border-b border-orange-200 pb-1">最終的な目標</h3>
+                    <ul class="list-disc list-inside text-sm text-orange-900 space-y-1">
+                        <li>(1) $N=6$ となる確率を求める。</li>
+                        <li>(2) $N=1$ となる確率、および $r=1$ となる確率を求める。</li>
+                        <li>(3) $r$ の期待値 $E[r]$ を求める。</li>
+                    </ul>
                 </div>
-                <p>である。垂直二等分線 $l$ は直線 $\text{AB}$ に直交するため、その傾きを $m'$ とすると $m \cdot m' = -1$ より $m' = -2$ となる。</p>
-                <p>したがって、点 $\text{M}(0, 4)$ を通り傾き $-2$ の直線 $l$ の方程式は、</p>
-                <div class="overflow-x-auto">
-                    \begin{align*}
-                    y - 4 &= -2(x - 0) \\
-                    y &= -2x + 4
-                    \end{align*}
+            </div>
+        </section>
+
+        <!-- 2. 解法選択のトリガー -->
+        <section class="card border-l-4 border-yellow-400">
+            <h2 class="text-xl font-bold mb-4 text-yellow-800 flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+                2. 解法選択のトリガー
+            </h2>
+            <div class="space-y-3">
+                <div class="p-3 bg-yellow-50 rounded border border-yellow-100">
+                    <p class="font-bold text-yellow-900">「元へ戻す」を「3回繰り返す」を見たら</p>
+                    <p class="text-sm text-yellow-800 mt-1">→ <strong>独立試行の確率</strong>と判断する。1回ごとの確率は変化しないため、各回の確率の積で事象の確率を計算できる。</p>
                 </div>
-                <p>よって、求める直線 $l$ の方程式は <strong>$y = -2x + 4$</strong> （または $2x + y - 4 = 0$）である。</p>
+                <div class="p-3 bg-yellow-50 rounded border border-yellow-100">
+                    <p class="font-bold text-yellow-900">「和 $N$ が〇〇になる確率」を見たら</p>
+                    <p class="text-sm text-yellow-800 mt-1">→ <strong>組み合わせ $(x, y, z)$ の列挙</strong>と、その<strong>並べ替え（順列）の考慮</strong>を連想する。$(0,0,1)$ なら $\frac{3!}{2!1!} = 3$ 通りあることを忘れない。</p>
+                </div>
+                <div class="p-3 bg-yellow-50 rounded border border-yellow-100">
+                    <p class="font-bold text-yellow-900">「余り $r$ の期待値」を見たら</p>
+                    <p class="text-sm text-yellow-800 mt-1">→ $r$ がとりうる値は $0, 1, 2$ のみであることに着目し、それぞれの確率 $P(r=0), P(r=1), P(r=2)$ を求めて期待値の定義式 $\sum r_i P_i$ に代入する方針を立てる。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. 思考プロセス -->
+        <section class="card border-l-4 border-indigo-500">
+            <h2 class="text-xl font-bold mb-4 text-indigo-800 flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" /></svg>
+                3. 思考プロセス
+            </h2>
+            <div class="bg-indigo-50 p-4 rounded-lg text-indigo-900 text-sm leading-relaxed border border-indigo-100 space-y-2">
+                <p>まず、$x, y, z$ はそれぞれ $0, 1, 2$ のいずれかをとるので、和 $N$ のとりうる最小値は $0+0+0=0$、最大値は $2+2+2=6$ です。</p>
+                <p>小問の誘導に乗って考えてみましょう。<br>
+                (1)で $N=6$ となる特殊な場合を求めさせ、(2)で $N=1$ という具体的な和から、条件を拡張して $r=1$（つまり $N=1, 4$）の場合を求めさせています。</p>
+                <p>この流れから、(3)の期待値計算では、$r=0, 1, 2$ になるための $N$ の値をすべて分類して確率を足し合わせるのが自然な方針（本解）となります。計算量もそれほど多くないので、素直に事象を書き出していくのが一番確実です。</p>
+            </div>
+        </section>
+
+        <!-- 4. 実際の答案 -->
+        <section class="card border-l-4 border-blue-600">
+            <div class="bg-blue-600 text-white inline-block px-3 py-1 rounded text-sm font-bold mb-4">ここから実際の答案</div>
+            
+            <div class="space-y-8 text-slate-800">
+                <p class="mb-4">1回の試行において、各数字のカードを取り出す確率はそれぞれ以下の通りである。
+                $$ P(0) = \frac{2}{5}, \quad P(1) = \frac{2}{5}, \quad P(2) = \frac{1}{5} $$</p>
+
+                <!-- (1) -->
+                <div>
+                    <h3 class="font-bold text-lg text-blue-900 border-b-2 border-blue-100 pb-1 mb-3">(1) $N=6$ となる確率</h3>
+                    <p>$N = x+y+z = 6$ となるのは、3回とも「2」のカードを取り出した場合のみである。<br>
+                    すなわち、$(x, y, z) = (2, 2, 2)$ の1通り。</p>
+                    <p>したがって、求める確率は</p>
+                    <p>$$ P(N=6) = \left( \frac{1}{5} \right)^3 = \frac{1}{125} $$</p>
+                    <div class="text-right">
+                        <span class="font-bold text-blue-700 bg-blue-50 px-3 py-1 rounded">答：$ \frac{1}{125} $</span>
+                    </div>
+                </div>
+
+                <!-- (2) -->
+                <div>
+                    <h3 class="font-bold text-lg text-blue-900 border-b-2 border-blue-100 pb-1 mb-3">(2) $N=1$ となる確率、および $r=1$ となる確率</h3>
+                    <p class="font-semibold text-blue-800">【前半：$N=1$ となる確率】</p>
+                    <p>$N = x+y+z = 1$ となる数字の組み合わせは $\{0, 0, 1\}$ である。<br>
+                    この順列は $\frac{3!}{2!1!} = 3$ 通りある。</p>
+                    <p>したがって、$N=1$ となる確率は</p>
+                    <p>$$ P(N=1) = 3 \times \left(\frac{2}{5}\right)^2 \times \frac{2}{5} = 3 \times \frac{8}{125} = \frac{24}{125} $$</p>
+
+                    <p class="font-semibold text-blue-800 mt-4">【後半：$r=1$ となる確率】</p>
+                    <p>$r=1$ となるのは、$N$ を3で割った余りが1のとき、すなわち $N=1, 4$ のいずれかの場合である。（$N$ の最大値は6であるため、$N=7$ 以上は考えない）</p>
+                    <p>$N=4$ となる数字の組み合わせは、$\{0, 2, 2\}$ または $\{1, 1, 2\}$ である。</p>
+                    <ul class="list-disc list-inside ml-4 space-y-1 my-2">
+                        <li>$\{0, 2, 2\}$ の並べ方は $\frac{3!}{2!} = 3$ 通り。<br>
+                        その確率は $3 \times \frac{2}{5} \times \left(\frac{1}{5}\right)^2 = \frac{6}{125}$</li>
+                        <li>$\{1, 1, 2\}$ の並べ方は $\frac{3!}{2!} = 3$ 通り。<br>
+                        その確率は $3 \times \left(\frac{2}{5}\right)^2 \times \frac{1}{5} = \frac{12}{125}$</li>
+                    </ul>
+                    <p>よって、$P(N=4) = \frac{6}{125} + \frac{12}{125} = \frac{18}{125}$</p>
+                    <p>これらは互いに排反であるから、</p>
+                    <p>$$ P(r=1) = P(N=1) + P(N=4) = \frac{24}{125} + \frac{18}{125} = \frac{42}{125} $$</p>
+                    <div class="text-right">
+                        <span class="font-bold text-blue-700 bg-blue-50 px-3 py-1 rounded">答：$P(N=1) = \frac{24}{125}, \quad P(r=1) = \frac{42}{125}$</span>
+                    </div>
+                </div>
+
+                <!-- (3) -->
+                <div>
+                    <h3 class="font-bold text-lg text-blue-900 border-b-2 border-blue-100 pb-1 mb-3">(3) $r$ の期待値</h3>
+                    <p>$r$ のとりうる値は $0, 1, 2$ である。<br>
+                    $P(r=1) = \frac{42}{125}$ はすでに求めたので、残りの $P(r=2)$ を計算する。</p>
+                    
+                    <p>$r=2$ となるのは、$N=2, 5$ の場合である。</p>
+                    <p>・$N=2$ となる組み合わせは $\{0, 0, 2\}, \{0, 1, 1\}$</p>
+                    <ul class="list-disc list-inside ml-4 space-y-1 my-1">
+                        <li>$\{0, 0, 2\}$ の並べ方は $3$ 通り。確率は $3 \times \left(\frac{2}{5}\right)^2 \times \frac{1}{5} = \frac{12}{125}$</li>
+                        <li>$\{0, 1, 1\}$ の並べ方は $3$ 通り。確率は $3 \times \frac{2}{5} \times \left(\frac{2}{5}\right)^2 = \frac{24}{125}$</li>
+                    </ul>
+                    <p class="ml-4">よって $P(N=2) = \frac{12}{125} + \frac{24}{125} = \frac{36}{125}$</p>
+
+                    <p class="mt-2">・$N=5$ となる組み合わせは $\{1, 2, 2\}$</p>
+                    <ul class="list-disc list-inside ml-4 space-y-1 my-1">
+                        <li>$\{1, 2, 2\}$ の並べ方は $3$ 通り。確率は $3 \times \frac{2}{5} \times \left(\frac{1}{5}\right)^2 = \frac{6}{125}$</li>
+                    </ul>
+                    <p class="ml-4">よって $P(N=5) = \frac{6}{125}$</p>
+                    
+                    <p>したがって、$P(r=2) = P(N=2) + P(N=5) = \frac{36}{125} + \frac{6}{125} = \frac{42}{125}$</p>
+                    
+                    <p class="mt-4">これらを用いて、$r$ の期待値 $E[r]$ を計算する。（$r=0$ の項は期待値計算で $0$ となるため、確率は明示的に求めなくても計算可能である。）</p>
+                    <p>$$ E[r] = 0 \times P(r=0) + 1 \times P(r=1) + 2 \times P(r=2) $$</p>
+                    <p>$$ E[r] = 0 + 1 \times \frac{42}{125} + 2 \times \frac{42}{125} = \frac{42 + 84}{125} = \frac{126}{125} $$</p>
+
+                    <div class="text-right">
+                        <span class="font-bold text-blue-700 bg-blue-50 px-3 py-1 rounded">答：$ \frac{126}{125} $</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. 確率分布の可視化 -->
+        <section class="card border-l-4 border-emerald-500">
+            <h2 class="text-xl font-bold mb-4 text-emerald-800 flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z" /></svg>
+                5. 図解・可視化
+            </h2>
+            <p class="text-sm text-slate-600 mb-4">事象の全体像を捉えるために、$N$ の値とその確率の分布を表にまとめました。</p>
+            <div class="overflow-x-auto">
+                <table class="w-full text-sm text-center border-collapse mb-4">
+                    <thead>
+                        <tr class="bg-emerald-100 text-emerald-900 border-b-2 border-emerald-300">
+                            <th class="py-2 px-3 border border-emerald-200">$N$ の値</th>
+                            <th class="py-2 px-3 border border-emerald-200">0</th>
+                            <th class="py-2 px-3 border border-emerald-200">1</th>
+                            <th class="py-2 px-3 border border-emerald-200">2</th>
+                            <th class="py-2 px-3 border border-emerald-200">3</th>
+                            <th class="py-2 px-3 border border-emerald-200">4</th>
+                            <th class="py-2 px-3 border border-emerald-200">5</th>
+                            <th class="py-2 px-3 border border-emerald-200">6</th>
+                            <th class="py-2 px-3 border border-emerald-200">計</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="border-b border-emerald-100">
+                            <td class="py-2 px-3 font-semibold bg-emerald-50 border border-emerald-200">$P(N)$ <br><span class="text-xs text-slate-500">※分子のみ<br>分母は125</span></td>
+                            <td class="py-2 px-3 border border-emerald-200">8</td>
+                            <td class="py-2 px-3 border border-emerald-200 bg-yellow-50">24</td>
+                            <td class="py-2 px-3 border border-emerald-200 bg-blue-50">36</td>
+                            <td class="py-2 px-3 border border-emerald-200">32</td>
+                            <td class="py-2 px-3 border border-emerald-200 bg-yellow-50">18</td>
+                            <td class="py-2 px-3 border border-emerald-200 bg-blue-50">6</td>
+                            <td class="py-2 px-3 border border-emerald-200">1</td>
+                            <td class="py-2 px-3 border border-emerald-200 font-bold">125</td>
+                        </tr>
+                        <tr>
+                            <td class="py-2 px-3 font-semibold bg-emerald-50 border border-emerald-200">$r$ (余り)</td>
+                            <td class="py-2 px-3 border border-emerald-200">0</td>
+                            <td class="py-2 px-3 border border-emerald-200 bg-yellow-50 font-bold text-yellow-700">1</td>
+                            <td class="py-2 px-3 border border-emerald-200 bg-blue-50 font-bold text-blue-700">2</td>
+                            <td class="py-2 px-3 border border-emerald-200">0</td>
+                            <td class="py-2 px-3 border border-emerald-200 bg-yellow-50 font-bold text-yellow-700">1</td>
+                            <td class="py-2 px-3 border border-emerald-200 bg-blue-50 font-bold text-blue-700">2</td>
+                            <td class="py-2 px-3 border border-emerald-200">0</td>
+                            <td class="py-2 px-3 border border-emerald-200">-</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="text-xs text-slate-500">表の黄色が $r=1$、青色が $r=2$ のグループです。足し合わせるイメージが視覚的に分かりますね。</p>
+        </section>
+
+        <!-- 6. 最終結果と検算 -->
+        <section class="card border-l-4 border-purple-500">
+            <h2 class="text-xl font-bold mb-4 text-purple-800 flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                6. 最終結果と検算
+            </h2>
+            <div class="bg-purple-50 p-4 rounded-lg border border-purple-100 mb-4 flex flex-col md:flex-row gap-4 justify-around text-center">
+                <div>
+                    <span class="text-sm text-purple-700 block mb-1">(1) $P(N=6)$</span>
+                    <span class="text-xl font-bold text-purple-900">$\frac{1}{125}$</span>
+                </div>
+                <div>
+                    <span class="text-sm text-purple-700 block mb-1">(2) $P(N=1), P(r=1)$</span>
+                    <span class="text-xl font-bold text-purple-900">$\frac{24}{125}, \quad \frac{42}{125}$</span>
+                </div>
+                <div>
+                    <span class="text-sm text-purple-700 block mb-1">(3) $E[r]$</span>
+                    <span class="text-xl font-bold text-purple-900">$\frac{126}{125}$</span>
+                </div>
             </div>
 
-            <!-- (3) -->
-            <div>
-                <h3 class="font-bold border-b border-gray-300 pb-1 mb-3">(3)</h3>
-                <p>円 $C$ を直線 $l$ に関して対称移動した円 $E$ は、円 $C$ と同じ半径 $2$ を持つ。<br>
-                円 $E$ の中心を $\text{E}'(p, q)$ とする。点 $\text{E}'$ は、円 $C$ の中心 $\text{C}'(4, 1)$ を直線 $l: 2x + y - 4 = 0$ に関して対称移動した点であるから、以下の2つの条件を満たす。</p>
+            <div class="bg-white border-2 border-purple-100 p-4 rounded text-sm text-purple-900">
+                <p class="font-bold mb-2">【検算：確率の総和は 1 になっているか？】</p>
+                <p>余事象 $r=0$ となる確率 $P(r=0)$ を求め、全体で 1 になるか確認します。</p>
+                <p>$N=0, 3, 6$ となる確率をそれぞれ計算します。</p>
+                <ul class="list-disc list-inside ml-4 space-y-1">
+                    <li>$P(N=0) = \left(\frac{2}{5}\right)^3 = \frac{8}{125}$</li>
+                    <li>$N=3$ の組み合わせは $\{0, 1, 2\}, \{1, 1, 1\}$
+                        <ul class="list-none ml-6">
+                            <li>$\{0, 1, 2\} \rightarrow 6 \times \frac{2}{5} \times \frac{2}{5} \times \frac{1}{5} = \frac{24}{125}$</li>
+                            <li>$\{1, 1, 1\} \rightarrow \left(\frac{2}{5}\right)^3 = \frac{8}{125}$</li>
+                            <li>$P(N=3) = \frac{24 + 8}{125} = \frac{32}{125}$</li>
+                        </ul>
+                    </li>
+                    <li>$P(N=6) = \frac{1}{125}$</li>
+                </ul>
+                <p class="mt-2">$P(r=0) = \frac{8 + 32 + 1}{125} = \frac{41}{125}$</p>
+                <p class="mt-2 font-bold text-purple-700 bg-purple-100 inline-block px-2 py-1 rounded">
+                    確認：$P(r=0) + P(r=1) + P(r=2) = \frac{41}{125} + \frac{42}{125} + \frac{42}{125} = \frac{125}{125} = 1$
+                </p>
+                <p class="mt-1">漏れや重複がないことが確認できました。</p>
+            </div>
+        </section>
+        
+        <!-- 7. 別解 -->
+        <section class="card border-l-4 border-slate-400">
+            <h2 class="text-xl font-bold mb-4 text-slate-700 flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" /></svg>
+                7. 別解の比較（多項式の展開・母関数）
+            </h2>
+            <div class="text-sm text-slate-700 space-y-3">
+                <p>確率分布を地道に数える代わりに、代数的な展開を利用して一気にすべての確率を求める方法もあります。<br>
+                1回の試行で引く数字とその確率を対応させた多項式 $f(t) = \frac{2}{5}t^0 + \frac{2}{5}t^1 + \frac{1}{5}t^2$ を考えます。<br>
+                これを3乗した展開式の $t^k$ の係数が、$N=k$ となる確率に一致します。</p>
                 
-                <p class="font-bold mt-4">[i] 線分 $\text{C}'\text{E}'$ の中点が直線 $l$ 上にある</p>
-                <p>中点の座標 $\left( \frac{p+4}{2}, \frac{q+1}{2} \right)$ を $l$ の方程式に代入して、</p>
-                <div class="overflow-x-auto">
-                    \begin{align*}
-                    2 \left( \frac{p+4}{2} \right) + \frac{q+1}{2} - 4 &= 0 \\
-                    (p+4) + \frac{q+1}{2} - 4 &= 0 \\
-                    2p + q + 1 &= 0 \quad \cdots ①
-                    \end{align*}
+                <div class="bg-slate-50 p-4 rounded border border-slate-200 font-mono text-xs overflow-x-auto">
+                    $ \left( \frac{2+2t+t^2}{5} \right)^3 = \frac{1}{125} (t^2+2t+2)^3 $<br><br>
+                    $ (t^2+2t+2)^3 = (t^2+2t+2)(t^4+4t^3+8t^2+8t+4) $<br>
+                    $ = t^6 + 6t^5 + 18t^4 + 32t^3 + 36t^2 + 24t + 8 $
                 </div>
-
-                <p class="font-bold mt-4">[ii] 直線 $\text{C}'\text{E}'$ は直線 $l$ と直交する</p>
-                <p>直線 $\text{C}'\text{E}'$ の傾きは $\frac{q-1}{p-4}$ であり、これが $l$ の傾き $-2$ と直交するため、</p>
-                <div class="overflow-x-auto">
-                    \begin{align*}
-                    \frac{q-1}{p-4} \cdot (-2) &= -1 \\
-                    2(q-1) &= p-4 \\
-                    p - 2q - 2 &= 0 \quad \cdots ②
-                    \end{align*}
-                </div>
-
-                <p>①より $q = -2p - 1$。<br>
-                これを②に代入すると、</p>
-                <div class="overflow-x-auto">
-                    \begin{align*}
-                    p - 2(-2p - 1) - 2 &= 0 \\
-                    p + 4p + 2 - 2 &= 0 \\
-                    5p &= 0
-                    \end{align*}
-                </div>
-                <p>ゆえに $p = 0$。これを①に代入して $q = -1$。<br>
-                したがって、円 $E$ の中心は $(0, -1)$ である。</p>
-                <p>よって、円 $E$ の方程式は <strong>$x^2 + (y + 1)^2 = 4$</strong> である。</p>
+                
+                <p>これを見ると、$t^4$ の係数から $P(N=4) = \frac{18}{125}$ などが瞬時に、かつ正確に得られます。<br>
+                <strong>【比較】</strong>本解のように組み合わせを書き出すほうが、試験本番では部分点がもらいやすく無難ですが、この母関数的な考え方は見直し・検算ツールとして最強の威力を発揮します。</p>
             </div>
+        </section>
 
-            <!-- (4) -->
-            <div>
-                <h3 class="font-bold border-b border-gray-300 pb-1 mb-3">(4)</h3>
-                <p>線分 $\text{AB}$ の中点は (2) より $\text{M}(0, 4)$ である。<br>
-                点 $\text{P}$ は円 $E$ 上の点であり、中線定理（パップスの定理）より以下の等式が成り立つ。</p>
-                <div class="overflow-x-auto">
-                    \begin{align*}
-                    \text{PA}^2 + \text{PB}^2 &= 2(\text{PM}^2 + \text{AM}^2)
-                    \end{align*}
-                </div>
-                <p>ここで、点 $\text{A}(-2, 3)$ と点 $\text{M}(0, 4)$ の距離の2乗 $\text{AM}^2$ は定数であり、</p>
-                <div class="overflow-x-auto">
-                    \begin{align*}
-                    \text{AM}^2 &= (-2 - 0)^2 + (3 - 4)^2 \\
-                    &= (-2)^2 + (-1)^2 = 4 + 1 = 5
-                    \end{align*}
-                </div>
-                <p>である。したがって、</p>
-                <div class="overflow-x-auto">
-                    \begin{align*}
-                    \text{PA}^2 + \text{PB}^2 = 2(\text{PM}^2 + 5)
-                    \end{align*}
-                </div>
-                <p>となる。この値が最小になるのは、$\text{PM}^2$ が最小になるとき、すなわち線分 $\text{PM}$ の長さが最小になるときである。</p>
-
-                <p>定点 $\text{M}(0, 4)$ と、円 $E$ の中心 $\text{E}'(0, -1)$ との距離は</p>
-                <div class="overflow-x-auto">
-                    \begin{align*}
-                    \text{ME}' = \sqrt{(0 - 0)^2 + (4 - (-1))^2} = \sqrt{0 + 5^2} = 5
-                    \end{align*}
-                </div>
-                <p>であり、これは円 $E$ の半径 $2$ よりも大きいため、点 $\text{M}$ は円 $E$ の外部にある。<br>
-                円周上の点 $\text{P}$ と、円外の定点 $\text{M}$ との距離 $\text{PM}$ が最小となるのは、点 $\text{P}$ が線分 $\text{ME}'$ 上にあるときである。</p>
-                <p>このとき、$\text{PM}$ の最小値は</p>
-                <div class="overflow-x-auto">
-                    \begin{align*}
-                    \text{PM}_{\text{min}} = \text{ME}' - (\text{円の半径}) = 5 - 2 = 3
-                    \end{align*}
-                </div>
-                <p>となる。</p>
-                <p>ゆえに、$\text{PA}^2 + \text{PB}^2$ の最小値は、$\text{PM} = 3$ を代入して、</p>
-                <div class="overflow-x-auto">
-                    \begin{align*}
-                    2 \times (3^2 + 5) = 2 \times (9 + 5) = 2 \times 14 = 28
-                    \end{align*}
-                </div>
-                <p>よって、求める最小値は <strong>$28$</strong> である。</p>
+        <!-- 8. 発展 -->
+        <section class="card border-l-4 border-teal-500">
+            <h2 class="text-xl font-bold mb-4 text-teal-800 flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" /></svg>
+                8. 発展
+            </h2>
+            <div class="bg-teal-50 p-4 rounded border border-teal-100 text-teal-900 text-sm">
+                <p class="font-bold mb-2">期待値の線形性を利用するとどうなるか？</p>
+                <p>$N = x+y+z$ であるから、$N$ の期待値は各回の期待値の和になります。</p>
+                <p>1回の試行の期待値 $E[x] = 0 \times \frac{2}{5} + 1 \times \frac{2}{5} + 2 \times \frac{1}{5} = \frac{4}{5}$</p>
+                <p>したがって、$E[N] = E[x] + E[y] + E[z] = \frac{12}{5} = 2.4$ となります。</p>
+                <p class="mt-2 text-teal-700">※ 注意：$N$ の期待値は簡単に求まりますが、<strong>$r$ の期待値は $E[N \pmod 3]$ であり、$E[N] \pmod 3$ とは一致しません。</strong> 余りや絶対値、2乗などの非線形な操作が入る場合は、本解のように確率分布を求めてから計算する必要があります。</p>
             </div>
+        </section>
+
+        <!-- 9. 受験生のつまずきポイント -->
+        <section class="card border-l-4 border-red-500">
+            <h2 class="text-xl font-bold mb-4 text-red-800 flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg>
+                9. 受験生のつまずきポイント
+            </h2>
+            <div class="space-y-4">
+                <div class="bg-red-50 p-3 rounded border border-red-100">
+                    <p class="font-bold text-red-900">① 同じものを含む順列をかけ忘れる</p>
+                    <p class="text-sm text-red-800 mt-1">
+                        【誤答】 $\{0, 0, 1\}$ が出る確率は $\frac{2}{5} \times \frac{2}{5} \times \frac{2}{5} = \frac{8}{125}$<br>
+                        【理由】 「1回目に0、2回目に0、3回目に1」という特定の順番しか計算していません。<br>
+                        【防ぐ方法】 組み合わせを見つけたら、常に「並び替えは何通りあるか？」と自問自答し、$\frac{3!}{2!1!} = 3$ を掛ける癖をつけましょう。
+                    </p>
+                </div>
+                <div class="bg-red-50 p-3 rounded border border-red-100">
+                    <p class="font-bold text-red-900">② 「3で割った余り」の解釈ミス</p>
+                    <p class="text-sm text-red-800 mt-1">
+                        【誤答】 $r=1$ となるのは $N=1$ のときだけと考えてしまう。<br>
+                        【理由】 $N$ の最大値が $6$ であることを意識できておらず、$N=4$ の存在を見落としています。<br>
+                        【防ぐ方法】 $N$ の「最小値」と「最大値」を最初に確認し（今回は $0 \le N \le 6$）、その範囲内で条件を満たすものをすべて書き出すようにします。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 10. アクティブリコール -->
+        <section class="bg-blue-900 p-5 md:p-8 rounded-xl shadow-lg mt-8">
+            <h2 class="text-2xl font-bold mb-3 flex items-center gap-2 text-white">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-yellow-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" /></svg>
+                🧠 アクティブリコール
+            </h2>
+            <p class="text-sm text-blue-200 mb-6">学習内容を定着させるためのテストです。質問をクリックして模範解答を確認しましょう。</p>
             
-        </div>
-    </section>
-
-    <!-- 5. インタラクティブ図解 -->
-    <section class="bg-white p-6 md:p-8 shadow-md rounded-2xl mb-8">
-        <h2 class="text-xl font-bold border-b-4 border-emerald-500 pb-2 mb-4">5. インタラクティブ図解</h2>
-        <p class="mb-3 text-gray-700">赤い点Pを<strong>指またはマウスでつかんで円周上を動かす</strong>と、Pの位置と $\text{PA}^2 + \text{PB}^2$ の値が変わります。図を動かす操作ではなく、点Pそのものを動かして確かめてください。</p>
-        <div class="bg-emerald-50 border border-emerald-200 rounded-lg p-4 mb-4 text-emerald-900 text-sm">
-            <p class="font-bold mb-1">操作方法</p>
-            <p>① 赤い点Pに触れる（クリックする）　② そのまま円周上へ動かす　③ うまくつかめない場合は、下のスライダーでもPを動かせます。</p>
-        </div>
-        <div class="relative">
-            <div id="plotDiv" class="w-full h-[500px] border border-gray-200 rounded-lg"></div>
-            <div id="plotOverlay" class="absolute inset-0 rounded-lg" style="touch-action:none;"></div>
-        </div>
-        <div class="mt-4 bg-slate-50 border border-slate-200 rounded-lg p-4">
-            <label for="thetaSlider" class="block font-bold text-slate-800 mb-2">スライダーで点Pを動かす</label>
-            <input id="thetaSlider" type="range" min="0" max="360" value="90" class="w-full accent-emerald-600">
-            <p id="interactiveStatus" class="mt-3 text-slate-700">点P = $(0, 1)$　　$\text{PA}^2 + \text{PB}^2 = 28$</p>
-        </div>
-        <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                function generateCircle(h, k, r, numPoints = 100) {
-                    const x = [];
-                    const y = [];
-                    for (let i = 0; i <= numPoints; i++) {
-                        const theta = (i / numPoints) * 2 * Math.PI;
-                        x.push(h + r * Math.cos(theta));
-                        y.push(k + r * Math.sin(theta));
-                    }
-                    return {x, y};
-                }
-
-                const circleC = generateCircle(4, 1, 2);
-                const circleE = generateCircle(0, -1, 2);
-                const lineL_x = [-3, 5];
-                const lineL_y = lineL_x.map(x => -2 * x + 4);
-                const plotDiv = document.getElementById('plotDiv');
-                const overlay = document.getElementById('plotOverlay');
-                const slider = document.getElementById('thetaSlider');
-                const status = document.getElementById('interactiveStatus');
-
-                const traces = [
-                    { x: circleC.x, y: circleC.y, mode: 'lines', name: '円 C', line: {color: 'rgba(59, 130, 246, 0.7)', width: 2}, fill: 'toself', fillcolor: 'rgba(59, 130, 246, 0.1)' },
-                    { x: circleE.x, y: circleE.y, mode: 'lines', name: '円 E', line: {color: 'rgba(239, 68, 68, 0.7)', width: 2}, fill: 'toself', fillcolor: 'rgba(239, 68, 68, 0.1)' },
-                    { x: lineL_x, y: lineL_y, mode: 'lines', name: '直線 l', line: {color: 'rgba(107, 114, 128, 0.8)', width: 2, dash: 'dash'} },
-                    { x: [-2, 2], y: [3, 5], mode: 'markers+text', name: '点 A, B', text: ['A(-2,3)', 'B(2,5)'], textposition: 'top center', marker: {color: 'black', size: 8} },
-                    { x: [-2, 2], y: [3, 5], mode: 'lines', name: '線分 AB', line: {color: 'rgba(0, 0, 0, 0.3)', width: 1} },
-                    { x: [4, 0], y: [1, -1], mode: 'markers+text', name: "中心 C', E'", text: ["C'(4,1)", "E'(0,-1)"], textposition: 'bottom right', marker: {color: 'purple', size: 8} },
-                    { x: [0], y: [4], mode: 'markers+text', name: '中点 M', text: ['M(0,4)'], textposition: 'top right', marker: {color: 'green', size: 10, symbol: 'star'} },
-                    { x: [0, 0], y: [4, -1], mode: 'lines', name: "線分 ME'", line: {color: 'green', width: 2} },
-                    { x: [0, 0], y: [4, 1], mode: 'lines', name: '線分 MP', line: {color: 'rgba(245, 158, 11, 0.9)', width: 2, dash: 'dot'} },
-                    { x: [0], y: [1], mode: 'markers+text', name: '点 P', text: ['P'], textposition: 'middle left', marker: {color: 'red', size: 13} }
-                ];
-
-                const layout = {
-                    title: '点Pを動かして値の変化を確かめよう',
-                    xaxis: { title: 'x', range: [-5, 7], zeroline: true, fixedrange: true },
-                    yaxis: { title: 'y', range: [-4, 7], scaleanchor: 'x', scaleratio: 1, zeroline: true, fixedrange: true },
-                    showlegend: true,
-                    margin: { l: 40, r: 40, t: 52, b: 40 },
-                    hovermode: false,
-                    dragmode: false
-                };
-
-                let currentTheta = Math.PI / 2;
-                let dragging = false;
-
-                function formatNumber(n) {
-                    const rounded = Math.round(n * 100) / 100;
-                    return Number.isInteger(rounded) ? String(rounded) : rounded.toFixed(2);
-                }
-
-                function updatePoint(theta) {
-                    currentTheta = theta;
-                    const px = 2 * Math.cos(theta);
-                    const py = -1 + 2 * Math.sin(theta);
-                    const pa2 = (px + 2) ** 2 + (py - 3) ** 2;
-                    const pb2 = (px - 2) ** 2 + (py - 5) ** 2;
-                    const total = pa2 + pb2;
-
-                    Plotly.restyle(plotDiv, {
-                        x: [[0, px]],
-                        y: [[4, py]]
-                    }, [8]);
-                    Plotly.restyle(plotDiv, {
-                        x: [[px]],
-                        y: [[py]],
-                        text: [[`P(${formatNumber(px)}, ${formatNumber(py)})`]]
-                    }, [9]);
-
-                    status.textContent = `点P = (${formatNumber(px)}, ${formatNumber(py)})　　PA² + PB² = ${formatNumber(total)}`;
-                    slider.value = ((theta * 180 / Math.PI) + 360) % 360;
-                }
-
-                function nearestThetaFromPointer(event) {
-                    const rect = overlay.getBoundingClientRect();
-                    const size = plotDiv._fullLayout._size;
-                    const xaxis = plotDiv._fullLayout.xaxis;
-                    const yaxis = plotDiv._fullLayout.yaxis;
-                    const localX = event.clientX - rect.left - size.l;
-                    const localY = event.clientY - rect.top - size.t;
-                    const x = xaxis.p2c(localX);
-                    const y = yaxis.p2c(localY);
-                    return Math.atan2(y + 1, x);
-                }
-
-                function pointerDistanceToP(event) {
-                    const rect = overlay.getBoundingClientRect();
-                    const size = plotDiv._fullLayout._size;
-                    const xaxis = plotDiv._fullLayout.xaxis;
-                    const yaxis = plotDiv._fullLayout.yaxis;
-                    const px = size.l + xaxis.c2p(2 * Math.cos(currentTheta));
-                    const py = size.t + yaxis.c2p(-1 + 2 * Math.sin(currentTheta));
-                    return Math.hypot(event.clientX - rect.left - px, event.clientY - rect.top - py);
-                }
-
-                Plotly.newPlot(plotDiv, traces, layout, {responsive: true, displayModeBar: false, scrollZoom: false}).then(function() {
-                    updatePoint(currentTheta);
-
-                    overlay.addEventListener('pointerdown', function(event) {
-                        if (pointerDistanceToP(event) <= 34) {
-                            dragging = true;
-                            overlay.setPointerCapture(event.pointerId);
-                            event.preventDefault();
-                        }
-                    });
-                    overlay.addEventListener('pointermove', function(event) {
-                        if (!dragging) return;
-                        updatePoint(nearestThetaFromPointer(event));
-                        event.preventDefault();
-                    });
-                    overlay.addEventListener('pointerup', function(event) {
-                        dragging = false;
-                        if (overlay.hasPointerCapture(event.pointerId)) overlay.releasePointerCapture(event.pointerId);
-                    });
-                    overlay.addEventListener('pointercancel', function() { dragging = false; });
-
-                    slider.addEventListener('input', function() {
-                        updatePoint(Number(this.value) * Math.PI / 180);
-                    });
-                });
-            });
-        </script>
-    </section>
-
-    <!-- 6. 最終答案と検算 -->
-    <section class="bg-white p-6 md:p-8 shadow-md rounded-2xl mb-8">
-        <h2 class="text-xl font-bold border-b-4 border-purple-500 pb-2 mb-4">6. 最終結果と検算・妥当性確認</h2>
-        <div class="bg-purple-50 p-6 rounded-lg mb-4">
-            <h3 class="font-bold text-purple-900 mb-2">【解答のまとめ】</h3>
-            <ul class="list-disc pl-5 space-y-2 text-purple-900 font-bold">
-                <li>(1) 中心 $(4, 1)$, 半径 $2$</li>
-                <li>(2) $y = -2x + 4$</li>
-                <li>(3) $x^2 + (y+1)^2 = 4$</li>
-                <li>(4) 最小値 $28$</li>
-            </ul>
-        </div>
-        <div class="mt-4 text-gray-700">
-            <h3 class="font-bold mb-2">【検算：図形的整合性の確認】</h3>
-            <p><strong>(3)の対称移動の確認：</strong>求めた中心 $\text{E}'(0, -1)$ と元の中心 $\text{C}'(4, 1)$ について。</p>
-            <ul class="list-disc pl-5 mb-2">
-                <li>中点は $\left( \frac{4+0}{2}, \frac{1-1}{2} \right) = (2, 0)$。これを $l: y = -2x + 4$ に代入すると $0 = -2(2) + 4$ となり成立。</li>
-                <li>$\text{C}'\text{E}'$ の傾きは $\frac{1 - (-1)}{4 - 0} = \frac{2}{4} = \frac{1}{2}$。$l$ の傾き $-2$ との積は $\frac{1}{2} \times (-2) = -1$ となり直交条件も成立。</li>
-            </ul>
-            <p><strong>(4)の距離の確認：</strong>$\text{M}(0, 4)$ から $\text{E}'(0, -1)$ へ向かうベクトルは $(0, -5)$。つまり $y$ 軸上を真下に移動する。最小となる点 $\text{P}$ は $\text{E}'$ から真上に半径 $2$ だけ戻った点 $(0, 1)$ になる。このとき $\text{M}(0, 4)$ と $\text{P}(0, 1)$ の距離は明確に $3$ であり、計算結果と図のイメージが完全に一致します。</p>
-        </div>
-    </section>
-
-    <!-- 7. 別解比較 -->
-    <section class="bg-white p-6 md:p-8 shadow-md rounded-2xl mb-8">
-        <h2 class="text-xl font-bold border-b-4 border-gray-500 pb-2 mb-4">7. 別解の比較</h2>
-        <h3 class="font-bold text-lg mb-2">(4) パラメータ表示による直接計算</h3>
-        <p class="mb-2 text-gray-700">
-            点 $\text{P}$ は円 $E: x^2 + (y+1)^2 = 4$ 上にあるため、媒介変数 $\theta$ を用いて $\text{P}(2\cos\theta, 2\sin\theta - 1)$ とおくことができます。これを直接 $\text{PA}^2 + \text{PB}^2$ の式に代入して計算します。
-        </p>
-        <div class="overflow-x-auto bg-gray-50 p-4 rounded text-sm mb-4">
-            \begin{align*}
-            \text{PA}^2 + \text{PB}^2 &= (-2 - 2\cos\theta)^2 + \{3 - (2\sin\theta - 1)\}^2 + (2 - 2\cos\theta)^2 + \{5 - (2\sin\theta - 1)\}^2 \\
-            &= (4 + 8\cos\theta + 4\cos^2\theta) + (16 - 16\sin\theta + 4\sin^2\theta) + (4 - 8\cos\theta + 4\cos^2\theta) + (36 - 24\sin\theta + 4\sin^2\theta) \\
-            &= 48 + 8(\cos^2\theta + \sin^2\theta) - 40\sin\theta \\
-            &= 68 - 40\sin\theta
-            \end{align*}
-        </div>
-        <p class="text-gray-700">$-1 \leqq \sin\theta \leqq 1$ であるため、この式が最小になるのは $\sin\theta = 1$ のときであり、最小値は $68 - 40(1) = 28$ となります。</p>
-        
-        <table class="min-w-full mt-4 border-collapse border border-gray-300">
-            <thead>
-                <tr class="bg-gray-100">
-                    <th class="border border-gray-300 px-4 py-2">解法</th>
-                    <th class="border border-gray-300 px-4 py-2">発想しやすさ</th>
-                    <th class="border border-gray-300 px-4 py-2">計算量</th>
-                    <th class="border border-gray-300 px-4 py-2">試験本番向きか</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td class="border border-gray-300 px-4 py-2 font-bold">中線定理（本解）</td>
-                    <td class="border border-gray-300 px-4 py-2">中線定理に気づく知識が必要</td>
-                    <td class="border border-gray-300 px-4 py-2 text-blue-600">少ない（ミスしにくい）</td>
-                    <td class="border border-gray-300 px-4 py-2 text-blue-600">◎ 最も推奨</td>
-                </tr>
-                <tr>
-                    <td class="border border-gray-300 px-4 py-2 font-bold">パラメータ表示（別解）</td>
-                    <td class="border border-gray-300 px-4 py-2 text-blue-600">図形的閃きがなくても力技で解ける</td>
-                    <td class="border border-gray-300 px-4 py-2 text-red-500">多い（展開ミスに注意）</td>
-                    <td class="border border-gray-300 px-4 py-2">◯ 中線定理を忘れた時の保険</td>
-                </tr>
-            </tbody>
-        </table>
-    </section>
-
-    <!-- 8. 発展 -->
-    <section class="bg-white p-6 md:p-8 shadow-md rounded-2xl mb-8">
-        <h2 class="text-xl font-bold border-b-4 border-teal-500 pb-2 mb-4">8. 発展：もしこの条件が変わったら？</h2>
-        <div class="bg-teal-50 p-4 rounded-lg border border-teal-200">
-            <h3 class="font-bold text-teal-800 mb-2">Q. もし「$\text{PA}^2 + \text{PB}^2$」ではなく、「$\text{PA} + \text{PB}$」の最小値を求める問題だったら？</h3>
-            <p class="text-teal-900 mb-2">
-                2乗が外れた瞬間、問題の性質は劇的に変わり、<strong>中線定理は使えなくなります。</strong>
-            </p>
-            <p class="text-teal-900 text-sm">
-                この場合、「円 $E$ を鏡として、点 $\text{A}$ から発した光が反射して点 $\text{B}$ に届く最短経路（アルハゼンの問題）」に帰着されます。<br>
-                直線上の反射であれば「片方の点を直線に関して対称移動して結ぶ」だけで解けますが、<strong>円を境界とする反射問題は、一般に定規とコンパスでは作図不可能な超難問</strong>（4次方程式の解を求めることになる）になります。<br>
-                本問が「2乗の和」になっているのは、高校数学の範囲で美しく解けるように仕組まれた出題者の親心なのです。
-            </p>
-        </div>
-    </section>
-
-    <!-- 9. つまずきポイント -->
-    <section class="bg-white p-6 md:p-8 shadow-md rounded-2xl mb-8">
-        <h2 class="text-xl font-bold border-b-4 border-red-500 pb-2 mb-4">9. 受験生のつまずきポイント</h2>
-        <ul class="space-y-3">
-            <li class="flex items-start">
-                <svg class="w-6 h-6 text-red-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
-                <div>
-                    <strong class="text-gray-800">円の方程式ごとの対称移動（計算の泥沼化）</strong>
-                    <p class="text-gray-600 text-sm mt-1">(3)において、円の式 $x^2 + y^2 - 8x - 2y + 13 = 0$ 上の任意の点 $(x, y)$ を対称移動させようとして、代入計算でパニックになるパターンです。円の移動は常に「中心の移動」に帰着させましょう。</p>
-                </div>
-            </li>
-            <li class="flex items-start">
-                <svg class="w-6 h-6 text-red-500 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
-                <div>
-                    <strong class="text-gray-800">点 $\text{M}$ が円の内部にあるか外部にあるかの確認漏れ</strong>
-                    <p class="text-gray-600 text-sm mt-1">(4)において、定点から円周上の点への距離の最小値・最大値を求める際、定点が「円の外」か「円の中」か「円周上」かによって図が異なります。本問では外でしたが、常に $\text{ME}'$ と半径の大小を比較する癖をつけましょう。</p>
-                </div>
-            </li>
-        </ul>
-    </section>
-
-    <!-- 10. アクティブリコール -->
-    <section class="bg-blue-900 text-white p-6 md:p-8 shadow-md rounded-2xl mb-8">
-        <div class="text-center">
-            <h2 class="text-2xl font-bold mb-3">🧠 アクティブリコール</h2>
-            <p class="mb-6 text-blue-100">まずは画面から目を離し、自分の言葉と式で答えてください。答えた後に「模範解答を見る」を押しましょう。</p>
-        </div>
-
-        <div class="mx-auto max-w-3xl space-y-4 text-left">
-            <article class="rounded-xl bg-blue-800 p-5 shadow-sm">
-                <p class="font-bold text-white">問1　(4)の「2定点からの距離の平方和」を見たとき、どんな定理を思い出しますか？</p>
-                <details class="mt-4 rounded-lg bg-white/10 px-4 py-3">
-                    <summary class="cursor-pointer select-none font-bold text-blue-100 marker:text-blue-200">模範解答を見る</summary>
-                    <div class="mt-3 border-t border-blue-300/40 pt-3 leading-relaxed text-blue-50">
-                        <p><strong>中線定理（パップスの定理）</strong>です。</p>
-                        <p class="mt-2">三角形 $\text{PAB}$ において、$\text{M}$ を辺 $\text{AB}$ の中点とすると、2頂点 $\text{A},\text{B}$ からの距離の2乗の和を、$\text{M}$ までの距離にまとめられます。</p>
+            <div class="space-y-4">
+                <details class="bg-white rounded-lg group cursor-pointer shadow-md overflow-hidden border-2 border-transparent hover:border-blue-400 transition-colors">
+                    <summary class="p-4 md:p-5 font-semibold text-slate-800 flex justify-between items-center bg-white hover:bg-slate-50 transition-colors">
+                        <span class="pr-4 text-base">Q1. 今回のように「カードを戻して複数回引く」問題で、和 $N$ の確率を求めるときの鉄則手順は？</span>
+                        <span class="text-blue-600 group-open:rotate-180 transition-transform duration-300 flex-shrink-0 text-xl">▼</span>
+                    </summary>
+                    <div class="p-4 md:p-5 border-t border-slate-200 bg-blue-50 text-slate-700 text-sm leading-relaxed">
+                        <p class="mb-2 font-bold text-blue-900">以下の3ステップを確実に踏む！</p>
+                        <ol class="list-decimal list-inside space-y-2 ml-2">
+                            <li>$N$ の<strong>最小値と最大値</strong>を確認する。</li>
+                            <li>和が $N$ になる<strong>「数字の組み合わせ」</strong>を全て書き出す。</li>
+                            <li>各組み合わせについて<strong>「並べ替え（順列）」</strong>を計算し、各回の確率を掛けて足し合わせる。</li>
+                        </ol>
                     </div>
                 </details>
-            </article>
-
-            <article class="rounded-xl bg-blue-800 p-5 shadow-sm">
-                <p class="font-bold text-white">問2　その定理の式を、何も見ずに書けますか？</p>
-                <details class="mt-4 rounded-lg bg-white/10 px-4 py-3">
-                    <summary class="cursor-pointer select-none font-bold text-blue-100 marker:text-blue-200">模範解答を見る</summary>
-                    <div class="mt-3 border-t border-blue-300/40 pt-3 leading-relaxed text-blue-50">
-                        <p>本問では、$\text{M}$ は線分 $\text{AB}$ の中点なので、</p>
-                        <div class="overflow-x-auto py-2">
-                            \[ \text{PA}^2+\text{PB}^2=2\left(\text{PM}^2+\text{AM}^2\right) \]
-                        </div>
-                        <p>となります。$\text{AM}^2$ は一定なので、左辺を最小にするには、<strong>$\text{PM}$ を最小にすればよい</strong>と判断できます。</p>
+                
+                <details class="bg-white rounded-lg group cursor-pointer shadow-md overflow-hidden border-2 border-transparent hover:border-blue-400 transition-colors">
+                    <summary class="p-4 md:p-5 font-semibold text-slate-800 flex justify-between items-center bg-white hover:bg-slate-50 transition-colors">
+                        <span class="pr-4 text-base">Q2. $\{1, 1, 2, 3, 3, 3\}$ という6つの出目から3回選ぶとき、$(1, 3, 3)$ という組み合わせが出る確率はどう計算する？</span>
+                        <span class="text-blue-600 group-open:rotate-180 transition-transform duration-300 flex-shrink-0 text-xl">▼</span>
+                    </summary>
+                    <div class="p-4 md:p-5 border-t border-slate-200 bg-blue-50 text-slate-700 text-sm leading-relaxed">
+                        <p class="mb-2">まずそれぞれの確率を出します。</p>
+                        <p>$P(1) = \frac{2}{6}=\frac{1}{3}, \quad P(3) = \frac{3}{6}=\frac{1}{2}$</p>
+                        <p class="mt-3">組み合わせ $\{1, 3, 3\}$ の<strong>並び順は $\frac{3!}{2!} = 3$ 通り</strong>あります。</p>
+                        <p class="mt-2">よって、 $3 \times P(1) \times P(3)^2 = 3 \times \frac{1}{3} \times \left(\frac{1}{2}\right)^2 = \frac{1}{4}$ と計算します。</p>
                     </div>
                 </details>
-            </article>
 
-            <article class="rounded-xl bg-blue-800 p-5 shadow-sm">
-                <p class="font-bold text-white">問3　図形の対称移動で、円の式全体をいじらずに「中心」だけを移動させてよいのはなぜですか？</p>
-                <details class="mt-4 rounded-lg bg-white/10 px-4 py-3">
-                    <summary class="cursor-pointer select-none font-bold text-blue-100 marker:text-blue-200">模範解答を見る</summary>
-                    <div class="mt-3 border-t border-blue-300/40 pt-3 leading-relaxed text-blue-50">
-                        <p>円は<strong>中心と半径</strong>によって一意に定まるからです。</p>
-                        <p class="mt-2">対称移動は距離を保つ変換なので、半径は変わりません。したがって、元の円の中心を対称移動して得られる点を新しい中心にすれば、その点を中心とし、元と同じ半径をもつ円が移動後の円になります。</p>
+                <details class="bg-white rounded-lg group cursor-pointer shadow-md overflow-hidden border-2 border-transparent hover:border-blue-400 transition-colors">
+                    <summary class="p-4 md:p-5 font-semibold text-slate-800 flex justify-between items-center bg-white hover:bg-slate-50 transition-colors">
+                        <span class="pr-4 text-base">Q3. 余り $r$ の期待値を求めるとき、$E[N \pmod 3] = E[N] \pmod 3$ のように計算してはいけない理由は？</span>
+                        <span class="text-blue-600 group-open:rotate-180 transition-transform duration-300 flex-shrink-0 text-xl">▼</span>
+                    </summary>
+                    <div class="p-4 md:p-5 border-t border-slate-200 bg-blue-50 text-slate-700 text-sm leading-relaxed">
+                        <p>期待値の線形性（$E[aX+b] = aE[X]+b$）は成り立ちますが、<strong>「剰余（余りを求める操作）」や「2乗」「絶対値」は線形な操作ではない</strong>からです。</p>
+                        <p class="mt-2 text-slate-500 text-xs">（例：サイコロ1個の目の期待値は $3.5$ ですが、目を2で割った余りの期待値は $0.5$ であり、$3.5 \pmod 2 = 1.5$ とは一致しません。）</p>
+                        <p class="mt-2 font-bold text-blue-900">そのため、$r$ ごとの確率を地道に出して $\sum r_i P_i$ で計算する必要があります。</p>
                     </div>
                 </details>
-            </article>
-        </div>
-    </section>
+            </div>
+        </section>
 
-    <!-- ページ下部ナビゲーション -->
-    <nav aria-label="教材ナビゲーション" class="mb-4 grid grid-cols-1 gap-3 rounded-2xl border border-slate-200 bg-white p-4 shadow-sm sm:grid-cols-2">
-        <a href="index.html" class="inline-flex items-center justify-center rounded-xl border border-slate-300 bg-slate-50 px-4 py-3 font-bold text-slate-800 transition hover:bg-slate-100">
-            ← 解説一覧へ戻る
-        </a>
-        <a href="no02.html" class="inline-flex items-center justify-center rounded-xl bg-blue-700 px-4 py-3 font-bold text-white transition hover:bg-blue-600">
-            No.2へ進む →
-        </a>
-    </nav>
+    </main>
 
-    <footer class="pb-4 text-center text-sm text-slate-500">
-        医進・サイエンスコース　夏期数学課題 解説サイト
+    <!-- フッター -->
+    <footer class="footer-bg p-5 text-center mt-8 shadow-inner">
+        <p class="text-sm font-medium tracking-wider">医進・サイエンスコース　2年夏期課題(数学)解説サイト</p>
     </footer>
-
-</div>
 
 </body>
 </html>

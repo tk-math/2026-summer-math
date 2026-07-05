@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>No.4 高次方程式 - 医進・サイエンスコース 夏期数学課題</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    MathJax = {
+      chtml: { matchFontHeight: false },
+      tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+  <style>
+    body {
+      font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
+    }
+    .nav-button {
+      transition: transform .16s ease, box-shadow .16s ease;
+    }
+    .nav-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 18px rgba(15, 23, 42, .12);
+    }
+    .math-scroll {
+      overflow-x: auto;
+      overflow-y: hidden;
+      padding-bottom: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+  </style>
+</head>
+<body class="bg-slate-100 text-slate-800">
+  <main class="mx-auto max-w-4xl px-4 py-6 sm:px-6 lg:py-10">
+    
+    <a href="index.html" class="inline-flex items-center gap-2 text-sm font-bold text-blue-700 hover:text-blue-900">
+      ← 問題一覧へ戻る
+    </a>
+
+    <header class="mt-4 overflow-hidden rounded-3xl bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-800 text-white shadow-xl">
+      <div class="p-7 sm:p-10">
+        <span class="inline-flex items-center rounded-full bg-white/15 px-4 py-1.5 text-sm font-semibold tracking-wide text-blue-100">
+          医進・サイエンスコース
+        </span>
+        <div class="mt-4 flex flex-wrap items-center gap-3">
+          <span class="rounded-lg bg-white/20 px-3 py-1 text-sm font-bold">No.4</span>
+          <span class="rounded-full bg-amber-100 px-3 py-1 text-xs font-bold text-amber-800">標準</span>
+        </div>
+        <h1 class="mt-4 text-3xl font-bold leading-tight sm:text-4xl">高次方程式</h1>
+        <p class="mt-3 text-lg text-blue-100">目標解答時間：20分</p>
+      </div>
+    </header>
+
+    <section class="mt-7 rounded-2xl border border-blue-100 bg-white p-6 shadow-sm sm:p-8">
+      <h2 class="flex items-center gap-2 text-xl font-bold text-blue-900">
+        <span class="grid h-8 w-8 place-items-center rounded-full bg-blue-700 text-base text-white">1</span>
+        問題
+      </h2>
+      <div class="bg-slate-50 border border-slate-200 rounded-lg p-4 mb-4 mt-4 text-slate-700 leading-relaxed">
+        \(x\) の3次式 \(P(x) = x^3 - (a-1)x^2 + 3(a-2)x - 2a\) がある。ただし，\(a\) は実数の定数とする。
+        <ol class="mt-4 list-none space-y-2">
+          <li>(1) \(P(x)\) を \(x-2\) で割った商を求めよ。</li>
+          <li>(2) 方程式 \(P(x)=0\) の1つの解が \(1+2i\) であるとき，\(a\) の値を求めよ。ただし，\(i\) は虚数単位とする。</li>
+          <li>(3) 方程式 \(P(x)=0\) が虚数解をもつとする。このとき，\(P(x)=0\) の3つの解の平方の和が6であるような \(a\) の値を求めよ。</li>
+        </ol>
+      </div>
+
+      <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 mt-4">
+        <h3 class="font-bold text-blue-900 mb-2">【条件の整理】</h3>
+        <ul class="list-disc pl-5 space-y-1.5 text-sm text-blue-900">
+          <li><strong>実数係数：</strong> \(P(x)\) の係数はすべて実数であるため、虚数解をもつ場合は必ず共役な複素数も解になる。</li>
+          <li><strong>(1)の意図：</strong> 3次方程式をいきなり解くことは難しいため、因数定理（あるいは割り算）によって1次式と2次式の積に分解する誘導になっている。</li>
+          <li><strong>解の構造：</strong> (1)より、3次方程式 \(P(x)=0\) の解の1つは \(x=2\)（実数）で確定する。残りの2つの解は商の2次方程式から生まれる。</li>
+          <li><strong>求めるもの：</strong> 条件を満たす定数 \(a\) の値。特に(3)では「虚数解をもつ」という前提条件があるため、求めた \(a\) が条件を満たすかどうかの確認（判別式のチェック）が必須となる。</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="mt-6 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+      <h2 class="flex items-center gap-2 text-xl font-bold text-slate-900">
+        <span class="grid h-8 w-8 place-items-center rounded-full bg-slate-700 text-base text-white">2</span>
+        解説
+      </h2>
+      <p class="mt-4 text-sm leading-8 text-slate-600">
+        問題を解くための考え方から、答案、検算、発展までを順に確認します。
+      </p>
+
+      <div class="mt-8 bg-amber-50 border border-amber-200 rounded-xl p-5">
+        <h3 class="border-b-2 border-amber-400 pb-2 text-lg font-bold text-amber-900">解法選択のトリガー</h3>
+        <div class="mt-4 space-y-3">
+          <div class="bg-amber-100/60 border border-amber-200 rounded-lg p-4 text-amber-900">
+            <span class="font-bold text-amber-800">「(1)の誘導：x-2で割る」</span> → <strong>因数定理による次数下げ</strong> <br>
+            余りが0になる（\(P(2)=0\)となる）ことが自明な誘導です。割り算を実行して、問題を「1次方程式」と「2次方程式」に分割します。
+          </div>
+          <div class="bg-amber-100/60 border border-amber-200 rounded-lg p-4 text-amber-900">
+            <span class="font-bold text-amber-800">「実数係数で虚数解1+2i」</span> → <strong>共役解と解と係数の関係</strong> <br>
+            \(1+2i\) を元の3次式に代入すると計算が大変です。係数が実数なので、共役な複素数 \(1-2i\) も解になります。この2つを解にもつ2次方程式を考え、解と係数の関係を使うのが定石です。
+          </div>
+          <div class="bg-amber-100/60 border border-amber-200 rounded-lg p-4 text-amber-900">
+            <span class="font-bold text-amber-800">「解の平方の和」</span> → <strong>対称式の変形 \(\alpha^2+\beta^2 = (\alpha+\beta)^2 - 2\alpha\beta\)</strong> <br>
+            解そのものを解の公式で求めると複雑なルート（または虚数）を含むため、解と係数の関係を利用して和と積の形から平方和を作ります。
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-8 bg-emerald-50 border border-emerald-200 rounded-xl p-5">
+        <h3 class="border-b-2 border-emerald-400 pb-2 text-lg font-bold text-emerald-900">思考プロセス</h3>
+        <div class="mt-4 space-y-3 text-emerald-900">
+          <ul class="list-disc pl-5 space-y-2">
+            <li><strong>Step 1：</strong> まずは(1)で \(P(x)\) を \(x-2\) で割り、商である2次式 \(Q(x)\) を求めます。これにより \(P(x) = (x-2)Q(x)\) となります。</li>
+            <li><strong>Step 2：</strong> (2)では、\(1+2i\) が解ですが、\(1+2i \neq 2\) であるため、これは \(Q(x) = 0\) の解です。実数係数より \(1-2i\) も解となるので、2次方程式の解と係数の関係を用いて \(a\) を特定します。</li>
+            <li><strong>Step 3：</strong> (3)では、まず \(Q(x) = 0\) が虚数解をもつ条件（判別式 \(D<0\)）から \(a\) の範囲を調べます。</li>
+            <li><strong>Step 4：</strong> 次に、3つの解（\(2, \alpha, \beta\)）の平方和 \(2^2 + \alpha^2 + \beta^2 = 6\) という等式を立て、\(\alpha^2+\beta^2\) を解と係数の関係で表して \(a\) の2次方程式を解きます。</li>
+            <li><strong>Step 5：</strong> 得られた \(a\) の値が Step 3 の判別式条件を満たすか確認し、最終的な答えを絞り込みます。</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3 class="mt-8 border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">実際の答案</h3>
+      <div class="mt-4 text-slate-800 leading-loose">
+        <p class="font-bold">(1) \(P(x)\) の因数分解</p>
+        <p>
+          \(P(x)\) を \(x-2\) で割ると、商は \(x^2 - (a-3)x + a\)、余りは \(0\) となる。
+        </p>
+        <div class="math-scroll text-sm sm:text-base bg-white border border-slate-200 rounded p-4 font-mono w-max max-w-full">
+          <table class="mx-auto text-center border-collapse">
+            <tr>
+              <td class="border-b-2 border-r-2 border-slate-800 px-3 pb-1">2</td>
+              <td class="px-3 pb-1">1</td>
+              <td class="px-3 pb-1">-(a-1)</td>
+              <td class="px-3 pb-1">3(a-2)</td>
+              <td class="px-3 pb-1">-2a</td>
+            </tr>
+            <tr>
+              <td class="border-r-2 border-slate-800 px-3"></td>
+              <td class="px-3 border-b border-slate-400"></td>
+              <td class="px-3 border-b border-slate-400">2</td>
+              <td class="px-3 border-b border-slate-400">-2a+6</td>
+              <td class="px-3 border-b border-slate-400">2a</td>
+            </tr>
+            <tr>
+              <td class="border-r-2 border-slate-800 px-3 pt-1"></td>
+              <td class="px-3 pt-1">1</td>
+              <td class="px-3 pt-1">-a+3</td>
+              <td class="px-3 pt-1">a</td>
+              <td class="px-3 pt-1">0</td>
+            </tr>
+          </table>
+        </div>
+        <p>
+          よって、求める商は
+        </p>
+        <div class="math-scroll">
+          \[ \mathbf{x^2 - (a-3)x + a} \]
+        </div>
+
+        <p class="font-bold mt-6">(2) 虚数解が与えられたときの \(a\) の値</p>
+        <p>
+          (1)より、\(P(x) = (x-2)(x^2 - (a-3)x + a)\) であるから、方程式 \(P(x)=0\) の解は \(x=2\) と、2次方程式 \(x^2 - (a-3)x + a = 0\) \(\cdots\cdots\) ① の解である。<br>
+          \(x=1+2i \neq 2\) であるから、\(1+2i\) は①の解である。<br>
+          ①の係数はすべて実数であるから、共役な複素数 \(1-2i\) も①の解となる。<br>
+          2次方程式の解と係数の関係より、
+        </p>
+        <div class="math-scroll">
+          \[ (1+2i) + (1-2i) = a-3 \implies 2 = a-3 \implies a = 5 \]
+          \[ (1+2i)(1-2i) = a \implies 1^2 - (2i)^2 = 1 - (-4) = 5 \implies a = 5 \]
+        </div>
+        <p>
+          これらは矛盾しないので、求める \(a\) の値は
+        </p>
+        <div class="math-scroll">
+          \[ \mathbf{a = 5} \]
+        </div>
+
+        <p class="font-bold mt-6">(3) 平方の和が6となる \(a\) の値</p>
+        <p>
+          方程式 \(P(x)=0\) が虚数解をもつとき、\(x=2\) は実数であるから、2次方程式①が虚数解をもたなければならない。<br>
+          ①の判別式を \(D\) とすると、\(D < 0\) となる。
+        </p>
+        <div class="math-scroll">
+          \[ D = \{-(a-3)\}^2 - 4 \cdot 1 \cdot a = a^2 - 6a + 9 - 4a = a^2 - 10a + 9 < 0 \]
+          \[ (a-1)(a-9) < 0 \implies 1 < a < 9 \quad \cdots\cdots \text{②} \]
+        </div>
+        <p>
+          このとき、①の2つの解を \(\alpha, \beta\) とすると、\(P(x)=0\) の3つの解は \(2, \alpha, \beta\) である。<br>
+          これら3つの解の平方の和が6であるから、
+        </p>
+        <div class="math-scroll">
+          \[ 2^2 + \alpha^2 + \beta^2 = 6 \implies 4 + (\alpha+\beta)^2 - 2\alpha\beta = 6 \]
+        </div>
+        <p>
+          解と係数の関係より、\(\alpha+\beta = a-3\), \(\alpha\beta = a\) であるから、
+        </p>
+        <div class="math-scroll">
+          \[ 4 + (a-3)^2 - 2a = 6 \]
+          \[ a^2 - 6a + 9 - 2a - 2 = 0 \]
+          \[ a^2 - 8a + 7 = 0 \]
+          \[ (a-1)(a-7) = 0 \]
+          \[ a = 1, 7 \]
+        </div>
+        <p>
+          このうち、条件② \(1 < a < 9\) を満たすのは \(a=7\) のみである。<br>
+          したがって、求める \(a\) の値は
+        </p>
+        <div class="math-scroll">
+          \[ \mathbf{a = 7} \]
+        </div>
+      </div>
+
+      <h3 class="mt-8 border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">図解・可視化</h3>
+      <div class="mt-4 text-center">
+        <p class="text-sm text-slate-600 mb-4">3次方程式の解の構造</p>
+        <svg viewBox="0 0 500 220" class="w-full h-auto max-w-lg mx-auto bg-white border border-slate-200 rounded-lg shadow-sm" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- P(x) = 0 -->
+          <rect x="150" y="10" width="200" height="40" rx="8" fill="#1e3a8a" />
+          <text x="250" y="35" fill="white" font-size="16" font-family="sans-serif" font-weight="bold" text-anchor="middle">3次方程式 P(x) = 0</text>
+          
+          <path d="M 250,50 L 250,70" stroke="#94a3b8" stroke-width="2" />
+          <path d="M 120,70 L 380,70" stroke="#94a3b8" stroke-width="2" />
+          <path d="M 120,70 L 120,90" stroke="#94a3b8" stroke-width="2" />
+          <path d="M 380,70 L 380,90" stroke="#94a3b8" stroke-width="2" />
+
+          <!-- x=2 -->
+          <rect x="40" y="90" width="160" height="40" rx="8" fill="#10b981" />
+          <text x="120" y="115" fill="white" font-size="16" font-family="sans-serif" font-weight="bold" text-anchor="middle">実数解 x = 2</text>
+          
+          <!-- 2次方程式 -->
+          <rect x="280" y="90" width="200" height="40" rx="8" fill="#3b82f6" />
+          <text x="380" y="115" fill="white" font-size="14" font-family="sans-serif" font-weight="bold" text-anchor="middle">2次方程式 Q(x) = 0</text>
+
+          <path d="M 380,130 L 380,150" stroke="#94a3b8" stroke-width="2" />
+          <path d="M 300,150 L 460,150" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4" />
+          <path d="M 300,150 L 300,170" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4" />
+          <path d="M 460,150 L 460,170" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4" />
+
+          <!-- 共役解 -->
+          <rect x="240" y="170" width="120" height="40" rx="8" fill="#f59e0b" />
+          <text x="300" y="195" fill="white" font-size="16" font-family="sans-serif" font-weight="bold" text-anchor="middle">解 α</text>
+
+          <rect x="400" y="170" width="120" height="40" rx="8" fill="#f59e0b" />
+          <text x="460" y="195" fill="white" font-size="16" font-family="sans-serif" font-weight="bold" text-anchor="middle">解 β</text>
+
+          <text x="380" y="190" fill="#f59e0b" font-size="20" font-family="sans-serif" font-weight="bold" text-anchor="middle">⇔</text>
+          <text x="380" y="210" fill="#64748b" font-size="12" font-family="sans-serif" text-anchor="middle">共役な複素数</text>
+        </svg>
+      </div>
+
+      <h3 class="mt-8 border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">最終結果と検算</h3>
+      <div class="mt-4 rounded-xl border-2 border-blue-500 bg-blue-50 p-5 text-slate-900">
+        <p class="font-bold">【最終結果】</p>
+        <p class="mt-2">(1) \(x^2 - (a-3)x + a\)</p>
+        <p>(2) \(a = 5\)</p>
+        <p>(3) \(a = 7\)</p>
+        <hr class="my-4 border-blue-200">
+        <p class="font-bold text-blue-800">【代入による検算】</p>
+        <p class="mt-1 text-sm leading-relaxed">
+          (3)で求めた \(a=7\) が本当に条件を満たすか確認します。<br>
+          \(a=7\) のとき、2次方程式は \(x^2 - 4x + 7 = 0\) となります。判別式は \(D/4 = (-2)^2 - 7 = -3 < 0\) であり、確かに虚数解をもちます。<br>
+          この2次方程式の解 \(\alpha, \beta\) は、\(\alpha+\beta = 4\), \(\alpha\beta = 7\) を満たします。<br>
+          3つの解の平方和は \(2^2 + \alpha^2 + \beta^2 = 4 + (\alpha+\beta)^2 - 2\alpha\beta = 4 + 4^2 - 2 \cdot 7 = 4 + 16 - 14 = 6\) となり、問題文の条件「平方の和が6」と完全に一致します。<br>
+          一方、不適として除外した \(a=1\) の場合、2次方程式は \(x^2 + 2x + 1 = 0 \iff (x+1)^2=0\) となり、虚数解をもたないため条件違反であることが確認できます。
+        </p>
+      </div>
+
+      <h3 class="mt-8 border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">発展：3次方程式の解と係数の関係による一般化</h3>
+      <div class="mt-4 text-slate-800 leading-relaxed text-sm">
+        <p>
+          本問の(3)は、(1)の因数分解を利用して「1次式と2次式」に分けて考えましたが、<strong>「3次方程式の解と係数の関係」</strong>を知っていれば、因数分解を経由せずに直接計算することができます。
+        </p>
+        <p class="mt-2">
+          3次方程式 \(Ax^3 + Bx^2 + Cx + D = 0\) の3つの解を \(\alpha, \beta, \gamma\) とすると、
+        </p>
+        <div class="math-scroll">
+          \[ \alpha+\beta+\gamma = -\frac{B}{A}, \quad \alpha\beta+\beta\gamma+\gamma\alpha = \frac{C}{A}, \quad \alpha\beta\gamma = -\frac{D}{A} \]
+        </div>
+        <p>が成り立ちます。本問の方程式 \(x^3 - (a-1)x^2 + 3(a-2)x - 2a = 0\) の解を \(\gamma_1, \gamma_2, \gamma_3\) とすると、</p>
+        <div class="math-scroll">
+          \[ \gamma_1 + \gamma_2 + \gamma_3 = a-1 \]
+          \[ \gamma_1\gamma_2 + \gamma_2\gamma_3 + \gamma_3\gamma_1 = 3(a-2) \]
+        </div>
+        <p>
+          3つの解の平方和は、対称式の変形 \((x+y+z)^2 = x^2+y^2+z^2 + 2(xy+yz+zx)\) より、
+        </p>
+        <div class="math-scroll">
+          \[ \gamma_1^2 + \gamma_2^2 + \gamma_3^2 = (\gamma_1+\gamma_2+\gamma_3)^2 - 2(\gamma_1\gamma_2+\gamma_2\gamma_3+\gamma_3\gamma_1) \]
+          \[ \phantom{\gamma_1^2 + \gamma_2^2 + \gamma_3^2} = (a-1)^2 - 2 \cdot 3(a-2) \]
+          \[ \phantom{\gamma_1^2 + \gamma_2^2 + \gamma_3^2} = a^2 - 2a + 1 - 6a + 12 = a^2 - 8a + 13 \]
+        </div>
+        <p>
+          これが 6 に等しいので、\(a^2 - 8a + 13 = 6 \iff a^2 - 8a + 7 = 0\) となり、答案と同じ2次方程式が得られます。<br>
+          この知識があれば、もし(1)の因数分解が思いつかなかったり、計算が複雑で割り切れなかったりした場合でも、平方和の条件式までは必ず立式できるようになります。
+        </p>
+      </div>
+
+      <h3 class="mt-8 border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">受験生のつまずきポイント</h3>
+      <div class="mt-4 space-y-4">
+        <div class="bg-red-50 border border-red-200 rounded-lg p-4 text-slate-800">
+          <p class="font-bold text-red-800">虚数解をそのまま代入して計算が泥沼化する</p>
+          <p class="mt-2 text-sm">(2)で \(x = 1+2i\) を元の3次式 \(P(x)\) や2次式にそのまま代入して計算しようとすると、\((1+2i)^3\) や \((1+2i)^2\) の展開でミスが誘発されます。実数係数という条件を活かし、「共役な複素数も解であること」と「解と係数の関係」を組み合わせるのが最もスマートで確実な方針です。</p>
+        </div>
+        <div class="bg-red-50 border border-red-200 rounded-lg p-4 text-slate-800">
+          <p class="font-bold text-red-800">「虚数解をもつ」という前提条件の確認を忘れる</p>
+          <p class="mt-2 text-sm">(3)で \(a^2 - 8a + 7 = 0\) を解いて \(a=1, 7\) と出た段階で満足し、そのまま両方を答えにしてしまうミスが非常に多いです。問題文の冒頭に「虚数解をもつとする」という前提があるため、商の2次方程式の判別式 \(D < 0\) を用いて \(a\) の範囲を絞り込まないと、減点対象になります。出てきた値は必ず条件と照らし合わせる癖をつけましょう。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="mt-6 rounded-2xl bg-blue-900 p-6 text-white shadow-sm sm:p-8">
+      <h2 class="border-b-2 border-blue-400 pb-2 text-lg font-bold">アクティブリコール（復習テスト）</h2>
+      <p class="mt-4 text-sm text-blue-200">今日の学習内容を思い出すことで、記憶を定着させましょう。質問をクリックして答えを確認してください。</p>
+      
+      <div class="mt-6 space-y-4">
+        <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+          <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+            <div class="flex-1 leading-relaxed">
+              <div class="mb-1">Q1. 実数係数のn次方程式が虚数 \(p+qi\) を解にもつとき、</div>
+              <div>他にどのような性質を持つ解が存在すると言えますか？</div>
+            </div>
+            <span class="transition-transform duration-300 group-open:-rotate-180 text-blue-500">▼</span>
+          </summary>
+          <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+            共役な複素数である \(p-qi\) も必ず解にもちます。これを利用することで、その2つの虚数解をもつ2次方程式を「和と積（解と係数の関係）」から簡単に復元できます。
+          </div>
+        </details>
+
+        <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+          <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+            <div class="flex-1 leading-relaxed">
+              <div class="mb-1">Q2. 2次方程式の解 \(\alpha, \beta\) の平方の和 \(\alpha^2+\beta^2\) を、</div>
+              <div>解と係数の関係を用いて式で表すにはどう変形しますか？</div>
+            </div>
+            <span class="transition-transform duration-300 group-open:-rotate-180 text-blue-500">▼</span>
+          </summary>
+          <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+            対称式の基本変形である \(\alpha^2+\beta^2 = (\alpha+\beta)^2 - 2\alpha\beta\) を用います。これにより、解の和と積の形になり、係数だけで値を計算できるようになります。
+          </div>
+        </details>
+
+        <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+          <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+            <div class="flex-1 leading-relaxed">
+              <div class="mb-1">Q3. (3)で平方和の条件から \(a\) の値を求めた後、</div>
+              <div>それが最終的な答えになる前に必ず確認すべき条件は何ですか？</div>
+            </div>
+            <span class="transition-transform duration-300 group-open:-rotate-180 text-blue-500">▼</span>
+          </summary>
+          <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+            「方程式が虚数解をもつ」という前提条件です。2次方程式の判別式 \(D < 0\) を満たすか（本問では \(1 < a < 9\)）を確認し、条件を満たさない \(a\) の値（本問では \(a=1\)）を除外する必要があります。
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <nav class="mt-7 grid gap-3 sm:grid-cols-2">
+      <a href="index.html" class="nav-button rounded-xl border border-slate-300 bg-white px-5 py-4 text-center font-bold text-slate-700 hover:border-blue-300 hover:text-blue-800">
+        ← 一覧へ
+      </a>
+      <a href="no05.html" class="nav-button rounded-xl bg-blue-700 px-5 py-4 text-center font-bold text-white hover:bg-blue-800">
+        No.5 →
+      </a>
+    </nav>
+
+  </main>
+  
+  <footer class="py-10 text-center text-sm text-slate-500">
+    医進・サイエンスコース　夏期数学課題 解説サイト
+  </footer>
+</body>
+</html>

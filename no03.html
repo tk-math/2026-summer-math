@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>No.3 図形と方程式 - 医進・サイエンスコース 夏期数学課題</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    MathJax = {
+      chtml: { matchFontHeight: false },
+      tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+  <style>
+    body {
+      font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
+    }
+    .nav-button {
+      transition: transform .16s ease, box-shadow .16s ease;
+    }
+    .nav-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 18px rgba(15, 23, 42, .12);
+    }
+    .math-scroll {
+      overflow-x: auto;
+      overflow-y: hidden;
+      padding-bottom: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+  </style>
+</head>
+<body class="bg-slate-100 text-slate-800">
+  <main class="mx-auto max-w-4xl px-4 py-6 sm:px-6 lg:py-10">
+    
+    <a href="index.html" class="inline-flex items-center gap-2 text-sm font-bold text-blue-700 hover:text-blue-900">
+      ← 問題一覧へ戻る
+    </a>
+
+    <header class="mt-4 overflow-hidden rounded-3xl bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-800 text-white shadow-xl">
+      <div class="p-7 sm:p-10">
+        <span class="inline-flex items-center rounded-full bg-white/15 px-4 py-1.5 text-sm font-semibold tracking-wide text-blue-100">
+          医進・サイエンスコース
+        </span>
+        <div class="mt-4 flex flex-wrap items-center gap-3">
+          <span class="rounded-lg bg-white/20 px-3 py-1 text-sm font-bold">No.3</span>
+          <span class="rounded-full bg-emerald-100 px-3 py-1 text-xs font-bold text-emerald-800">基礎</span>
+        </div>
+        <h1 class="mt-4 text-3xl font-bold leading-tight sm:text-4xl">図形と方程式</h1>
+        <p class="mt-3 text-lg text-blue-100">目標解答時間：15分</p>
+      </div>
+    </header>
+
+    <section class="mt-7 rounded-2xl border border-blue-100 bg-white p-6 shadow-sm sm:p-8">
+      <h2 class="flex items-center gap-2 text-xl font-bold text-blue-900">
+        <span class="grid h-8 w-8 place-items-center rounded-full bg-blue-700 text-base text-white">1</span>
+        問題
+      </h2>
+      <div class="bg-slate-50 border border-slate-200 rounded-lg p-4 mb-4 mt-4 text-slate-700 leading-relaxed">
+        座標平面上に円 \(C:(x-2)^2+(y-1)^2=a^2\) と，2点 \(\mathrm{A}(3, 3)\), \(\mathrm{B}(4, 1)\) がある。ただし，\(a\) は正の定数とする。
+        <ol class="mt-4 list-none space-y-2">
+          <li>(1) 円\(C\)と直線\(\mathrm{AB}\)が接するとき，\(a\) の値を求めよ。</li>
+          <li>(2) 円\(C\)が線分\(\mathrm{AB}\)(両端を含む)と共有点をもつような \(a\) の値の範囲を求めよ。</li>
+        </ol>
+      </div>
+
+      <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 mt-4">
+        <h3 class="font-bold text-blue-900 mb-2">【条件の整理】</h3>
+        <ul class="list-disc pl-5 space-y-1.5 text-sm text-blue-900">
+          <li><strong>円の要素：</strong> 円 \(C\) の中心は \((2, 1)\)、半径は \(a\) (\(a>0\)) である。</li>
+          <li><strong>直線の要素：</strong> 2点 \(\mathrm{A}(3, 3)\), \(\mathrm{B}(4, 1)\) を通る直線である。</li>
+          <li><strong>「直線」と「線分」の違い：</strong> (1)はどこまでも伸びる「直線」との接条件、(2)は両端がある「線分」との共有点条件である。</li>
+          <li><strong>求めるもの：</strong> 円の半径 \(a\) に関する値や範囲である。</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="mt-6 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+      <h2 class="flex items-center gap-2 text-xl font-bold text-slate-900">
+        <span class="grid h-8 w-8 place-items-center rounded-full bg-slate-700 text-base text-white">2</span>
+        解説
+      </h2>
+      <p class="mt-4 text-sm leading-8 text-slate-600">
+        問題を解くための考え方から、答案、検算、発展までを順に確認します。
+      </p>
+
+      <div class="mt-8 bg-amber-50 border border-amber-200 rounded-xl p-5">
+        <h3 class="border-b-2 border-amber-400 pb-2 text-lg font-bold text-amber-900">解法選択のトリガー</h3>
+        <div class="mt-4 space-y-3">
+          <div class="bg-amber-100/60 border border-amber-200 rounded-lg p-4 text-amber-900">
+            <span class="font-bold text-amber-800">「円と直線の接条件」</span> → <strong>中心と直線の距離 \(d\) と 半径 \(r\) の比較 (\(d=r\))</strong> <br>
+            連立して判別式 \(D=0\) を用いる方法もありますが、「点と直線の距離の公式」を利用する方が計算量が少なく、ミスを防ぎやすいため図形問題では第一選択となります。
+          </div>
+          <div class="bg-amber-100/60 border border-amber-200 rounded-lg p-4 text-amber-900">
+            <span class="font-bold text-amber-800">「線分との共有点をもつ」</span> → <strong>中心と線分上の点との距離の最小値・最大値を考える</strong> <br>
+            半径 \(a\) を少しずつ大きくしていったとき、「最初に線分に触れる瞬間（最小値）」から「最後に線分から離れる瞬間（最大値）」までの範囲を求めます。
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-8 bg-emerald-50 border border-emerald-200 rounded-xl p-5">
+        <h3 class="border-b-2 border-emerald-400 pb-2 text-lg font-bold text-emerald-900">思考プロセス</h3>
+        <div class="mt-4 space-y-3 text-emerald-900">
+          <ul class="list-disc pl-5 space-y-2">
+            <li><strong>Step 1：</strong> 2点 \(\mathrm{A}, \mathrm{B}\) から、直線 \(\mathrm{AB}\) の方程式を \(px+qy+r=0\) の形で求めます。</li>
+            <li><strong>Step 2：</strong> (1) は円の中心と直線の距離 \(d\) を計算し、\(d = a\) となる \(a\) を求めます。</li>
+            <li><strong>Step 3：</strong> (2) は線分との共有点なので、中心から線分上の点までの距離の「最小値」と「最大値」を調べます。最小値は「垂線の足が線分上にあるか」によって変わります（ある場合は垂線の長さ \(d\)、ない場合は端点までの距離）。</li>
+            <li><strong>Step 4：</strong> 端点 \(\mathrm{A}, \mathrm{B}\) までの距離を両方とも計算し、どちらが遠いか（最大値か）を特定して範囲を定めます。</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3 class="mt-8 border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">実際の答案</h3>
+      <div class="mt-4 text-slate-800 leading-loose">
+        <p class="font-bold">(1) 直線との接条件</p>
+        <p>
+          2点 \(\mathrm{A}(3, 3)\), \(\mathrm{B}(4, 1)\) を通る直線 \(\mathrm{AB}\) の方程式は、
+        </p>
+        <div class="math-scroll">
+          \[ y - 3 = \frac{1 - 3}{4 - 3}(x - 3) \iff y - 3 = -2(x - 3) \iff 2x + y - 9 = 0 \]
+        </div>
+        <p>
+          円 \(C\) の中心を \(\mathrm{P}(2, 1)\) とおく。<br>
+          円 \(C\) と直線 \(\mathrm{AB}\) が接するとき、円の中心 \(\mathrm{P}\) と直線 \(\mathrm{AB}\) の距離 \(d\) は円の半径 \(a\) に等しい。<br>
+          点と直線の距離の公式より、
+        </p>
+        <div class="math-scroll">
+          \[ d = \frac{|2 \cdot 2 + 1 - 9|}{\sqrt{2^2 + 1^2}} = \frac{|4 + 1 - 9|}{\sqrt{5}} = \frac{|-4|}{\sqrt{5}} = \frac{4}{\sqrt{5}} \]
+        </div>
+        <p>
+          \(d = a\) であるから、求める \(a\) の値は
+        </p>
+        <div class="math-scroll">
+          \[ \mathbf{a = \frac{4}{\sqrt{5}}} \]
+        </div>
+
+        <p class="font-bold mt-6">(2) 線分との共有点の条件</p>
+        <p>
+          円 \(C\) が線分 \(\mathrm{AB}\) と共有点をもつ条件は、中心 \(\mathrm{P}(2, 1)\) から線分 \(\mathrm{AB}\) 上の点までの距離の最小値を \(m\)、最大値を \(M\) としたとき、<br>
+          \(m \leqq a \leqq M\) となることである。
+        </p>
+        <p class="mt-2">
+          中心 \(\mathrm{P}(2,1)\) から直線 \(\mathrm{AB}\) に下ろした垂線の足を \(\mathrm{H}\) とすると、距離は (1) より \(\mathrm{PH} = \frac{4}{\sqrt{5}}\) である。<br>
+          点 \(\mathrm{A}\) と点 \(\mathrm{B}\) の \(x\) 座標はそれぞれ 3, 4 であり、図形的な位置関係を考えると、<br>
+          \(\mathrm{P}\) から直線 \(\mathrm{AB}\)（傾き \(-2\)）へ下ろした垂線は、右下へ向かうため、垂線の足 \(\mathrm{H}\) は線分 \(\mathrm{AB}\) 上に存在する。（※厳密には内積などで確認可能）<br>
+          したがって、中心 \(\mathrm{P}\) と線分 \(\mathrm{AB}\) 上の点の距離の最小値 \(m\) は、垂線の長さとなる。
+        </p>
+        <div class="math-scroll">
+          \[ m = \mathrm{PH} = \frac{4}{\sqrt{5}} \]
+        </div>
+        <p class="mt-2">
+          次に、端点 \(\mathrm{A}, \mathrm{B}\) までの距離を調べる。
+        </p>
+        <div class="math-scroll">
+          \[ \mathrm{PA} = \sqrt{(3-2)^2 + (3-1)^2} = \sqrt{1^2 + 2^2} = \sqrt{5} \]
+          \[ \mathrm{PB} = \sqrt{(4-2)^2 + (1-1)^2} = \sqrt{2^2 + 0^2} = 2 = \sqrt{4} \]
+        </div>
+        <p>
+          \(\mathrm{PA} > \mathrm{PB}\) であるから、中心 \(\mathrm{P}\) と線分 \(\mathrm{AB}\) 上の点の距離の最大値 \(M\) は、\(\mathrm{PA}\) である。
+        </p>
+        <div class="math-scroll">
+          \[ M = \mathrm{PA} = \sqrt{5} \]
+        </div>
+        <p>
+          以上より、求める \(a\) の値の範囲は
+        </p>
+        <div class="math-scroll">
+          \[ \mathbf{\frac{4}{\sqrt{5}} \leqq a \leqq \sqrt{5}} \]
+        </div>
+      </div>
+
+      <h3 class="mt-8 border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">図解・可視化</h3>
+      <div class="mt-4 text-center">
+        <p class="text-sm text-slate-600 mb-4">中心 \(\mathrm{P}\) から線分 \(\mathrm{AB}\) までの距離の変化</p>
+        <svg viewBox="0 0 400 300" class="w-full h-auto max-w-md mx-auto bg-white border border-slate-200 rounded-lg shadow-sm" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- 背景グリッド (1単位 = 40px, 原点(0,4)を左下に配置) -->
+          <g stroke="#f1f5f9" stroke-width="1">
+            <line x1="0" y1="20" x2="400" y2="20" /><line x1="0" y1="60" x2="400" y2="60" /><line x1="0" y1="100" x2="400" y2="100" />
+            <line x1="0" y1="140" x2="400" y2="140" /><line x1="0" y1="180" x2="400" y2="180" /><line x1="0" y1="220" x2="400" y2="220" />
+            <line x1="0" y1="260" x2="400" y2="260" />
+            <line x1="40" y1="0" x2="40" y2="300" /><line x1="80" y1="0" x2="80" y2="300" /><line x1="120" y1="0" x2="120" y2="300" />
+            <line x1="160" y1="0" x2="160" y2="300" /><line x1="200" y1="0" x2="200" y2="300" /><line x1="240" y1="0" x2="240" y2="300" />
+            <line x1="280" y1="0" x2="280" y2="300" /><line x1="320" y1="0" x2="320" y2="300" /><line x1="360" y1="0" x2="360" y2="300" />
+          </g>
+          <!-- 軸 -->
+          <line x1="20" y1="260" x2="380" y2="260" stroke="#94a3b8" stroke-width="2" />
+          <line x1="40" y1="280" x2="40" y2="20" stroke="#94a3b8" stroke-width="2" />
+          <text x="375" y="275" fill="#64748b" font-size="12">x</text>
+          <text x="25" y="30" fill="#64748b" font-size="12">y</text>
+          <text x="25" y="275" fill="#64748b" font-size="12">O</text>
+
+          <!-- スケール変換: x' = 40 + x*40, y' = 260 - y*40 -->
+          <!-- 点 P(2,1) -> (120, 220) -->
+          <!-- 点 A(3,3) -> (160, 140) -->
+          <!-- 点 B(4,1) -> (200, 220) -->
+
+          <!-- 最小半径の円 d=4/√5 ≒ 1.78 -> 1.78 * 40 = 71.2 -->
+          <circle cx="120" cy="220" r="71.2" stroke="#ef4444" stroke-width="2" stroke-dasharray="4" fill="none" />
+          <!-- 最大半径の円 PA=√5 ≒ 2.23 -> 2.23 * 40 = 89.4 -->
+          <circle cx="120" cy="220" r="89.4" stroke="#3b82f6" stroke-width="2" stroke-dasharray="4" fill="none" />
+
+          <!-- 直線ABの延長 -->
+          <line x1="120" y1="60" x2="220" y2="260" stroke="#cbd5e1" stroke-width="2" />
+
+          <!-- 線分AB -->
+          <line x1="160" y1="140" x2="200" y2="220" stroke="#10b981" stroke-width="4" />
+          
+          <!-- 点P, A, B -->
+          <circle cx="120" cy="220" r="4" fill="#334155" />
+          <text x="105" y="235" fill="#334155" font-size="14" font-weight="bold">P</text>
+          <circle cx="160" cy="140" r="4" fill="#10b981" />
+          <text x="145" y="135" fill="#10b981" font-size="14" font-weight="bold">A</text>
+          <circle cx="200" cy="220" r="4" fill="#10b981" />
+          <text x="210" y="225" fill="#10b981" font-size="14" font-weight="bold">B</text>
+
+          <!-- 垂線PH -->
+          <!-- H(18/5, 9/5) = (3.6, 1.8) -> (184, 188) -->
+          <line x1="120" y1="220" x2="184" y2="188" stroke="#ef4444" stroke-width="2" />
+          <circle cx="184" cy="188" r="3" fill="#ef4444" />
+          <text x="190" y="185" fill="#ef4444" font-size="12" font-weight="bold">H</text>
+
+          <!-- 直角マーク -->
+          <path d="M 175,193 L 170,183 L 180,178" stroke="#ef4444" stroke-width="1.5" fill="none" />
+
+          <!-- 距離の線 PA -->
+          <line x1="120" y1="220" x2="160" y2="140" stroke="#3b82f6" stroke-width="2" />
+
+          <text x="110" y="195" fill="#ef4444" font-size="12">m (最小)</text>
+          <text x="105" y="160" fill="#3b82f6" font-size="12">M (最大)</text>
+        </svg>
+      </div>
+
+      <h3 class="mt-8 border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">最終結果と検算</h3>
+      <div class="mt-4 rounded-xl border-2 border-blue-500 bg-blue-50 p-5 text-slate-900">
+        <p class="font-bold">【最終結果】</p>
+        <p class="mt-2">(1) \(a = \frac{4}{\sqrt{5}}\)</p>
+        <p>(2) \(\frac{4}{\sqrt{5}} \leqq a \leqq \sqrt{5}\)</p>
+        <hr class="my-4 border-blue-200">
+        <p class="font-bold text-blue-800">【垂線の足 \(\mathrm{H}\) が線分上にあるかの確認】</p>
+        <p class="mt-1 text-sm leading-relaxed">
+          図形的直感だけでなく、計算でも確認できます。直線 \(\mathrm{AB}\) に垂直で \(\mathrm{P}\) を通る直線は \(x - 2y = 0\) です。これと \(2x + y - 9 = 0\) の交点 \(\mathrm{H}\) の座標は連立方程式を解いて \(\mathrm{H}\left(\frac{18}{5}, \frac{9}{5}\right)\) すなわち \((3.6, 1.8)\) となります。<br>
+          点 \(\mathrm{A}\) の \(x\) 座標は 3、点 \(\mathrm{B}\) の \(x\) 座標は 4 であり、\(3 < 3.6 < 4\) となるため、点 \(\mathrm{H}\) は確かに線分 \(\mathrm{AB}\) の内側に存在することが保証されます。
+        </p>
+      </div>
+
+      <h3 class="mt-8 border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">別解：判別式を用いた接条件の計算</h3>
+      <div class="mt-4 text-slate-800 leading-relaxed text-sm">
+        <p>
+          (1) の接条件は、直線の方程式と円の方程式を連立し、2次方程式の判別式 \(D=0\) を用いて解くこともできます。
+        </p>
+        <p class="mt-2">
+          直線 \(\mathrm{AB}\) の方程式 \(2x + y - 9 = 0 \iff y = -2x + 9\) を、円の方程式 \((x-2)^2 + (y-1)^2 = a^2\) に代入します。
+        </p>
+        <div class="math-scroll">
+          \[ (x-2)^2 + (-2x + 8)^2 = a^2 \]
+          \[ (x^2 - 4x + 4) + (4x^2 - 32x + 64) - a^2 = 0 \]
+          \[ 5x^2 - 36x + 68 - a^2 = 0 \]
+        </div>
+        <p>
+          これが重解をもつ条件として判別式 \(D = 0\) を計算します。共通因数の \(4\) をくくり出して計算ミスを防ぎます。
+        </p>
+        <div class="math-scroll">
+          \[ D = (-36)^2 - 4 \cdot 5(68 - a^2) \]
+          \[ \phantom{D} = 4 \{(-18)^2 - 5(68 - a^2)\} \]
+          \[ \phantom{D} = 4 \{324 - 340 + 5a^2\} \]
+          \[ \phantom{D} = 4 (5a^2 - 16) = 0 \]
+        </div>
+        <p class="mt-2">
+          これより \(5a^2 = 16 \implies a^2 = \frac{16}{5}\) となります。<br>
+          \(a > 0\) より、\(a = \frac{4}{\sqrt{5}}\) となり、点と直線の距離の公式を使った結果と一致します。<br>
+          \(D/4\) の公式を忘れてしまった場合でも、このように係数から \(4\) をくくり出すことで、手計算の負担を大幅に減らすことができます。
+        </p>
+      </div>
+
+      <h3 class="mt-8 border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">受験生のつまずきポイント</h3>
+      <div class="mt-4 space-y-4">
+        <div class="bg-red-50 border border-red-200 rounded-lg p-4 text-slate-800">
+          <p class="font-bold text-red-800">「直線」と「線分」の条件を混同する</p>
+          <p class="mt-2 text-sm">問題文の (1) は「直線\(\mathrm{AB}\)」、(2) は「線分\(\mathrm{AB}\)」と明記されていますが、両方を同じ接条件だけで解こうとしてしまうミスがあります。線分には長さの限界があるため、円が大きくなりすぎると「線分をすり抜けて」しまい、共有点を持たなくなることに気づけるかどうかがポイントです。</p>
+        </div>
+        <div class="bg-red-50 border border-red-200 rounded-lg p-4 text-slate-800">
+          <p class="font-bold text-red-800">垂線の足が線分上にあるかどうかの確認を怠る</p>
+          <p class="mt-2 text-sm">(2) で「最小値は点と直線の距離だ」と決めつけてしまうと危険です。もし点 \(\mathrm{A}\) と点 \(\mathrm{B}\) がもっと図の右下の方にあった場合、中心から下ろした垂線は線分 \(\mathrm{AB}\) の「外側」に落ちてしまいます。その場合、距離の最小値は垂線の長さではなく、近い方の端点（点 \(\mathrm{A}\) または点 \(\mathrm{B}\)）までの距離になります。図を描いて位置関係を把握する癖をつけましょう。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="mt-6 rounded-2xl bg-blue-900 p-6 text-white shadow-sm sm:p-8">
+      <h2 class="border-b-2 border-blue-400 pb-2 text-lg font-bold">アクティブリコール（復習テスト）</h2>
+      <p class="mt-4 text-sm text-blue-200">今日の学習内容を思い出すことで、記憶を定着させましょう。質問をクリックして答えを確認してください。</p>
+      
+      <div class="mt-6 space-y-4">
+        <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+          <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+            <div class="flex-1 leading-relaxed">
+              <div class="mb-1">Q1. 円と直線が接する条件を考えるとき、</div>
+              <div>最も計算が楽でミスの少ない方針は何ですか？</div>
+            </div>
+            <span class="transition-transform duration-300 group-open:-rotate-180 text-blue-500">▼</span>
+          </summary>
+          <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+            「点と直線の距離の公式」を利用し、円の中心と直線の距離 \(d\) が半径 \(r\) に等しい (\(d=r\)) という式を立てることです。判別式 \(D=0\) を用いることも可能ですが、2次方程式への代入と展開が必要になるため計算量が多くなります。
+          </div>
+        </details>
+
+        <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+          <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+            <div class="flex-1 leading-relaxed">
+              <div class="mb-1">Q2. 線分と円が共有点をもつための条件を「距離」で考えるとき、</div>
+              <div>どのような点に注意して最大・最小を求めますか？</div>
+            </div>
+            <span class="transition-transform duration-300 group-open:-rotate-180 text-blue-500">▼</span>
+          </summary>
+          <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+            中心と線分上の点との距離の「最小値」から「最大値」までの範囲を考えます。最大値は両端点までの距離を比較して遠い方を採用し、最小値は「中心から下ろした垂線の足が線分上にあるかどうか」で場合分けして決定します。
+          </div>
+        </details>
+
+        <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+          <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+            <div class="flex-1 leading-relaxed">
+              <div class="mb-1">Q3. 垂線の足が線分上にあるかどうかは、</div>
+              <div>図形的および計算でどのように確認できますか？</div>
+            </div>
+            <span class="transition-transform duration-300 group-open:-rotate-180 text-blue-500">▼</span>
+          </summary>
+          <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+            図を描いて直感的に確認するのが第一です。厳密に計算する場合は、直線 \(\mathrm{AB}\) とそれに垂直で中心を通る直線の交点（垂線の足）の座標を求め、その \(x\) 座標（または \(y\) 座標）が線分 \(\mathrm{AB}\) の端点の座標の間にあるかを調べます。
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <nav class="mt-7 grid gap-3 sm:grid-cols-2">
+      <a href="index.html" class="nav-button rounded-xl border border-slate-300 bg-white px-5 py-4 text-center font-bold text-slate-700 hover:border-blue-300 hover:text-blue-800">
+        ← 一覧へ
+      </a>
+      <a href="no04.html" class="nav-button rounded-xl bg-blue-700 px-5 py-4 text-center font-bold text-white hover:bg-blue-800">
+        No.4 →
+      </a>
+    </nav>
+
+  </main>
+  
+  <footer class="py-10 text-center text-sm text-slate-500">
+    医進・サイエンスコース　夏期数学課題 解説サイト
+  </footer>
+</body>
+</html>

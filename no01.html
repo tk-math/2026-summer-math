@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>No.1 確率 - 医進・サイエンスコース 夏期数学課題</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    MathJax = {
+      chtml: { matchFontHeight: false },
+      tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+  <style>
+    body {
+      font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
+    }
+    .nav-button {
+      transition: transform .16s ease, box-shadow .16s ease;
+    }
+    .nav-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 18px rgba(15, 23, 42, .12);
+    }
+    .math-scroll {
+      overflow-x: auto;
+      overflow-y: hidden;
+      padding-bottom: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+  </style>
+</head>
+<body class="bg-slate-100 text-slate-800">
+  <main class="mx-auto max-w-4xl px-4 py-6 sm:px-6 lg:py-10">
+    
+    <a href="index.html" class="inline-flex items-center gap-2 text-sm font-bold text-blue-700 hover:text-blue-900">
+      ← 問題一覧へ戻る
+    </a>
+
+    <header class="mt-4 overflow-hidden rounded-3xl bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-800 text-white shadow-xl">
+      <div class="p-7 sm:p-10">
+        <span class="inline-flex items-center rounded-full bg-white/15 px-4 py-1.5 text-sm font-semibold tracking-wide text-blue-100">
+          医進・サイエンスコース
+        </span>
+        <div class="mt-4 flex flex-wrap items-center gap-3">
+          <span class="rounded-lg bg-white/20 px-3 py-1 text-sm font-bold">No.1</span>
+          <span class="rounded-full bg-amber-100 px-3 py-1 text-xs font-bold text-amber-800">標準</span>
+        </div>
+        <h1 class="mt-4 text-3xl font-bold leading-tight sm:text-4xl">確率</h1>
+        <p class="mt-3 text-lg text-blue-100">目標解答時間：20分</p>
+      </div>
+    </header>
+
+    <section class="mt-7 rounded-2xl border border-blue-100 bg-white p-6 shadow-sm sm:p-8">
+      <h2 class="flex items-center gap-2 text-xl font-bold text-blue-900">
+        <span class="grid h-8 w-8 place-items-center rounded-full bg-blue-700 text-base text-white">1</span>
+        問題
+      </h2>
+      <div class="bg-slate-50 border border-slate-200 rounded-lg p-4 mb-4 mt-4 text-slate-700 leading-relaxed">
+        袋の中に5枚のカードがあり，それぞれのカードには数字 \(0, 0, 1, 1, 2\) が1つずつ書かれている。この袋から1枚のカードを取り出し，そのカードに書かれている数字を記録してから元へ戻す。この試行を3回繰り返すとき，1回目に記録した数字を \(x\) ，2回目に記録した数字を \(y\) ，3回目に記録した数字を \(z\) とする。<br>
+        \(N=x+y+z\) として， \(N\) を3で割った余りを \(r\) とする。
+        <ol class="mt-4 list-none space-y-2">
+          <li>(1) \(N=6\) となる確率を求めよ。</li>
+          <li>(2) \(N=1\) となる確率を求めよ。また，\(r=1\) となる確率を求めよ。</li>
+          <li>(3) \(r\) の期待値を求めよ。</li>
+        </ol>
+      </div>
+
+      <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 mt-4">
+        <h3 class="font-bold text-blue-900 mb-2">【条件の整理】</h3>
+        <ul class="list-disc pl-5 space-y-1.5 text-sm text-blue-900">
+          <li><strong>試行の性質：</strong>「取り出して元に戻す」を3回繰り返すため、各回の試行は互いに独立である（反復試行）。</li>
+          <li><strong>1回の確率：</strong> 1回の試行で出うる数字の確率は、<br>
+            \(0\) が出る確率： \(\frac{2}{5}\)<br>
+            \(1\) が出る確率： \(\frac{2}{5}\)<br>
+            \(2\) が出る確率： \(\frac{1}{5}\)
+          </li>
+          <li><strong>確率変数 \(N\) の範囲：</strong> \(N=x+y+z\) であり、各文字は \(0, 1, 2\) のいずれかなので、 \(0 \leqq N \leqq 6\) となる。</li>
+          <li><strong>求めるもの：</strong> (1) 特定の \(N\) の確率、(2) \(N=1\) の確率と余り \(r=1\) の確率、(3) 余り \(r\) の期待値（\(r=0, 1, 2\) の確率分布が必要）。</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="mt-6 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+      <h2 class="flex items-center gap-2 text-xl font-bold text-slate-900">
+        <span class="grid h-8 w-8 place-items-center rounded-full bg-slate-700 text-base text-white">2</span>
+        解説
+      </h2>
+      <p class="mt-4 text-sm leading-8 text-slate-600">
+        問題を解くための考え方から、答案、検算、発展までを順に確認します。
+      </p>
+
+      <div class="mt-8 bg-amber-50 border border-amber-200 rounded-xl p-5">
+        <h3 class="border-b-2 border-amber-400 pb-2 text-lg font-bold text-amber-900">解法選択のトリガー</h3>
+        <div class="mt-4 space-y-3">
+          <div class="bg-amber-100/60 border border-amber-200 rounded-lg p-4 text-amber-900">
+            <span class="font-bold text-amber-800">「元へ戻す」「3回繰り返す」</span> → <strong>独立な反復試行</strong> <br>
+            1回ごとに各数字が出る確率は変わらないため、それぞれの事象が起こる回数を把握し、その確率の積に「並べ替えの総数（同じものを含む順列）」を掛けて求めます。
+          </div>
+          <div class="bg-amber-100/60 border border-amber-200 rounded-lg p-4 text-amber-900">
+            <span class="font-bold text-amber-800">「3で割った余り \(r\)」</span> → <strong>とりうる \(N\) の値を余りで分類する</strong> <br>
+            \(N\) は \(0 \leqq N \leqq 6\) の狭い範囲に収まるため、合同式よりも「\(N\) の値を直接列挙して分類」する方が安全で確実です。
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-8 bg-emerald-50 border border-emerald-200 rounded-xl p-5">
+        <h3 class="border-b-2 border-emerald-400 pb-2 text-lg font-bold text-emerald-900">思考プロセス</h3>
+        <div class="mt-4 space-y-3 text-emerald-900">
+          <p>まずは、1回の試行における確率を明確に設定し、これをベースにすべて計算します。</p>
+          <ul class="list-disc pl-5 space-y-2">
+            <li><strong>Step 1：</strong> \(N=6\) は \( (x, y, z) = (2, 2, 2) \) の1通りしかないため、ただちに確率が求まります。</li>
+            <li><strong>Step 2：</strong> \(r=1\) となる \(N\) を探します。 \(0 \leqq N \leqq 6\) のうち、3で割って1余る数は \(N=1, 4\) のみです。</li>
+            <li><strong>Step 3：</strong> \(N=1\) や \(N=4\) になる \( (x, y, z) \) の組み合わせを見つけ、その「確率の積」と「並べ替えの総数」を掛け合わせます。</li>
+            <li><strong>Step 4：</strong> 期待値を求めるには \(r=0, 1, 2\) の確率が必要です。すでに \(P(r=1)\) を求めたので、同様に \(P(r=2)\) を求めます（\(N=2, 5\)）。</li>
+            <li><strong>Step 5：</strong> \(P(r=0)\) は \(1 - P(r=1) - P(r=2)\) から出せますが、<strong>検算のため</strong>に直接計算して和が1になるか確かめると完璧です。</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3 class="mt-8 border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">実際の答案</h3>
+      <div class="mt-4 text-slate-800 leading-loose">
+        <p>
+          1回の試行において、数字 \(0, 1, 2\) のカードを取り出す確率をそれぞれ \(P(0), P(1), P(2)\) とすると、
+        </p>
+        <div class="math-scroll">
+          \[ P(0) = \frac{2}{5}, \quad P(1) = \frac{2}{5}, \quad P(2) = \frac{1}{5} \]
+        </div>
+        
+        <p class="font-bold mt-4">(1) \(N=6\) となる確率</p>
+        <p>
+          \(x, y, z \in \{0, 1, 2\}\) であり、\(N = x+y+z = 6\) となるのは \((x, y, z) = (2, 2, 2)\) のときのみである。<br>
+          したがって、求める確率は
+        </p>
+        <div class="math-scroll">
+          \[ \left( \frac{1}{5} \right)^3 = \mathbf{\frac{1}{125}} \]
+        </div>
+
+        <p class="font-bold mt-6">(2) \(N=1\) となる確率と、\(r=1\) となる確率</p>
+        <p>
+          \(N=1\) となるのは、\( (x, y, z) \) が \(\{1, 0, 0\}\) の組み合わせのときである。<br>
+          その並べ方は \(\frac{3!}{2!1!} = 3\) 通りあるため、\(N=1\) となる確率は
+        </p>
+        <div class="math-scroll">
+          \[ P(N=1) = 3 \times P(1) \times \{P(0)\}^2 = 3 \times \frac{2}{5} \times \left(\frac{2}{5}\right)^2 = \mathbf{\frac{24}{125}} \]
+        </div>
+        <p class="mt-4">
+          次に \(r=1\) となる確率を求める。<br>
+          \(x, y, z\) のとりうる最大値はそれぞれ2であるから、\(0 \leqq N \leqq 6\) である。<br>
+          このうち、3で割って余りが1となるのは \(N=1\) または \(N=4\) のときである。<br>
+          \(N=4\) となる組み合わせは、\(\{2, 2, 0\}\) または \(\{2, 1, 1\}\) である。
+        </p>
+        <ul class="list-disc pl-5 space-y-2 mt-2">
+          <li>
+            \(\{2, 2, 0\}\) のとき、並べ方は \(\frac{3!}{2!1!} = 3\) 通り。<br>
+            確率は \( 3 \times \left(\frac{1}{5}\right)^2 \times \frac{2}{5} = \frac{6}{125} \)
+          </li>
+          <li>
+            \(\{2, 1, 1\}\) のとき、並べ方は \(\frac{3!}{2!1!} = 3\) 通り。<br>
+            確率は \( 3 \times \frac{1}{5} \times \left(\frac{2}{5}\right)^2 = \frac{12}{125} \)
+          </li>
+        </ul>
+        <p class="mt-2">
+          これらは互いに排反であるから、
+        </p>
+        <div class="math-scroll">
+          \[ P(N=4) = \frac{6}{125} + \frac{12}{125} = \frac{18}{125} \]
+        </div>
+        <p>
+          以上より、\(r=1\) となる確率は
+        </p>
+        <div class="math-scroll">
+          \[ P(r=1) = P(N=1) + P(N=4) = \frac{24}{125} + \frac{18}{125} = \mathbf{\frac{42}{125}} \]
+        </div>
+
+        <p class="font-bold mt-6">(3) \(r\) の期待値</p>
+        <p>
+          期待値 \(E\) は \( E = 0 \times P(r=0) + 1 \times P(r=1) + 2 \times P(r=2) \) である。<br>
+          \(P(r=1)\) は求めたので、\(P(r=2)\) を求める。<br>
+          \(0 \leqq N \leqq 6\) のうち、3で割って余りが2となるのは \(N=2, 5\) である。
+        </p>
+        <p class="mt-2">
+          \(N=2\) となる組み合わせは \(\{2, 0, 0\}, \{1, 1, 0\}\) である。
+        </p>
+        <ul class="list-disc pl-5 space-y-2 mt-2">
+          <li>
+            \(\{2, 0, 0\}\) の確率：\( 3 \times \frac{1}{5} \times \left(\frac{2}{5}\right)^2 = \frac{12}{125} \)
+          </li>
+          <li>
+            \(\{1, 1, 0\}\) の確率：\( 3 \times \left(\frac{2}{5}\right)^2 \times \frac{2}{5} = \frac{24}{125} \)
+          </li>
+        </ul>
+        <p class="mt-2">
+          よって、\(P(N=2) = \frac{12}{125} + \frac{24}{125} = \frac{36}{125}\)
+        </p>
+        <p class="mt-4">
+          \(N=5\) となる組み合わせは \(\{2, 2, 1\}\) である。
+        </p>
+        <ul class="list-disc pl-5 space-y-2 mt-2">
+          <li>
+            \(\{2, 2, 1\}\) の確率：\( 3 \times \left(\frac{1}{5}\right)^2 \times \frac{2}{5} = \frac{6}{125} \)
+          </li>
+        </ul>
+        <p class="mt-2">
+          よって、\(P(N=5) = \frac{6}{125}\)<br>
+          したがって、
+        </p>
+        <div class="math-scroll">
+          \[ P(r=2) = P(N=2) + P(N=5) = \frac{36}{125} + \frac{6}{125} = \frac{42}{125} \]
+        </div>
+        <p class="mt-4">
+          以上より、\(r\) の期待値 \(E\) は
+        </p>
+        <div class="math-scroll">
+          \[ E = 1 \times P(r=1) + 2 \times P(r=2) = 1 \times \frac{42}{125} + 2 \times \frac{42}{125} = \mathbf{\frac{126}{125}} \]
+        </div>
+      </div>
+
+      <h3 class="mt-8 border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">場合分けの整理と確率分布表</h3>
+      <div class="mt-4">
+        <p class="text-sm text-slate-600 mb-2">求めた確率を整理すると、以下のようになります。</p>
+        <div class="overflow-x-auto">
+          <table class="min-w-full border-collapse border border-slate-300 text-sm">
+            <thead class="bg-blue-50">
+              <tr>
+                <th class="border border-slate-300 px-4 py-2 text-center text-blue-900">余り \(r\)</th>
+                <th class="border border-slate-300 px-4 py-2 text-center text-blue-900">和 \(N\)</th>
+                <th class="border border-slate-300 px-4 py-2 text-center text-blue-900">組み合わせ \(\{x, y, z\}\)</th>
+                <th class="border border-slate-300 px-4 py-2 text-center text-blue-900">確率</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td rowspan="3" class="border border-slate-300 px-4 py-2 text-center align-middle font-bold bg-slate-50">0</td>
+                <td class="border border-slate-300 px-4 py-2 text-center">0</td>
+                <td class="border border-slate-300 px-4 py-2 text-center">\(\{0, 0, 0\}\)</td>
+                <td class="border border-slate-300 px-4 py-2 text-center">\(8/125\)</td>
+              </tr>
+              <tr>
+                <td class="border border-slate-300 px-4 py-2 text-center">3</td>
+                <td class="border border-slate-300 px-4 py-2 text-center">\(\{1, 1, 1\}, \{2, 1, 0\}\)</td>
+                <td class="border border-slate-300 px-4 py-2 text-center">\(32/125\)</td>
+              </tr>
+              <tr>
+                <td class="border border-slate-300 px-4 py-2 text-center">6</td>
+                <td class="border border-slate-300 px-4 py-2 text-center">\(\{2, 2, 2\}\)</td>
+                <td class="border border-slate-300 px-4 py-2 text-center">\(1/125\)</td>
+              </tr>
+              <tr>
+                <td rowspan="2" class="border border-slate-300 px-4 py-2 text-center align-middle font-bold bg-slate-50">1</td>
+                <td class="border border-slate-300 px-4 py-2 text-center">1</td>
+                <td class="border border-slate-300 px-4 py-2 text-center">\(\{1, 0, 0\}\)</td>
+                <td class="border border-slate-300 px-4 py-2 text-center">\(24/125\)</td>
+              </tr>
+              <tr>
+                <td class="border border-slate-300 px-4 py-2 text-center">4</td>
+                <td class="border border-slate-300 px-4 py-2 text-center">\(\{2, 2, 0\}, \{2, 1, 1\}\)</td>
+                <td class="border border-slate-300 px-4 py-2 text-center">\(18/125\)</td>
+              </tr>
+              <tr>
+                <td rowspan="2" class="border border-slate-300 px-4 py-2 text-center align-middle font-bold bg-slate-50">2</td>
+                <td class="border border-slate-300 px-4 py-2 text-center">2</td>
+                <td class="border border-slate-300 px-4 py-2 text-center">\(\{2, 0, 0\}, \{1, 1, 0\}\)</td>
+                <td class="border border-slate-300 px-4 py-2 text-center">\(36/125\)</td>
+              </tr>
+              <tr>
+                <td class="border border-slate-300 px-4 py-2 text-center">5</td>
+                <td class="border border-slate-300 px-4 py-2 text-center">\(\{2, 2, 1\}\)</td>
+                <td class="border border-slate-300 px-4 py-2 text-center">\(6/125\)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <h3 class="mt-8 border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">最終結果と検算</h3>
+      <div class="mt-4 rounded-xl border-2 border-blue-500 bg-blue-50 p-5 text-slate-900">
+        <p class="font-bold">【最終結果】</p>
+        <p class="mt-2">(1) \(N=6\) となる確率： \(\frac{1}{125}\)</p>
+        <p>(2) \(N=1\) となる確率： \(\frac{24}{125}\) ， \(r=1\) となる確率： \(\frac{42}{125}\)</p>
+        <p>(3) \(r\) の期待値： \(\frac{126}{125}\)</p>
+        <hr class="my-4 border-blue-200">
+        <p class="font-bold text-blue-800">【確率の総和による検算】</p>
+        <p class="mt-1 text-sm leading-relaxed">
+          期待値を求める過程で計算しなかった \(r=0\) の確率を直接求めて、確率の総和が1になるか確認します。<br>
+          上の表より、\(P(r=0) = \frac{8}{125} + \frac{32}{125} + \frac{1}{125} = \frac{41}{125}\) となります。<br>
+          \( P(r=0) + P(r=1) + P(r=2) = \frac{41}{125} + \frac{42}{125} + \frac{42}{125} = \frac{125}{125} = 1 \)<br>
+          総和が1となるため、場合分けの漏れや計算ミスがないことが強く保証されます。
+        </p>
+      </div>
+
+      <h3 class="mt-8 border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">発展：状態推移と行列による一般化</h3>
+      <div class="mt-4 text-slate-800 leading-relaxed text-sm">
+        <p>本問は試行が3回でしたが、もし「 \(n\) 回試行したときの和を3で割った余りが \(r\) である確率 \(P_n(r)\) 」を問われたらどうなるでしょうか。この場合、<strong>状態推移（漸化式）</strong> を用いるのが定石です。</p>
+        <p class="mt-2">1回カードを引くとき、数字 \(X\) を3で割った余りの確率は、それぞれ<br>
+        \(X \equiv 0 \pmod 3\) となる確率：\(2/5\)（0を引いたとき）<br>
+        \(X \equiv 1 \pmod 3\) となる確率：\(2/5\)（1を引いたとき）<br>
+        \(X \equiv 2 \pmod 3\) となる確率：\(1/5\)（2を引いたとき）</p>
+        <p class="mt-2">\(n\) 回目までの余りの状態から \(n+1\) 回目の状態がどのように移り変わるかを考えると、以下の連立漸化式が得られます。</p>
+        <div class="math-scroll">
+          \[
+          \begin{cases}
+          P_{n+1}(0) = \frac{2}{5}P_n(0) + \frac{1}{5}P_n(1) + \frac{2}{5}P_n(2) \\[4pt]
+          P_{n+1}(1) = \frac{2}{5}P_n(1) + \frac{1}{5}P_n(2) + \frac{2}{5}P_n(0) \\[4pt]
+          P_{n+1}(2) = \frac{2}{5}P_n(2) + \frac{1}{5}P_n(0) + \frac{2}{5}P_n(1)
+          \end{cases}
+          \]
+        </div>
+        <p>行列を用いると次のように美しく表現できます。</p>
+        <div class="math-scroll">
+          \[
+          \begin{pmatrix} P_{n+1}(0) \\ P_{n+1}(1) \\ P_{n+1}(2) \end{pmatrix} = 
+          \frac{1}{5}\begin{pmatrix} 2 & 1 & 2 \\ 2 & 2 & 1 \\ 1 & 2 & 2 \end{pmatrix}
+          \begin{pmatrix} P_{n}(0) \\ P_{n}(1) \\ P_{n}(2) \end{pmatrix}
+          \]
+        </div>
+        <p>これを \(n=1\) から順番に \(n=3\) まで計算していくと、今回の答えである \((41/125, 42/125, 42/125)\) に完全に一致します。試行回数が多い問題では、この「状態推移」に持ち込む解法が必須となります。</p>
+      </div>
+
+      <h3 class="mt-8 border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">受験生のつまずきポイント</h3>
+      <div class="mt-4 space-y-4">
+        <div class="bg-red-50 border border-red-200 rounded-lg p-4 text-slate-800">
+          <p class="font-bold text-red-800">順列（並べ替え）の掛け忘れ</p>
+          <p class="mt-2 text-sm">\(N=1\) を求める際、「1, 0, 0」が出るという組み合わせは見つけても、それが「1回目, 2回目, 3回目」のどの順で出るかの考慮を忘れてしまうミスが多発します。\((2/5) \times (2/5)^2\) だけで終わらせず、必ず同じものを含む順列 \(\frac{3!}{2!1!} = 3\) を掛ける必要があります。</p>
+        </div>
+        <div class="bg-red-50 border border-red-200 rounded-lg p-4 text-slate-800">
+          <p class="font-bold text-red-800">\(N\) の最大値の勘違い・場合分けのオーバー</p>
+          <p class="mt-2 text-sm">\(N\) を3で割った余りが1になる数を探す際、「\(N=7\) や \(N=10\) はどうだろう？」と考えてしまうことがあります。最初に「最大のカードが2だから、3回引いても最大で \(N=6\) までしかいかない」と変数のとりうる範囲を確定させておかないと、無駄な場合分けに時間を取られてしまいます。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="mt-6 rounded-2xl bg-blue-900 p-6 text-white shadow-sm sm:p-8">
+      <h2 class="border-b-2 border-blue-400 pb-2 text-lg font-bold">アクティブリコール（復習テスト）</h2>
+      <p class="mt-4 text-sm text-blue-200">今日の学習内容を思い出すことで、記憶を定着させましょう。質問をクリックして答えを確認してください。</p>
+      
+      <div class="mt-6 space-y-4">
+        <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+          <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+            Q1. この問題において、「元へ戻す」「3回繰り返す」という条件から、どのような方針を選びますか？
+            <span class="transition-transform duration-300 group-open:-rotate-180 text-blue-500">▼</span>
+          </summary>
+          <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+            毎回同じ確率で起こる「独立な反復試行」として扱います。1回ごとに 0, 1, 2 が出る確率を求め、その確率の積に「並べ替えの総数（順列）」を掛け合わせて計算します。
+          </div>
+        </details>
+
+        <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+          <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+            Q2. \(x,y,z\) の組が \(\{0, 0, 1\}\) である確率は、\(\frac{2}{5} \times \frac{2}{5} \times \frac{2}{5}\) ではありません。答案を作成する際、どのような判断が必要ですか？
+            <span class="transition-transform duration-300 group-open:-rotate-180 text-blue-500">▼</span>
+          </summary>
+          <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+            0, 0, 1 が「どの順番で出るか」を考慮する判断が必要です。反復試行では順序が異なるものは別事象となるため、同じものを含む順列を用いて並べ替えの総数である \(\frac{3!}{2!1!} = 3\) 通りを確率に掛ける必要があります。
+          </div>
+        </details>
+
+        <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+          <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+            Q3. 最後に期待値を求める際、計算ミスや場合分けの漏れを防ぐためにどのような検算を行うべきですか？
+            <span class="transition-transform duration-300 group-open:-rotate-180 text-blue-500">▼</span>
+          </summary>
+          <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+            余事象を利用して省いた \(r=0\) の確率もあえて直接計算し、「\(r=0, 1, 2\) のすべての確率の総和が \(1\) になるか」を確認すべきです。和が1になれば、場合分けの漏れや重複がないことが強く保証されます。
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <nav class="mt-7 grid gap-3 sm:grid-cols-2">
+      <a href="index.html" class="nav-button rounded-xl border border-slate-300 bg-white px-5 py-4 text-center font-bold text-slate-700 hover:border-blue-300 hover:text-blue-800">
+        ← 一覧へ
+      </a>
+      <a href="no02.html" class="nav-button rounded-xl bg-blue-700 px-5 py-4 text-center font-bold text-white hover:bg-blue-800">
+        No.2 →
+      </a>
+    </nav>
+
+  </main>
+  
+  <footer class="py-10 text-center text-sm text-slate-500">
+    医進・サイエンスコース　夏期数学課題 解説サイト
+  </footer>
+</body>
+</html>

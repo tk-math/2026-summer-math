@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>No.5 三角関数 - 医進・サイエンスコース 夏期数学課題</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    MathJax = {
+      chtml: { matchFontHeight: false },
+      tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+  <style>
+    body {
+      font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
+    }
+    .nav-button {
+      transition: transform .16s ease, box-shadow .16s ease;
+    }
+    .nav-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 18px rgba(15, 23, 42, .12);
+    }
+    .math-scroll {
+      overflow-x: auto;
+      overflow-y: hidden;
+      padding-bottom: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+  </style>
+</head>
+<body class="bg-slate-100 text-slate-800">
+  <main class="mx-auto max-w-4xl px-4 py-6 sm:px-6 lg:py-10">
+    
+    <a href="index.html" class="inline-flex items-center gap-2 text-sm font-bold text-blue-700 hover:text-blue-900">
+      ← 問題一覧へ戻る
+    </a>
+
+    <header class="mt-4 overflow-hidden rounded-3xl bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-800 text-white shadow-xl">
+      <div class="p-7 sm:p-10">
+        <span class="inline-flex items-center rounded-full bg-white/15 px-4 py-1.5 text-sm font-semibold tracking-wide text-blue-100">
+          医進・サイエンスコース
+        </span>
+        <div class="mt-4 flex flex-wrap items-center gap-3">
+          <span class="rounded-lg bg-white/20 px-3 py-1 text-sm font-bold">No.5</span>
+          <span class="rounded-full bg-amber-100 px-3 py-1 text-xs font-bold text-amber-800">標準</span>
+        </div>
+        <h1 class="mt-4 text-3xl font-bold leading-tight sm:text-4xl">三角関数</h1>
+        <p class="mt-3 text-lg text-blue-100">目標解答時間：20分</p>
+      </div>
+    </header>
+
+    <section class="mt-7 rounded-2xl border border-blue-100 bg-white p-6 shadow-sm sm:p-8">
+      <h2 class="flex items-center gap-2 text-xl font-bold text-blue-900">
+        <span class="grid h-8 w-8 place-items-center rounded-full bg-blue-700 text-base text-white">1</span>
+        問題
+      </h2>
+      <div class="bg-slate-50 border border-slate-200 rounded-lg p-4 mb-4 mt-4 text-slate-700 leading-relaxed">
+        \(P = \sin\left(x+\frac{\pi}{3}\right)\), \(Q = \cos\left(x+\frac{\pi}{6}\right)\) とする。
+        <ol class="mt-4 list-none space-y-2">
+          <li>(1) \(x = \frac{\pi}{2}\) のとき、\(P\) の値を求めよ。</li>
+          <li>(2) \(P\) を \(a\sin x + b\cos x\) の形で表せ。ただし、\(a, b\) は定数とする。また、\(x\) についての方程式 \(P+Q = \frac{3}{2}\) を \(0 \leqq x \leqq \pi\) の範囲で解け。</li>
+          <li>(3) \(x\) についての関数 \(y = PQ+P+Q\) の \(0 \leqq x \leqq \pi\) における最小値とそのときの \(x\) の値を求めよ。</li>
+        </ol>
+      </div>
+
+      <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 mt-4">
+        <h3 class="font-bold text-blue-900 mb-2">【条件の整理】</h3>
+        <ul class="list-disc pl-5 space-y-1.5 text-sm text-blue-900">
+          <li><strong>異なる位相の三角関数：</strong> \(P\) と \(Q\) は位相（角度部分）が異なっているため、そのままでは足し引きが難しい。</li>
+          <li><strong>関数の統一：</strong> (2) の誘導により加法定理を用いて展開し、角をすべて \(x\) に統一することが方針となる。</li>
+          <li><strong>変域の制限：</strong> \(x\) の範囲は \(0 \leqq x \leqq \pi\) に制限されている。方程式の解や関数の最小値を求める際、この範囲を厳密に考慮する必要がある。</li>
+          <li><strong>求めるもの：</strong> (2) では三角関数の合成（または直接計算）による方程式の解。(3) では対称式のような形 \(PQ+P+Q\) の最小値。</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="mt-6 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+      <h2 class="flex items-center gap-2 text-xl font-bold text-slate-900">
+        <span class="grid h-8 w-8 place-items-center rounded-full bg-slate-700 text-base text-white">2</span>
+        解説
+      </h2>
+      <p class="mt-4 text-sm leading-8 text-slate-600">
+        問題を解くための考え方から、答案、検算、発展までを順に確認します。
+      </p>
+
+      <div class="mt-8 bg-amber-50 border border-amber-200 rounded-xl p-5">
+        <h3 class="border-b-2 border-amber-400 pb-2 text-lg font-bold text-amber-900">解法選択のトリガー</h3>
+        <div class="mt-4 space-y-3">
+          <div class="bg-amber-100/60 border border-amber-200 rounded-lg p-4 text-amber-900">
+            <span class="font-bold text-amber-800">「異なる角の三角関数の和や積」</span> → <strong>加法定理で角を揃える</strong> <br>
+            \(x+\frac{\pi}{3}\) と \(x+\frac{\pi}{6}\) のように角がずれている場合、まずは加法定理を用いて角を \(x\) のみに統一するのが三角関数の基本手筋です。
+          </div>
+          <div class="bg-amber-100/60 border border-amber-200 rounded-lg p-4 text-amber-900">
+            <span class="font-bold text-amber-800">「\(\cos x\) や \(\sin x\) の2次式の最大・最小」</span> → <strong>\(t\) とおいて2次関数に帰着</strong> <br>
+            角を揃えた後、\(\cos x\) または \(\sin x\) だけで式を表現できる場合は、1つの文字（例えば \(t = \cos x\)）に置き換えて平方完成を行います。その際、必ず \(t\) の変域を確認します。
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-8 bg-emerald-50 border border-emerald-200 rounded-xl p-5">
+        <h3 class="border-b-2 border-emerald-400 pb-2 text-lg font-bold text-emerald-900">思考プロセス</h3>
+        <div class="mt-4 space-y-3 text-emerald-900">
+          <ul class="list-disc pl-5 space-y-2">
+            <li><strong>Step 1：</strong> (1) は単純に代入して計算します。</li>
+            <li><strong>Step 2：</strong> (2) は加法定理を用いて \(P\) と \(Q\) を展開します。すると都合よく \(\sin x\) の項が消去され、\(P+Q\) が \(\cos x\) だけで表せます。これにより方程式が簡単に解けます。</li>
+            <li><strong>Step 3：</strong> (3) の \(PQ\) を計算します。(2) で得た形を見ると、和と差の積 \((A+B)(A-B)\) の形になっているため、簡単に展開できます。これを \(\cos^2 x\) だけの式に整理します。</li>
+            <li><strong>Step 4：</strong> 関数 \(y\) を \(\cos x\) の2次関数として表し、\(t = \cos x\) と置換します。定義域 \(0 \leqq x \leqq \pi\) から、\(t\) の変域を \(-1 \leqq t \leqq 1\) と決定します。</li>
+            <li><strong>Step 5：</strong> 平方完成を行い、定義域内における頂点の位置と端点の値を確認して最小値を求めます。最後に \(t\) から \(x\) の値へ戻します。</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3 class="mt-8 border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">実際の答案</h3>
+      <div class="mt-4 text-slate-800 leading-loose">
+        <p class="font-bold">(1) 代入計算</p>
+        <p>
+          \(x = \frac{\pi}{2}\) を \(P = \sin\left(x+\frac{\pi}{3}\right)\) に代入すると、
+        </p>
+        <div class="math-scroll">
+          \[ P = \sin\left(\frac{\pi}{2} + \frac{\pi}{3}\right) = \sin\left(\frac{5\pi}{6}\right) = \mathbf{\frac{1}{2}} \]
+        </div>
+
+        <p class="font-bold mt-6">(2) \(P\) の変形と方程式の解</p>
+        <p>
+          加法定理を用いて \(P, Q\) を展開すると、
+        </p>
+        <div class="math-scroll">
+          \[ P = \sin\left(x+\frac{\pi}{3}\right) = \sin x \cos\frac{\pi}{3} + \cos x \sin\frac{\pi}{3} = \mathbf{\frac{1}{2}\sin x + \frac{\sqrt{3}}{2}\cos x} \]
+        </div>
+        <div class="math-scroll">
+          \[ Q = \cos\left(x+\frac{\pi}{6}\right) = \cos x \cos\frac{\pi}{6} - \sin x \sin\frac{\pi}{6} = \frac{\sqrt{3}}{2}\cos x - \frac{1}{2}\sin x \]
+        </div>
+        <p>
+          よって、\(P+Q\) は
+        </p>
+        <div class="math-scroll">
+          \[ P+Q = \left(\frac{1}{2} - \frac{1}{2}\right)\sin x + \left(\frac{\sqrt{3}}{2} + \frac{\sqrt{3}}{2}\right)\cos x = \sqrt{3}\cos x \]
+        </div>
+        <p>
+          方程式 \(P+Q = \frac{3}{2}\) は、
+        </p>
+        <div class="math-scroll">
+          \[ \sqrt{3}\cos x = \frac{3}{2} \iff \cos x = \frac{3}{2\sqrt{3}} \iff \cos x = \frac{\sqrt{3}}{2} \]
+        </div>
+        <p>
+          \(0 \leqq x \leqq \pi\) の範囲でこれを解くと、
+        </p>
+        <div class="math-scroll">
+          \[ \mathbf{x = \frac{\pi}{6}} \]
+        </div>
+
+        <p class="font-bold mt-6">(3) 関数の最小値</p>
+        <p>
+          \(y = PQ+P+Q\) について、まず \(PQ\) を計算する。(2) の結果より、
+        </p>
+        <div class="math-scroll">
+          \[ PQ = \left(\frac{\sqrt{3}}{2}\cos x + \frac{1}{2}\sin x\right)\left(\frac{\sqrt{3}}{2}\cos x - \frac{1}{2}\sin x\right) \]
+          \[ \phantom{PQ} = \frac{3}{4}\cos^2 x - \frac{1}{4}\sin^2 x \]
+        </div>
+        <p>
+          \(\sin^2 x = 1 - \cos^2 x\) を代入して、
+        </p>
+        <div class="math-scroll">
+          \[ PQ = \frac{3}{4}\cos^2 x - \frac{1}{4}(1 - \cos^2 x) = \frac{3}{4}\cos^2 x - \frac{1}{4} + \frac{1}{4}\cos^2 x = \cos^2 x - \frac{1}{4} \]
+        </div>
+        <p>
+          よって、関数 \(y\) は
+        </p>
+        <div class="math-scroll">
+          \[ y = \left(\cos^2 x - \frac{1}{4}\right) + \sqrt{3}\cos x = \cos^2 x + \sqrt{3}\cos x - \frac{1}{4} \]
+        </div>
+        <p>
+          ここで、\(t = \cos x\) とおく。\(0 \leqq x \leqq \pi\) より、\(t\) のとりうる値の範囲は
+        </p>
+        <div class="math-scroll">
+          \[ -1 \leqq t \leqq 1 \quad \cdots\cdots \text{①} \]
+        </div>
+        <p>
+          \(y\) を \(t\) の関数として表し、平方完成すると
+        </p>
+        <div class="math-scroll">
+          \[ y = t^2 + \sqrt{3}t - \frac{1}{4} = \left(t + \frac{\sqrt{3}}{2}\right)^2 - \frac{3}{4} - \frac{1}{4} = \left(t + \frac{\sqrt{3}}{2}\right)^2 - 1 \]
+        </div>
+        <p>
+          このグラフは下に凸の放物線であり、頂点は \(\left(-\frac{\sqrt{3}}{2}, -1\right)\) である。<br>
+          \(-\frac{\sqrt{3}}{2} \fallingdotseq -0.866\) であるから、頂点の \(t\) 座標は範囲①に含まれる。<br>
+          したがって、\(y\) は \(t = -\frac{\sqrt{3}}{2}\) のとき、最小値 \(-1\) をとる。<br>
+          このとき、\(\cos x = -\frac{\sqrt{3}}{2}\) であり、\(0 \leqq x \leqq \pi\) より \(x = \frac{5\pi}{6}\) である。<br>
+          以上より、求める最小値と \(x\) の値は、
+        </p>
+        <div class="math-scroll">
+          \[ \mathbf{x = \frac{5\pi}{6} \text{ のとき、最小値 } -1} \]
+        </div>
+      </div>
+
+      <h3 class="mt-8 border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">グラフによる確認</h3>
+      <div class="mt-4 text-center">
+        <p class="text-sm text-slate-600 mb-4">\(y = \left(t + \frac{\sqrt{3}}{2}\right)^2 - 1\) のグラフと定義域 (\(-1 \leqq t \leqq 1\))</p>
+        <svg viewBox="0 0 400 300" class="w-full h-auto max-w-md mx-auto bg-white border border-slate-200 rounded-lg shadow-sm" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- 定義域の背景 -->
+          <rect x="120" y="20" width="160" height="260" fill="#f8fafc" />
+          
+          <!-- グリッド -->
+          <g stroke="#f1f5f9" stroke-width="1">
+            <line x1="0" y1="50" x2="400" y2="50" />
+            <line x1="0" y1="110" x2="400" y2="110" />
+            <line x1="0" y1="170" x2="400" y2="170" />
+            <line x1="0" y1="230" x2="400" y2="230" />
+            <line x1="40" y1="0" x2="40" y2="300" />
+            <line x1="200" y1="0" x2="200" y2="300" />
+            <line x1="360" y1="0" x2="360" y2="300" />
+          </g>
+
+          <!-- 軸 -->
+          <line x1="20" y1="170" x2="380" y2="170" stroke="#94a3b8" stroke-width="2" />
+          <line x1="200" y1="280" x2="200" y2="20" stroke="#94a3b8" stroke-width="2" />
+          <text x="375" y="185" fill="#64748b" font-size="12">t</text>
+          <text x="185" y="30" fill="#64748b" font-size="12">y</text>
+          <text x="205" y="185" fill="#64748b" font-size="12">O</text>
+
+          <!-- 放物線 (定義域外) -->
+          <path d="M 80,217.8 Q 100,243.2 120,248.6" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4" fill="none" />
+          <path d="M 280,-28.6 Q 288,-58.4 296,-91.5" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4" fill="none" />
+          
+          <!-- 放物線 (定義域内) -->
+          <path d="M 120,248.6 Q 200,270 280,-28.6" stroke="#3b82f6" stroke-width="3" stroke-linecap="round" fill="none" />
+          
+          <!-- 定義域の境界線 -->
+          <line x1="120" y1="20" x2="120" y2="280" stroke="#fca5a5" stroke-width="1.5" stroke-dasharray="4" />
+          <line x1="280" y1="20" x2="280" y2="280" stroke="#fca5a5" stroke-width="1.5" stroke-dasharray="4" />
+          
+          <text x="110" y="185" fill="#ef4444" font-size="12">-1</text>
+          <text x="275" y="185" fill="#ef4444" font-size="12">1</text>
+
+          <!-- 頂点 (最小値) -->
+          <line x1="130.7" y1="250" x2="200" y2="250" stroke="#94a3b8" stroke-width="1" stroke-dasharray="2" />
+          <circle cx="130.7" cy="250" r="4" fill="#ef4444" />
+          <text x="135" y="270" fill="#ef4444" font-size="12" font-weight="bold">最小値 (-1)</text>
+          
+          <!-- Y軸との交点 -1/4 -->
+          <circle cx="200" cy="190" r="3" fill="#3b82f6" />
+          <text x="210" y="200" fill="#3b82f6" font-size="12">-1/4</text>
+        </svg>
+      </div>
+
+      <h3 class="mt-8 border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">最終結果と検算</h3>
+      <div class="mt-4 rounded-xl border-2 border-blue-500 bg-blue-50 p-5 text-slate-900">
+        <p class="font-bold">【最終結果】</p>
+        <p class="mt-2">(1) \( \frac{1}{2} \)</p>
+        <p>(2) \(P = \frac{1}{2}\sin x + \frac{\sqrt{3}}{2}\cos x \), \quad \(x = \frac{\pi}{6}\)</p>
+        <p>(3) \(x = \frac{5\pi}{6}\) のとき、最小値 \(-1\)</p>
+        <hr class="my-4 border-blue-200">
+        <p class="font-bold text-blue-800">【代入による直接検算】</p>
+        <p class="mt-1 text-sm leading-relaxed">
+          (3) で求めた \(x = \frac{5\pi}{6}\) を、問題文の最初の式に直接代入して矛盾がないか確かめます。<br>
+          \( P = \sin\left(\frac{5\pi}{6} + \frac{\pi}{3}\right) = \sin\left(\frac{7\pi}{6}\right) = -\frac{1}{2} \)<br>
+          \( Q = \cos\left(\frac{5\pi}{6} + \frac{\pi}{6}\right) = \cos(\pi) = -1 \)<br>
+          このとき、\( y = PQ+P+Q \) に代入すると、<br>
+          \( y = \left(-\frac{1}{2}\right) \times (-1) + \left(-\frac{1}{2}\right) + (-1) = \frac{1}{2} - \frac{1}{2} - 1 = -1 \)<br>
+          求めた最小値 \(-1\) と完全に一致したため、加法定理や平方完成の計算がすべて正しかったことが保証されます。
+        </p>
+      </div>
+
+      <h3 class="mt-8 border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">発展：和積・積和の公式によるショートカット</h3>
+      <div class="mt-4 text-slate-800 leading-relaxed text-sm">
+        <p>
+          本問は「加法定理」で展開するのが標準的ですが、\(Q\) を少し変形すると、<strong>和積の公式・積和の公式</strong>をダイレクトに使って計算量を減らすことができます。<br>
+          \(\cos \theta = \sin\left(\frac{\pi}{2} - \theta\right)\) という性質を利用して、\(Q\) を \(\sin\) に変換します。
+        </p>
+        <div class="math-scroll">
+          \[ Q = \cos\left(x+\frac{\pi}{6}\right) = \sin\left\{\frac{\pi}{2} - \left(x+\frac{\pi}{6}\right)\right\} = \sin\left(\frac{\pi}{3} - x\right) \]
+        </div>
+        <p class="mt-2 font-bold">(2)の和の計算</p>
+        <p>
+          和積の公式 \(\sin A + \sin B = 2\sin\frac{A+B}{2}\cos\frac{A-B}{2}\) を用います。
+        </p>
+        <div class="math-scroll">
+          \[ P+Q = \sin\left(x+\frac{\pi}{3}\right) + \sin\left(\frac{\pi}{3} - x\right) = 2\sin\left(\frac{\frac{\pi}{3}+\frac{\pi}{3}}{2}\right)\cos\left(\frac{2x}{2}\right) = 2\sin\frac{\pi}{3}\cos x = \sqrt{3}\cos x \]
+        </div>
+        <p class="mt-2 font-bold">(3)の積の計算</p>
+        <p>
+          積和の公式 \(\sin A \sin B = -\frac{1}{2}\{\cos(A+B) - \cos(A-B)\}\) を用います。
+        </p>
+        <div class="math-scroll">
+          \[ PQ = \sin\left(x+\frac{\pi}{3}\right)\sin\left(\frac{\pi}{3} - x\right) = -\frac{1}{2}\left\{\cos\left(\frac{2\pi}{3}\right) - \cos 2x\right\} = -\frac{1}{2}\left(-\frac{1}{2} - \cos 2x\right) = \frac{1}{4} + \frac{1}{2}\cos 2x \]
+        </div>
+        <p>
+          2倍角の公式 \(\cos 2x = 2\cos^2 x - 1\) を代入すると、
+        </p>
+        <div class="math-scroll">
+          \[ PQ = \frac{1}{4} + \frac{1}{2}(2\cos^2 x - 1) = \cos^2 x - \frac{1}{4} \]
+        </div>
+        <p>
+          このように、高度な公式を使いこなせれば、展開の煩雑な計算や \(\sin^2 x = 1-\cos^2 x\) の変換を一気に飛び越えることができます。
+        </p>
+      </div>
+
+      <h3 class="mt-8 border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">受験生のつまずきポイント</h3>
+      <div class="mt-4 space-y-4">
+        <div class="bg-red-50 border border-red-200 rounded-lg p-4 text-slate-800">
+          <p class="font-bold text-red-800">置換した変数の変域 \(-1 \leqq t \leqq 1\) を忘れる</p>
+          <p class="mt-2 text-sm">\(t = \cos x\) と置換した直後に、変域を確認せずに平方完成を進めてしまうミスが非常に多いです。本問ではたまたま頂点（\(t = -\sqrt{3}/2\)）が範囲内に収まっていたため答えは合いますが、もし頂点が範囲外にあった場合は、端点で最小値をとることになります。変域の記述がない答案は大幅な減点対象になります。</p>
+        </div>
+        <div class="bg-red-50 border border-red-200 rounded-lg p-4 text-slate-800">
+          <p class="font-bold text-red-800">加法定理の符号や値の思い違い</p>
+          <p class="mt-2 text-sm">\(Q = \cos\left(x+\frac{\pi}{6}\right)\) を展開する際、\(\cos(\alpha+\beta) = \cos\alpha\cos\beta - \sin\alpha\sin\beta\) となるべきところを、うっかりプラスにしてしまう（\(\cos\alpha\cos\beta + \sin\alpha\sin\beta\)）ミスが多発します。加法定理の符号は必ず確認しながら計算を進めましょう。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="mt-6 rounded-2xl bg-blue-900 p-6 text-white shadow-sm sm:p-8">
+      <h2 class="border-b-2 border-blue-400 pb-2 text-lg font-bold">アクティブリコール（復習テスト）</h2>
+      <p class="mt-4 text-sm text-blue-200">今日の学習内容を思い出すことで、記憶を定着させましょう。質問をクリックして答えを確認してください。</p>
+      
+      <div class="mt-6 space-y-4">
+        <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+          <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+            <div class="flex-1 leading-relaxed">
+              <div class="mb-1">Q1. 角度（位相）が異なる三角関数の式が混在しているとき、</div>
+              <div>最初に取るべき定石のアプローチは何ですか？</div>
+            </div>
+            <span class="transition-transform duration-300 group-open:-rotate-180 text-blue-500">▼</span>
+          </summary>
+          <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+            加法定理を用いて展開し、角をすべて同じもの（今回は \(x\) ）に揃えることです。角が揃って初めて、同類項をまとめたり、一つの変数に置き換えたりすることが可能になります。
+          </div>
+        </details>
+
+        <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+          <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+            <div class="flex-1 leading-relaxed">
+              <div class="mb-1">Q2. \(\cos x\) を \(t\) に置き換えて2次関数の最大・最小を考える際、</div>
+              <div>絶対に忘れてはならない確認事項は何ですか？</div>
+            </div>
+            <span class="transition-transform duration-300 group-open:-rotate-180 text-blue-500">▼</span>
+          </summary>
+          <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+            置き換えた文字 \(t\) の「とりうる値の範囲（変域）」です。\(0 \leqq x \leqq \pi\) の場合、\(t\) の範囲は \(-1 \leqq t \leqq 1\) に制限され、この範囲の中でグラフの頂点や端点を調べる必要があります。
+          </div>
+        </details>
+
+        <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+          <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+            <div class="flex-1 leading-relaxed">
+              <div class="mb-1">Q3. (3)で求めた「\(x = \frac{5\pi}{6}\) のとき最小値 \(-1\)」という結果は、</div>
+              <div>どのようにして確実な検算ができますか？</div>
+            </div>
+            <span class="transition-transform duration-300 group-open:-rotate-180 text-blue-500">▼</span>
+          </summary>
+          <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+            求めた \(x = \frac{5\pi}{6}\) を、問題文の最初の式 \(P=\sin(x+\frac{\pi}{3})\) と \(Q=\cos(x+\frac{\pi}{6})\) に直接代入し、得られた \(P\) と \(Q\) の値から \(y=PQ+P+Q\) を計算して、最小値 \(-1\) と一致するかを確かめる方法です。
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <nav class="mt-7 grid gap-3 sm:grid-cols-2">
+      <a href="index.html" class="nav-button rounded-xl border border-slate-300 bg-white px-5 py-4 text-center font-bold text-slate-700 hover:border-blue-300 hover:text-blue-800">
+        ← 一覧へ
+      </a>
+      <a href="no06.html" class="nav-button rounded-xl bg-blue-700 px-5 py-4 text-center font-bold text-white hover:bg-blue-800">
+        No.6 →
+      </a>
+    </nav>
+
+  </main>
+  
+  <footer class="py-10 text-center text-sm text-slate-500">
+    医進・サイエンスコース　夏期数学課題 解説サイト
+  </footer>
+</body>
+</html>

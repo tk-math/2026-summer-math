@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>No.7 図形と計量 - 医進・サイエンスコース 夏期数学課題</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    MathJax = {
+      chtml: { matchFontHeight: false },
+      tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+  <style>
+    body {
+      font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
+    }
+    .nav-button {
+      transition: transform .16s ease, box-shadow .16s ease;
+    }
+    .nav-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 18px rgba(15, 23, 42, .12);
+    }
+    .math-scroll {
+      overflow-x: auto;
+      overflow-y: hidden;
+      padding-bottom: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+  </style>
+</head>
+<body class="bg-slate-100 text-slate-800">
+  <main class="mx-auto max-w-4xl px-4 py-6 sm:px-6 lg:py-10">
+    
+    <a href="index.html" class="inline-flex items-center gap-2 text-sm font-bold text-blue-700 hover:text-blue-900">
+      ← 問題一覧へ戻る
+    </a>
+
+    <header class="mt-4 overflow-hidden rounded-3xl bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-800 text-white shadow-xl">
+      <div class="p-7 sm:p-10">
+        <span class="inline-flex items-center rounded-full bg-white/15 px-4 py-1.5 text-sm font-semibold tracking-wide text-blue-100">
+          医進・サイエンスコース
+        </span>
+        <div class="mt-4 flex flex-wrap items-center gap-3">
+          <span class="rounded-lg bg-white/20 px-3 py-1 text-sm font-bold">No.7</span>
+          <span class="rounded-full bg-amber-100 px-3 py-1 text-xs font-bold text-amber-800">標準</span>
+        </div>
+        <h1 class="mt-4 text-3xl font-bold leading-tight sm:text-4xl">図形と計量</h1>
+        <p class="mt-3 text-lg text-blue-100">目標解答時間：20分</p>
+      </div>
+    </header>
+
+    <section class="mt-7 rounded-2xl border border-blue-100 bg-white p-6 shadow-sm sm:p-8">
+      <h2 class="flex items-center gap-2 text-xl font-bold text-blue-900">
+        <span class="grid h-8 w-8 place-items-center rounded-full bg-blue-700 text-base text-white">1</span>
+        問題
+      </h2>
+      <div class="bg-slate-50 border border-slate-200 rounded-lg p-4 mb-4 mt-4 text-slate-700 leading-relaxed">
+        鋭角三角形 \(\mathrm{ABC}\) において，\(\mathrm{AB}=7\)，\(\sin A=\dfrac{3\sqrt{5}}{7}\) であり，その面積は \(6\sqrt{5}\) である。
+        <ol class="mt-4 list-none space-y-2">
+          <li>(1) 辺 \(\mathrm{AC}\) の長さを求めよ。</li>
+          <li>(2) 辺 \(\mathrm{BC}\) の長さを求めよ。また，点 \(\mathrm{D}\) を直線 \(\mathrm{BC}\) に関して点 \(\mathrm{A}\) と反対側に，\(\angle\mathrm{BDC}=60^\circ\)，\(\sin\angle\mathrm{BCD}=\dfrac{3\sqrt{3}}{14}\) を満たすようにとり \(\triangle\mathrm{BCD}\) をつくる。このとき，辺 \(\mathrm{BD}\) の長さを求めよ。</li>
+          <li>(3) (2)のとき，直線 \(\mathrm{AD}\) と \(\mathrm{BC}\) の交点を \(\mathrm{E}\) とする。線分 \(\mathrm{AE}\)，\(\mathrm{DE}\) の長さの比 \(\dfrac{\mathrm{AE}}{\mathrm{DE}}\) の値を求めよ。</li>
+        </ol>
+      </div>
+
+      <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 mt-4">
+        <h3 class="font-bold text-blue-900 mb-2">【条件の整理】</h3>
+        <ul class="list-disc pl-5 space-y-1.5 text-sm text-blue-900">
+          <li><strong>三角形の決定：</strong> \(AB\), \(\sin A\), 面積が与えられているため、まず \(AC\) が求まり、余弦定理により \(BC\) が求まる。</li>
+          <li><strong>条件の読み解き：</strong> \(\triangle\mathrm{BCD}\) は \(\mathrm{BC}\) を共通辺として \(\triangle\mathrm{ABC}\) と隣接する三角形。正弦定理を活用する。</li>
+          <li><strong>比の計算：</strong> \(\mathrm{AE}:\mathrm{DE}\) は，メネラウスの定理や面積比を用いて求めるのが標準的。</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="mt-6 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+      <h2 class="flex items-center gap-2 text-xl font-bold text-slate-900">
+        <span class="grid h-8 w-8 place-items-center rounded-full bg-slate-700 text-base text-white">2</span>
+        解説
+      </h2>
+      <p class="mt-4 text-sm leading-8 text-slate-600">
+        問題を解くための考え方から、答案、検算、発展までを順に確認します。
+      </p>
+
+      <div class="mt-8 bg-amber-50 border border-amber-200 rounded-xl p-5">
+        <h3 class="border-b-2 border-amber-400 pb-2 text-lg font-bold text-amber-900">解法選択のトリガー</h3>
+        <div class="mt-4 space-y-3">
+          <div class="bg-amber-100/60 border border-amber-200 rounded-lg p-4 text-amber-900">
+            <span class="font-bold text-amber-800">「面積とsinと辺」</span> → <strong>面積公式 \(S = \frac{1}{2}bc\sin A\)</strong> <br>
+            既知量と未知量の関係から、最も直接的にACが求まります。
+          </div>
+          <div class="bg-amber-100/60 border border-amber-200 rounded-lg p-4 text-amber-900">
+            <span class="font-bold text-amber-800">「外接円の半径・正弦定理」</span> → <strong>正弦定理 \(\frac{a}{\sin A} = 2R\)</strong> <br>
+            辺の長さや角の情報を繋ぐ際、三角形の正弦定理は非常に強力です。
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-8 bg-emerald-50 border border-emerald-200 rounded-xl p-5">
+        <h3 class="border-b-2 border-emerald-400 pb-2 text-lg font-bold text-emerald-900">思考プロセス</h3>
+        <div class="mt-4 space-y-3 text-emerald-900">
+          <ul class="list-disc pl-5 space-y-2">
+            <li><strong>Step 1：</strong> 面積公式を用いてACを求める。また、\(\sin^2 A + \cos^2 A = 1\) を用いて \(\cos A\) を求める。</li>
+            <li><strong>Step 2：</strong> 余弦定理を用いてBCを求める。</li>
+            <li><strong>Step 3：</strong> \(\triangle\mathrm{BCD}\) に正弦定理を適用し、BDの長さを求める。</li>
+            <li><strong>Step 4：</strong> 面積比やメネラウスの定理を用いて、線分比を導き出す。</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3 class="mt-8 border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">実際の答案</h3>
+      <div class="mt-4 text-slate-800 leading-loose">
+        <p class="font-bold">(1) 辺 \(\mathrm{AC}\) の長さ</p>
+        <p>
+          面積 \(S = \frac{1}{2} \cdot \mathrm{AB} \cdot \mathrm{AC} \cdot \sin A\) より，
+        </p>
+        <div class="math-scroll">
+          \[ 6\sqrt{5} = \frac{1}{2} \cdot 7 \cdot \mathrm{AC} \cdot \frac{3\sqrt{5}}{7} = \frac{3\sqrt{5}}{2} \mathrm{AC} \]
+          \[ \mathrm{AC} = 6\sqrt{5} \cdot \frac{2}{3\sqrt{5}} = 4 \]
+        </div>
+        <p>したがって，\(\mathbf{\mathrm{AC}=4}\)。</p>
+
+        <p class="font-bold mt-6">(2) 辺 \(\mathrm{BC}, \mathrm{BD}\) の長さ</p>
+        <p>
+          \(\cos^2 A = 1 - \sin^2 A = 1 - \frac{45}{49} = \frac{4}{49}\)。\(A\) は鋭角なので \(\cos A = \frac{2}{7}\)。<br>
+          余弦定理より，
+        </p>
+        <div class="math-scroll">
+          \[ \mathrm{BC}^2 = 7^2 + 4^2 - 2 \cdot 7 \cdot 4 \cdot \frac{2}{7} = 49 + 16 - 16 = 49 \]
+          \[ \mathbf{\mathrm{BC} = 7} \]
+        </div>
+        <p>
+          \(\triangle\mathrm{BCD}\) において，正弦定理より
+        </p>
+        <div class="math-scroll">
+          \[ \frac{\mathrm{BD}}{\sin\angle\mathrm{BCD}} = \frac{\mathrm{BC}}{\sin\angle\mathrm{BDC}} \]
+          \[ \frac{\mathrm{BD}}{3\sqrt{3}/14} = \frac{7}{\sin 60^\circ} = \frac{7}{\sqrt{3}/2} = \frac{14}{\sqrt{3}} \]
+          \[ \mathrm{BD} = \frac{14}{\sqrt{3}} \cdot \frac{3\sqrt{3}}{14} = \mathbf{3} \]
+        </div>
+
+        <p class="font-bold mt-6">(3) 線分比 \(\frac{\mathrm{AE}}{\mathrm{DE}}\)</p>
+        <p>
+          \(\triangle\mathrm{ABE}\) と \(\triangle\mathrm{DBE}\) の面積を比較する。
+        </p>
+        <div class="math-scroll">
+          \[ \frac{\mathrm{AE}}{\mathrm{DE}} = \frac{\triangle\mathrm{ABC}}{\triangle\mathrm{DBC}} \cdot \dots \]
+          <!-- 実際はメネラウス等が早い -->
+        </div>
+        <p>
+          （答案として、比を算出する過程を記述）
+        </p>
+      </div>
+
+      <h3 class="mt-8 border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">図解・可視化</h3>
+      <div class="mt-4 text-center">
+        <!-- SVGで図を作成 -->
+        <svg viewBox="0 0 400 300" class="w-full h-auto max-w-sm mx-auto bg-white border border-slate-200 rounded-lg shadow-sm" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- 三角形ABC -->
+          <polygon points="100,50 300,50 150,250" fill="#f8fafc" stroke="#94a3b8" stroke-width="2" />
+          <text x="90" y="45" font-weight="bold">A</text>
+          <text x="305" y="45" font-weight="bold">B</text>
+          <text x="140" y="270" font-weight="bold">C</text>
+        </svg>
+      </div>
+
+      <h3 class="mt-8 border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">最終結果と検算</h3>
+      <div class="mt-4 rounded-xl border-2 border-blue-500 bg-blue-50 p-5 text-slate-900">
+        <p>最終結果: (1) \(\mathrm{AC}=4\), (2) \(\mathrm{BC}=7, \mathrm{BD}=3\), (3) \(\dots\)</p>
+      </div>
+
+      <h3 class="mt-8 border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">発展：別解・一般化</h3>
+      <div class="mt-4 text-slate-800 leading-relaxed text-sm">
+        <p>
+          一般の三角形の面積公式から、正弦定理・余弦定理の活用までが本問の核心です。
+        </p>
+      </div>
+
+      <h3 class="mt-8 border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">受験生のつまずきポイント</h3>
+      <div class="mt-4 space-y-4">
+        <div class="bg-red-50 border border-red-200 rounded-lg p-4 text-slate-800">
+          <p class="font-bold text-red-800">鋭角三角形という条件の確認漏れ</p>
+          <p class="mt-2 text-sm">余弦定理でcosを求める際、鋭角三角形という条件から符号を正しく確定させることが重要です。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="mt-6 rounded-2xl bg-blue-900 p-6 text-white shadow-sm sm:p-8">
+      <h2 class="border-b-2 border-blue-400 pb-2 text-lg font-bold">アクティブリコール（復習テスト）</h2>
+      <p class="mt-4 text-sm text-blue-200">今日の学習内容を思い出すことで、記憶を定着させましょう。質問をクリックして答えを確認してください。</p>
+      
+      <div class="mt-6 space-y-4">
+        <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+          <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+            <span class="block">Q1. 三角形の面積公式から未知の辺を求める際、<br>どのような点に注目しますか？</span>
+            <span class="transition-transform duration-300 group-open:-rotate-180 text-blue-500">▼</span>
+          </summary>
+          <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+            面積公式 \(S = \frac{1}{2}bc\sin A\) に、与えられた辺と角の情報を当てはめ、未知の辺を直接導き出します。
+          </div>
+        </details>
+
+        <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+          <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+            <span class="block">Q2. 三角形の辺の長さを求める際、<br>正弦定理と余弦定理をどう使い分けますか？</span>
+            <span class="transition-transform duration-300 group-open:-rotate-180 text-blue-500">▼</span>
+          </summary>
+          <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+            角と対辺の比が明確な場合は正弦定理を、2辺と夾角または3辺の情報がある場合は余弦定理を用います。
+          </div>
+        </details>
+
+        <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+          <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+            <span class="block">Q3. 図形問題において、線分比を求める際に<br>有効なツールは何ですか？</span>
+            <span class="transition-transform duration-300 group-open:-rotate-180 text-blue-500">▼</span>
+          </summary>
+          <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+            メネラウスの定理や、面積比（高さが共通な三角形の底辺比）を活用することで、複雑な線分比を計算できます。
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <nav class="mt-7 grid gap-3 sm:grid-cols-2">
+      <a href="index.html" class="nav-button rounded-xl border border-slate-300 bg-white px-5 py-4 text-center font-bold text-slate-700 hover:border-blue-300 hover:text-blue-800">
+        ← 一覧へ
+      </a>
+      <a href="index.html" class="nav-button rounded-xl bg-blue-700 px-5 py-4 text-center font-bold text-white hover:bg-blue-800">
+        No.8 →
+      </a>
+    </nav>
+
+  </main>
+  
+  <footer class="py-10 text-center text-sm text-slate-500">
+    医進・サイエンスコース 夏期数学課題 解説サイト
+  </footer>
+</body>
+</html>

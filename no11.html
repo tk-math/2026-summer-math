@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>夏期課題 No.11 三角関数 - 医進・サイエンスコース</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        MathJax = {
+            chtml: {
+                matchFontHeight: false
+            },
+            tex: {
+                inlineMath: [['\\(', '\\)']]
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body { font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif; }
+        .nav-button { transition: transform .16s ease, box-shadow .16s ease; }
+        .nav-button:hover { transform: translateY(-2px); box-shadow: 0 8px 18px rgba(15, 23, 42, .12); }
+        .math-scroll { overflow-x: auto; overflow-y: hidden; padding-bottom: 0.5rem; margin-bottom: 0.5rem; }
+    </style>
+</head>
+<body class="bg-slate-100 text-slate-800">
+    <div class="mx-auto max-w-4xl px-4 py-6 sm:px-6 lg:py-10">
+        
+        <a href="index.html" class="inline-flex items-center gap-2 text-sm font-bold text-blue-700 hover:text-blue-900">
+            ← 問題一覧へ戻る
+        </a>
+
+        <header class="mt-4 overflow-hidden rounded-3xl bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-800 text-white shadow-xl">
+            <div class="p-7 sm:p-10">
+                <span class="inline-flex items-center rounded-full bg-white/15 px-4 py-1.5 text-sm font-semibold tracking-wide text-blue-100">医進・サイエンスコース</span>
+                <div class="mt-4 flex flex-wrap items-center gap-3">
+                    <span class="rounded-lg bg-white/20 px-3 py-1 text-sm font-bold">No.11</span>
+                    <span class="rounded-full bg-amber-100 px-3 py-1 text-xs font-bold text-amber-800">標準</span>
+                </div>
+                <h1 class="mt-4 text-3xl font-bold leading-tight sm:text-4xl">三角関数</h1>
+                <div class="mt-3 text-lg text-blue-100">目標解答時間：20分</div>
+            </div>
+        </header>
+
+        <main>
+            <section class="mt-7 rounded-2xl border border-blue-100 bg-white p-6 shadow-sm sm:p-8">
+                <h2 class="flex items-center gap-2 text-xl font-bold text-blue-900">
+                    <span class="grid h-8 w-8 place-items-center rounded-full bg-blue-700 text-base text-white">1</span>
+                    問題
+                </h2>
+                
+                <div class="bg-slate-50 border border-slate-200 rounded-lg p-4 mb-4 text-slate-700 leading-relaxed mt-4">
+                    <p>関数 \(y = a\cos^2\theta + 4\sqrt{3}\sin\theta\cos\theta + 3 \cdots\cdots\) ① （\(a\)は定数）がある。また，\(\theta = \dfrac{\pi}{6}\) のとき，\(y=3\) である。</p>
+                    <ol class="list-decimal pl-6 mt-3 space-y-2">
+                        <li>\(a\) の値を求めよ。</li>
+                        <li>① を \(y = A\sin 2\theta + B\cos 2\theta + C\) （\(A, B, C\) は定数）の形に表せ。</li>
+                        <li>\(\dfrac{\pi}{4} \le \theta \le \dfrac{3}{4}\pi\) における関数①の最大値と最小値，およびそのときの \(\theta\) の値をそれぞれ求めよ。</li>
+                    </ol>
+                </div>
+
+                <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 mt-4">
+                    <h3 class="font-bold text-blue-900 mb-2">【条件の整理】</h3>
+                    <ul class="list-disc pl-5 space-y-2 text-sm text-slate-700">
+                        <li><strong>与えられた関数：</strong> \(\cos^2\theta\), \(\sin\theta\cos\theta\) という「2次の項」のみが含まれている（定数項は除く）。</li>
+                        <li><strong>通る点：</strong> \(\theta = \dfrac{\pi}{6}\) のとき \(y=3\)。これを代入することで未知の定数 \(a\) が確定する。</li>
+                        <li><strong>目標の形：</strong> (2)で \(2\theta\) の式に直すことが誘導されている。角を \(\theta\) から \(2\theta\) に「統一」し、さらに(3)で「合成」して1つの三角関数にまとめる流れである。</li>
+                        <li><strong>定義域の制限：</strong> \(\theta\) の範囲は \(\dfrac{\pi}{4} \le \theta \le \dfrac{3}{4}\pi\)。最大値・最小値を考える際、合成後の「新しい角」がどの範囲を動くのかを慎重に調べる必要がある。</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="mt-6 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+                <h2 class="flex items-center gap-2 text-xl font-bold text-slate-900">
+                    <span class="grid h-8 w-8 place-items-center rounded-full bg-slate-700 text-base text-white">2</span>
+                    解説
+                </h2>
+                <p class="mt-4 text-sm leading-8 text-slate-600">
+                    問題を解くための考え方から、答案、検算、発展までを順に確認します。
+                </p>
+
+                <div class="mt-8 bg-amber-50 border border-amber-200 rounded-xl p-5">
+                    <h3 class="border-b-2 border-amber-400 pb-2 text-lg font-bold text-amber-900">解法選択のトリガー</h3>
+                    <div class="mt-4 space-y-4">
+                        <div class="bg-amber-100/60 border border-amber-200 rounded-lg p-4">
+                            <p class="font-bold text-amber-900 text-sm">2次同次式（\(\sin^2\theta, \cos^2\theta, \sin\theta\cos\theta\) の混合）を見たら</p>
+                            <p class="mt-1 text-sm text-amber-800">
+                                <strong>「半角の公式」</strong>と<strong>「2倍角の公式」</strong>を用いて、次数を1次に下げ、角を \(2\theta\) に統一します。<br>
+                                ・\(\cos^2\theta = \dfrac{1 + \cos 2\theta}{2}\) <br>
+                                ・\(\sin\theta\cos\theta = \dfrac{\sin 2\theta}{2}\)
+                            </p>
+                        </div>
+                        <div class="bg-amber-100/60 border border-amber-200 rounded-lg p-4">
+                            <p class="font-bold text-amber-900 text-sm">\(A\sin 2\theta + B\cos 2\theta\) の形になったら</p>
+                            <p class="mt-1 text-sm text-amber-800">
+                                種類が異なる三角関数の和は、そのままでは最大・最小が分かりません。<strong>「三角関数の合成」</strong>を行って \(R\sin(2\theta + \alpha)\) の形にまとめ、波を1つにします。
+                            </p>
+                        </div>
+                        <div class="bg-amber-100/60 border border-amber-200 rounded-lg p-4">
+                            <p class="font-bold text-amber-900 text-sm">最大値・最小値を求めるときは</p>
+                            <p class="mt-1 text-sm text-amber-800">
+                                合成によってできた新しい角（例えば \(2\theta - \dfrac{\pi}{6}\)）を1つの文字とみなし、元の \(\theta\) の範囲から<strong>「新しい角の変域」</strong>を正確に求めます。単位円を描いて、その範囲内で最も高い位置（最大値）と低い位置（最小値）を探します。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-8 bg-emerald-50 border border-emerald-200 rounded-xl p-5">
+                    <h3 class="border-b-2 border-emerald-400 pb-2 text-lg font-bold text-emerald-900">思考プロセス</h3>
+                    <div class="mt-4 space-y-4">
+                        <div class="bg-emerald-100/60 border border-emerald-200 rounded-lg p-4 text-sm text-emerald-900">
+                            <strong>(1) 代入計算</strong><br>
+                            そのまま \(\theta = \dfrac{\pi}{6}\) を代入します。\(\cos\dfrac{\pi}{6} = \dfrac{\sqrt{3}}{2}\)、\(\sin\dfrac{\pi}{6} = \dfrac{1}{2}\) であることに注意して計算し、\(a\) の1次方程式を解きます。
+                        </div>
+                        <div class="bg-emerald-100/60 border border-emerald-200 rounded-lg p-4 text-sm text-emerald-900">
+                            <strong>(2) 次数下げと角の統一</strong><br>
+                            (1)で求めた \(a\) を代入し、\(\cos^2\theta\) を \(\dfrac{1+\cos 2\theta}{2}\) に、\(\sin\theta\cos\theta\) を \(\dfrac{\sin 2\theta}{2}\) に置き換えます。整理して \(A\sin 2\theta + B\cos 2\theta + C\) の形にします。
+                        </div>
+                        <div class="bg-emerald-100/60 border border-emerald-200 rounded-lg p-4 text-sm text-emerald-900">
+                            <strong>(3) 合成と変域の確認</strong><br>
+                            得られた式を \(\sin\) に合成します。合成の際、座標平面上の点 \((A, B)\) をプロットして斜辺と角度（偏角）を求めます。<br>
+                            次に、定義域 \(\dfrac{\pi}{4} \le \theta \le \dfrac{3}{4}\pi\) の各辺を「2倍して \(\alpha\) を足す（引く）」ことで、新しい角の範囲を出します。この範囲内での単位円上の \(y\) 座標の最大・最小を読み取ります。
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-10">
+                    <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">実際の答案</h3>
+                    
+                    <div class="mt-4 space-y-6 text-slate-700">
+                        <!-- (1) -->
+                        <div>
+                            <p class="font-bold">（1）</p>
+                            <p class="mt-2">
+                                \(y = a\cos^2\theta + 4\sqrt{3}\sin\theta\cos\theta + 3\) に \(\theta = \dfrac{\pi}{6}, y=3\) を代入すると，
+                            </p>
+                            <div class="math-scroll">
+                                \begin{aligned}
+                                3 &= a\cos^2\frac{\pi}{6} + 4\sqrt{3}\sin\frac{\pi}{6}\cos\frac{\pi}{6} + 3 \\
+                                3 &= a\left(\frac{\sqrt{3}}{2}\right)^2 + 4\sqrt{3}\left(\frac{1}{2}\right)\left(\frac{\sqrt{3}}{2}\right) + 3 \\
+                                3 &= \frac{3}{4}a + 4\sqrt{3} \times \frac{\sqrt{3}}{4} + 3 \\
+                                3 &= \frac{3}{4}a + 3 + 3 \\
+                                \frac{3}{4}a &= -3 \\
+                                a &= -4
+                                \end{aligned}
+                            </div>
+                            <div class="mt-2 rounded-xl border-2 border-blue-500 bg-blue-50 p-3 text-slate-900 font-bold inline-block">
+                                答: \(a = -4\)
+                            </div>
+                        </div>
+
+                        <!-- (2) -->
+                        <div class="border-t border-slate-200 pt-6">
+                            <p class="font-bold">（2）</p>
+                            <p class="mt-2">
+                                (1)より，関数①は \(y = -4\cos^2\theta + 4\sqrt{3}\sin\theta\cos\theta + 3\) である。<br>
+                                半角の公式および2倍角の公式より，
+                            </p>
+                            <div class="math-scroll">
+                                \begin{aligned}
+                                y &= -4 \left( \frac{1 + \cos 2\theta}{2} \right) + 4\sqrt{3} \left( \frac{\sin 2\theta}{2} \right) + 3 \\
+                                &= -2(1 + \cos 2\theta) + 2\sqrt{3}\sin 2\theta + 3 \\
+                                &= 2\sqrt{3}\sin 2\theta - 2\cos 2\theta + 1
+                                \end{aligned}
+                            </div>
+                            <div class="mt-2 rounded-xl border-2 border-blue-500 bg-blue-50 p-3 text-slate-900 font-bold inline-block">
+                                答: \(y = 2\sqrt{3}\sin 2\theta - 2\cos 2\theta + 1\)
+                            </div>
+                        </div>
+
+                        <!-- (3) -->
+                        <div class="border-t border-slate-200 pt-6">
+                            <p class="font-bold">（3）</p>
+                            <p class="mt-2">
+                                (2)で求めた式において，三角関数の合成を行う。<br>
+                                係数の組 \((2\sqrt{3}, -2)\) に対応する距離は \(\sqrt{(2\sqrt{3})^2 + (-2)^2} = \sqrt{12+4} = 4\)<br>
+                                偏角は \(-\dfrac{\pi}{6}\) であるから，
+                            </p>
+                            <div class="math-scroll">
+                                \begin{aligned}
+                                y &= 4 \left( \frac{\sqrt{3}}{2}\sin 2\theta - \frac{1}{2}\cos 2\theta \right) + 1 \\
+                                &= 4\sin\left(2\theta - \frac{\pi}{6}\right) + 1
+                                \end{aligned}
+                            </div>
+                            <p class="mt-4">
+                                ここで，\(\theta\) の変域は \(\dfrac{\pi}{4} \le \theta \le \dfrac{3}{4}\pi\) である。<br>
+                                新しい角 \(2\theta - \dfrac{\pi}{6}\) の変域を求める。
+                            </p>
+                            <div class="math-scroll">
+                                \begin{aligned}
+                                \frac{\pi}{4} &\le \theta \le \frac{3}{4}\pi \\
+                                \frac{\pi}{2} &\le 2\theta \le \frac{3}{2}\pi \\
+                                \frac{\pi}{2} - \frac{\pi}{6} &\le 2\theta - \frac{\pi}{6} \le \frac{3}{2}\pi - \frac{\pi}{6} \\
+                                \frac{\pi}{3} &\le 2\theta - \frac{\pi}{6} \le \frac{4}{3}\pi
+                                \end{aligned}
+                            </div>
+                            <p class="mt-4">
+                                \(\alpha = 2\theta - \dfrac{\pi}{6}\) とおくと，\(\dfrac{\pi}{3} \le \alpha \le \dfrac{4}{3}\pi\) の範囲で \(\sin\alpha\) の最大値と最小値を考えればよい。<br>
+                                単位円より，
+                            </p>
+                            <ul class="list-disc pl-5 mt-2 space-y-2">
+                                <li>
+                                    \(\alpha = \dfrac{\pi}{2}\) のとき，\(\sin\alpha\) は<strong>最大値 \(1\)</strong> をとる。<br>
+                                    このとき \(2\theta - \dfrac{\pi}{6} = \dfrac{\pi}{2} \iff 2\theta = \dfrac{2}{3}\pi \iff \theta = \dfrac{\pi}{3}\)<br>
+                                    \(y\) の最大値は \(4 \times 1 + 1 = 5\)
+                                </li>
+                                <li>
+                                    \(\alpha = \dfrac{4}{3}\pi\) のとき，\(\sin\alpha\) は<strong>最小値 \(-\dfrac{\sqrt{3}}{2}\)</strong> をとる。<br>
+                                    （※範囲内に \(\alpha = \dfrac{3}{2}\pi\) は含まれないため，右端が最小となる）<br>
+                                    このとき \(2\theta - \dfrac{\pi}{6} = \dfrac{4}{3}\pi \iff 2\theta = \dfrac{3}{2}\pi \iff \theta = \dfrac{3}{4}\pi\)<br>
+                                    \(y\) の最小値は \(4 \times \left(-\dfrac{\sqrt{3}}{2}\right) + 1 = 1 - 2\sqrt{3}\)
+                                </li>
+                            </ul>
+                            <div class="mt-4 rounded-xl border-2 border-blue-500 bg-blue-50 p-5 text-slate-900 font-bold inline-block w-full">
+                                答:<br>
+                                \(\theta = \dfrac{\pi}{3}\) のとき，最大値 \(5\)<br>
+                                \(\theta = \dfrac{3}{4}\pi\) のとき，最小値 \(1 - 2\sqrt{3}\)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-10">
+                    <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">図解・可視化（単位円上の動径の範囲）</h3>
+                    <p class="mt-4 text-sm text-slate-700 leading-relaxed">
+                        三角関数の合成を行った後は、角度を1つのかたまり \(\alpha = 2\theta - \dfrac{\pi}{6}\) とみなし、単位円上で動径がどの範囲を動くかを図示することが極めて重要です。\(\sin\alpha\) は<strong>「点\(P\)の\(y\)座標」</strong>を表します。
+                    </p>
+                    
+                    <div class="mt-4 bg-slate-50 p-4 sm:p-6 rounded-lg border border-slate-200 flex flex-col items-center">
+                        <div class="relative w-full max-w-[300px] bg-white border border-slate-200 rounded-xl shadow-sm overflow-hidden p-4 flex justify-center">
+                            <svg width="240" height="240" viewBox="-120 -120 240 240">
+                                <!-- 軸 -->
+                                <line x1="-110" y1="0" x2="110" y2="0" stroke="#cbd5e1" stroke-width="1.5" />
+                                <line x1="0" y1="-110" x2="0" y2="110" stroke="#cbd5e1" stroke-width="1.5" />
+                                <text x="100" y="-10" fill="#64748b" font-size="12">x</text>
+                                <text x="10" y="-100" fill="#64748b" font-size="12">y</text>
+
+                                <!-- 単位円 -->
+                                <circle cx="0" cy="0" r="90" fill="none" stroke="#94a3b8" stroke-width="1.5" />
+
+                                <!-- 角度の範囲の扇形 (π/3 から 4π/3) -->
+                                <!-- SVGの座標系はy軸下向きなので、y座標の符号を反転させて描画する -->
+                                <!-- 60度 (π/3): x = 90*cos(60)=45, y = -90*sin(60)=-77.94 -->
+                                <!-- 240度 (4π/3): x = 90*cos(240)=-45, y = -90*sin(240)=77.94 -->
+                                <path d="M 0 0 L 45 -77.94 A 90 90 0 0 0 -45 77.94 Z" fill="rgba(59, 130, 246, 0.15)" stroke="none" />
+                                
+                                <!-- 範囲の円弧を太線で -->
+                                <path d="M 45 -77.94 A 90 90 0 0 0 -45 77.94" fill="none" stroke="#2563eb" stroke-width="3" />
+
+                                <!-- 動径 (範囲の両端) -->
+                                <line x1="0" y1="0" x2="45" y2="-77.94" stroke="#64748b" stroke-width="1.5" stroke-dasharray="4,2" />
+                                <line x1="0" y1="0" x2="-45" y2="77.94" stroke="#64748b" stroke-width="1.5" stroke-dasharray="4,2" />
+                                
+                                <!-- 角度ラベル -->
+                                <text x="50" y="-85" fill="#334155" font-size="12" font-weight="bold">π/3</text>
+                                <text x="-60" y="95" fill="#334155" font-size="12" font-weight="bold">4π/3</text>
+
+                                <!-- 最大値と最小値のポイント -->
+                                <!-- 最大: π/2 (0, -90) -->
+                                <circle cx="0" cy="-90" r="5" fill="#ef4444" />
+                                <text x="10" y="-95" fill="#ef4444" font-size="12" font-weight="bold">最大 (y=1)</text>
+
+                                <!-- 最小: 4π/3 (-45, 77.94) -->
+                                <circle cx="-45" cy="77.94" r="5" fill="#ef4444" />
+                                <text x="-45" y="95" fill="#ef4444" font-size="12" font-weight="bold" text-anchor="middle">最小 (y=-√3/2)</text>
+                            </svg>
+                        </div>
+                        <p class="mt-4 text-sm text-slate-600 text-center">
+                            青い太線の部分が、新しい角 \(\alpha = 2\theta - \dfrac{\pi}{6}\) のとり得る範囲です。<br>
+                            この範囲内で、\(\sin\) の値（点\(P\)の高さ）が一番高くなる所と一番低くなる所を探します。
+                        </p>
+                    </div>
+                </div>
+
+                <div class="mt-10">
+                    <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">最終結果と検算</h3>
+                    
+                    <div class="mt-4 rounded-xl border-2 border-blue-500 bg-blue-50 p-5 text-slate-900">
+                        <ul class="space-y-2 font-bold">
+                            <li>(1) \(a = -4\)</li>
+                            <li>(2) \(y = 2\sqrt{3}\sin 2\theta - 2\cos 2\theta + 1\)</li>
+                            <li>(3) \(\theta = \dfrac{\pi}{3}\) で 最大値 \(5\) ， \(\theta = \dfrac{3}{4}\pi\) で 最小値 \(1 - 2\sqrt{3}\)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="mt-4 bg-slate-50 p-4 rounded-lg border border-slate-200 text-sm text-slate-700">
+                        <strong>検算ポイント：端点の代入による確認</strong><br>
+                        定義域の端点である \(\theta = \dfrac{\pi}{4}\) を (2) の式に代入して、最大・最小の範囲内に収まっているか確認します。<br>
+                        \(\theta = \dfrac{\pi}{4}\) のとき：<br>
+                        \(y = 2\sqrt{3}\sin\left(2 \cdot \dfrac{\pi}{4}\right) - 2\cos\left(2 \cdot \dfrac{\pi}{4}\right) + 1 = 2\sqrt{3}\sin\dfrac{\pi}{2} - 2\cos\dfrac{\pi}{2} + 1 = 2\sqrt{3} + 1\)<br>
+                        近似値で考えると、\(\sqrt{3} \approx 1.732\) なので、\(2\sqrt{3} + 1 \approx 4.464\)。<br>
+                        求めた最大値 \(5\) より小さく、最小値 \(1 - 2\sqrt{3} \approx -2.464\) より大きいので、整合性が取れています。
+                    </div>
+                </div>
+
+                <div class="mt-10">
+                    <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">一般化：2次の同次式について</h3>
+                    <p class="mt-4 text-sm text-slate-700 leading-relaxed">
+                        本問のように、式全体が \(\sin^2\theta, \sin\theta\cos\theta, \cos^2\theta\) の項（および定数項）で構成されているものを<strong>「\(\sin\theta, \cos\theta\) の2次の同次式（どうじしき）」</strong>と呼びます。<br>
+                        関数 \(f(\theta) = a\sin^2\theta + b\sin\theta\cos\theta + c\cos^2\theta\) は、半角の公式と2倍角の公式を用いることで、<strong>必ず \(A\sin 2\theta + B\cos 2\theta + C\) の形に変形できます。</strong><br>
+                        したがって、このパターンの式を見たら、ノータイムで「次数下げ $\rightarrow$ 2倍角への統一 $\rightarrow$ 合成」という一連の必勝ルートを思い浮かべられるようにしておきましょう。
+                    </p>
+                </div>
+
+                <div class="mt-10">
+                    <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">受験生のつまずきポイント</h3>
+                    <div class="mt-4 space-y-4">
+                        <div class="bg-red-50 border border-red-200 rounded-lg p-4">
+                            <p class="font-bold text-red-900 text-sm">半角の公式の符号・係数ミス</p>
+                            <p class="mt-1 text-sm text-red-800">
+                                (2)の式変形で、\(\cos^2\theta = \dfrac{1 - \cos 2\theta}{2}\) と符号を間違えたり、分母の2を忘れたりするミスが頻発します。\(\cos^2\theta\) は \(\dfrac{1 + \cos 2\theta}{2}\) です（\(\sin^2\theta\) がマイナス）。公式が不安なときは、\(\cos 2\theta = 2\cos^2\theta - 1\) からサッと作れるようにしておきましょう。
+                            </p>
+                        </div>
+                        <div class="bg-red-50 border border-red-200 rounded-lg p-4">
+                            <p class="font-bold text-red-900 text-sm">合成後の「角度の範囲」の確認を怠る</p>
+                            <p class="mt-1 text-sm text-red-800">
+                                合成して \(4\sin\left(2\theta - \dfrac{\pi}{6}\right) + 1\) と出た瞬間に安心してしまい、「\(\sin\) の最大は1、最小は-1だから、最大値5、最小値-3」と機械的に答えてしまう誤答が非常に多いです。(3)のように \(\theta\) に定義域がある場合は、必ず「新しい角」の範囲を不等式で作り、単位円で確認する癖をつけてください。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+            
+            <section class="mt-6 rounded-2xl bg-blue-900 p-6 text-white shadow-sm sm:p-8">
+                <h2 class="border-b-2 border-blue-400 pb-2 text-lg font-bold">アクティブリコール（復習テスト）</h2>
+                <p class="mt-4 text-sm text-blue-200">今日の学習内容を思い出すことで、記憶を定着させましょう。質問をクリックして答えを確認してください。</p>
+                
+                <div class="mt-6 space-y-3">
+                    <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                        <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                            <span>Q1. 式の中に \(\sin^2\theta\), \(\cos^2\theta\), \(\sin\theta\cos\theta\) が混在する「2次の同次式」を見たときの定石となる変形手順は何ですか？</span>
+                            <span class="transition duration-300 group-open:-rotate-180">
+                                <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                            </span>
+                        </summary>
+                        <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                            半角の公式と2倍角の公式を用いて次数を1次に下げ、すべての角を \(2\theta\) に統一します。その後、\(A\sin 2\theta + B\cos 2\theta\) の形になるため、三角関数の合成を行って最大・最小を求めます。
+                        </div>
+                    </details>
+                    
+                    <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                        <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                            <span>Q2. \(A\sin 2\theta + B\cos 2\theta\) を三角関数で合成する際、振幅（係数）\(R\) と偏角 \(\alpha\) はどのように求めますか？</span>
+                            <span class="transition duration-300 group-open:-rotate-180">
+                                <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                            </span>
+                        </summary>
+                        <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                            座標平面上に点 \((A, B)\) をプロットします。原点からの距離が振幅 \(R = \sqrt{A^2 + B^2}\) となり、\(x\)軸の正の向きと動径がなす角が偏角 \(\alpha\) となります。これにより \(R\sin(2\theta + \alpha)\) と合成できます。
+                        </div>
+                    </details>
+                    
+                    <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                        <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                            <span>Q3. 合成して \(y = R\sin(2\theta + \alpha) + C\) の形になった後、最大値・最小値を正しく求めるために必ず行うべき確認作業は何ですか？</span>
+                            <span class="transition duration-300 group-open:-rotate-180">
+                                <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                            </span>
+                        </summary>
+                        <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                            \(\theta\) の定義域から、新しい角 \(2\theta + \alpha\) の「変域」を求めることです。求めた範囲を単位円上に図示し、その範囲内で \(y\) 座標（\(\sin\) の値）が最大・最小となる角度を探して計算します。常に \(\pm 1\) をとるとは限らないため注意が必要です。
+                        </div>
+                    </details>
+                </div>
+            </section>
+            
+            <nav class="mt-7 grid gap-3 sm:grid-cols-2">
+                <a href="index.html" class="nav-button rounded-xl border border-slate-300 bg-white px-5 py-4 text-center font-bold text-slate-700 hover:border-blue-300 hover:text-blue-800">
+                    ← 一覧へ
+                </a>
+                <a href="no12.html" class="nav-button rounded-xl bg-blue-700 px-5 py-4 text-center font-bold text-white hover:bg-blue-800">
+                    No.12 →
+                </a>
+            </nav>
+        </main>
+
+        <footer class="py-10 text-center text-sm text-slate-500">
+            医進・サイエンスコース　夏期数学課題 解説サイト
+        </footer>
+    </div>
+</body>
+</html>

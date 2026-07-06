@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>夏期課題 No.12 2次関数 - 医進・サイエンスコース</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        MathJax = {
+            chtml: {
+                matchFontHeight: false
+            },
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body { font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif; }
+        .nav-button { transition: transform .16s ease, box-shadow .16s ease; }
+        .nav-button:hover { transform: translateY(-2px); box-shadow: 0 8px 18px rgba(15, 23, 42, .12); }
+        .math-scroll { overflow-x: auto; overflow-y: hidden; padding-bottom: 0.5rem; margin-bottom: 0.5rem; }
+    </style>
+</head>
+<body class="bg-slate-100 text-slate-800">
+    <div class="mx-auto max-w-4xl px-4 py-6 sm:px-6 lg:py-10">
+        
+        <a href="index.html" class="inline-flex items-center gap-2 text-sm font-bold text-blue-700 hover:text-blue-900">
+            ← 問題一覧へ戻る
+        </a>
+
+        <header class="mt-4 overflow-hidden rounded-3xl bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-800 text-white shadow-xl">
+            <div class="p-7 sm:p-10">
+                <span class="inline-flex items-center rounded-full bg-white/15 px-4 py-1.5 text-sm font-semibold tracking-wide text-blue-100">医進・サイエンスコース</span>
+                <div class="mt-4 flex flex-wrap items-center gap-3">
+                    <span class="rounded-lg bg-white/20 px-3 py-1 text-sm font-bold">No.12</span>
+                    <span class="rounded-full bg-emerald-100 px-3 py-1 text-xs font-bold text-emerald-800">基礎</span>
+                </div>
+                <h1 class="mt-4 text-3xl font-bold leading-tight sm:text-4xl">2次関数</h1>
+                <div class="mt-3 text-lg text-blue-100">目標解答時間：15分</div>
+            </div>
+        </header>
+
+        <main>
+            <section class="mt-7 rounded-2xl border border-blue-100 bg-white p-6 shadow-sm sm:p-8">
+                <h2 class="flex items-center gap-2 text-xl font-bold text-blue-900">
+                    <span class="grid h-8 w-8 place-items-center rounded-full bg-blue-700 text-base text-white">1</span>
+                    問題
+                </h2>
+                
+                <div class="bg-slate-50 border border-slate-200 rounded-lg p-4 mb-4 text-slate-700 leading-relaxed mt-4">
+                    <p>放物線 $C_1 : y = x^2 - 2x - 3$ がある。$C_1$ が $x$ 軸から切り取る線分の長さを $L$ とする。</p>
+                    <ol class="list-decimal pl-6 mt-3 space-y-2">
+                        <li>$L$ を求めよ。</li>
+                        <li>放物線 $C_1$ を $y$ 軸方向に $a$ だけ平行移動して得られる放物線を $C_2$ とする。$C_2$ が $x$ 軸から切り取る線分の長さが $\dfrac{\sqrt{3}}{2}L$ であるとき，定数 $a$ の値を求めよ。</li>
+                    </ol>
+                </div>
+
+                <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 mt-4">
+                    <h3 class="font-bold text-blue-900 mb-2">【条件の整理】</h3>
+                    <ul class="list-disc pl-5 space-y-2 text-sm text-slate-700">
+                        <li><strong>「$x$軸から切り取る線分の長さ」とは：</strong> 放物線と $x$ 軸（直線 $y=0$）との 2つの交点の間の距離を指す。交点の $x$ 座標を $\alpha, \beta$ ($\alpha < \beta$) とすると、線分の長さは $\beta - \alpha$ となる。</li>
+                        <li><strong>平行移動：</strong> グラフを $y$ 軸方向に $a$ だけ平行移動することは、方程式の $y$ を $y - a$ に置き換えること（すなわち、右辺全体に $+a$ すること）に等しい。</li>
+                        <li><strong>交点をもつ条件：</strong> 「線分を切り取る」ということは、放物線が $x$ 軸と異なる2点で交わっている状態である。したがって、2次方程式が異なる2つの実数解をもつ条件（判別式 $D > 0$）を暗黙のうちに満たしている必要がある。</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="mt-6 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+                <h2 class="flex items-center gap-2 text-xl font-bold text-slate-900">
+                    <span class="grid h-8 w-8 place-items-center rounded-full bg-slate-700 text-base text-white">2</span>
+                    解説
+                </h2>
+                <p class="mt-4 text-sm leading-8 text-slate-600">
+                    問題を解くための考え方から、答案、検算、発展までを順に確認します。
+                </p>
+
+                <div class="mt-8 bg-amber-50 border border-amber-200 rounded-xl p-5">
+                    <h3 class="border-b-2 border-amber-400 pb-2 text-lg font-bold text-amber-900">解法選択のトリガー</h3>
+                    <div class="mt-4 space-y-4">
+                        <div class="bg-amber-100/60 border border-amber-200 rounded-lg p-4">
+                            <p class="font-bold text-amber-900 text-sm">「$x$軸との交点」と来たら</p>
+                            <p class="mt-1 text-sm text-amber-800">
+                                $x$ 軸は直線 $y=0$ のことなので、<strong>「$y=0$ を代入して2次方程式を解く」</strong>のが基本手順です。解が $x=\alpha, \beta$ ($\alpha < \beta$) であれば、切り取る線分の長さは $\beta - \alpha$ となります。
+                            </p>
+                        </div>
+                        <div class="bg-amber-100/60 border border-amber-200 rounded-lg p-4">
+                            <p class="font-bold text-amber-900 text-sm">解の差 $\beta - \alpha$ を求めたいとき</p>
+                            <p class="mt-1 text-sm text-amber-800">
+                                2次方程式を<strong>「解の公式」</strong>で直接解いて、大きい解から小さい解を引くのが最もシンプルです。<br>
+                                もう一つの方法として、<strong>「解と係数の関係」</strong>を用いて $(\beta - \alpha)^2 = (\alpha + \beta)^2 - 4\alpha\beta$ から計算するアプローチもあり、式が複雑な場合はこちらが有利になります。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-8 bg-emerald-50 border border-emerald-200 rounded-xl p-5">
+                    <h3 class="border-b-2 border-emerald-400 pb-2 text-lg font-bold text-emerald-900">思考プロセス</h3>
+                    <div class="mt-4 space-y-4">
+                        <div class="bg-emerald-100/60 border border-emerald-200 rounded-lg p-4 text-sm text-emerald-900">
+                            <strong>(1) $L$ の計算</strong><br>
+                            $x^2 - 2x - 3 = 0$ は因数分解できるため、簡単に交点の座標が分かります。交点の差を計算して $L$ を求めます。
+                        </div>
+                        <div class="bg-emerald-100/60 border border-emerald-200 rounded-lg p-4 text-sm text-emerald-900">
+                            <strong>(2) 平行移動と線分の長さ</strong><br>
+                            $C_2$ の式は $y = x^2 - 2x - 3 + a$ と表せます。この式において $y=0$ とした2次方程式 $x^2 - 2x + (a - 3) = 0$ を解きます。<br>
+                            文字 $a$ が含まれていますが、ひるまずに解の公式を用いて $x$ を表し、2つの解の差を計算します。それが $\dfrac{\sqrt{3}}{2}L$ に等しいという方程式を立てて解きます。<br>
+                            根号の中身が正であること（異なる2つの実数解をもつ条件）の確認を忘れないようにします。
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-10">
+                    <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">実際の答案</h3>
+                    
+                    <div class="mt-4 space-y-6 text-slate-700">
+                        <!-- (1) -->
+                        <div>
+                            <p class="font-bold">（1）</p>
+                            <p class="mt-2">
+                                放物線 $C_1: y = x^2 - 2x - 3$ と $x$ 軸の交点の $x$ 座標は，$y=0$ として
+                            </p>
+                            <div class="math-scroll">
+                                \begin{aligned}
+                                x^2 - 2x - 3 &= 0 \\
+                                (x - 3)(x + 1) &= 0 \\
+                                x &= -1, 3
+                                \end{aligned}
+                            </div>
+                            <p class="mt-2">
+                                切り取る線分の長さ $L$ は，これらの解の差であるから
+                            </p>
+                            <div class="math-scroll">
+                                \[ L = 3 - (-1) = 4 \]
+                            </div>
+                            <div class="mt-2 rounded-xl border-2 border-blue-500 bg-blue-50 p-3 text-slate-900 font-bold inline-block">
+                                答: $L = 4$
+                            </div>
+                        </div>
+
+                        <!-- (2) -->
+                        <div class="border-t border-slate-200 pt-6">
+                            <p class="font-bold">（2）</p>
+                            <p class="mt-2">
+                                放物線 $C_1$ を $y$ 軸方向に $a$ だけ平行移動した放物線 $C_2$ の方程式は
+                            </p>
+                            <div class="math-scroll">
+                                \[ y = x^2 - 2x - 3 + a \]
+                            </div>
+                            <p class="mt-2">
+                                $C_2$ と $x$ 軸との交点の $x$ 座標は，方程式 $x^2 - 2x - 3 + a = 0$ の解である。<br>
+                                解の公式より
+                            </p>
+                            <div class="math-scroll">
+                                \begin{aligned}
+                                x &= \frac{-(-1) \pm \sqrt{(-1)^2 - 1 \cdot (-3 + a)}}{1} \\
+                                &= 1 \pm \sqrt{1 + 3 - a} \\
+                                &= 1 \pm \sqrt{4 - a}
+                                \end{aligned}
+                            </div>
+                            <p class="mt-2">
+                                $C_2$ が $x$ 軸から線分を切り取るためには，異なる2つの実数解をもつ必要があるから，根号の中身について
+                            </p>
+                            <div class="math-scroll">
+                                \[ 4 - a > 0 \iff a < 4 \cdots\cdots \text{①} \]
+                            </div>
+                            <p class="mt-2">
+                                このとき，切り取る線分の長さは $(1 + \sqrt{4-a}) - (1 - \sqrt{4-a}) = 2\sqrt{4-a}$ となる。<br>
+                                問題の条件より，この長さが $\dfrac{\sqrt{3}}{2}L$ に等しい。(1)より $L=4$ であるから，
+                            </p>
+                            <div class="math-scroll">
+                                \begin{aligned}
+                                2\sqrt{4 - a} &= \frac{\sqrt{3}}{2} \times 4 \\
+                                2\sqrt{4 - a} &= 2\sqrt{3} \\
+                                \sqrt{4 - a} &= \sqrt{3}
+                                \end{aligned}
+                            </div>
+                            <p class="mt-2">
+                                両辺を2乗して
+                            </p>
+                            <div class="math-scroll">
+                                \begin{aligned}
+                                4 - a &= 3 \\
+                                a &= 1
+                                \end{aligned}
+                            </div>
+                            <p class="mt-2">
+                                これは条件①を満たす。
+                            </p>
+                            <div class="mt-2 rounded-xl border-2 border-blue-500 bg-blue-50 p-3 text-slate-900 font-bold inline-block">
+                                答: $a = 1$
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-10">
+                    <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">図解・可視化（平行移動と切り取る線分）</h3>
+                    <p class="mt-4 text-sm text-slate-700 leading-relaxed">
+                        定数 $a$ を変化させると、放物線全体が上下に移動し、$x$ 軸から切り取る線分の長さが変化します。<br>
+                        $a$ が大きくなる（グラフが上へ移動する）ほど切り取る線分は短くなり、$a=4$ で頂点が $x$ 軸に接し長さは $0$ になります。<br>
+                        スライダーを動かして、(1)の $a=0$ のときと、(2)の $a=1$ のときの長さを視覚的に確認してみましょう。
+                    </p>
+                    
+                    <div class="mt-4 bg-slate-50 p-4 sm:p-6 rounded-lg border border-slate-200 flex flex-col items-center">
+                        <div class="w-full max-w-md mb-6 px-2">
+                            <label for="a-slider" class="block text-sm font-medium text-slate-700 mb-2">
+                                $a$ の値 (y軸方向の平行移動): <span id="a-value" class="font-bold text-blue-600 text-lg">0.0</span>
+                            </label>
+                            <input type="range" id="a-slider" min="-2" max="5" step="0.1" value="0" class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-blue-600">
+                            <div class="flex justify-between mt-2 text-xs text-slate-500">
+                                <span>-2</span>
+                                <span class="font-bold text-blue-600">a=0 (C₁)</span>
+                                <span class="font-bold text-emerald-600">a=1 (C₂)</span>
+                                <span>5</span>
+                            </div>
+                            <div class="flex justify-center gap-3 mt-4">
+                                <button id="btn-c1" class="px-4 py-1.5 bg-blue-100 hover:bg-blue-200 text-blue-700 text-sm font-semibold rounded-full transition-colors border border-blue-300">
+                                    (1) C₁に戻す (a=0)
+                                </button>
+                                <button id="btn-c2" class="px-4 py-1.5 bg-emerald-100 hover:bg-emerald-200 text-emerald-700 text-sm font-semibold rounded-full transition-colors border border-emerald-300">
+                                    (2) C₂を確認 (a=1)
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="relative w-full max-w-md bg-white border border-slate-200 rounded-xl shadow-sm overflow-hidden p-2 flex justify-center">
+                            <svg id="parabola-svg" width="400" height="300" viewBox="-4 -6 8 8" class="w-full h-auto" preserveAspectRatio="xMidYMid meet">
+                                <defs>
+                                    <!-- 座標変換: SVGのy軸は下向きだが viewBox で viewBox="-4 -6 8 8" とし、内部でyの符号を反転させて描画する -->
+                                </defs>
+                                <!-- グリッドと軸 -->
+                                <g stroke="#e2e8f0" stroke-width="0.05">
+                                    <!-- 縦線 -->
+                                    <line x1="-3" y1="-6" x2="-3" y2="2" />
+                                    <line x1="-2" y1="-6" x2="-2" y2="2" />
+                                    <line x1="-1" y1="-6" x2="-1" y2="2" />
+                                    <line x1="1" y1="-6" x2="1" y2="2" />
+                                    <line x1="2" y1="-6" x2="2" y2="2" />
+                                    <line x1="3" y1="-6" x2="3" y2="2" />
+                                    <!-- 横線 -->
+                                    <line x1="-4" y1="-5" x2="4" y2="-5" />
+                                    <line x1="-4" y1="-4" x2="4" y2="-4" />
+                                    <line x1="-4" y1="-3" x2="4" y2="-3" />
+                                    <line x1="-4" y1="-2" x2="4" y2="-2" />
+                                    <line x1="-4" y1="-1" x2="4" y2="-1" />
+                                    <line x1="-4" y1="1" x2="4" y2="1" />
+                                </g>
+                                <!-- 主軸 -->
+                                <line x1="-4" y1="0" x2="4" y2="0" stroke="#94a3b8" stroke-width="0.1" /> <!-- x軸 -->
+                                <line x1="0" y1="-6" x2="0" y2="2" stroke="#94a3b8" stroke-width="0.1" /> <!-- y軸 -->
+                                
+                                <!-- 目盛り文字 (SVG座標系の関係上、スケールや位置を調整) -->
+                                <g fill="#64748b" font-size="0.4" font-family="sans-serif">
+                                    <text x="3.6" y="0.5">x</text>
+                                    <text x="0.2" y="-5.6">y</text>
+                                    <text x="-1.1" y="0.5">-1</text>
+                                    <text x="0.9" y="0.5">1</text>
+                                    <text x="2.9" y="0.5">3</text>
+                                </g>
+
+                                <!-- 放物線 C1 (薄く表示) -->
+                                <path id="base-curve" fill="none" stroke="#cbd5e1" stroke-width="0.1" stroke-dasharray="0.1, 0.1" />
+
+                                <!-- 動く放物線 C2 -->
+                                <path id="dynamic-curve" fill="none" stroke="#2563eb" stroke-width="0.12" />
+
+                                <!-- 切り取る線分と交点マーカー -->
+                                <line id="intersect-line" x1="0" y1="0" x2="0" y2="0" stroke="#f43f5e" stroke-width="0.2" />
+                                <circle id="point-left" cx="0" cy="0" r="0.15" fill="#f43f5e" />
+                                <circle id="point-right" cx="0" cy="0" r="0.15" fill="#f43f5e" />
+                                
+                                <!-- 頂点マーカー -->
+                                <circle id="vertex-point" cx="1" cy="0" r="0.12" fill="#2563eb" />
+                                <line id="axis-line" x1="1" y1="-6" x2="1" y2="2" stroke="#2563eb" stroke-width="0.05" stroke-dasharray="0.2, 0.2" />
+                            </svg>
+                        </div>
+                        
+                        <div class="mt-4 p-3 bg-blue-100 rounded-lg text-center w-full max-w-md border border-blue-200 shadow-sm flex justify-between items-center px-6">
+                            <span class="text-sm text-slate-700 font-semibold">切り取る長さ $L'$：</span>
+                            <span id="length-display" class="text-2xl font-bold text-blue-700">4.00</span>
+                        </div>
+                        <div id="no-intersect-msg" class="hidden mt-2 text-sm font-bold text-rose-600 text-center w-full max-w-md">
+                            ※ $x$ 軸と交わらない (実数解をもたない)
+                        </div>
+                    </div>
+
+                    <script>
+                        document.addEventListener("DOMContentLoaded", function() {
+                            const slider = document.getElementById('a-slider');
+                            const aValueDisplay = document.getElementById('a-value');
+                            const dynamicCurve = document.getElementById('dynamic-curve');
+                            const baseCurve = document.getElementById('base-curve');
+                            const intersectLine = document.getElementById('intersect-line');
+                            const pointLeft = document.getElementById('point-left');
+                            const pointRight = document.getElementById('point-right');
+                            const vertexPoint = document.getElementById('vertex-point');
+                            const lengthDisplay = document.getElementById('length-display');
+                            const noIntersectMsg = document.getElementById('no-intersect-msg');
+                            
+                            const btnC1 = document.getElementById('btn-c1');
+                            const btnC2 = document.getElementById('btn-c2');
+                            
+                            // y = x^2 - 2x - 3 + a のパスを生成
+                            // SVGの座標系は下方向が+yなので、yを反転させる (-y)
+                            function generatePath(a) {
+                                let path = "";
+                                for (let x = -3; x <= 5; x += 0.1) {
+                                    const y = (x * x - 2 * x - 3 + a);
+                                    const svgY = -y; // 反転
+                                    if (svgY < -10 || svgY > 10) continue; // 描画範囲外はスキップ
+                                    const command = path === "" ? "M" : "L";
+                                    path += `${command} ${x} ${svgY} `;
+                                }
+                                return path;
+                            }
+                            
+                            // 基準となる C1 (a=0)
+                            baseCurve.setAttribute("d", generatePath(0));
+                            
+                            function updateVisualization() {
+                                const a = parseFloat(slider.value);
+                                aValueDisplay.textContent = a.toFixed(1);
+                                
+                                // 放物線の更新
+                                dynamicCurve.setAttribute("d", generatePath(a));
+                                
+                                // 頂点の更新: x=1, y=-4+a
+                                vertexPoint.setAttribute("cy", -(-4 + a));
+                                
+                                // 交点の計算 (x^2 - 2x - 3 + a = 0)
+                                const D_quarter = 1 - (-3 + a); // 4 - a
+                                
+                                if (D_quarter > 0) {
+                                    const rootD = Math.sqrt(D_quarter);
+                                    const x1 = 1 - rootD;
+                                    const x2 = 1 + rootD;
+                                    const len = x2 - x1;
+                                    
+                                    pointLeft.style.display = "block";
+                                    pointRight.style.display = "block";
+                                    intersectLine.style.display = "block";
+                                    noIntersectMsg.classList.add("hidden");
+                                    
+                                    pointLeft.setAttribute("cx", x1);
+                                    pointRight.setAttribute("cx", x2);
+                                    intersectLine.setAttribute("x1", x1);
+                                    intersectLine.setAttribute("x2", x2);
+                                    
+                                    lengthDisplay.textContent = len.toFixed(2);
+                                    
+                                    // 特定の値でテキスト表示を変える
+                                    if (Math.abs(a - 0) < 0.05) {
+                                        lengthDisplay.innerHTML = "4.00 <span class='text-sm text-slate-500 font-normal ml-2'>(= L)</span>";
+                                    } else if (Math.abs(a - 1) < 0.05) {
+                                        lengthDisplay.innerHTML = "3.46 <span class='text-sm text-slate-500 font-normal ml-2'>(= 2√3)</span>";
+                                    }
+                                } else if (D_quarter === 0) {
+                                    pointLeft.style.display = "block";
+                                    pointRight.style.display = "none";
+                                    intersectLine.style.display = "none";
+                                    noIntersectMsg.classList.add("hidden");
+                                    
+                                    pointLeft.setAttribute("cx", 1);
+                                    lengthDisplay.textContent = "0.00";
+                                } else {
+                                    pointLeft.style.display = "none";
+                                    pointRight.style.display = "none";
+                                    intersectLine.style.display = "none";
+                                    noIntersectMsg.classList.remove("hidden");
+                                    lengthDisplay.textContent = "-";
+                                }
+                            }
+                            
+                            slider.addEventListener('input', updateVisualization);
+                            
+                            btnC1.addEventListener('click', function() { slider.value = 0; updateVisualization(); });
+                            btnC2.addEventListener('click', function() { slider.value = 1; updateVisualization(); });
+                            
+                            updateVisualization(); // 初期描画
+                        });
+                    </script>
+                </div>
+
+                <div class="mt-10">
+                    <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">最終結果と検算</h3>
+                    
+                    <div class="mt-4 rounded-xl border-2 border-blue-500 bg-blue-50 p-5 text-slate-900">
+                        <ul class="space-y-2 font-bold">
+                            <li>(1) $L = 4$</li>
+                            <li>(2) $a = 1$</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="mt-4 bg-slate-50 p-4 rounded-lg border border-slate-200 text-sm text-slate-700">
+                        <strong>検算ポイント：具体的な式の代入</strong><br>
+                        (2) で求めた $a=1$ を $C_2$ の方程式に代入して確認します。<br>
+                        $C_2 : y = x^2 - 2x - 3 + 1 = x^2 - 2x - 2$<br>
+                        $x$ 軸との交点は $x^2 - 2x - 2 = 0$ より $x = 1 \pm \sqrt{1^2 - 1\cdot(-2)} = 1 \pm \sqrt{3}$。<br>
+                        切り取る線分の長さは $(1+\sqrt{3}) - (1-\sqrt{3}) = 2\sqrt{3}$。<br>
+                        一方、問題の条件である $\dfrac{\sqrt{3}}{2}L$ に $L=4$ を代入すると、$\dfrac{\sqrt{3}}{2} \times 4 = 2\sqrt{3}$。<br>
+                        両者が一致したため、求めた $a$ の値が正しいことが保証されます。
+                    </div>
+                </div>
+
+                <div class="mt-10">
+                    <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">発展・別解：解と係数の関係を用いたアプローチ</h3>
+                    <p class="mt-4 text-sm text-slate-700 leading-relaxed">
+                        2次方程式の実数解の差（線分の長さ）は、<strong>解と係数の関係</strong>を用いて一般的に処理することが非常に多いです。<br>
+                        2次方程式 $px^2 + qx + r = 0$ の2つの解を $\alpha, \beta$ とすると、解と係数の関係より<br>
+                        $\alpha + \beta = -\dfrac{q}{p}, \quad \alpha\beta = \dfrac{r}{p}$<br>
+                        解の差の2乗は、対称式の変形を用いて以下のように表せます。
+                    </p>
+                    <div class="math-scroll mt-2 bg-slate-50 p-3 rounded-lg border border-slate-200">
+                        \begin{aligned}
+                        (\beta - \alpha)^2 &= (\alpha + \beta)^2 - 4\alpha\beta \\
+                        &= \left(-\frac{q}{p}\right)^2 - 4\left(\frac{r}{p}\right) = \frac{q^2 - 4pr}{p^2}
+                        \end{aligned}
+                    </div>
+                    <p class="mt-4 text-sm text-slate-700 leading-relaxed">
+                        分子の $q^2 - 4pr$ は判別式 $D$ そのものです。したがって、切り取る線分の長さ $\ell = |\beta - \alpha|$ は、
+                    </p>
+                    <div class="math-scroll mt-2">
+                        \[ \ell = \sqrt{\frac{D}{p^2}} = \frac{\sqrt{D}}{|p|} \]
+                    </div>
+                    <p class="mt-4 text-sm text-slate-700 leading-relaxed">
+                        という公式として知られています。本問の (2) をこの知識で解くと以下のようになります。<br>
+                        $C_2 : x^2 - 2x + (a-3) = 0$ より、判別式 $D = (-2)^2 - 4 \cdot 1 \cdot (a-3) = 16 - 4a$。<br>
+                        $x^2$ の係数は $1$ なので、切り取る長さは $\sqrt{16-4a}$ となります。<br>
+                        これが $2\sqrt{3}$ に等しいから、$\sqrt{16-4a} = \sqrt{12}$。よって $16-4a = 12$ より $a=1$ と一瞬で求まります。
+                    </p>
+                </div>
+
+                <div class="mt-10">
+                    <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">受験生のつまずきポイント</h3>
+                    <div class="mt-4 space-y-4">
+                        <div class="bg-red-50 border border-red-200 rounded-lg p-4">
+                            <p class="font-bold text-red-900 text-sm">平行移動の方向と符号の取り違い</p>
+                            <p class="mt-1 text-sm text-red-800">
+                                「$y$ 軸方向に $a$ だけ平行移動」を、誤って $x$ 軸方向と捉えて $y = (x-a)^2 - 2(x-a) - 3$ としてしまうミスや、$y$ を $y+a$ に置き換えてしまい $y = x^2 - 2x - 3 - a$ と符号を逆にしてしまうミスが非常に多いです。「$y$ 方向に平行移動するときは、式の右辺にそのまま足す」と覚えておきましょう。
+                            </p>
+                        </div>
+                        <div class="bg-red-50 border border-red-200 rounded-lg p-4">
+                            <p class="font-bold text-red-900 text-sm">交点をもつ（実数解をもつ）条件の確認漏れ</p>
+                            <p class="mt-1 text-sm text-red-800">
+                                (2)において、方程式を立てて解いた結果 $a$ の値が求まっても、そもそもその $a$ の値で「放物線と $x$ 軸が2点で交わっているか（判別式 $D>0$ か）」の確認を怠る答案が散見されます。結果的に今回は満たしていましたが、無縁根（条件を満たさない解）が混ざる問題も存在するため、根号の中身 $>0$ の確認は必ず記述する癖をつけましょう。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+            
+            <section class="mt-6 rounded-2xl bg-blue-900 p-6 text-white shadow-sm sm:p-8">
+                <h2 class="border-b-2 border-blue-400 pb-2 text-lg font-bold">アクティブリコール（復習テスト）</h2>
+                <p class="mt-4 text-sm text-blue-200">今日の学習内容を思い出すことで、記憶を定着させましょう。質問をクリックして答えを確認してください。</p>
+                
+                <div class="mt-6 space-y-3">
+                    <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                        <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                            <span>Q1. 2次関数のグラフが「$x$軸から切り取る線分の長さ」を求めるには、どのような手順を踏めばよいですか？</span>
+                            <span class="transition duration-300 group-open:-rotate-180">
+                                <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                            </span>
+                        </summary>
+                        <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                            関数において $y=0$ を代入し、得られた2次方程式の実数解（$x$ 軸との交点の $x$ 座標）を求めます。その2つの解の「差（大きい方から小さい方を引いた値）」が、切り取る線分の長さになります。
+                        </div>
+                    </details>
+                    
+                    <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                        <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                            <span>Q2. 放物線 $y = f(x)$ を $y$ 軸方向に $a$ だけ平行移動した新しい放物線の方程式はどう表されますか？</span>
+                            <span class="transition duration-300 group-open:-rotate-180">
+                                <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                            </span>
+                        </summary>
+                        <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                            $y$ を $y-a$ に置き換えます。変形すると、元の関数の右辺に定数 $a$ を足して $y = f(x) + a$ となります。
+                        </div>
+                    </details>
+                    
+                    <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                        <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                            <span>Q3. 2次方程式 $px^2+qx+r=0$ の2つの解を $\alpha, \beta$ とするとき、解の差の2乗 $(\beta-\alpha)^2$ を解と係数の関係を用いて表すとどうなりますか？</span>
+                            <span class="transition duration-300 group-open:-rotate-180">
+                                <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                            </span>
+                        </summary>
+                        <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                            対称式の変形 $(\beta-\alpha)^2 = (\alpha+\beta)^2 - 4\alpha\beta$ を用います。解と係数の関係 $\alpha+\beta = -\dfrac{q}{p}$, $\alpha\beta = \dfrac{r}{p}$ を代入すると、$\dfrac{q^2 - 4pr}{p^2}$ となり、分子には判別式 $D$ が現れます。
+                        </div>
+                    </details>
+                </div>
+            </section>
+            
+            <nav class="mt-7 grid gap-3 sm:grid-cols-2">
+                <a href="index.html" class="nav-button rounded-xl border border-slate-300 bg-white px-5 py-4 text-center font-bold text-slate-700 hover:border-blue-300 hover:text-blue-800">
+                    ← 一覧へ
+                </a>
+                <a href="no13.html" class="nav-button rounded-xl bg-blue-700 px-5 py-4 text-center font-bold text-white hover:bg-blue-800">
+                    No.13 →
+                </a>
+            </nav>
+        </main>
+
+        <footer class="py-10 text-center text-sm text-slate-500">
+            医進・サイエンスコース　夏期数学課題 解説サイト
+        </footer>
+    </div>
+</body>
+</html>

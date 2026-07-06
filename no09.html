@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>夏期課題 No.9 三角関数 - 医進・サイエンスコース</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        MathJax = {
+            chtml: {
+                matchFontHeight: false
+            },
+            tex: {
+                inlineMath: [['\\(', '\\)']]
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body { font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif; }
+        .nav-button { transition: transform .16s ease, box-shadow .16s ease; }
+        .nav-button:hover { transform: translateY(-2px); box-shadow: 0 8px 18px rgba(15, 23, 42, .12); }
+        .math-scroll { overflow-x: auto; overflow-y: hidden; padding-bottom: 0.5rem; margin-bottom: 0.5rem; }
+    </style>
+</head>
+<body class="bg-slate-100 text-slate-800">
+    <div class="mx-auto max-w-4xl px-4 py-6 sm:px-6 lg:py-10">
+        
+        <a href="index.html" class="inline-flex items-center gap-2 text-sm font-bold text-blue-700 hover:text-blue-900">
+            ← 問題一覧へ戻る
+        </a>
+
+        <header class="mt-4 overflow-hidden rounded-3xl bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-800 text-white shadow-xl">
+            <div class="p-7 sm:p-10">
+                <span class="inline-flex items-center rounded-full bg-white/15 px-4 py-1.5 text-sm font-semibold tracking-wide text-blue-100">医進・サイエンスコース</span>
+                <div class="mt-4 flex flex-wrap items-center gap-3">
+                    <span class="rounded-lg bg-white/20 px-3 py-1 text-sm font-bold">No.9</span>
+                    <span class="rounded-full bg-emerald-100 px-3 py-1 text-xs font-bold text-emerald-800">基礎</span>
+                </div>
+                <h1 class="mt-4 text-3xl font-bold leading-tight sm:text-4xl">三角関数</h1>
+                <div class="mt-3 text-lg text-blue-100">目標解答時間：20分</div>
+            </div>
+        </header>
+
+        <main>
+            <section class="mt-7 rounded-2xl border border-blue-100 bg-white p-6 shadow-sm sm:p-8">
+                <h2 class="flex items-center gap-2 text-xl font-bold text-blue-900">
+                    <span class="grid h-8 w-8 place-items-center rounded-full bg-blue-700 text-base text-white">1</span>
+                    問題
+                </h2>
+                
+                <div class="bg-slate-50 border border-slate-200 rounded-lg p-4 mb-4 text-slate-700 leading-relaxed mt-4">
+                    <p>\(0 \le x < 2\pi\) で定義された\(x\)の関数 \(y=\dfrac{3}{2}\cos 2x - 4\sin x + \dfrac{3}{2}\) がある。</p>
+                    <ol class="list-decimal pl-6 mt-3 space-y-2">
+                        <li>\(x=\dfrac{\pi}{2}\) のとき，\(y\)の値を求めよ。</li>
+                        <li>\(t=\sin x\) とおく。\(0 \le x < 2\pi\) のとき，\(t\)のとり得る値の範囲を求めよ。また，\(y\)を\(t\)の式で表せ。</li>
+                        <li>関数\(y\)の値域を求めよ。また，\(x\)の方程式 \(y-4=0\) の解の個数を求めよ。</li>
+                    </ol>
+                </div>
+
+                <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 mt-4">
+                    <h3 class="font-bold text-blue-900 mb-2">【条件の整理】</h3>
+                    <ul class="list-disc pl-5 space-y-2 text-sm text-slate-700">
+                        <li><strong>関数式：</strong> \(\cos 2x\) と \(\sin x\) が混在している。種類（\(\sin, \cos\)）と角（\(x, 2x\)）を統一することが第一歩。</li>
+                        <li><strong>定義域：</strong> \(0 \le x < 2\pi\)。この範囲内で \(\sin x\) がとる値の範囲を考える。</li>
+                        <li><strong>変数の置き換え：</strong> \(t = \sin x\)。文字を置き換えたら、必ず新しい文字の定義域（範囲）を確認する。</li>
+                        <li><strong>解の個数の対応：</strong> \(t\) の値1つにつき、\(x\) が何個存在するかは \(t\) の値によって異なる。単位円上で \(\sin x = t\) となる交点の数を考える。</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="mt-6 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+                <h2 class="flex items-center gap-2 text-xl font-bold text-slate-900">
+                    <span class="grid h-8 w-8 place-items-center rounded-full bg-slate-700 text-base text-white">2</span>
+                    解説
+                </h2>
+                <p class="mt-4 text-sm leading-8 text-slate-600">
+                    問題を解くための考え方から、答案、検算、発展までを順に確認します。
+                </p>
+
+                <div class="mt-8 bg-amber-50 border border-amber-200 rounded-xl p-5">
+                    <h3 class="border-b-2 border-amber-400 pb-2 text-lg font-bold text-amber-900">解法選択のトリガー</h3>
+                    <div class="mt-4 space-y-4">
+                        <div class="bg-amber-100/60 border border-amber-200 rounded-lg p-4">
+                            <p class="font-bold text-amber-900 text-sm">角と関数がバラバラな式を見たら</p>
+                            <p class="mt-1 text-sm text-amber-800">
+                                <strong>「角の統一」</strong>と<strong>「関数の統一」</strong>を行います。本問では \(2x\) を \(x\) に直すため、2倍角の公式を使います。さらに、式の中に \(\sin x\) があるため、\(\cos 2x = 1 - 2\sin^2 x\) を選択し、全体を \(\sin x\) だけの式に統一します。
+                            </p>
+                        </div>
+                        <div class="bg-amber-100/60 border border-amber-200 rounded-lg p-4">
+                            <p class="font-bold text-amber-900 text-sm">文字の置き換え（\(t = \sin x\)）を行ったら</p>
+                            <p class="mt-1 text-sm text-amber-800">
+                                何かを別の文字で置いたら、<strong>必ずその新しい文字の「変域（とり得る値の範囲）」を明記</strong>します。これを忘れると、最大値・最小値や解の個数を間違える原因になります。
+                            </p>
+                        </div>
+                        <div class="bg-amber-100/60 border border-amber-200 rounded-lg p-4">
+                            <p class="font-bold text-amber-900 text-sm">三角方程式の解の個数と来たら</p>
+                            <p class="mt-1 text-sm text-amber-800">
+                                置き換えた文字 \(t\) の個数と、元の文字 \(x\) の個数は必ずしも「1対1」ではありません。\(t=\sin x\) の場合、\(t=\pm 1\) のときは \(x\) は1個ですが、\(-1 < t < 1\) のときは \(x\) は2個存在します。単位円を描いて視覚的に確認する習慣をつけましょう。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-8 bg-emerald-50 border border-emerald-200 rounded-xl p-5">
+                    <h3 class="border-b-2 border-emerald-400 pb-2 text-lg font-bold text-emerald-900">思考プロセス</h3>
+                    <div class="mt-4 space-y-4">
+                        <div class="bg-emerald-100/60 border border-emerald-200 rounded-lg p-4 text-sm text-emerald-900">
+                            <strong>(1)の計算方針</strong><br>
+                            直接 \(x = \dfrac{\pi}{2}\) を代入して計算します。\(\cos\left(2 \cdot \dfrac{\pi}{2}\right) = \cos \pi\) となることに注意しましょう。
+                        </div>
+                        <div class="bg-emerald-100/60 border border-emerald-200 rounded-lg p-4 text-sm text-emerald-900">
+                            <strong>(2)の変形方針</strong><br>
+                            \(0 \le x < 2\pi\) なので、\(\sin x\) のグラフや単位円を思い浮かべれば、\(t\) の範囲は \(-1 \le t \le 1\) とすぐにわかります。<br>
+                            次に式変形は \(\cos 2x = 1 - 2\sin^2 x = 1 - 2t^2\) を用いて代入し、\(t\) の2次関数として整理します。
+                        </div>
+                        <div class="bg-emerald-100/60 border border-emerald-200 rounded-lg p-4 text-sm text-emerald-900">
+                            <strong>(3)の値域と解の個数の数え方</strong><br>
+                            (2)で得た \(y\) (\(t\) の2次関数) の値域を、定義域 \(-1 \le t \le 1\) の下で求めます。平方完成して頂点と端点の値を確認します。<br>
+                            方程式 \(y-4=0\) すなわち \(y=4\) の解の個数は、まず2次方程式を解いて \(t\) の値を求めます。得られた \(t\) の値それぞれについて、\(-1 \le t \le 1\) の範囲に入っているかを確認し、入っている場合はその \(t\) に対する \(x\) の個数をカウントして合計します。
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-10">
+                    <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">実際の答案</h3>
+                    
+                    <div class="mt-4 space-y-6 text-slate-700">
+                        <!-- (1) -->
+                        <div>
+                            <p class="font-bold">（1）</p>
+                            <p class="mt-2">
+                                \(x=\dfrac{\pi}{2}\) のとき，
+                            </p>
+                            <div class="math-scroll">
+                                \begin{aligned}
+                                y &= \frac{3}{2}\cos\left(2 \cdot \frac{\pi}{2}\right) - 4\sin\frac{\pi}{2} + \frac{3}{2} \\
+                                &= \frac{3}{2}\cos\pi - 4\sin\frac{\pi}{2} + \frac{3}{2} \\
+                                &= \frac{3}{2}(-1) - 4(1) + \frac{3}{2} \\
+                                &= -\frac{3}{2} - 4 + \frac{3}{2} \\
+                                &= -4
+                                \end{aligned}
+                            </div>
+                            <div class="mt-2 rounded-xl border-2 border-blue-500 bg-blue-50 p-3 text-slate-900 font-bold inline-block">
+                                答: \(y = -4\)
+                            </div>
+                        </div>
+
+                        <!-- (2) -->
+                        <div class="border-t border-slate-200 pt-6">
+                            <p class="font-bold">（2）</p>
+                            <p class="mt-2">
+                                \(0 \le x < 2\pi\) において，\(\sin x\) のとり得る値の範囲は \(-1 \le \sin x \le 1\) である。<br>
+                                \(t = \sin x\) より，\(t\) のとり得る値の範囲は
+                            </p>
+                            <div class="math-scroll">
+                                \[ -1 \le t \le 1 \]
+                            </div>
+                            <p class="mt-2">
+                                2倍角の公式より \(\cos 2x = 1 - 2\sin^2 x = 1 - 2t^2\) であるから，\(y\) を \(t\) で表すと
+                            </p>
+                            <div class="math-scroll">
+                                \begin{aligned}
+                                y &= \frac{3}{2}(1 - 2t^2) - 4t + \frac{3}{2} \\
+                                &= \frac{3}{2} - 3t^2 - 4t + \frac{3}{2} \\
+                                &= -3t^2 - 4t + 3
+                                \end{aligned}
+                            </div>
+                            <div class="mt-2 rounded-xl border-2 border-blue-500 bg-blue-50 p-3 text-slate-900 font-bold inline-block">
+                                答: \(t\)の範囲は \(-1 \le t \le 1\)，式は \(y = -3t^2 - 4t + 3\)
+                            </div>
+                        </div>
+
+                        <!-- (3) -->
+                        <div class="border-t border-slate-200 pt-6">
+                            <p class="font-bold">（3）</p>
+                            <p class="mt-2">
+                                \(y\) の式を平方完成すると，
+                            </p>
+                            <div class="math-scroll">
+                                \begin{aligned}
+                                y &= -3\left(t^2 + \frac{4}{3}t\right) + 3 \\
+                                &= -3\left(t + \frac{2}{3}\right)^2 + 3\left(\frac{2}{3}\right)^2 + 3 \\
+                                &= -3\left(t + \frac{2}{3}\right)^2 + \frac{4}{3} + \frac{9}{3} \\
+                                &= -3\left(t + \frac{2}{3}\right)^2 + \frac{13}{3}
+                                \end{aligned}
+                            </div>
+                            <p class="mt-2">
+                                \(t\) の範囲は \(-1 \le t \le 1\) であるから，関数 \(y\) は<br>
+                                \(t = -\dfrac{2}{3}\) のとき 最大値 \(\dfrac{13}{3}\)<br>
+                                \(t = 1\) のとき 最小値 \(-3(1)^2 - 4(1) + 3 = -4\)<br>
+                                をとる。（\(t = -1\) のときは \(y = -3(-1)^2 - 4(-1) + 3 = 4\) である。）<br>
+                                したがって，値域は
+                            </p>
+                            <div class="math-scroll">
+                                \[ -4 \le y \le \frac{13}{3} \]
+                            </div>
+                            
+                            <p class="mt-4">
+                                次に，方程式 \(y-4=0\) すなわち \(y=4\) の解を求める。<br>
+                                \(-3t^2 - 4t + 3 = 4\) より
+                            </p>
+                            <div class="math-scroll">
+                                \begin{aligned}
+                                3t^2 + 4t + 1 &= 0 \\
+                                (3t + 1)(t + 1) &= 0 \\
+                                t &= -1, -\frac{1}{3}
+                                \end{aligned}
+                            </div>
+                            <p class="mt-2">
+                                これらはともに \(-1 \le t \le 1\) を満たす。<br>
+                                \(0 \le x < 2\pi\) において，\(\sin x = t\) を満たす \(x\) の個数を調べる。
+                            </p>
+                            <ul class="list-disc pl-5 mt-2 space-y-1">
+                                <li>\(t = -1\) （すなわち \(\sin x = -1\)）のとき，\(x = \dfrac{3}{2}\pi\) の <strong>1個</strong></li>
+                                <li>\(t = -\dfrac{1}{3}\) （すなわち \(\sin x = -\dfrac{1}{3}\)）のとき，\(-1 < t < 1\) より \(x\) は <strong>2個</strong>存在する。</li>
+                            </ul>
+                            <p class="mt-2">
+                                したがって，求める解の個数は \(1 + 2 = 3\)（個）である。
+                            </p>
+                            <div class="mt-2 rounded-xl border-2 border-blue-500 bg-blue-50 p-3 text-slate-900 font-bold inline-block">
+                                答: 値域は \(-4 \le y \le \dfrac{13}{3}\)，解の個数は 3個
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-10">
+                    <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">図解・可視化（定数分離と解の個数）</h3>
+                    <p class="mt-4 text-sm text-slate-700 leading-relaxed">
+                        方程式 \(y = k\)（本問では \(k=4\)）の解の個数は、\(t\) の2次関数のグラフと直線 \(y=k\) の交点の位置によって決まります。<br>
+                        グラフの<strong>実線部分</strong>が \(t\) のとり得る範囲 (\(-1 \le t \le 1\)) です。<br>
+                        スライダーを動かして直線 \(y=k\) を上下させ、交点の位置に応じて \(x\) の個数がどう変化するか確認してみましょう。
+                    </p>
+                    
+                    <div class="mt-4 bg-slate-50 p-4 sm:p-6 rounded-lg border border-slate-200 flex flex-col items-center">
+                        <div class="w-full max-w-md mb-6 px-2">
+                            <label for="k-slider" class="block text-sm font-medium text-slate-700 mb-2">
+                                \(y = k\) の値: <span id="k-value" class="font-bold text-blue-600 text-lg">4.0</span>
+                            </label>
+                            <input type="range" id="k-slider" min="-5" max="5" step="0.1" value="4" class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-blue-600">
+                            <div class="flex justify-between mt-2 text-xs text-slate-500">
+                                <span>-5</span>
+                                <span>0</span>
+                                <span>5</span>
+                            </div>
+                            <div class="flex justify-center mt-3">
+                                <button id="btn-reset" class="px-4 py-1.5 bg-blue-100 hover:bg-blue-200 text-blue-700 text-sm font-semibold rounded-full transition-colors border border-blue-300">
+                                    問(3)の y=4 にセット
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="relative w-full max-w-md bg-white border border-slate-200 rounded-xl shadow-sm overflow-hidden p-2 flex justify-center">
+                            <!-- SVG Canvas -->
+                            <svg id="graph-svg" width="400" height="300" viewBox="0 0 400 300" class="w-full h-auto">
+                                <defs>
+                                    <clipPath id="graph-clip">
+                                        <!-- t=-1 (x=100) から t=1 (x=300) の範囲 -->
+                                        <rect x="100" y="0" width="200" height="300" />
+                                    </clipPath>
+                                </defs>
+                                <!-- 背景グリッド -->
+                                <g stroke="#e2e8f0" stroke-width="1">
+                                    <line x1="0" y1="50" x2="400" y2="50" /> <!-- y=5 -->
+                                    <line x1="0" y1="150" x2="400" y2="150" /> <!-- y=0 -->
+                                    <line x1="0" y1="250" x2="400" y2="250" /> <!-- y=-5 -->
+                                    <line x1="100" y1="0" x2="100" y2="300" /> <!-- t=-1 -->
+                                    <line x1="200" y1="0" x2="200" y2="300" /> <!-- t=0 -->
+                                    <line x1="300" y1="0" x2="300" y2="300" /> <!-- t=1 -->
+                                </g>
+                                
+                                <!-- 軸ラベル -->
+                                <text x="380" y="145" fill="#64748b" font-size="12">t</text>
+                                <text x="205" y="15" fill="#64748b" font-size="12">y</text>
+                                <text x="100" y="165" fill="#64748b" font-size="12" text-anchor="middle">-1</text>
+                                <text x="300" y="165" fill="#64748b" font-size="12" text-anchor="middle">1</text>
+
+                                <!-- tの範囲のハイライト -->
+                                <rect x="100" y="0" width="200" height="300" fill="rgba(59, 130, 246, 0.05)" />
+
+                                <!-- 関数グラフ (破線：定義域外) -->
+                                <!-- y = -3t^2 - 4t + 3 -->
+                                <!-- X(t) = 200 + 100t,  Y(y) = 150 - 20y -->
+                                <path id="curve-dashed" fill="none" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4,4" />
+                                
+                                <!-- 関数グラフ (実線：定義域内) -->
+                                <path id="curve-solid" fill="none" stroke="#2563eb" stroke-width="3" clip-path="url(#graph-clip)" />
+
+                                <!-- 最大値・端点のマーカー -->
+                                <circle cx="133.3" cy="63.3" r="3" fill="#2563eb" /> <!-- 頂点 (-2/3, 13/3) -->
+                                <circle cx="100" cy="70" r="4" fill="#2563eb" /> <!-- 端点 (-1, 4) -->
+                                <circle cx="300" cy="230" r="4" fill="#2563eb" /> <!-- 端点 (1, -4) -->
+
+                                <!-- 動的要素 (直線 y=k と交点) -->
+                                <g id="dynamic-elements"></g>
+                            </svg>
+                        </div>
+                        
+                        <div class="mt-4 p-3 bg-blue-100 rounded-lg text-center w-full max-w-md border border-blue-200 shadow-sm">
+                            <span class="text-sm text-slate-700 font-semibold">方程式の解 \(x\) は合計：</span>
+                            <span id="total-count" class="text-2xl font-bold text-blue-700 ml-2">0個</span>
+                        </div>
+                    </div>
+
+                    <script>
+                        document.addEventListener("DOMContentLoaded", function() {
+                            const slider = document.getElementById('k-slider');
+                            const kValueDisplay = document.getElementById('k-value');
+                            const btnReset = document.getElementById('btn-reset');
+                            const dynamicElements = document.getElementById('dynamic-elements');
+                            const totalCountDisplay = document.getElementById('total-count');
+                            
+                            // グラフ描画用関数
+                            function mapX(t) { return 200 + t * 100; }
+                            function mapY(y) { return 150 - y * 20; }
+                            
+                            // グラフのパスを生成 (-1.5 <= t <= 1.5)
+                            function generatePath() {
+                                let path = "";
+                                for (let t = -1.5; t <= 1.5; t += 0.02) {
+                                    const y = -3 * t * t - 4 * t + 3;
+                                    const command = (t === -1.5) ? "M" : "L";
+                                    path += `${command} ${mapX(t)} ${mapY(y)} `;
+                                }
+                                document.getElementById('curve-dashed').setAttribute("d", path);
+                                document.getElementById('curve-solid').setAttribute("d", path);
+                            }
+                            generatePath();
+                            
+                            function updateVisualization() {
+                                const k = parseFloat(slider.value);
+                                kValueDisplay.textContent = k.toFixed(1);
+                                
+                                let svgContent = '';
+                                let totalXCount = 0;
+                                
+                                // 直線 y = k
+                                const yPos = mapY(k);
+                                svgContent += `<line x1="0" y1="${yPos}" x2="400" y2="${yPos}" stroke="#f43f5e" stroke-width="2" />`;
+                                svgContent += `<text x="10" y="${yPos - 5}" fill="#f43f5e" font-size="12" font-weight="bold">y=${k.toFixed(1)}</text>`;
+                                
+                                // 方程式 3t^2 + 4t + (k - 3) = 0 の解
+                                const D = 16 - 12 * (k - 3); // 52 - 12k
+                                
+                                if (D >= 0) {
+                                    let t1 = (-4 - Math.sqrt(D)) / 6;
+                                    let t2 = (-4 + Math.sqrt(D)) / 6;
+                                    
+                                    // 浮動小数の誤差を補正 (k=4 のとき t=-1 になるように)
+                                    if (Math.abs(k - 4.0) < 0.01) { t1 = -1; t2 = -1/3; }
+                                    if (Math.abs(k - (-4.0)) < 0.01) { t1 = -5/3; t2 = 1; }
+                                    if (Math.abs(D) < 0.001) { t1 = t2 = -2/3; } // 重解
+
+                                    const solutions = D > 0.001 ? [t1, t2] : [t1];
+                                    
+                                    solutions.forEach(t => {
+                                        // 定義域 -1 <= t <= 1 の中にあるか
+                                        if (t >= -1.001 && t <= 1.001) {
+                                            const cx = mapX(t);
+                                            let xCount = 0;
+                                            
+                                            // 誤差を考慮して t=±1 を判定
+                                            if (Math.abs(t - 1) < 0.01 || Math.abs(t - (-1)) < 0.01) {
+                                                xCount = 1;
+                                            } else if (t > -1 && t < 1) {
+                                                xCount = 2;
+                                            }
+                                            
+                                            totalXCount += xCount;
+                                            
+                                            // 交点マーカー
+                                            svgContent += `<circle cx="${cx}" cy="${yPos}" r="6" fill="#f43f5e" stroke="#fff" stroke-width="2" />`;
+                                            // 下ろす垂線
+                                            svgContent += `<line x1="${cx}" y1="${yPos}" x2="${cx}" y2="150" stroke="#f43f5e" stroke-dasharray="3,3" stroke-width="1.5" />`;
+                                            // tの値
+                                            svgContent += `<text x="${cx}" y="145" fill="#f43f5e" font-size="11" text-anchor="middle" dominant-baseline="auto" class="bg-white/80">t≈${t.toFixed(2)}</text>`;
+                                            
+                                            // 個数の吹き出し
+                                            svgContent += `
+                                                <g transform="translate(${cx}, ${yPos - 25})">
+                                                    <rect x="-30" y="-15" width="60" height="22" rx="4" fill="#f43f5e" />
+                                                    <polygon points="-5,7 5,7 0,13" fill="#f43f5e" />
+                                                    <text x="0" y="0" fill="#ffffff" font-size="12" font-weight="bold" text-anchor="middle" dominant-baseline="middle">xは${xCount}個</text>
+                                                </g>
+                                            `;
+                                        }
+                                    });
+                                }
+                                
+                                dynamicElements.innerHTML = svgContent;
+                                totalCountDisplay.textContent = totalXCount + "個";
+                            }
+                            
+                            slider.addEventListener('input', updateVisualization);
+                            
+                            btnReset.addEventListener('click', function() {
+                                slider.value = 4.0;
+                                updateVisualization();
+                            });
+                            
+                            updateVisualization(); // 初期描画
+                        });
+                    </script>
+                </div>
+
+                <div class="mt-10">
+                    <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">最終結果と検算</h3>
+                    
+                    <div class="mt-4 rounded-xl border-2 border-blue-500 bg-blue-50 p-5 text-slate-900">
+                        <ul class="space-y-2 font-bold">
+                            <li>(1) \(y = -4\)</li>
+                            <li>(2) \(-1 \le t \le 1\)， \(y = -3t^2 - 4t + 3\)</li>
+                            <li>(3) 値域：\(-4 \le y \le \dfrac{13}{3}\)， 解の個数：3個</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="mt-4 bg-slate-50 p-4 rounded-lg border border-slate-200 text-sm text-slate-700">
+                        <strong>検算ポイント：(1)の活用と境界条件の確認</strong><br>
+                        (1)で \(x = \dfrac{\pi}{2}\) のとき \(y=-4\) であることを計算しました。このとき \(t = \sin\dfrac{\pi}{2} = 1\) です。<br>
+                        (2)で求めた式に \(t=1\) を代入すると \(y = -3(1)^2 - 4(1) + 3 = -4\) となり、(1)の結果と完全に一致します。これにより、2倍角の公式を用いた式変形が正しかったことが確認できます。<br>
+                        また、\(t=-1\) のとき \(y = -3(1) - 4(-1) + 3 = 4\) となります。方程式 \(y=4\) の解の一つとして \(t=-1\) が出てきたのは、この端点での値と対応しています。
+                    </div>
+                </div>
+
+                <div class="mt-10">
+                    <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">一般化：解の個数問題の全体像</h3>
+                    <p class="mt-4 text-sm text-slate-700 leading-relaxed">
+                        本問の(3)では \(y=4\) の解の個数のみを問われましたが、難関大では「方程式 \(y=k\) の解が4個となる定数 \(k\) の範囲を求めよ」といった形で<strong>定数分離法</strong>を用いた実数解の配置問題として一般化されて出題されます。<br>
+                        上の「図解・可視化」のスライダーを動かしてわかる通り、\(t\) の2次関数と直線 \(y=k\) の交点のうち、\(-1 < t < 1\) にある交点は「2個」分の働きをし、\(t = \pm 1\) にある交点は「1個」分の働きをします。<br>
+                        例えば、\(k\) が \(-4 < k < 4\) の範囲にあれば、交点は \(-1 < t < 1\) の範囲に2つ存在するため、\(x\) の個数は \(2+2 = 4\)個 となることが直感的に理解できます。このような「文字の置き換えと個数の対応」は、対数関数（\(t=2^x\)など）でも頻出のテーマです。
+                    </p>
+                </div>
+
+                <div class="mt-10">
+                    <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">受験生のつまずきポイント</h3>
+                    <div class="mt-4 space-y-4">
+                        <div class="bg-red-50 border border-red-200 rounded-lg p-4">
+                            <p class="font-bold text-red-900 text-sm">2倍角の公式の変形ミス</p>
+                            <p class="mt-1 text-sm text-red-800">
+                                \(\cos 2x = \cos^2 x - \sin^2 x\) をそのまま代入してしまい、\(\cos^2 x\) を \(\sin^2 x\) に直す手間を増やしたり、符号を間違えたりするミスが多発します。式中に \(\sin x\) があるなら、最初から \(\cos 2x = 1 - 2\sin^2 x\) を選択しましょう。
+                            </p>
+                        </div>
+                        <div class="bg-red-50 border border-red-200 rounded-lg p-4">
+                            <p class="font-bold text-red-900 text-sm">「\(t\)の個数＝\(x\)の個数」と勘違いする</p>
+                            <p class="mt-1 text-sm text-red-800">
+                                (3)で2次方程式を解いて \(t = -1, -\dfrac{1}{3}\) が出た時点で安心して、「解は2個」と答えてしまう誤答が後を絶ちません。\(t\) はあくまで置き換えた仮の文字であり、最後に必ず「単位円上で \(x\) が何個あるか」を確認するステップを踏んでください。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+            
+            <section class="mt-6 rounded-2xl bg-blue-900 p-6 text-white shadow-sm sm:p-8">
+                <h2 class="border-b-2 border-blue-400 pb-2 text-lg font-bold">アクティブリコール（復習テスト）</h2>
+                <p class="mt-4 text-sm text-blue-200">今日の学習内容を思い出すことで、記憶を定着させましょう。質問をクリックして答えを確認してください。</p>
+                
+                <div class="mt-6 space-y-3">
+                    <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                        <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                            <span>Q1. 式の中に \(\cos 2x\) と \(\sin x\) が混ざっているとき、最初に行うべき式変形は何ですか？</span>
+                            <span class="transition duration-300 group-open:-rotate-180">
+                                <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                            </span>
+                        </summary>
+                        <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                            2倍角の公式を用いて、種類と角を統一します。本問のように \(\sin x\) がある場合は、\(\cos 2x = 1 - 2\sin^2 x\) を用いて式全体を \(\sin\) のみに統一します。
+                        </div>
+                    </details>
+                    
+                    <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                        <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                            <span>Q2. 変数変換 \(t = \sin x\) を行った直後に、答案に必ず書かなければならないことは何ですか？</span>
+                            <span class="transition duration-300 group-open:-rotate-180">
+                                <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                            </span>
+                        </summary>
+                        <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                            新しい変数 \(t\) の「とり得る値の範囲（変域）」です。\(0 \le x < 2\pi\) の場合、単位円を考えて \(-1 \le t \le 1\) と必ず明記します。これがないと最大値や最小値を正しく求められません。
+                        </div>
+                    </details>
+                    
+                    <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                        <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                            <span>Q3. \(0 \le x < 2\pi\) において、\(\sin x = t\) を満たす \(x\) の個数は、\(t\) の値によってどう変化しますか？</span>
+                            <span class="transition duration-300 group-open:-rotate-180">
+                                <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                            </span>
+                        </summary>
+                        <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                            \(t = 1\) または \(t = -1\) のときは \(x\) は1個です。<br>
+                            \(-1 < t < 1\) のときは \(x\) は2個存在します。（範囲外の \(t > 1, t < -1\) のときは0個です。）
+                        </div>
+                    </details>
+                </div>
+            </section>
+            
+            <nav class="mt-7 grid gap-3 sm:grid-cols-2">
+                <a href="index.html" class="nav-button rounded-xl border border-slate-300 bg-white px-5 py-4 text-center font-bold text-slate-700 hover:border-blue-300 hover:text-blue-800">
+                    ← 一覧へ
+                </a>
+                <a href="no10.html" class="nav-button rounded-xl bg-blue-700 px-5 py-4 text-center font-bold text-white hover:bg-blue-800">
+                    No.10 →
+                </a>
+            </nav>
+        </main>
+
+        <footer class="py-10 text-center text-sm text-slate-500">
+            医進・サイエンスコース　夏期数学課題 解説サイト
+        </footer>
+    </div>
+</body>
+</html>

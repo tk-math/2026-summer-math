@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>夏期課題 No.10 場合の数と確率 - 医進・サイエンスコース</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        MathJax = {
+            chtml: {
+                matchFontHeight: false
+            },
+            tex: {
+                inlineMath: [['\\(', '\\)']]
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body { font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif; }
+        .nav-button { transition: transform .16s ease, box-shadow .16s ease; }
+        .nav-button:hover { transform: translateY(-2px); box-shadow: 0 8px 18px rgba(15, 23, 42, .12); }
+        .math-scroll { overflow-x: auto; overflow-y: hidden; padding-bottom: 0.5rem; margin-bottom: 0.5rem; }
+    </style>
+</head>
+<body class="bg-slate-100 text-slate-800">
+    <div class="mx-auto max-w-4xl px-4 py-6 sm:px-6 lg:py-10">
+        
+        <a href="index.html" class="inline-flex items-center gap-2 text-sm font-bold text-blue-700 hover:text-blue-900">
+            ← 問題一覧へ戻る
+        </a>
+
+        <header class="mt-4 overflow-hidden rounded-3xl bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-800 text-white shadow-xl">
+            <div class="p-7 sm:p-10">
+                <span class="inline-flex items-center rounded-full bg-white/15 px-4 py-1.5 text-sm font-semibold tracking-wide text-blue-100">医進・サイエンスコース</span>
+                <div class="mt-4 flex flex-wrap items-center gap-3">
+                    <span class="rounded-lg bg-white/20 px-3 py-1 text-sm font-bold">No.10</span>
+                    <span class="rounded-full bg-amber-100 px-3 py-1 text-xs font-bold text-amber-800">標準</span>
+                </div>
+                <h1 class="mt-4 text-3xl font-bold leading-tight sm:text-4xl">場合の数と確率</h1>
+                <div class="mt-3 text-lg text-blue-100">目標解答時間：25分</div>
+            </div>
+        </header>
+
+        <main>
+            <section class="mt-7 rounded-2xl border border-blue-100 bg-white p-6 shadow-sm sm:p-8">
+                <h2 class="flex items-center gap-2 text-xl font-bold text-blue-900">
+                    <span class="grid h-8 w-8 place-items-center rounded-full bg-blue-700 text-base text-white">1</span>
+                    問題
+                </h2>
+                
+                <div class="bg-slate-50 border border-slate-200 rounded-lg p-4 mb-4 text-slate-700 leading-relaxed mt-4">
+                    <p>赤色，青色，黄色，白色の球がそれぞれ1個ずつ，合計4個ある。この4個の球を\(\mathrm{A, B, C, D, E}\)と書かれた5つの袋に無作為に入れる。ただし，1つの袋に何個の球を入れてもよいものとする。すべての球を袋に入れ終えてから，それぞれの袋に入った球の個数を調べ，最大値を\(X\)とする。例えば，\(\mathrm{A}\)に0個，\(\mathrm{B}\)に1個，\(\mathrm{C}\)に1個，\(\mathrm{D}\)に2個，\(\mathrm{E}\)に0個入っていた場合は \(X=2\) である。</p>
+                    <ol class="list-decimal pl-6 mt-3 space-y-2">
+                        <li>\(X=4\) となる球の入れ方は全部で何通りあるか。また，\(X=1\) となる球の入れ方は全部で何通りあるか。</li>
+                        <li>球の入れ方は全部で何通りあるか。また，\(X=3\) となる確率を求めよ。</li>
+                        <li>\(X\)の期待値を求めよ。</li>
+                    </ol>
+                </div>
+
+                <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 mt-4">
+                    <h3 class="font-bold text-blue-900 mb-2">【条件の整理】</h3>
+                    <ul class="list-disc pl-5 space-y-2 text-sm text-slate-700">
+                        <li><strong>球と袋の区別：</strong> 球は「色違い」で4個すべて<strong>区別できる</strong>。袋は「A, B, C, D, E」と名前がついておりすべて<strong>区別できる</strong>。</li>
+                        <li><strong>入れ方の制限：</strong> 1つの袋に何個入れてもよく、空の袋（0個）があってもよい。</li>
+                        <li><strong>確率の考え方：</strong> 各球が5つの袋のいずれかに入る確率は等しいため、全ての場合の数を分母とする。</li>
+                        <li><strong>確率変数 \(X\)：</strong> 最も多く球が入った袋の「球の個数」。球は全部で4個なので、\(X\)のとり得る値は \(1, 2, 3, 4\) のいずれかである。</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="mt-6 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+                <h2 class="flex items-center gap-2 text-xl font-bold text-slate-900">
+                    <span class="grid h-8 w-8 place-items-center rounded-full bg-slate-700 text-base text-white">2</span>
+                    解説
+                </h2>
+                <p class="mt-4 text-sm leading-8 text-slate-600">
+                    問題を解くための考え方から、答案、検算、発展までを順に確認します。
+                </p>
+
+                <div class="mt-8 bg-amber-50 border border-amber-200 rounded-xl p-5">
+                    <h3 class="border-b-2 border-amber-400 pb-2 text-lg font-bold text-amber-900">解法選択のトリガー</h3>
+                    <div class="mt-4 space-y-4">
+                        <div class="bg-amber-100/60 border border-amber-200 rounded-lg p-4">
+                            <p class="font-bold text-amber-900 text-sm">「異なる球を異なる袋に入れる（空箱OK）」と来たら</p>
+                            <p class="mt-1 text-sm text-amber-800">
+                                基本は<strong>重複順列</strong>です。各々の球（4個）が「どの袋に入るか」を自由に5通りずつ選べるため、全体の場合の数は \(5 \times 5 \times 5 \times 5 = 5^4\) 通りとなります。
+                            </p>
+                        </div>
+                        <div class="bg-amber-100/60 border border-amber-200 rounded-lg p-4">
+                            <p class="font-bold text-amber-900 text-sm">特定の入り方（袋の中の個数）を指定されたら</p>
+                            <p class="mt-1 text-sm text-amber-800">
+                                <strong>「どの袋に何個入るか（袋の選び方）」</strong>と<strong>「どの球が入るか（球の選び方）」</strong>の2段階に分けて考えます。(2)の \(X=3\) なら、「3個入る袋を選ぶ」→「そこに入る球を3個選ぶ」→「残った球1個の入る袋を選ぶ」とステップを踏んで掛け合わせます。
+                            </p>
+                        </div>
+                        <div class="bg-amber-100/60 border border-amber-200 rounded-lg p-4">
+                            <p class="font-bold text-amber-900 text-sm">全ての場合が網羅される期待値計算なら</p>
+                            <p class="mt-1 text-sm text-amber-800">
+                                \(X=1, 2, 3, 4\) のうち、(1)(2)で \(X=1, 3, 4\) の場合の数は求まっています。最後に残った \(X=2\) は最も場合分けが複雑（2個・2個のパターンと、2個・1個・1個のパターンがある）なので、<strong>余事象（全体から引く）</strong>を利用して計算をショートカットし、時間とミスを減らします。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-8 bg-emerald-50 border border-emerald-200 rounded-xl p-5">
+                    <h3 class="border-b-2 border-emerald-400 pb-2 text-lg font-bold text-emerald-900">思考プロセス</h3>
+                    <div class="mt-4 space-y-4">
+                        <div class="bg-emerald-100/60 border border-emerald-200 rounded-lg p-4 text-sm text-emerald-900">
+                            <strong>(1) \(X=4\) と \(X=1\) の構造</strong><br>
+                            \(X=4\) は「特定の1つの袋に4個すべて集中する」状態です。「どの袋に集中するか」を決めるだけです。<br>
+                            \(X=1\) は「最大が1個」すなわち「4個の球がすべて別々の袋に入る」状態です。5つの袋から4つの袋を選んで、区別できる4個の球を割り当てるので「順列」の考え方になります。
+                        </div>
+                        <div class="bg-emerald-100/60 border border-emerald-200 rounded-lg p-4 text-sm text-emerald-900">
+                            <strong>(2) \(X=3\) の構造</strong><br>
+                            \(X=3\) とは、ある袋に「3個」入り、別の袋に「1個」入る状態です。（残りの3つの袋は「0個」）。<br>
+                            手順：①「3個入る袋」を5つから1つ選ぶ $\rightarrow$ ②そこに入る「球3個」を4個から選ぶ $\rightarrow$ ③「残った1個の球」を、残りの4つの袋のどれかに入れる。
+                        </div>
+                        <div class="bg-emerald-100/60 border border-emerald-200 rounded-lg p-4 text-sm text-emerald-900">
+                            <strong>(3) 期待値の計算と余事象</strong><br>
+                            確率変数 \(X\) は 1, 2, 3, 4 のいずれかしかとりません。<br>
+                            全体の総数 \(5^4 = 625\) 通りから、求めた \(X=1, 3, 4\) の場合の数を引くことで \(X=2\) の場合の数を出し、期待値の定義に従って計算します。
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-10">
+                    <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">実際の答案</h3>
+                    
+                    <div class="mt-4 space-y-6 text-slate-700">
+                        <!-- (1) -->
+                        <div>
+                            <p class="font-bold">（1）</p>
+                            <p class="mt-2">
+                                \(X=4\) となるのは，4個の球すべてが同じ袋に入る場合である。<br>
+                                入る袋の選び方は \(\mathrm{A, B, C, D, E}\) の 5通り である。
+                            </p>
+                            <p class="mt-4">
+                                また，\(X=1\) となるのは，4個の球がすべて別々の袋に入る場合である。<br>
+                                5つの袋から4つを選んで、区別できる4個の球をそれぞれ入れる順列であるから，
+                            </p>
+                            <div class="math-scroll">
+                                \[ {}_5\mathrm{P}_4 = 5 \times 4 \times 3 \times 2 = 120 \]
+                            </div>
+                            <p class="mt-2">
+                                よって，120通り である。
+                            </p>
+                            <div class="mt-2 rounded-xl border-2 border-blue-500 bg-blue-50 p-3 text-slate-900 font-bold inline-block">
+                                答: \(X=4\) は 5通り，\(X=1\) は 120通り
+                            </div>
+                        </div>
+
+                        <!-- (2) -->
+                        <div class="border-t border-slate-200 pt-6">
+                            <p class="font-bold">（2）</p>
+                            <p class="mt-2">
+                                4個の球のそれぞれについて，入る袋の選び方は5通りずつあるから，球の入れ方の総数は
+                            </p>
+                            <div class="math-scroll">
+                                \[ 5^4 = 625 \]
+                            </div>
+                            <p class="mt-2">
+                                よって，全部で 625通り である。
+                            </p>
+                            <p class="mt-4">
+                                次に，\(X=3\) となるのは，ある1つの袋に3個の球が入り，別の1つの袋に1個の球が入る場合である。<br>
+                                そのような入れ方は，次の手順で決まる。
+                            </p>
+                            <ul class="list-disc pl-5 mt-2 space-y-2">
+                                <li>3個の球が入る袋を選ぶ： \({}_5\mathrm{C}_1 = 5\)（通り）</li>
+                                <li>その袋に入る3個の球を選ぶ： \({}_4\mathrm{C}_3 = 4\)（通り）</li>
+                                <li>残りの1個の球が入る袋を，残った4つの袋から選ぶ： \({}_4\mathrm{C}_1 = 4\)（通り）</li>
+                            </ul>
+                            <p class="mt-2">
+                                よって，\(X=3\) となる入れ方は \(5 \times 4 \times 4 = 80\)（通り）である。<br>
+                                したがって，求める確率は
+                            </p>
+                            <div class="math-scroll">
+                                \[ \frac{80}{625} = \frac{16}{125} \]
+                            </div>
+                            <div class="mt-2 rounded-xl border-2 border-blue-500 bg-blue-50 p-3 text-slate-900 font-bold inline-block">
+                                答: 総数は 625通り，確率は \(\dfrac{16}{125}\)
+                            </div>
+                        </div>
+
+                        <!-- (3) -->
+                        <div class="border-t border-slate-200 pt-6">
+                            <p class="font-bold">（3）</p>
+                            <p class="mt-2">
+                                球は4個であるから，\(X\) のとり得る値は \(1, 2, 3, 4\) のいずれかである。<br>
+                                \(X=2\) となる場合の数は，入れ方の総数から \(X=1, 3, 4\) となる場合の数を引いて求められる。
+                            </p>
+                            <div class="math-scroll">
+                                \begin{aligned}
+                                & 625 - (120 + 80 + 5) \\
+                                &= 625 - 205 \\
+                                &= 420 \quad (\text{通り})
+                                \end{aligned}
+                            </div>
+                            <p class="mt-4">
+                                したがって，\(X\) の確率分布は以下のようになる。
+                            </p>
+                            <div class="overflow-x-auto mt-2 mb-4">
+                                <table class="w-full max-w-lg border-collapse border border-slate-300 text-sm text-center mx-auto">
+                                    <thead class="bg-slate-100">
+                                        <tr>
+                                            <th class="border border-slate-300 px-4 py-2 font-bold text-slate-800">\(X\)</th>
+                                            <th class="border border-slate-300 px-4 py-2">1</th>
+                                            <th class="border border-slate-300 px-4 py-2">2</th>
+                                            <th class="border border-slate-300 px-4 py-2">3</th>
+                                            <th class="border border-slate-300 px-4 py-2">4</th>
+                                            <th class="border border-slate-300 px-4 py-2 font-bold bg-slate-200">計</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="border border-slate-300 px-4 py-2 font-bold text-slate-800 bg-slate-50">確率</td>
+                                            <td class="border border-slate-300 px-4 py-2">\(\frac{120}{625}\)</td>
+                                            <td class="border border-slate-300 px-4 py-2">\(\frac{420}{625}\)</td>
+                                            <td class="border border-slate-300 px-4 py-2">\(\frac{80}{625}\)</td>
+                                            <td class="border border-slate-300 px-4 py-2">\(\frac{5}{625}\)</td>
+                                            <td class="border border-slate-300 px-4 py-2 font-bold bg-slate-200">1</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <p class="mt-2">
+                                求める期待値 \(E(X)\) は
+                            </p>
+                            <div class="math-scroll">
+                                \begin{aligned}
+                                E(X) &= 1 \times \frac{120}{625} + 2 \times \frac{420}{625} + 3 \times \frac{80}{625} + 4 \times \frac{5}{625} \\
+                                &= \frac{120 + 840 + 240 + 20}{625} \\
+                                &= \frac{1220}{625} \\
+                                &= \frac{244}{125}
+                                \end{aligned}
+                            </div>
+                            <div class="mt-2 rounded-xl border-2 border-blue-500 bg-blue-50 p-3 text-slate-900 font-bold inline-block">
+                                答: \(\dfrac{244}{125}\)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-10">
+                    <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">図解・可視化（部屋割りパターンの整理）</h3>
+                    <p class="mt-4 text-sm text-slate-700">
+                        「異なる球を異なる袋に分配する」問題では、袋に入る球の<strong>個数パターンのリストアップ（自然数の分割）</strong>をイメージすることが重要です。\(X\) の値ごとに、どのような偏り方をしているか視覚的に整理してみましょう。
+                    </p>
+                    
+                    <div class="mt-4 bg-slate-50 p-4 sm:p-6 rounded-lg border border-slate-200">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            
+                            <!-- X=4 -->
+                            <div class="bg-white border border-slate-200 p-4 rounded shadow-sm">
+                                <div class="font-bold text-blue-800 border-b border-slate-100 pb-2 mb-3">\(X = 4\) （5通り）</div>
+                                <div class="flex items-end justify-between px-2">
+                                    <div class="flex flex-col items-center gap-1">
+                                        <div class="flex gap-0.5"><div class="w-3 h-3 rounded-full bg-red-500"></div><div class="w-3 h-3 rounded-full bg-blue-500"></div></div>
+                                        <div class="flex gap-0.5"><div class="w-3 h-3 rounded-full bg-yellow-400"></div><div class="w-3 h-3 rounded-full border border-slate-400 bg-white"></div></div>
+                                        <div class="w-10 h-8 border-2 border-slate-400 rounded-b-md bg-slate-100 mt-1"></div>
+                                        <div class="text-xs font-bold text-slate-500">4個</div>
+                                    </div>
+                                    <div class="flex flex-col items-center gap-1"><div class="w-10 h-8 border-2 border-slate-300 border-dashed rounded-b-md bg-transparent mt-1"></div><div class="text-xs text-slate-400">0個</div></div>
+                                    <div class="flex flex-col items-center gap-1"><div class="w-10 h-8 border-2 border-slate-300 border-dashed rounded-b-md bg-transparent mt-1"></div><div class="text-xs text-slate-400">0個</div></div>
+                                    <div class="flex flex-col items-center gap-1"><div class="w-10 h-8 border-2 border-slate-300 border-dashed rounded-b-md bg-transparent mt-1"></div><div class="text-xs text-slate-400">0個</div></div>
+                                    <div class="flex flex-col items-center gap-1"><div class="w-10 h-8 border-2 border-slate-300 border-dashed rounded-b-md bg-transparent mt-1"></div><div class="text-xs text-slate-400">0個</div></div>
+                                </div>
+                                <div class="text-xs text-slate-500 mt-3 text-center">パターン: [4, 0, 0, 0, 0]</div>
+                            </div>
+
+                            <!-- X=3 -->
+                            <div class="bg-white border border-slate-200 p-4 rounded shadow-sm">
+                                <div class="font-bold text-blue-800 border-b border-slate-100 pb-2 mb-3">\(X = 3\) （80通り）</div>
+                                <div class="flex items-end justify-between px-2">
+                                    <div class="flex flex-col items-center gap-1">
+                                        <div class="flex gap-0.5"><div class="w-3 h-3 rounded-full bg-red-500"></div><div class="w-3 h-3 rounded-full bg-blue-500"></div><div class="w-3 h-3 rounded-full bg-yellow-400"></div></div>
+                                        <div class="w-10 h-8 border-2 border-slate-400 rounded-b-md bg-slate-100 mt-1"></div>
+                                        <div class="text-xs font-bold text-slate-500">3個</div>
+                                    </div>
+                                    <div class="flex flex-col items-center gap-1">
+                                        <div class="flex gap-0.5"><div class="w-3 h-3 rounded-full border border-slate-400 bg-white"></div></div>
+                                        <div class="w-10 h-8 border-2 border-slate-400 rounded-b-md bg-slate-100 mt-1"></div>
+                                        <div class="text-xs font-bold text-slate-500">1個</div>
+                                    </div>
+                                    <div class="flex flex-col items-center gap-1"><div class="w-10 h-8 border-2 border-slate-300 border-dashed rounded-b-md bg-transparent mt-1"></div><div class="text-xs text-slate-400">0個</div></div>
+                                    <div class="flex flex-col items-center gap-1"><div class="w-10 h-8 border-2 border-slate-300 border-dashed rounded-b-md bg-transparent mt-1"></div><div class="text-xs text-slate-400">0個</div></div>
+                                    <div class="flex flex-col items-center gap-1"><div class="w-10 h-8 border-2 border-slate-300 border-dashed rounded-b-md bg-transparent mt-1"></div><div class="text-xs text-slate-400">0個</div></div>
+                                </div>
+                                <div class="text-xs text-slate-500 mt-3 text-center">パターン: [3, 1, 0, 0, 0]</div>
+                            </div>
+
+                            <!-- X=2 (Pattern 1) -->
+                            <div class="bg-white border border-slate-200 p-4 rounded shadow-sm">
+                                <div class="font-bold text-emerald-700 border-b border-slate-100 pb-2 mb-3">\(X = 2\) のパターンA</div>
+                                <div class="flex items-end justify-between px-2">
+                                    <div class="flex flex-col items-center gap-1">
+                                        <div class="flex gap-0.5"><div class="w-3 h-3 rounded-full bg-red-500"></div><div class="w-3 h-3 rounded-full bg-blue-500"></div></div>
+                                        <div class="w-10 h-8 border-2 border-slate-400 rounded-b-md bg-emerald-50 mt-1"></div>
+                                        <div class="text-xs font-bold text-slate-500">2個</div>
+                                    </div>
+                                    <div class="flex flex-col items-center gap-1">
+                                        <div class="flex gap-0.5"><div class="w-3 h-3 rounded-full bg-yellow-400"></div><div class="w-3 h-3 rounded-full border border-slate-400 bg-white"></div></div>
+                                        <div class="w-10 h-8 border-2 border-slate-400 rounded-b-md bg-emerald-50 mt-1"></div>
+                                        <div class="text-xs font-bold text-slate-500">2個</div>
+                                    </div>
+                                    <div class="flex flex-col items-center gap-1"><div class="w-10 h-8 border-2 border-slate-300 border-dashed rounded-b-md bg-transparent mt-1"></div><div class="text-xs text-slate-400">0個</div></div>
+                                    <div class="flex flex-col items-center gap-1"><div class="w-10 h-8 border-2 border-slate-300 border-dashed rounded-b-md bg-transparent mt-1"></div><div class="text-xs text-slate-400">0個</div></div>
+                                    <div class="flex flex-col items-center gap-1"><div class="w-10 h-8 border-2 border-slate-300 border-dashed rounded-b-md bg-transparent mt-1"></div><div class="text-xs text-slate-400">0個</div></div>
+                                </div>
+                                <div class="text-xs text-slate-500 mt-3 text-center">パターン: [2, 2, 0, 0, 0]</div>
+                            </div>
+
+                            <!-- X=2 (Pattern 2) -->
+                            <div class="bg-white border border-slate-200 p-4 rounded shadow-sm">
+                                <div class="font-bold text-emerald-700 border-b border-slate-100 pb-2 mb-3">\(X = 2\) のパターンB</div>
+                                <div class="flex items-end justify-between px-2">
+                                    <div class="flex flex-col items-center gap-1">
+                                        <div class="flex gap-0.5"><div class="w-3 h-3 rounded-full bg-red-500"></div><div class="w-3 h-3 rounded-full bg-blue-500"></div></div>
+                                        <div class="w-10 h-8 border-2 border-slate-400 rounded-b-md bg-emerald-50 mt-1"></div>
+                                        <div class="text-xs font-bold text-slate-500">2個</div>
+                                    </div>
+                                    <div class="flex flex-col items-center gap-1">
+                                        <div class="flex gap-0.5"><div class="w-3 h-3 rounded-full bg-yellow-400"></div></div>
+                                        <div class="w-10 h-8 border-2 border-slate-400 rounded-b-md bg-slate-100 mt-1"></div>
+                                        <div class="text-xs font-bold text-slate-500">1個</div>
+                                    </div>
+                                    <div class="flex flex-col items-center gap-1">
+                                        <div class="flex gap-0.5"><div class="w-3 h-3 rounded-full border border-slate-400 bg-white"></div></div>
+                                        <div class="w-10 h-8 border-2 border-slate-400 rounded-b-md bg-slate-100 mt-1"></div>
+                                        <div class="text-xs font-bold text-slate-500">1個</div>
+                                    </div>
+                                    <div class="flex flex-col items-center gap-1"><div class="w-10 h-8 border-2 border-slate-300 border-dashed rounded-b-md bg-transparent mt-1"></div><div class="text-xs text-slate-400">0個</div></div>
+                                    <div class="flex flex-col items-center gap-1"><div class="w-10 h-8 border-2 border-slate-300 border-dashed rounded-b-md bg-transparent mt-1"></div><div class="text-xs text-slate-400">0個</div></div>
+                                </div>
+                                <div class="text-xs text-slate-500 mt-3 text-center">パターン: [2, 1, 1, 0, 0]</div>
+                            </div>
+                        </div>
+                        <p class="mt-4 text-xs text-slate-500 text-center">
+                            ※ \(X=1\) は [1, 1, 1, 1, 0] の1パターンのみです。
+                        </p>
+                    </div>
+                </div>
+
+                <div class="mt-10">
+                    <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">最終結果と検算</h3>
+                    
+                    <div class="mt-4 rounded-xl border-2 border-blue-500 bg-blue-50 p-5 text-slate-900">
+                        <ul class="space-y-2 font-bold">
+                            <li>(1) \(X=4\)：5通り， \(X=1\)：120通り</li>
+                            <li>(2) 総数：625通り， 確率：\(\dfrac{16}{125}\)</li>
+                            <li>(3) 期待値：\(\dfrac{244}{125}\)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="mt-4 bg-slate-50 p-4 rounded-lg border border-slate-200 text-sm text-slate-700">
+                        <strong>検算ポイント：\(X=2\) の直接計算による総和の確認</strong><br>
+                        答案では \(X=2\) を余事象で出しましたが、時間があれば直接計算して総和が \(625\) になるか確認するのが最強の検算です。<br>
+                        上の図の通り、\(X=2\) には2つのパターンがあります。<br><br>
+                        <strong>① [2, 2, 0, 0, 0] 型</strong><br>
+                        ・2個入る袋を2つ選ぶ: \({}_5\mathrm{C}_2 = 10\) 通り<br>
+                        ・4個の球を2個・2個に分け、選んだ2つの袋に入れる: \({}_4\mathrm{C}_2 \times {}_2\mathrm{C}_2 = 6\) 通り<br>
+                        （袋に区別があるため、単なる組分けのように $2!$ で割る必要はありません。ある袋Aに入れる2個を選べば自動的にもう一方の袋Bに入る2個も決まります）<br>
+                        \(10 \times 6 = 60\) 通り。<br><br>
+                        <strong>② [2, 1, 1, 0, 0] 型</strong><br>
+                        ・2個入る袋を1つ選ぶ: \({}_5\mathrm{C}_1 = 5\) 通り<br>
+                        ・そこに入る球を2個選ぶ: \({}_4\mathrm{C}_2 = 6\) 通り<br>
+                        ・残った球2個を、残った4つの袋から2つ選んで別々に入れる（順列）: \({}_4\mathrm{P}_2 = 12\) 通り<br>
+                        \(5 \times 6 \times 12 = 360\) 通り。<br><br>
+                        合計すると \(60 + 360 = 420\) 通りとなり、余事象で計算した \(420\) 通りと完全に一致しました。これで安心して次の問題に進めます。
+                    </div>
+                </div>
+
+                <div class="mt-10">
+                    <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">発展・一般化：「写像12相」による分類</h3>
+                    <p class="mt-4 text-sm text-slate-700 leading-relaxed">
+                        本問は「区別する球」を「区別する袋」に入れる問題（空箱OK）であったため、基本となる計算式は \(n^r\)（重複順列）でした。難関大の確率・場合の数では、これらの「区別の有無」や「空箱の許容」を変えた問題が頻出します。これを体系化したものが<strong>「写像12相（十二相）」</strong>と呼ばれる分類です。<br>
+                        例えば、本問の設定で<strong>「球に区別がない（すべて同じ色の球）」</strong>となった場合、問題は「方程式 $x_1+x_2+x_3+x_4+x_5 = 4$ を満たす0以上の整数の組の個数」と同値になり、<strong>重複組合せ</strong> \({}_5\mathrm{H}_4 = {}_{5+4-1}\mathrm{C}_4 = {}_8\mathrm{C}_4 = 70\) 通りへと大きく変わります。常に「何が区別できて、何が区別できないか」を意識しながら解く習慣をつけましょう。
+                    </p>
+                </div>
+
+                <div class="mt-10">
+                    <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">受験生のつまずきポイント</h3>
+                    <div class="mt-4 space-y-4">
+                        <div class="bg-red-50 border border-red-200 rounded-lg p-4">
+                            <p class="font-bold text-red-900 text-sm">「袋の区別」を忘れる</p>
+                            <p class="mt-1 text-sm text-red-800">
+                                (1)で \(X=4\) の場合の数を「球の入り方は1種類しかないから1通り」としてしまうミスが頻発します。「Aの袋に4個」と「Bの袋に4個」は異なる事象であるため、必ず「どの袋に入るか」の選択（\({}_5\mathrm{C}_1\)）を掛ける必要があります。
+                            </p>
+                        </div>
+                        <div class="bg-red-50 border border-red-200 rounded-lg p-4">
+                            <p class="font-bold text-red-900 text-sm">組分けにおける「区別の有無」の混乱</p>
+                            <p class="mt-1 text-sm text-red-800">
+                                \(X=2\) の「2個・2個」のパターンを直接計算する際、球を単なる組に分けるだけなら $2!$ で割る必要がありますが、今回は「異なる袋」に割り当てるため、分配（並べ替え）が生じて結果的に $2!$ で割る必要がなくなります。この「組分け」と「分配」の違いを混同し、余分に割ってしまったり、逆に割り忘れたりするミスが多いため、不安な場合は余事象に逃げるのが賢明です。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+            
+            <section class="mt-6 rounded-2xl bg-blue-900 p-6 text-white shadow-sm sm:p-8">
+                <h2 class="border-b-2 border-blue-400 pb-2 text-lg font-bold">アクティブリコール（復習テスト）</h2>
+                <p class="mt-4 text-sm text-blue-200">今日の学習内容を思い出すことで、記憶を定着させましょう。質問をクリックして答えを確認してください。</p>
+                
+                <div class="mt-6 space-y-3">
+                    <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                        <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                            <span>Q1. 「区別する球」を「区別する袋」に自由に入れる（空箱OK）場合、全体の場合の数を求める基本的な考え方は何ですか？</span>
+                            <span class="transition duration-300 group-open:-rotate-180">
+                                <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                            </span>
+                        </summary>
+                        <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                            「重複順列」です。各々の球について、入る袋の選択肢が袋の数だけあるため、(袋の数)<sup>(球の数)</sup> で計算します。本問では $5^4$ 通りとなります。
+                        </div>
+                    </details>
+                    
+                    <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                        <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                            <span>Q2. 期待値を求める際、\(X=2\) の場合の数を直接計算せずに余事象を用いたのはなぜですか？</span>
+                            <span class="transition duration-300 group-open:-rotate-180">
+                                <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                            </span>
+                        </summary>
+                        <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                            \(X=2\) は「2個・2個・0個・0個・0個」と「2個・1個・1個・0個・0個」の2つのパターンがあり、場合分けと計算が最も複雑でミスしやすいためです。すでに求まっている簡単なパターン（\(X=1, 3, 4\)）を全体から引く方が、速く正確に求められます。
+                        </div>
+                    </details>
+                    
+                    <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                        <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                            <span>Q3. 場合の数や確率の問題で、計算結果が正しいかを確認する（検算する）ための最も確実な方法は何ですか？</span>
+                            <span class="transition duration-300 group-open:-rotate-180">
+                                <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                            </span>
+                        </summary>
+                        <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                            起こり得るすべての場合（\(X=1, 2, 3, 4\)）の場合の数をそれぞれ独立して直接計算し、その総和が「全体の場合の数（本問では625）」に一致するかどうかを確認することです。
+                        </div>
+                    </details>
+                </div>
+            </section>
+            
+            <nav class="mt-7 grid gap-3 sm:grid-cols-2">
+                <a href="index.html" class="nav-button rounded-xl border border-slate-300 bg-white px-5 py-4 text-center font-bold text-slate-700 hover:border-blue-300 hover:text-blue-800">
+                    ← 一覧へ
+                </a>
+                <a href="no11.html" class="nav-button rounded-xl bg-blue-700 px-5 py-4 text-center font-bold text-white hover:bg-blue-800">
+                    No.11 →
+                </a>
+            </nav>
+        </main>
+
+        <footer class="py-10 text-center text-sm text-slate-500">
+            医進・サイエンスコース　夏期数学課題 解説サイト
+        </footer>
+    </div>
+</body>
+</html>

@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>夏期課題 No.14 データの分析 - 医進・サイエンスコース</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        MathJax = {
+            chtml: {
+                matchFontHeight: false
+            },
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body { font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif; }
+        .nav-button { transition: transform .16s ease, box-shadow .16s ease; }
+        .nav-button:hover { transform: translateY(-2px); box-shadow: 0 8px 18px rgba(15, 23, 42, .12); }
+        .math-scroll { overflow-x: auto; overflow-y: hidden; padding-bottom: 0.5rem; margin-bottom: 0.5rem; }
+    </style>
+</head>
+<body class="bg-slate-100 text-slate-800">
+    <div class="mx-auto max-w-4xl px-4 py-6 sm:px-6 lg:py-10">
+        
+        <a href="index.html" class="inline-flex items-center gap-2 text-sm font-bold text-blue-700 hover:text-blue-900">
+            ← 問題一覧へ戻る
+        </a>
+
+        <header class="mt-4 overflow-hidden rounded-3xl bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-800 text-white shadow-xl">
+            <div class="p-7 sm:p-10">
+                <span class="inline-flex items-center rounded-full bg-white/15 px-4 py-1.5 text-sm font-semibold tracking-wide text-blue-100">医進・サイエンスコース</span>
+                <div class="mt-4 flex flex-wrap items-center gap-3">
+                    <span class="rounded-lg bg-white/20 px-3 py-1 text-sm font-bold">No.14</span>
+                    <span class="rounded-full bg-emerald-100 px-3 py-1 text-xs font-bold text-emerald-800">基礎</span>
+                </div>
+                <h1 class="mt-4 text-3xl font-bold leading-tight sm:text-4xl">データの分析</h1>
+                <div class="mt-3 text-lg text-blue-100">目標解答時間：15分</div>
+            </div>
+        </header>
+
+        <main>
+            <section class="mt-7 rounded-2xl border border-blue-100 bg-white p-6 shadow-sm sm:p-8">
+                <h2 class="flex items-center gap-2 text-xl font-bold text-blue-900">
+                    <span class="grid h-8 w-8 place-items-center rounded-full bg-blue-700 text-base text-white">1</span>
+                    問題
+                </h2>
+                
+                <div class="bg-slate-50 border border-slate-200 rounded-lg p-4 mb-4 text-slate-700 leading-relaxed mt-4">
+                    <p>次のデータは，あるクラスの10人の生徒の数学の成績 (10点満点) を小さい方から順に並べたものである。</p>
+                    <p class="mt-2 ml-4">$2,\ 3,\ 3,\ 4,\ 5,\ 5,\ 6,\ 6,\ 7,\ 9$</p>
+                    <ol class="list-decimal pl-6 mt-4 space-y-2">
+                        <li>この10人の生徒の数学の成績の中央値 (メジアン) を求めよ。また，この10人の生徒の数学の成績の平均値を求めよ。</li>
+                        <li>この10人の生徒の数学の成績の分散を求めよ。また，この10人の生徒の数学の成績の標準偏差を求めよ。</li>
+                        <li>
+                            <p>この10人の生徒のうち，$\mathrm{A, B, C, D, E}$の5人について数学と英語の成績 (10点満点) を調べると，表のようになった。このとき，$\mathrm{A, B, C, D, E}$の5人の生徒の数学の成績と英語の成績の相関係数を求めよ。</p>
+                            <div class="math-scroll mt-3 flex justify-center">
+                                <table class="border-collapse border border-slate-300 text-sm text-center">
+                                    <thead class="bg-slate-100">
+                                        <tr>
+                                            <th class="border border-slate-300 px-4 py-2 font-bold text-slate-800">&nbsp;</th>
+                                            <th class="border border-slate-300 px-4 py-2 font-bold text-slate-800">$\mathrm{A}$</th>
+                                            <th class="border border-slate-300 px-4 py-2 font-bold text-slate-800">$\mathrm{B}$</th>
+                                            <th class="border border-slate-300 px-4 py-2 font-bold text-slate-800">$\mathrm{C}$</th>
+                                            <th class="border border-slate-300 px-4 py-2 font-bold text-slate-800">$\mathrm{D}$</th>
+                                            <th class="border border-slate-300 px-4 py-2 font-bold text-slate-800">$\mathrm{E}$</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="border border-slate-300 px-4 py-2 font-bold text-slate-800 bg-slate-50">数学の成績</td>
+                                            <td class="border border-slate-300 px-4 py-2">2</td>
+                                            <td class="border border-slate-300 px-4 py-2">3</td>
+                                            <td class="border border-slate-300 px-4 py-2">5</td>
+                                            <td class="border border-slate-300 px-4 py-2">6</td>
+                                            <td class="border border-slate-300 px-4 py-2">9</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="border border-slate-300 px-4 py-2 font-bold text-slate-800 bg-slate-50">英語の成績</td>
+                                            <td class="border border-slate-300 px-4 py-2">6</td>
+                                            <td class="border border-slate-300 px-4 py-2">2</td>
+                                            <td class="border border-slate-300 px-4 py-2">9</td>
+                                            <td class="border border-slate-300 px-4 py-2">8</td>
+                                            <td class="border border-slate-300 px-4 py-2">5</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </li>
+                    </ol>
+                </div>
+
+                <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 mt-4">
+                    <h3 class="font-bold text-blue-900 mb-2">【条件の整理】</h3>
+                    <ul class="list-disc pl-5 space-y-2 text-sm text-slate-700">
+                        <li><strong>データ数：</strong> (1)(2)は $n=10$、(3)は $n=5$（5人の部分データ）であることに注意。</li>
+                        <li><strong>中央値（メジアン）：</strong> データが小さい順に並んでいるため、偶数個 ($n=10$) の場合は真ん中の2つの値の平均となる。</li>
+                        <li><strong>分散・標準偏差・相関係数：</strong> いずれも「平均値」を出発点として、「偏差（データ $-$ 平均値）」を計算することが基本となる。平均値が綺麗な整数になるかどうかが計算方針を分ける鍵。</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="mt-6 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+                <h2 class="flex items-center gap-2 text-xl font-bold text-slate-900">
+                    <span class="grid h-8 w-8 place-items-center rounded-full bg-slate-700 text-base text-white">2</span>
+                    解説
+                </h2>
+                <p class="mt-4 text-sm leading-8 text-slate-600">
+                    問題を解くための考え方から、答案、検算、発展までを順に確認します。
+                </p>
+
+                <div class="mt-8 bg-amber-50 border border-amber-200 rounded-xl p-5">
+                    <h3 class="border-b-2 border-amber-400 pb-2 text-lg font-bold text-amber-900">解法選択のトリガー</h3>
+                    <div class="mt-4 space-y-4">
+                        <div class="bg-amber-100/60 border border-amber-200 rounded-lg p-4">
+                            <p class="font-bold text-amber-900 text-sm">分散の求め方（2つの公式の使い分け）</p>
+                            <p class="mt-1 text-sm text-amber-800">
+                                分散を求める式には、「偏差の2乗の平均」を使う定義式と、「2乗の平均 $-$ 平均の2乗」を使う計算公式の2つがあります。<strong>平均値が綺麗な整数になったら定義式を、分数（小数）になったら計算公式を使う</strong>のが鉄則です。
+                            </p>
+                        </div>
+                        <div class="bg-amber-100/60 border border-amber-200 rounded-lg p-4">
+                            <p class="font-bold text-amber-900 text-sm">相関係数を求めるとき</p>
+                            <p class="mt-1 text-sm text-amber-800">
+                                相関係数は「共分散 $\div$ ($x$の標準偏差 $\times$ $y$の標準偏差)」ですが、実際の計算ではルートを残したまま処理した方が早いです。また、暗算で進めると高確率でミスをするため、<strong>「偏差」「偏差の2乗」「偏差の積」をまとめた表（ワークシート）を作成する</strong>のが一番の近道です。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-8 bg-emerald-50 border border-emerald-200 rounded-xl p-5">
+                    <h3 class="border-b-2 border-emerald-400 pb-2 text-lg font-bold text-emerald-900">思考プロセス</h3>
+                    <div class="mt-4 space-y-4">
+                        <div class="bg-emerald-100/60 border border-emerald-200 rounded-lg p-4 text-sm text-emerald-900">
+                            <strong>(1)(2) 平均・分散・標準偏差の計算</strong><br>
+                            まずは10個のデータの平均を求めます。合計が50になるため、平均は5（整数）です。平均が整数と分かったので、各データから5を引いた「偏差」を求め、それを2乗して足し合わせることで分散を求めます。
+                        </div>
+                        <div class="bg-emerald-100/60 border border-emerald-200 rounded-lg p-4 text-sm text-emerald-900">
+                            <strong>(3) 相関係数の計算（表の作成）</strong><br>
+                            数学の成績を $x$、英語の成績を $y$ として、5人分のデータを縦に並べた表を作ります。<br>
+                            ① $x, y$ の平均を求める $\rightarrow$ ② それぞれの「偏差 $x-\bar{x}$」「偏差 $y-\bar{y}$」を書き出す $\rightarrow$ ③ 偏差の2乗を計算して足す（分散の分子） $\rightarrow$ ④ 偏差同士を掛けて足す（共分散の分子） $\rightarrow$ ⑤ 公式に当てはめる、という手順で機械的に処理します。
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-10">
+                    <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">実際の答案</h3>
+                    <div class="mt-4 space-y-6 text-slate-700">
+                        <div>
+                            <p class="font-bold">（1）</p>
+                            <p class="mt-2">
+                                データは小さい順に10個並んでいるため、中央値は5番目と6番目の値の平均である。<br>
+                                5番目の値は5、6番目の値も5であるから、
+                            </p>
+                            <div class="math-scroll">
+                                \[ \text{中央値} = \frac{5 + 5}{2} = 5 \text{ (点)} \]
+                            </div>
+                            <p class="mt-2">
+                                また、平均値を $\bar{x}$ とすると、
+                            </p>
+                            <div class="math-scroll">
+                                \begin{aligned}
+                                \bar{x} &= \frac{1}{10}(2 + 3 + 3 + 4 + 5 + 5 + 6 + 6 + 7 + 9) \\
+                                &= \frac{50}{10} = 5 \text{ (点)}
+                                \end{aligned}
+                            </div>
+                            <div class="mt-2 rounded-xl border-2 border-blue-500 bg-blue-50 p-3 text-slate-900 font-bold inline-block">
+                                答: 中央値 5点，平均値 5点
+                            </div>
+                        </div>
+
+                        <div class="border-t border-slate-200 pt-6">
+                            <p class="font-bold">（2）</p>
+                            <p class="mt-2">
+                                (1)より平均値 $\bar{x} = 5$ であるから、各データの偏差の2乗和は
+                            </p>
+                            <div class="math-scroll">
+                                \begin{aligned}
+                                & (-3)^2 + (-2)^2 + (-2)^2 + (-1)^2 + 0^2 + 0^2 + 1^2 + 1^2 + 2^2 + 4^2 \\
+                                &= 9 + 4 + 4 + 1 + 0 + 0 + 1 + 1 + 4 + 16 \\
+                                &= 40
+                                \end{aligned}
+                            </div>
+                            <p class="mt-2">
+                                したがって、分散 $s^2$ は
+                            </p>
+                            <div class="math-scroll">
+                                \[ s^2 = \frac{40}{10} = 4 \]
+                            </div>
+                            <p class="mt-2">
+                                標準偏差 $s$ は、分散の正の平方根であるから
+                            </p>
+                            <div class="math-scroll">
+                                \[ s = \sqrt{4} = 2 \text{ (点)} \]
+                            </div>
+                            <div class="mt-2 rounded-xl border-2 border-blue-500 bg-blue-50 p-3 text-slate-900 font-bold inline-block">
+                                答: 分散 4，標準偏差 2点
+                            </div>
+                        </div>
+
+                        <div class="border-t border-slate-200 pt-6">
+                            <p class="font-bold">（3）</p>
+                            <p class="mt-2">
+                                5人の数学の成績を $x$、英語の成績を $y$ とする。<br>
+                                $x$ の平均 $\bar{x} = \dfrac{1}{5}(2+3+5+6+9) = \dfrac{25}{5} = 5$<br>
+                                $y$ の平均 $\bar{y} = \dfrac{1}{5}(6+2+9+8+5) = \dfrac{30}{5} = 6$<br>
+                                各データと偏差について、以下の計算表を作成する。
+                            </p>
+                            
+                            <div class="math-scroll mt-4">
+                                <table class="w-full max-w-2xl mx-auto border-collapse border border-slate-300 text-sm text-center">
+                                    <thead class="bg-slate-100">
+                                        <tr>
+                                            <th class="border border-slate-300 px-3 py-2 text-slate-700">$x$</th>
+                                            <th class="border border-slate-300 px-3 py-2 text-slate-700">$y$</th>
+                                            <th class="border border-slate-300 px-3 py-2 text-slate-700">$x-\bar{x}$</th>
+                                            <th class="border border-slate-300 px-3 py-2 text-slate-700">$y-\bar{y}$</th>
+                                            <th class="border border-slate-300 px-3 py-2 text-slate-700">$(x-\bar{x})^2$</th>
+                                            <th class="border border-slate-300 px-3 py-2 text-slate-700">$(y-\bar{y})^2$</th>
+                                            <th class="border border-slate-300 px-3 py-2 text-slate-700">$(x-\bar{x})(y-\bar{y})$</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="border border-slate-300 px-3 py-2">2</td>
+                                            <td class="border border-slate-300 px-3 py-2">6</td>
+                                            <td class="border border-slate-300 px-3 py-2 text-blue-600">-3</td>
+                                            <td class="border border-slate-300 px-3 py-2 text-emerald-600">0</td>
+                                            <td class="border border-slate-300 px-3 py-2">9</td>
+                                            <td class="border border-slate-300 px-3 py-2">0</td>
+                                            <td class="border border-slate-300 px-3 py-2 text-rose-600">0</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="border border-slate-300 px-3 py-2">3</td>
+                                            <td class="border border-slate-300 px-3 py-2">2</td>
+                                            <td class="border border-slate-300 px-3 py-2 text-blue-600">-2</td>
+                                            <td class="border border-slate-300 px-3 py-2 text-emerald-600">-4</td>
+                                            <td class="border border-slate-300 px-3 py-2">4</td>
+                                            <td class="border border-slate-300 px-3 py-2">16</td>
+                                            <td class="border border-slate-300 px-3 py-2 text-rose-600">8</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="border border-slate-300 px-3 py-2">5</td>
+                                            <td class="border border-slate-300 px-3 py-2">9</td>
+                                            <td class="border border-slate-300 px-3 py-2 text-blue-600">0</td>
+                                            <td class="border border-slate-300 px-3 py-2 text-emerald-600">3</td>
+                                            <td class="border border-slate-300 px-3 py-2">0</td>
+                                            <td class="border border-slate-300 px-3 py-2">9</td>
+                                            <td class="border border-slate-300 px-3 py-2 text-rose-600">0</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="border border-slate-300 px-3 py-2">6</td>
+                                            <td class="border border-slate-300 px-3 py-2">8</td>
+                                            <td class="border border-slate-300 px-3 py-2 text-blue-600">1</td>
+                                            <td class="border border-slate-300 px-3 py-2 text-emerald-600">2</td>
+                                            <td class="border border-slate-300 px-3 py-2">1</td>
+                                            <td class="border border-slate-300 px-3 py-2">4</td>
+                                            <td class="border border-slate-300 px-3 py-2 text-rose-600">2</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="border border-slate-300 px-3 py-2 border-b-2 border-b-slate-400">9</td>
+                                            <td class="border border-slate-300 px-3 py-2 border-b-2 border-b-slate-400">5</td>
+                                            <td class="border border-slate-300 px-3 py-2 border-b-2 border-b-slate-400 text-blue-600">4</td>
+                                            <td class="border border-slate-300 px-3 py-2 border-b-2 border-b-slate-400 text-emerald-600">-1</td>
+                                            <td class="border border-slate-300 px-3 py-2 border-b-2 border-b-slate-400">16</td>
+                                            <td class="border border-slate-300 px-3 py-2 border-b-2 border-b-slate-400">1</td>
+                                            <td class="border border-slate-300 px-3 py-2 border-b-2 border-b-slate-400 text-rose-600">-4</td>
+                                        </tr>
+                                        <tr class="bg-amber-50/50 font-bold">
+                                            <td class="border border-slate-300 px-3 py-2" colspan="2">合計</td>
+                                            <td class="border border-slate-300 px-3 py-2 text-blue-800">0</td>
+                                            <td class="border border-slate-300 px-3 py-2 text-emerald-800">0</td>
+                                            <td class="border border-slate-300 px-3 py-2">30</td>
+                                            <td class="border border-slate-300 px-3 py-2">30</td>
+                                            <td class="border border-slate-300 px-3 py-2 text-rose-800">6</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            
+                            <p class="mt-4">
+                                相関係数 $r$ は、(偏差の積の和) $\div$ $\sqrt{(x\text{の偏差の2乗和})} \sqrt{(y\text{の偏差の2乗和})}$ であるから、
+                            </p>
+                            <div class="math-scroll">
+                                \begin{aligned}
+                                r &= \frac{6}{\sqrt{30} \sqrt{30}} \\
+                                &= \frac{6}{30} \\
+                                &= 0.2
+                                \end{aligned}
+                            </div>
+                            <div class="mt-2 rounded-xl border-2 border-blue-500 bg-blue-50 p-3 text-slate-900 font-bold inline-block">
+                                答: 0.2
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-10">
+                    <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">図解・可視化（散布図と相関関係）</h3>
+                    <p class="mt-4 text-sm text-slate-700 leading-relaxed">
+                        (3)のデータを散布図（縦軸を英語、横軸を数学）にプロットすると以下のようになります。<br>
+                        中心の点線はそれぞれの平均点（$x=5$, $y=6$）を表します。<br>
+                        全体として、右上がりの傾向も右下がりの傾向もはっきりとは見られません。計算結果の相関係数 $r=0.2$ は「正の弱い相関」を示しており、グラフの見た目（バラバラに散らばっている様子）とよく一致しています。
+                    </p>
+                    
+                    <div class="mt-4 bg-slate-50 p-4 sm:p-6 rounded-lg border border-slate-200 flex justify-center">
+                        <div class="relative bg-white border border-slate-200 shadow-sm rounded-xl p-6 pb-8 pr-8">
+                            <svg width="300" height="300" viewBox="-20 -20 320 320" xmlns="http://www.w3.org/2000/svg">
+                                <!-- 軸・目盛り (10点満点 = 300px, 1点=30px) -->
+                                <!-- 背景グリッド -->
+                                <g stroke="#f1f5f9" stroke-width="1">
+                                    <line x1="0" y1="30" x2="300" y2="30" />
+                                    <line x1="0" y1="60" x2="300" y2="60" />
+                                    <line x1="0" y1="90" x2="300" y2="90" />
+                                    <line x1="0" y1="120" x2="300" y2="120" />
+                                    <line x1="0" y1="150" x2="300" y2="150" />
+                                    <line x1="0" y1="180" x2="300" y2="180" />
+                                    <line x1="0" y1="210" x2="300" y2="210" />
+                                    <line x1="0" y1="240" x2="300" y2="240" />
+                                    <line x1="0" y1="270" x2="300" y2="270" />
+                                    
+                                    <line x1="30" y1="0" x2="30" y2="300" />
+                                    <line x1="60" y1="0" x2="60" y2="300" />
+                                    <line x1="90" y1="0" x2="90" y2="300" />
+                                    <line x1="120" y1="0" x2="120" y2="300" />
+                                    <line x1="150" y1="0" x2="150" y2="300" />
+                                    <line x1="180" y1="0" x2="180" y2="300" />
+                                    <line x1="210" y1="0" x2="210" y2="300" />
+                                    <line x1="240" y1="0" x2="240" y2="300" />
+                                    <line x1="270" y1="0" x2="270" y2="300" />
+                                </g>
+
+                                <!-- XY軸 -->
+                                <line x1="0" y1="300" x2="310" y2="300" stroke="#94a3b8" stroke-width="2" />
+                                <line x1="0" y1="0" x2="0" y2="310" stroke="#94a3b8" stroke-width="2" />
+                                
+                                <text x="315" y="305" fill="#64748b" font-size="12">数学(x)</text>
+                                <text x="-5" y="-10" fill="#64748b" font-size="12" text-anchor="middle">英語(y)</text>
+                                <text x="-15" y="315" fill="#64748b" font-size="12">0</text>
+                                <text x="300" y="315" fill="#64748b" font-size="12" text-anchor="middle">10</text>
+                                <text x="-15" y="5" fill="#64748b" font-size="12">10</text>
+
+                                <!-- 平均の線 -->
+                                <!-- x=5 -> 150, y=6 -> 300 - 180 = 120 -->
+                                <line x1="150" y1="0" x2="150" y2="300" stroke="#cbd5e1" stroke-dasharray="6,4" stroke-width="2" />
+                                <line x1="0" y1="120" x2="300" y2="120" stroke="#cbd5e1" stroke-dasharray="6,4" stroke-width="2" />
+                                <text x="150" y="315" fill="#94a3b8" font-size="12" text-anchor="middle">5(平均)</text>
+                                <text x="-5" y="125" fill="#94a3b8" font-size="12" text-anchor="end">6(平均)</text>
+
+                                <!-- プロット点 (svg座標は上が0なので 300 - y*30) -->
+                                <!-- A(2, 6) -> 60, 120 -->
+                                <circle cx="60" cy="120" r="6" fill="#3b82f6" />
+                                <text x="50" y="115" fill="#1e40af" font-size="12" font-weight="bold">A</text>
+                                
+                                <!-- B(3, 2) -> 90, 240 -->
+                                <circle cx="90" cy="240" r="6" fill="#3b82f6" />
+                                <text x="80" y="235" fill="#1e40af" font-size="12" font-weight="bold">B</text>
+                                
+                                <!-- C(5, 9) -> 150, 30 -->
+                                <circle cx="150" cy="30" r="6" fill="#3b82f6" />
+                                <text x="140" y="25" fill="#1e40af" font-size="12" font-weight="bold">C</text>
+                                
+                                <!-- D(6, 8) -> 180, 60 -->
+                                <circle cx="180" cy="60" r="6" fill="#3b82f6" />
+                                <text x="188" y="55" fill="#1e40af" font-size="12" font-weight="bold">D</text>
+                                
+                                <!-- E(9, 5) -> 270, 150 -->
+                                <circle cx="270" cy="150" r="6" fill="#3b82f6" />
+                                <text x="278" y="145" fill="#1e40af" font-size="12" font-weight="bold">E</text>
+
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-10">
+                    <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">最終結果と検算</h3>
+                    <div class="mt-4 rounded-xl border-2 border-blue-500 bg-blue-50 p-5 text-slate-900">
+                        <ul class="space-y-2 font-bold">
+                            <li>(1) 中央値 5点, 平均値 5点</li>
+                            <li>(2) 分散 4, 標準偏差 2点</li>
+                            <li>(3) 相関係数 0.2</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="mt-4 bg-slate-50 p-4 rounded-lg border border-slate-200 text-sm text-slate-700">
+                        <strong>検算ポイント：偏差の合計は必ず「0」になる</strong><br>
+                        分散や相関係数の計算で最も怖いのは「計算ミス」ですが、実は(3)の表で強力な検算が働いています。<br>
+                        「$x-\bar{x}$」の列と「$y-\bar{y}$」の列の合計を見てください。<strong>各データから平均を引いた値（偏差）の合計は、必ず $0$ になります。</strong>もしここが $0$ にならなかった場合、最初の平均値の計算を間違えているか、引き算のミスが起きている証拠です。この「ゼロチェック」を癖づけるだけで、テスト本番でのケアレスミスを激減させることができます。
+                    </div>
+                </div>
+
+                <div class="mt-10">
+                    <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">発展：相関係数の図形的意味（ベクトルのなす角）</h3>
+                    <p class="mt-4 text-sm text-slate-700 leading-relaxed">
+                        相関係数 $r$ は常に $-1 \le r \le 1$ の範囲の値をとりますが、この事実は「ベクトル」を用いると非常に鮮やかに説明できます。<br>
+                        (3)の5人のデータにおいて、$x$の偏差を成分とする5次元ベクトルを $\vec{x} = (-3, -2, 0, 1, 4)$、$y$の偏差を成分とするベクトルを $\vec{y} = (0, -4, 3, 2, -1)$ と見なします。すると、各値は以下のように翻訳されます。
+                    </p>
+                    <ul class="list-disc pl-5 mt-2 space-y-2 text-sm text-slate-700">
+                        <li>$x$ の偏差の2乗和 ＝ $|\vec{x}|^2$</li>
+                        <li>$y$ の偏差の2乗和 ＝ $|\vec{y}|^2$</li>
+                        <li>偏差の積の和（共分散の分子） ＝ $\vec{x} \cdot \vec{y}$ （内積）</li>
+                    </ul>
+                    <p class="mt-2 text-sm text-slate-700 leading-relaxed">
+                        これらを相関係数の公式に当てはめると、
+                    </p>
+                    <div class="math-scroll mt-2 bg-slate-50 p-3 rounded-lg border border-slate-200">
+                        \[ r = \frac{\vec{x} \cdot \vec{y}}{|\vec{x}| |\vec{y}|} \]
+                    </div>
+                    <p class="mt-2 text-sm text-slate-700 leading-relaxed">
+                        これはまさに、<strong>空間における2つのベクトル $\vec{x}$ と $\vec{y}$ のなす角 $\theta$ の $\cos \theta$ そのもの</strong>です。コーシー・シュワルツの不等式より $-1 \le \cos \theta \le 1$ が常に成り立つため、相関係数も必ずこの範囲に収まることが証明できます。「データの相関」とは、多次元空間における「ベクトルの向きの揃い具合」を測っているのだと解釈すると、数学の世界が一気に広がります。
+                    </p>
+                </div>
+
+                <div class="mt-10">
+                    <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">受験生のつまずきポイント</h3>
+                    <div class="mt-4 space-y-4">
+                        <div class="bg-red-50 border border-red-200 rounded-lg p-4">
+                            <p class="font-bold text-red-900 text-sm">中央値（偶数個の場合）の求め方ミス</p>
+                            <p class="mt-1 text-sm text-red-800">
+                                奇数個のデータなら真ん中の1つを選ぶだけですが、今回のように偶数個（10個）の場合は、真ん中にある2つのデータ（5番目と6番目）の<strong>平均</strong>をとらなければなりません。数え間違えて「5番目の値の5」だけを答えてしまうミスが散見されます（今回はたまたま一致しますが、値が異なる場合は誤答になります）。
+                            </p>
+                        </div>
+                        <div class="bg-red-50 border border-red-200 rounded-lg p-4">
+                            <p class="font-bold text-red-900 text-sm">相関係数の計算で途中で割ってしまう</p>
+                            <p class="mt-1 text-sm text-red-800">
+                                教科書には 相関係数 ＝「共分散 $\div$ ($x$の標準偏差 $\times$ $y$の標準偏差)」と書かれていますが、これを真面目に一つ一つ $n$（データの個数）で割って小数を出し、さらに平方根の近似値を計算してから割り算をしようとすると、計算が地獄になり誤差も大きくなります。<br>
+                                分子（共分散）も分母（標準偏差）も、計算式の中に $\dfrac{1}{n}$ が含まれているため、<strong>比をとる段階で $\dfrac{1}{n}$ は全て約分されて消えます</strong>。(3)の答案のように、$\dfrac{1}{n}$ で割る前の「偏差の2乗和」や「偏差の積の和」のまま代入して計算するのが最も安全で早い方法です。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+            
+            <section class="mt-6 rounded-2xl bg-blue-900 p-6 text-white shadow-sm sm:p-8">
+                <h2 class="border-b-2 border-blue-400 pb-2 text-lg font-bold">アクティブリコール（復習テスト）</h2>
+                <p class="mt-4 text-sm text-blue-200">今日の学習内容を思い出すことで、記憶を定着させましょう。質問をクリックして答えを確認してください。</p>
+                
+                <div class="mt-6 space-y-3">
+                    <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                        <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                            <span>Q1. データの数が偶数個（例えば10個）のとき、中央値（メジアン）はどのように求めますか？</span>
+                            <span class="transition duration-300 group-open:-rotate-180">
+                                <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                            </span>
+                        </summary>
+                        <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                            データを小さい順（または大きい順）に並べたとき、中央にある2つの値（10個なら5番目と6番目）を足して2で割った「平均値」を中央値とします。
+                        </div>
+                    </details>
+                    
+                    <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                        <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                            <span>Q2. 平均値が綺麗な整数の場合、分散を求めるための計算手順を順を追って説明してください。</span>
+                            <span class="transition duration-300 group-open:-rotate-180">
+                                <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                            </span>
+                        </summary>
+                        <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                            1. 平均値を求める。<br>
+                            2. 各データから平均値を引いて「偏差」を計算する。<br>
+                            3. それぞれの偏差を2乗する。<br>
+                            4. 2乗した値の平均を計算する（すべて足してデータの個数 $n$ で割る）。これが分散になります。
+                        </div>
+                    </details>
+                    
+                    <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                        <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                            <span>Q3. 相関係数を求めるための計算表を作るとき、計算ミスを防ぐために利用できる「検算の性質（ゼロチェック）」とは何ですか？</span>
+                            <span class="transition duration-300 group-open:-rotate-180">
+                                <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                            </span>
+                        </summary>
+                        <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                            各データから平均値を引いた「偏差」の合計は、プラスマイナスが打ち消し合って必ず「$0$」になるという性質です。表を作成した際、偏差の列の合計が $0$ にならない場合は計算ミスが起きていると判断できます。
+                        </div>
+                    </details>
+                </div>
+            </section>
+            
+            <nav class="mt-7 grid gap-3 sm:grid-cols-2">
+                <a href="index.html" class="nav-button rounded-xl border border-slate-300 bg-white px-5 py-4 text-center font-bold text-slate-700 hover:border-blue-300 hover:text-blue-800">
+                    ← 一覧へ
+                </a>
+                <a href="no15.html" class="nav-button rounded-xl bg-blue-700 px-5 py-4 text-center font-bold text-white hover:bg-blue-800">
+                    No.15 →
+                </a>
+            </nav>
+        </main>
+
+        <footer class="py-10 text-center text-sm text-slate-500">
+            医進・サイエンスコース　夏期数学課題 解説サイト
+        </footer>
+    </div>
+</body>
+</html>

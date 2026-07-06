@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>夏期課題 No.17 対数関数 - 医進・サイエンスコース</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        MathJax = {
+            chtml: {
+                matchFontHeight: false
+            },
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body { font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif; }
+        .nav-button { transition: transform .16s ease, box-shadow .16s ease; }
+        .nav-button:hover { transform: translateY(-2px); box-shadow: 0 8px 18px rgba(15, 23, 42, .12); }
+        .math-scroll { overflow-x: auto; overflow-y: hidden; padding-bottom: 0.5rem; margin-bottom: 0.5rem; }
+    </style>
+</head>
+<body class="bg-slate-100 text-slate-800">
+    <div class="mx-auto max-w-4xl px-4 py-6 sm:px-6 lg:py-10">
+        
+        <a href="index.html" class="inline-flex items-center gap-2 text-sm font-bold text-blue-700 hover:text-blue-900">
+            ← 問題一覧へ戻る
+        </a>
+
+        <header class="mt-4 overflow-hidden rounded-3xl bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-800 text-white shadow-xl">
+            <div class="p-7 sm:p-10">
+                <span class="inline-flex items-center rounded-full bg-white/15 px-4 py-1.5 text-sm font-semibold tracking-wide text-blue-100">医進・サイエンスコース</span>
+                <div class="mt-4 flex flex-wrap items-center gap-3">
+                    <span class="rounded-lg bg-white/20 px-3 py-1 text-sm font-bold">No.17</span>
+                    <span class="rounded-full bg-amber-100 px-3 py-1 text-xs font-bold text-amber-800">標準</span>
+                </div>
+                <h1 class="mt-4 text-3xl font-bold leading-tight sm:text-4xl">対数関数</h1>
+                <div class="mt-3 text-lg text-blue-100">目標解答時間：20分</div>
+            </div>
+        </header>
+
+        <main>
+            <section class="mt-7 rounded-2xl border border-blue-100 bg-white p-6 shadow-sm sm:p-8">
+                <h2 class="flex items-center gap-2 text-xl font-bold text-blue-900">
+                    <span class="grid h-8 w-8 place-items-center rounded-full bg-blue-700 text-base text-white">1</span>
+                    問題
+                </h2>
+                
+                <div class="bg-slate-50 border border-slate-200 rounded-lg p-4 mb-4 text-slate-700 leading-relaxed mt-4">
+                    <p>関数 $y=(\log_3 x)^2-\log_3 x^2$ がある。また，$u=\log_3 x$ とする。</p>
+                    <ol class="list-decimal pl-6 mt-3 space-y-2">
+                        <li>$y$を$u$を用いて表せ。</li>
+                        <li>$\dfrac{1}{3}\leq x\leq 9$ とする。$u$のとり得る値の範囲を求めよ。またこのとき，$y$の最大値と最小値，およびそのときの$x$の値を求めよ。</li>
+                        <li>$k$を正の定数とする。$x$の方程式 $(\log_3 x)^2-\log_3 x^2=\log_3 k$ が $\dfrac{1}{3}\leq x\leq 9$ の範囲に異なる2つの実数解をもつとき，$k$のとり得る値の範囲を求めよ。またこのとき，異なる2つの実数解を $\alpha, \beta$ ($\alpha<\beta$) とする。$\dfrac{\beta}{\alpha}$ のとり得る値の範囲を求めよ。</li>
+                    </ol>
+                </div>
+
+                <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 mt-4">
+                    <h3 class="font-bold text-blue-900 mb-2">【条件の整理】</h3>
+                    <ul class="list-disc pl-5 space-y-2 text-sm text-slate-700">
+                        <li><strong>真数条件：</strong> 対数 $\log_3 x$ が含まれるため、真数 $x > 0$ である必要がある。本問では (2)(3) ともに $x \ge \frac{1}{3}$ なので真数条件は満たされている。</li>
+                        <li><strong>対数の性質：</strong> $\log_3 x^2$ は、真数条件より $x>0$ が確定しているため、$2\log_3 x$ と変形できる。</li>
+                        <li><strong>変数の置き換え：</strong> $u = \log_3 x$ とおくことで、$x$ の複雑な対数方程式を、$u$ のシンプルな2次方程式に帰着させる。</li>
+                        <li><strong>$x$ と $u$ の対応関係：</strong> 底 $3 > 1$ より、$y = \log_3 x$ は単調増加関数である。したがって、$x$ の値が1つ決まれば $u$ も1つ決まり、$u$ が1つ決まれば $x$ も1つ決まる（1対1対応）。</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="mt-6 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+                <h2 class="flex items-center gap-2 text-xl font-bold text-slate-900">
+                    <span class="grid h-8 w-8 place-items-center rounded-full bg-slate-700 text-base text-white">2</span>
+                    解説
+                </h2>
+                <p class="mt-4 text-sm leading-8 text-slate-600">
+                    問題を解くための考え方から、答案、検算、発展までを順に確認します。
+                </p>
+
+                <div class="mt-8 bg-amber-50 border border-amber-200 rounded-xl p-5">
+                    <h3 class="border-b-2 border-amber-400 pb-2 text-lg font-bold text-amber-900">解法選択のトリガー</h3>
+                    <div class="mt-4 space-y-4">
+                        <div class="bg-amber-100/60 border border-amber-200 rounded-lg p-4">
+                            <p class="font-bold text-amber-900 text-sm">同じ形（$\log_3 x$）の繰り返しを見たら</p>
+                            <p class="mt-1 text-sm text-amber-800">
+                                $u = \log_3 x$ と<strong>置き換えて2次関数に帰着</strong>させます。対数の肩の数字（$x^2$ の $2$）は前におろして形を揃えます。
+                            </p>
+                        </div>
+                        <div class="bg-amber-100/60 border border-amber-200 rounded-lg p-4">
+                            <p class="font-bold text-amber-900 text-sm">文字を置き換えたら</p>
+                            <p class="mt-1 text-sm text-amber-800">
+                                <strong>「新しい文字の変域」</strong>を必ず調べます。元の定義域 $1/3 \le x \le 9$ について、底を3とする対数をとって $u$ の範囲に変換します。
+                            </p>
+                        </div>
+                        <div class="bg-amber-100/60 border border-amber-200 rounded-lg p-4">
+                            <p class="font-bold text-amber-900 text-sm">方程式の解の個数と来たら</p>
+                            <p class="mt-1 text-sm text-amber-800">
+                                今回はすでに $y = \log_3 k$ の定数分離の形になっているため、<strong>「$u$ の2次関数のグラフと水平線の交点」</strong>の個数に翻訳します。$u$ と $x$ が1対1対応することの断り書きを忘れないようにします。
+                            </p>
+                        </div>
+                        <div class="bg-amber-100/60 border border-amber-200 rounded-lg p-4">
+                            <p class="font-bold text-amber-900 text-sm">解の比 $\beta/\alpha$ の範囲を求めるときは</p>
+                            <p class="mt-1 text-sm text-amber-800">
+                                置き換えた文字 $u$ の世界で考えます。対数の性質より $\log_3(\beta/\alpha) = \log_3 \beta - \log_3 \alpha$ と「差の形」になるため、<strong>グラフ上の2つの交点の $u$ 座標の差（距離）</strong>がどう変化するかを調べます。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-8 bg-emerald-50 border border-emerald-200 rounded-xl p-5">
+                    <h3 class="border-b-2 border-emerald-400 pb-2 text-lg font-bold text-emerald-900">思考プロセス</h3>
+                    <div class="mt-4 space-y-4">
+                        <div class="bg-emerald-100/60 border border-emerald-200 rounded-lg p-4 text-sm text-emerald-900">
+                            <strong>(2) 最大値・最小値の計算</strong><br>
+                            $x$ の範囲の各辺に底3の対数をとって $u$ の範囲を出します。$u$ の2次関数を平方完成し、その範囲内での頂点と端点を確認して最大・最小を求めます。
+                        </div>
+                        <div class="bg-emerald-100/60 border border-emerald-200 rounded-lg p-4 text-sm text-emerald-900">
+                            <strong>(3) 交点の個数と $k$ の範囲</strong><br>
+                            底が1より大きいため、$x$ についての方程式の実数解の個数は、$u$ についての方程式の実数解の個数と一致します。<br>
+                            $u$ の範囲において、放物線 $y = u^2 - 2u$ と 直線 $y = \log_3 k$ が異なる2点で交わるような $\log_3 k$ の範囲をグラフから読み取り、そこから $k$ の範囲を逆算します。
+                        </div>
+                        <div class="bg-emerald-100/60 border border-emerald-200 rounded-lg p-4 text-sm text-emerald-900">
+                            <strong>(3) $\beta/\alpha$ の範囲</strong><br>
+                            $u^2-2u = \log_3 k$ の2つの解を $u_1, u_2$ ($u_1 < u_2$) とします。$\alpha < \beta$ より $\log_3 \alpha < \log_3 \beta$ であるため、$u_1 = \log_3 \alpha, u_2 = \log_3 \beta$ です。これより $\log_3(\beta/\alpha) = u_2 - u_1$ となります。<br>
+                            交点の $u$ 座標の差 $u_2 - u_1$ は、交点が頂点（最小値）から上へ移動するにつれて大きくなります。条件を満たす範囲内で、この差がどこからどこまで動くかを調べ、最後に対数を外して $\beta/\alpha$ の範囲に戻します。
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-10">
+                    <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">実際の答案</h3>
+                    
+                    <div class="mt-4 space-y-6 text-slate-700">
+                        <div>
+                            <p class="font-bold">（1）</p>
+                            <p class="mt-2">
+                                $y = (\log_3 x)^2 - \log_3 x^2$ において、真数は正であるから $x > 0$ である。<br>
+                                $x>0$ より $\log_3 x^2 = 2\log_3 x$ と変形できる。<br>
+                                $u = \log_3 x$ とおくと，
+                            </p>
+                            <div class="math-scroll">
+                                \[ y = u^2 - 2u \]
+                            </div>
+                            <div class="mt-2 rounded-xl border-2 border-blue-500 bg-blue-50 p-3 text-slate-900 font-bold inline-block">
+                                答: $y = u^2 - 2u$
+                            </div>
+                        </div>
+
+                        <div class="border-t border-slate-200 pt-6">
+                            <p class="font-bold">（2）</p>
+                            <p class="mt-2">
+                                底3は1より大きいので，$\dfrac{1}{3} \le x \le 9$ の各辺に底3の対数をとると
+                            </p>
+                            <div class="math-scroll">
+                                \begin{aligned}
+                                \log_3 \frac{1}{3} &\le \log_3 x \le \log_3 9 \\
+                                -1 &\le u \le 2
+                                \end{aligned}
+                            </div>
+                            <p class="mt-2">
+                                よって，$u$のとり得る値の範囲は $-1 \le u \le 2$ である。<br>
+                                (1)の関数を平方完成すると
+                            </p>
+                            <div class="math-scroll">
+                                \[ y = (u - 1)^2 - 1 \]
+                            </div>
+                            <p class="mt-2">
+                                したがって，$-1 \le u \le 2$ において関数 $y$ は，<br>
+                                $u = -1$ のとき，最大値 $(-1)^2 - 2(-1) = 1 + 2 = 3$ をとる。<br>
+                                このとき $\log_3 x = -1$ より $x = 3^{-1} = \dfrac{1}{3}$。<br><br>
+                                $u = 1$ のとき，最小値 $-1$ をとる。<br>
+                                このとき $\log_3 x = 1$ より $x = 3^1 = 3$。
+                            </p>
+                            <div class="mt-4 rounded-xl border-2 border-blue-500 bg-blue-50 p-5 text-slate-900 font-bold inline-block w-full">
+                                答:<br>
+                                $u$の範囲は $-1 \le u \le 2$<br>
+                                $x = \dfrac{1}{3}$ のとき 最大値 $3$<br>
+                                $x = 3$ のとき 最小値 $-1$
+                            </div>
+                        </div>
+
+                        <div class="border-t border-slate-200 pt-6">
+                            <p class="font-bold">（3）</p>
+                            <p class="mt-2">
+                                与えられた方程式は $y = \log_3 k$ と表せる。<br>
+                                底 $3 > 1$ より、$x$ と $u$ は1対1に対応するため、「$x$ の方程式が $\dfrac{1}{3} \le x \le 9$ に異なる2つの実数解をもつ」ことは、「$u$ の方程式 $u^2-2u = \log_3 k$ が $-1 \le u \le 2$ に異なる2つの実数解をもつ」ことと同値である。<br>
+                                これは、放物線 $y = u^2 - 2u$ ($-1 \le u \le 2$) と 直線 $y = \log_3 k$ が異なる2点で交わる条件に等しい。<br>
+                                放物線の頂点の $y$ 座標は $-1$、$u=2$ のときの $y$ 座標は $0$ であるから、グラフより交点を2つもつ条件は
+                            </p>
+                            <div class="math-scroll">
+                                \begin{aligned}
+                                -1 &< \log_3 k \le 0 \\
+                                3^{-1} &< k \le 3^0 \\
+                                \frac{1}{3} &< k \le 1
+                                \end{aligned}
+                            </div>
+                            <p class="mt-4">
+                                次に、方程式の異なる2つの実数解 $\alpha, \beta$ ($\alpha < \beta$) に対応する $u$ の値を $u_1, u_2$ ($u_1 < u_2$) とすると，$\log_3 \alpha = u_1$，$ \log_3 \beta = u_2$ である。<br>
+                                $\dfrac{\beta}{\alpha}$ を底3の対数をとると
+                            </p>
+                            <div class="math-scroll">
+                                \[ \log_3 \frac{\beta}{\alpha} = \log_3 \beta - \log_3 \alpha = u_2 - u_1 \]
+                            </div>
+                            <p class="mt-2">
+                                となる。これはグラフ上における2つの交点の $u$ 座標の距離を表す。<br>
+                                放物線 $y = (u-1)^2 - 1$ は軸 $u=1$ に関して対称である。直線 $y = \log_3 k$ が頂点を通るとき（$\log_3 k \to -1$），2つの交点は近づき $u_2 - u_1 \to 0$ となる。<br>
+                                直線が $y=0$ のとき，交点は $u=0, 2$ となり，距離は $u_2 - u_1 = 2 - 0 = 2$ と最大になる。<br>
+                                したがって，交点間の距離のとり得る範囲は
+                            </p>
+                            <div class="math-scroll">
+                                \[ 0 < u_2 - u_1 \le 2 \]
+                            </div>
+                            <p class="mt-2">
+                                ゆえに
+                            </p>
+                            <div class="math-scroll">
+                                \begin{aligned}
+                                0 &< \log_3 \frac{\beta}{\alpha} \le 2 \\
+                                3^0 &< \frac{\beta}{\alpha} \le 3^2 \\
+                                1 &< \frac{\beta}{\alpha} \le 9
+                                \end{aligned}
+                            </div>
+                            <div class="mt-2 rounded-xl border-2 border-blue-500 bg-blue-50 p-3 text-slate-900 font-bold inline-block">
+                                答: $k$ の範囲は $\dfrac{1}{3} < k \le 1$ ， $\dfrac{\beta}{\alpha}$ の範囲は $1 < \dfrac{\beta}{\alpha} \le 9$
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-10">
+                    <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">図解・可視化（解の差とグラフの幅）</h3>
+                    <p class="mt-4 text-sm text-slate-700 leading-relaxed">
+                        (3)の後半における $\log_3(\beta/\alpha) = u_2 - u_1$ の処理は、<strong>「2次関数のグラフの幅」</strong>として視覚的に捉えると非常に簡単です。<br>
+                        水平線 $y = \log_3 k$ を動かすと、交点間の距離 $u_2 - u_1$ が変化します。直線が頂点から上へ行くほど、グラフの幅（解の差）は広がり、最大で $2$ になることがスライダーから直感的に理解できます。
+                    </p>
+                    
+                    <div class="mt-4 bg-slate-50 p-4 sm:p-6 rounded-lg border border-slate-200 flex flex-col items-center">
+                        <div class="w-full max-w-md mb-6 px-2">
+                            <label for="yk-slider" class="block text-sm font-medium text-slate-700 mb-2">
+                                $y = \log_3 k$ の値: <span id="yk-value" class="font-bold text-rose-600 text-lg">0.00</span>
+                            </label>
+                            <input type="range" id="yk-slider" min="-0.99" max="0" step="0.01" value="0" class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-rose-600">
+                            <div class="flex justify-between mt-2 text-xs text-slate-500">
+                                <span>-1 (頂点)</span>
+                                <span>0</span>
+                            </div>
+                        </div>
+
+                        <div class="relative w-full max-w-md bg-white border border-slate-200 rounded-xl shadow-sm overflow-hidden p-2 flex justify-center">
+                            <!-- SVG Canvas -->
+                            <svg id="parabola-svg" width="300" height="250" viewBox="-1.5 -1.5 4 4.5" class="w-full h-auto">
+                                <defs>
+                                    <clipPath id="graph-clip">
+                                        <rect x="-1" y="-1.5" width="3" height="4.5" />
+                                    </clipPath>
+                                    <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="4" markerHeight="4" orient="auto-start-reverse">
+                                        <path d="M 0 0 L 10 5 L 0 10 z" fill="#f43f5e" />
+                                    </marker>
+                                </defs>
+                                
+                                <!-- 背景グリッド (SVG座標系は y下向きなので反転させる) -->
+                                <g stroke="#e2e8f0" stroke-width="0.05">
+                                    <line x1="-1.5" y1="0" x2="2.5" y2="0" stroke="#94a3b8" stroke-width="0.1"/> <!-- x軸(u軸) -->
+                                    <line x1="0" y1="-1.5" x2="0" y2="3.5" stroke="#94a3b8" stroke-width="0.1"/> <!-- y軸 -->
+                                    <line x1="1" y1="-1.5" x2="1" y2="3.5" stroke="#cbd5e1" stroke-dasharray="0.1,0.1"/> <!-- 軸 u=1 -->
+                                    <line x1="-1.5" y1="1" x2="2.5" y2="1" /> <!-- y=-1 (画面上は y=1) -->
+                                </g>
+
+                                <text x="2.3" y="-0.1" fill="#64748b" font-size="0.2">u</text>
+                                <text x="0.1" y="-1.3" fill="#64748b" font-size="0.2">y</text>
+                                <text x="-0.3" y="1.1" fill="#64748b" font-size="0.2">-1</text>
+                                <text x="1" y="-0.1" fill="#64748b" font-size="0.2">1</text>
+
+                                <!-- uの範囲のハイライト -->
+                                <rect x="-1" y="-1.5" width="3" height="4.5" fill="rgba(59, 130, 246, 0.05)" />
+
+                                <!-- 関数グラフ (y=u^2-2u) -->
+                                <path id="curve-solid" fill="none" stroke="#2563eb" stroke-width="0.08" clip-path="url(#graph-clip)" />
+
+                                <!-- 動的要素 -->
+                                <g id="dynamic-elements"></g>
+                            </svg>
+                        </div>
+                        
+                        <div class="mt-4 p-3 bg-rose-50 rounded-lg text-center w-full max-w-md border border-rose-200 shadow-sm">
+                            <span class="text-sm text-slate-700 font-semibold">解の距離 $u_2 - u_1$ $\left(= \log_3 \dfrac{\beta}{\alpha}\right)$ ：</span>
+                            <span id="diff-count" class="text-2xl font-bold text-rose-700 ml-2">2.00</span>
+                        </div>
+                    </div>
+
+                    <script>
+                        document.addEventListener("DOMContentLoaded", function() {
+                            const slider = document.getElementById('yk-slider');
+                            const ykValueDisplay = document.getElementById('yk-value');
+                            const dynamicElements = document.getElementById('dynamic-elements');
+                            const diffCountDisplay = document.getElementById('diff-count');
+                            
+                            // グラフのパスを生成
+                            function generatePath() {
+                                let path = "";
+                                for (let u = -1; u <= 2; u += 0.05) {
+                                    const y = u * u - 2 * u;
+                                    const svgY = -y; // SVG座標反転
+                                    const command = (Math.abs(u - (-1)) < 0.01) ? "M" : "L";
+                                    path += `${command} ${u} ${svgY} `;
+                                }
+                                document.getElementById('curve-solid').setAttribute("d", path);
+                            }
+                            generatePath();
+                            
+                            function updateVisualization() {
+                                const yk = parseFloat(slider.value);
+                                ykValueDisplay.textContent = yk.toFixed(2);
+                                
+                                let svgContent = '';
+                                const svgYk = -yk; // 反転
+                                
+                                // 直線 y = log_3 k
+                                svgContent += `<line x1="-1.5" y1="${svgYk}" x2="2.5" y2="${svgYk}" stroke="#f43f5e" stroke-width="0.05" />`;
+                                
+                                // 方程式 u^2 - 2u - yk = 0 の解
+                                const D_quarter = 1 + yk;
+                                
+                                if (D_quarter >= 0) {
+                                    const rootD = Math.sqrt(D_quarter);
+                                    const u1 = 1 - rootD;
+                                    const u2 = 1 + rootD;
+                                    const diff = u2 - u1;
+                                    
+                                    // 交点マーカー
+                                    svgContent += `<circle cx="${u1}" cy="${svgYk}" r="0.08" fill="#f43f5e" />`;
+                                    svgContent += `<circle cx="${u2}" cy="${svgYk}" r="0.08" fill="#f43f5e" />`;
+                                    
+                                    // 幅を示す矢印線
+                                    if (diff > 0.05) {
+                                        svgContent += `<line x1="${u1}" y1="${svgYk - 0.2}" x2="${u2}" y2="${svgYk - 0.2}" stroke="#f43f5e" stroke-width="0.04" marker-start="url(#arrow)" marker-end="url(#arrow)" />`;
+                                        // 垂直補助線
+                                        svgContent += `<line x1="${u1}" y1="${svgYk}" x2="${u1}" y2="${svgYk - 0.25}" stroke="#f43f5e" stroke-width="0.02" stroke-dasharray="0.05,0.05"/>`;
+                                        svgContent += `<line x1="${u2}" y1="${svgYk}" x2="${u2}" y2="${svgYk - 0.25}" stroke="#f43f5e" stroke-width="0.02" stroke-dasharray="0.05,0.05"/>`;
+                                    }
+                                    
+                                    diffCountDisplay.textContent = diff.toFixed(2);
+                                }
+                                
+                                dynamicElements.innerHTML = svgContent;
+                            }
+                            
+                            slider.addEventListener('input', updateVisualization);
+                            updateVisualization(); // 初期描画
+                        });
+                    </script>
+                </div>
+
+                <div class="mt-10">
+                    <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">最終結果と検算</h3>
+                    
+                    <div class="mt-4 rounded-xl border-2 border-blue-500 bg-blue-50 p-5 text-slate-900">
+                        <ul class="space-y-2 font-bold">
+                            <li>(1) $y = u^2 - 2u$</li>
+                            <li>(2) $-1 \le u \le 2$ ， $x = \dfrac{1}{3}$ で最大値 $3$ ， $x = 3$ で最小値 $-1$</li>
+                            <li>(3) $k$ の範囲：$\dfrac{1}{3} < k \le 1$ ， $\dfrac{\beta}{\alpha}$ の範囲：$1 < \dfrac{\beta}{\alpha} \le 9$</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="mt-4 bg-slate-50 p-4 rounded-lg border border-slate-200 text-sm text-slate-700">
+                        <strong>検算ポイント：解と係数の関係の直接計算</strong><br>
+                        (3)の $\beta/\alpha$ の範囲について、解の公式を用いて直接導くことも可能です。<br>
+                        方程式 $u^2-2u - \log_3 k = 0$ の解は、$u = 1 \pm \sqrt{1 + \log_3 k}$ です。<br>
+                        $-1 < \log_3 k \le 0$ の範囲において、根号の中身 $1+\log_3 k$ は $0 < 1+\log_3 k \le 1$ となります。<br>
+                        したがって、交点の距離 $u_2 - u_1$ は
+                        \[ u_2 - u_1 = (1 + \sqrt{1 + \log_3 k}) - (1 - \sqrt{1 + \log_3 k}) = 2\sqrt{1 + \log_3 k} \]
+                        根号の部分が $(0, 1]$ を動くため、$u_2 - u_1$ は $(0, 2]$ を動きます。つまり $0 < \log_3 \dfrac{\beta}{\alpha} \le 2$ となり、対称性から考えた範囲と完全に一致します。
+                    </div>
+                </div>
+
+                <div class="mt-10">
+                    <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">発展・一般化：解の比を扱う定石</h3>
+                    <p class="mt-4 text-sm text-slate-700 leading-relaxed">
+                        対数方程式において、2つの解の「比」$\dfrac{\beta}{\alpha}$ や「積」$\alpha\beta$ を問われる問題は、難関大で頻出します。<br>
+                        ・<strong>積 $\alpha\beta$</strong> $\rightarrow$ 対数をとると「和」になる（$\log_3(\alpha\beta) = u_1 + u_2$）。解と係数の関係から定数になることが多い。<br>
+                        ・<strong>比 $\dfrac{\beta}{\alpha}$</strong> $\rightarrow$ 対数をとると「差」になる（$\log_3(\frac{\beta}{\alpha}) = u_2 - u_1$）。解の公式や対称性を利用してグラフの「幅」を評価する。<br>
+                        無理に $x$ に戻して $\alpha, \beta$ を直接求めようとせず、「$u$ の世界で式を立ててから、$x$ の世界に翻訳し直す」という2段階の処理を徹底することが、計算の泥沼化を防ぐ最大のコツです。
+                    </p>
+                </div>
+
+                <div class="mt-10">
+                    <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">受験生のつまずきポイント</h3>
+                    <div class="mt-4 space-y-4">
+                        <div class="bg-red-50 border border-red-200 rounded-lg p-4">
+                            <p class="font-bold text-red-900 text-sm">真数条件の確認漏れと $\log_3 x^2$ の処理</p>
+                            <p class="mt-1 text-sm text-red-800">
+                                対数方程式の基本である「真数条件（今回は $x>0, x^2>0$）」を記述し忘れる答案が多いです。一般に $\log_3 x^2 = 2\log_3 |x|$ となりますが、本問は定義域から $x>0$ が確定しているため $|x|$ は不要で $2\log_3 x$ とできます。この理由を論理的に書けるかが部分点の分かれ目になります。
+                            </p>
+                        </div>
+                        <div class="bg-red-50 border border-red-200 rounded-lg p-4">
+                            <p class="font-bold text-red-900 text-sm">$\dfrac{\beta}{\alpha}$ を直接求めようとして自滅する</p>
+                            <p class="mt-1 text-sm text-red-800">
+                                $\alpha = 3^{1 - \sqrt{1 + \log_3 k}}$, $\beta = 3^{1 + \sqrt{1 + \log_3 k}}$ と無理やり求めてから割り算をし、指数の複雑な計算でミスをするケースが多発します。「比」を問われたら「対数をとって差にする」という定石を知っているかどうかが、解答時間を大きく左右します。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+            
+            <section class="mt-6 rounded-2xl bg-blue-900 p-6 text-white shadow-sm sm:p-8">
+                <h2 class="border-b-2 border-blue-400 pb-2 text-lg font-bold">アクティブリコール（復習テスト）</h2>
+                <p class="mt-4 text-sm text-blue-200">今日の学習内容を思い出すことで、記憶を定着させましょう。質問をクリックして答えを確認してください。</p>
+                
+                <div class="mt-6 space-y-3">
+                    <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                        <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                            <span>Q1. $\log_a x^2$ を $2\log_a x$ と変形する際、前提として確認しておかなければならないことは何ですか？</span>
+                            <span class="transition duration-300 group-open:-rotate-180">
+                                <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                            </span>
+                        </summary>
+                        <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                            真数条件により「$x > 0$」であることです。一般には $\log_a x^2 = 2\log_a |x|$ となりますが、$x>0$ が保証されている場合のみ絶対値を外して $2\log_a x$ と変形できます。
+                        </div>
+                    </details>
+                    
+                    <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                        <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                            <span>Q2. $x$ の対数方程式を $u = \log_a x$ と置き換えて解の個数を考える際、答案に必ず明記すべき「$x$ と $u$ の関係」とは何ですか？</span>
+                            <span class="transition duration-300 group-open:-rotate-180">
+                                <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                            </span>
+                        </summary>
+                        <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                            「底 $a > 0, a \neq 1$ であるため、$x$ と $u$ は1対1に対応する（実数解の個数が一致する）」という断り書きです。これにより、$u$ の2次方程式の解の個数を調べるだけでよい論理的な根拠となります。
+                        </div>
+                    </details>
+                    
+                    <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                        <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                            <span>Q3. 対数方程式の2つの実数解を $\alpha, \beta$ とするとき、「解の比 $\dfrac{\beta}{\alpha}$」の範囲をスマートに求めるためにはどのような計算に帰着させますか？</span>
+                            <span class="transition duration-300 group-open:-rotate-180">
+                                <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                            </span>
+                        </summary>
+                        <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                            底を同じとする対数をとって、$\log_a\left(\dfrac{\beta}{\alpha}\right) = \log_a \beta - \log_a \alpha$ と「差の形」にします。置き換えた文字 $u$ を用いれば $u_2 - u_1$ となり、2次関数のグラフにおける「2つの交点の距離（幅）」として視覚的かつ容易に範囲を評価できます。
+                        </div>
+                    </details>
+                </div>
+            </section>
+            
+            <nav class="mt-7 grid gap-3 sm:grid-cols-2">
+                <a href="index.html" class="nav-button rounded-xl border border-slate-300 bg-white px-5 py-4 text-center font-bold text-slate-700 hover:border-blue-300 hover:text-blue-800">
+                    ← 一覧へ
+                </a>
+                <a href="no18.html" class="nav-button rounded-xl bg-blue-700 px-5 py-4 text-center font-bold text-white hover:bg-blue-800">
+                    No.18 →
+                </a>
+            </nav>
+        </main>
+
+        <footer class="py-10 text-center text-sm text-slate-500">
+            医進・サイエンスコース　夏期数学課題 解説サイト
+        </footer>
+    </div>
+</body>
+</html>

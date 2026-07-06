@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>夏期課題 No.7 図形と計量 - 医進・サイエンスコース</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        MathJax = {
+            chtml: {
+                matchFontHeight: false
+            },
+            tex: {
+                inlineMath: [['\\(', '\\)']]
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body { font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif; }
+        .nav-button { transition: transform .16s ease, box-shadow .16s ease; }
+        .nav-button:hover { transform: translateY(-2px); box-shadow: 0 8px 18px rgba(15, 23, 42, .12); }
+        .math-scroll { overflow-x: auto; overflow-y: hidden; padding-bottom: 0.5rem; margin-bottom: 0.5rem; }
+    </style>
+</head>
+<body class="bg-slate-100 text-slate-800">
+    <div class="mx-auto max-w-4xl px-4 py-6 sm:px-6 lg:py-10">
+        
+        <a href="index.html" class="inline-flex items-center gap-2 text-sm font-bold text-blue-700 hover:text-blue-900">
+            ← 問題一覧へ戻る
+        </a>
+
+        <header class="mt-4 overflow-hidden rounded-3xl bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-800 text-white shadow-xl">
+            <div class="p-7 sm:p-10">
+                <span class="inline-flex items-center rounded-full bg-white/15 px-4 py-1.5 text-sm font-semibold tracking-wide text-blue-100">医進・サイエンスコース</span>
+                <div class="mt-4 flex flex-wrap items-center gap-3">
+                    <span class="rounded-lg bg-white/20 px-3 py-1 text-sm font-bold">No.7</span>
+                    <span class="rounded-full bg-amber-100 px-3 py-1 text-xs font-bold text-amber-800">標準</span>
+                </div>
+                <h1 class="mt-4 text-3xl font-bold leading-tight sm:text-4xl">図形と計量</h1>
+                <div class="mt-3 text-lg text-blue-100">目標解答時間：20分</div>
+            </div>
+        </header>
+
+        <main>
+            <section class="mt-7 rounded-2xl border border-blue-100 bg-white p-6 shadow-sm sm:p-8">
+                <h2 class="flex items-center gap-2 text-xl font-bold text-blue-900">
+                    <span class="grid h-8 w-8 place-items-center rounded-full bg-blue-700 text-base text-white">1</span>
+                    問題
+                </h2>
+                
+                <div class="bg-slate-50 border border-slate-200 rounded-lg p-4 mb-4 text-slate-700 leading-relaxed mt-4">
+                    <p>鋭角三角形\(\mathrm{ABC}\)において，\(\mathrm{AB}=7\), \(\sin A=\dfrac{3\sqrt{5}}{7}\) であり，その面積は \(6\sqrt{5}\) である。</p>
+                    <ol class="list-decimal pl-6 mt-3 space-y-2">
+                        <li>辺\(\mathrm{AC}\)の長さを求めよ。</li>
+                        <li>辺\(\mathrm{BC}\)の長さを求めよ。また，点\(\mathrm{D}\)を直線\(\mathrm{BC}\)に関して点\(\mathrm{A}\)と反対側に，\(\angle\mathrm{BDC}=60^\circ\), \(\sin\angle\mathrm{BCD}=\dfrac{3\sqrt{3}}{14}\) を満たすようにとり \(\triangle\mathrm{BCD}\) をつくる。このとき，辺\(\mathrm{BD}\)の長さを求めよ。</li>
+                        <li>(2)のとき，直線\(\mathrm{AD}\)と\(\mathrm{BC}\)の交点を\(\mathrm{E}\)とする。線分\(\mathrm{AE}\), \(\mathrm{DE}\)の長さの比 \(\dfrac{\mathrm{AE}}{\mathrm{DE}}\) の値を求めよ。</li>
+                    </ol>
+                </div>
+
+                <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 mt-4">
+                    <h3 class="font-bold text-blue-900 mb-2">【条件の整理】</h3>
+                    <ul class="list-disc pl-5 space-y-2 text-sm text-slate-700">
+                        <li><strong>三角形\(\mathrm{ABC}\)の条件：</strong>
+                            <ul class="list-none pl-4 mt-1 space-y-1 text-slate-600">
+                                <li><strong>鋭角</strong>三角形（すべての内角が\(90^\circ\)未満 \(\Rightarrow\) \(\cos\)の値はすべて正）</li>
+                                <li>\(\mathrm{AB}=7\), \(\sin A=\dfrac{3\sqrt{5}}{7}\)</li>
+                                <li>\(\triangle\mathrm{ABC}\)の面積 \(S=6\sqrt{5}\)</li>
+                            </ul>
+                        </li>
+                        <li><strong>点\(\mathrm{D}\)および\(\triangle\mathrm{BCD}\)の条件：</strong>
+                            <ul class="list-none pl-4 mt-1 space-y-1 text-slate-600">
+                                <li>直線\(\mathrm{BC}\)に関して点\(\mathrm{A}\)と反対側（四角形\(\mathrm{ABDC}\)は対角線\(\mathrm{BC}\)を持つ）</li>
+                                <li>\(\angle\mathrm{BDC}=60^\circ\)</li>
+                                <li>\(\sin\angle\mathrm{BCD}=\dfrac{3\sqrt{3}}{14}\)</li>
+                            </ul>
+                        </li>
+                        <li><strong>求めるもの：</strong>
+                            <ul class="list-none pl-4 mt-1 space-y-1 text-slate-600">
+                                <li>(1) \(\mathrm{AC}\) （2辺とその間の角のサインと面積の関係を利用）</li>
+                                <li>(2) \(\mathrm{BC}\) （余弦定理）, \(\mathrm{BD}\) （正弦定理）</li>
+                                <li>(3) \(\dfrac{\mathrm{AE}}{\mathrm{DE}}\) （線分の比 \(\Rightarrow\) 面積比への帰着が有効）</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="mt-6 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+                <h2 class="flex items-center gap-2 text-xl font-bold text-slate-900">
+                    <span class="grid h-8 w-8 place-items-center rounded-full bg-slate-700 text-base text-white">2</span>
+                    解説
+                </h2>
+                <p class="mt-4 text-sm leading-8 text-slate-600">
+                    問題を解くための考え方から、答案、検算、発展までを順に確認します。
+                </p>
+
+                <div class="mt-8 bg-amber-50 border border-amber-200 rounded-xl p-5">
+                    <h3 class="border-b-2 border-amber-400 pb-2 text-lg font-bold text-amber-900">解法選択のトリガー</h3>
+                    <div class="mt-4 space-y-4">
+                        <div class="bg-amber-100/60 border border-amber-200 rounded-lg p-4">
+                            <p class="font-bold text-amber-900 text-sm">「面積」「2辺と間の角の\(\sin\)」が与えられたら</p>
+                            <p class="mt-1 text-sm text-amber-800">
+                                三角形の面積公式 \(S = \dfrac{1}{2}bc\sin A\) を用います。今回は\(S\), \(c (\mathrm{AB})\), \(\sin A\)が分かっているので、残る\(b (\mathrm{AC})\)は方程式を解くだけで求まります。
+                            </p>
+                        </div>
+                        <div class="bg-amber-100/60 border border-amber-200 rounded-lg p-4">
+                            <p class="font-bold text-amber-900 text-sm">「鋭角三角形」という記述を見たら</p>
+                            <p class="mt-1 text-sm text-amber-800">
+                                角度から三角比の値を求める際、\(\cos \theta > 0\) と限定できる重要な条件です。\(\sin^2 A + \cos^2 A = 1\) から \(\cos A\) を求める際、符号の選択で迷わず正を選びます。
+                            </p>
+                        </div>
+                        <div class="bg-amber-100/60 border border-amber-200 rounded-lg p-4">
+                            <p class="font-bold text-amber-900 text-sm">「向かい合う辺と角」のペアが複数あるなら</p>
+                            <p class="mt-1 text-sm text-amber-800">
+                                (2)の後半では、\(\triangle\mathrm{BCD}\)において、\(\angle\mathrm{BDC}\)とその対辺\(\mathrm{BC}\)のペア、\(\angle\mathrm{BCD}\)とその対辺\(\mathrm{BD}\)のペアが存在します。これは典型的な<strong>正弦定理</strong>の利用場面です。
+                            </p>
+                        </div>
+                        <div class="bg-amber-100/60 border border-amber-200 rounded-lg p-4">
+                            <p class="font-bold text-amber-900 text-sm">「交点によって分断された線分の比」を求めるなら</p>
+                            <p class="mt-1 text-sm text-amber-800">
+                                (3)のように、対角線の交点のような位置関係にある点による線分比 \(\mathrm{AE} : \mathrm{DE}\) は、メネラウスの定理を使うか、<strong>面積比に帰着させる</strong>方法が強力です。今回はすでに面積に関する情報が多く与えられているため、底辺を共有する三角形の高さの比、すなわち面積比を利用する方針が最も確実です。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-8 bg-emerald-50 border border-emerald-200 rounded-xl p-5">
+                    <h3 class="border-b-2 border-emerald-400 pb-2 text-lg font-bold text-emerald-900">思考プロセス</h3>
+                    <div class="mt-4 space-y-4">
+                        <div class="bg-emerald-100/60 border border-emerald-200 rounded-lg p-4 text-sm text-emerald-900">
+                            <strong>(1)の計算手順</strong><br>
+                            面積公式 \( \frac{1}{2}\mathrm{AB}\cdot\mathrm{AC}\sin A = 6\sqrt{5} \) に数値を代入し、\(\mathrm{AC}\) を求めます。
+                        </div>
+                        <div class="bg-emerald-100/60 border border-emerald-200 rounded-lg p-4 text-sm text-emerald-900">
+                            <strong>(2)の計算手順</strong><br>
+                            まず\(\mathrm{BC}\)を求めるため、\(\triangle\mathrm{ABC}\)で余弦定理を使いたい。\(\mathrm{AB}\)と\(\mathrm{AC}\)は既知なので、あとは\(\cos A\)が必要です。「鋭角三角形」より \(\cos A > 0\) なので、\(\cos A = \sqrt{1 - \sin^2 A}\) で計算します。\(\mathrm{BC}\)が求まれば、\(\triangle\mathrm{BCD}\)において正弦定理 \(\frac{\mathrm{BD}}{\sin\angle\mathrm{BCD}} = \frac{\mathrm{BC}}{\sin\angle\mathrm{BDC}}\) を適用し、\(\mathrm{BD}\)を求めます。
+                        </div>
+                        <div class="bg-emerald-100/60 border border-emerald-200 rounded-lg p-4 text-sm text-emerald-900">
+                            <strong>(3)の計算手順（面積比の利用）</strong><br>
+                            直線\(\mathrm{AD}\)を底辺の一部とみなすと、\(\mathrm{AE} : \mathrm{DE}\) は、直線\(\mathrm{BC}\)を境界とした2つの三角形 \(\triangle\mathrm{ABC}\) と \(\triangle\mathrm{DBC}\) の面積比と一致します（底辺\(\mathrm{BC}\)を共通としたときの高さの比が、\(\mathrm{AE} : \mathrm{DE}\) となるため）。<br>
+                            \(\triangle\mathrm{ABC}\)の面積は \(6\sqrt{5}\) と既知なので、あとは\(\triangle\mathrm{DBC}\)の面積を求めればよいです。\(\triangle\mathrm{DBC}\)の面積は、(2)で\(\mathrm{BC}\), \(\mathrm{BD}\)が求まっており、間の角\(\angle\mathrm{DBC}\)の\(\sin\)が分かれば出せますが、もう一つの角\(\angle\mathrm{BDC}=60^\circ\)と\(\angle\mathrm{BCD}\)の情報があるので、残りの辺\(\mathrm{CD}\)を余弦定理か正弦定理で求めて \( \frac{1}{2}\mathrm{BC}\cdot\mathrm{CD}\sin\angle\mathrm{BCD} \) などを利用する方が早いかもしれません。あるいは面積公式 \(S = \frac{1}{2}bc\sin A\) を使うために工夫します。
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-10">
+                    <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">実際の答案</h3>
+                    
+                    <div class="mt-4 space-y-6 text-slate-700">
+                        <!-- (1) -->
+                        <div>
+                            <p class="font-bold">（1）</p>
+                            <p class="mt-2">
+                                \(\triangle\mathrm{ABC}\) の面積が \(6\sqrt{5}\) であるから、面積公式より
+                            </p>
+                            <div class="math-scroll">
+                                \[ \frac{1}{2} \mathrm{AB} \cdot \mathrm{AC} \sin A = 6\sqrt{5} \]
+                            </div>
+                            <p class="mt-2">
+                                これに \(\mathrm{AB}=7, \sin A = \dfrac{3\sqrt{5}}{7}\) を代入すると，
+                            </p>
+                            <div class="math-scroll">
+                                \begin{aligned}
+                                \frac{1}{2} \cdot 7 \cdot \mathrm{AC} \cdot \frac{3\sqrt{5}}{7} &= 6\sqrt{5} \\
+                                \frac{3\sqrt{5}}{2} \mathrm{AC} &= 6\sqrt{5} \\
+                                \mathrm{AC} &= 6\sqrt{5} \times \frac{2}{3\sqrt{5}} \\
+                                \mathrm{AC} &= 4
+                                \end{aligned}
+                            </div>
+                            <div class="mt-2 rounded-xl border-2 border-blue-500 bg-blue-50 p-3 text-slate-900 font-bold inline-block">
+                                答: \(\mathrm{AC} = 4\)
+                            </div>
+                        </div>
+
+                        <!-- (2) -->
+                        <div class="border-t border-slate-200 pt-6">
+                            <p class="font-bold">（2）</p>
+                            <p class="mt-2">
+                                \(\triangle\mathrm{ABC}\) は鋭角三角形であるから，\(\cos A > 0\) である。<br>
+                                \(\sin^2 A + \cos^2 A = 1\) より，
+                            </p>
+                            <div class="math-scroll">
+                                \[ \cos A = \sqrt{1 - \left(\frac{3\sqrt{5}}{7}\right)^2} = \sqrt{1 - \frac{45}{49}} = \sqrt{\frac{4}{49}} = \frac{2}{7} \]
+                            </div>
+                            <p class="mt-2">
+                                \(\triangle\mathrm{ABC}\) において，余弦定理より
+                            </p>
+                            <div class="math-scroll">
+                                \begin{aligned}
+                                \mathrm{BC}^2 &= \mathrm{AB}^2 + \mathrm{AC}^2 - 2\mathrm{AB} \cdot \mathrm{AC} \cos A \\
+                                &= 7^2 + 4^2 - 2 \cdot 7 \cdot 4 \cdot \frac{2}{7} \\
+                                &= 49 + 16 - 16 \\
+                                &= 49
+                                \end{aligned}
+                            </div>
+                            <p class="mt-2">
+                                \(\mathrm{BC} > 0\) であるから，\(\mathrm{BC} = 7\)<br>
+                                次に，\(\triangle\mathrm{BCD}\) において，正弦定理より
+                            </p>
+                            <div class="math-scroll">
+                                \begin{aligned}
+                                \frac{\mathrm{BD}}{\sin\angle\mathrm{BCD}} &= \frac{\mathrm{BC}}{\sin\angle\mathrm{BDC}} \\
+                                \mathrm{BD} &= \frac{\mathrm{BC}}{\sin\angle\mathrm{BDC}} \cdot \sin\angle\mathrm{BCD} \\
+                                &= \frac{7}{\sin 60^\circ} \cdot \frac{3\sqrt{3}}{14} \\
+                                &= \frac{7}{\frac{\sqrt{3}}{2}} \cdot \frac{3\sqrt{3}}{14} \\
+                                &= \frac{14}{\sqrt{3}} \cdot \frac{3\sqrt{3}}{14} \\
+                                &= 3
+                                \end{aligned}
+                            </div>
+                            <div class="mt-2 rounded-xl border-2 border-blue-500 bg-blue-50 p-3 text-slate-900 font-bold inline-block">
+                                答: \(\mathrm{BC} = 7,\ \mathrm{BD} = 3\)
+                            </div>
+                        </div>
+
+                        <!-- (3) -->
+                        <div class="border-t border-slate-200 pt-6">
+                            <p class="font-bold">（3）</p>
+                            <p class="mt-2">
+                                直線\(\mathrm{BC}\)によって分けられる2つの三角形 \(\triangle\mathrm{ABC}\) と \(\triangle\mathrm{DBC}\) の面積を考える。<br>
+                                点\(\mathrm{A}\)から直線\(\mathrm{BC}\)に下ろした垂線の長さを \(h_1\)、点\(\mathrm{D}\)から直線\(\mathrm{BC}\)に下ろした垂線の長さを \(h_2\) とすると、\(\triangle\mathrm{ABE}\) と \(\triangle\mathrm{DBE}\)（あるいは\(\triangle\mathrm{ACE}\)と\(\triangle\mathrm{DCE}\)）の相似などから、
+                                \[ \frac{\mathrm{AE}}{\mathrm{DE}} = \frac{h_1}{h_2} \]
+                                が成り立つ。また、底辺\(\mathrm{BC}\)を共通としているため、面積比は高さの比に等しい。よって、
+                            </p>
+                            <div class="math-scroll">
+                                \[ \frac{\mathrm{AE}}{\mathrm{DE}} = \frac{\triangle\mathrm{ABC}\text{の面積}}{\triangle\mathrm{DBC}\text{の面積}} \]
+                            </div>
+                            <p class="mt-2">
+                                \(\triangle\mathrm{ABC}\) の面積は問題文より \(6\sqrt{5}\) である。<br>
+                                次に、\(\triangle\mathrm{DBC}\) の面積を求める。2辺 \(\mathrm{BD}=3, \mathrm{BC}=7\) と、その間の角 \(\angle\mathrm{DBC}\) の\(\sin\) が必要である。<br>
+                                \(\triangle\mathrm{DBC}\) において、\(\angle\mathrm{DBC} = 180^\circ - (60^\circ + \angle\mathrm{BCD}) = 120^\circ - \angle\mathrm{BCD}\) となるが、計算が煩雑になるため、辺\(\mathrm{CD}\)の長さを求めて公式を用いる。
+                            </p>
+                            <p class="mt-2">
+                                \(\triangle\mathrm{DBC}\) において、\(\mathrm{CD} = x\) とおき、\(\angle\mathrm{BDC} = 60^\circ\) に対する余弦定理を用いると
+                            </p>
+                            <div class="math-scroll">
+                                \begin{aligned}
+                                \mathrm{BC}^2 &= \mathrm{BD}^2 + \mathrm{CD}^2 - 2\mathrm{BD}\cdot\mathrm{CD}\cos 60^\circ \\
+                                7^2 &= 3^2 + x^2 - 2 \cdot 3 \cdot x \cdot \frac{1}{2} \\
+                                49 &= 9 + x^2 - 3x \\
+                                x^2 - 3x - 40 &= 0 \\
+                                (x - 8)(x + 5) &= 0
+                                \end{aligned}
+                            </div>
+                            <p class="mt-2">
+                                \(x > 0\) より \(x = \mathrm{CD} = 8\) である。<br>
+                                したがって、\(\triangle\mathrm{DBC}\) の面積 \(S'\) は
+                            </p>
+                            <div class="math-scroll">
+                                \begin{aligned}
+                                S' &= \frac{1}{2} \mathrm{BD} \cdot \mathrm{CD} \sin 60^\circ \\
+                                &= \frac{1}{2} \cdot 3 \cdot 8 \cdot \frac{\sqrt{3}}{2} \\
+                                &= 6\sqrt{3}
+                                \end{aligned}
+                            </div>
+                            <p class="mt-2">
+                                以上より、求める線分比は
+                            </p>
+                            <div class="math-scroll">
+                                \[ \frac{\mathrm{AE}}{\mathrm{DE}} = \frac{6\sqrt{5}}{6\sqrt{3}} = \frac{\sqrt{5}}{\sqrt{3}} = \frac{\sqrt{15}}{3} \]
+                            </div>
+                            <div class="mt-2 rounded-xl border-2 border-blue-500 bg-blue-50 p-3 text-slate-900 font-bold inline-block">
+                                答: \(\dfrac{\sqrt{15}}{3}\)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-10">
+                    <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">図形の整理</h3>
+                    <p class="mt-4 text-sm text-slate-700">
+                        (3)の「面積比を線分比に変換する」考え方を視覚的に確認しましょう。対角線\(\mathrm{BC}\)によって四角形が2つの三角形に分断されているとき、\(\mathrm{BC}\)と交わるもう一つの対角線\(\mathrm{AD}\)の交点\(\mathrm{E}\)は、2つの三角形の面積比に等しい比で\(\mathrm{AD}\)を分割します。
+                    </p>
+                    
+                    <div class="mt-4 bg-slate-50 p-4 rounded-lg border border-slate-200 flex justify-center">
+                        <svg width="300" height="250" viewBox="0 0 300 250" xmlns="http://www.w3.org/2000/svg">
+                            <!-- 軸や補助線 -->
+                            <line x1="50" y1="120" x2="250" y2="120" stroke="#94a3b8" stroke-width="2" />
+                            <text x="35" y="125" fill="#475569" font-size="14" font-weight="bold">B</text>
+                            <text x="260" y="125" fill="#475569" font-size="14" font-weight="bold">C</text>
+                            
+                            <!-- 三角形ABC -->
+                            <polygon points="50,120 250,120 180,20" fill="rgba(59, 130, 246, 0.1)" stroke="#3b82f6" stroke-width="2"/>
+                            <text x="175" y="15" fill="#2563eb" font-size="14" font-weight="bold">A</text>
+                            
+                            <!-- 三角形DBC -->
+                            <polygon points="50,120 250,120 110,220" fill="rgba(16, 185, 129, 0.1)" stroke="#10b981" stroke-width="2"/>
+                            <text x="105" y="235" fill="#059669" font-size="14" font-weight="bold">D</text>
+                            
+                            <!-- 線分AD -->
+                            <line x1="180" y1="20" x2="110" y2="220" stroke="#f59e0b" stroke-width="2" stroke-dasharray="4,2"/>
+                            
+                            <!-- 交点E -->
+                            <!-- 交点座標の計算 (大まかな位置): y=120 となる AD 上の点 -->
+                            <circle cx="145" cy="120" r="4" fill="#ef4444" />
+                            <text x="152" y="115" fill="#ef4444" font-size="14" font-weight="bold">E</text>
+
+                            <!-- 高さ h1, h2 -->
+                            <line x1="180" y1="20" x2="180" y2="120" stroke="#3b82f6" stroke-width="1" stroke-dasharray="2,2"/>
+                            <line x1="110" y1="220" x2="110" y2="120" stroke="#10b981" stroke-width="1" stroke-dasharray="2,2"/>
+                            
+                            <text x="185" y="70" fill="#3b82f6" font-size="12">h₁</text>
+                            <text x="90" y="170" fill="#10b981" font-size="12">h₂</text>
+                        </svg>
+                    </div>
+                    <p class="mt-2 text-sm text-center text-slate-500">
+                        \(\triangle\mathrm{ABE} \sim \triangle\mathrm{D'E}\) (垂線の足の交点との相似) などの関係から \(\mathrm{AE}:\mathrm{DE} = h_1:h_2\) となる。
+                    </p>
+                </div>
+
+                <div class="mt-10">
+                    <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">最終結果と検算</h3>
+                    
+                    <div class="mt-4 rounded-xl border-2 border-blue-500 bg-blue-50 p-5 text-slate-900">
+                        <ul class="space-y-2">
+                            <li>(1) \(\mathrm{AC} = 4\)</li>
+                            <li>(2) \(\mathrm{BC} = 7\), \(\mathrm{BD} = 3\)</li>
+                            <li>(3) \(\dfrac{\mathrm{AE}}{\mathrm{DE}} = \dfrac{\sqrt{15}}{3}\)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="mt-4 bg-slate-50 p-4 rounded-lg border border-slate-200 text-sm text-slate-700">
+                        <strong>検算ポイント：(3)の別の求め方（\(\triangle\mathrm{DBC}\)の面積）</strong><br>
+                        (3)の答案では余弦定理で\(\mathrm{CD}=8\)を求めてから \(S' = \frac{1}{2}\cdot 3 \cdot 8 \sin 60^\circ\) と計算しましたが、\(\mathrm{CD}\)を求めずに計算することも可能です。<br>
+                        \(\triangle\mathrm{DBC}\)において \(\angle\mathrm{DBC} = 180^\circ - (60^\circ + \angle\mathrm{BCD})\) であるから、加法定理を用いれば \(\sin\angle\mathrm{DBC}\) を求めることができます。<br>
+                        \(\cos\angle\mathrm{BCD} = \sqrt{1 - \left(\frac{3\sqrt{3}}{14}\right)^2} = \frac{13}{14}\) より、<br>
+                        \(\sin(120^\circ - \angle\mathrm{BCD}) = \sin 120^\circ \cos\angle\mathrm{BCD} - \cos 120^\circ \sin\angle\mathrm{BCD}\) <br>
+                        \(= \frac{\sqrt{3}}{2} \cdot \frac{13}{14} - \left(-\frac{1}{2}\right) \cdot \frac{3\sqrt{3}}{14} = \frac{13\sqrt{3} + 3\sqrt{3}}{28} = \frac{16\sqrt{3}}{28} = \frac{4\sqrt{3}}{7}\) <br>
+                        よって、\(\triangle\mathrm{DBC}\)の面積 \(S' = \frac{1}{2} \cdot \mathrm{BC} \cdot \mathrm{BD} \cdot \sin\angle\mathrm{DBC} = \frac{1}{2} \cdot 7 \cdot 3 \cdot \frac{4\sqrt{3}}{7} = 6\sqrt{3}\) となり、(3)の答案の結果と完全に一致します。
+                    </div>
+                </div>
+
+                <div class="mt-10">
+                    <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">発展：面積比・体積比への一般化</h3>
+                    <p class="mt-4 text-sm text-slate-700 leading-relaxed">
+                        本問(3)のように、「四角形の対角線の交点が、その対角線をどのような比に分割するか」は、<strong>対角線を共有する2つの三角形の面積比</strong>に等しくなります。<br>
+                        これを空間図形に拡張したものが、四面体の体積比と線分比の関係です。<br>
+                        ある平面\(\alpha\)が四面体\(\mathrm{ABCD}\)の辺\(\mathrm{AB}\)と点\(\mathrm{P}\)で交わるとき、\(\mathrm{AP}:\mathrm{BP}\) は、点\(\mathrm{A}\)を頂点・平面\(\alpha\)との交面を底面とする四面体と、点\(\mathrm{B}\)を頂点とする四面体の体積比に等しくなります。図形問題で行き詰まったときは、「次元を一つ上げて面積・体積からアプローチできないか」と考える視点を持つと、解法の幅が広がります。
+                    </p>
+                </div>
+
+                <div class="mt-10">
+                    <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">受験生のつまずきポイント</h3>
+                    <div class="mt-4 space-y-4">
+                        <div class="bg-red-50 border border-red-200 rounded-lg p-4">
+                            <p class="font-bold text-red-900 text-sm">鋭角三角形の条件を見落とし、\(\cos A\)を負にしてしまう</p>
+                            <p class="mt-1 text-sm text-red-800">
+                                (2)の冒頭で \(\sin A\) から \(\cos A\) を求める際、何気なく \(\pm\) をつけてしまい、鋭角（\(0^\circ < A < 90^\circ\)）という条件を見落として鈍角の可能性を残したまま計算を進めてしまうミスが多発します。三角形の形に関する条件は必ず最初にチェックしましょう。
+                            </p>
+                        </div>
+                        <div class="bg-red-50 border border-red-200 rounded-lg p-4">
+                            <p class="font-bold text-red-900 text-sm">(3)でメネラウスの定理などに執着して時間を浪費する</p>
+                            <p class="mt-1 text-sm text-red-800">
+                                交点が作る線分比を見るとすぐに「チェバ・メネラウスの定理」を連想しがちですが、本問の図形は四角形であり、そのまま適用できる基本図形ではありません。補助線を引いて定理を無理やり使うよりも、「面積比」を利用する方が圧倒的に早く、計算ミスも防げます。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+            
+            <section class="mt-6 rounded-2xl bg-blue-900 p-6 text-white shadow-sm sm:p-8">
+                <h2 class="border-b-2 border-blue-400 pb-2 text-lg font-bold">アクティブリコール（復習テスト）</h2>
+                <p class="mt-4 text-sm text-blue-200">今日の学習内容を思い出すことで、記憶を定着させましょう。質問をクリックして答えを確認してください。</p>
+                
+                <div class="mt-6 space-y-3">
+                    <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                        <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                            <span>Q1. 三角形の「面積」と「1つの角の\(\sin\)」が与えられたとき、何が求まるか？</span>
+                            <span class="transition duration-300 group-open:-rotate-180">
+                                <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                            </span>
+                        </summary>
+                        <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                            その角を挟む「2辺の長さの積」が求まります。面積公式 \(S = \frac{1}{2}bc\sin A\) を用いるため、一方の辺の長さが分かっていれば、もう一方の辺の長さも計算できます。
+                        </div>
+                    </details>
+                    
+                    <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                        <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                            <span>Q2. 鋭角三角形において、\(\sin \theta\)から\(\cos \theta\)を求める際の注意点は？</span>
+                            <span class="transition duration-300 group-open:-rotate-180">
+                                <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                            </span>
+                        </summary>
+                        <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                            \(\cos \theta\) の符号が必ず「正」になることです。鋭角（\(0^\circ < \theta < 90^\circ\)）のとき、\(\cos \theta > 0\) であるため、\(\cos \theta = \sqrt{1 - \sin^2 \theta}\) として一意に定まります。
+                        </div>
+                    </details>
+                    
+                    <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                        <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                            <span>Q3. 四角形の対角線の交点が、一方の対角線を分割する比を求めるのに有効なアプローチは？</span>
+                            <span class="transition duration-300 group-open:-rotate-180">
+                                <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                            </span>
+                        </summary>
+                        <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                            もう一方の対角線を共通の底辺とする「2つの三角形の面積比」に帰着させるアプローチです。底辺が共通であるため、面積比は高さの比に等しくなり、それがそのまま線分比に一致します。
+                        </div>
+                    </details>
+                </div>
+            </section>
+            
+            <nav class="mt-7 grid gap-3 sm:grid-cols-2">
+                <a href="index.html" class="nav-button rounded-xl border border-slate-300 bg-white px-5 py-4 text-center font-bold text-slate-700 hover:border-blue-300 hover:text-blue-800">
+                    ← 一覧へ
+                </a>
+                <a href="no08.html" class="nav-button rounded-xl bg-blue-700 px-5 py-4 text-center font-bold text-white hover:bg-blue-800">
+                    No.8 →
+                </a>
+            </nav>
+        </main>
+
+        <footer class="py-10 text-center text-sm text-slate-500">
+            医進・サイエンスコース　夏期数学課題 解説サイト
+        </footer>
+    </div>
+</body>
+</html>

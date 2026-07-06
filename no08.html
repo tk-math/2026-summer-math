@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>夏期課題 No.8 図形と方程式 - 医進・サイエンスコース</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        MathJax = {
+            chtml: {
+                matchFontHeight: false
+            },
+            tex: {
+                inlineMath: [['\\(', '\\)']]
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body { font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif; }
+        .nav-button { transition: transform .16s ease, box-shadow .16s ease; }
+        .nav-button:hover { transform: translateY(-2px); box-shadow: 0 8px 18px rgba(15, 23, 42, .12); }
+        .math-scroll { overflow-x: auto; overflow-y: hidden; padding-bottom: 0.5rem; margin-bottom: 0.5rem; }
+    </style>
+</head>
+<body class="bg-slate-100 text-slate-800">
+    <div class="mx-auto max-w-4xl px-4 py-6 sm:px-6 lg:py-10">
+        
+        <a href="index.html" class="inline-flex items-center gap-2 text-sm font-bold text-blue-700 hover:text-blue-900">
+            ← 問題一覧へ戻る
+        </a>
+
+        <header class="mt-4 overflow-hidden rounded-3xl bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-800 text-white shadow-xl">
+            <div class="p-7 sm:p-10">
+                <span class="inline-flex items-center rounded-full bg-white/15 px-4 py-1.5 text-sm font-semibold tracking-wide text-blue-100">医進・サイエンスコース</span>
+                <div class="mt-4 flex flex-wrap items-center gap-3">
+                    <span class="rounded-lg bg-white/20 px-3 py-1 text-sm font-bold">No.8</span>
+                    <span class="rounded-full bg-rose-100 px-3 py-1 text-xs font-bold text-rose-800">発展</span>
+                </div>
+                <h1 class="mt-4 text-3xl font-bold leading-tight sm:text-4xl">図形と方程式</h1>
+                <div class="mt-3 text-lg text-blue-100">目標解答時間：25分</div>
+            </div>
+        </header>
+
+        <main>
+            <section class="mt-7 rounded-2xl border border-blue-100 bg-white p-6 shadow-sm sm:p-8">
+                <h2 class="flex items-center gap-2 text-xl font-bold text-blue-900">
+                    <span class="grid h-8 w-8 place-items-center rounded-full bg-blue-700 text-base text-white">1</span>
+                    問題
+                </h2>
+                
+                <div class="bg-slate-50 border border-slate-200 rounded-lg p-4 mb-4 text-slate-700 leading-relaxed mt-4">
+                    <p>座標平面上に円 \(C:x^2+y^2-8x+12=0\) と直線 \(\ell:y=-x+k\) がある。ただし，\(k\)は定数とする。</p>
+                    <ol class="list-decimal pl-6 mt-3 space-y-2">
+                        <li>円\(C\)の中心の座標と半径を求めよ。</li>
+                        <li>円\(C\)と直線\(\ell\)が接するとき，定数\(k\)の値を求めよ。</li>
+                        <li>方程式 \(|x|+|y|=m\) で表される図形を\(L\)とする。ただし，\(m>0\) とする。この図形\(L\)が円\(C\)と共有点をもつように\(m\)が変化するとき，\(m\)のとり得る値の範囲を求めよ。また，このとき図形\(L\)が通過する領域の面積を求めよ。</li>
+                    </ol>
+                </div>
+
+                <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 mt-4">
+                    <h3 class="font-bold text-blue-900 mb-2">【条件の整理】</h3>
+                    <ul class="list-disc pl-5 space-y-2 text-sm text-slate-700">
+                        <li><strong>円 \(C\)：</strong> 一般形で与えられているため、まずは標準形 \((x-a)^2+(y-b)^2=r^2\) に直して図形的な位置を把握する。</li>
+                        <li><strong>直線 \(\ell\)：</strong> 傾き \(-1\)、\(y\)切片 \(k\) の直線。\(k\)が変化すると平行移動する。</li>
+                        <li><strong>図形 \(L\)：</strong> \(|x|+|y|=m\) \((m>0)\)。これは原点を中心とし、各座標軸上に頂点 \((m, 0), (0, m), (-m, 0), (0, -m)\) を持つ「正方形」の周を表す。\(m\) はその大きさ（相似比）を決めるパラメータである。</li>
+                        <li><strong>求めるもの (3)：</strong> 「正方形の周 \(L\)」と「円 \(C\)」が交わるための \(m\) の範囲。および、\(m\) がその範囲を動くときに正方形の周が掃く（通過する）領域の面積。</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="mt-6 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+                <h2 class="flex items-center gap-2 text-xl font-bold text-slate-900">
+                    <span class="grid h-8 w-8 place-items-center rounded-full bg-slate-700 text-base text-white">2</span>
+                    解説
+                </h2>
+                <p class="mt-4 text-sm leading-8 text-slate-600">
+                    問題を解くための考え方から、答案、検算、発展までを順に確認します。
+                </p>
+
+                <div class="mt-8 bg-amber-50 border border-amber-200 rounded-xl p-5">
+                    <h3 class="border-b-2 border-amber-400 pb-2 text-lg font-bold text-amber-900">解法選択のトリガー</h3>
+                    <div class="mt-4 space-y-4">
+                        <div class="bg-amber-100/60 border border-amber-200 rounded-lg p-4">
+                            <p class="font-bold text-amber-900 text-sm">「円と直線が接する」と来たら</p>
+                            <p class="mt-1 text-sm text-amber-800">
+                                判別式 \(D=0\) を用いるよりも、<strong>「中心と直線の距離 \(d\) = 半径 \(r\)」</strong> を利用する方が圧倒的に計算が少なく、ミスも防げます（点と直線の距離の公式）。
+                            </p>
+                        </div>
+                        <div class="bg-amber-100/60 border border-amber-200 rounded-lg p-4">
+                            <p class="font-bold text-amber-900 text-sm">絶対値の方程式 \(|x|+|y|=m\) と来たら</p>
+                            <p class="mt-1 text-sm text-amber-800">
+                                4つの象限で場合分けして絶対値を外すと、4本の線分からなる<strong>正方形</strong>になります。数式だけで処理しようとせず、必ず図を描いて「図形の移動や拡大・縮小」として捉えましょう。
+                            </p>
+                        </div>
+                        <div class="bg-amber-100/60 border border-amber-200 rounded-lg p-4">
+                            <p class="font-bold text-amber-900 text-sm">「図形の一部（線分）」と円の共有点</p>
+                            <p class="mt-1 text-sm text-amber-800">
+                                直線と円が接する条件を数式で求めても、その接点が「線分上」に存在しない（範囲外の）場合があります。(3)では、得られた接点の座標が正方形の存在する象限に合致するか、図を用いたチェックが不可欠です。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-8 bg-emerald-50 border border-emerald-200 rounded-xl p-5">
+                    <h3 class="border-b-2 border-emerald-400 pb-2 text-lg font-bold text-emerald-900">思考プロセス</h3>
+                    <div class="mt-4 space-y-4">
+                        <div class="bg-emerald-100/60 border border-emerald-200 rounded-lg p-4 text-sm text-emerald-900">
+                            <strong>(3)の\(m\)の範囲の絞り込み方</strong><br>
+                            円\(C\)は第1象限および第4象限（\(x \ge 2\)）にあります。図形\(L\)は\(y\)軸対称かつ\(x\)軸対称なので、まずは第1象限（\(x \ge 0, y \ge 0\)）だけで考えます。<br>
+                            第1象限において、図形\(L\)は直線 \(x+y=m\) の一部（線分）です。これが円と交わるように\(m\)（直線の\(y\)切片であり\(x\)切片）を変化させます。<br>
+                            \(m\)を小さくしていくと、最後に円と触れるのは<strong>円の最左端 \((2,0)\)</strong>です。ここから \(m\) の最小値がわかります。<br>
+                            \(m\)を大きくしていくと、最後に円と触れるのは<strong>円に接するとき</strong>です。(2)で求めた \(k\) の結果がそのまま使えそうです。
+                        </div>
+                        <div class="bg-emerald-100/60 border border-emerald-200 rounded-lg p-4 text-sm text-emerald-900">
+                            <strong>面積の考え方</strong><br>
+                            図形\(L\)は「正方形の周」です。\(m\) が \(m_{min}\) から \(m_{max}\) まで変化するとき、正方形は原点を中心にブワッと拡大していきます。<br>
+                            したがって、通過する領域は「最も大きい正方形の内部」から「最も小さい正方形の内部」をくり抜いた、ドーナツ型（四角いフレーム状）になります。<br>
+                            正方形の面積は \(\frac{1}{2} \times (\text{対角線})^2\) などで簡単に求まります。
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-10">
+                    <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">実際の答案</h3>
+                    
+                    <div class="mt-4 space-y-6 text-slate-700">
+                        <!-- (1) -->
+                        <div>
+                            <p class="font-bold">（1）</p>
+                            <p class="mt-2">
+                                円 \(C\) の方程式 \(x^2+y^2-8x+12=0\) を変形すると、
+                            </p>
+                            <div class="math-scroll">
+                                \begin{aligned}
+                                (x^2-8x) + y^2 &= -12 \\
+                                (x-4)^2 - 16 + y^2 &= -12 \\
+                                (x-4)^2 + y^2 &= 4
+                                \end{aligned}
+                            </div>
+                            <p class="mt-2">
+                                したがって、円 \(C\) の中心の座標と半径は次の通りである。
+                            </p>
+                            <div class="mt-2 rounded-xl border-2 border-blue-500 bg-blue-50 p-3 text-slate-900 font-bold inline-block">
+                                答: 中心の座標 \((4, 0)\), 半径 \(2\)
+                            </div>
+                        </div>
+
+                        <!-- (2) -->
+                        <div class="border-t border-slate-200 pt-6">
+                            <p class="font-bold">（2）</p>
+                            <p class="mt-2">
+                                直線 \(\ell\) の方程式は \(x+y-k=0\) と表せる。<br>
+                                円 \(C\) と直線 \(\ell\) が接するための条件は、円の中心 \((4,0)\) と直線 \(\ell\) との距離 \(d\) が、円の半径 \(2\) と等しくなることである。<br>
+                                点と直線の距離の公式より、
+                            </p>
+                            <div class="math-scroll">
+                                \begin{aligned}
+                                \frac{|4 + 0 - k|}{\sqrt{1^2 + 1^2}} &= 2 \\
+                                \frac{|4 - k|}{\sqrt{2}} &= 2 \\
+                                |4 - k| &= 2\sqrt{2} \\
+                                4 - k &= \pm 2\sqrt{2} \\
+                                k &= 4 \pm 2\sqrt{2}
+                                \end{aligned}
+                            </div>
+                            <div class="mt-2 rounded-xl border-2 border-blue-500 bg-blue-50 p-3 text-slate-900 font-bold inline-block">
+                                答: \(k = 4 \pm 2\sqrt{2}\)
+                            </div>
+                        </div>
+
+                        <!-- (3) -->
+                        <div class="border-t border-slate-200 pt-6">
+                            <p class="font-bold">（3）</p>
+                            <p class="mt-2">
+                                図形 \(L: |x|+|y|=m\) (\(m>0\)) は、頂点 \((m,0), (0,m), (-m,0), (0,-m)\) を持つ正方形の周を表し、\(x\)軸および\(y\)軸に関して対称である。<br>
+                                また、円 \(C: (x-4)^2+y^2=4\) は中心が\(x\)軸上にあり、\(2 \le x \le 6\) の範囲に存在するため、完全に右半平面 (\(x>0\)) に含まれ、\(x\)軸に関して対称である。<br><br>
+                                対称性から、第1象限 (\(x \ge 0, y \ge 0\)) における円 \(C\) の上半分の半円と、図形 \(L\) の線分 \(x+y=m\) の共有点について考えれば十分である。
+                            </p>
+                            <p class="mt-2">
+                                線分 \(x+y=m\) が半円と共有点をもつのは、\(m\) が大きくなり半円と接する瞬間（最大値）から、\(m\) が小さくなり半円の左端の点 \((2,0)\) を通過する瞬間（最小値）までである。<br><br>
+                                <strong>最大値について：</strong><br>
+                                直線 \(x+y=m\) が円 \(C\) と接するとき、(2)の直線の式において \(k=m\) とした場合に該当するため、\(m = 4 \pm 2\sqrt{2}\) である。<br>
+                                このうち、\(m = 4 - 2\sqrt{2}\) のときの接点の座標は、円の中心 \((4,0)\) から直線に下ろした垂線の足を考えることで第4象限にあることがわかり、第1象限の線分 \(x+y=m\) 上にはない。<br>
+                                （※ または図形的考察より、右上側で接する方が切片 \(m\) が大きくなるため）<br>
+                                したがって、交点が第1象限に存在する最大の \(m\) は \(m = 4 + 2\sqrt{2}\) である。
+                            </p>
+                            <p class="mt-2">
+                                <strong>最小値について：</strong><br>
+                                線分 \(x+y=m\) が半円の左端 \((2,0)\) を通るとき、\(2+0=m\) より \(m=2\) である。<br>
+                                これより小さい \(m\) では、線分は完全に半円の左側に離れてしまう。
+                            </p>
+                            <p class="mt-2">
+                                第4象限においても対称性から同様の結果を得るため、\(m\) のとり得る値の範囲は
+                            </p>
+                            <div class="math-scroll">
+                                \[ 2 \le m \le 4 + 2\sqrt{2} \]
+                            </div>
+                            <p class="mt-4">
+                                <strong>面積について：</strong><br>
+                                図形 \(L\) が通過する領域は、不等式 \(2 \le |x|+|y| \le 4+2\sqrt{2}\) が表す領域である。<br>
+                                これは、対角線の長さが \(2(4+2\sqrt{2})\) である正方形の内部から、対角線の長さが \(2 \times 2 = 4\) である正方形の内部を除いた領域である。<br>
+                                正方形の面積は \(\frac{1}{2} \times (\text{対角線})^2\) で求められるため、求める面積 \(S\) は
+                            </p>
+                            <div class="math-scroll">
+                                \begin{aligned}
+                                S &= \frac{1}{2} \{2(4+2\sqrt{2})\}^2 - \frac{1}{2} (2 \times 2)^2 \\
+                                &= 2(4+2\sqrt{2})^2 - 2(2^2) \\
+                                &= 2(16 + 16\sqrt{2} + 8) - 8 \\
+                                &= 48 + 32\sqrt{2} - 8 \\
+                                &= 40 + 32\sqrt{2}
+                                \end{aligned}
+                            </div>
+                            <div class="mt-2 rounded-xl border-2 border-blue-500 bg-blue-50 p-3 text-slate-900 font-bold inline-block">
+                                答: \(m\)の範囲は \(2 \le m \le 4 + 2\sqrt{2}\) ，通過領域の面積は \(40 + 32\sqrt{2}\)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-10">
+                    <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">図解・可視化</h3>
+                    <p class="mt-4 text-sm text-slate-700">
+                        図形\(L\)（正方形）が拡大しながら円\(C\)と重なる様子を視覚的に確認しましょう。薄く色がついたドーナツ型の領域が、(3)で求めた「通過する領域」です。スライダーを動かして、\(m\) の変化に伴う図形\(L\)の動きを確認してください。
+                    </p>
+                    
+                    <div class="mt-4 bg-slate-50 p-4 rounded-lg border border-slate-200 flex flex-col items-center">
+                        <div class="w-full max-w-sm mb-4 px-2">
+                            <label for="m-slider" class="block text-sm font-medium text-slate-700 mb-2">
+                                \(m\) の値: <span id="m-value" class="font-bold text-sky-500">2.00</span>
+                            </label>
+                            <input type="range" id="m-slider" min="0" max="9" step="0.05" value="2" class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-blue-600">
+                            <div class="relative w-full text-xs text-slate-500 mt-2 h-4">
+                                <span class="absolute left-0">0</span>
+                                <span class="absolute transform -translate-x-1/2 text-sky-500 font-bold" style="left: 22.2%">m=2</span>
+                                <span class="absolute transform -translate-x-1/2 text-blue-600 font-bold" style="left: 75.8%">m=4+2√2</span>
+                                <span class="absolute right-0">9</span>
+                            </div>
+                        </div>
+
+                        <div class="relative overflow-x-auto w-full flex justify-center mt-2">
+                            <svg width="350" height="350" viewBox="-30 -130 350 260" xmlns="http://www.w3.org/2000/svg">
+                                <!-- 軸 -->
+                                <line x1="-20" y1="0" x2="300" y2="0" stroke="#94a3b8" stroke-width="1.5" />
+                                <line x1="0" y1="-120" x2="0" y2="120" stroke="#94a3b8" stroke-width="1.5" />
+                                <text x="290" y="-10" fill="#64748b" font-size="12">x</text>
+                                <text x="10" y="-110" fill="#64748b" font-size="12">y</text>
+                                <text x="-15" y="15" fill="#64748b" font-size="12">O</text>
+                                
+                                <!-- 通過領域 (ドーナツ状) -->
+                                <!-- m = 4+2√2 ≒ 6.828 -> 170.7px -->
+                                <!-- m = 2 -> 50px -->
+                                <polygon points="170.7,0 0,-170.7 -170.7,0 0,170.7" fill="rgba(59, 130, 246, 0.1)"/>
+                                <polygon points="50,0 0,-50 -50,0 0,50" fill="#f8fafc"/> <!-- くり抜き (背景色で塗る) -->
+
+                                <!-- 円 C -->
+                                <circle cx="100" cy="0" r="50" fill="rgba(244, 63, 94, 0.15)" stroke="#e11d48" stroke-width="2"/>
+                                <circle cx="100" cy="0" r="2" fill="#e11d48" />
+                                <text x="95" y="15" fill="#e11d48" font-size="12">4</text>
+                                <text x="40" y="-5" fill="#e11d48" font-size="12">2</text>
+                                <text x="155" y="-5" fill="#e11d48" font-size="12">6</text>
+
+                                <!-- 動く正方形 L -->
+                                <polygon id="moving-square" points="50,0 0,-50 -50,0 0,50" fill="none" stroke="#0ea5e9" stroke-width="2"/>
+                                
+                                <!-- 共有点(接点)マーカー -->
+                                <g id="intersection-points"></g>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <script>
+                        document.addEventListener("DOMContentLoaded", function() {
+                            const slider = document.getElementById('m-slider');
+                            const mValueDisplay = document.getElementById('m-value');
+                            const movingSquare = document.getElementById('moving-square');
+                            const intersectionPoints = document.getElementById('intersection-points');
+                            
+                            const UNIT = 25; // 1単位 = 25px
+                            const MIN_M = 2;
+                            const MAX_M = 4 + 2 * Math.sqrt(2); // ≒ 6.8284
+                            
+                            function updateSquare() {
+                                const m = parseFloat(slider.value);
+                                mValueDisplay.textContent = m.toFixed(2);
+                                
+                                // 共有点をもつ範囲の判定 (2 <= m <= 4+2√2)
+                                const isInRange = (m >= MIN_M - 0.01 && m <= MAX_M + 0.01);
+                                
+                                if (isInRange) {
+                                    movingSquare.setAttribute('stroke', '#2563eb');
+                                    movingSquare.setAttribute('stroke-width', '2.5');
+                                    mValueDisplay.className = 'font-bold text-blue-600';
+                                } else {
+                                    movingSquare.setAttribute('stroke', '#94a3b8');
+                                    movingSquare.setAttribute('stroke-width', '1.5');
+                                    mValueDisplay.className = 'font-bold text-slate-500';
+                                }
+                                
+                                // 正方形の頂点座標を更新
+                                const px = m * UNIT;
+                                movingSquare.setAttribute('points', `${px},0 0,${-px} -${px},0 0,${px}`);
+                                
+                                // 境界値のときに接点を表示
+                                intersectionPoints.innerHTML = '';
+                                if (Math.abs(m - MIN_M) < 0.1) {
+                                    intersectionPoints.innerHTML = `
+                                        <circle cx="${2*UNIT}" cy="0" r="4" fill="#0ea5e9" />
+                                        <text x="${2*UNIT - 30}" y="-15" fill="#0ea5e9" font-size="12">m=2</text>
+                                    `;
+                                    movingSquare.setAttribute('stroke', '#0ea5e9');
+                                    mValueDisplay.className = 'font-bold text-sky-500';
+                                } else if (Math.abs(m - MAX_M) < 0.1) {
+                                    const cx = (4 + Math.SQRT2) * UNIT; // ≒ 5.41 * 25 = 135.3
+                                    const cy = Math.SQRT2 * UNIT;       // ≒ 1.41 * 25 = 35.3
+                                    intersectionPoints.innerHTML = `
+                                        <circle cx="${cx}" cy="${-cy}" r="4" fill="#2563eb" />
+                                        <circle cx="${cx}" cy="${cy}" r="4" fill="#2563eb" />
+                                        <text x="${cx + 10}" y="${-cy + 5}" fill="#2563eb" font-size="12">m=4+2√2</text>
+                                    `;
+                                }
+                            }
+                            
+                            slider.addEventListener('input', updateSquare);
+                            updateSquare(); // 初期化
+                        });
+                    </script>
+                </div>
+
+                <div class="mt-10">
+                    <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">最終結果と検算</h3>
+                    
+                    <div class="mt-4 rounded-xl border-2 border-blue-500 bg-blue-50 p-5 text-slate-900">
+                        <ul class="space-y-2 font-bold">
+                            <li>(1) 中心 \((4, 0)\), 半径 \(2\)</li>
+                            <li>(2) \(k = 4 \pm 2\sqrt{2}\)</li>
+                            <li>(3) \(2 \le m \le 4 + 2\sqrt{2}\) ， 面積 \(40 + 32\sqrt{2}\)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="mt-4 bg-slate-50 p-4 rounded-lg border border-slate-200 text-sm text-slate-700">
+                        <strong>検算ポイント：媒介変数を用いた \(x+y\) の最大・最小（数IIIの視点）</strong><br>
+                        円 \(C\) 上の点は、\(\theta\) を用いて \(x = 4 + 2\cos\theta,\ y = 2\sin\theta\) \((0 \le \theta < 2\pi)\) と媒介変数表示できます。<br>
+                        \(x \ge 0, y \ge 0\) の部分（\(0 \le \theta \le \pi\)）において \(m = x+y\) とおくと、<br>
+                        \(m = 4 + 2\cos\theta + 2\sin\theta = 4 + 2\sqrt{2}\sin\left(\theta + \frac{\pi}{4}\right)\)<br>
+                        \(\frac{\pi}{4} \le \theta + \frac{\pi}{4} \le \frac{5\pi}{4}\) の範囲でこの関数の値域を考えると、<br>
+                        ・最大値は \(\sin\left(\theta + \frac{\pi}{4}\right) = 1\) のとき \(m = 4 + 2\sqrt{2}\)<br>
+                        ・最小値は \(\sin\left(\theta + \frac{\pi}{4}\right) = -\frac{1}{\sqrt{2}}\) (\(\theta = \pi\)) のとき \(m = 4 - 2 = 2\)<br>
+                        これにより、図形的考察で得た \(m\) の範囲 \(2 \le m \le 4+2\sqrt{2}\) が完全に正しいことが確認できました。
+                    </div>
+                </div>
+
+                <div class="mt-10">
+                    <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">発展：線形計画法としての解釈</h3>
+                    <p class="mt-4 text-sm text-slate-700 leading-relaxed">
+                        本問の(3)は、「円 \((x-4)^2+y^2=4\) が与えられたとき、\(|x|+|y|\) の最大値と最小値を求めよ」という<strong>線形計画法</strong>の定番問題と同じ構造をしています。<br>
+                        値を求めたい式を \(k\) と置き（今回は初めから \(m\) と置かれています）、それが表す図形（直線や正方形）を動かして、条件の図形（円）と共有点をもつ限界を探るというアプローチは、難関大で頻出する非常に重要な考え方です。<br>
+                        このように「方程式の解の存在範囲」と「図形の共有点」を翻訳して行き来できる力を養いましょう。
+                    </p>
+                </div>
+
+                <div class="mt-10">
+                    <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">受験生のつまずきポイント</h3>
+                    <div class="mt-4 space-y-4">
+                        <div class="bg-red-50 border border-red-200 rounded-lg p-4">
+                            <p class="font-bold text-red-900 text-sm">円と直線の接条件を「判別式 \(D=0\)」で押し切ろうとしてしまう</p>
+                            <p class="mt-1 text-sm text-red-800">
+                                円の式に \(y=-x+k\) を代入して \(x\) の2次方程式を作り、判別式 \(D=0\) を解くことも可能ですが、式が長くなり計算ミスを誘発します。「円と直線の位置関係は、中心と直線の距離 \(d\) と半径 \(r\) の大小で決まる」という原則を最優先で使いましょう。
+                            </p>
+                        </div>
+                        <div class="bg-red-50 border border-red-200 rounded-lg p-4">
+                            <p class="font-bold text-red-900 text-sm">(3)で \(m\) の下限を \(4-2\sqrt{2}\) にしてしまう（定義域の未確認）</p>
+                            <p class="mt-1 text-sm text-red-800">
+                                (2)で接する \(k\) の値が \(4 \pm 2\sqrt{2}\) と出たため、何も考えずにこれをそのまま上限と下限にしてしまう誤答が非常に多いです。図形 \(L\) は直線全体ではなく「正方形の周（線分）」であるため、<strong>「その接点は本当に正方形の辺の上に存在するか？」</strong>を必ず図を描いて確認しなければなりません。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+            
+            <section class="mt-6 rounded-2xl bg-blue-900 p-6 text-white shadow-sm sm:p-8">
+                <h2 class="border-b-2 border-blue-400 pb-2 text-lg font-bold">アクティブリコール（復習テスト）</h2>
+                <p class="mt-4 text-sm text-blue-200">今日の学習内容を思い出すことで、記憶を定着させましょう。質問をクリックして答えを確認してください。</p>
+                
+                <div class="mt-6 space-y-3">
+                    <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                        <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                            <span>Q1. 円と直線が接する条件を処理する際、判別式よりも計算が楽になりやすい公式は何ですか？</span>
+                            <span class="transition duration-300 group-open:-rotate-180">
+                                <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                            </span>
+                        </summary>
+                        <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                            「点と直線の距離の公式」です。円の中心と直線の距離 \(d\) を計算し、それが円の半径 \(r\) と等しい（\(d=r\)）という方程式を立てることで、2次方程式を展開する手間を省くことができます。
+                        </div>
+                    </details>
+                    
+                    <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                        <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                            <span>Q2. 方程式 \(|x|+|y|=m\) \((m>0)\) は、座標平面上でどのような図形を表しますか？</span>
+                            <span class="transition duration-300 group-open:-rotate-180">
+                                <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                            </span>
+                        </summary>
+                        <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                            原点を中心とし、各座標軸上に頂点 \((m,0), (0,m), (-m,0), (0,-m)\) を持つ「正方形の周」を表します。絶対値を含む図形は、象限ごとの符号外しによって線分が組み合わさった図形になります。
+                        </div>
+                    </details>
+                    
+                    <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                        <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                            <span>Q3. 図形の一部（線分）と円が接するとき、数式上の接条件（\(d=r\)）だけで答えを確定してはいけない理由は何ですか？</span>
+                            <span class="transition duration-300 group-open:-rotate-180">
+                                <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                            </span>
+                        </summary>
+                        <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                            計算で求めた接点が、与えられた図形（線分）の定義域や存在する象限の「範囲外」にある可能性があるためです。必ず図を描くか、接点の座標を求めて条件（例：\(x \ge 0, y \ge 0\)）を満たすか確認する手順が必要です。
+                        </div>
+                    </details>
+                </div>
+            </section>
+            
+            <nav class="mt-7 grid gap-3 sm:grid-cols-2">
+                <a href="index.html" class="nav-button rounded-xl border border-slate-300 bg-white px-5 py-4 text-center font-bold text-slate-700 hover:border-blue-300 hover:text-blue-800">
+                    ← 一覧へ
+                </a>
+                <a href="no09.html" class="nav-button rounded-xl bg-blue-700 px-5 py-4 text-center font-bold text-white hover:bg-blue-800">
+                    No.9 →
+                </a>
+            </nav>
+        </main>
+
+        <footer class="py-10 text-center text-sm text-slate-500">
+            医進・サイエンスコース　夏期数学課題 解説サイト
+        </footer>
+    </div>
+</body>
+</html>

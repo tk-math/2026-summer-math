@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>夏期課題 No.18 図形と計量 - 医進・サイエンスコース</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        MathJax = {
+            chtml: {
+                matchFontHeight: false
+            },
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body { font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif; }
+        .nav-button { transition: transform .16s ease, box-shadow .16s ease; }
+        .nav-button:hover { transform: translateY(-2px); box-shadow: 0 8px 18px rgba(15, 23, 42, .12); }
+        .math-scroll { overflow-x: auto; overflow-y: hidden; padding-bottom: 0.5rem; margin-bottom: 0.5rem; }
+    </style>
+</head>
+<body class="bg-slate-100 text-slate-800">
+    <div class="mx-auto max-w-4xl px-4 py-6 sm:px-6 lg:py-10">
+        
+        <a href="index.html" class="inline-flex items-center gap-2 text-sm font-bold text-blue-700 hover:text-blue-900">
+            ← 問題一覧へ戻る
+        </a>
+
+        <header class="mt-4 overflow-hidden rounded-3xl bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-800 text-white shadow-xl">
+            <div class="p-7 sm:p-10">
+                <span class="inline-flex items-center rounded-full bg-white/15 px-4 py-1.5 text-sm font-semibold tracking-wide text-blue-100">医進・サイエンスコース</span>
+                <div class="mt-4 flex flex-wrap items-center gap-3">
+                    <span class="rounded-lg bg-white/20 px-3 py-1 text-sm font-bold">No.18</span>
+                    <span class="rounded-full bg-rose-100 px-3 py-1 text-xs font-bold text-rose-800">発展</span>
+                </div>
+                <h1 class="mt-4 text-3xl font-bold leading-tight sm:text-4xl">図形と計量</h1>
+                <div class="mt-3 text-lg text-blue-100">目標解答時間：25分</div>
+            </div>
+        </header>
+
+        <main>
+            <section class="mt-7 rounded-2xl border border-blue-100 bg-white p-6 shadow-sm sm:p-8">
+                <h2 class="flex items-center gap-2 text-xl font-bold text-blue-900">
+                    <span class="grid h-8 w-8 place-items-center rounded-full bg-blue-700 text-base text-white">1</span>
+                    問題
+                </h2>
+                
+                <div class="bg-slate-50 border border-slate-200 rounded-lg p-4 mb-4 text-slate-700 leading-relaxed mt-4">
+                    <p>$\triangle\mathrm{ABC}$があり，$\mathrm{AC}=3$, $\angle\mathrm{ABC}=45^\circ$, $\cos\angle\mathrm{BAC}=\dfrac{1}{3}$ である。</p>
+                    <ol class="list-decimal pl-6 mt-3 space-y-2">
+                        <li>$\sin\angle\mathrm{BAC}$の値を求めよ。また，辺$\mathrm{BC}$の長さを求めよ。</li>
+                        <li>$\triangle\mathrm{ABC}$の外接円の中心を$\mathrm{O}$とする。$\triangle\mathrm{OBC}$の面積を求めよ。</li>
+                        <li>(2)のとき，$\triangle\mathrm{OBC}$を底面とし，$\mathrm{BP}=\mathrm{CP}=\mathrm{OP}=\mathrm{BC}$ である点$\mathrm{P}$を頂点とする四面体$\mathrm{POBC}$をつくる。四面体$\mathrm{POBC}$の体積を求めよ。</li>
+                    </ol>
+                </div>
+
+                <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 mt-4">
+                    <h3 class="font-bold text-blue-900 mb-2">【条件の整理】</h3>
+                    <ul class="list-disc pl-5 space-y-2 text-sm text-slate-700">
+                        <li><strong>$\triangle\mathrm{ABC}$ の構成要素：</strong> 1つの辺の長さ（$\mathrm{AC}$）と、2つの角の情報（$\angle\mathrm{B}, \angle\mathrm{A}$）がわかっている。</li>
+                        <li><strong>外接円の中心 $\mathrm{O}$：</strong> $\triangle\mathrm{ABC}$ の外接円の半径 $R$ を求めれば、$\triangle\mathrm{OBC}$ は $\mathrm{OB}=\mathrm{OC}=R$ の二等辺三角形になる。</li>
+                        <li><strong>四面体 $\mathrm{POBC}$：</strong> (1)で $\mathrm{BC}$ の長さが求まれば、側面の辺長 $\mathrm{PB, PC, PO}$ がすべて等しいことがわかる。このように<strong>「頂点からの距離が等しい」</strong>四面体の高さは、底面の外心を利用して求めるのが鉄則。</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="mt-6 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+                <h2 class="flex items-center gap-2 text-xl font-bold text-slate-900">
+                    <span class="grid h-8 w-8 place-items-center rounded-full bg-slate-700 text-base text-white">2</span>
+                    解説
+                </h2>
+                <p class="mt-4 text-sm leading-8 text-slate-600">
+                    問題を解くための考え方から、答案、検算、発展までを順に確認します。
+                </p>
+
+                <div class="mt-8 bg-amber-50 border border-amber-200 rounded-xl p-5">
+                    <h3 class="border-b-2 border-amber-400 pb-2 text-lg font-bold text-amber-900">解法選択のトリガー</h3>
+                    <div class="mt-4 space-y-4">
+                        <div class="bg-amber-100/60 border border-amber-200 rounded-lg p-4">
+                            <p class="font-bold text-amber-900 text-sm">「向かい合う辺と角」のペアがあれば</p>
+                            <p class="mt-1 text-sm text-amber-800">
+                                <strong>「正弦定理」</strong>を利用します。$\angle\mathrm{ABC}$ と $\mathrm{AC}$ のペアが確定しているので、$\angle\mathrm{BAC}$ のサインを用いて対辺 $\mathrm{BC}$ を求めることができます。
+                            </p>
+                        </div>
+                        <div class="bg-amber-100/60 border border-amber-200 rounded-lg p-4">
+                            <p class="font-bold text-amber-900 text-sm">二等辺三角形の面積を求めるなら</p>
+                            <p class="mt-1 text-sm text-amber-800">
+                                $\triangle\mathrm{OBC}$ は $\mathrm{OB}=\mathrm{OC}$ の二等辺三角形です。無理に中心角のサインを求めるより、頂点から<strong>「底辺の中点へ垂線を下ろす」</strong>ことで直角三角形を作り、三平方の定理で高さを求めるのが最も確実で早いです。
+                            </p>
+                        </div>
+                        <div class="bg-amber-100/60 border border-amber-200 rounded-lg p-4">
+                            <p class="font-bold text-amber-900 text-sm">$\mathrm{PA}=\mathrm{PB}=\mathrm{PC}$ の四面体の高さを求めるときは</p>
+                            <p class="mt-1 text-sm text-amber-800">
+                                頂点 $\mathrm{P}$ から底面へ下ろした垂線の足 $\mathrm{H}$ は、<strong>「底面の三角形の外心」</strong>に一致します。したがって、四面体の高さを求める問題は、「底面の三角形の外接円の半径」を求める問題にすり替わります。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-8 bg-emerald-50 border border-emerald-200 rounded-xl p-5">
+                    <h3 class="border-b-2 border-emerald-400 pb-2 text-lg font-bold text-emerald-900">思考プロセス</h3>
+                    <div class="mt-4 space-y-4">
+                        <div class="bg-emerald-100/60 border border-emerald-200 rounded-lg p-4 text-sm text-emerald-900">
+                            <strong>(2) $\triangle\mathrm{OBC}$ の処理</strong><br>
+                            外接円の半径 $R$ は正弦定理から求まります。$\triangle\mathrm{OBC}$ の3辺の長さが $(R, R, \mathrm{BC})$ と揃うため、$\mathrm{O}$ から $\mathrm{BC}$ へ垂線を引いて高さを計算し、面積を出します。
+                        </div>
+                        <div class="bg-emerald-100/60 border border-emerald-200 rounded-lg p-4 text-sm text-emerald-900">
+                            <strong>(3) 垂線の足の位置の証明と高さの計算</strong><br>
+                            $\mathrm{P}$ から平面 $\mathrm{OBC}$ に下ろした垂線の足を $\mathrm{H}$ とすると、直角三角形の合同（$\triangle\mathrm{POH} \equiv \triangle\mathrm{PBH} \equiv \triangle\mathrm{PCH}$）から $\mathrm{OH} = \mathrm{BH} = \mathrm{CH}$ となり、$\mathrm{H}$ は $\triangle\mathrm{OBC}$ の外心です。<br>
+                            $\triangle\mathrm{OBC}$ の外接円の半径を $r$ （これが $\mathrm{BH}$ の長さ）とすると、正弦定理や面積公式を利用して $r$ を求めます。最後に $\triangle\mathrm{PBH}$ における三平方の定理で高さ $\mathrm{PH}$ を求め、体積を計算します。
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-10">
+                    <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">実際の答案</h3>
+                    
+                    <div class="mt-4 space-y-6 text-slate-700">
+                        <!-- (1) -->
+                        <div>
+                            <p class="font-bold">（1）</p>
+                            <p class="mt-2">
+                                三角形の内角であるから $0^\circ < \angle\mathrm{BAC} < 180^\circ$ であり、$\sin\angle\mathrm{BAC} > 0$ である。<br>
+                                $\sin^2\angle\mathrm{BAC} + \cos^2\angle\mathrm{BAC} = 1$ より、
+                            </p>
+                            <div class="math-scroll">
+                                \[ \sin\angle\mathrm{BAC} = \sqrt{1 - \left(\frac{1}{3}\right)^2} = \sqrt{\frac{8}{9}} = \frac{2\sqrt{2}}{3} \]
+                            </div>
+                            <p class="mt-2">
+                                $\triangle\mathrm{ABC}$ において、正弦定理より
+                            </p>
+                            <div class="math-scroll">
+                                \begin{aligned}
+                                \frac{\mathrm{BC}}{\sin\angle\mathrm{BAC}} &= \frac{\mathrm{AC}}{\sin\angle\mathrm{ABC}} \\
+                                \frac{\mathrm{BC}}{\frac{2\sqrt{2}}{3}} &= \frac{3}{\sin 45^\circ} \\
+                                \mathrm{BC} \cdot \frac{3}{2\sqrt{2}} &= 3\sqrt{2} \\
+                                \mathrm{BC} &= 3\sqrt{2} \times \frac{2\sqrt{2}}{3} = 4
+                                \end{aligned}
+                            </div>
+                            <div class="mt-2 rounded-xl border-2 border-blue-500 bg-blue-50 p-3 text-slate-900 font-bold inline-block">
+                                答: $\sin\angle\mathrm{BAC} = \dfrac{2\sqrt{2}}{3}$, $\mathrm{BC} = 4$
+                            </div>
+                        </div>
+
+                        <!-- (2) -->
+                        <div class="border-t border-slate-200 pt-6">
+                            <p class="font-bold">（2）</p>
+                            <p class="mt-2">
+                                $\triangle\mathrm{ABC}$ の外接円の半径を $R$ とすると、正弦定理より
+                            </p>
+                            <div class="math-scroll">
+                                \[ 2R = \frac{\mathrm{AC}}{\sin\angle\mathrm{ABC}} = 3\sqrt{2} \quad \therefore R = \frac{3\sqrt{2}}{2} \]
+                            </div>
+                            <p class="mt-2">
+                                外接円の中心が $\mathrm{O}$ であるから、$\mathrm{OB} = \mathrm{OC} = R = \dfrac{3\sqrt{2}}{2}$ である。<br>
+                                $\mathrm{O}$ から辺 $\mathrm{BC}$ に垂線 $\mathrm{OM}$ を下ろすと、$\triangle\mathrm{OBC}$ は二等辺三角形であるから、$\mathrm{M}$ は辺 $\mathrm{BC}$ の中点となり、$\mathrm{BM} = 2$。<br>
+                                直角三角形 $\triangle\mathrm{OBM}$ において、三平方の定理より
+                            </p>
+                            <div class="math-scroll">
+                                \begin{aligned}
+                                \mathrm{OM} &= \sqrt{\mathrm{OB}^2 - \mathrm{BM}^2} \\
+                                &= \sqrt{\left(\frac{3\sqrt{2}}{2}\right)^2 - 2^2} \\
+                                &= \sqrt{\frac{18}{4} - 4} = \sqrt{\frac{2}{4}} = \frac{\sqrt{2}}{2}
+                                \end{aligned}
+                            </div>
+                            <p class="mt-2">
+                                したがって、$\triangle\mathrm{OBC}$ の面積 $S_1$ は
+                            </p>
+                            <div class="math-scroll">
+                                \[ S_1 = \frac{1}{2} \cdot \mathrm{BC} \cdot \mathrm{OM} = \frac{1}{2} \cdot 4 \cdot \frac{\sqrt{2}}{2} = \sqrt{2} \]
+                            </div>
+                            <div class="mt-2 rounded-xl border-2 border-blue-500 bg-blue-50 p-3 text-slate-900 font-bold inline-block">
+                                答: $\sqrt{2}$
+                            </div>
+                        </div>
+
+                        <!-- (3) -->
+                        <div class="border-t border-slate-200 pt-6">
+                            <p class="font-bold">（3）</p>
+                            <p class="mt-2">
+                                条件より、$\mathrm{BP} = \mathrm{CP} = \mathrm{OP} = \mathrm{BC} = 4$ である。<br>
+                                頂点 $\mathrm{P}$ から平面 $\mathrm{OBC}$ に下ろした垂線の足を $\mathrm{H}$ とすると、$\triangle\mathrm{POH}, \triangle\mathrm{PBH}, \triangle\mathrm{PCH}$ はすべて直角三角形であり、
+                            </p>
+                            <div class="math-scroll">
+                                \[ \mathrm{PO}=\mathrm{PB}=\mathrm{PC}=4 \ (\text{斜辺})，\quad \mathrm{PH} \text{ は共通} \]
+                            </div>
+                            <p class="mt-2">
+                                したがって $\triangle\mathrm{POH} \equiv \triangle\mathrm{PBH} \equiv \triangle\mathrm{PCH}$ が成り立つ。ゆえに
+                            </p>
+                            <div class="math-scroll">
+                                \[ \mathrm{OH} = \mathrm{BH} = \mathrm{CH} \]
+                            </div>
+                            <p class="mt-2">
+                                となるので、点 $\mathrm{H}$ は $\triangle\mathrm{OBC}$ の外接円の中心（外心）である。<br>
+                                $\triangle\mathrm{OBC}$ の外接円の半径を $r$ とすると、$\mathrm{BH} = r$ である。<br>
+                                (2)の $\triangle\mathrm{OBM}$ において、$\sin\angle\mathrm{OBM} = \dfrac{\mathrm{OM}}{\mathrm{OB}} = \dfrac{\frac{\sqrt{2}}{2}}{\frac{3\sqrt{2}}{2}} = \dfrac{1}{3}$ であるから、<br>
+                                $\triangle\mathrm{OBC}$ について正弦定理を用いると
+                            </p>
+                            <div class="math-scroll">
+                                \begin{aligned}
+                                2r &= \frac{\mathrm{OC}}{\sin\angle\mathrm{OBC}} \\
+                                2r &= \frac{\frac{3\sqrt{2}}{2}}{\frac{1}{3}} = \frac{9\sqrt{2}}{2} \\
+                                r &= \frac{9\sqrt{2}}{4}
+                                \end{aligned}
+                            </div>
+                            <p class="mt-4">
+                                直角三角形 $\triangle\mathrm{PBH}$ において、三平方の定理より四面体の高さ $h = \mathrm{PH}$ は
+                            </p>
+                            <div class="math-scroll">
+                                \begin{aligned}
+                                h &= \sqrt{\mathrm{PB}^2 - \mathrm{BH}^2} \\
+                                &= \sqrt{4^2 - \left(\frac{9\sqrt{2}}{4}\right)^2} \\
+                                &= \sqrt{16 - \frac{162}{16}} \\
+                                &= \sqrt{\frac{256 - 162}{16}} \\
+                                &= \sqrt{\frac{94}{16}} = \frac{\sqrt{94}}{4}
+                                \end{aligned}
+                            </div>
+                            <p class="mt-2">
+                                ゆえに、四面体 $\mathrm{POBC}$ の体積 $V$ は
+                            </p>
+                            <div class="math-scroll">
+                                \begin{aligned}
+                                V &= \frac{1}{3} \cdot \triangle\mathrm{OBC} \cdot h \\
+                                &= \frac{1}{3} \cdot \sqrt{2} \cdot \frac{\sqrt{94}}{4} \\
+                                &= \frac{\sqrt{188}}{12} = \frac{2\sqrt{47}}{12} = \frac{\sqrt{47}}{6}
+                                \end{aligned}
+                            </div>
+                            <div class="mt-2 rounded-xl border-2 border-blue-500 bg-blue-50 p-3 text-slate-900 font-bold inline-block">
+                                答: $\dfrac{\sqrt{47}}{6}$
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-10">
+                    <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">図解・可視化（等長な斜辺と外心の関係）</h3>
+                    <p class="mt-4 text-sm text-slate-700 leading-relaxed">
+                        頂点から底面の各頂点までの距離が等しい四面体（$\mathrm{PO=PB=PC}$）では、頂点 $\mathrm{P}$ から下ろした垂線の足 $\mathrm{H}$ は、必ず底面 $\triangle\mathrm{OBC}$ の外接円の中心（外心）になります。<br>
+                        この性質は、3つの直角三角形が合同になることから証明されます。四面体の高さを求める問題において、最も重要な「翻訳」のステップです。
+                    </p>
+                    
+                    <div class="mt-4 bg-slate-50 p-4 sm:p-6 rounded-lg border border-slate-200 flex justify-center">
+                        <div class="relative w-full max-w-sm bg-white border border-slate-200 rounded-xl shadow-sm p-4">
+                            <!-- SVG 3D Representation -->
+                            <svg width="100%" height="280" viewBox="0 0 300 280">
+                                <!-- 底面の外接円 (楕円で疑似3D) -->
+                                <ellipse cx="150" cy="200" rx="100" ry="40" fill="rgba(59, 130, 246, 0.05)" stroke="#cbd5e1" stroke-width="1.5" stroke-dasharray="4,4" />
+                                
+                                <!-- 外心 H -->
+                                <circle cx="150" cy="200" r="3" fill="#ef4444" />
+                                <text x="160" y="215" fill="#ef4444" font-weight="bold">H (外心)</text>
+                                
+                                <!-- 底面の三角形 OBC -->
+                                <polygon points="150,160 70,225 240,215" fill="rgba(16, 185, 129, 0.1)" stroke="#10b981" stroke-width="1.5" stroke-linejoin="round" />
+                                <text x="140" y="155" fill="#059669" font-weight="bold">O</text>
+                                <text x="50" y="235" fill="#059669" font-weight="bold">B</text>
+                                <text x="250" y="225" fill="#059669" font-weight="bold">C</text>
+
+                                <!-- 半径 r -->
+                                <line x1="150" y1="200" x2="150" y2="160" stroke="#f59e0b" stroke-width="1.5" stroke-dasharray="3,3" />
+                                <line x1="150" y1="200" x2="70" y2="225" stroke="#f59e0b" stroke-width="1.5" stroke-dasharray="3,3" />
+                                <line x1="150" y1="200" x2="240" y2="215" stroke="#f59e0b" stroke-width="1.5" stroke-dasharray="3,3" />
+                                
+                                <!-- 半径ラベル -->
+                                <text x="110" y="215" fill="#d97706" font-size="12">r</text>
+                                <text x="155" y="185" fill="#d97706" font-size="12">r</text>
+                                <text x="195" y="220" fill="#d97706" font-size="12">r</text>
+
+                                <!-- 頂点 P -->
+                                <circle cx="150" cy="30" r="3" fill="#2563eb" />
+                                <text x="145" y="20" fill="#2563eb" font-weight="bold">P</text>
+
+                                <!-- 垂線 PH -->
+                                <line x1="150" y1="30" x2="150" y2="200" stroke="#ef4444" stroke-width="2" />
+                                <text x="155" y="120" fill="#ef4444" font-weight="bold">h</text>
+                                <!-- 直角マーク -->
+                                <polyline points="150,190 160,190 160,200" fill="none" stroke="#ef4444" stroke-width="1.5" />
+
+                                <!-- 斜辺 PO, PB, PC -->
+                                <line x1="150" y1="30" x2="150" y2="160" stroke="#3b82f6" stroke-width="2" />
+                                <line x1="150" y1="30" x2="70" y2="225" stroke="#3b82f6" stroke-width="2" />
+                                <line x1="150" y1="30" x2="240" y2="215" stroke="#3b82f6" stroke-width="2" />
+
+                                <!-- 斜辺の等価マーク -->
+                                <text x="100" y="125" fill="#1d4ed8" font-size="16" font-weight="bold">//</text>
+                                <text x="200" y="125" fill="#1d4ed8" font-size="16" font-weight="bold">//</text>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-10">
+                    <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">最終結果と検算</h3>
+                    
+                    <div class="mt-4 rounded-xl border-2 border-blue-500 bg-blue-50 p-5 text-slate-900">
+                        <ul class="space-y-2 font-bold">
+                            <li>(1) $\sin\angle\mathrm{BAC} = \dfrac{2\sqrt{2}}{3}$, $\mathrm{BC} = 4$</li>
+                            <li>(2) $\triangle\mathrm{OBC}$ の面積は $\sqrt{2}$</li>
+                            <li>(3) 四面体の体積は $\dfrac{\sqrt{47}}{6}$</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="mt-4 bg-slate-50 p-4 rounded-lg border border-slate-200 text-sm text-slate-700">
+                        <strong>検算ポイント：外接円の半径 $r$ の別解（面積公式の利用）</strong><br>
+                        (3)において、$\triangle\mathrm{OBC}$ の外接円の半径 $r$ は、三角形の面積公式 $S = \dfrac{abc}{4r}$ を用いて計算することもできます。<br>
+                        $\triangle\mathrm{OBC}$ の3辺は $a=\dfrac{3\sqrt{2}}{2}, b=\dfrac{3\sqrt{2}}{2}, c=4$ であり、面積 $S=\sqrt{2}$ であるため、<br>
+                        $\sqrt{2} = \dfrac{\frac{3\sqrt{2}}{2} \cdot \frac{3\sqrt{2}}{2} \cdot 4}{4r} = \dfrac{18}{4r}$<br>
+                        $4r\sqrt{2} = 18 \implies r = \dfrac{18}{4\sqrt{2}} = \dfrac{9\sqrt{2}}{4}$<br>
+                        正弦定理を用いた計算結果と一致しました。図形問題では、このように別のアプローチから同じ長さを求めることで、計算ミスを強力に防ぐことができます。
+                    </div>
+                </div>
+
+                <div class="mt-10">
+                    <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">発展・一般化：四面体における垂線の足の位置</h3>
+                    <p class="mt-4 text-sm text-slate-700 leading-relaxed">
+                        四面体 $\mathrm{PABC}$ において、頂点 $\mathrm{P}$ から底面 $\triangle\mathrm{ABC}$ に下ろした垂線の足 $\mathrm{H}$ の位置は、側面の条件によって以下のように決まります。非常に重要なのでセットで記憶しておきましょう。
+                    </p>
+                    <ul class="list-disc pl-5 mt-2 space-y-2 text-sm text-slate-700">
+                        <li><strong>$\mathrm{PA} = \mathrm{PB} = \mathrm{PC}$</strong> のとき：<br>
+                        $\mathrm{H}$ は底面 $\triangle\mathrm{ABC}$ の<strong>外心</strong>（本問のケース）。</li>
+                        <li><strong>3つの側面がすべて底面と等しい角度で交わる</strong>とき：<br>
+                        $\mathrm{H}$ は底面 $\triangle\mathrm{ABC}$ の<strong>内心</strong>。</li>
+                        <li><strong>$\mathrm{PA} \perp \mathrm{BC}$, $\mathrm{PB} \perp \mathrm{CA}$</strong>（対辺が直交する）とき：<br>
+                        $\mathrm{H}$ は底面 $\triangle\mathrm{ABC}$ の<strong>垂心</strong>。</li>
+                    </ul>
+                </div>
+
+                <div class="mt-10">
+                    <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">受験生のつまずきポイント</h3>
+                    <div class="mt-4 space-y-4">
+                        <div class="bg-red-50 border border-red-200 rounded-lg p-4">
+                            <p class="font-bold text-red-900 text-sm">中心角 $\angle\mathrm{BOC}$ を無理やり求めようとする</p>
+                            <p class="mt-1 text-sm text-red-800">
+                                (2)の $\triangle\mathrm{OBC}$ の面積を求める際、円周角の定理から $\angle\mathrm{BOC} = 2\angle\mathrm{BAC}$ を利用し、$S = \frac{1}{2}R^2\sin(2\angle\mathrm{BAC})$ と計算することも可能ですが、2倍角の公式の計算ミス（特に $\cos$ の符号）が多発します。「二等辺三角形の面積は、素直に垂線を下ろして三平方」が一番安全です。
+                            </p>
+                        </div>
+                        <div class="bg-red-50 border border-red-200 rounded-lg p-4">
+                            <p class="font-bold text-red-900 text-sm">$\mathrm{H}$ が外心であることに気づけず座標を置く</p>
+                            <p class="mt-1 text-sm text-red-800">
+                                空間図形が苦手な生徒は、垂線の足 $\mathrm{H}$ の幾何学的な意味（今回は外心）に気づけず、$\mathrm{H}$ の位置をベクトルや座標で無理やり設定しようとして計算地獄に陥ります。「側面の長さがすべて同じ $\Rightarrow$ 垂線の足は外心」という定石を知っているかどうかが、解答時間を決定的に分けます。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+            
+            <section class="mt-6 rounded-2xl bg-blue-900 p-6 text-white shadow-sm sm:p-8">
+                <h2 class="border-b-2 border-blue-400 pb-2 text-lg font-bold">アクティブリコール（復習テスト）</h2>
+                <p class="mt-4 text-sm text-blue-200">今日の学習内容を思い出すことで、記憶を定着させましょう。質問をクリックして答えを確認してください。</p>
+                
+                <div class="mt-6 space-y-3">
+                    <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                        <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                            <span>Q1. 三角形において、「2つの角とそのうち1つの対辺」がわかっているとき、もう1つの対辺を求めるのに適した定理は何ですか？</span>
+                            <span class="transition duration-300 group-open:-rotate-180">
+                                <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                            </span>
+                        </summary>
+                        <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                            「正弦定理」です。（$\dfrac{a}{\sin A} = \dfrac{b}{\sin B}$ を用いて方程式を立てます）
+                        </div>
+                    </details>
+                    
+                    <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                        <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                            <span>Q2. 四面体 $\mathrm{PABC}$ において、$\mathrm{PA} = \mathrm{PB} = \mathrm{PC}$ が成り立つとき、頂点 $\mathrm{P}$ から底面に下ろした垂線の足 $\mathrm{H}$ は底面のどのような点になりますか？</span>
+                            <span class="transition duration-300 group-open:-rotate-180">
+                                <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                            </span>
+                        </summary>
+                        <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                            底面 $\triangle\mathrm{ABC}$ の「外接円の中心（外心）」になります。3つの直角三角形 $\triangle\mathrm{PHA}, \triangle\mathrm{PHB}, \triangle\mathrm{PHC}$ が合同になることから証明されます。
+                        </div>
+                    </details>
+                    
+                    <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                        <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                            <span>Q3. 三角形の3辺の長さ $a, b, c$ と面積 $S$ がわかっているとき、外接円の半径 $R$ を求めるための面積公式は何ですか？</span>
+                            <span class="transition duration-300 group-open:-rotate-180">
+                                <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                            </span>
+                        </summary>
+                        <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                            $S = \dfrac{abc}{4R}$ です。正弦定理と $S = \frac{1}{2}bc\sin A$ から導かれる公式で、これを知っていると計算過程を大幅に短縮・検算することができます。
+                        </div>
+                    </details>
+                </div>
+            </section>
+            
+            <nav class="mt-7 grid gap-3 sm:grid-cols-2">
+                <a href="index.html" class="nav-button rounded-xl border border-slate-300 bg-white px-5 py-4 text-center font-bold text-slate-700 hover:border-blue-300 hover:text-blue-800">
+                    ← 一覧へ
+                </a>
+                <a href="no19.html" class="nav-button rounded-xl bg-blue-700 px-5 py-4 text-center font-bold text-white hover:bg-blue-800">
+                    No.19 →
+                </a>
+            </nav>
+        </main>
+
+        <footer class="py-10 text-center text-sm text-slate-500">
+            医進・サイエンスコース　夏期数学課題 解説サイト
+        </footer>
+    </div>
+</body>
+</html>

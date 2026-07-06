@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>夏期課題 No.19 三角関数 - 医進・サイエンスコース</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        MathJax = {
+            chtml: {
+                matchFontHeight: false
+            },
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body { font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif; }
+        .nav-button { transition: transform .16s ease, box-shadow .16s ease; }
+        .nav-button:hover { transform: translateY(-2px); box-shadow: 0 8px 18px rgba(15, 23, 42, .12); }
+        .math-scroll { overflow-x: auto; overflow-y: hidden; padding-bottom: 0.5rem; margin-bottom: 0.5rem; }
+    </style>
+</head>
+<body class="bg-slate-100 text-slate-800">
+    <div class="mx-auto max-w-4xl px-4 py-6 sm:px-6 lg:py-10">
+        
+        <a href="index.html" class="inline-flex items-center gap-2 text-sm font-bold text-blue-700 hover:text-blue-900">
+            ← 問題一覧へ戻る
+        </a>
+
+        <header class="mt-4 overflow-hidden rounded-3xl bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-800 text-white shadow-xl">
+            <div class="p-7 sm:p-10">
+                <span class="inline-flex items-center rounded-full bg-white/15 px-4 py-1.5 text-sm font-semibold tracking-wide text-blue-100">医進・サイエンスコース</span>
+                <div class="mt-4 flex flex-wrap items-center gap-3">
+                    <span class="rounded-lg bg-white/20 px-3 py-1 text-sm font-bold">No.19</span>
+                    <span class="rounded-full bg-amber-100 px-3 py-1 text-xs font-bold text-amber-800">標準</span>
+                </div>
+                <h1 class="mt-4 text-3xl font-bold leading-tight sm:text-4xl">三角関数</h1>
+                <div class="mt-3 text-lg text-blue-100">目標解答時間：20分</div>
+            </div>
+        </header>
+
+        <main>
+            <section class="mt-7 rounded-2xl border border-blue-100 bg-white p-6 shadow-sm sm:p-8">
+                <h2 class="flex items-center gap-2 text-xl font-bold text-blue-900">
+                    <span class="grid h-8 w-8 place-items-center rounded-full bg-blue-700 text-base text-white">1</span>
+                    問題
+                </h2>
+                
+                <div class="bg-slate-50 border border-slate-200 rounded-lg p-4 mb-4 text-slate-700 leading-relaxed mt-4">
+                    <p>$-\dfrac{\pi}{2}<\theta<\dfrac{\pi}{2}$ で定義された関数 $y=\sqrt{3}\tan^2\theta+a\tan\theta+b$ ($a, b$は定数) があり，$\theta=0$ のとき $y=-\sqrt{3}$, $\theta=\dfrac{\pi}{4}$ のとき $y=2$ である。</p>
+                    <ol class="list-decimal pl-6 mt-3 space-y-2">
+                        <li>$a, b$の値を求めよ。</li>
+                        <li>$-\dfrac{\pi}{2}<\theta<\dfrac{\pi}{2}$ のとき，$y=0$ を満たす$\theta$の値を求めよ。</li>
+                        <li>$-\dfrac{\pi}{3}\leq\theta\leq\dfrac{\pi}{3}$ における関数$y$の最大値，最小値とそのときの$\theta$の値をそれぞれ求めよ。</li>
+                    </ol>
+                </div>
+
+                <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 mt-4">
+                    <h3 class="font-bold text-blue-900 mb-2">【条件の整理】</h3>
+                    <ul class="list-disc pl-5 space-y-2 text-sm text-slate-700">
+                        <li><strong>関数の形：</strong> $\tan\theta$ の2次式で与えられている。$\theta$ に具体的な値を代入して $a, b$ の連立方程式を作るのが(1)の目標。</li>
+                        <li><strong>変数の置き換え：</strong> $\tan\theta$ が繰り返し登場するため、$t = \tan\theta$ と置き換えることで、見慣れた2次関数 $y = \sqrt{3}t^2 + at + b$ の問題に帰着できる。</li>
+                        <li><strong>変域の確認：</strong> $\theta$ の範囲によって、$t$ ($\tan\theta$) のとり得る値の範囲が変わる。$\tan$ のグラフをイメージして、各小問で指定された $\theta$ の定義域から $t$ の変域を正確に求めることが鍵。</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="mt-6 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+                <h2 class="flex items-center gap-2 text-xl font-bold text-slate-900">
+                    <span class="grid h-8 w-8 place-items-center rounded-full bg-slate-700 text-base text-white">2</span>
+                    解説
+                </h2>
+                <p class="mt-4 text-sm leading-8 text-slate-600">
+                    問題を解くための考え方から、答案、検算、発展までを順に確認します。
+                </p>
+
+                <div class="mt-8 bg-amber-50 border border-amber-200 rounded-xl p-5">
+                    <h3 class="border-b-2 border-amber-400 pb-2 text-lg font-bold text-amber-900">解法選択のトリガー</h3>
+                    <div class="mt-4 space-y-4">
+                        <div class="bg-amber-100/60 border border-amber-200 rounded-lg p-4">
+                            <p class="font-bold text-amber-900 text-sm">「$\theta = \alpha$ のとき $y = \beta$」と係数決定</p>
+                            <p class="mt-1 text-sm text-amber-800">
+                                未知の定数 $a, b$ を求めるため、素直に与えられた座標を関数に代入して<strong>連立方程式</strong>を作ります。$\tan 0$ や $\tan \frac{\pi}{4}$ の値を正確に出せるかがポイントです。
+                            </p>
+                        </div>
+                        <div class="bg-amber-100/60 border border-amber-200 rounded-lg p-4">
+                            <p class="font-bold text-amber-900 text-sm">三角関数の方程式・最大最小問題</p>
+                            <p class="mt-1 text-sm text-amber-800">
+                                $\sin, \cos, \tan$ が複数含まれる式は<strong>「同じ関数」の式に統一</strong>し、それを文字で置換して代数方程式や2次関数に帰着させます。本問は既に $\tan\theta$ のみに統一されているため、すぐに $t = \tan\theta$ と置くことができます。
+                            </p>
+                        </div>
+                        <div class="bg-amber-100/60 border border-amber-200 rounded-lg p-4">
+                            <p class="font-bold text-amber-900 text-sm">置換した文字の定義域制限</p>
+                            <p class="mt-1 text-sm text-amber-800">
+                                置き換えた文字 $t$ には、必ず $\theta$ の範囲に由来する<strong>「新しい定義域」</strong>が発生します。(3)のような最大・最小問題では、この新しい定義域の端点と、放物線の頂点（軸）の位置関係を比較することが鉄則です。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-8 bg-emerald-50 border border-emerald-200 rounded-xl p-5">
+                    <h3 class="border-b-2 border-emerald-400 pb-2 text-lg font-bold text-emerald-900">思考プロセス</h3>
+                    <div class="mt-4 space-y-4">
+                        <div class="bg-emerald-100/60 border border-emerald-200 rounded-lg p-4 text-sm text-emerald-900">
+                            <strong>(1) $a, b$ の算出</strong><br>
+                            $\theta = 0$ のとき $\tan 0 = 0$ なので、代入するとすぐに $b$ が求まります。続けて $\theta = \dfrac{\pi}{4}$ のとき $\tan\dfrac{\pi}{4} = 1$ を代入し、$a$ を求めます。
+                        </div>
+                        <div class="bg-emerald-100/60 border border-emerald-200 rounded-lg p-4 text-sm text-emerald-900">
+                            <strong>(2) 方程式の解法</strong><br>
+                            $t = \tan\theta$ と置くと、$-\dfrac{\pi}{2} < \theta < \dfrac{\pi}{2}$ の範囲では $t$ は<strong>すべての実数</strong>をとります。<br>
+                            $y=0$ の2次方程式をたすき掛けや解の公式で解き、得られた $t$ の値から逆算して $\theta$ を求めます。
+                        </div>
+                        <div class="bg-emerald-100/60 border border-emerald-200 rounded-lg p-4 text-sm text-emerald-900">
+                            <strong>(3) 最大・最小の決定</strong><br>
+                            $-\dfrac{\pi}{3} \le \theta \le \dfrac{\pi}{3}$ より、$t$ の範囲は $-\sqrt{3} \le t \le \sqrt{3}$ に制限されます。<br>
+                            $y$ の2次関数を平方完成し、軸 $t = -\dfrac{1}{\sqrt{3}}$ がこの定義域に含まれるか確認します。<br>
+                            最小値は頂点でとり、最大値は「軸から遠い方の端点」でとります。端点 $t=\sqrt{3}$ と $t=-\sqrt{3}$ のうち、どちらが軸より遠いかを距離で比較して最大値を決定します。
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-10">
+                    <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">実際の答案</h3>
+                    
+                    <div class="mt-4 space-y-6 text-slate-700">
+                        <!-- (1) -->
+                        <div>
+                            <p class="font-bold">（1）</p>
+                            <p class="mt-2">
+                                関数 $y=\sqrt{3}\tan^2\theta+a\tan\theta+b$ において，<br>
+                                $\theta=0$ のとき $y=-\sqrt{3}$ であるから，$\tan 0 = 0$ より
+                            </p>
+                            <div class="math-scroll">
+                                \begin{aligned}
+                                -\sqrt{3} &= \sqrt{3} \cdot 0^2 + a \cdot 0 + b \\
+                                b &= -\sqrt{3}
+                                \end{aligned}
+                            </div>
+                            <p class="mt-2">
+                                また，$\theta=\dfrac{\pi}{4}$ のとき $y=2$ であるから，$\tan\dfrac{\pi}{4} = 1$ より
+                            </p>
+                            <div class="math-scroll">
+                                \begin{aligned}
+                                2 &= \sqrt{3} \cdot 1^2 + a \cdot 1 - \sqrt{3} \\
+                                2 &= \sqrt{3} + a - \sqrt{3} \\
+                                a &= 2
+                                \end{aligned}
+                            </div>
+                            <div class="mt-2 rounded-xl border-2 border-blue-500 bg-blue-50 p-3 text-slate-900 font-bold inline-block">
+                                答: $a = 2,\ b = -\sqrt{3}$
+                            </div>
+                        </div>
+
+                        <!-- (2) -->
+                        <div class="border-t border-slate-200 pt-6">
+                            <p class="font-bold">（2）</p>
+                            <p class="mt-2">
+                                (1)より，$y = \sqrt{3}\tan^2\theta + 2\tan\theta - \sqrt{3}$ である。<br>
+                                $t = \tan\theta$ とおく。$-\dfrac{\pi}{2}<\theta<\dfrac{\pi}{2}$ のとき，$t$ はすべての実数値をとる。<br>
+                                $y=0$ より
+                            </p>
+                            <div class="math-scroll">
+                                \begin{aligned}
+                                \sqrt{3}t^2 + 2t - \sqrt{3} &= 0 \\
+                                (\sqrt{3}t - 1)(t + \sqrt{3}) &= 0 \\
+                                t &= \frac{1}{\sqrt{3}}, \ -\sqrt{3}
+                                \end{aligned}
+                            </div>
+                            <p class="mt-2">
+                                $-\dfrac{\pi}{2}<\theta<\dfrac{\pi}{2}$ において，<br>
+                                $\tan\theta = \dfrac{1}{\sqrt{3}}$ を満たす $\theta$ は $\theta = \dfrac{\pi}{6}$ <br>
+                                $\tan\theta = -\sqrt{3}$ を満たす $\theta$ は $\theta = -\dfrac{\pi}{3}$ <br>
+                                したがって，求める解は
+                            </p>
+                            <div class="mt-2 rounded-xl border-2 border-blue-500 bg-blue-50 p-3 text-slate-900 font-bold inline-block">
+                                答: $\theta = \dfrac{\pi}{6}, \ -\dfrac{\pi}{3}$
+                            </div>
+                        </div>
+
+                        <!-- (3) -->
+                        <div class="border-t border-slate-200 pt-6">
+                            <p class="font-bold">（3）</p>
+                            <p class="mt-2">
+                                $t = \tan\theta$ とおく。$-\dfrac{\pi}{3}\leq\theta\leq\dfrac{\pi}{3}$ のとき，$t$ のとり得る値の範囲は
+                            </p>
+                            <div class="math-scroll">
+                                \[ -\sqrt{3} \le t \le \sqrt{3} \quad \cdots\cdots \text{①} \]
+                            </div>
+                            <p class="mt-2">
+                                $y$ を $t$ で表して平方完成すると，
+                            </p>
+                            <div class="math-scroll">
+                                \begin{aligned}
+                                y &= \sqrt{3}t^2 + 2t - \sqrt{3} \\
+                                &= \sqrt{3}\left(t^2 + \frac{2}{\sqrt{3}}t\right) - \sqrt{3} \\
+                                &= \sqrt{3}\left(t + \frac{1}{\sqrt{3}}\right)^2 - \sqrt{3}\left(\frac{1}{\sqrt{3}}\right)^2 - \sqrt{3} \\
+                                &= \sqrt{3}\left(t + \frac{1}{\sqrt{3}}\right)^2 - \frac{\sqrt{3}}{3} - \frac{3\sqrt{3}}{3} \\
+                                &= \sqrt{3}\left(t + \frac{1}{\sqrt{3}}\right)^2 - \frac{4\sqrt{3}}{3}
+                                \end{aligned}
+                            </div>
+                            <p class="mt-2">
+                                この関数は，頂点が $\left(-\dfrac{1}{\sqrt{3}}, -\dfrac{4\sqrt{3}}{3}\right)$ で下に凸の放物線である。<br>
+                                軸 $t = -\dfrac{1}{\sqrt{3}}$ は区間①に含まれるため，最小値は頂点においてとる。<br>
+                                $t = -\dfrac{1}{\sqrt{3}}$ （すなわち $\tan\theta = -\dfrac{1}{\sqrt{3}}$ より $\theta = -\dfrac{\pi}{6}$）のとき，最小値 $-\dfrac{4\sqrt{3}}{3}$
+                            </p>
+                            <p class="mt-4">
+                                次に最大値を考える。軸 $t = -\dfrac{1}{\sqrt{3}}$ から区間の両端までの距離は，<br>
+                                $t = \sqrt{3}$ までの距離： $\sqrt{3} - \left(-\dfrac{1}{\sqrt{3}}\right) = \sqrt{3} + \dfrac{\sqrt{3}}{3} = \dfrac{4\sqrt{3}}{3}$ <br>
+                                $t = -\sqrt{3}$ までの距離： $\left(-\dfrac{1}{\sqrt{3}}\right) - (-\sqrt{3}) = -\dfrac{\sqrt{3}}{3} + \sqrt{3} = \dfrac{2\sqrt{3}}{3}$ <br>
+                                よって，右端 $t = \sqrt{3}$ の方が軸から遠いため，ここで最大値をとる。<br>
+                                $t = \sqrt{3}$ （すなわち $\tan\theta = \sqrt{3}$ より $\theta = \dfrac{\pi}{3}$）のとき，
+                            </p>
+                            <div class="math-scroll">
+                                \begin{aligned}
+                                y &= \sqrt{3}(\sqrt{3})^2 + 2(\sqrt{3}) - \sqrt{3} \\
+                                &= 3\sqrt{3} + 2\sqrt{3} - \sqrt{3} \\
+                                &= 4\sqrt{3}
+                                \end{aligned}
+                            </div>
+                            <div class="mt-4 rounded-xl border-2 border-blue-500 bg-blue-50 p-5 text-slate-900 font-bold inline-block w-full">
+                                答:<br>
+                                $\theta = \dfrac{\pi}{3}$ のとき，最大値 $4\sqrt{3}$<br>
+                                $\theta = -\dfrac{\pi}{6}$ のとき，最小値 $-\dfrac{4\sqrt{3}}{3}$
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-10">
+                    <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">グラフによる確認</h3>
+                    <p class="mt-4 text-sm text-slate-700 leading-relaxed">
+                        $t = \tan\theta$ と置き換えた後の2次関数 $y = \sqrt{3}t^2 + 2t - \sqrt{3}$ のグラフを図示すると以下のようになります。<br>
+                        青い実線の部分が、(3)で制限された定義域 $-\sqrt{3} \le t \le \sqrt{3}$ を表しています。<br>
+                        軸 $t = -\dfrac{1}{\sqrt{3}}$ の位置が区間の中央よりやや左に寄っているため、右端 $t = \sqrt{3}$ の方がグラフが高く上がり、最大値となることが視覚的にも確認できます。
+                    </p>
+                    
+                    <div class="mt-4 bg-slate-50 p-4 sm:p-6 rounded-lg border border-slate-200 flex justify-center">
+                        <div class="relative bg-white border border-slate-200 shadow-sm rounded-xl p-4">
+                            <!-- SVG Graph -->
+                            <svg width="350" height="280" viewBox="0 0 400 300">
+                                <!-- 座標変換: x軸(t軸)は 200 を中心に 1単位 60px -->
+                                <!-- y軸は 200 を中心(y=0)に 1単位 20px (下から上へ) -->
+                                
+                                <!-- 背景グリッド -->
+                                <g stroke="#e2e8f0" stroke-width="1">
+                                    <line x1="0" y1="200" x2="400" y2="200" stroke="#94a3b8" stroke-width="2"/> <!-- t軸 (y=0) -->
+                                    <line x1="200" y1="0" x2="200" y2="300" stroke="#94a3b8" stroke-width="2"/> <!-- y軸 (t=0) -->
+                                </g>
+
+                                <!-- 軸ラベル -->
+                                <text x="380" y="195" fill="#64748b" font-size="14">t</text>
+                                <text x="210" y="15" fill="#64748b" font-size="14">y</text>
+                                <text x="205" y="215" fill="#64748b" font-size="12">O</text>
+
+                                <!-- 定義域ハイライト ( -√3 ≒ -1.73 から √3 ≒ 1.73 ) -->
+                                <!-- 200 - 1.732*60 = 96.08, 200 + 1.732*60 = 303.92 -->
+                                <rect x="96.1" y="0" width="207.8" height="300" fill="rgba(59, 130, 246, 0.05)" />
+
+                                <!-- 関数グラフ全体 (点線) -->
+                                <!-- y = √3 t^2 + 2t - √3 -->
+                                <!-- t=-2.5 -> y ≒ 4.09, t=2.0 -> y ≒ 9.20 -->
+                                <path id="curve-dashed" fill="none" stroke="#cbd5e1" stroke-width="2" stroke-dasharray="4,4" />
+                                
+                                <!-- 関数グラフ定義域内 (実線) -->
+                                <path id="curve-solid" fill="none" stroke="#2563eb" stroke-width="3" />
+
+                                <!-- 軸 (t = -1/√3 ≒ -0.577 -> x = 200 - 34.6 = 165.4) -->
+                                <line x1="165.4" y1="0" x2="165.4" y2="300" stroke="#f59e0b" stroke-width="1.5" stroke-dasharray="4,2" />
+                                <text x="170" y="295" fill="#d97706" font-size="12" font-weight="bold">軸 t=-1/√3</text>
+
+                                <!-- 特徴点マーカー -->
+                                <!-- 頂点: (-1/√3, -4√3/3) ≒ (-0.577, -2.309) -> x=165.4, y= 200 - (-2.309)*20 = 246.2 -->
+                                <circle cx="165.4" cy="246.2" r="5" fill="#10b981" />
+                                <text x="175" y="250" fill="#059669" font-size="12" font-weight="bold">最小値</text>
+
+                                <!-- 左端: (-√3, 0) -> x=96.1, y=200 -->
+                                <circle cx="96.1" cy="200" r="5" fill="#3b82f6" />
+                                <text x="96" y="218" fill="#1d4ed8" font-size="12" text-anchor="middle">-√3</text>
+
+                                <!-- 右端: (√3, 4√3) ≒ (1.732, 6.928) -> x=303.9, y= 200 - 6.928*20 = 61.4 -->
+                                <circle cx="303.9" cy="61.4" r="5" fill="#ef4444" />
+                                <text x="303" y="52" fill="#ef4444" font-size="12" font-weight="bold" text-anchor="end">最大値 4√3</text>
+                                <text x="303" y="218" fill="#1d4ed8" font-size="12" text-anchor="middle">√3</text>
+                            </svg>
+                        </div>
+                    </div>
+                    <script>
+                        document.addEventListener("DOMContentLoaded", function() {
+                            const mapX = (t) => 200 + t * 60;
+                            const mapY = (y) => 200 - y * 20;
+                            const f = (t) => Math.sqrt(3) * t * t + 2 * t - Math.sqrt(3);
+
+                            let dashedPath = "";
+                            for (let t = -3; t <= 2.5; t += 0.05) {
+                                const command = t === -3 ? "M" : "L";
+                                dashedPath += `${command} ${mapX(t)} ${mapY(f(t))} `;
+                            }
+                            document.getElementById('curve-dashed').setAttribute("d", dashedPath);
+
+                            let solidPath = "";
+                            for (let t = -Math.sqrt(3); t <= Math.sqrt(3); t += 0.05) {
+                                const command = t <= -Math.sqrt(3) + 0.01 ? "M" : "L";
+                                solidPath += `${command} ${mapX(t)} ${mapY(f(t))} `;
+                            }
+                            // 終点を正確に接続
+                            solidPath += `L ${mapX(Math.sqrt(3))} ${mapY(f(Math.sqrt(3)))}`;
+                            document.getElementById('curve-solid').setAttribute("d", solidPath);
+                        });
+                    </script>
+                </div>
+
+                <div class="mt-10">
+                    <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">最終結果と検算</h3>
+                    
+                    <div class="mt-4 rounded-xl border-2 border-blue-500 bg-blue-50 p-5 text-slate-900">
+                        <ul class="space-y-2 font-bold">
+                            <li>(1) $a = 2, b = -\sqrt{3}$</li>
+                            <li>(2) $\theta = \dfrac{\pi}{6}, -\dfrac{\pi}{3}$</li>
+                            <li>(3) $\theta = \dfrac{\pi}{3}$ のとき 最大値 $4\sqrt{3}$ ， $\theta = -\dfrac{\pi}{6}$ のとき 最小値 $-\dfrac{4\sqrt{3}}{3}$</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="mt-4 bg-slate-50 p-4 rounded-lg border border-slate-200 text-sm text-slate-700">
+                        <strong>検算ポイント：(2)と(3)の整合性確認</strong><br>
+                        (3)のグラフや計算において、左端点 $t = -\sqrt{3}$ のときの $y$ の値を求めてみましょう。<br>
+                        $y = \sqrt{3}(-\sqrt{3})^2 + 2(-\sqrt{3}) - \sqrt{3} = 3\sqrt{3} - 2\sqrt{3} - \sqrt{3} = 0$ となります。<br>
+                        これは、(2)の方程式 $y=0$ の解として $t = -\sqrt{3}$ が得られたことと完全に一致します。<br>
+                        このように、異なる小問同士の境界値や解がピタリと整合することは、これまでの計算がすべて正しかったことを証明する非常に強力な検算となります。
+                    </div>
+                </div>
+
+                <div class="mt-10">
+                    <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">発展・一般化：$\tan\theta$ の置換について</h3>
+                    <p class="mt-4 text-sm text-slate-700 leading-relaxed">
+                        三角関数の置換において、$t=\sin\theta$ や $t=\cos\theta$ の場合は、角の範囲が全実数であっても $-1 \le t \le 1$ という閉区間に制限されます。<br>
+                        しかし、$t=\tan\theta$ の場合、定義域が $-\dfrac{\pi}{2} < \theta < \dfrac{\pi}{2}$ のように開区間であれば、$t$ は<strong>すべての実数値</strong>をとることができます。そのため、(2)のように方程式の解を求める際、得られた $t$ を「範囲外」として棄却するケースが発生しません。<br>
+                        一方で、(3)のように特定の閉区間に制限されると、$t$ にも $-\sqrt{3} \le t \le \sqrt{3}$ のような制限がかかります。関数によって置換後の変域の振る舞いが大きく異なるため、グラフをイメージして常に確認する癖をつけましょう。
+                    </p>
+                </div>
+
+                <div class="mt-10">
+                    <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">受験生のつまずきポイント</h3>
+                    <div class="mt-4 space-y-4">
+                        <div class="bg-red-50 border border-red-200 rounded-lg p-4">
+                            <p class="font-bold text-red-900 text-sm">頂点の $t$ の値から $\theta$ を求める際の角の取り違え</p>
+                            <p class="mt-1 text-sm text-red-800">
+                                最小値をとる $t = -\dfrac{1}{\sqrt{3}}$ から $\theta$ を逆算する際、$-\dfrac{\pi}{3} \le \theta \le \dfrac{\pi}{3}$ という定義域を忘れて、$\theta = \dfrac{5\pi}{6}$ などを答えてしまうミスが見られます。$\tan\theta$ の周期は $\pi$ であるため同じ値をとる角は無数にありますが、指定された定義域内の角を正確に拾い上げることが重要です。
+                            </p>
+                        </div>
+                        <div class="bg-red-50 border border-red-200 rounded-lg p-4">
+                            <p class="font-bold text-red-900 text-sm">最大値の判定において、軸と端点の距離比較を怠る</p>
+                            <p class="mt-1 text-sm text-red-800">
+                                (3)で最大値を決める際、見た目の感覚だけで「右端だから最大だろう」と決めつけるのは危険です。必ず「軸 $t = -\dfrac{1}{\sqrt{3}}$ から、左端 $-\sqrt{3}$ と右端 $\sqrt{3}$ のどちらが遠いか」を、絶対値を用いた引き算で示して論理的に説明しなければ、記述式では減点対象になります。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+            
+            <section class="mt-6 rounded-2xl bg-blue-900 p-6 text-white shadow-sm sm:p-8">
+                <h2 class="border-b-2 border-blue-400 pb-2 text-lg font-bold">アクティブリコール（復習テスト）</h2>
+                <p class="mt-4 text-sm text-blue-200">今日の学習内容を思い出すことで、記憶を定着させましょう。質問をクリックして答えを確認してください。</p>
+                
+                <div class="mt-6 space-y-3">
+                    <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                        <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                            <span>Q1. 三角関数の方程式・最大最小問題において、式が $\tan\theta$ のみで構成されている場合、どのような方針で解き進めますか？</span>
+                            <span class="transition duration-300 group-open:-rotate-180">
+                                <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                            </span>
+                        </summary>
+                        <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                            $t = \tan\theta$ のように文字で置き換えて、代数方程式や2次関数の問題に帰着させます。その際、必ず $\theta$ の定義域から新しい文字 $t$ の変域を確認することが不可欠です。
+                        </div>
+                    </details>
+                    
+                    <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                        <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                            <span>Q2. $t = \tan\theta$ と置いたとき、$t$ のとり得る値の範囲は $\sin\theta$ や $\cos\theta$ と比べてどのような特徴がありますか？</span>
+                            <span class="transition duration-300 group-open:-rotate-180">
+                                <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                            </span>
+                        </summary>
+                        <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                            $\sin\theta$ や $\cos\theta$ は最大・最小が $\pm 1$ に制限されますが、$\tan\theta$ は、$-\frac{\pi}{2} < \theta < \frac{\pi}{2}$ のような開区間であれば「すべての実数値」をとることができます。
+                        </div>
+                    </details>
+                    
+                    <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                        <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                            <span>Q3. 定義域が制限された2次関数の最大・最小を考える際、最大値（または最小値）を判定するのに用いる「軸」に関する法則は何ですか？</span>
+                            <span class="transition duration-300 group-open:-rotate-180">
+                                <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                            </span>
+                        </summary>
+                        <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                            下に凸の放物線の場合、定義域内の「軸からより遠い方の端点」で最大値をとります。これを答案に示すには、軸の座標と両端点の座標との距離をそれぞれ引き算（絶対値）で計算し、大小を比較して根拠を示します。
+                        </div>
+                    </details>
+                </div>
+            </section>
+            
+            <nav class="mt-7 grid gap-3 sm:grid-cols-2">
+                <a href="index.html" class="nav-button rounded-xl border border-slate-300 bg-white px-5 py-4 text-center font-bold text-slate-700 hover:border-blue-300 hover:text-blue-800">
+                    ← 一覧へ
+                </a>
+                <a href="no20.html" class="nav-button rounded-xl bg-blue-700 px-5 py-4 text-center font-bold text-white hover:bg-blue-800">
+                    No.20 →
+                </a>
+            </nav>
+        </main>
+
+        <footer class="py-10 text-center text-sm text-slate-500">
+            医進・サイエンスコース　夏期数学課題 解説サイト
+        </footer>
+    </div>
+</body>
+</html>

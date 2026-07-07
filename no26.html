@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>No.26 平面ベクトル - 医進・サイエンスコース 夏期数学課題</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    MathJax = {
+      chtml: { matchFontHeight: false },
+      tex: { 
+        inlineMath: [['$', '$'], ['\\(', '\\)']], 
+        displayMath: [['\\[', '\\]']],
+        macros: {
+          Vec: ["\\overrightarrow{\\mathrm{#1}}", 1],
+          abs: ["\\left|#1\\right|", 1]
+        }
+      }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+  <style>
+    body {
+      font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
+    }
+    .nav-button {
+      transition: transform .16s ease, box-shadow .16s ease;
+    }
+    .nav-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 18px rgba(15, 23, 42, .12);
+    }
+    .math-scroll {
+      overflow-x: auto;
+      overflow-y: hidden;
+      padding-bottom: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+  </style>
+</head>
+<body class="bg-slate-100 text-slate-800">
+  <main class="mx-auto max-w-4xl px-4 py-6 sm:px-6 lg:py-10">
+    
+    <a href="index.html" class="inline-flex items-center gap-2 text-sm font-bold text-blue-700 hover:text-blue-900">
+      ← 問題一覧へ戻る
+    </a>
+
+    <header class="mt-4 overflow-hidden rounded-3xl bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-800 text-white shadow-xl">
+      <div class="p-7 sm:p-10">
+        <span class="inline-flex items-center rounded-full bg-white/15 px-4 py-1.5 text-sm font-semibold tracking-wide text-blue-100">
+          医進・サイエンスコース
+        </span>
+        <div class="mt-4 flex flex-wrap items-center gap-3">
+          <span class="rounded-lg bg-white/20 px-3 py-1 text-sm font-bold">No.26</span>
+          <span class="rounded-full bg-amber-100 px-3 py-1 text-xs font-bold text-amber-800">標準</span>
+        </div>
+        <h1 class="mt-4 text-3xl font-bold leading-tight sm:text-4xl">平面ベクトル</h1>
+        <p class="mt-3 text-lg text-blue-100">目標解答時間：25分</p>
+      </div>
+    </header>
+
+    <section class="mt-7 rounded-2xl border border-blue-100 bg-white p-6 shadow-sm sm:p-8">
+      <h2 class="flex items-center gap-2 text-xl font-bold text-blue-900">
+        <span class="grid h-8 w-8 place-items-center rounded-full bg-blue-700 text-base text-white">1</span>
+        問題
+      </h2>
+      <div class="bg-slate-50 border border-slate-200 rounded-lg p-4 mb-4 mt-4 text-slate-700 leading-relaxed">
+        平面上に，$\mathrm{OA}=\sqrt{2}$ ，$\mathrm{OB}=\sqrt{3}$ ，$\cos\angle\mathrm{AOB}=\frac{\sqrt{6}}{12}$ の三角形OABと，$\Vec{OC}=2\Vec{OA}+\Vec{OB}$ を満たす点Cがある．
+        <ol class="mt-4 list-decimal pl-6 space-y-2">
+          <li>内積 $\Vec{OA}\cdot\Vec{OB}$ を求めよ．また，$\Vec{OC}$ の大きさ $\abs{\Vec{OC}}$ を求めよ．</li>
+          <li>Cから直線ABに垂線を下ろし，ABとの交点をHとする．$\Vec{OH}$ を $\Vec{OA}$ と $\Vec{OB}$ を用いて表せ．また，$\Vec{CH}$ の大きさ $\abs{\Vec{CH}}$ を求めよ．</li>
+          <li>点Pは $\abs{\Vec{OP}}^2-2\Vec{OC}\cdot\Vec{OP}=0$ を満たしながら動く．3点A，B，Pが三角形の頂点となるとき，三角形ABPの面積の最大値を求めよ．</li>
+        </ol>
+      </div>
+
+      <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 mt-4">
+        <h3 class="font-bold text-blue-900 mb-2">【条件の整理】</h3>
+        <ul class="list-disc pl-5 space-y-1.5 text-sm text-blue-900">
+          <li><strong>基本量の確認：</strong> 大きさ $\abs{\Vec{OA}}, \abs{\Vec{OB}}$ と、間の角の $\cos$ が与えられているため、内積は定義からすぐに計算できます。すべての計算の基礎となるため、正確に求めましょう。</li>
+          <li><strong>垂線の条件：</strong> 「Hは直線AB上」かつ「$\mathrm{CH} \perp \mathrm{AB}$」。ベクトルではそれぞれ「共線条件（係数和=1）」と「内積=0」に翻訳します。</li>
+          <li><strong>Pの軌跡：</strong> 与えられた等式は、ベクトルの平方完成の要領で変形することで、Pがある図形（円）上を動くことを示しています。</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="mt-6 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+      <h2 class="flex items-center gap-2 text-xl font-bold text-slate-900">
+        <span class="grid h-8 w-8 place-items-center rounded-full bg-slate-700 text-base text-white">2</span>
+        解説
+      </h2>
+      <p class="mt-4 text-sm leading-8 text-slate-600">
+        問題を解くための考え方から、答案、検算、発展までを順に確認します。
+      </p>
+
+      <div class="mt-8 bg-amber-50 border border-amber-200 rounded-xl p-5">
+        <h3 class="border-b-2 border-amber-400 pb-2 text-lg font-bold text-amber-900">解法選択のトリガー</h3>
+        <div class="mt-4 space-y-3">
+          <div class="bg-amber-100/60 border border-amber-200 rounded-lg p-4 text-amber-900">
+            <span class="font-bold text-amber-800">「垂線を下ろす」と来たら</span> → <strong>直線の式設定 ＋ 内積ゼロ</strong> <br>
+            点Hが直線AB上にあるため $\Vec{OH} = (1-t)\Vec{OA} + t\Vec{OB}$ とおきます。そして $\Vec{CH} \perp \Vec{AB}$ より $\Vec{CH}\cdot\Vec{AB}=0$ の方程式を立てて $t$ を求めます。
+          </div>
+          <div class="bg-amber-100/60 border border-amber-200 rounded-lg p-4 text-amber-900">
+            <span class="font-bold text-amber-800">$\abs{\Vec{p}}^2 - 2\Vec{c}\cdot\Vec{p} = 0$ と来たら</span> → <strong>平方完成して「円」のベクトル方程式へ</strong> <br>
+            両辺に $\abs{\Vec{c}}^2$ を足すと、左辺は $(\Vec{p}-\Vec{c})\cdot(\Vec{p}-\Vec{c})$ となり、$\abs{\Vec{p}-\Vec{c}}^2 = \abs{\Vec{c}}^2$ と変形できます。これは「点Cを中心とする半径 $\abs{\Vec{c}}$ の円」を表します。
+          </div>
+          <div class="bg-amber-100/60 border border-amber-200 rounded-lg p-4 text-amber-900">
+            <span class="font-bold text-amber-800">円周上の点を用いた三角形の面積の最大値</span> → <strong>中心と直線の距離 $d$ ＋ 半径 $r$</strong> <br>
+            底辺ABは固定されているため、高さが最大になるときを考えます。円周上の点から直線までの最大距離は、「中心と直線の距離 $d$」に「円の半径 $r$」を加えた $d+r$ になります。
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-8 bg-emerald-50 border border-emerald-200 rounded-xl p-5">
+        <h3 class="border-b-2 border-emerald-400 pb-2 text-lg font-bold text-emerald-900">思考プロセス</h3>
+        <div class="mt-4 space-y-3 text-emerald-900">
+          <ul class="list-disc pl-5 space-y-2">
+            <li><strong>(1) の流れ：</strong> 内積は定義通り計算します。$\abs{\Vec{OC}}$ は $\Vec{OC} = 2\Vec{OA} + \Vec{OB}$ の両辺を2乗して展開し、求めた内積を代入します。</li>
+            <li><strong>(2) の流れ：</strong> 上記のトリガー通り $t$ を用いて $\Vec{OH}$ をおき、$\Vec{CH} = \Vec{OH} - \Vec{OC}$ を計算します。$\Vec{CH} \cdot (\Vec{OB} - \Vec{OA}) = 0$ を丁寧に展開して $t$ を求めます。$\abs{\Vec{CH}}$ は得られた $\Vec{CH}$ を2乗して求めます。計算量が多いため符号に注意が必要です。</li>
+            <li><strong>(3) の流れ：</strong> Pが点Cを中心とする半径 $\sqrt{13}$ の円上の点であることを見抜きます。三角形の面積 $S = \frac{1}{2} \cdot \mathrm{AB} \cdot (\text{高さ})$ を最大にするには、高さを最大にする必要があります。点Cから直線ABまでの距離は、奇しくも(2)で求めた $\abs{\Vec{CH}}$ そのものです。したがって、最大高さは $\abs{\Vec{CH}} + \text{半径}$ となります。</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3 class="mt-8 border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">実際の答案</h3>
+      <div class="mt-4 text-slate-800 leading-loose">
+        <p class="font-bold">(1)</p>
+        <p>
+          内積の定義より、
+        </p>
+        <div class="math-scroll">
+          \begin{aligned}
+          \Vec{OA}\cdot\Vec{OB} &= \abs{\Vec{OA}}\abs{\Vec{OB}}\cos\angle\mathrm{AOB} \\
+          &= \sqrt{2} \times \sqrt{3} \times \frac{\sqrt{6}}{12} \\
+          &= \frac{\sqrt{36}}{12} = \frac{6}{12} = \frac{1}{2}
+          \end{aligned}
+        </div>
+        <p>
+          また、$\abs{\Vec{OC}}^2$ は、
+        </p>
+        <div class="math-scroll">
+          \begin{aligned}
+          \abs{\Vec{OC}}^2 &= \abs{2\Vec{OA} + \Vec{OB}}^2 \\
+          &= 4\abs{\Vec{OA}}^2 + 4\Vec{OA}\cdot\Vec{OB} + \abs{\Vec{OB}}^2 \\
+          &= 4(2) + 4\left(\frac{1}{2}\right) + 3 \\
+          &= 8 + 2 + 3 = 13
+          \end{aligned}
+        </div>
+        <p>
+          $\abs{\Vec{OC}} > 0$ より、$\abs{\Vec{OC}} = \sqrt{13}$
+        </p>
+        <div class="mt-2 rounded-xl border-2 border-blue-500 bg-blue-50 p-3 text-slate-900 font-bold inline-block">
+          答: $\Vec{OA}\cdot\Vec{OB} = \dfrac{1}{2}$ ， $\abs{\Vec{OC}} = \sqrt{13}$
+        </div>
+
+        <p class="font-bold mt-6">(2)</p>
+        <p>
+          点Hは直線AB上にあるから、実数 $t$ を用いて $\Vec{OH} = (1-t)\Vec{OA} + t\Vec{OB}$ と表せる。
+        </p>
+        <div class="math-scroll">
+          \begin{aligned}
+          \Vec{CH} &= \Vec{OH} - \Vec{OC} \\
+          &= (1-t)\Vec{OA} + t\Vec{OB} - (2\Vec{OA} + \Vec{OB}) \\
+          &= (-1-t)\Vec{OA} + (t-1)\Vec{OB}
+          \end{aligned}
+        </div>
+        <p>
+          $\mathrm{CH} \perp \mathrm{AB}$ より $\Vec{CH} \cdot \Vec{AB} = 0$ である。$\Vec{AB} = \Vec{OB} - \Vec{OA}$ より、
+        </p>
+        <div class="math-scroll">
+          \begin{aligned}
+          \Vec{CH} \cdot \Vec{AB} &= \{(-1-t)\Vec{OA} + (t-1)\Vec{OB}\} \cdot (\Vec{OB} - \Vec{OA}) = 0 \\
+          &= -(-1-t)\abs{\Vec{OA}}^2 + (-1-t)\Vec{OA}\cdot\Vec{OB} + (t-1)\abs{\Vec{OB}}^2 - (t-1)\Vec{OA}\cdot\Vec{OB} \\
+          &= (1+t)(2) + (-1-t)\frac{1}{2} + (t-1)(3) - (t-1)\frac{1}{2} = 0
+          \end{aligned}
+        </div>
+        <p>
+          両辺を2倍して整理する。
+        </p>
+        <div class="math-scroll">
+          \begin{aligned}
+          4(1+t) + (-1-t) + 6(t-1) - (t-1) &= 0 \\
+          4 + 4t - 1 - t + 6t - 6 - t + 1 &= 0 \\
+          8t - 2 &= 0 \\
+          t &= \frac{1}{4}
+          \end{aligned}
+        </div>
+        <p>
+          よって、$\Vec{OH} = \dfrac{3}{4}\Vec{OA} + \dfrac{1}{4}\Vec{OB}$ である。<br>
+          このとき、$\Vec{CH} = \left(-1-\dfrac{1}{4}\right)\Vec{OA} + \left(\dfrac{1}{4}-1\right)\Vec{OB} = -\dfrac{5}{4}\Vec{OA} - \dfrac{3}{4}\Vec{OB}$ となる。
+        </p>
+        <div class="math-scroll">
+          \begin{aligned}
+          \abs{\Vec{CH}}^2 &= \left( -\frac{5}{4} \right)^2 \abs{\Vec{OA}}^2 + 2\left(-\frac{5}{4}\right)\left(-\frac{3}{4}\right) \Vec{OA}\cdot\Vec{OB} + \left( -\frac{3}{4} \right)^2 \abs{\Vec{OB}}^2 \\
+          &= \frac{25}{16}(2) + \frac{15}{8}\left(\frac{1}{2}\right) + \frac{9}{16}(3) \\
+          &= \frac{50}{16} + \frac{15}{16} + \frac{27}{16} = \frac{92}{16} = \frac{23}{4}
+          \end{aligned}
+        </div>
+        <p>
+          $\abs{\Vec{CH}} > 0$ より、$\abs{\Vec{CH}} = \dfrac{\sqrt{23}}{2}$
+        </p>
+        <div class="mt-2 rounded-xl border-2 border-blue-500 bg-blue-50 p-3 text-slate-900 font-bold inline-block">
+          答: $\Vec{OH} = \dfrac{3}{4}\Vec{OA} + \dfrac{1}{4}\Vec{OB}$ ， $\abs{\Vec{CH}} = \dfrac{\sqrt{23}}{2}$
+        </div>
+
+        <p class="font-bold mt-6">(3)</p>
+        <p>
+          点Pの条件式 $\abs{\Vec{OP}}^2 - 2\Vec{OC}\cdot\Vec{OP} = 0$ の両辺に $\abs{\Vec{OC}}^2$ を足すと、
+        </p>
+        <div class="math-scroll">
+          \begin{aligned}
+          \abs{\Vec{OP}}^2 - 2\Vec{OC}\cdot\Vec{OP} + \abs{\Vec{OC}}^2 &= \abs{\Vec{OC}}^2 \\
+          (\Vec{OP} - \Vec{OC})\cdot(\Vec{OP} - \Vec{OC}) &= 13 \\
+          \abs{\Vec{OP} - \Vec{OC}}^2 &= 13 \\
+          \abs{\Vec{CP}} &= \sqrt{13}
+          \end{aligned}
+        </div>
+        <p>
+          これは、点Pが点Cを中心とする半径 $r = \sqrt{13}$ の円上を動くことを表している。<br>
+          三角形ABPの面積 $S$ は、底辺をABとしたときの高さを $h$ とすると、$S = \dfrac{1}{2}\mathrm{AB} \cdot h$ となる。<br>
+          ここで底辺の長さ $\mathrm{AB}$ は、
+        </p>
+        <div class="math-scroll">
+          \begin{aligned}
+          \abs{\Vec{AB}}^2 &= \abs{\Vec{OB} - \Vec{OA}}^2 \\
+          &= \abs{\Vec{OB}}^2 - 2\Vec{OA}\cdot\Vec{OB} + \abs{\Vec{OA}}^2 \\
+          &= 3 - 2\left(\frac{1}{2}\right) + 2 = 4
+          \end{aligned}
+        </div>
+        <p>
+          より $\mathrm{AB} = 2$ で一定であるから、面積 $S$ が最大となるのは高さ $h$ が最大のときである。<br>
+          円周上の点Pから直線ABまでの距離が最大となるのは、点Pが中心Cから直線ABに下ろした垂線CHの延長線上で、直線ABと反対側の円周上にあるときである。<br>
+          このときの最大高さ $h_{\max}$ は、中心Cから直線ABまでの距離 $\abs{\Vec{CH}}$ と半径 $r$ の和となる。
+        </p>
+        <div class="math-scroll">
+          \[ h_{\max} = \abs{\Vec{CH}} + r = \frac{\sqrt{23}}{2} + \sqrt{13} = \frac{\sqrt{23} + 2\sqrt{13}}{2} \]
+        </div>
+        <p>
+          したがって、面積の最大値は
+        </p>
+        <div class="math-scroll">
+          \[ S_{\max} = \frac{1}{2} \cdot 2 \cdot \frac{\sqrt{23} + 2\sqrt{13}}{2} = \frac{2\sqrt{13} + \sqrt{23}}{2} \]
+        </div>
+        <div class="mt-2 rounded-xl border-2 border-blue-500 bg-blue-50 p-3 text-slate-900 font-bold inline-block">
+          答: $\dfrac{2\sqrt{13} + \sqrt{23}}{2}$
+        </div>
+      </div>
+
+      <h3 class="mt-8 border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">図解・可視化</h3>
+      <div class="mt-6 text-center bg-slate-50 border border-slate-200 rounded-xl p-4 sm:p-6 shadow-sm">
+        <p class="text-sm text-slate-700 mb-4 leading-relaxed text-left">
+          点Pは中心Cの円周上を動きます。直線ABからの距離（高さ）が最も大きくなるとき、三角形ABPの面積が最大となります。<br>
+          スライダーで点Pを動かして、三角形の面積がどのように変化するか確認してください。
+        </p>
+        
+        <!-- コントロール部 -->
+        <div class="mb-6 max-w-md mx-auto">
+          <label for="p-slider" class="block text-sm font-medium text-slate-700 mb-2">
+            点Pの円周上の位置（角度）
+          </label>
+          <input type="range" id="p-slider" min="0" max="360" step="1" value="237" class="w-full h-2 bg-slate-300 rounded-lg appearance-none cursor-pointer accent-emerald-600">
+          <div class="flex justify-center mt-3">
+            <button id="btn-max" class="px-4 py-1.5 bg-emerald-100 hover:bg-emerald-200 text-emerald-700 text-sm font-semibold rounded-full transition-colors border border-emerald-300">
+              面積が最大となる位置へ
+            </button>
+          </div>
+          <div id="area-status" class="mt-3 p-3 bg-white border border-slate-200 rounded-lg font-bold text-sm text-slate-700 shadow-sm">
+            面積 S ≈ <span id="area-val" class="text-emerald-600 text-lg">0.00</span>
+          </div>
+        </div>
+
+        <svg viewBox="-50 -230 350 320" class="w-full h-auto max-w-md mx-auto bg-white border border-slate-200 rounded-lg shadow-sm" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- 背景グリッド -->
+          <g stroke="#f1f5f9" stroke-width="1">
+            <line x1="-50" y1="0" x2="300" y2="0" stroke="#cbd5e1" stroke-width="1.5" />
+            <line x1="0" y1="-230" x2="0" y2="90" stroke="#cbd5e1" stroke-width="1.5" />
+          </g>
+          
+          <g id="dynamic-elements">
+            <!-- 円 C -->
+            <!-- 描画はJSで行う -->
+            <circle id="circle-c" cx="0" cy="0" r="0" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4,2" fill="rgba(241, 245, 249, 0.5)" />
+            
+            <!-- 直線 AB (延長) -->
+            <line id="line-ab-ext" x1="0" y1="0" x2="0" y2="0" stroke="#cbd5e1" stroke-width="1.5" />
+            
+            <!-- 三角形 ABP -->
+            <polygon id="triangle-abp" points="0,0 0,0 0,0" fill="rgba(16, 185, 129, 0.15)" stroke="#10b981" stroke-width="2" />
+            
+            <!-- 線分 AB -->
+            <line id="line-ab" x1="0" y1="0" x2="0" y2="0" stroke="#3b82f6" stroke-width="3" />
+            
+            <!-- 垂線 CH -->
+            <line id="line-ch" x1="0" y1="0" x2="0" y2="0" stroke="#f43f5e" stroke-width="2" stroke-dasharray="2,2" />
+            
+            <!-- 高さを表す線 -->
+            <line id="line-height" x1="0" y1="0" x2="0" y2="0" stroke="#10b981" stroke-width="2" stroke-dasharray="3,3" />
+
+            <!-- 点 O, A, B, C, H, P -->
+            <circle cx="0" cy="0" r="3" fill="#64748b" />
+            <text x="-12" y="15" fill="#64748b" font-size="12">O</text>
+            
+            <circle id="pt-a" cx="0" cy="0" r="4" fill="#3b82f6" />
+            <text id="lbl-a" x="0" y="0" fill="#3b82f6" font-size="12" font-weight="bold">A</text>
+            
+            <circle id="pt-b" cx="0" cy="0" r="4" fill="#3b82f6" />
+            <text id="lbl-b" x="0" y="0" fill="#3b82f6" font-size="12" font-weight="bold">B</text>
+            
+            <circle id="pt-c" cx="0" cy="0" r="4" fill="#f43f5e" />
+            <text id="lbl-c" x="0" y="0" fill="#f43f5e" font-size="12" font-weight="bold">C</text>
+            
+            <circle id="pt-h" cx="0" cy="0" r="3" fill="#f43f5e" />
+            <text id="lbl-h" x="0" y="0" fill="#f43f5e" font-size="12">H</text>
+            
+            <circle id="pt-p" cx="0" cy="0" r="5" fill="#10b981" />
+            <text id="lbl-p" x="0" y="0" fill="#10b981" font-size="14" font-weight="bold">P</text>
+          </g>
+        </svg>
+
+        <script>
+          document.addEventListener("DOMContentLoaded", function() {
+            const slider = document.getElementById('p-slider');
+            const btnMax = document.getElementById('btn-max');
+            const areaVal = document.getElementById('area-val');
+            
+            // SVGスケールと数学座標
+            const scale = 35;
+            
+            const A_m = { x: Math.sqrt(2), y: 0 };
+            const B_m = { x: Math.sqrt(2)/4, y: Math.sqrt(46)/4 };
+            const C_m = { x: 9*Math.sqrt(2)/4, y: Math.sqrt(46)/4 };
+            const H_m = { x: 13*Math.sqrt(2)/16, y: Math.sqrt(46)/16 };
+            const R_m = Math.sqrt(13);
+            
+            // SVG座標 (y軸下向きのためy座標を反転)
+            const A = { x: A_m.x * scale, y: -A_m.y * scale };
+            const B = { x: B_m.x * scale, y: -B_m.y * scale };
+            const C = { x: C_m.x * scale, y: -C_m.y * scale };
+            const H = { x: H_m.x * scale, y: -H_m.y * scale };
+            const R = R_m * scale;
+            
+            // 静的要素の配置
+            document.getElementById('pt-a').setAttribute('cx', A.x); document.getElementById('pt-a').setAttribute('cy', A.y);
+            document.getElementById('lbl-a').setAttribute('x', A.x + 5); document.getElementById('lbl-a').setAttribute('y', A.y + 15);
+            
+            document.getElementById('pt-b').setAttribute('cx', B.x); document.getElementById('pt-b').setAttribute('cy', B.y);
+            document.getElementById('lbl-b').setAttribute('x', B.x - 15); document.getElementById('lbl-b').setAttribute('y', B.y - 5);
+            
+            document.getElementById('pt-c').setAttribute('cx', C.x); document.getElementById('pt-c').setAttribute('cy', C.y);
+            document.getElementById('lbl-c').setAttribute('x', C.x + 5); document.getElementById('lbl-c').setAttribute('y', C.y + 15);
+            
+            document.getElementById('pt-h').setAttribute('cx', H.x); document.getElementById('pt-h').setAttribute('cy', H.y);
+            document.getElementById('lbl-h').setAttribute('x', H.x - 15); document.getElementById('lbl-h').setAttribute('y', H.y + 15);
+            
+            document.getElementById('circle-c').setAttribute('cx', C.x); document.getElementById('circle-c').setAttribute('cy', C.y); document.getElementById('circle-c').setAttribute('r', R);
+            
+            document.getElementById('line-ab').setAttribute('x1', A.x); document.getElementById('line-ab').setAttribute('y1', A.y);
+            document.getElementById('line-ab').setAttribute('x2', B.x); document.getElementById('line-ab').setAttribute('y2', B.y);
+            
+            document.getElementById('line-ch').setAttribute('x1', C.x); document.getElementById('line-ch').setAttribute('y1', C.y);
+            document.getElementById('line-ch').setAttribute('x2', H.x); document.getElementById('line-ch').setAttribute('y2', H.y);
+            
+            // 直線ABの延長線
+            const dx = B.x - A.x; const dy = B.y - A.y;
+            document.getElementById('line-ab-ext').setAttribute('x1', A.x - dx*2); document.getElementById('line-ab-ext').setAttribute('y1', A.y - dy*2);
+            document.getElementById('line-ab-ext').setAttribute('x2', B.x + dx*3); document.getElementById('line-ab-ext').setAttribute('y2', B.y + dy*3);
+            
+            // CHベクトル（数学座標）から、最大となる角度を求める
+            const vecCH_x = H_m.x - C_m.x;
+            const vecCH_y = H_m.y - C_m.y;
+            // 最大となるのはCHの逆方向
+            let maxAngleRad = Math.atan2(-vecCH_y, -vecCH_x);
+            if (maxAngleRad < 0) maxAngleRad += 2 * Math.PI;
+            // SVG座標での角度（y軸反転を考慮）
+            // Math.sin に渡すとき、数学座標の y を反転させて描画する
+            
+            function update() {
+              // SVG上の描画用角度（数学的回転と同じにするため、sinは負に）
+              const theta = slider.value * Math.PI / 180;
+              const P_m = { x: C_m.x + R_m * Math.cos(theta), y: C_m.y + R_m * Math.sin(theta) };
+              const P = { x: P_m.x * scale, y: -P_m.y * scale };
+              
+              document.getElementById('pt-p').setAttribute('cx', P.x); document.getElementById('pt-p').setAttribute('cy', P.y);
+              document.getElementById('lbl-p').setAttribute('x', P.x + 8); document.getElementById('lbl-p').setAttribute('y', P.y - 8);
+              
+              document.getElementById('triangle-abp').setAttribute('points', `${A.x},${A.y} ${B.x},${B.y} ${P.x},${P.y}`);
+              
+              // 直線ABの方程式: sqrt(23)X + 3Y - sqrt(46) = 0
+              // 距離 d = |sqrt(23)X + 3Y - sqrt(46)| / (4*sqrt(2))
+              const dist = Math.abs( Math.sqrt(23)*P_m.x + 3*P_m.y - Math.sqrt(46) ) / (4 * Math.sqrt(2));
+              const area = dist; // S = 1/2 * AB(2) * dist = dist
+              
+              areaVal.textContent = area.toFixed(3);
+              
+              // 高さを表す線（Pから直線ABへの垂線）
+              // 近似的に、HからPへのベクトルなどを描くよりも、見た目でわかりやすい線を引く
+              // 厳密にはPから直線ABに下ろした垂線の足
+              const n_x = Math.sqrt(23); const n_y = 3; const n_len = Math.sqrt(23+9); // 4*sqrt(2)
+              const unit_n_x = n_x / n_len; const unit_n_y = n_y / n_len;
+              // 符号を判定して足の座標を求める
+              const val = Math.sqrt(23)*P_m.x + 3*P_m.y - Math.sqrt(46);
+              const sign = val > 0 ? 1 : -1;
+              const Foot_m = { x: P_m.x - sign * dist * unit_n_x, y: P_m.y - sign * dist * unit_n_y };
+              const Foot = { x: Foot_m.x * scale, y: -Foot_m.y * scale };
+              
+              document.getElementById('line-height').setAttribute('x1', P.x); document.getElementById('line-height').setAttribute('y1', P.y);
+              document.getElementById('line-height').setAttribute('x2', Foot.x); document.getElementById('line-height').setAttribute('y2', Foot.y);
+            }
+
+            btnMax.addEventListener('click', function() {
+              slider.value = Math.round(maxAngleRad * 180 / Math.PI);
+              update();
+            });
+
+            slider.addEventListener('input', update);
+            
+            // 初期状態は最大値にセット
+            slider.value = Math.round(maxAngleRad * 180 / Math.PI);
+            update();
+          });
+        </script>
+      </div>
+
+      <h3 class="mt-8 border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">受験生のつまずきポイント</h3>
+      <div class="mt-4 space-y-4">
+        <div class="bg-red-50 border border-red-200 rounded-lg p-4 text-slate-800">
+          <p class="font-bold text-red-800">(2) の内積計算での符号や係数のミス</p>
+          <p class="mt-1 text-sm">
+            $\Vec{CH} = (-1-t)\Vec{OA} + (t-1)\Vec{OB}$ と $\Vec{AB} = \Vec{OB} - \Vec{OA}$ の内積を展開する際、項が多くなるため計算ミスが頻発します。暗算で処理しようとせず、必ず $|\Vec{OA}|^2$, $\Vec{OA}\cdot\Vec{OB}$, $|\Vec{OB}|^2$ の項ごとにくくって整理する癖をつけましょう。
+          </p>
+        </div>
+        <div class="bg-red-50 border border-red-200 rounded-lg p-4 text-slate-800">
+          <p class="font-bold text-red-800">(3) でベクトル方程式の意味に気づけない</p>
+          <p class="mt-1 text-sm">
+            $\abs{\Vec{OP}}^2 - 2\Vec{OC}\cdot\Vec{OP} = 0$ を見たときに、これが「円」を表していると気づけないと手も足も出なくなります。式の中に $|\Vec{x}|^2$ と $\Vec{a}\cdot\Vec{x}$ が混在している場合は、常に「ベクトルの平方完成 $\rightarrow$ 円の方程式」というルートを疑ってください。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="mt-6 rounded-2xl bg-blue-900 p-6 text-white shadow-sm sm:p-8">
+      <h2 class="border-b-2 border-blue-400 pb-2 text-lg font-bold">アクティブリコール（復習テスト）</h2>
+      <p class="mt-4 text-sm text-blue-200">今日の学習内容を思い出すことで、記憶を定着させましょう。質問をクリックして答えを確認してください。</p>
+      
+      <div class="mt-6 space-y-4">
+        <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+          <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+            <div class="flex-1 leading-relaxed">
+              <div class="mb-1">Q1. 点Hが「直線AB上」にあり、かつ「CHとABが垂直」であるとき、</div>
+              <div>ベクトルで立式すべき2つの条件式は何ですか？</div>
+            </div>
+            <span class="transition-transform duration-300 group-open:-rotate-180 text-blue-500">▼</span>
+          </summary>
+          <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+            ① 係数の和が1の共線条件: $\Vec{OH} = (1-t)\Vec{OA} + t\Vec{OB}$<br>
+            ② 垂直条件による内積ゼロ: $\Vec{CH} \cdot \Vec{AB} = 0$
+          </div>
+        </details>
+
+        <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+          <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+            <div class="flex-1 leading-relaxed">
+              <div class="mb-1">Q2. ベクトル方程式 $\abs{\Vec{p}}^2 - 2\Vec{c}\cdot\Vec{p} = 0$ を満たす点Pは、</div>
+              <div>どのような図形を描きますか？</div>
+            </div>
+            <span class="transition-transform duration-300 group-open:-rotate-180 text-blue-500">▼</span>
+          </summary>
+          <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+            両辺に $\abs{\Vec{c}}^2$ を足して $\abs{\Vec{p}-\Vec{c}}^2 = \abs{\Vec{c}}^2$ と平方完成できるため、「点Cを中心とする、半径が $\abs{\Vec{c}}$ の円」を描きます。
+          </div>
+        </details>
+
+        <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+          <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+            <div class="flex-1 leading-relaxed">
+              <div class="mb-1">Q3. 円周上の点Pから、円と交わる直線までの距離が最大になるとき、</div>
+              <div>その最大距離は「円の半径 $r$」と「中心と直線の距離 $d$」を用いてどのように表されますか？</div>
+            </div>
+            <span class="transition-transform duration-300 group-open:-rotate-180 text-blue-500">▼</span>
+          </summary>
+          <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+            最大距離は $d + r$ となります。（ちなみに、最小距離は $|d - r|$ となります。）
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <nav class="mt-7 grid gap-3 sm:grid-cols-2">
+      <a href="index.html" class="nav-button rounded-xl border border-slate-300 bg-white px-5 py-4 text-center font-bold text-slate-700 hover:border-blue-300 hover:text-blue-800">
+        ← 一覧へ
+      </a>
+      <a href="no27.html" class="nav-button rounded-xl bg-blue-700 px-5 py-4 text-center font-bold text-white hover:bg-blue-800">
+        No.27 →
+      </a>
+    </nav>
+
+  </main>
+  
+  <footer class="py-10 text-center text-sm text-slate-500">
+    医進・サイエンスコース　夏期数学課題 解説サイト
+  </footer>
+</body>
+</html>

@@ -171,8 +171,25 @@
       </div>
 
       <h3 class="mt-8 border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">図解・可視化</h3>
-      <div class="mt-4 text-center">
-        <p class="text-sm text-slate-600 mb-4">中心 \(\mathrm{P}\) から線分 \(\mathrm{AB}\) までの距離の変化</p>
+      <div class="mt-6 text-center bg-slate-50 border border-slate-200 rounded-xl p-4 sm:p-6 shadow-sm">
+        
+        <!-- コントロール部 -->
+        <div class="mb-6 max-w-md mx-auto">
+          <label for="radius-slider" class="block text-sm font-medium text-slate-700 mb-2">
+            円の半径 \(a\): <span id="radius-value" class="font-bold text-violet-600 text-lg">1.00</span>
+          </label>
+          <input type="range" id="radius-slider" min="0" max="3.5" step="0.01" value="1" class="w-full h-2 bg-slate-300 rounded-lg appearance-none cursor-pointer accent-violet-600">
+          <div class="flex justify-between mt-2 text-xs text-slate-500">
+            <span>0</span>
+            <span>\( \frac{4}{\sqrt{5}} \approx 1.79 \)</span>
+            <span>\( \sqrt{5} \approx 2.24 \)</span>
+            <span>3.5</span>
+          </div>
+          <div id="intersection-status" class="mt-4 p-3 rounded-lg text-sm font-bold border transition-colors duration-200">
+            ステータス
+          </div>
+        </div>
+
         <svg viewBox="0 0 400 300" class="w-full h-auto max-w-md mx-auto bg-white border border-slate-200 rounded-lg shadow-sm" fill="none" xmlns="http://www.w3.org/2000/svg">
           <!-- 背景グリッド (1単位 = 40px, 原点(0,4)を左下に配置) -->
           <g stroke="#f1f5f9" stroke-width="1">
@@ -195,10 +212,12 @@
           <!-- 点 A(3,3) -> (160, 140) -->
           <!-- 点 B(4,1) -> (200, 220) -->
 
-          <!-- 最小半径の円 d=4/√5 ≒ 1.78 -> 1.78 * 40 = 71.2 -->
-          <circle cx="120" cy="220" r="71.2" stroke="#ef4444" stroke-width="2" stroke-dasharray="4" fill="none" />
-          <!-- 最大半径の円 PA=√5 ≒ 2.23 -> 2.23 * 40 = 89.4 -->
-          <circle cx="120" cy="220" r="89.4" stroke="#3b82f6" stroke-width="2" stroke-dasharray="4" fill="none" />
+          <!-- 参照用: 最小半径と最大半径の点線 -->
+          <circle cx="120" cy="220" r="71.55" stroke="#cbd5e1" stroke-width="1.5" stroke-dasharray="4" fill="none" />
+          <circle cx="120" cy="220" r="89.44" stroke="#cbd5e1" stroke-width="1.5" stroke-dasharray="4" fill="none" />
+
+          <!-- インタラクティブな円 -->
+          <circle id="dynamic-circle" cx="120" cy="220" r="40" stroke="#8b5cf6" stroke-width="2" fill="rgba(139, 92, 246, 0.15)" />
 
           <!-- 直線ABの延長 -->
           <line x1="120" y1="60" x2="220" y2="260" stroke="#cbd5e1" stroke-width="2" />
@@ -226,9 +245,50 @@
           <!-- 距離の線 PA -->
           <line x1="120" y1="220" x2="160" y2="140" stroke="#3b82f6" stroke-width="2" />
 
-          <text x="110" y="195" fill="#ef4444" font-size="12">m (最小)</text>
-          <text x="105" y="160" fill="#3b82f6" font-size="12">M (最大)</text>
+          <text x="110" y="195" fill="#ef4444" font-size="12">m</text>
+          <text x="105" y="160" fill="#3b82f6" font-size="12">M</text>
         </svg>
+
+        <script>
+          document.addEventListener("DOMContentLoaded", function() {
+            const slider = document.getElementById('radius-slider');
+            const valueDisplay = document.getElementById('radius-value');
+            const dynamicCircle = document.getElementById('dynamic-circle');
+            const statusText = document.getElementById('intersection-status');
+
+            const min_a = 4 / Math.sqrt(5); // 1.78885...
+            const max_a = Math.sqrt(5);     // 2.23606...
+
+            function update() {
+              const a = parseFloat(slider.value);
+              valueDisplay.textContent = a.toFixed(2);
+              
+              // 半径のスケールを反映 (1単位 = 40px)
+              dynamicCircle.setAttribute('r', a * 40);
+
+              if (a < min_a - 0.005) {
+                statusText.textContent = "線分ABと共有点をもたない (小さすぎる)";
+                statusText.className = "mt-4 p-3 rounded-lg text-sm font-bold border border-slate-300 bg-slate-100 text-slate-500 transition-colors duration-200";
+                dynamicCircle.setAttribute('stroke', '#94a3b8');
+                dynamicCircle.setAttribute('fill', 'rgba(148, 163, 184, 0.15)');
+              } else if (a > max_a + 0.005) {
+                statusText.textContent = "線分ABと共有点をもたない (大きすぎる/包んでいる)";
+                statusText.className = "mt-4 p-3 rounded-lg text-sm font-bold border border-slate-300 bg-slate-100 text-slate-500 transition-colors duration-200";
+                dynamicCircle.setAttribute('stroke', '#94a3b8');
+                dynamicCircle.setAttribute('fill', 'rgba(148, 163, 184, 0.15)');
+              } else {
+                statusText.textContent = "線分ABと共有点をもつ！";
+                statusText.className = "mt-4 p-3 rounded-lg text-sm font-bold border border-rose-300 bg-rose-50 text-rose-600 transition-colors duration-200 shadow-sm";
+                dynamicCircle.setAttribute('stroke', '#f43f5e');
+                dynamicCircle.setAttribute('fill', 'rgba(244, 63, 94, 0.15)');
+              }
+            }
+
+            slider.addEventListener('input', update);
+            // 初期状態の描画
+            update();
+          });
+        </script>
       </div>
 
       <h3 class="mt-8 border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">最終結果と検算</h3>

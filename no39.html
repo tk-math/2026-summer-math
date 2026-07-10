@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>夏期課題 No.39 空間ベクトル - 医進・サイエンスコース</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        MathJax = {
+            chtml: {
+                matchFontHeight: false
+            },
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body { font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif; }
+        .nav-button { transition: transform .16s ease, box-shadow .16s ease; }
+        .nav-button:hover { transform: translateY(-2px); box-shadow: 0 8px 18px rgba(15, 23, 42, .12); }
+        .math-scroll { overflow-x: auto; overflow-y: hidden; padding-bottom: 0.5rem; margin-bottom: 0.5rem; }
+        .diagram-point { transition: cx .18s ease, cy .18s ease; }
+        .height-line { transition: x1 .18s ease, x2 .18s ease, y1 .18s ease, y2 .18s ease; }
+        button:focus-visible, summary:focus-visible, a:focus-visible, input:focus-visible {
+            outline: 3px solid rgba(37, 99, 235, .35);
+            outline-offset: 3px;
+        }
+    </style>
+</head>
+<body class="bg-slate-100 text-slate-800">
+    <div class="mx-auto max-w-4xl px-4 py-6 sm:px-6 lg:py-10">
+
+        <a href="index.html" class="inline-flex items-center gap-2 text-sm font-bold text-blue-700 hover:text-blue-900">
+            ← 問題一覧へ戻る
+        </a>
+
+        <header class="mt-4 overflow-hidden rounded-3xl bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-800 text-white shadow-xl">
+            <div class="p-7 sm:p-10">
+                <span class="inline-flex items-center rounded-full bg-white/15 px-4 py-1.5 text-sm font-semibold tracking-wide text-blue-100">医進・サイエンスコース</span>
+                <div class="mt-4 flex flex-wrap items-center gap-3">
+                    <span class="rounded-lg bg-white/20 px-3 py-1 text-sm font-bold">No.39</span>
+                    <span class="rounded-full bg-rose-100 px-3 py-1 text-xs font-bold text-rose-800">発展</span>
+                </div>
+                <h1 class="mt-4 text-3xl font-bold leading-tight sm:text-4xl">空間ベクトル</h1>
+                <div class="mt-3 text-lg text-blue-100">目標解答時間：25分</div>
+            </div>
+        </header>
+
+        <main>
+            <section class="mt-7 rounded-2xl border border-blue-100 bg-white p-6 shadow-sm sm:p-8">
+                <h2 class="flex items-center gap-2 text-xl font-bold text-blue-900">
+                    <span class="grid h-8 w-8 place-items-center rounded-full bg-blue-700 text-base text-white">1</span>
+                    問題
+                </h2>
+
+                <div class="mt-4 rounded-lg border border-slate-200 bg-slate-50 p-4 text-slate-700 leading-relaxed">
+                    <p>Oを原点とする座標空間に，</p>
+                    <div class="math-scroll">
+                        \[
+                        \text{球面 }S:x^2+y^2+z^2=11
+                        \]
+                    </div>
+                    <p>と，3点</p>
+                    <div class="math-scroll">
+                        \[
+                        \mathrm{A}(-1,5,0),\quad
+                        \mathrm{B}(-3,1,-1),\quad
+                        \mathrm{C}(-1,-1,-3)
+                        \]
+                    </div>
+                    <p>がある．</p>
+                    <ol class="mt-4 list-decimal space-y-4 pl-6">
+                        <li>内積 $\overrightarrow{\mathrm{AB}}\cdot\overrightarrow{\mathrm{AC}}$ を求めよ．</li>
+                        <li>$\vec n=\begin{pmatrix}a\\b\\2\end{pmatrix}$ が平面ABCと垂直になるように定数 $a$，$b$ の値を定めよ．</li>
+                        <li>Oから平面ABCに下ろした垂線の足をHとするとき，Hの座標を求めよ．</li>
+                        <li>点Pが $S$ 上を動くとき，四面体PABCの体積の最大値を求めよ．</li>
+                    </ol>
+                </div>
+
+                <div class="mt-4 rounded-lg border border-blue-200 bg-blue-50 p-4">
+                    <h3 class="mb-2 font-bold text-blue-900">【条件の整理】</h3>
+                    <ul class="list-disc space-y-2 pl-5 text-sm text-slate-700">
+                        <li><strong>平面内の2方向：</strong> $\overrightarrow{\mathrm{AB}}$ と $\overrightarrow{\mathrm{AC}}$ は平面ABC上のベクトルです。</li>
+                        <li><strong>平面の法線ベクトル：</strong> 平面ABCに垂直なベクトルは、$\overrightarrow{\mathrm{AB}}$ と $\overrightarrow{\mathrm{AC}}$ の両方に垂直です。</li>
+                        <li><strong>垂線の足H：</strong> $\overrightarrow{\mathrm{OH}}$ は平面ABCの法線ベクトルと平行であり、H自身は平面ABC上にあります。</li>
+                        <li><strong>点と平面の距離：</strong> 平面の方程式が分かれば、原点Oから平面ABCまでの距離を公式で直接求めることもできます。</li>
+                        <li><strong>四面体の体積：</strong> 底面ABCは固定されているので、体積を最大にするには、Pと平面ABCとの距離を最大にすればよいことになります。</li>
+                        <li><strong>球面の中心と半径：</strong> 球面 $S$ の中心はO、半径は $\sqrt{11}$ です。</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="mt-6 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+                <h2 class="flex items-center gap-2 text-xl font-bold text-slate-900">
+                    <span class="grid h-8 w-8 place-items-center rounded-full bg-slate-700 text-base text-white">2</span>
+                    解説
+                </h2>
+                <p class="mt-4 text-sm leading-8 text-slate-600">
+                    平面上の2つのベクトルから法線方向を決定し、垂線の足と四面体の高さへつなげます。
+                </p>
+
+                <div class="mt-8 rounded-xl border border-amber-200 bg-amber-50 p-5">
+                    <h3 class="border-b-2 border-amber-400 pb-2 text-lg font-bold text-amber-900">解法選択のトリガー</h3>
+                    <div class="mt-4 space-y-4">
+                        <div class="rounded-lg border border-amber-200 bg-amber-100/60 p-4">
+                            <p class="text-sm font-bold text-amber-900">平面に垂直なベクトルを求める</p>
+                            <p class="mt-1 text-sm text-amber-800">
+                                平面内にある平行でない2つのベクトルを作り、その両方との内積を0にします。本問では $\overrightarrow{\mathrm{AB}}$、$\overrightarrow{\mathrm{AC}}$ を使います。
+                            </p>
+                        </div>
+                        <div class="rounded-lg border border-amber-200 bg-amber-100/60 p-4">
+                            <p class="text-sm font-bold text-amber-900">原点から平面に下ろした垂線の足</p>
+                            <p class="mt-1 text-sm text-amber-800">
+                                Hは法線方向にあるため、$\overrightarrow{\mathrm{OH}}=\lambda\vec n$ と置きます。さらにHが平面の方程式を満たすことから $\lambda$ を決定します。
+                            </p>
+                        </div>
+                        <div class="rounded-lg border border-amber-200 bg-amber-100/60 p-4">
+                            <p class="text-sm font-bold text-amber-900">点と平面の距離</p>
+                            <p class="mt-1 text-sm text-amber-800">
+                                点 $\mathrm Q(x_0,y_0,z_0)$ と平面 $Ax+By+Cz+D=0$ の距離は
+                                $\dfrac{|Ax_0+By_0+Cz_0+D|}{\sqrt{A^2+B^2+C^2}}$ です。垂線の足まで求めるときは、この距離に加えて、平面へ向かう法線の向きを判断します。
+                            </p>
+                        </div>
+                        <div class="rounded-lg border border-amber-200 bg-amber-100/60 p-4">
+                            <p class="text-sm font-bold text-amber-900">2辺とその内積から三角形の面積を求める</p>
+                            <p class="mt-1 text-sm text-amber-800">
+                                $\cos\theta=\dfrac{\vec u\cdot\vec v}{|\vec u||\vec v|}$ と $\sin^2\theta=1-\cos^2\theta$ を組み合わせると、外積を使わずに面積を計算できます。
+                            </p>
+                        </div>
+                        <div class="rounded-lg border border-amber-200 bg-amber-100/60 p-4">
+                            <p class="text-sm font-bold text-amber-900">球面上の点と平面との距離を最大にする</p>
+                            <p class="mt-1 text-sm text-amber-800">
+                                球の中心Oから平面までの距離を求め、そこに球の半径を加えます。平面から最も遠い点は、法線方向にある球面上の点です。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-8 rounded-xl border border-emerald-200 bg-emerald-50 p-5">
+                    <h3 class="border-b-2 border-emerald-400 pb-2 text-lg font-bold text-emerald-900">思考プロセス</h3>
+                    <div class="mt-4 space-y-4">
+                        <div class="rounded-lg border border-emerald-200 bg-emerald-100/60 p-4 text-sm text-emerald-900">
+                            <strong>(1) 平面内の2つの方向を成分で表す</strong><br>
+                            点Aを始点として $\overrightarrow{\mathrm{AB}}$、$\overrightarrow{\mathrm{AC}}$ を作り、対応する成分どうしを掛けて足します。
+                        </div>
+                        <div class="rounded-lg border border-emerald-200 bg-emerald-100/60 p-4 text-sm text-emerald-900">
+                            <strong>(2) 法線ベクトルは平面内の2方向の両方に垂直</strong><br>
+                            $\vec n\cdot\overrightarrow{\mathrm{AB}}=0$、$\vec n\cdot\overrightarrow{\mathrm{AC}}=0$ の連立方程式を立て、$a$、$b$ を求めます。
+                        </div>
+                        <div class="rounded-lg border border-emerald-200 bg-emerald-100/60 p-4 text-sm text-emerald-900">
+                            <strong>(3) Hを法線上の点として表す</strong><br>
+                            $\vec n=\begin{pmatrix}1\\-1\\2\end{pmatrix}$ なので、$\overrightarrow{\mathrm{OH}}=\lambda\vec n$ と置けば $\mathrm{H}(\lambda,-\lambda,2\lambda)$ です。平面ABCの方程式に代入して $\lambda$ を決めます。別解では、点と平面の距離の公式で $\mathrm{OH}$ を求め、法線の向きからHの座標を復元します。
+                        </div>
+                        <div class="rounded-lg border border-emerald-200 bg-emerald-100/60 p-4 text-sm text-emerald-900">
+                            <strong>(4) 底面積を求め、高さを最大化する</strong><br>
+                            底面ABCは動かないので、まずその面積を求めます。次に、Oから平面までの距離 $\mathrm{OH}$ と球の半径 $\sqrt{11}$ を用いて、Pから平面までの最大距離を求めます。
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-10">
+                    <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">実際の答案</h3>
+
+                    <div class="mt-4 space-y-6 text-slate-700">
+                        <div>
+                            <p class="border-b border-slate-200 pb-1 font-bold text-blue-800">（1）</p>
+                            <div class="math-scroll mt-2">
+                                \[
+                                \overrightarrow{\mathrm{AB}}
+                                =\begin{pmatrix}
+                                -3-(-1)\\
+                                1-5\\
+                                -1-0
+                                \end{pmatrix}
+                                =\begin{pmatrix}
+                                -2\\-4\\-1
+                                \end{pmatrix}
+                                \]
+                                \[
+                                \overrightarrow{\mathrm{AC}}
+                                =\begin{pmatrix}
+                                -1-(-1)\\
+                                -1-5\\
+                                -3-0
+                                \end{pmatrix}
+                                =\begin{pmatrix}
+                                0\\-6\\-3
+                                \end{pmatrix}
+                                \]
+                            </div>
+                            <p>したがって、</p>
+                            <div class="math-scroll">
+                                \[
+                                \begin{aligned}
+                                \overrightarrow{\mathrm{AB}}\cdot\overrightarrow{\mathrm{AC}}
+                                &=(-2)\cdot0+(-4)\cdot(-6)+(-1)\cdot(-3)\\
+                                &=27
+                                \end{aligned}
+                                \]
+                            </div>
+                            <div class="mt-2 inline-block rounded-xl border-2 border-blue-500 bg-blue-50 p-3 font-bold text-slate-900">
+                                答：$27$
+                            </div>
+                        </div>
+
+                        <div class="border-t border-slate-200 pt-6">
+                            <p class="border-b border-slate-200 pb-1 font-bold text-blue-800">（2）</p>
+                            <p class="mt-2">
+                                $\vec n=\begin{pmatrix}a\\b\\2\end{pmatrix}$ が平面ABCと垂直であるためには、$\vec n$ が $\overrightarrow{\mathrm{AB}}$、$\overrightarrow{\mathrm{AC}}$ の両方と垂直であればよい。よって、
+                            </p>
+                            <div class="math-scroll">
+                                \[
+                                \begin{cases}
+                                \begin{pmatrix}a\\b\\2\end{pmatrix}
+                                \cdot
+                                \begin{pmatrix}-2\\-4\\-1\end{pmatrix}=0\\[3mm]
+                                \begin{pmatrix}a\\b\\2\end{pmatrix}
+                                \cdot
+                                \begin{pmatrix}0\\-6\\-3\end{pmatrix}=0
+                                \end{cases}
+                                \]
+                                \[
+                                \begin{cases}
+                                -2a-4b-2=0\\
+                                -6b-6=0
+                                \end{cases}
+                                \]
+                            </div>
+                            <p>$b=-1$ であり、これを第1式に代入すると $a=1$ である。</p>
+                            <div class="mt-2 inline-block rounded-xl border-2 border-blue-500 bg-blue-50 p-3 font-bold text-slate-900">
+                                答：$a=1,\ b=-1$
+                            </div>
+                        </div>
+
+                        <div class="border-t border-slate-200 pt-6">
+                            <p class="border-b border-slate-200 pb-1 font-bold text-blue-800">（3）</p>
+                            <p class="mt-2">
+                                平面ABCは点Aを通り、法線ベクトルとして $\vec n=\begin{pmatrix}1\\-1\\2\end{pmatrix}$ をもつ。したがって、その方程式は
+                            </p>
+                            <div class="math-scroll">
+                                \[
+                                (x+1)-(y-5)+2z=0
+                                \]
+                                \[
+                                x-y+2z+6=0
+                                \]
+                            </div>
+                            <p>
+                                また、$\overrightarrow{\mathrm{OH}}$ は $\vec n$ と平行であるから、実数 $\lambda$ を用いて
+                            </p>
+                            <div class="math-scroll">
+                                \[
+                                \overrightarrow{\mathrm{OH}}
+                                =\lambda\begin{pmatrix}1\\-1\\2\end{pmatrix}
+                                \]
+                            </div>
+                            <p>と表せる。よって、$\mathrm{H}(\lambda,-\lambda,2\lambda)$ である。Hは平面ABC上にあるから、</p>
+                            <div class="math-scroll">
+                                \[
+                                \lambda-(-\lambda)+2\cdot2\lambda+6=0
+                                \]
+                                \[
+                                6\lambda+6=0
+                                \]
+                            </div>
+                            <p>したがって $\lambda=-1$ である。</p>
+                            <div class="mt-2 inline-block rounded-xl border-2 border-blue-500 bg-blue-50 p-3 font-bold text-slate-900">
+                                答：$\mathrm{H}(-1,1,-2)$
+                            </div>
+
+                            <div class="mt-6 rounded-xl border border-indigo-200 bg-indigo-50 p-5">
+                                <p class="font-bold text-indigo-900">別解：（3）点と平面の距離の公式を利用</p>
+                                <p class="mt-3 text-sm leading-relaxed text-slate-700">
+                                    点 $\mathrm Q(x_0,y_0,z_0)$ と平面 $Ax+By+Cz+D=0$ の距離は
+                                </p>
+                                <div class="math-scroll">
+                                    \[
+                                    d=\frac{|Ax_0+By_0+Cz_0+D|}{\sqrt{A^2+B^2+C^2}}
+                                    \]
+                                </div>
+                                <p class="text-sm leading-relaxed text-slate-700">
+                                    である。平面ABCは $x-y+2z+6=0$ であり、Oの座標は $(0,0,0)$ だから、
+                                </p>
+                                <div class="math-scroll">
+                                    \[
+                                    \mathrm{OH}
+                                    =\frac{|6|}{\sqrt{1^2+(-1)^2+2^2}}
+                                    =\sqrt6
+                                    \]
+                                </div>
+                                <p class="text-sm leading-relaxed text-slate-700">
+                                    となる。法線ベクトルを
+                                    $\vec n=\begin{pmatrix}1\\-1\\2\end{pmatrix}$
+                                    とすると、$|\vec n|=\sqrt6$ である。また、Oでは平面の左辺 $x-y+2z+6$ が正であるため、Oから平面へ向かう方向は $-\vec n$ の向きである。したがって、
+                                </p>
+                                <div class="math-scroll">
+                                    \[
+                                    \begin{aligned}
+                                    \overrightarrow{\mathrm{OH}}
+                                    &=-\mathrm{OH}\frac{\vec n}{|\vec n|}\\
+                                    &=-\sqrt6\cdot
+                                    \frac{1}{\sqrt6}
+                                    \begin{pmatrix}1\\-1\\2\end{pmatrix}\\
+                                    &=\begin{pmatrix}-1\\1\\-2\end{pmatrix}
+                                    \end{aligned}
+                                    \]
+                                </div>
+                                <p class="text-sm leading-relaxed text-slate-700">
+                                    よって、$\mathrm H(-1,1,-2)$ である。
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="border-t border-slate-200 pt-6">
+                            <p class="border-b border-slate-200 pb-1 font-bold text-blue-800">（4）</p>
+                            <p class="mt-2">
+                                $\angle\mathrm{BAC}=\theta$ とする。（1）より、
+                            </p>
+                            <div class="math-scroll">
+                                \[
+                                |\overrightarrow{\mathrm{AB}}|^2=21,\qquad
+                                |\overrightarrow{\mathrm{AC}}|^2=45,\qquad
+                                \overrightarrow{\mathrm{AB}}\cdot\overrightarrow{\mathrm{AC}}=27
+                                \]
+                            </div>
+                            <p>である。三角形ABCの面積を $T$ とすると、</p>
+                            <div class="math-scroll">
+                                \[
+                                \begin{aligned}
+                                T
+                                &=\frac12|\overrightarrow{\mathrm{AB}}|\,|\overrightarrow{\mathrm{AC}}|\sin\theta\\
+                                &=\frac12\sqrt{|\overrightarrow{\mathrm{AB}}|^2|\overrightarrow{\mathrm{AC}}|^2-
+                                (\overrightarrow{\mathrm{AB}}\cdot\overrightarrow{\mathrm{AC}})^2}\\
+                                &=\frac12\sqrt{21\cdot45-27^2}\\
+                                &=\frac12\sqrt{216}\\
+                                &=3\sqrt6
+                                \end{aligned}
+                                \]
+                            </div>
+                            <p>
+                                （3）より $\mathrm{H}(-1,1,-2)$ であるから、Oから平面ABCまでの距離は
+                            </p>
+                            <div class="math-scroll">
+                                \[
+                                \mathrm{OH}=\sqrt{(-1)^2+1^2+(-2)^2}=\sqrt6
+                                \]
+                            </div>
+                            <p>
+                                球面 $S$ の中心はO、半径は $\sqrt{11}$ である。したがって、球面上の点Pと平面ABCとの距離の最大値は
+                            </p>
+                            <div class="math-scroll">
+                                \[
+                                \sqrt6+\sqrt{11}
+                                \]
+                            </div>
+                            <p>である。よって、四面体PABCの体積の最大値は</p>
+                            <div class="math-scroll">
+                                \[
+                                \begin{aligned}
+                                \frac13\cdot3\sqrt6\cdot(\sqrt6+\sqrt{11})
+                                &=\sqrt6(\sqrt6+\sqrt{11})\\
+                                &=6+\sqrt{66}
+                                \end{aligned}
+                                \]
+                            </div>
+                            <div class="mt-2 inline-block rounded-xl border-2 border-blue-500 bg-blue-50 p-3 font-bold text-slate-900">
+                                答：$6+\sqrt{66}$
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-10">
+                    <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">図解・可視化（平面ABCと垂線OH）</h3>
+                    <p class="mt-4 text-sm leading-relaxed text-slate-700">
+                        三角形ABCが平面の一部を表し、破線OHがその平面に垂直です。$\overrightarrow{\mathrm{OH}}=\begin{pmatrix}-1\\1\\-2\end{pmatrix}=-\vec n$ となっていることにも注目してください。
+                    </p>
+
+                    <div class="mt-4 rounded-lg border border-slate-200 bg-slate-50 p-4 sm:p-6">
+                        <div class="mx-auto max-w-2xl overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm">
+                            <svg viewBox="0 0 640 390" class="h-auto w-full" role="img" aria-label="平面ABC、原点O、垂線の足Hの模式図">
+                                <defs>
+                                    <linearGradient id="plane-gradient" x1="0" y1="0" x2="1" y2="1">
+                                        <stop offset="0%" stop-color="#dbeafe" stop-opacity="0.9" />
+                                        <stop offset="100%" stop-color="#bfdbfe" stop-opacity="0.55" />
+                                    </linearGradient>
+                                    <marker id="arrow-blue" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+                                        <path d="M0,0 L8,4 L0,8 z" fill="#2563eb"></path>
+                                    </marker>
+                                </defs>
+
+                                <rect x="0" y="0" width="640" height="390" fill="#ffffff" />
+                                <polygon points="181,154 190,245 330,347" fill="url(#plane-gradient)" stroke="#2563eb" stroke-width="3" />
+                                <line x1="280" y1="283" x2="350" y2="220" stroke="#f43f5e" stroke-width="4" stroke-dasharray="8 7" marker-end="url(#arrow-blue)" />
+                                <line x1="280" y1="283" x2="364" y2="208" stroke="#2563eb" stroke-width="2" opacity="0.55" />
+
+                                <circle cx="181" cy="154" r="7" fill="#2563eb" />
+                                <circle cx="190" cy="245" r="7" fill="#2563eb" />
+                                <circle cx="330" cy="347" r="7" fill="#2563eb" />
+                                <circle cx="350" cy="220" r="8" fill="#0f172a" />
+                                <circle cx="280" cy="283" r="8" fill="#f43f5e" />
+
+                                <text x="160" y="137" font-size="18" font-weight="700" fill="#1e3a8a">A</text>
+                                <text x="168" y="272" font-size="18" font-weight="700" fill="#1e3a8a">B</text>
+                                <text x="342" y="361" font-size="18" font-weight="700" fill="#1e3a8a">C</text>
+                                <text x="361" y="213" font-size="18" font-weight="700" fill="#0f172a">O</text>
+                                <text x="256" y="309" font-size="18" font-weight="700" fill="#be123c">H</text>
+                                <text x="373" y="196" font-size="16" font-weight="700" fill="#2563eb">法線方向</text>
+                                <text x="215" y="335" font-size="16" font-weight="700" fill="#1e40af">平面ABC</text>
+
+                                <rect x="291" y="264" width="14" height="14" fill="none" stroke="#f43f5e" stroke-width="2" transform="rotate(-42 298 271)" />
+                            </svg>
+                        </div>
+
+                        <div class="mt-4 grid gap-3 sm:grid-cols-3">
+                            <div class="rounded-lg border border-slate-200 bg-white p-3 text-center text-sm">
+                                <div class="font-bold text-slate-500">法線ベクトル</div>
+                                <div class="mt-1 font-bold text-blue-800">$\vec n=\begin{pmatrix}1\\-1\\2\end{pmatrix}$</div>
+                            </div>
+                            <div class="rounded-lg border border-slate-200 bg-white p-3 text-center text-sm">
+                                <div class="font-bold text-slate-500">垂線の足</div>
+                                <div class="mt-1 font-bold text-rose-700">$\mathrm H(-1,1,-2)$</div>
+                            </div>
+                            <div class="rounded-lg border border-slate-200 bg-white p-3 text-center text-sm">
+                                <div class="font-bold text-slate-500">平面までの距離</div>
+                                <div class="mt-1 font-bold text-emerald-700">$\mathrm{OH}=\sqrt6$</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-10">
+                    <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">図解・可視化（球面上を動くPと四面体の体積）</h3>
+                    <p class="mt-4 text-sm leading-relaxed text-slate-700">
+                        法線方向を含む平面で切った断面を考えます。青い円が球面 $S$ の断面、赤い直線が平面ABCです。スライダーでPを動かし、平面までの距離と四面体の体積がどのように変化するか確認してください。
+                    </p>
+
+                    <div class="mt-4 rounded-lg border border-slate-200 bg-slate-50 p-4 sm:p-6">
+                        <div class="mx-auto w-full max-w-xl px-2">
+                            <label for="theta-slider" class="block text-sm font-medium text-slate-700">
+                                Pの位置：$\theta=$ <span id="theta-value" class="text-lg font-bold text-blue-700">0°</span>
+                            </label>
+                            <input id="theta-slider" type="range" min="0" max="360" step="1" value="0" class="mt-3 h-2 w-full cursor-pointer appearance-none rounded-lg bg-slate-200 accent-blue-700">
+                            <div class="mt-2 flex justify-between text-xs text-slate-500">
+                                <span>0°（最大）</span>
+                                <span>180°</span>
+                                <span>360°</span>
+                            </div>
+                        </div>
+
+                        <div class="relative mx-auto mt-6 max-w-2xl overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm">
+                            <svg id="cross-section-svg" viewBox="0 0 720 380" class="h-auto w-full" role="img" aria-label="球面と平面の断面図">
+                                <defs>
+                                    <marker id="height-arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+                                        <path d="M0,0 L8,4 L0,8 z" fill="#10b981"></path>
+                                    </marker>
+                                </defs>
+
+                                <rect x="0" y="0" width="720" height="380" fill="#ffffff" />
+                                <line x1="78" y1="190" x2="666" y2="190" stroke="#cbd5e1" stroke-width="2" />
+                                <line id="plane-line" x1="266" y1="42" x2="266" y2="338" stroke="#f43f5e" stroke-width="5" />
+                                <circle cx="400" cy="190" r="182" fill="#dbeafe" fill-opacity="0.35" stroke="#2563eb" stroke-width="4" />
+                                <circle cx="400" cy="190" r="7" fill="#0f172a" />
+                                <circle id="point-p" class="diagram-point" cx="582" cy="190" r="9" fill="#2563eb" />
+                                <line id="height-segment" class="height-line" x1="266" y1="190" x2="582" y2="190" stroke="#10b981" stroke-width="5" stroke-dasharray="10 7" marker-end="url(#height-arrow)" />
+                                <circle cx="266" cy="190" r="7" fill="#f43f5e" />
+
+                                <text x="410" y="177" font-size="18" font-weight="700" fill="#0f172a">O</text>
+                                <text x="247" y="181" font-size="18" font-weight="700" fill="#be123c">H</text>
+                                <text id="point-p-label" x="594" y="181" font-size="18" font-weight="700" fill="#1d4ed8">P</text>
+                                <text x="186" y="62" font-size="17" font-weight="700" fill="#be123c">平面ABC</text>
+                                <text x="454" y="53" font-size="17" font-weight="700" fill="#1d4ed8">球面Sの断面</text>
+                                <text x="301" y="216" font-size="15" font-weight="700" fill="#475569">OH = √6</text>
+                                <text id="height-label" x="402" y="235" font-size="16" font-weight="700" fill="#047857">Pから平面までの距離</text>
+                            </svg>
+                        </div>
+
+                        <div class="mt-5 grid gap-3 sm:grid-cols-3">
+                            <div class="rounded-xl border border-slate-200 bg-white p-4 text-center shadow-sm">
+                                <div class="text-xs font-bold text-slate-500">Pから平面までの距離</div>
+                                <div id="distance-value" class="mt-1 text-xl font-bold text-emerald-700">5.766</div>
+                            </div>
+                            <div class="rounded-xl border border-slate-200 bg-white p-4 text-center shadow-sm">
+                                <div class="text-xs font-bold text-slate-500">四面体PABCの体積</div>
+                                <div id="volume-value" class="mt-1 text-xl font-bold text-blue-800">14.124</div>
+                            </div>
+                            <div id="max-status" class="rounded-xl border border-rose-300 bg-rose-50 p-4 text-center shadow-sm">
+                                <div class="text-xs font-bold text-rose-600">状態</div>
+                                <div class="mt-1 text-sm font-bold text-rose-700">最大値をとる位置</div>
+                            </div>
+                        </div>
+
+                        <div class="mt-4 rounded-xl border border-blue-200 bg-blue-50 p-4 text-sm text-slate-700">
+                            <p>
+                                断面上で、Oから平面までの符号付き距離を $\sqrt6$、Pの法線方向成分を $\sqrt{11}\cos\theta$ とすると、Pから平面までの距離は
+                            </p>
+                            <div class="math-scroll">
+                                \[
+                                d(\theta)=\left|\sqrt6+\sqrt{11}\cos\theta\right|
+                                \]
+                            </div>
+                            <p>です。$\theta=0^\circ$ のとき $d$ が最大になります。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <script>
+                    document.addEventListener('DOMContentLoaded', function () {
+                        const slider = document.getElementById('theta-slider');
+                        const thetaValue = document.getElementById('theta-value');
+                        const pointP = document.getElementById('point-p');
+                        const pointPLabel = document.getElementById('point-p-label');
+                        const heightSegment = document.getElementById('height-segment');
+                        const heightLabel = document.getElementById('height-label');
+                        const distanceValue = document.getElementById('distance-value');
+                        const volumeValue = document.getElementById('volume-value');
+                        const maxStatus = document.getElementById('max-status');
+
+                        const centerX = 400;
+                        const centerY = 190;
+                        const radiusPx = 182;
+                        const planeX = 266;
+                        const sqrt6 = Math.sqrt(6);
+                        const sqrt11 = Math.sqrt(11);
+
+                        function updateDiagram() {
+                            const degree = Number(slider.value);
+                            const theta = degree * Math.PI / 180;
+                            const px = centerX + radiusPx * Math.cos(theta);
+                            const py = centerY - radiusPx * Math.sin(theta);
+                            const distance = Math.abs(sqrt6 + sqrt11 * Math.cos(theta));
+                            const volume = sqrt6 * distance;
+
+                            thetaValue.textContent = degree + '°';
+                            pointP.setAttribute('cx', px.toFixed(2));
+                            pointP.setAttribute('cy', py.toFixed(2));
+                            pointPLabel.setAttribute('x', (px + 12).toFixed(2));
+                            pointPLabel.setAttribute('y', (py - 10).toFixed(2));
+
+                            heightSegment.setAttribute('x1', planeX);
+                            heightSegment.setAttribute('y1', py.toFixed(2));
+                            heightSegment.setAttribute('x2', px.toFixed(2));
+                            heightSegment.setAttribute('y2', py.toFixed(2));
+
+                            const midX = (planeX + px) / 2;
+                            heightLabel.setAttribute('x', Math.max(258, Math.min(560, midX - 72)).toFixed(2));
+                            heightLabel.setAttribute('y', Math.max(30, Math.min(350, py + 28)).toFixed(2));
+
+                            distanceValue.textContent = distance.toFixed(3);
+                            volumeValue.textContent = volume.toFixed(3);
+
+                            const isMaximum = degree === 0 || degree === 360;
+                            if (isMaximum) {
+                                maxStatus.className = 'rounded-xl border border-rose-300 bg-rose-50 p-4 text-center shadow-sm';
+                                maxStatus.innerHTML = '<div class="text-xs font-bold text-rose-600">状態</div><div class="mt-1 text-sm font-bold text-rose-700">最大値をとる位置</div>';
+                            } else {
+                                maxStatus.className = 'rounded-xl border border-slate-200 bg-white p-4 text-center shadow-sm';
+                                maxStatus.innerHTML = '<div class="text-xs font-bold text-slate-500">状態</div><div class="mt-1 text-sm font-bold text-slate-700">Pを動かして確認</div>';
+                            }
+                        }
+
+                        slider.addEventListener('input', updateDiagram);
+                        updateDiagram();
+                    });
+                </script>
+
+                <div class="mt-10">
+                    <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">別解の考察：（4）を内積で最大化する</h3>
+                    <p class="mt-4 text-sm leading-relaxed text-slate-700">
+                        球と平面の位置関係を図形的に捉えにくい場合は、法線方向の成分を内積で評価することもできます。
+                    </p>
+                    <div class="mt-4 rounded-lg border border-indigo-200 bg-indigo-50 p-5 text-sm leading-relaxed text-slate-700">
+                        <p>$\vec n=\begin{pmatrix}1\\-1\\2\end{pmatrix}$ とし、$\overrightarrow{\mathrm{OP}}=\vec p$ とする。Pは球面 $S$ 上にあるから、$|\vec p|=\sqrt{11}$ である。</p>
+                        <p class="mt-2">平面ABCの方程式は $x-y+2z+6=0$ であるから、Pから平面ABCまでの距離は</p>
+                        <div class="math-scroll">
+                            \[
+                            \frac{|\vec n\cdot\vec p+6|}{|\vec n|}
+                            \]
+                        </div>
+                        <p>である。内積の性質より、</p>
+                        <div class="math-scroll">
+                            \[
+                            -|\vec n||\vec p|\leq\vec n\cdot\vec p\leq|\vec n||\vec p|
+                            \]
+                            \[
+                            -\sqrt{66}\leq\vec n\cdot\vec p\leq\sqrt{66}
+                            \]
+                        </div>
+                        <p>したがって、$|\vec n\cdot\vec p+6|$ の最大値は $6+\sqrt{66}$ であり、距離の最大値は</p>
+                        <div class="math-scroll">
+                            \[
+                            \frac{6+\sqrt{66}}{\sqrt6}=\sqrt6+\sqrt{11}
+                            \]
+                        </div>
+                        <p>となります。等号は $\vec p$ が $\vec n$ と同じ向きのときに成立します。</p>
+                    </div>
+                </div>
+
+                <div class="mt-10">
+                    <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">受験生のつまずきポイント</h3>
+                    <div class="mt-4 space-y-4">
+                        <div class="rounded-lg border border-red-200 bg-red-50 p-4">
+                            <p class="text-sm font-bold text-red-900">$\overrightarrow{\mathrm{AB}}$ の向きを逆にする</p>
+                            <p class="mt-1 text-sm text-red-800">
+                                $\overrightarrow{\mathrm{AB}}$ は「B−A」です。途中で向きを逆にしても法線条件には使えますが、（1）の内積では符号が変わるため、最初に成分を丁寧に確認します。
+                            </p>
+                        </div>
+                        <div class="rounded-lg border border-red-200 bg-red-50 p-4">
+                            <p class="text-sm font-bold text-red-900">法線ベクトルを1本のベクトルとのみ垂直にする</p>
+                            <p class="mt-1 text-sm text-red-800">
+                                平面に垂直であるためには、平面内の平行でない2つの方向の両方に垂直である必要があります。本問では2本の内積をともに0とします。
+                            </p>
+                        </div>
+                        <div class="rounded-lg border border-red-200 bg-red-50 p-4">
+                            <p class="text-sm font-bold text-red-900">Hを求めるとき、平面上にある条件を使わない</p>
+                            <p class="mt-1 text-sm text-red-800">
+                                $\overrightarrow{\mathrm{OH}}=\lambda\vec n$ だけでは、法線上のどの点か決まりません。Hが平面の方程式を満たすことを必ず使います。
+                            </p>
+                        </div>
+                        <div class="rounded-lg border border-red-200 bg-red-50 p-4">
+                            <p class="text-sm font-bold text-red-900">（4）で球の半径だけを高さの最大値とする</p>
+                            <p class="mt-1 text-sm text-red-800">
+                                球の中心Oは平面ABC上にありません。最大の高さは球の半径 $\sqrt{11}$ だけではなく、中心から平面までの距離 $\sqrt6$ を加えた $\sqrt6+\sqrt{11}$ です。
+                            </p>
+                        </div>
+                        <div class="rounded-lg border border-red-200 bg-red-50 p-4">
+                            <p class="text-sm font-bold text-red-900">三角形ABCの面積で $\sin\theta$ を求めきれない</p>
+                            <p class="mt-1 text-sm text-red-800">
+                                $\cos\theta$ を直接求めてから $\sin\theta$ を計算してもよいですが、$|\vec u|^2|\vec v|^2-(\vec u\cdot\vec v)^2$ をまとめて計算すると式が短くなります。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="mt-6 rounded-2xl bg-blue-900 p-6 text-white shadow-sm sm:p-8">
+                <h2 class="border-b-2 border-blue-400 pb-2 text-lg font-bold">アクティブリコール（復習テスト）</h2>
+                <p class="mt-4 text-sm text-blue-200">質問をクリックし、答えを思い出してから確認してください。</p>
+
+                <div class="mt-6 space-y-3">
+                    <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                        <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                            <span>Q1. 平面ABCの法線ベクトル $\vec n$ に必要な2つの条件は何ですか？</span>
+                            <span class="transition duration-300 group-open:-rotate-180">
+                                <svg fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                            </span>
+                        </summary>
+                        <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                            平面内の平行でない2つのベクトルに垂直であることです。本問では $\vec n\cdot\overrightarrow{\mathrm{AB}}=0$、$\vec n\cdot\overrightarrow{\mathrm{AC}}=0$ を用います。
+                        </div>
+                    </details>
+
+                    <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                        <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                            <span>Q2. 原点Oから平面ABCに下ろした垂線の足Hを、法線ベクトルからどのように表しますか？</span>
+                            <span class="transition duration-300 group-open:-rotate-180">
+                                <svg fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                            </span>
+                        </summary>
+                        <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                            $\overrightarrow{\mathrm{OH}}$ が法線ベクトル $\vec n=\begin{pmatrix}1\\-1\\2\end{pmatrix}$ と平行なので、$\overrightarrow{\mathrm{OH}}=\lambda\vec n$、すなわち $\mathrm H(\lambda,-\lambda,2\lambda)$ と置きます。
+                        </div>
+                    </details>
+
+                    <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                        <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                            <span>Q3. 点 $\mathrm Q(x_0,y_0,z_0)$ と平面 $Ax+By+Cz+D=0$ の距離はどう表されますか？</span>
+                            <span class="transition duration-300 group-open:-rotate-180">
+                                <svg fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                            </span>
+                        </summary>
+                        <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                            $\dfrac{|Ax_0+By_0+Cz_0+D|}{\sqrt{A^2+B^2+C^2}}$ です。垂線の足まで求める場合は、距離だけでなく平面へ向かう法線の向きも確認します。
+                        </div>
+                    </details>
+
+                    <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                        <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                            <span>Q4. 2つのベクトル $\vec u$、$\vec v$ で作る三角形の面積を、内積を用いて表すとどうなりますか？</span>
+                            <span class="transition duration-300 group-open:-rotate-180">
+                                <svg fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                            </span>
+                        </summary>
+                        <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                            $\dfrac12\sqrt{|\vec u|^2|\vec v|^2-(\vec u\cdot\vec v)^2}$ です。本問では $\dfrac12\sqrt{21\cdot45-27^2}=3\sqrt6$ となります。
+                        </div>
+                    </details>
+
+                    <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                        <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                            <span>Q5. 球の中心から平面までの距離が $d$、球の半径が $r$ のとき、球面上の点と平面との距離の最大値はいくつですか？</span>
+                            <span class="transition duration-300 group-open:-rotate-180">
+                                <svg fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                            </span>
+                        </summary>
+                        <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                            $d+r$ です。本問では $d=\sqrt6$、$r=\sqrt{11}$ なので、最大距離は $\sqrt6+\sqrt{11}$ です。
+                        </div>
+                    </details>
+                </div>
+            </section>
+
+            <nav class="mt-7 grid gap-3 sm:grid-cols-2">
+                <a href="no38.html" class="nav-button rounded-xl border border-slate-300 bg-white px-5 py-4 text-center font-bold text-slate-700 hover:border-blue-300 hover:text-blue-800">
+                    ← No.38へ
+                </a>
+                <a href="no40.html" class="nav-button rounded-xl bg-blue-700 px-5 py-4 text-center font-bold text-white hover:bg-blue-800">
+                    No.40 →
+                </a>
+            </nav>
+        </main>
+
+        <footer class="py-10 text-center text-sm text-slate-500">
+            医進・サイエンスコース　夏期数学課題 解説サイト
+        </footer>
+    </div>
+</body>
+</html>

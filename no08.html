@@ -102,6 +102,114 @@
                     </div>
                 </div>
 
+
+                <div class="mt-8 rounded-xl border border-indigo-200 bg-indigo-50 p-5">
+                    <h3 class="border-b-2 border-indigo-300 pb-2 text-lg font-bold text-indigo-900">補足：なぜ \(|x|+|y|=m\) はひし形になるのか</h3>
+                    <p class="mt-4 text-sm leading-relaxed text-slate-700">
+                        絶対値は、\(x\) と \(y\) の符号によって外し方が変わります。そこで、座標平面を4つの象限に分けて考えます。
+                        ただし、各式が表すのは<strong>直線全体ではなく、その象限に含まれる部分だけ</strong>であることに注意してください。
+                    </p>
+
+                    <div class="mt-5 grid gap-3 sm:grid-cols-2">
+                        <div class="rounded-lg border border-indigo-200 bg-white p-4 text-sm text-slate-700">
+                            <p class="font-bold text-indigo-900">第1象限：\(x\geqq0,\ y\geqq0\)</p>
+                            <div class="mt-2 leading-7">
+                                \(|x|=x,\ |y|=y\) より
+                                \[
+                                x+y=m \quad\Longleftrightarrow\quad y=-x+m
+                                \]
+                                この象限では、\((m,0)\) と \((0,m)\) を結ぶ線分になる。
+                            </div>
+                        </div>
+
+                        <div class="rounded-lg border border-indigo-200 bg-white p-4 text-sm text-slate-700">
+                            <p class="font-bold text-indigo-900">第2象限：\(x\leqq0,\ y\geqq0\)</p>
+                            <div class="mt-2 leading-7">
+                                \(|x|=-x,\ |y|=y\) より
+                                \[
+                                -x+y=m \quad\Longleftrightarrow\quad y=x+m
+                                \]
+                                この象限では、\((0,m)\) と \((-m,0)\) を結ぶ線分になる。
+                            </div>
+                        </div>
+
+                        <div class="rounded-lg border border-indigo-200 bg-white p-4 text-sm text-slate-700">
+                            <p class="font-bold text-indigo-900">第3象限：\(x\leqq0,\ y\leqq0\)</p>
+                            <div class="mt-2 leading-7">
+                                \(|x|=-x,\ |y|=-y\) より
+                                \[
+                                -x-y=m \quad\Longleftrightarrow\quad y=-x-m
+                                \]
+                                この象限では、\((-m,0)\) と \((0,-m)\) を結ぶ線分になる。
+                            </div>
+                        </div>
+
+                        <div class="rounded-lg border border-indigo-200 bg-white p-4 text-sm text-slate-700">
+                            <p class="font-bold text-indigo-900">第4象限：\(x\geqq0,\ y\leqq0\)</p>
+                            <div class="mt-2 leading-7">
+                                \(|x|=x,\ |y|=-y\) より
+                                \[
+                                x-y=m \quad\Longleftrightarrow\quad y=x-m
+                                \]
+                                この象限では、\((0,-m)\) と \((m,0)\) を結ぶ線分になる。
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-5 rounded-lg border border-indigo-200 bg-white p-4">
+                        <p class="font-bold text-indigo-900">4本の線分をつなぐ</p>
+                        <p class="mt-2 text-sm leading-relaxed text-slate-700">
+                            以上の4本を順につなぐと、
+                            \[
+                            (m,0)\rightarrow(0,m)\rightarrow(-m,0)\rightarrow(0,-m)\rightarrow(m,0)
+                            \]
+                            となります。4つの辺の長さはいずれも
+                            \[
+                            \sqrt{m^2+m^2}=m\sqrt2
+                            \]
+                            で等しく、対角線は \(x\) 軸上と \(y\) 軸上にあり、どちらも長さ \(2m\) です。
+                            したがって、図形は<strong>座標軸に対して \(45^\circ\) 傾いた正方形</strong>になります。
+                            見た目がひし形に見えるため「ひし形」と表現されることがありますが、正確には<strong>正方形の周</strong>です。
+                        </p>
+                    </div>
+
+                    <div class="mt-5 flex justify-center rounded-lg border border-indigo-200 bg-white p-4">
+                        <svg width="320" height="260" viewBox="0 0 320 260" class="h-auto w-full max-w-sm" aria-label="絶対値を象限ごとに外してできる4本の線分">
+                            <line x1="20" y1="130" x2="300" y2="130" stroke="#94a3b8" stroke-width="1.5"/>
+                            <line x1="160" y1="20" x2="160" y2="240" stroke="#94a3b8" stroke-width="1.5"/>
+                            <text x="295" y="120" font-size="12" fill="#64748b">x</text>
+                            <text x="170" y="26" font-size="12" fill="#64748b">y</text>
+
+                            <line x1="260" y1="130" x2="160" y2="30" stroke="#2563eb" stroke-width="4"/>
+                            <line x1="160" y1="30" x2="60" y2="130" stroke="#7c3aed" stroke-width="4"/>
+                            <line x1="60" y1="130" x2="160" y2="230" stroke="#e11d48" stroke-width="4"/>
+                            <line x1="160" y1="230" x2="260" y2="130" stroke="#059669" stroke-width="4"/>
+
+                            <circle cx="260" cy="130" r="4" fill="#0f172a"/>
+                            <circle cx="160" cy="30" r="4" fill="#0f172a"/>
+                            <circle cx="60" cy="130" r="4" fill="#0f172a"/>
+                            <circle cx="160" cy="230" r="4" fill="#0f172a"/>
+
+                            <text x="268" y="134" font-size="12" fill="#475569">(m, 0)</text>
+                            <text x="168" y="38" font-size="12" fill="#475569">(0, m)</text>
+                            <text x="6" y="134" font-size="12" fill="#475569">(-m, 0)</text>
+                            <text x="168" y="246" font-size="12" fill="#475569">(0, -m)</text>
+
+                            <text x="218" y="72" font-size="11" fill="#2563eb">第1象限</text>
+                            <text x="70" y="72" font-size="11" fill="#7c3aed">第2象限</text>
+                            <text x="70" y="202" font-size="11" fill="#e11d48">第3象限</text>
+                            <text x="218" y="202" font-size="11" fill="#059669">第4象限</text>
+                        </svg>
+                    </div>
+
+                    <div class="mt-4 rounded-lg border border-amber-200 bg-amber-50 p-4 text-sm leading-relaxed text-amber-900">
+                        <strong>重要：</strong>
+                        例えば第1象限で得られる \(y=-x+m\) は直線全体ではありません。
+                        \(x\geqq0,\ y\geqq0\) を満たす範囲、すなわち \(0\leqq x\leqq m\) の線分だけを採用します。
+                        他の象限でも同様に符号条件を付けることで、4本の直線ではなく4本の線分が現れます。
+                    </div>
+                </div>
+
                 <div class="mt-8 bg-emerald-50 border border-emerald-200 rounded-xl p-5">
                     <h3 class="border-b-2 border-emerald-400 pb-2 text-lg font-bold text-emerald-900">思考プロセス</h3>
                     <div class="mt-4 space-y-4">
@@ -422,8 +530,8 @@
             </section>
             
             <nav class="mt-7 grid gap-3 sm:grid-cols-2">
-                <a href="index.html" class="nav-button rounded-xl border border-slate-300 bg-white px-5 py-4 text-center font-bold text-slate-700 hover:border-blue-300 hover:text-blue-800">
-                    ← 一覧へ
+                <a href="no07.html" class="nav-button rounded-xl border border-slate-300 bg-white px-5 py-4 text-center font-bold text-slate-700 hover:border-blue-300 hover:text-blue-800">
+                    ← No.7へ
                 </a>
                 <a href="no09.html" class="nav-button rounded-xl bg-blue-700 px-5 py-4 text-center font-bold text-white hover:bg-blue-800">
                     No.9 →

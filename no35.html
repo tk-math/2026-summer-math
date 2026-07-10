@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>夏期課題 No.35 空間ベクトル - 医進・サイエンスコース</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        MathJax = {
+            chtml: {
+                matchFontHeight: false
+            },
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                macros: {
+                    Vec: ["\\overrightarrow{\\mathrm{#1}}", 1]
+                }
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body { font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif; }
+        .nav-button { transition: transform .16s ease, box-shadow .16s ease; }
+        .nav-button:hover { transform: translateY(-2px); box-shadow: 0 8px 18px rgba(15, 23, 42, .12); }
+        .math-scroll { overflow-x: auto; overflow-y: hidden; padding-bottom: 0.5rem; margin-bottom: 0.5rem; }
+    </style>
+</head>
+<body class="bg-slate-100 text-slate-800">
+    <div class="mx-auto max-w-4xl px-4 py-6 sm:px-6 lg:py-10">
+        
+        <a href="index.html" class="inline-flex items-center gap-2 text-sm font-bold text-blue-700 hover:text-blue-900">
+            ← 問題一覧へ戻る
+        </a>
+
+        <header class="mt-4 overflow-hidden rounded-3xl bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-800 text-white shadow-xl">
+            <div class="p-7 sm:p-10">
+                <span class="inline-flex items-center rounded-full bg-white/15 px-4 py-1.5 text-sm font-semibold tracking-wide text-blue-100">医進・サイエンスコース</span>
+                <div class="mt-4 flex flex-wrap items-center gap-3">
+                    <span class="rounded-lg bg-white/20 px-3 py-1 text-sm font-bold">No.35</span>
+                    <span class="rounded-full bg-amber-100 px-3 py-1 text-xs font-bold text-amber-800">標準</span>
+                </div>
+                <h1 class="mt-4 text-3xl font-bold leading-tight sm:text-4xl">空間ベクトル</h1>
+                <div class="mt-3 text-lg text-blue-100">目標解答時間：20分</div>
+            </div>
+        </header>
+
+        <main>
+            <section class="mt-7 rounded-2xl border border-blue-100 bg-white p-6 shadow-sm sm:p-8">
+                <h2 class="flex items-center gap-2 text-xl font-bold text-blue-900">
+                    <span class="grid h-8 w-8 place-items-center rounded-full bg-blue-700 text-base text-white">1</span>
+                    問題
+                </h2>
+                
+                <div class="bg-slate-50 border border-slate-200 rounded-lg p-4 mb-4 text-slate-700 leading-relaxed mt-4">
+                    <p>体積が1である四面体 $\mathrm{OABC}$ があり，三角形 $\mathrm{OBC}$ の重心を $\mathrm{G}$ とし，線分 $\mathrm{AG}$ の中点を $\mathrm{M}$ とする。</p>
+                    <ol class="list-decimal pl-6 mt-3 space-y-4">
+                        <li>$\Vec{OG}$ ，$\Vec{OM}$ を $\Vec{OA}$ ，$\Vec{OB}$ ，$\Vec{OC}$ で表せ。</li>
+                        <li>直線 $\mathrm{BM}$ と平面 $\mathrm{OAC}$ の交点を $\mathrm{N}$ とする。
+                            <ol class="list-[lower-roman] pl-6 mt-2 space-y-2">
+                                <li>$\Vec{ON}$ を $\Vec{OA}$ ，$\Vec{OC}$ で表せ。</li>
+                                <li>四面体 $\mathrm{OAMN}$ の体積を求めよ。</li>
+                            </ol>
+                        </li>
+                    </ol>
+                </div>
+
+                <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 mt-4">
+                    <h3 class="font-bold text-blue-900 mb-2">【条件の整理】</h3>
+                    <ul class="list-disc pl-5 space-y-2 text-sm text-slate-700">
+                        <li><strong>基準となるベクトル：</strong> 空間内の任意の点は、1次独立な3つのベクトル $\Vec{OA}, \Vec{OB}, \Vec{OC}$ を用いて一意に表すことができます。これを解答の基本骨格とします。</li>
+                        <li><strong>直線の条件：</strong> 点 $\mathrm{N}$ が直線 $\mathrm{BM}$ 上にある $\Rightarrow$ $\Vec{ON} = (1-s)\Vec{OB} + s\Vec{OM}$ と実数 $s$ で表せる。</li>
+                        <li><strong>平面の条件：</strong> 点 $\mathrm{N}$ が平面 $\mathrm{OAC}$ 上にある $\Rightarrow$ $\Vec{ON}$ を $\Vec{OA}, \Vec{OB}, \Vec{OC}$ で表したとき、<strong>$\Vec{OB}$ の係数が $0$</strong> になる。</li>
+                        <li><strong>体積比：</strong> 四面体 $\mathrm{OAMN}$ と 四面体 $\mathrm{OABC}$ の体積比を考える際、「底面をどこにとるか」が重要です。両者が共有している平面（今回は平面 $\mathrm{OAC}$）上の三角形を底面とすると、見通しが良くなります。</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="mt-6 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+                <h2 class="flex items-center gap-2 text-xl font-bold text-slate-900">
+                    <span class="grid h-8 w-8 place-items-center rounded-full bg-slate-700 text-base text-white">2</span>
+                    解説
+                </h2>
+                <p class="mt-4 text-sm leading-8 text-slate-600">
+                    問題を解くための考え方から、答案、検算、発展までを順に確認します。
+                </p>
+
+                <div class="mt-8 bg-amber-50 border border-amber-200 rounded-xl p-5">
+                    <h3 class="border-b-2 border-amber-400 pb-2 text-lg font-bold text-amber-900">解法選択のトリガー</h3>
+                    <div class="mt-4 space-y-4">
+                        <div class="bg-amber-100/60 border border-amber-200 rounded-lg p-4">
+                            <p class="font-bold text-amber-900 text-sm">「直線と平面の交点」と来たら</p>
+                            <p class="mt-1 text-sm text-amber-800">
+                                <strong>① 直線上にある条件</strong>（係数の和が1、または媒介変数表示）、<strong>② 平面上にある条件</strong>（不要なベクトルの係数が0、または係数和が1）の2つを組み合わせて連立方程式を立てます。空間ベクトルの最重要テーマです。
+                            </p>
+                        </div>
+                        <div class="bg-amber-100/60 border border-amber-200 rounded-lg p-4">
+                            <p class="font-bold text-amber-900 text-sm">四面体の「体積比」を求めるときは</p>
+                            <p class="mt-1 text-sm text-amber-800">
+                                体積比 ＝ <strong>「底面積の比」 $\times$ 「高さの比」</strong> に分解して考えます。<br>
+                                どの面を底面に選ぶかで難易度が激変します。基本は「共通の頂点（または平面）を含む面」を底面に設定します。本問では平面 $\mathrm{OAC}$ に乗っている $\triangle\mathrm{OAC}$ と $\triangle\mathrm{OAN}$ を底面とします。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-8 bg-emerald-50 border border-emerald-200 rounded-xl p-5">
+                    <h3 class="border-b-2 border-emerald-400 pb-2 text-lg font-bold text-emerald-900">思考プロセス</h3>
+                    <div class="mt-4 space-y-4">
+                        <div class="bg-emerald-100/60 border border-emerald-200 rounded-lg p-4 text-sm text-emerald-900">
+                            <strong>(1) の計算手順</strong><br>
+                            重心の公式 $\Vec{OG} = \dfrac{\Vec{OO} + \Vec{OB} + \Vec{OC}}{3} = \dfrac{\Vec{OB} + \Vec{OC}}{3}$ を用います。<br>
+                            $\mathrm{M}$ は $\mathrm{A}$ と $\mathrm{G}$ の中点なので、中点の公式 $\Vec{OM} = \dfrac{\Vec{OA} + \Vec{OG}}{2}$ に代入するだけです。
+                        </div>
+                        <div class="bg-emerald-100/60 border border-emerald-200 rounded-lg p-4 text-sm text-emerald-900">
+                            <strong>(2)(i) の計算手順</strong><br>
+                            $\mathrm{N}$ は直線 $\mathrm{BM}$ 上より $\Vec{ON} = (1-s)\Vec{OB} + s\Vec{OM}$。<br>
+                            ここに(1)の $\Vec{OM}$ を代入し、$\Vec{OA}, \Vec{OB}, \Vec{OC}$ の形に整理します。<br>
+                            $\mathrm{N}$ は平面 $\mathrm{OAC}$ 上にあるため、式の中から $\Vec{OB}$ が消えなければなりません。つまり $\Vec{OB}$ の係数 $= 0$ として $s$ を求めます。
+                        </div>
+                        <div class="bg-emerald-100/60 border border-emerald-200 rounded-lg p-4 text-sm text-emerald-900">
+                            <strong>(2)(ii) 体積比の分解</strong><br>
+                            ・<strong>底面積の比（$\triangle\mathrm{OAN} : \triangle\mathrm{OAC}$）：</strong> (2)(i) で求めた $\Vec{ON}$ の式から、$\mathrm{N}$ が $\triangle\mathrm{OAC}$ 内でどのような位置にあるかを調べます。内分点の公式を逆算して線分比を出し、面積比を求めます。<br>
+                            ・<strong>高さの比（頂点 $\mathrm{M}$ と 頂点 $\mathrm{B}$）：</strong> 点 $\mathrm{M}$ が線分 $\mathrm{BN}$ 上のどこにいるかで決まります。$s$ の値（$\Vec{ON}$ の式）から、$\mathrm{M}$ が $\mathrm{BN}$ を何対何に内分しているか読み取り、平面 $\mathrm{OAC}$ までの距離（高さ）の比を求めます。<br>
+                            最後に 面積比 $\times$ 高さの比 を計算して終了です。
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-10">
+                    <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">実際の答案</h3>
+                    
+                    <div class="mt-4 space-y-6 text-slate-700">
+                        <!-- (1) -->
+                        <div>
+                            <p class="font-bold text-blue-800 border-b border-slate-200 pb-1">（1）</p>
+                            <p class="mt-2">
+                                点 $\mathrm{G}$ は $\triangle\mathrm{OBC}$ の重心であるから、
+                            </p>
+                            <div class="math-scroll">
+                                \[ \Vec{OG} = \frac{\Vec{OB} + \Vec{OC}}{3} \]
+                            </div>
+                            <p class="mt-2">
+                                点 $\mathrm{M}$ は線分 $\mathrm{AG}$ の中点であるから、
+                            </p>
+                            <div class="math-scroll">
+                                \begin{aligned}
+                                \Vec{OM} &= \frac{\Vec{OA} + \Vec{OG}}{2} \\
+                                &= \frac{1}{2}\Vec{OA} + \frac{1}{2}\left(\frac{\Vec{OB} + \Vec{OC}}{3}\right) \\
+                                &= \frac{1}{2}\Vec{OA} + \frac{1}{6}\Vec{OB} + \frac{1}{6}\Vec{OC}
+                                \end{aligned}
+                            </div>
+                            <div class="mt-2 rounded-xl border-2 border-blue-500 bg-blue-50 p-3 text-slate-900 font-bold inline-block">
+                                答: $\Vec{OG} = \dfrac{1}{3}\Vec{OB} + \dfrac{1}{3}\Vec{OC} , \quad \Vec{OM} = \dfrac{1}{2}\Vec{OA} + \dfrac{1}{6}\Vec{OB} + \dfrac{1}{6}\Vec{OC}$
+                            </div>
+                        </div>
+
+                        <!-- (2)(i) -->
+                        <div class="border-t border-slate-200 pt-6">
+                            <p class="font-bold text-blue-800 border-b border-slate-200 pb-1">（2）(i)</p>
+                            <p class="mt-2">
+                                点 $\mathrm{N}$ は直線 $\mathrm{BM}$ 上にあるので、実数 $s$ を用いて次のように表せる。
+                            </p>
+                            <div class="math-scroll">
+                                \begin{aligned}
+                                \Vec{ON} &= (1-s)\Vec{OB} + s\Vec{OM} \\
+                                &= (1-s)\Vec{OB} + s\left(\frac{1}{2}\Vec{OA} + \frac{1}{6}\Vec{OB} + \frac{1}{6}\Vec{OC}\right) \\
+                                &= \frac{s}{2}\Vec{OA} + \left(1 - s + \frac{s}{6}\right)\Vec{OB} + \frac{s}{6}\Vec{OC} \\
+                                &= \frac{s}{2}\Vec{OA} + \left(1 - \frac{5}{6}s\right)\Vec{OB} + \frac{s}{6}\Vec{OC}
+                                \end{aligned}
+                            </div>
+                            <p class="mt-2">
+                                四面体 $\mathrm{OABC}$ において、$\Vec{OA}, \Vec{OB}, \Vec{OC}$ は1次独立であり、点 $\mathrm{N}$ は平面 $\mathrm{OAC}$ 上にあるから、$\Vec{OB}$ の係数は $0$ である。
+                            </p>
+                            <div class="math-scroll">
+                                \begin{aligned}
+                                1 - \frac{5}{6}s &= 0 \\
+                                \frac{5}{6}s &= 1 \implies s = \frac{6}{5}
+                                \end{aligned}
+                            </div>
+                            <p class="mt-2">
+                                これを $\Vec{ON}$ の式に代入して、
+                            </p>
+                            <div class="math-scroll">
+                                \begin{aligned}
+                                \Vec{ON} &= \frac{1}{2}\left(\frac{6}{5}\right)\Vec{OA} + \frac{1}{6}\left(\frac{6}{5}\right)\Vec{OC} \\
+                                &= \frac{3}{5}\Vec{OA} + \frac{1}{5}\Vec{OC}
+                                \end{aligned}
+                            </div>
+                            <div class="mt-2 rounded-xl border-2 border-blue-500 bg-blue-50 p-3 text-slate-900 font-bold inline-block">
+                                答: $\Vec{ON} = \dfrac{3}{5}\Vec{OA} + \dfrac{1}{5}\Vec{OC}$
+                            </div>
+                        </div>
+
+                        <!-- (2)(ii) -->
+                        <div class="border-t border-slate-200 pt-6">
+                            <p class="font-bold text-blue-800 border-b border-slate-200 pb-1">（2）(ii)</p>
+                            <p class="mt-2">
+                                四面体 $\mathrm{OAMN}$ と 四面体 $\mathrm{OABC}$ について、平面 $\mathrm{OAC}$ に含まれる面を底面として体積比を考える。<br><br>
+                                <strong>[底面積の比]</strong><br>
+                                (i)より $\Vec{ON} = \dfrac{3}{5}\Vec{OA} + \dfrac{1}{5}\Vec{OC} = \dfrac{4}{5} \left( \dfrac{3\Vec{OA} + \Vec{OC}}{4} \right)$。<br>
+                                線分 $\mathrm{AC}$ を $1:3$ に内分する点を $\mathrm{P}$ とすると、$\Vec{OP} = \dfrac{3\Vec{OA} + \Vec{OC}}{4}$ である。<br>
+                                したがって、$\Vec{ON} = \dfrac{4}{5}\Vec{OP}$ となり、点 $\mathrm{N}$ は線分 $\mathrm{OP}$ を $4:1$ に内分する点である。<br>
+                                これより、面積比は以下のようになる。
+                            </p>
+                            <div class="math-scroll">
+                                \begin{aligned}
+                                \triangle\mathrm{OAN} &= \frac{4}{5} \triangle\mathrm{OAP} \\
+                                &= \frac{4}{5} \left( \frac{1}{4} \triangle\mathrm{OAC} \right) = \frac{1}{5} \triangle\mathrm{OAC}
+                                \end{aligned}
+                            </div>
+                            <p class="mt-2">
+                                <strong>[高さの比]</strong><br>
+                                頂点 $\mathrm{M}$ および 頂点 $\mathrm{B}$ から平面 $\mathrm{OAC}$ に下ろした垂線の長さの比は、線分 $\mathrm{BN}$ 上における $\mathrm{M}$ の位置で決まる。<br>
+                                (i)において $\Vec{ON} = (1-s)\Vec{OB} + s\Vec{OM}$ とおき、$s = \dfrac{6}{5}$ を得た。<br>
+                                これより $\Vec{ON} = -\dfrac{1}{5}\Vec{OB} + \dfrac{6}{5}\Vec{OM}$ となるから、変形すると
+                            </p>
+                            <div class="math-scroll">
+                                \begin{aligned}
+                                5\Vec{ON} &= -\Vec{OB} + 6\Vec{OM} \\
+                                \Vec{OM} &= \frac{\Vec{OB} + 5\Vec{ON}}{6}
+                                \end{aligned}
+                            </div>
+                            <p class="mt-2">
+                                これは、点 $\mathrm{M}$ が線分 $\mathrm{BN}$ を $5:1$ に内分することを示している。<br>
+                                したがって、点 $\mathrm{N}$（平面 $\mathrm{OAC}$ 上の点）から $\mathrm{M}$ までの距離は、$\mathrm{N}$ から $\mathrm{B}$ までの距離の $\dfrac{1}{6}$ 倍であるから、高さも $\dfrac{1}{6}$ 倍となる。
+                            </p>
+                            <p class="mt-4">
+                                <strong>[体積の計算]</strong><br>
+                                四面体 $\mathrm{OAMN}$ の体積 $V'$ は、四面体 $\mathrm{OABC}$ の体積 $V$ に対して
+                            </p>
+                            <div class="math-scroll">
+                                \begin{aligned}
+                                V' &= V \times (\text{底面積の比}) \times (\text{高さの比}) \\
+                                &= 1 \times \frac{1}{5} \times \frac{1}{6} \\
+                                &= \frac{1}{30}
+                                \end{aligned}
+                            </div>
+                            <div class="mt-2 rounded-xl border-2 border-blue-500 bg-blue-50 p-3 text-slate-900 font-bold inline-block">
+                                答: $\dfrac{1}{30}$
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-10">
+                    <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">図解・可視化（体積比の分解）</h3>
+                    <p class="mt-4 text-sm text-slate-700 leading-relaxed">
+                        四面体の体積比は、<strong>「底面（平面$\mathrm{OAC}$）」</strong>における縮小率と、<strong>「高さ（直線$\mathrm{BN}$）」</strong>における縮小率に分けて視覚化すると分かりやすいです。<br>
+                        ボタンを切り替えて、それぞれの視点から比率を確認してみましょう。
+                    </p>
+                    
+                    <div class="mt-4 bg-slate-50 p-4 sm:p-6 rounded-lg border border-slate-200 flex flex-col items-center">
+                        <div class="w-full max-w-sm mb-6 flex justify-center gap-3">
+                            <button onclick="switchView('base')" class="flex-1 py-2 bg-blue-100 hover:bg-blue-200 text-blue-800 font-bold rounded-lg border border-blue-300 shadow-sm transition-colors">
+                                視点①：底面 OAC
+                            </button>
+                            <button onclick="switchView('height')" class="flex-1 py-2 bg-emerald-100 hover:bg-emerald-200 text-emerald-800 font-bold rounded-lg border border-emerald-300 shadow-sm transition-colors">
+                                視点②：高さ (断面 OBN)
+                            </button>
+                        </div>
+
+                        <!-- 視点① 底面 OAC -->
+                        <div id="view-base" class="relative w-full max-w-md bg-white border border-slate-200 rounded-xl shadow-sm overflow-hidden p-6 flex flex-col items-center">
+                            <h4 class="font-bold text-blue-800 mb-4">平面 OAC を真上から見た図（底面積の比）</h4>
+                            <svg width="240" height="200" viewBox="0 0 240 200">
+                                <!-- 三角形 OAC -->
+                                <polygon points="120,20 20,180 220,180" fill="rgba(241, 245, 249, 0.8)" stroke="#64748b" stroke-width="2" />
+                                
+                                <!-- 点 P (AC を 1:3 に内分) -->
+                                <!-- A(20,180), C(220,180) -> P = (20*3+220*1)/4 = (60+220)/4 = 70 -->
+                                <line x1="120" y1="20" x2="70" y2="180" stroke="#94a3b8" stroke-dasharray="4,2" />
+                                
+                                <!-- 三角形 OAN (面積 1/5) -->
+                                <!-- N は OP を 4:1 に内分 -> N = (120*1+70*4)/5 = (120+280)/5 = 80, y = (20*1+180*4)/5 = 740/5 = 148 -->
+                                <polygon points="120,20 20,180 80,148" fill="rgba(59, 130, 246, 0.3)" stroke="#2563eb" stroke-width="2" />
+                                
+                                <!-- 頂点とラベル -->
+                                <circle cx="120" cy="20" r="4" fill="#334155" /><text x="120" y="10" text-anchor="middle" font-weight="bold">O</text>
+                                <circle cx="20" cy="180" r="4" fill="#334155" /><text x="10" y="195" text-anchor="middle" font-weight="bold">A</text>
+                                <circle cx="220" cy="180" r="4" fill="#334155" /><text x="230" y="195" text-anchor="middle" font-weight="bold">C</text>
+                                <circle cx="70" cy="180" r="4" fill="#64748b" /><text x="70" y="195" text-anchor="middle" fill="#64748b">P</text>
+                                <circle cx="80" cy="148" r="4" fill="#2563eb" /><text x="95" y="150" font-weight="bold" fill="#2563eb">N</text>
+                                
+                                <!-- 比率のテキスト -->
+                                <text x="45" y="188" fill="#ef4444" font-size="12" font-weight="bold">1</text>
+                                <text x="145" y="188" fill="#ef4444" font-size="12" font-weight="bold">3</text>
+                                <text x="105" y="90" fill="#f59e0b" font-size="12" font-weight="bold">4</text>
+                                <text x="65" y="160" fill="#f59e0b" font-size="12" font-weight="bold">1</text>
+                            </svg>
+                            <div class="mt-4 text-sm text-slate-700 text-center">
+                                $\triangle\mathrm{OAN}$ は $\triangle\mathrm{OAP}$ の $\dfrac{4}{5}$倍。<br>
+                                $\triangle\mathrm{OAP}$ は $\triangle\mathrm{OAC}$ の $\dfrac{1}{4}$倍。<br>
+                                ゆえに底面積は $\dfrac{4}{5} \times \dfrac{1}{4} = \mathbf{\dfrac{1}{5}}$ <strong>倍</strong>。
+                            </div>
+                        </div>
+
+                        <!-- 視点② 高さ -->
+                        <div id="view-height" class="relative w-full max-w-md bg-white border border-slate-200 rounded-xl shadow-sm overflow-hidden p-6 flex flex-col items-center hidden">
+                            <h4 class="font-bold text-emerald-800 mb-4">線分 BN を横から見た図（高さの比）</h4>
+                            <svg width="240" height="200" viewBox="0 0 240 200">
+                                <!-- 地面 (平面 OAC) -->
+                                <line x1="20" y1="170" x2="220" y2="170" stroke="#94a3b8" stroke-width="4" />
+                                <text x="225" y="175" fill="#64748b" font-size="12">平面 OAC</text>
+
+                                <!-- 線分 BN -->
+                                <!-- B(200, 30), N(60, 170) -->
+                                <line x1="200" y1="30" x2="60" y2="170" stroke="#334155" stroke-width="2" />
+                                
+                                <!-- 点 M (BN を 5:1 に内分) -->
+                                <!-- M_x = (200*1 + 60*5)/6 = 500/6 = 83.3 -->
+                                <!-- M_y = (30*1 + 170*5)/6 = 880/6 = 146.6 -->
+                                
+                                <!-- 垂線 -->
+                                <line x1="200" y1="30" x2="200" y2="170" stroke="#94a3b8" stroke-dasharray="4,2" />
+                                <line x1="83.3" y1="146.6" x2="83.3" y2="170" stroke="#10b981" stroke-width="2" />
+                                
+                                <!-- 頂点とラベル -->
+                                <circle cx="60" cy="170" r="4" fill="#2563eb" /><text x="50" y="185" font-weight="bold" fill="#2563eb">N</text>
+                                <circle cx="200" cy="30" r="4" fill="#334155" /><text x="210" y="30" font-weight="bold">B</text>
+                                <circle cx="83.3" cy="146.6" r="4" fill="#10b981" /><text x="65" y="145" font-weight="bold" fill="#10b981">M</text>
+
+                                <!-- 比率のテキスト -->
+                                <text x="145" y="90" fill="#f59e0b" font-size="14" font-weight="bold">5</text>
+                                <text x="60" y="150" fill="#f59e0b" font-size="14" font-weight="bold">1</text>
+                                
+                                <!-- 高さのラベル -->
+                                <text x="210" y="100" fill="#64748b" font-size="12">高さ 1</text>
+                                <text x="90" y="165" fill="#10b981" font-size="12" font-weight="bold">高さ 1/6</text>
+                            </svg>
+                            <div class="mt-4 text-sm text-slate-700 text-center">
+                                点 $\mathrm{M}$ は線分 $\mathrm{BN}$ を $5:1$ に内分する。<br>
+                                平面 $\mathrm{OAC}$（点 $\mathrm{N}$ を含む面）からの高さは、<br>
+                                相似比により $\mathrm{B}$ の高さの $\mathbf{\dfrac{1}{6}}$ <strong>倍</strong>となる。
+                            </div>
+                        </div>
+
+                        <script>
+                            function switchView(view) {
+                                const baseView = document.getElementById('view-base');
+                                const heightView = document.getElementById('view-height');
+                                
+                                if (view === 'base') {
+                                    baseView.classList.remove('hidden');
+                                    heightView.classList.add('hidden');
+                                } else {
+                                    baseView.classList.add('hidden');
+                                    heightView.classList.remove('hidden');
+                                }
+                            }
+                        </script>
+                    </div>
+                </div>
+
+                <div class="mt-10">
+                    <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">最終結果と検算</h3>
+                    
+                    <div class="mt-4 rounded-xl border-2 border-blue-500 bg-blue-50 p-5 text-slate-900">
+                        <ul class="space-y-2 font-bold">
+                            <li>(1) $\Vec{OG} = \dfrac{1}{3}\Vec{OB} + \dfrac{1}{3}\Vec{OC}$ ， $\Vec{OM} = \dfrac{1}{2}\Vec{OA} + \dfrac{1}{6}\Vec{OB} + \dfrac{1}{6}\Vec{OC}$</li>
+                            <li>(2)(i) $\Vec{ON} = \dfrac{3}{5}\Vec{OA} + \dfrac{1}{5}\Vec{OC}$</li>
+                            <li>(2)(ii) 体積 $\dfrac{1}{30}$</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="mt-4 bg-slate-50 p-4 rounded-lg border border-slate-200 text-sm text-slate-700">
+                        <strong>別解：公式を用いた一発計算（ベクトルと体積比）</strong><br>
+                        四面体 $\mathrm{OABC}$ と 四面体 $\mathrm{OPQR}$ があり、頂点 $\mathrm{O}$ を共有しているとき、それぞれの側稜上（またはその延長上）にある点 $\mathrm{P, Q, R}$ について、体積比は以下の公式で求まります。<br>
+                        \[ \frac{V_{\mathrm{OPQR}}}{V_{\mathrm{OABC}}} = \frac{\mathrm{OP}}{\mathrm{OA}} \times \frac{\mathrm{OQ}}{\mathrm{OB}} \times \frac{\mathrm{OR}}{\mathrm{OC}} \]
+                        本問の四面体 $\mathrm{OAMN}$ にこれを適用してみましょう。<br>
+                        共有する頂点を $\mathrm{O}$ とし、3つの辺を直線 $\mathrm{OA}$, 直線 $\mathrm{OB}$, 直線 $\mathrm{ON}$ にとります。<br>
+                        しかし、点 $\mathrm{M}$ は直線 $\mathrm{OB}$ 上にはありません。この公式は<strong>「3つの辺が対応していること」</strong>が前提となるため、今回の「底面と高さに分ける」アプローチが最も確実で汎用性が高いです。<br>
+                        公式が使える形に変形することも可能ですが、かえって時間がかかるため、無理に公式に当てはめようとせず図形的意味（底面積 $\times$ 高さ）に忠実に解くのがベストです。
+                    </div>
+                </div>
+
+                <div class="mt-10">
+                    <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">受験生のつまずきポイント</h3>
+                    <div class="mt-4 space-y-4">
+                        <div class="bg-red-50 border border-red-200 rounded-lg p-4">
+                            <p class="font-bold text-red-900 text-sm">点 $\mathrm{N}$ が平面上にある条件の誤用</p>
+                            <p class="mt-1 text-sm text-red-800">
+                                平面上にある条件として「係数の和が $1$」と丸暗記している生徒が非常に多いです。<br>
+                                $\Vec{ON} = \alpha\Vec{OA} + \beta\Vec{OB} + \gamma\Vec{OC}$ において、係数和 $\alpha+\beta+\gamma=1$ が使えるのは、点 $\mathrm{N}$ が<strong>平面 $\mathrm{ABC}$ 上にあるときだけ</strong>です。<br>
+                                今回のように「平面 $\mathrm{OAC}$」上にある場合は、原点 $\mathrm{O}$ を含む平面であるため、<strong>「はみ出しているベクトル（$\Vec{OB}$）の係数が $0$」</strong>とするのが正解です。
+                            </p>
+                        </div>
+                        <div class="bg-red-50 border border-red-200 rounded-lg p-4">
+                            <p class="font-bold text-red-900 text-sm">内分の比率の逆転ミス</p>
+                            <p class="mt-1 text-sm text-red-800">
+                                $\Vec{OM} = \dfrac{\Vec{OB} + 5\Vec{ON}}{6}$ の式を見て、「点 $\mathrm{M}$ は線分 $\mathrm{BN}$ を $1:5$ に内分する」と答えてしまうミスが頻発します。クロスの法則を思い出してください。$\Vec{ON}$ の係数が $5$ であるということは、$\mathrm{M}$ は $\mathrm{B}$ 側から見て $5$、$\mathrm{N}$ 側から見て $1$ の位置、つまり <strong>$5:1$ に内分</strong>しています。この逆転ミスで体積が $\frac{5}{6}$ 倍になってしまう痛い失点を防ぎましょう。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+            
+            <section class="mt-6 rounded-2xl bg-blue-900 p-6 text-white shadow-sm sm:p-8">
+                <h2 class="border-b-2 border-blue-400 pb-2 text-lg font-bold">アクティブリコール（復習テスト）</h2>
+                <p class="mt-4 text-sm text-blue-200">今日の学習内容を思い出すことで、記憶を定着させましょう。質問をクリックして答えを確認してください。</p>
+                
+                <div class="mt-6 space-y-3">
+                    <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                        <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                            <span>Q1. 空間において、点 $\mathrm{P}$ が「直線 $\mathrm{AB}$ 上」にあるためのベクトル方程式はどう表されますか？</span>
+                            <span class="transition duration-300 group-open:-rotate-180">
+                                <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                            </span>
+                        </summary>
+                        <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                            実数 $s$ を用いて、$\Vec{OP} = (1-s)\Vec{OA} + s\Vec{OB}$ と表されます。（係数の和が1になるのが特徴です）。
+                        </div>
+                    </details>
+                    
+                    <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                        <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                            <span>Q2. 空間において、点 $\mathrm{P}$ が「平面 $\mathrm{OAB}$ 上」にあるためのベクトル方程式の条件は何ですか？（基準を $\Vec{OA}, \Vec{OB}, \Vec{OC}$ とした場合）</span>
+                            <span class="transition duration-300 group-open:-rotate-180">
+                                <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                            </span>
+                        </summary>
+                        <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                            $\Vec{OP}$ を $\Vec{OA}, \Vec{OB}, \Vec{OC}$ の1次結合で表したとき、<strong>$\Vec{OC}$ の係数が $0$</strong> になります。原点 $\mathrm{O}$ を含む平面上の点は、その平面を張る2つのベクトル（今回は $\Vec{OA}, \Vec{OB}$）だけで表せるためです。
+                        </div>
+                    </details>
+                    
+                    <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                        <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                            <span>Q3. ベクトル方程式 $\Vec{OP} = \dfrac{3\Vec{OA} + 4\Vec{OB}}{7}$ が与えられたとき、点 $\mathrm{P}$ は線分 $\mathrm{AB}$ を何対何に内分する点ですか？</span>
+                            <span class="transition duration-300 group-open:-rotate-180">
+                                <svg fill="none" height="24" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
+                            </span>
+                        </summary>
+                        <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                            「$4 : 3$」に内分する点です。ベクトルの内分公式では、分母の比率がクロスして掛けられるため、$\Vec{OA}$ の係数が $3$、$\Vec{OB}$ の係数が $4$ ならば、比率は逆に $4:3$ となります。
+                        </div>
+                    </details>
+                </div>
+            </section>
+            
+            <nav class="mt-7 grid gap-3 sm:grid-cols-2">
+                <a href="no34.html" class="nav-button rounded-xl border border-slate-300 bg-white px-5 py-4 text-center font-bold text-slate-700 hover:border-blue-300 hover:text-blue-800">
+                    ← No.34へ
+                </a>
+                <a href="no36.html" class="nav-button rounded-xl bg-blue-700 px-5 py-4 text-center font-bold text-white hover:bg-blue-800">
+                    No.36 →
+                </a>
+            </nav>
+        </main>
+
+        <footer class="py-10 text-center text-sm text-slate-500">
+            医進・サイエンスコース　夏期数学課題 解説サイト
+        </footer>
+    </div>
+</body>
+</html>

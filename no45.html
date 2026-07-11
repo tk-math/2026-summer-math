@@ -1,0 +1,1174 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>夏期課題 No.45 平面ベクトル - 医進・サイエンスコース</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        MathJax = {
+            chtml: { matchFontHeight: false },
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body { font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif; }
+        .nav-button { transition: transform .16s ease, box-shadow .16s ease; }
+        .nav-button:hover { transform: translateY(-2px); box-shadow: 0 8px 18px rgba(15, 23, 42, .12); }
+        .math-scroll { overflow-x: auto; overflow-y: hidden; padding-bottom: .5rem; margin-bottom: .5rem; }
+        button:focus-visible, summary:focus-visible, a:focus-visible, input:focus-visible {
+            outline: 3px solid rgba(37, 99, 235, .35);
+            outline-offset: 3px;
+        }
+    </style>
+</head>
+<body class="bg-slate-100 text-slate-800">
+<div class="mx-auto max-w-4xl px-4 py-6 sm:px-6 lg:py-10">
+
+    <a href="index.html" class="inline-flex items-center gap-2 text-sm font-bold text-blue-700 hover:text-blue-900">
+        ← 問題一覧へ戻る
+    </a>
+
+    <header class="mt-4 overflow-hidden rounded-3xl bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-800 text-white shadow-xl">
+        <div class="p-7 sm:p-10">
+            <span class="inline-flex items-center rounded-full bg-white/15 px-4 py-1.5 text-sm font-semibold tracking-wide text-blue-100">医進・サイエンスコース</span>
+            <div class="mt-4 flex flex-wrap items-center gap-3">
+                <span class="rounded-lg bg-white/20 px-3 py-1 text-sm font-bold">No.45</span>
+                <span class="rounded-full bg-amber-100 px-3 py-1 text-xs font-bold text-amber-800">標準</span>
+            </div>
+            <h1 class="mt-4 text-3xl font-bold leading-tight sm:text-4xl">平面ベクトル</h1>
+            <div class="mt-3 text-lg text-blue-100">目標解答時間：20分</div>
+        </div>
+    </header>
+
+    <main>
+        <section class="mt-7 rounded-2xl border border-blue-100 bg-white p-6 shadow-sm sm:p-8">
+            <h2 class="flex items-center gap-2 text-xl font-bold text-blue-900">
+                <span class="grid h-8 w-8 place-items-center rounded-full bg-blue-700 text-base text-white">1</span>
+                問題
+            </h2>
+
+            <div class="mt-4 rounded-lg border border-slate-200 bg-slate-50 p-4 text-slate-700 leading-relaxed">
+                <p>
+                    三角形OABにおいて、辺OAを $2:1$ に内分する点をC、辺ABを $2:1$ に内分する点をDとし、
+                    線分BCと線分ODの交点をEとする。
+                </p>
+
+                <ol class="mt-4 list-decimal space-y-4 pl-6">
+                    <li>
+                        $\overrightarrow{\mathrm{OC}}$、$\overrightarrow{\mathrm{OD}}$ をそれぞれ
+                        $\overrightarrow{\mathrm{OA}}$、$\overrightarrow{\mathrm{OB}}$ を用いて表せ。
+                    </li>
+                    <li>
+                        $\overrightarrow{\mathrm{OE}}$ を
+                        $\overrightarrow{\mathrm{OA}}$、$\overrightarrow{\mathrm{OB}}$ を用いて表せ。
+                    </li>
+                    <li>
+                        三角形DBEと三角形ABCの面積の比
+                        $\triangle\mathrm{DBE}:\triangle\mathrm{ABC}$ を求めよ。
+                    </li>
+                    <li>
+                        点Pは三角形DBEの周および内部を動くものとする。
+                        三角形OCPの重心をGとするとき、点Gの動き得る範囲の面積 $S$ は
+                        三角形ABCの面積の何倍であるか。
+                    </li>
+                </ol>
+            </div>
+
+            <div class="mt-4 rounded-lg border border-blue-200 bg-blue-50 p-4">
+                <h3 class="mb-2 font-bold text-blue-900">【条件の整理】</h3>
+                <ul class="list-disc space-y-2 pl-5 text-sm text-slate-700">
+                    <li>
+                        $C$ はOAを $2:1$ に内分するので、
+                        \[
+                        \mathrm{OC}:\mathrm{CA}=2:1
+                        \]
+                        です。
+                    </li>
+                    <li>
+                        $D$ はABを $2:1$ に内分するので、
+                        \[
+                        \mathrm{AD}:\mathrm{DB}=2:1
+                        \]
+                        です。
+                    </li>
+                    <li>
+                        EはOD上にもBC上にもあるため、$\overrightarrow{\mathrm{OE}}$ を
+                        <strong>2通りに表して係数を比較</strong>できます。
+                    </li>
+                    <li>
+                        Gは三角形OCPの重心なので、
+                        \[
+                        \overrightarrow{\mathrm{OG}}
+                        =\frac{\overrightarrow{\mathrm{OC}}+\overrightarrow{\mathrm{OP}}}{3}
+                        \]
+                        です。
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="mt-6 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+            <h2 class="flex items-center gap-2 text-xl font-bold text-slate-900">
+                <span class="grid h-8 w-8 place-items-center rounded-full bg-slate-700 text-base text-white">2</span>
+                解説
+            </h2>
+            <p class="mt-4 text-sm leading-8 text-slate-600">
+                内分点、交点の係数比較、面積比、重心による図形の縮小を一つの流れとして扱います。
+            </p>
+
+            <div class="mt-8 rounded-xl border border-amber-200 bg-amber-50 p-5">
+                <h3 class="border-b-2 border-amber-400 pb-2 text-lg font-bold text-amber-900">解法選択のトリガー</h3>
+                <div class="mt-4 space-y-4">
+                    <div class="rounded-lg border border-amber-200 bg-amber-100/60 p-4">
+                        <p class="text-sm font-bold text-amber-900">内分点の位置ベクトル</p>
+                        <p class="mt-1 text-sm text-amber-800">
+                            線分ABを $m:n$ に内分する点Xは、
+                            \[
+                            \overrightarrow{\mathrm{OX}}
+                            =\frac{n\overrightarrow{\mathrm{OA}}+m\overrightarrow{\mathrm{OB}}}{m+n}
+                            \]
+                            です。係数が「反対側の比」になることに注意します。
+                        </p>
+                    </div>
+
+                    <div class="rounded-lg border border-amber-200 bg-amber-100/60 p-4">
+                        <p class="text-sm font-bold text-amber-900">2本の線分の交点</p>
+                        <p class="mt-1 text-sm text-amber-800">
+                            交点をそれぞれの線分上の点として2通りに表します。
+                            三角形OABにおいて
+                            $\overrightarrow{\mathrm{OA}}$ と
+                            $\overrightarrow{\mathrm{OB}}$ は一次独立なので、
+                            それぞれの係数を比較できます。
+                        </p>
+                    </div>
+
+                    <div class="rounded-lg border border-amber-200 bg-amber-100/60 p-4">
+                        <p class="text-sm font-bold text-amber-900">同じ頂点から伸びる2辺で面積比を求める</p>
+                        <p class="mt-1 text-sm text-amber-800">
+                            三角形DBEとABCは頂点Bを共有し、BDはBA上、BEはBC上にあります。したがって、
+                            \[
+                            \frac{[\triangle\mathrm{DBE}]}{[\triangle\mathrm{ABC}]}
+                            =
+                            \frac{\mathrm{BD}}{\mathrm{BA}}
+                            \cdot
+                            \frac{\mathrm{BE}}{\mathrm{BC}}
+                            \]
+                            とできます。
+                        </p>
+                    </div>
+
+                    <div class="rounded-lg border border-amber-200 bg-amber-100/60 p-4">
+                        <p class="text-sm font-bold text-amber-900">動点を含む重心</p>
+                        <p class="mt-1 text-sm text-amber-800">
+                            $\overrightarrow{\mathrm{OG}}=\dfrac13\overrightarrow{\mathrm{OP}}+\text{一定ベクトル}$ の形になれば、
+                            Pの動く図形を相似比 $1/3$ に縮小して平行移動した図形がGの領域です。
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-8 rounded-xl border border-emerald-200 bg-emerald-50 p-5">
+                <h3 class="border-b-2 border-emerald-400 pb-2 text-lg font-bold text-emerald-900">思考プロセス</h3>
+                <div class="mt-4 space-y-4">
+                    <div class="rounded-lg border border-emerald-200 bg-emerald-100/60 p-4 text-sm text-emerald-900">
+                        <strong>（1）内分公式をそのまま使う</strong><br>
+                        CはOとAの間、DはAとBの間にあります。Dの係数は、内分比と反対側の端点に掛かることを確認します。
+                    </div>
+
+                    <div class="rounded-lg border border-emerald-200 bg-emerald-100/60 p-4 text-sm text-emerald-900">
+                        <strong>（2）EをOD上・BC上の点として表す</strong><br>
+                        OD上では $\overrightarrow{\mathrm{OE}}=s\overrightarrow{\mathrm{OD}}$、
+                        BC上では $\overrightarrow{\mathrm{OE}}=\overrightarrow{\mathrm{OB}}
+                        +t(\overrightarrow{\mathrm{OC}}-\overrightarrow{\mathrm{OB}})$ と置きます。
+                    </div>
+
+                    <div class="rounded-lg border border-emerald-200 bg-emerald-100/60 p-4 text-sm text-emerald-900">
+                        <strong>（3）Eの分点比を面積比に利用する</strong><br>
+                        （2）の $t=3/7$ から $\mathrm{BE}:\mathrm{EC}=3:4$ がわかります。
+                        さらに $\mathrm{BD}:\mathrm{BA}=1:3$ を掛けます。
+                    </div>
+
+                    <div class="rounded-lg border border-emerald-200 bg-emerald-100/60 p-4 text-sm text-emerald-900">
+                        <strong>（4）長さの比を面積比へ変換する</strong><br>
+                        PからGへの写像は相似比 $1/3$ なので、面積比は $(1/3)^2=1/9$ です。
+                        これを（3）の面積比 $1/7$ と組み合わせます。
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-10">
+                <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">実際の答案</h3>
+
+                <div class="mt-4 space-y-7 text-slate-700">
+                    <div>
+                        <p class="border-b border-slate-200 pb-1 font-bold text-blue-800">（1）</p>
+                        <p class="mt-2">
+                            CはOAを $2:1$ に内分するから、
+                        </p>
+                        <div class="math-scroll">
+                            \[
+                            \overrightarrow{\mathrm{OC}}
+                            =\frac{2}{3}\overrightarrow{\mathrm{OA}}.
+                            \]
+                        </div>
+
+                        <p class="mt-3">
+                            また、DはABを $2:1$ に内分するから、
+                        </p>
+                        <div class="math-scroll">
+                            \[
+                            \begin{aligned}
+                            \overrightarrow{\mathrm{OD}}
+                            &=
+                            \frac{
+                            1\overrightarrow{\mathrm{OA}}
+                            +2\overrightarrow{\mathrm{OB}}
+                            }{3}\\
+                            &=
+                            \frac13\overrightarrow{\mathrm{OA}}
+                            +\frac23\overrightarrow{\mathrm{OB}}.
+                            \end{aligned}
+                            \]
+                        </div>
+
+                        <div class="mt-2 rounded-xl border-2 border-blue-500 bg-blue-50 p-3 font-bold text-slate-900">
+                            \[
+                            \overrightarrow{\mathrm{OC}}
+                            =\frac23\overrightarrow{\mathrm{OA}},
+                            \qquad
+                            \overrightarrow{\mathrm{OD}}
+                            =\frac13\overrightarrow{\mathrm{OA}}
+                            +\frac23\overrightarrow{\mathrm{OB}}
+                            \]
+                        </div>
+                    </div>
+
+                    <div class="border-t border-slate-200 pt-6">
+                        <p class="border-b border-slate-200 pb-1 font-bold text-blue-800">（2）</p>
+                        <p class="mt-2">
+                            Eは線分OD上にあるので、$0<s<1$ を用いて
+                        </p>
+                        <div class="math-scroll">
+                            \[
+                            \begin{aligned}
+                            \overrightarrow{\mathrm{OE}}
+                            &=s\overrightarrow{\mathrm{OD}}\\
+                            &=
+                            \frac{s}{3}\overrightarrow{\mathrm{OA}}
+                            +\frac{2s}{3}\overrightarrow{\mathrm{OB}}
+                            \end{aligned}
+                            \tag{1}
+                            \]
+                        </div>
+                        <p>と表せる。</p>
+
+                        <p class="mt-3">
+                            一方、Eは線分BC上にあるので、$0<t<1$ を用いて
+                        </p>
+                        <div class="math-scroll">
+                            \[
+                            \begin{aligned}
+                            \overrightarrow{\mathrm{OE}}
+                            &=
+                            \overrightarrow{\mathrm{OB}}
+                            +t\left(
+                            \overrightarrow{\mathrm{OC}}
+                            -\overrightarrow{\mathrm{OB}}
+                            \right)\\
+                            &=
+                            \overrightarrow{\mathrm{OB}}
+                            +t\left(
+                            \frac23\overrightarrow{\mathrm{OA}}
+                            -\overrightarrow{\mathrm{OB}}
+                            \right)\\
+                            &=
+                            \frac{2t}{3}\overrightarrow{\mathrm{OA}}
+                            +(1-t)\overrightarrow{\mathrm{OB}}
+                            \end{aligned}
+                            \tag{2}
+                            \]
+                        </div>
+                        <p>と表せる。</p>
+
+                        <p class="mt-3">
+                            三角形OABは一直線上にない3点からなるので、
+                            $\overrightarrow{\mathrm{OA}}$ と
+                            $\overrightarrow{\mathrm{OB}}$ は一次独立である。<br>
+                            よって、（1）、（2）で
+                            $\overrightarrow{\mathrm{OA}}$、
+                            $\overrightarrow{\mathrm{OB}}$ の係数を比較すると、
+                        </p>
+                        <div class="math-scroll">
+                            \[
+                            \frac{s}{3}
+                            =\frac{2t}{3},
+                            \qquad
+                            \frac{2s}{3}=1-t.
+                            \]
+                        </div>
+                        <p>
+                            第1式より $s=2t$ である。これを第2式に代入すると、
+                        </p>
+                        <div class="math-scroll">
+                            \[
+                            \frac{4t}{3}=1-t
+                            \]
+                            \[
+                            7t=3
+                            \]
+                            \[
+                            t=\frac37,\qquad
+                            s=\frac67.
+                            \]
+                        </div>
+
+                        <p class="mt-3">
+                            よって、
+                        </p>
+                        <div class="math-scroll">
+                            \[
+                            \begin{aligned}
+                            \overrightarrow{\mathrm{OE}}
+                            &=
+                            \frac67\overrightarrow{\mathrm{OD}}\\
+                            &=
+                            \frac67\left(
+                            \frac13\overrightarrow{\mathrm{OA}}
+                            +\frac23\overrightarrow{\mathrm{OB}}
+                            \right)\\
+                            &=
+                            \frac27\overrightarrow{\mathrm{OA}}
+                            +\frac47\overrightarrow{\mathrm{OB}}.
+                            \end{aligned}
+                            \]
+                        </div>
+
+                        <div class="mt-2 inline-block rounded-xl border-2 border-blue-500 bg-blue-50 p-3 font-bold text-slate-900">
+                            答：
+                            $\displaystyle
+                            \overrightarrow{\mathrm{OE}}
+                            =\frac27\overrightarrow{\mathrm{OA}}
+                            +\frac47\overrightarrow{\mathrm{OB}}$
+                        </div>
+                    </div>
+
+                    <div class="border-t border-slate-200 pt-6">
+                        <p class="border-b border-slate-200 pb-1 font-bold text-blue-800">（3）</p>
+                        <p class="mt-2">
+                            （2）で $t=3/7$ であったから、
+                        </p>
+                        <div class="math-scroll">
+                            \[
+                            \frac{\mathrm{BE}}{\mathrm{BC}}=\frac37.
+                            \]
+                        </div>
+
+                        <p>
+                            また、$\mathrm{AD}:\mathrm{DB}=2:1$ より、
+                        </p>
+                        <div class="math-scroll">
+                            \[
+                            \frac{\mathrm{BD}}{\mathrm{BA}}=\frac13.
+                            \]
+                        </div>
+
+                        <p class="mt-3">
+                            三角形DBEとABCは頂点Bを共有し、BDはBA上、BEはBC上にある。
+                            したがって、
+                        </p>
+                        <div class="math-scroll">
+                            \[
+                            \begin{aligned}
+                            \frac{[\triangle\mathrm{DBE}]}
+                            {[\triangle\mathrm{ABC}]}
+                            &=
+                            \frac{\mathrm{BD}}{\mathrm{BA}}
+                            \cdot
+                            \frac{\mathrm{BE}}{\mathrm{BC}}\\
+                            &=
+                            \frac13\cdot\frac37\\
+                            &=\frac17.
+                            \end{aligned}
+                            \]
+                        </div>
+
+                        <div class="mt-2 inline-block rounded-xl border-2 border-blue-500 bg-blue-50 p-3 font-bold text-slate-900">
+                            答：
+                            $\triangle\mathrm{DBE}:\triangle\mathrm{ABC}=1:7$
+                        </div>
+                    </div>
+
+                    <div class="border-t border-slate-200 pt-6">
+                        <p class="border-b border-slate-200 pb-1 font-bold text-blue-800">（4）</p>
+                        <p class="mt-2">
+                            Gは三角形OCPの重心であるから、
+                        </p>
+                        <div class="math-scroll">
+                            \[
+                            \begin{aligned}
+                            \overrightarrow{\mathrm{OG}}
+                            &=
+                            \frac{
+                            \overrightarrow{\mathrm{OO}}
+                            +\overrightarrow{\mathrm{OC}}
+                            +\overrightarrow{\mathrm{OP}}
+                            }{3}\\
+                            &=
+                            \frac13\overrightarrow{\mathrm{OP}}
+                            +\frac13\overrightarrow{\mathrm{OC}}.
+                            \end{aligned}
+                            \]
+                        </div>
+
+                        <p class="mt-3">
+                            $\dfrac13\overrightarrow{\mathrm{OC}}$ は一定ベクトルである。
+                            したがって、Pが三角形DBEの周および内部を動くとき、
+                            Gの動く範囲は三角形DBEを<strong>相似比 $1/3$ に縮小し、
+                            一定ベクトルだけ平行移動した三角形</strong>である。
+                        </p>
+
+                        <p class="mt-3">
+                            よって、Gの動く範囲の面積は三角形DBEの面積の
+                        </p>
+                        <div class="math-scroll">
+                            \[
+                            \left(\frac13\right)^2=\frac19
+                            \]
+                        </div>
+                        <p>
+                            倍である。（3）より三角形DBEの面積は三角形ABCの面積の $1/7$ 倍なので、
+                        </p>
+                        <div class="math-scroll">
+                            \[
+                            \begin{aligned}
+                            \frac{S}{[\triangle\mathrm{ABC}]}
+                            &=
+                            \frac19\cdot\frac17\\
+                            &=\frac1{63}.
+                            \end{aligned}
+                            \]
+                        </div>
+
+                        <div class="mt-2 inline-block rounded-xl border-2 border-blue-500 bg-blue-50 p-3 font-bold text-slate-900">
+                            答：$\displaystyle \frac1{63}$ 倍
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-10">
+                <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">図解・可視化</h3>
+                <p class="mt-4 text-sm leading-relaxed text-slate-700">
+                    Pを三角形DBEの内部で動かすと、重心Gも小さな三角形の内部を動きます。
+                    Gの領域は、Pの領域を縦・横ともに $1/3$ に縮小して平行移動したものです。
+                </p>
+
+                <div class="mt-4 rounded-lg border border-slate-200 bg-slate-50 p-4 sm:p-6">
+                    <div class="grid gap-5 md:grid-cols-2">
+                        <div>
+                            <label for="u-slider" class="mb-2 block text-sm font-medium text-slate-700">
+                                B方向の割合 $u$：
+                                <span id="u-display" class="font-bold text-blue-700">0.30</span>
+                            </label>
+                            <input id="u-slider" type="range" min="0" max="1" step="0.01" value="0.30"
+                                   class="h-2 w-full cursor-pointer appearance-none rounded-lg bg-slate-200 accent-blue-600">
+                        </div>
+                        <div>
+                            <label for="v-slider" class="mb-2 block text-sm font-medium text-slate-700">
+                                E方向の割合 $v$：
+                                <span id="v-display" class="font-bold text-violet-700">0.30</span>
+                            </label>
+                            <input id="v-slider" type="range" min="0" max="0.70" step="0.01" value="0.30"
+                                   class="h-2 w-full cursor-pointer appearance-none rounded-lg bg-slate-200 accent-violet-600">
+                        </div>
+                    </div>
+
+                    <p class="mt-3 text-center text-xs text-slate-500">
+                        $P=(1-u-v)D+uB+vE$ とし、$u\ge0,\ v\ge0,\ u+v\le1$ の範囲で動かします。
+                    </p>
+
+                    <div class="mt-4 flex flex-wrap justify-center gap-2">
+                        <button type="button" data-preset="D" class="rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm font-bold text-slate-700 hover:bg-slate-100">P=D</button>
+                        <button type="button" data-preset="B" class="rounded-lg border border-blue-200 bg-white px-3 py-2 text-sm font-bold text-blue-700 hover:bg-blue-50">P=B</button>
+                        <button type="button" data-preset="E" class="rounded-lg border border-violet-200 bg-white px-3 py-2 text-sm font-bold text-violet-700 hover:bg-violet-50">P=E</button>
+                        <button type="button" data-preset="center" class="rounded-lg border border-emerald-200 bg-white px-3 py-2 text-sm font-bold text-emerald-700 hover:bg-emerald-50">重心付近</button>
+                    </div>
+
+                    <div class="mt-5 overflow-x-auto">
+                        <svg id="vector-svg" width="620" height="470" viewBox="0 0 620 470"
+                             class="mx-auto h-auto w-full max-w-[620px] rounded-xl border border-slate-200 bg-white"
+                             aria-label="三角形OAB、点C・D・E・P・Gの可視化">
+                            <defs>
+                                <marker id="arrow-pg" viewBox="0 0 10 10" refX="8" refY="5"
+                                        markerWidth="6" markerHeight="6" orient="auto">
+                                    <path d="M 0 0 L 10 5 L 0 10 z" fill="#0f766e"></path>
+                                </marker>
+                            </defs>
+
+                            <polygon id="triangle-oab" fill="rgba(148,163,184,.08)" stroke="#334155" stroke-width="2.4"></polygon>
+                            <line id="bc-line" stroke="#64748b" stroke-width="2"></line>
+                            <line id="od-line" stroke="#64748b" stroke-width="2"></line>
+
+                            <polygon id="triangle-dbe" fill="rgba(37,99,235,.13)" stroke="#2563eb" stroke-width="2"></polygon>
+                            <polygon id="triangle-gregion" fill="rgba(16,185,129,.18)" stroke="#10b981" stroke-width="2.5"></polygon>
+
+                            <line id="pg-line" stroke="#0f766e" stroke-width="2" stroke-dasharray="7 5" marker-end="url(#arrow-pg)"></line>
+
+                            <circle id="point-o" r="5" fill="#111827"></circle>
+                            <circle id="point-a" r="5" fill="#111827"></circle>
+                            <circle id="point-b" r="5" fill="#111827"></circle>
+                            <circle id="point-c" r="5" fill="#f59e0b"></circle>
+                            <circle id="point-d" r="5" fill="#2563eb"></circle>
+                            <circle id="point-e" r="5" fill="#7c3aed"></circle>
+                            <circle id="point-p" r="7" fill="#e11d48"></circle>
+                            <circle id="point-g" r="7" fill="#059669"></circle>
+
+                            <g font-size="14" font-weight="700">
+                                <text id="label-o" fill="#111827">O</text>
+                                <text id="label-a" fill="#111827">A</text>
+                                <text id="label-b" fill="#111827">B</text>
+                                <text id="label-c" fill="#b45309">C</text>
+                                <text id="label-d" fill="#1d4ed8">D</text>
+                                <text id="label-e" fill="#6d28d9">E</text>
+                                <text id="label-p" fill="#be123c">P</text>
+                                <text id="label-g" fill="#047857">G</text>
+                                <text id="label-p-region" fill="#1d4ed8">Pの領域</text>
+                                <text id="label-g-region" fill="#047857">Gの領域</text>
+                            </g>
+                        </svg>
+                    </div>
+
+                    <div class="mt-4 grid gap-3 sm:grid-cols-3">
+                        <div class="rounded-lg border border-slate-200 bg-white p-3 text-center">
+                            <div class="text-xs font-bold text-slate-500">Pの位置</div>
+                            <div id="p-coord" class="mt-1 text-sm font-bold text-rose-700"></div>
+                        </div>
+                        <div class="rounded-lg border border-emerald-200 bg-emerald-50 p-3 text-center">
+                            <div class="text-xs font-bold text-emerald-700">Gの位置</div>
+                            <div id="g-coord" class="mt-1 text-sm font-bold text-emerald-800"></div>
+                        </div>
+                        <div class="rounded-lg border border-blue-200 bg-blue-50 p-3 text-center">
+                            <div class="text-xs font-bold text-blue-700">面積比</div>
+                            <div class="mt-1 text-lg font-bold text-blue-900">$1/9$</div>
+                        </div>
+                    </div>
+                </div>
+
+                <script>
+                    document.addEventListener("DOMContentLoaded", () => {
+                        const uSlider = document.getElementById("u-slider");
+                        const vSlider = document.getElementById("v-slider");
+                        const uDisplay = document.getElementById("u-display");
+                        const vDisplay = document.getElementById("v-display");
+
+                        const O = {x:0, y:0};
+                        const A = {x:1, y:0};
+                        const B = {x:0.20, y:0.90};
+                        const C = {
+                            x:(2/3)*A.x,
+                            y:(2/3)*A.y
+                        };
+                        const D = {
+                            x:(A.x+2*B.x)/3,
+                            y:(A.y+2*B.y)/3
+                        };
+                        const E = {
+                            x:(2/7)*A.x+(4/7)*B.x,
+                            y:(2/7)*A.y+(4/7)*B.y
+                        };
+
+                        const Gof = p => ({
+                            x:(C.x+p.x)/3,
+                            y:(C.y+p.y)/3
+                        });
+
+                        const GD = Gof(D);
+                        const GB = Gof(B);
+                        const GE = Gof(E);
+
+                        const sx = x => 70 + 480*x;
+                        const sy = y => 420 - 390*y;
+
+                        const setPoint = (id, p) => {
+                            const el = document.getElementById(id);
+                            el.setAttribute("cx", sx(p.x));
+                            el.setAttribute("cy", sy(p.y));
+                        };
+
+                        const setText = (id, p) => {
+                            const el = document.getElementById(id);
+                            el.setAttribute("x", sx(p.x));
+                            el.setAttribute("y", sy(p.y));
+                        };
+
+                        const setLine = (id, p1, p2) => {
+                            const el = document.getElementById(id);
+                            el.setAttribute("x1", sx(p1.x));
+                            el.setAttribute("y1", sy(p1.y));
+                            el.setAttribute("x2", sx(p2.x));
+                            el.setAttribute("y2", sy(p2.y));
+                        };
+
+                        const poly = pts => pts.map(p => `${sx(p.x)},${sy(p.y)}`).join(" ");
+
+                        document.getElementById("triangle-oab").setAttribute("points", poly([O,A,B]));
+                        document.getElementById("triangle-dbe").setAttribute("points", poly([D,B,E]));
+                        document.getElementById("triangle-gregion").setAttribute("points", poly([GD,GB,GE]));
+                        setLine("bc-line", B, C);
+                        setLine("od-line", O, D);
+
+                        setPoint("point-o", O);
+                        setPoint("point-a", A);
+                        setPoint("point-b", B);
+                        setPoint("point-c", C);
+                        setPoint("point-d", D);
+                        setPoint("point-e", E);
+
+                        setText("label-o", {x:-0.04,y:-0.04});
+                        setText("label-a", {x:1.02,y:-0.02});
+                        setText("label-b", {x:0.16,y:0.96});
+                        setText("label-c", {x:C.x+0.02,y:C.y-0.04});
+                        setText("label-d", {x:D.x+0.02,y:D.y+0.04});
+                        setText("label-e", {x:E.x-0.06,y:E.y+0.04});
+                        setText("label-p-region", {x:0.12,y:0.75});
+                        setText("label-g-region", {x:0.24,y:0.31});
+
+                        function update() {
+                            let u = parseFloat(uSlider.value);
+                            let v = parseFloat(vSlider.value);
+
+                            if (u + v > 1) {
+                                v = 1 - u;
+                                vSlider.value = v.toFixed(2);
+                            }
+                            vSlider.max = (1-u).toFixed(2);
+
+                            const w = 1-u-v;
+                            const P = {
+                                x:w*D.x + u*B.x + v*E.x,
+                                y:w*D.y + u*B.y + v*E.y
+                            };
+                            const G = Gof(P);
+
+                            setPoint("point-p", P);
+                            setPoint("point-g", G);
+                            setLine("pg-line", P, G);
+
+                            setText("label-p", {x:P.x+0.025,y:P.y+0.035});
+                            setText("label-g", {x:G.x+0.025,y:G.y+0.035});
+
+                            uDisplay.textContent = u.toFixed(2);
+                            vDisplay.textContent = v.toFixed(2);
+                            document.getElementById("p-coord").textContent =
+                                `(${P.x.toFixed(3)}, ${P.y.toFixed(3)})`;
+                            document.getElementById("g-coord").textContent =
+                                `(${G.x.toFixed(3)}, ${G.y.toFixed(3)})`;
+                        }
+
+                        uSlider.addEventListener("input", update);
+                        vSlider.addEventListener("input", update);
+
+                        document.querySelectorAll("[data-preset]").forEach(button => {
+                            button.addEventListener("click", () => {
+                                const preset = button.dataset.preset;
+                                if (preset === "D") {
+                                    uSlider.value = 0;
+                                    vSlider.value = 0;
+                                } else if (preset === "B") {
+                                    uSlider.value = 1;
+                                    vSlider.value = 0;
+                                } else if (preset === "E") {
+                                    uSlider.value = 0;
+                                    vSlider.value = 1;
+                                } else {
+                                    uSlider.value = 0.33;
+                                    vSlider.value = 0.33;
+                                }
+                                update();
+                            });
+                        });
+
+                        update();
+                    });
+                </script>
+            </div>
+
+            <div class="mt-10">
+                <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">別解の考察：（4）3つの頂点の移り先から面積を求める</h3>
+
+                <p class="mt-4 text-sm leading-relaxed text-slate-700">
+                    Pが三角形DBEの周および内部を動くとき、Gの動く範囲も三角形になります。
+                    そこで、Pが三角形DBEの3つの頂点B、D、Eにあるときの重心を、
+                    それぞれ $\mathrm{G}_1,\mathrm{G}_2,\mathrm{G}_3$ とします。
+                </p>
+
+                <div class="mt-4 rounded-xl border border-sky-200 bg-sky-50 p-5">
+                    <p class="text-sm font-bold text-sky-900">位置ベクトルの準備</p>
+                    <div class="math-scroll mt-3">
+                        \[
+                        \overrightarrow{\mathrm{OC}}
+                        =\frac23\overrightarrow{\mathrm{OA}},
+                        \qquad
+                        \overrightarrow{\mathrm{OD}}
+                        =\frac13\overrightarrow{\mathrm{OA}}
+                        +\frac23\overrightarrow{\mathrm{OB}},
+                        \]
+                        \[
+                        \overrightarrow{\mathrm{OE}}
+                        =\frac27\overrightarrow{\mathrm{OA}}
+                        +\frac47\overrightarrow{\mathrm{OB}}.
+                        \]
+                    </div>
+                </div>
+
+                <div class="mt-5 space-y-5 text-sm leading-relaxed text-slate-700">
+                    <div class="rounded-lg border border-slate-200 bg-slate-50 p-4">
+                        <p class="font-bold text-slate-900">① PがBにあるとき</p>
+                        <div class="math-scroll mt-2">
+                            \[
+                            \begin{aligned}
+                            \overrightarrow{\mathrm{OG}_1}
+                            &=
+                            \frac{
+                            \overrightarrow{\mathrm{OO}}
+                            +\overrightarrow{\mathrm{OC}}
+                            +\overrightarrow{\mathrm{OB}}
+                            }{3}\\
+                            &=
+                            \frac13\left(
+                            \frac23\overrightarrow{\mathrm{OA}}
+                            +\overrightarrow{\mathrm{OB}}
+                            \right)\\
+                            &=
+                            \frac29\overrightarrow{\mathrm{OA}}
+                            +\frac13\overrightarrow{\mathrm{OB}}.
+                            \end{aligned}
+                            \]
+                        </div>
+                    </div>
+
+                    <div class="rounded-lg border border-slate-200 bg-slate-50 p-4">
+                        <p class="font-bold text-slate-900">② PがDにあるとき</p>
+                        <div class="math-scroll mt-2">
+                            \[
+                            \begin{aligned}
+                            \overrightarrow{\mathrm{OG}_2}
+                            &=
+                            \frac{
+                            \overrightarrow{\mathrm{OC}}
+                            +\overrightarrow{\mathrm{OD}}
+                            }{3}\\
+                            &=
+                            \frac13\left\{
+                            \frac23\overrightarrow{\mathrm{OA}}
+                            +
+                            \left(
+                            \frac13\overrightarrow{\mathrm{OA}}
+                            +\frac23\overrightarrow{\mathrm{OB}}
+                            \right)
+                            \right\}\\
+                            &=
+                            \frac13\overrightarrow{\mathrm{OA}}
+                            +\frac29\overrightarrow{\mathrm{OB}}.
+                            \end{aligned}
+                            \]
+                        </div>
+                    </div>
+
+                    <div class="rounded-lg border border-slate-200 bg-slate-50 p-4">
+                        <p class="font-bold text-slate-900">③ PがEにあるとき</p>
+                        <div class="math-scroll mt-2">
+                            \[
+                            \begin{aligned}
+                            \overrightarrow{\mathrm{OG}_3}
+                            &=
+                            \frac{
+                            \overrightarrow{\mathrm{OC}}
+                            +\overrightarrow{\mathrm{OE}}
+                            }{3}\\
+                            &=
+                            \frac13\left\{
+                            \frac23\overrightarrow{\mathrm{OA}}
+                            +
+                            \left(
+                            \frac27\overrightarrow{\mathrm{OA}}
+                            +\frac47\overrightarrow{\mathrm{OB}}
+                            \right)
+                            \right\}\\
+                            &=
+                            \frac{20}{63}\overrightarrow{\mathrm{OA}}
+                            +\frac4{21}\overrightarrow{\mathrm{OB}}.
+                            \end{aligned}
+                            \]
+                        </div>
+                    </div>
+                </div>
+
+                <p class="mt-5 text-sm leading-relaxed text-slate-700">
+                    したがって、
+                </p>
+                <div class="math-scroll">
+                    \[
+                    \begin{aligned}
+                    \overrightarrow{\mathrm{G}_1\mathrm{G}_2}
+                    &=
+                    \overrightarrow{\mathrm{OG}_2}
+                    -\overrightarrow{\mathrm{OG}_1}\\
+                    &=
+                    \frac19\overrightarrow{\mathrm{OA}}
+                    -\frac19\overrightarrow{\mathrm{OB}},
+                    \end{aligned}
+                    \]
+                    \[
+                    \begin{aligned}
+                    \overrightarrow{\mathrm{G}_1\mathrm{G}_3}
+                    &=
+                    \overrightarrow{\mathrm{OG}_3}
+                    -\overrightarrow{\mathrm{OG}_1}\\
+                    &=
+                    \frac2{21}\overrightarrow{\mathrm{OA}}
+                    -\frac17\overrightarrow{\mathrm{OB}}.
+                    \end{aligned}
+                    \]
+                </div>
+
+                <div class="mt-5 rounded-xl border-2 border-indigo-300 bg-indigo-50 p-5">
+                    <h4 class="font-bold text-indigo-900">【確認】係数から三角形の面積比を求める公式</h4>
+                    <p class="mt-3 text-sm leading-relaxed text-slate-700">
+                        $\overrightarrow{\mathrm{OA}}$ と
+                        $\overrightarrow{\mathrm{OB}}$ は一次独立であるとします。
+                        同じ点を始点とする2つのベクトルが
+                    </p>
+                    <div class="math-scroll mt-2">
+                        \[
+                        \boldsymbol{u}
+                        =a\overrightarrow{\mathrm{OA}}
+                        +b\overrightarrow{\mathrm{OB}},
+                        \qquad
+                        \boldsymbol{v}
+                        =c\overrightarrow{\mathrm{OA}}
+                        +d\overrightarrow{\mathrm{OB}}
+                        \]
+                    </div>
+                    <p class="text-sm leading-relaxed text-slate-700">
+                        と表されるとき、この2つのベクトルがつくる三角形の面積と
+                        三角形OABの面積の比は
+                    </p>
+                    <div class="mt-3 rounded-lg border border-indigo-300 bg-white p-4 text-center font-bold text-indigo-950">
+                        \[
+                        |ad-bc|
+                        \]
+                    </div>
+                    <p class="mt-3 text-sm text-slate-600">
+                        です。係数を交差させて掛け、その差の絶対値を取ります。
+                    </p>
+                </div>
+
+                <p class="mt-5 text-sm leading-relaxed text-slate-700">
+                    これを
+                    $\overrightarrow{\mathrm{G}_1\mathrm{G}_2}$ と
+                    $\overrightarrow{\mathrm{G}_1\mathrm{G}_3}$ に用いると、
+                </p>
+                <div class="math-scroll">
+                    \[
+                    \begin{aligned}
+                    \frac{
+                    [\triangle\mathrm{G}_1\mathrm{G}_2\mathrm{G}_3]
+                    }{
+                    [\triangle\mathrm{OAB}]
+                    }
+                    &=
+                    \left|
+                    \frac19\left(-\frac17\right)
+                    -
+                    \left(-\frac19\right)\frac2{21}
+                    \right|\\
+                    &=
+                    \left|
+                    -\frac1{63}+\frac2{189}
+                    \right|\\
+                    &=
+                    \frac1{189}.
+                    \end{aligned}
+                    \]
+                </div>
+
+                <p class="mt-4 text-sm leading-relaxed text-slate-700">
+                    また、CはOAを $2:1$ に内分しているので、
+                    \[
+                    \mathrm{AC}=\frac13\mathrm{OA}.
+                    \]
+                    三角形ABCと三角形OABは、底辺をともに直線OA上に取り、Bからの高さが等しい。
+                    したがって、
+                </p>
+                <div class="math-scroll">
+                    \[
+                    \frac{
+                    [\triangle\mathrm{ABC}]
+                    }{
+                    [\triangle\mathrm{OAB}]
+                    }
+                    =
+                    \frac{\mathrm{AC}}{\mathrm{OA}}
+                    =
+                    \frac13.
+                    \]
+                </div>
+
+                <p class="mt-4 text-sm leading-relaxed text-slate-700">
+                    よって、Gの動く範囲である三角形
+                    $\mathrm{G}_1\mathrm{G}_2\mathrm{G}_3$ の面積 $S$ は、
+                </p>
+                <div class="math-scroll">
+                    \[
+                    \begin{aligned}
+                    \frac{S}{[\triangle\mathrm{ABC}]}
+                    &=
+                    \frac{\dfrac1{189}}{\dfrac13}\\
+                    &=
+                    \frac1{63}.
+                    \end{aligned}
+                    \]
+                </div>
+
+                <div class="mt-3 inline-block rounded-xl border-2 border-blue-500 bg-blue-50 p-3 font-bold text-slate-900">
+                    答：$\displaystyle \frac1{63}$ 倍
+                </div>
+
+                <div class="mt-6 rounded-xl border border-slate-200 bg-white p-4">
+                    <svg viewBox="0 0 620 370" class="mx-auto h-auto w-full max-w-[620px]"
+                         role="img" aria-label="三角形DBEの各頂点がG1、G2、G3に移る図">
+                        <defs>
+                            <marker id="arrow-map-45" viewBox="0 0 10 10" refX="8" refY="5"
+                                    markerWidth="7" markerHeight="7" orient="auto">
+                                <path d="M 0 0 L 10 5 L 0 10 z" fill="#64748b"></path>
+                            </marker>
+                        </defs>
+
+                        <polygon points="70,290 245,70 330,220"
+                                 fill="rgba(37,99,235,.13)" stroke="#2563eb" stroke-width="2.5"/>
+                        <text x="76" y="315" fill="#1d4ed8" font-size="15" font-weight="700">D</text>
+                        <text x="240" y="58" fill="#1d4ed8" font-size="15" font-weight="700">B</text>
+                        <text x="338" y="225" fill="#1d4ed8" font-size="15" font-weight="700">E</text>
+                        <text x="154" y="185" fill="#1d4ed8" font-size="15" font-weight="700">Pの領域</text>
+
+                        <line x1="350" y1="180" x2="430" y2="180"
+                              stroke="#64748b" stroke-width="2.2" stroke-dasharray="7 5"
+                              marker-end="url(#arrow-map-45)"/>
+                        <text x="358" y="162" fill="#475569" font-size="13" font-weight="700">重心への写像</text>
+
+                        <polygon points="455,260 515,185 544,236"
+                                 fill="rgba(16,185,129,.18)" stroke="#10b981" stroke-width="2.5"/>
+                        <text x="440" y="282" fill="#047857" font-size="14" font-weight="700">G₂</text>
+                        <text x="507" y="174" fill="#047857" font-size="14" font-weight="700">G₁</text>
+                        <text x="550" y="240" fill="#047857" font-size="14" font-weight="700">G₃</text>
+                        <text x="465" y="226" fill="#047857" font-size="14" font-weight="700">Gの領域</text>
+
+                        <line x1="70" y1="290" x2="455" y2="260" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="5 6"/>
+                        <line x1="245" y1="70" x2="515" y2="185" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="5 6"/>
+                        <line x1="330" y1="220" x2="544" y2="236" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="5 6"/>
+
+                        <text x="105" y="340" fill="#64748b" font-size="13">D → G₂</text>
+                        <text x="255" y="340" fill="#64748b" font-size="13">B → G₁</text>
+                        <text x="405" y="340" fill="#64748b" font-size="13">E → G₃</text>
+                    </svg>
+                    <p class="mt-2 text-center text-xs leading-relaxed text-slate-500">
+                        三角形DBEの3つの頂点の移り先が、Gの動く三角形の3頂点になります。
+                    </p>
+                </div>
+            </div>
+
+            <div class="mt-10">
+                <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">補足：重心による領域の移り方</h3>
+
+                <div class="mt-4 rounded-xl border border-indigo-200 bg-indigo-50 p-5 text-sm leading-relaxed text-slate-700">
+                    <p>
+                        Pの位置ベクトルを $\boldsymbol{p}$、Cの位置ベクトルを $\boldsymbol{c}$ とすると、
+                        Gの位置ベクトル $\boldsymbol{g}$ は
+                    </p>
+                    <div class="math-scroll">
+                        \[
+                        \boldsymbol{g}
+                        =\frac13\boldsymbol{p}+\frac13\boldsymbol{c}.
+                        \]
+                    </div>
+
+                    <p>
+                        ここで、Pが2点 $\mathrm{P}_1,\mathrm{P}_2$ を動くとき、それに対応するGを
+                        $\mathrm{G}_1,\mathrm{G}_2$ とすると、
+                    </p>
+                    <div class="math-scroll">
+                        \[
+                        \begin{aligned}
+                        \overrightarrow{\mathrm{G}_1\mathrm{G}_2}
+                        &=
+                        \left(
+                        \frac13\boldsymbol{p}_2+\frac13\boldsymbol{c}
+                        \right)
+                        -
+                        \left(
+                        \frac13\boldsymbol{p}_1+\frac13\boldsymbol{c}
+                        \right)\\
+                        &=
+                        \frac13(\boldsymbol{p}_2-\boldsymbol{p}_1)\\
+                        &=
+                        \frac13\overrightarrow{\mathrm{P}_1\mathrm{P}_2}.
+                        \end{aligned}
+                        \]
+                    </div>
+
+                    <p>
+                        したがって、対応する線分の長さはすべて $1/3$ になり、方向は変わりません。
+                        これが、Gの領域がPの領域と相似で、相似比が $1/3$ になる理由です。
+                    </p>
+
+                    <div class="mt-4 rounded-lg border border-indigo-300 bg-white p-4 text-center font-bold text-indigo-950">
+                        長さの比が $\dfrac13$
+                        $\quad\Longrightarrow\quad$
+                        面積の比は
+                        $\left(\dfrac13\right)^2=\dfrac19$
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-10">
+                <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">受験生のつまずきポイント</h3>
+                <div class="mt-4 space-y-4">
+                    <div class="rounded-lg border border-red-200 bg-red-50 p-4">
+                        <p class="text-sm font-bold text-red-900">Dの位置ベクトルで係数を逆にする</p>
+                        <p class="mt-1 text-sm text-red-800">
+                            $\mathrm{AD}:\mathrm{DB}=2:1$ のとき、
+                            Aの係数は反対側の比1、Bの係数は反対側の比2です。
+                        </p>
+                    </div>
+
+                    <div class="rounded-lg border border-red-200 bg-red-50 p-4">
+                        <p class="text-sm font-bold text-red-900">Eを1通りにしか表さない</p>
+                        <p class="mt-1 text-sm text-red-800">
+                            交点問題では、EがOD上にあることとBC上にあることを両方使います。
+                            2通りの表現を作って初めて係数比較ができます。
+                        </p>
+                    </div>
+
+                    <div class="rounded-lg border border-red-200 bg-red-50 p-4">
+                        <p class="text-sm font-bold text-red-900">相似比 $1/3$ をそのまま面積比にしてしまう</p>
+                        <p class="mt-1 text-sm text-red-800">
+                            面積比は長さの比の2乗です。したがって、Gの領域はPの領域の $1/9$ です。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mt-6 rounded-2xl bg-blue-900 p-6 text-white shadow-sm sm:p-8">
+            <h2 class="border-b-2 border-blue-400 pb-2 text-lg font-bold">アクティブリコール（復習テスト）</h2>
+            <p class="mt-4 text-sm text-blue-200">質問をクリックし、答えを頭の中で作ってから開いてください。</p>
+
+            <div class="mt-6 space-y-3">
+                <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                    <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                        <span>Q1. $\mathrm{AD}:\mathrm{DB}=2:1$ のとき、$\overrightarrow{\mathrm{OD}}$ はどう表されますか？</span>
+                        <span class="transition duration-300 group-open:-rotate-180">⌄</span>
+                    </summary>
+                    <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                        \[
+                        \overrightarrow{\mathrm{OD}}
+                        =
+                        \frac13\overrightarrow{\mathrm{OA}}
+                        +\frac23\overrightarrow{\mathrm{OB}}
+                        \]
+                        です。
+                    </div>
+                </details>
+
+                <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                    <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                        <span>Q2. EをBC上の点として表す式は何ですか？</span>
+                        <span class="transition duration-300 group-open:-rotate-180">⌄</span>
+                    </summary>
+                    <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                        \[
+                        \overrightarrow{\mathrm{OE}}
+                        =
+                        \overrightarrow{\mathrm{OB}}
+                        +t
+                        \left(
+                        \overrightarrow{\mathrm{OC}}
+                        -\overrightarrow{\mathrm{OB}}
+                        \right)
+                        \]
+                        です。
+                    </div>
+                </details>
+
+                <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                    <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                        <span>Q3. $\mathrm{BE}:\mathrm{EC}$ は何対何ですか？</span>
+                        <span class="transition duration-300 group-open:-rotate-180">⌄</span>
+                    </summary>
+                    <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                        $t=3/7$ なので、
+                        \[
+                        \mathrm{BE}:\mathrm{EC}=3:4
+                        \]
+                        です。
+                    </div>
+                </details>
+
+                <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                    <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                        <span>Q4. $\triangle\mathrm{DBE}:\triangle\mathrm{ABC}$ は何対何ですか？</span>
+                        <span class="transition duration-300 group-open:-rotate-180">⌄</span>
+                    </summary>
+                    <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                        \[
+                        \frac{\mathrm{BD}}{\mathrm{BA}}
+                        \cdot
+                        \frac{\mathrm{BE}}{\mathrm{BC}}
+                        =
+                        \frac13\cdot\frac37
+                        =
+                        \frac17
+                        \]
+                        より、$1:7$ です。
+                    </div>
+                </details>
+
+                <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                    <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                        <span>Q5. Gの動く範囲の面積は、三角形ABCの面積の何倍ですか？</span>
+                        <span class="transition duration-300 group-open:-rotate-180">⌄</span>
+                    </summary>
+                    <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                        Pの領域からGの領域への相似比が $1/3$ なので面積比は $1/9$。
+                        さらに $\triangle\mathrm{DBE}$ は $\triangle\mathrm{ABC}$ の $1/7$ だから、
+                        \[
+                        \frac19\cdot\frac17=\frac1{63}
+                        \]
+                        倍です。
+                    </div>
+                </details>
+            </div>
+        </section>
+
+        <nav class="mt-7 grid gap-3 sm:grid-cols-2">
+            <a href="no44.html" class="nav-button rounded-xl border border-slate-300 bg-white px-5 py-4 text-center font-bold text-slate-700 hover:border-blue-300 hover:text-blue-800">
+                ← No.44へ
+            </a>
+            <a href="no46.html" class="nav-button rounded-xl bg-blue-700 px-5 py-4 text-center font-bold text-white hover:bg-blue-800">
+                No.46 →
+            </a>
+        </nav>
+    </main>
+
+    <footer class="py-10 text-center text-sm text-slate-500">
+        医進・サイエンスコース　夏期数学課題 解説サイト
+    </footer>
+</div>
+</body>
+</html>

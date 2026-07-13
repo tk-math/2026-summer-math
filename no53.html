@@ -1,0 +1,1237 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>夏期課題 No.53 空間ベクトル - 医進・サイエンスコース</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        MathJax = {
+            chtml: { matchFontHeight: false },
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body { font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif; }
+        .nav-button { transition: transform .16s ease, box-shadow .16s ease; }
+        .nav-button:hover { transform: translateY(-2px); box-shadow: 0 8px 18px rgba(15, 23, 42, .12); }
+        .math-scroll { overflow-x: auto; overflow-y: hidden; padding-bottom: .5rem; margin-bottom: .5rem; }
+        button:focus-visible, summary:focus-visible, a:focus-visible, input:focus-visible {
+            outline: 3px solid rgba(37, 99, 235, .35);
+            outline-offset: 3px;
+        }
+    </style>
+</head>
+<body class="bg-slate-100 text-slate-800">
+<div class="mx-auto max-w-4xl px-4 py-6 sm:px-6 lg:py-10">
+
+    <a href="index.html" class="inline-flex items-center gap-2 text-sm font-bold text-blue-700 hover:text-blue-900">
+        ← 問題一覧へ戻る
+    </a>
+
+    <header class="mt-4 overflow-hidden rounded-3xl bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-800 text-white shadow-xl">
+        <div class="p-7 sm:p-10">
+            <span class="inline-flex items-center rounded-full bg-white/15 px-4 py-1.5 text-sm font-semibold tracking-wide text-blue-100">医進・サイエンスコース</span>
+            <div class="mt-4 flex flex-wrap items-center gap-3">
+                <span class="rounded-lg bg-white/20 px-3 py-1 text-sm font-bold">No.53</span>
+                <span class="rounded-full bg-amber-100 px-3 py-1 text-xs font-bold text-amber-800">標準</span>
+            </div>
+            <h1 class="mt-4 text-3xl font-bold leading-tight sm:text-4xl">空間ベクトル</h1>
+            <div class="mt-3 text-lg text-blue-100">目標解答時間：25分</div>
+        </div>
+    </header>
+
+    <main>
+        <section class="mt-7 rounded-2xl border border-blue-100 bg-white p-6 shadow-sm sm:p-8">
+            <h2 class="flex items-center gap-2 text-xl font-bold text-blue-900">
+                <span class="grid h-8 w-8 place-items-center rounded-full bg-blue-700 text-base text-white">1</span>
+                問題
+            </h2>
+
+            <div class="mt-4 rounded-lg border border-slate-200 bg-slate-50 p-4 text-slate-700 leading-relaxed">
+                <p>
+                    体積が1である四面体OABCがある。
+                </p>
+
+                <p class="mt-2">
+                    辺OA、BCをそれぞれ $t:(1-t)$ に内分する点をD、Eとし、
+                    線分DEを $t:(1-t)$ に内分する点をFとする。
+                    ただし、
+                    \[
+                    0&lt;t&lt;1
+                    \]
+                    とする。
+                </p>
+
+                <p class="mt-2">
+                    直線OFと平面ABCの交点をPとし、四面体DPBEの体積を $V$ とする。
+                </p>
+
+                <ol class="mt-4 list-decimal space-y-4 pl-6">
+                    <li>
+                        $\overrightarrow{\mathrm{OF}}$ を
+                        $\overrightarrow{\mathrm{OA}}$、
+                        $\overrightarrow{\mathrm{OB}}$、
+                        $\overrightarrow{\mathrm{OC}}$
+                        を用いて表せ。
+                    </li>
+                    <li>
+                        $\overrightarrow{\mathrm{OP}}$ を
+                        $\overrightarrow{\mathrm{OA}}$、
+                        $\overrightarrow{\mathrm{OB}}$、
+                        $\overrightarrow{\mathrm{OC}}$
+                        を用いて表せ。
+                    </li>
+                    <li>
+                        $V$ を $t$ を用いて表せ。
+                    </li>
+                </ol>
+            </div>
+
+            <div class="mt-4 rounded-lg border border-blue-200 bg-blue-50 p-4">
+                <h3 class="mb-2 font-bold text-blue-900">【条件の整理】</h3>
+
+                <ul class="list-disc space-y-2 pl-5 text-sm text-slate-700">
+                    <li>
+                        DはOAを $t:(1-t)$ に内分するので、
+                        \[
+                        \overrightarrow{\mathrm{OD}}
+                        =t\overrightarrow{\mathrm{OA}}.
+                        \]
+                    </li>
+                    <li>
+                        EはBCを $t:(1-t)$ に内分するので、
+                        \[
+                        \overrightarrow{\mathrm{OE}}
+                        =(1-t)\overrightarrow{\mathrm{OB}}
+                        +t\overrightarrow{\mathrm{OC}}.
+                        \]
+                    </li>
+                    <li>
+                        FはDEを $t:(1-t)$ に内分するので、
+                        \[
+                        \overrightarrow{\mathrm{OF}}
+                        =(1-t)\overrightarrow{\mathrm{OD}}
+                        +t\overrightarrow{\mathrm{OE}}.
+                        \]
+                    </li>
+                    <li>
+                        O、A、B、Cは同一平面上にないので、
+                        $\overrightarrow{\mathrm{OA}}$、
+                        $\overrightarrow{\mathrm{OB}}$、
+                        $\overrightarrow{\mathrm{OC}}$
+                        は一次独立です。
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="mt-6 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+            <h2 class="flex items-center gap-2 text-xl font-bold text-slate-900">
+                <span class="grid h-8 w-8 place-items-center rounded-full bg-slate-700 text-base text-white">2</span>
+                解説
+            </h2>
+
+            <p class="mt-4 text-sm leading-8 text-slate-600">
+                内分点の位置ベクトル、平面上の点の係数条件、面積比・高さ比による体積比を順に利用します。
+            </p>
+
+            <div class="mt-8 rounded-xl border border-amber-200 bg-amber-50 p-5">
+                <h3 class="border-b-2 border-amber-400 pb-2 text-lg font-bold text-amber-900">解法選択のトリガー</h3>
+
+                <div class="mt-4 space-y-4">
+                    <div class="rounded-lg border border-amber-200 bg-amber-100/60 p-4">
+                        <p class="text-sm font-bold text-amber-900">内分点が連続して現れる</p>
+                        <p class="mt-1 text-sm text-amber-800">
+                            D、Eを先に表し、それらを使ってFを表します。
+                            一度に計算せず、内分の順序どおりに処理します。
+                        </p>
+                    </div>
+
+                    <div class="rounded-lg border border-amber-200 bg-amber-100/60 p-4">
+                        <p class="text-sm font-bold text-amber-900">直線と平面の交点</p>
+                        <p class="mt-1 text-sm text-amber-800">
+                            Pは直線OF上にあるので
+                            \[
+                            \overrightarrow{\mathrm{OP}}
+                            =k\overrightarrow{\mathrm{OF}}
+                            \]
+                            と置きます。
+                            平面ABC上の点では、A、B、Cの係数の和が1になります。
+                        </p>
+                    </div>
+
+                    <div class="rounded-lg border border-amber-200 bg-amber-100/60 p-4">
+                        <p class="text-sm font-bold text-amber-900">四面体の体積比</p>
+                        <p class="mt-1 text-sm text-amber-800">
+                            同じ底面をもつ四面体では高さの比を使い、
+                            同じ頂点をもつ四面体では底面積の比を使います。
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="mt-8 rounded-xl border border-emerald-200 bg-emerald-50 p-5">
+                <h3 class="border-b-2 border-emerald-400 pb-2 text-lg font-bold text-emerald-900">思考プロセス</h3>
+
+                <div class="mt-4 space-y-4">
+                    <div class="rounded-lg border border-emerald-200 bg-emerald-100/60 p-4 text-sm text-emerald-900">
+                        <strong>（1）D、E、Fの順に位置ベクトルを作る</strong><br>
+                        FはDとEの内分点なので、DとEの位置ベクトルをそのまま代入します。
+                    </div>
+
+                    <div class="rounded-lg border border-emerald-200 bg-emerald-100/60 p-4 text-sm text-emerald-900">
+                        <strong>（2）係数和が1になるように倍率を決める</strong><br>
+                        Pは平面ABC上にあるので、
+                        $\overrightarrow{\mathrm{OA}}$、
+                        $\overrightarrow{\mathrm{OB}}$、
+                        $\overrightarrow{\mathrm{OC}}$
+                        の係数の和を1にします。
+                    </div>
+
+                    <div class="rounded-lg border border-emerald-200 bg-emerald-100/60 p-4 text-sm text-emerald-900">
+                        <strong>（3）体積を2段階の比に分解する</strong><br>
+                        まず四面体DPBEとOPBEの高さ比を求め、
+                        次に三角形PBEとABCの面積比を求めます。
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="mt-10">
+                <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">実際の答案</h3>
+
+                <div class="mt-4 space-y-8 text-slate-700">
+                    <div>
+                        <p class="border-b border-slate-200 pb-1 font-bold text-blue-800">（1）</p>
+
+                        <p class="mt-2">
+                            DはOAを $t:(1-t)$ に内分するから、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            \overrightarrow{\mathrm{OD}}
+                            =t\overrightarrow{\mathrm{OA}}.
+                            \]
+                        </div>
+
+                        <p class="mt-3">
+                            EはBCを $t:(1-t)$ に内分するから、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            \overrightarrow{\mathrm{OE}}
+                            =(1-t)\overrightarrow{\mathrm{OB}}
+                            +t\overrightarrow{\mathrm{OC}}.
+                            \]
+                        </div>
+
+                        <p class="mt-3">
+                            また、FはDEを $t:(1-t)$ に内分するから、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            \begin{aligned}
+                            \overrightarrow{\mathrm{OF}}
+                            &=
+                            (1-t)\overrightarrow{\mathrm{OD}}
+                            +t\overrightarrow{\mathrm{OE}}\\
+                            &=
+                            (1-t)t\overrightarrow{\mathrm{OA}}\\
+                            &\quad
+                            +t\left\{
+                            (1-t)\overrightarrow{\mathrm{OB}}
+                            +t\overrightarrow{\mathrm{OC}}
+                            \right\}\\
+                            &=
+                            t(1-t)\overrightarrow{\mathrm{OA}}
+                            +t(1-t)\overrightarrow{\mathrm{OB}}
+                            +t^2\overrightarrow{\mathrm{OC}}.
+                            \end{aligned}
+                            \]
+                        </div>
+
+                        <div class="mt-2 rounded-xl border-2 border-blue-500 bg-blue-50 p-3 font-bold text-slate-900">
+                            \[
+                            \overrightarrow{\mathrm{OF}}
+                            =
+                            t(1-t)\overrightarrow{\mathrm{OA}}
+                            +t(1-t)\overrightarrow{\mathrm{OB}}
+                            +t^2\overrightarrow{\mathrm{OC}}
+                            \]
+                        </div>
+                    </div>
+
+                    <div class="border-t border-slate-200 pt-6">
+                        <p class="border-b border-slate-200 pb-1 font-bold text-blue-800">（2）</p>
+
+                        <p class="mt-2">
+                            Pは直線OF上にあるので、実数 $k$ を用いて
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            \overrightarrow{\mathrm{OP}}
+                            =
+                            k\overrightarrow{\mathrm{OF}}
+                            \]
+                        </div>
+
+                        <p>
+                            と表せる。したがって、（1）より、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            \begin{aligned}
+                            \overrightarrow{\mathrm{OP}}
+                            &=
+                            kt(1-t)\overrightarrow{\mathrm{OA}}\\
+                            &\quad
+                            +kt(1-t)\overrightarrow{\mathrm{OB}}
+                            +kt^2\overrightarrow{\mathrm{OC}}.
+                            \end{aligned}
+                            \]
+                        </div>
+
+                        <p class="mt-3">
+                            $\overrightarrow{\mathrm{OA}}$、
+                            $\overrightarrow{\mathrm{OB}}$、
+                            $\overrightarrow{\mathrm{OC}}$
+                            は一次独立である。
+                            また、Pは平面ABC上にあるので、3つの係数の和は1である。
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            kt(1-t)+kt(1-t)+kt^2=1.
+                            \]
+                        </div>
+
+                        <p>
+                            左辺を整理すると、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            kt\{2(1-t)+t\}=1
+                            \]
+                            \[
+                            kt(2-t)=1.
+                            \]
+                        </div>
+
+                        <p>
+                            $0&lt;t&lt;1$ より $t(2-t)&gt;0$ なので、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            k=\frac1{t(2-t)}.
+                            \]
+                        </div>
+
+                        <p>
+                            よって、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            \begin{aligned}
+                            \overrightarrow{\mathrm{OP}}
+                            &=
+                            \frac{1-t}{2-t}\overrightarrow{\mathrm{OA}}
+                            +\frac{1-t}{2-t}\overrightarrow{\mathrm{OB}}
+                            +\frac{t}{2-t}\overrightarrow{\mathrm{OC}}.
+                            \end{aligned}
+                            \]
+                        </div>
+
+                        <div class="mt-2 rounded-xl border-2 border-blue-500 bg-blue-50 p-3 font-bold text-slate-900">
+                            \[
+                            \overrightarrow{\mathrm{OP}}
+                            =
+                            \frac{1-t}{2-t}\overrightarrow{\mathrm{OA}}
+                            +\frac{1-t}{2-t}\overrightarrow{\mathrm{OB}}
+                            +\frac{t}{2-t}\overrightarrow{\mathrm{OC}}
+                            \]
+                        </div>
+                    </div>
+
+                    <div class="border-t border-slate-200 pt-6">
+                        <p class="border-b border-slate-200 pb-1 font-bold text-blue-800">（3）四面体DPBEとOPBEの体積比</p>
+
+                        <p class="mt-2">
+                            三角形PBEは平面ABC上にある。
+                            四面体DPBEと四面体OPBEは、底面PBEを共有する。
+                        </p>
+
+                        <p class="mt-3">
+                            DはOAを
+                            \[
+                            \mathrm{OD}:\mathrm{DA}=t:(1-t)
+                            \]
+                            に内分する。
+                            Aは平面ABC上にあるので、Dから平面ABCまでの距離は、
+                            Oから平面ABCまでの距離の $1-t$ 倍である。
+                        </p>
+
+                        <p>
+                            よって、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            \frac{
+                            [\text{四面体DPBE}]
+                            }{
+                            [\text{四面体OPBE}]
+                            }
+                            =1-t.
+                            \]
+                        </div>
+                    </div>
+
+                    <div class="border-t border-slate-200 pt-6">
+                        <p class="border-b border-slate-200 pb-1 font-bold text-blue-800">（3）三角形PBEとABCの面積比</p>
+
+                        <p class="mt-2">
+                            EはBCを $t:(1-t)$ に内分するので、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            \frac{\mathrm{BE}}{\mathrm{BC}}=t.
+                            \]
+                        </div>
+
+                        <p class="mt-3">
+                            また、（2）より、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            \overrightarrow{\mathrm{OP}}
+                            =
+                            \frac{1-t}{2-t}\overrightarrow{\mathrm{OA}}
+                            +\frac{1-t}{2-t}\overrightarrow{\mathrm{OB}}
+                            +\frac{t}{2-t}\overrightarrow{\mathrm{OC}}.
+                            \]
+                        </div>
+
+                        <p>
+                            Aの係数は
+                            \[
+                            \frac{1-t}{2-t}.
+                            \]
+                            したがって、Pから直線BCまでの距離は、
+                            Aから直線BCまでの距離の
+                            \[
+                            \frac{1-t}{2-t}
+                            \]
+                            倍である。
+                        </p>
+
+                        <div class="mt-4 rounded-lg border border-slate-200 bg-slate-50 p-4 text-sm">
+                            <p class="font-bold text-slate-900">高さ比になる理由</p>
+                            <p class="mt-2">
+                                Pは
+                                \[
+                                \overrightarrow{\mathrm{OP}}
+                                =
+                                \frac{1-t}{2-t}\overrightarrow{\mathrm{OA}}
+                                +
+                                \left(
+                                1-\frac{1-t}{2-t}
+                                \right)\overrightarrow{\mathrm{OQ}}
+                                \]
+                                と表せる。ただしQは直線BC上の点である。
+                                よって、Pは線分AQ上で、BCからの高さはAの高さの
+                                $\dfrac{1-t}{2-t}$ 倍になる。
+                            </p>
+                        </div>
+
+                        <p class="mt-4">
+                            よって、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            \begin{aligned}
+                            \frac{
+                            [\triangle\mathrm{PBE}]
+                            }{
+                            [\triangle\mathrm{ABC}]
+                            }
+                            &=
+                            \frac{\mathrm{BE}}{\mathrm{BC}}
+                            \cdot
+                            \frac{
+                            \text{PからBCまでの距離}
+                            }{
+                            \text{AからBCまでの距離}
+                            }\\
+                            &=
+                            t\cdot\frac{1-t}{2-t}\\
+                            &=
+                            \frac{t(1-t)}{2-t}.
+                            \end{aligned}
+                            \]
+                        </div>
+                    </div>
+
+                    <div class="border-t border-slate-200 pt-6">
+                        <p class="border-b border-slate-200 pb-1 font-bold text-blue-800">（3）体積 $V$ を求める</p>
+
+                        <p class="mt-2">
+                            四面体OPBEと四面体OABCは頂点Oを共有し、底面はいずれも平面ABC上にある。
+                            よって、体積比は底面積の比に等しい。
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            \frac{
+                            [\text{四面体OPBE}]
+                            }{
+                            [\text{四面体OABC}]
+                            }
+                            =
+                            \frac{t(1-t)}{2-t}.
+                            \]
+                        </div>
+
+                        <p>
+                            四面体OABCの体積は1であるから、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            [\text{四面体OPBE}]
+                            =
+                            \frac{t(1-t)}{2-t}.
+                            \]
+                        </div>
+
+                        <p>
+                            さらに、四面体DPBEは四面体OPBEの $1-t$ 倍なので、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            \begin{aligned}
+                            V
+                            &=
+                            (1-t)\cdot
+                            \frac{t(1-t)}{2-t}\\
+                            &=
+                            \frac{t(1-t)^2}{2-t}.
+                            \end{aligned}
+                            \]
+                        </div>
+
+                        <div class="mt-2 inline-block rounded-xl border-2 border-blue-500 bg-blue-50 p-3 font-bold text-slate-900">
+                            \[
+                            V=\frac{t(1-t)^2}{2-t}
+                            \]
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="mt-10">
+                <h3 class="border-b-2 border-violet-200 pb-2 text-lg font-bold text-violet-900">補足：数学Ⅲまで学習すると、模試ではここまで問われる</h3>
+
+                <div class="mt-4 rounded-xl border border-violet-200 bg-violet-50 p-5 text-sm leading-relaxed text-slate-700">
+                    <p>
+                        本問の（1）～（3）は、空間ベクトルと体積比を扱う高2段階の問題です。
+                        数学Ⅲで分数関数の微分まで学習すると、模試では次の最大化まで一続きで問われることがあります。
+                    </p>
+
+                    <div class="mt-4 rounded-lg border border-violet-300 bg-white p-4">
+                        <p class="font-bold text-violet-900">発展的な追加問題（4）</p>
+                        <p class="mt-2">
+                            $t$ が $0&lt;t&lt;1$ の範囲を変化するとき、$V$ を最大にする $t$ の値を求めよ。
+                        </p>
+                    </div>
+
+                    <h4 class="mt-6 border-b border-violet-200 pb-2 text-base font-bold text-violet-900">数学Ⅲの微分による解答</h4>
+
+                    <p class="mt-4">
+                        （3）より、
+                    </p>
+
+                    <div class="math-scroll">
+                        \[
+                        V(t)=\frac{t(1-t)^2}{2-t}.
+                        \]
+                    </div>
+
+                    <p>
+                        分子を
+                        \[
+                        g(t)=t(1-t)^2
+                        \]
+                        とおくと、
+                    </p>
+
+                    <div class="math-scroll">
+                        \[
+                        \begin{aligned}
+                        g'(t)
+                        &=(1-t)^2-2t(1-t)\\
+                        &=(1-t)(1-3t).
+                        \end{aligned}
+                        \]
+                    </div>
+
+                    <p>
+                        商の微分法より、
+                    </p>
+
+                    <div class="math-scroll">
+                        \[
+                        \begin{aligned}
+                        V'(t)
+                        &=
+                        \frac{
+                        g'(t)(2-t)+g(t)
+                        }{(2-t)^2}\\
+                        &=
+                        \frac{
+                        (1-t)(1-3t)(2-t)+t(1-t)^2
+                        }{(2-t)^2}\\
+                        &=
+                        \frac{
+                        (1-t)\{(1-3t)(2-t)+t(1-t)\}
+                        }{(2-t)^2}\\
+                        &=
+                        \frac{
+                        2(1-t)(t^2-3t+1)
+                        }{(2-t)^2}.
+                        \end{aligned}
+                        \]
+                    </div>
+
+                    <p class="mt-3">
+                        $0&lt;t&lt;1$ では、
+                        \[
+                        1-t&gt;0,
+                        \qquad
+                        (2-t)^2&gt;0
+                        \]
+                        である。したがって、$V'(t)$ の符号は
+                        \[
+                        t^2-3t+1
+                        \]
+                        の符号と一致する。
+                    </p>
+
+                    <p class="mt-3">
+                        方程式
+                    </p>
+
+                    <div class="math-scroll">
+                        \[
+                        t^2-3t+1=0
+                        \]
+                    </div>
+
+                    <p>
+                        を解くと、
+                    </p>
+
+                    <div class="math-scroll">
+                        \[
+                        t=\frac{3-\sqrt5}{2},
+                        \qquad
+                        \frac{3+\sqrt5}{2}.
+                        \]
+                    </div>
+
+                    <p>
+                        このうち $0&lt;t&lt;1$ に入るのは
+                        \[
+                        \frac{3-\sqrt5}{2}
+                        \]
+                        だけである。
+                    </p>
+
+                    <div class="mt-4 overflow-x-auto">
+                        <table class="mx-auto min-w-[540px] border-collapse text-center text-sm">
+                            <thead>
+                                <tr class="bg-white">
+                                    <th class="border border-violet-200 px-3 py-2">$t$</th>
+                                    <th class="border border-violet-200 px-3 py-2">
+                                        $0&lt;t&lt;\dfrac{3-\sqrt5}{2}$
+                                    </th>
+                                    <th class="border border-violet-200 px-3 py-2">
+                                        $\dfrac{3-\sqrt5}{2}$
+                                    </th>
+                                    <th class="border border-violet-200 px-3 py-2">
+                                        $\dfrac{3-\sqrt5}{2}&lt;t&lt;1$
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="border border-violet-200 px-3 py-2">$V'(t)$</td>
+                                    <td class="border border-violet-200 px-3 py-2 font-bold text-emerald-700">正</td>
+                                    <td class="border border-violet-200 px-3 py-2">0</td>
+                                    <td class="border border-violet-200 px-3 py-2 font-bold text-red-700">負</td>
+                                </tr>
+                                <tr>
+                                    <td class="border border-violet-200 px-3 py-2">$V(t)$</td>
+                                    <td class="border border-violet-200 px-3 py-2">増加</td>
+                                    <td class="border border-violet-200 px-3 py-2 font-bold text-violet-800">最大</td>
+                                    <td class="border border-violet-200 px-3 py-2">減少</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <p class="mt-4">
+                        よって、$V$ を最大にする $t$ は
+                    </p>
+
+                    <div class="mt-3 rounded-lg border border-violet-300 bg-white p-4 text-center font-bold text-violet-950">
+                        \[
+                        t=\frac{3-\sqrt5}{2}
+                        \]
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-10">
+                <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">図解・可視化</h3>
+
+                <p class="mt-4 text-sm leading-relaxed text-slate-700">
+                    $t$ を動かすと、D、E、F、Pの位置と四面体DPBEの体積が変化します。
+                    左図は位置関係を見やすくするための斜投影図、右図は補足問題の最大化を確認するグラフです。
+                </p>
+
+                <div class="mt-4 rounded-lg border border-slate-200 bg-slate-50 p-4 sm:p-6">
+                    <div class="mx-auto max-w-xl">
+                        <label for="t-slider" class="mb-2 block text-sm font-medium text-slate-700">
+                            t：
+                            <span id="t-display" class="text-lg font-bold text-blue-700">0.382</span>
+                        </label>
+
+                        <input id="t-slider" type="range" min="0.02" max="0.98" step="0.002" value="0.3819660113"
+                               class="h-2 w-full cursor-pointer appearance-none rounded-lg bg-slate-200 accent-blue-600">
+
+                        <div class="mt-3 flex flex-wrap justify-center gap-2">
+                            <button type="button" data-t="0.25"
+                                    class="rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm font-bold text-slate-700 hover:bg-slate-100">
+                                t = 1/4
+                            </button>
+
+                            <button type="button" data-t="0.3819660113"
+                                    class="rounded-lg border border-emerald-200 bg-white px-3 py-2 text-sm font-bold text-emerald-700 hover:bg-emerald-50">
+                                体積最大
+                            </button>
+
+                            <button type="button" data-t="0.5"
+                                    class="rounded-lg border border-blue-200 bg-white px-3 py-2 text-sm font-bold text-blue-700 hover:bg-blue-50">
+                                t = 1/2
+                            </button>
+
+                            <button type="button" data-t="0.75"
+                                    class="rounded-lg border border-violet-200 bg-white px-3 py-2 text-sm font-bold text-violet-700 hover:bg-violet-50">
+                                t = 3/4
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="mt-5 grid gap-6 lg:grid-cols-2">
+                        <div>
+                            <h4 class="text-center font-bold text-slate-800">四面体内の点の位置</h4>
+
+                            <svg id="tetra-svg" width="600" height="470" viewBox="0 0 600 470"
+                                 class="mt-3 mx-auto h-auto w-full max-w-[600px] rounded-xl border border-slate-200 bg-white"
+                                 aria-label="四面体OABCと点D、E、F、P">
+
+                                <polygon id="face-abc" fill="rgba(148,163,184,.10)" stroke="#64748b" stroke-width="2"></polygon>
+                                <polygon id="tetra-dpbe" fill="rgba(16,185,129,.20)" stroke="#10b981" stroke-width="2.5"></polygon>
+
+                                <g stroke="#475569" stroke-width="2.2">
+                                    <line id="oa-line"></line>
+                                    <line id="ob-line"></line>
+                                    <line id="oc-line"></line>
+                                    <line id="ab-line"></line>
+                                    <line id="ac-line"></line>
+                                    <line id="bc-line"></line>
+                                </g>
+
+                                <line id="de-line" stroke="#f59e0b" stroke-width="2.5" stroke-dasharray="7 5"></line>
+                                <line id="of-line" stroke="#7c3aed" stroke-width="2.5" stroke-dasharray="7 5"></line>
+
+                                <g>
+                                    <circle id="point-o" r="5" fill="#111827"></circle>
+                                    <circle id="point-a" r="5" fill="#111827"></circle>
+                                    <circle id="point-b" r="5" fill="#111827"></circle>
+                                    <circle id="point-c" r="5" fill="#111827"></circle>
+                                    <circle id="point-d" r="7" fill="#2563eb"></circle>
+                                    <circle id="point-e" r="7" fill="#e11d48"></circle>
+                                    <circle id="point-f" r="7" fill="#f59e0b"></circle>
+                                    <circle id="point-p" r="7" fill="#7c3aed"></circle>
+                                </g>
+
+                                <g font-size="14" font-weight="700">
+                                    <text id="label-o" fill="#111827">O</text>
+                                    <text id="label-a" fill="#111827">A</text>
+                                    <text id="label-b" fill="#111827">B</text>
+                                    <text id="label-c" fill="#111827">C</text>
+                                    <text id="label-d" fill="#1d4ed8">D</text>
+                                    <text id="label-e" fill="#be123c">E</text>
+                                    <text id="label-f" fill="#b45309">F</text>
+                                    <text id="label-p" fill="#6d28d9">P</text>
+                                    <text id="volume-label" fill="#047857">四面体DPBE</text>
+                                </g>
+                            </svg>
+                        </div>
+
+                        <div>
+                            <h4 class="text-center font-bold text-slate-800">体積 V(t) のグラフ</h4>
+
+                            <svg id="volume-svg" width="600" height="470" viewBox="0 0 600 470"
+                                 class="mt-3 mx-auto h-auto w-full max-w-[600px] rounded-xl border border-slate-200 bg-white"
+                                 aria-label="V(t)のグラフ">
+
+                                <g id="volume-grid"></g>
+                                <line id="volume-x-axis" stroke="#64748b" stroke-width="1.5"></line>
+                                <line id="volume-y-axis" stroke="#64748b" stroke-width="1.5"></line>
+
+                                <path id="volume-path" fill="none" stroke="#2563eb" stroke-width="3"></path>
+                                <line id="max-guide" stroke="#10b981" stroke-width="2" stroke-dasharray="7 5"></line>
+
+                                <circle id="current-volume" r="7" fill="#e11d48"></circle>
+                                <circle id="max-volume" r="7" fill="#10b981"></circle>
+
+                                <g font-size="13" font-weight="700">
+                                    <text id="current-volume-label" fill="#be123c"></text>
+                                    <text id="max-volume-label" fill="#047857">最大</text>
+                                    <text x="560" y="420" fill="#64748b">t</text>
+                                    <text x="62" y="25" fill="#64748b">V</text>
+                                </g>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <div class="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+                        <div class="rounded-lg border border-slate-200 bg-white p-3 text-center">
+                            <div class="text-xs font-bold text-slate-500">係数和</div>
+                            <div id="sum-display" class="mt-1 text-lg font-bold text-slate-800"></div>
+                        </div>
+
+                        <div class="rounded-lg border border-blue-200 bg-blue-50 p-3 text-center">
+                            <div class="text-xs font-bold text-blue-700">PのA係数</div>
+                            <div id="pa-display" class="mt-1 text-lg font-bold text-blue-800"></div>
+                        </div>
+
+                        <div class="rounded-lg border border-violet-200 bg-violet-50 p-3 text-center">
+                            <div class="text-xs font-bold text-violet-700">PのC係数</div>
+                            <div id="pc-display" class="mt-1 text-lg font-bold text-violet-800"></div>
+                        </div>
+
+                        <div class="rounded-lg border border-emerald-200 bg-emerald-50 p-3 text-center">
+                            <div class="text-xs font-bold text-emerald-700">体積 V</div>
+                            <div id="v-display" class="mt-1 text-lg font-bold text-emerald-800"></div>
+                        </div>
+                    </div>
+
+                    <div id="status" class="mt-4 rounded-lg border border-slate-300 bg-white p-4 text-center text-sm font-bold text-slate-700">
+                        tを動かして点と体積の変化を確認してください
+                    </div>
+                </div>
+
+                <script>
+                    document.addEventListener("DOMContentLoaded", () => {
+                        const slider = document.getElementById("t-slider");
+                        const tDisplay = document.getElementById("t-display");
+
+                        const O3 = {x:0,y:0,z:0};
+                        const A3 = {x:1,y:0,z:0};
+                        const B3 = {x:0,y:1,z:0};
+                        const C3 = {x:0,y:0,z:1};
+
+                        function project(p) {
+                            return {
+                                x:110 + 290*p.x + 105*p.y + 55*p.z,
+                                y:385 - 55*p.x - 205*p.y - 300*p.z
+                            };
+                        }
+
+                        const O = project(O3);
+                        const A = project(A3);
+                        const B = project(B3);
+                        const C = project(C3);
+
+                        function mix(p,q,s) {
+                            return {
+                                x:(1-s)*p.x+s*q.x,
+                                y:(1-s)*p.y+s*q.y,
+                                z:(1-s)*p.z+s*q.z
+                            };
+                        }
+
+                        function setPoint(id,p) {
+                            const q=project(p);
+                            const el=document.getElementById(id);
+                            el.setAttribute("cx",q.x);
+                            el.setAttribute("cy",q.y);
+                        }
+
+                        function setText(id,p,dx,dy) {
+                            const q=project(p);
+                            const el=document.getElementById(id);
+                            el.setAttribute("x",q.x+dx);
+                            el.setAttribute("y",q.y+dy);
+                        }
+
+                        function setLineProjected(id,p,q) {
+                            const p2=project(p), q2=project(q);
+                            const el=document.getElementById(id);
+                            el.setAttribute("x1",p2.x);
+                            el.setAttribute("y1",p2.y);
+                            el.setAttribute("x2",q2.x);
+                            el.setAttribute("y2",q2.y);
+                        }
+
+                        function polygonPoints(points) {
+                            return points.map(p=>{
+                                const q=project(p);
+                                return `${q.x},${q.y}`;
+                            }).join(" ");
+                        }
+
+                        document.getElementById("face-abc").setAttribute("points",polygonPoints([A3,B3,C3]));
+                        setLineProjected("oa-line",O3,A3);
+                        setLineProjected("ob-line",O3,B3);
+                        setLineProjected("oc-line",O3,C3);
+                        setLineProjected("ab-line",A3,B3);
+                        setLineProjected("ac-line",A3,C3);
+                        setLineProjected("bc-line",B3,C3);
+
+                        setPoint("point-o",O3);
+                        setPoint("point-a",A3);
+                        setPoint("point-b",B3);
+                        setPoint("point-c",C3);
+
+                        setText("label-o",O3,-18,20);
+                        setText("label-a",A3,10,15);
+                        setText("label-b",B3,-18,-8);
+                        setText("label-c",C3,8,-10);
+
+                        const VW=600,VH=470;
+                        const vxMin=0,vxMax=1;
+                        const vyMin=0,vyMax=0.105;
+                        const vsx=x=>70+(x-vxMin)/(vxMax-vxMin)*480;
+                        const vsy=y=>400-(y-vyMin)/(vyMax-vyMin)*340;
+
+                        let grid="";
+                        for(let x=0;x<=1.0001;x+=0.1){
+                            grid += `<line x1="${vsx(x)}" y1="${vsy(0)}" x2="${vsx(x)}" y2="${vsy(vyMax)}" stroke="#f1f5f9" stroke-width="1"/>`;
+                        }
+                        for(let y=0;y<=0.1001;y+=0.01){
+                            grid += `<line x1="${vsx(0)}" y1="${vsy(y)}" x2="${vsx(1)}" y2="${vsy(y)}" stroke="#f1f5f9" stroke-width="1"/>`;
+                        }
+                        document.getElementById("volume-grid").innerHTML=grid;
+
+                        function setGraphLine(id,x1,y1,x2,y2){
+                            const el=document.getElementById(id);
+                            el.setAttribute("x1",vsx(x1));
+                            el.setAttribute("y1",vsy(y1));
+                            el.setAttribute("x2",vsx(x2));
+                            el.setAttribute("y2",vsy(y2));
+                        }
+
+                        function setGraphPoint(id,x,y){
+                            const el=document.getElementById(id);
+                            el.setAttribute("cx",vsx(x));
+                            el.setAttribute("cy",vsy(y));
+                        }
+
+                        setGraphLine("volume-x-axis",0,0,1,0);
+                        setGraphLine("volume-y-axis",0,0,0,vyMax);
+
+                        function volume(t){
+                            return t*(1-t)*(1-t)/(2-t);
+                        }
+
+                        let path="";
+                        for(let i=0;i<=400;i++){
+                            const t=0.001+0.998*i/400;
+                            const v=volume(t);
+                            path += `${i===0?"M":"L"} ${vsx(t)} ${vsy(v)} `;
+                        }
+                        document.getElementById("volume-path").setAttribute("d",path);
+
+                        const tMax=(3-Math.sqrt(5))/2;
+                        const vMax=volume(tMax);
+                        setGraphPoint("max-volume",tMax,vMax);
+                        setGraphLine("max-guide",tMax,0,tMax,vMax);
+
+                        const maxLabel=document.getElementById("max-volume-label");
+                        maxLabel.setAttribute("x",vsx(tMax)+10);
+                        maxLabel.setAttribute("y",vsy(vMax)-10);
+
+                        function update(){
+                            const t=parseFloat(slider.value);
+
+                            const D=mix(O3,A3,t);
+                            const E=mix(B3,C3,t);
+                            const F=mix(D,E,t);
+
+                            const denom=2-t;
+                            const P={
+                                x:(1-t)/denom,
+                                y:(1-t)/denom,
+                                z:t/denom
+                            };
+
+                            setPoint("point-d",D);
+                            setPoint("point-e",E);
+                            setPoint("point-f",F);
+                            setPoint("point-p",P);
+
+                            setText("label-d",D,8,18);
+                            setText("label-e",E,8,-8);
+                            setText("label-f",F,8,-10);
+                            setText("label-p",P,8,-12);
+
+                            setLineProjected("de-line",D,E);
+                            setLineProjected("of-line",O3,P);
+
+                            document.getElementById("tetra-dpbe").setAttribute(
+                                "points",
+                                polygonPoints([D,P,B3,E])
+                            );
+
+                            const centroid={
+                                x:(D.x+P.x+B3.x+E.x)/4,
+                                y:(D.y+P.y+B3.y+E.y)/4,
+                                z:(D.z+P.z+B3.z+E.z)/4
+                            };
+                            setText("volume-label",centroid,-35,5);
+
+                            const v=volume(t);
+                            setGraphPoint("current-volume",t,v);
+
+                            const currentLabel=document.getElementById("current-volume-label");
+                            currentLabel.setAttribute("x",vsx(t)+8);
+                            currentLabel.setAttribute("y",vsy(v)-10);
+                            currentLabel.textContent=`(${t.toFixed(3)}, ${v.toFixed(4)})`;
+
+                            const aCoeff=(1-t)/denom;
+                            const bCoeff=(1-t)/denom;
+                            const cCoeff=t/denom;
+
+                            tDisplay.textContent=t.toFixed(3);
+                            document.getElementById("sum-display").textContent=
+                                (aCoeff+bCoeff+cCoeff).toFixed(5);
+                            document.getElementById("pa-display").textContent=aCoeff.toFixed(5);
+                            document.getElementById("pc-display").textContent=cCoeff.toFixed(5);
+                            document.getElementById("v-display").textContent=v.toFixed(6);
+
+                            const status=document.getElementById("status");
+                            if(Math.abs(t-tMax)<0.004){
+                                status.textContent="t = (3-√5)/2：体積Vが最大";
+                                status.className="mt-4 rounded-lg border border-emerald-300 bg-emerald-50 p-4 text-center text-sm font-bold text-emerald-800";
+                            }else if(t<tMax){
+                                status.textContent="この範囲ではtを増やすとVは増加";
+                                status.className="mt-4 rounded-lg border border-blue-300 bg-blue-50 p-4 text-center text-sm font-bold text-blue-800";
+                            }else{
+                                status.textContent="この範囲ではtを増やすとVは減少";
+                                status.className="mt-4 rounded-lg border border-violet-300 bg-violet-50 p-4 text-center text-sm font-bold text-violet-800";
+                            }
+                        }
+
+                        slider.addEventListener("input",update);
+                        document.querySelectorAll("[data-t]").forEach(button=>{
+                            button.addEventListener("click",()=>{
+                                slider.value=button.dataset.t;
+                                update();
+                            });
+                        });
+
+                        update();
+                    });
+                </script>
+            </div>
+
+            <div class="mt-10">
+                <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">補足：平面ABC上の点で係数和が1になる理由</h3>
+
+                <div class="mt-4 rounded-xl border border-indigo-200 bg-indigo-50 p-5 text-sm leading-relaxed text-slate-700">
+                    <p>
+                        点Xの位置ベクトルが
+                    </p>
+
+                    <div class="math-scroll">
+                        \[
+                        \overrightarrow{\mathrm{OX}}
+                        =
+                        p\overrightarrow{\mathrm{OA}}
+                        +q\overrightarrow{\mathrm{OB}}
+                        +r\overrightarrow{\mathrm{OC}}
+                        \]
+                    </div>
+
+                    <p>
+                        と表されているとします。
+                        $p+q+r=1$ なら、
+                    </p>
+
+                    <div class="math-scroll">
+                        \[
+                        \begin{aligned}
+                        \overrightarrow{\mathrm{OX}}
+                        &=
+                        p\overrightarrow{\mathrm{OA}}
+                        +q\overrightarrow{\mathrm{OB}}
+                        +(1-p-q)\overrightarrow{\mathrm{OC}}\\
+                        &=
+                        \overrightarrow{\mathrm{OC}}
+                        +p\overrightarrow{\mathrm{CA}}
+                        +q\overrightarrow{\mathrm{CB}}.
+                        \end{aligned}
+                        \]
+                    </div>
+
+                    <p>
+                        したがってXは、Cを通り
+                        $\overrightarrow{\mathrm{CA}}$、
+                        $\overrightarrow{\mathrm{CB}}$
+                        を方向ベクトルとする平面、すなわち平面ABC上にあります。
+                    </p>
+                </div>
+            </div>
+
+            <div class="mt-10">
+                <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">受験生のつまずきポイント</h3>
+
+                <div class="mt-4 space-y-4">
+                    <div class="rounded-lg border border-red-200 bg-red-50 p-4">
+                        <p class="text-sm font-bold text-red-900">Fの内分公式でDとEの係数を逆にする</p>
+                        <p class="mt-1 text-sm text-red-800">
+                            $\mathrm{DF}:\mathrm{FE}=t:(1-t)$ なので、
+                            Dの係数は $1-t$、Eの係数は $t$ です。
+                        </p>
+                    </div>
+
+                    <div class="rounded-lg border border-red-200 bg-red-50 p-4">
+                        <p class="text-sm font-bold text-red-900">Pが平面ABC上という条件を使わない</p>
+                        <p class="mt-1 text-sm text-red-800">
+                            直線OF上という条件だけではPの位置は決まりません。
+                            3つの係数の和が1という平面条件を組み合わせます。
+                        </p>
+                    </div>
+
+                    <div class="rounded-lg border border-red-200 bg-red-50 p-4">
+                        <p class="text-sm font-bold text-red-900">体積比を一度に求めようとする</p>
+                        <p class="mt-1 text-sm text-red-800">
+                            DPBEとOPBEの高さ比、OPBEとOABCの底面積比の2段階に分けると整理できます。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mt-6 rounded-2xl bg-blue-900 p-6 text-white shadow-sm sm:p-8">
+            <h2 class="border-b-2 border-blue-400 pb-2 text-lg font-bold">アクティブリコール（復習テスト）</h2>
+
+            <p class="mt-4 text-sm text-blue-200">
+                質問をクリックし、答えを頭の中で作ってから開いてください。
+            </p>
+
+            <div class="mt-6 space-y-3">
+                <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                    <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                        <span>Q1. D、Eの位置ベクトルは何ですか？</span>
+                        <span class="transition duration-300 group-open:-rotate-180">⌄</span>
+                    </summary>
+                    <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                        \[
+                        \overrightarrow{\mathrm{OD}}
+                        =t\overrightarrow{\mathrm{OA}},
+                        \]
+                        \[
+                        \overrightarrow{\mathrm{OE}}
+                        =(1-t)\overrightarrow{\mathrm{OB}}
+                        +t\overrightarrow{\mathrm{OC}}
+                        \]
+                        です。
+                    </div>
+                </details>
+
+                <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                    <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                        <span>Q2. Fの位置ベクトルは何ですか？</span>
+                        <span class="transition duration-300 group-open:-rotate-180">⌄</span>
+                    </summary>
+                    <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                        \[
+                        \overrightarrow{\mathrm{OF}}
+                        =
+                        t(1-t)\overrightarrow{\mathrm{OA}}
+                        +t(1-t)\overrightarrow{\mathrm{OB}}
+                        +t^2\overrightarrow{\mathrm{OC}}
+                        \]
+                        です。
+                    </div>
+                </details>
+
+                <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                    <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                        <span>Q3. Pが平面ABC上にあるとき、3つの係数にはどんな条件がありますか？</span>
+                        <span class="transition duration-300 group-open:-rotate-180">⌄</span>
+                    </summary>
+                    <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                        $\overrightarrow{\mathrm{OA}}$、
+                        $\overrightarrow{\mathrm{OB}}$、
+                        $\overrightarrow{\mathrm{OC}}$
+                        の係数の和が1です。
+                    </div>
+                </details>
+
+                <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                    <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                        <span>Q4. 体積Vはどのように表されますか？</span>
+                        <span class="transition duration-300 group-open:-rotate-180">⌄</span>
+                    </summary>
+                    <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                        \[
+                        V=\frac{t(1-t)^2}{2-t}
+                        \]
+                        です。
+                    </div>
+                </details>
+            </div>
+        </section>
+
+        <nav class="mt-7 grid gap-3 sm:grid-cols-2">
+            <a href="no52.html" class="nav-button rounded-xl border border-slate-300 bg-white px-5 py-4 text-center font-bold text-slate-700 hover:border-blue-300 hover:text-blue-800">
+                ← No.52へ
+            </a>
+
+            <a href="no54.html" class="nav-button rounded-xl bg-blue-700 px-5 py-4 text-center font-bold text-white hover:bg-blue-800">
+                No.54 →
+            </a>
+        </nav>
+    </main>
+
+    <footer class="py-10 text-center text-sm text-slate-500">
+        医進・サイエンスコース　夏期数学課題 解説サイト
+    </footer>
+</div>
+</body>
+</html>

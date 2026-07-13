@@ -1,0 +1,1652 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>夏期課題 No.49 平面ベクトル - 医進・サイエンスコース</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        MathJax = {
+            chtml: { matchFontHeight: false },
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body { font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif; }
+        .nav-button { transition: transform .16s ease, box-shadow .16s ease; }
+        .nav-button:hover { transform: translateY(-2px); box-shadow: 0 8px 18px rgba(15, 23, 42, .12); }
+        .math-scroll { overflow-x: auto; overflow-y: hidden; padding-bottom: .5rem; margin-bottom: .5rem; }
+        button:focus-visible, summary:focus-visible, a:focus-visible, input:focus-visible {
+            outline: 3px solid rgba(37, 99, 235, .35);
+            outline-offset: 3px;
+        }
+    </style>
+</head>
+<body class="bg-slate-100 text-slate-800">
+<div class="mx-auto max-w-4xl px-4 py-6 sm:px-6 lg:py-10">
+
+    <a href="index.html" class="inline-flex items-center gap-2 text-sm font-bold text-blue-700 hover:text-blue-900">
+        ← 問題一覧へ戻る
+    </a>
+
+    <header class="mt-4 overflow-hidden rounded-3xl bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-800 text-white shadow-xl">
+        <div class="p-7 sm:p-10">
+            <span class="inline-flex items-center rounded-full bg-white/15 px-4 py-1.5 text-sm font-semibold tracking-wide text-blue-100">医進・サイエンスコース</span>
+            <div class="mt-4 flex flex-wrap items-center gap-3">
+                <span class="rounded-lg bg-white/20 px-3 py-1 text-sm font-bold">No.49</span>
+                <span class="rounded-full bg-amber-100 px-3 py-1 text-xs font-bold text-amber-800">標準</span>
+            </div>
+            <h1 class="mt-4 text-3xl font-bold leading-tight sm:text-4xl">平面ベクトル</h1>
+            <div class="mt-3 text-lg text-blue-100">目標解答時間：25分</div>
+        </div>
+    </header>
+
+    <main>
+        <section class="mt-7 rounded-2xl border border-blue-100 bg-white p-6 shadow-sm sm:p-8">
+            <h2 class="flex items-center gap-2 text-xl font-bold text-blue-900">
+                <span class="grid h-8 w-8 place-items-center rounded-full bg-blue-700 text-base text-white">1</span>
+                問題
+            </h2>
+
+            <div class="mt-4 rounded-lg border border-slate-200 bg-slate-50 p-4 text-slate-700 leading-relaxed">
+                <p>三角形OABがあり、</p>
+                <div class="math-scroll">
+                    \[
+                    \left|\overrightarrow{\mathrm{OA}}\right|=\sqrt2,
+                    \qquad
+                    \left|\overrightarrow{\mathrm{OB}}\right|=\sqrt3,
+                    \qquad
+                    \overrightarrow{\mathrm{OA}}\cdot
+                    \overrightarrow{\mathrm{OB}}
+                    =-\frac32
+                    \]
+                </div>
+
+                <p>
+                    である。また、辺ABの中点をM、辺OBを $1:2$ に内分する点をNとし、
+                    Mから直線ANに下ろした垂線の足をHとする。
+                </p>
+
+                <p class="mt-2">
+                    \[
+                    \overrightarrow{\mathrm{OA}}=\vec a,
+                    \qquad
+                    \overrightarrow{\mathrm{OB}}=\vec b
+                    \]
+                    とおくとき、次の問いに答えよ。
+                </p>
+
+                <ol class="mt-4 list-decimal space-y-4 pl-6">
+                    <li>
+                        $\overrightarrow{\mathrm{OM}}$ を $\vec a,\vec b$ で表せ。
+                    </li>
+                    <li>
+                        $\left|\overrightarrow{\mathrm{OM}}\right|$、
+                        $\left|\overrightarrow{\mathrm{AB}}\right|$ を求めよ。
+                    </li>
+                    <li>
+                        $\overrightarrow{\mathrm{OH}}$ を $\vec a,\vec b$ で表せ。
+                    </li>
+                    <li>
+                        線分ABを直径とする円K上を動く点Pがある。
+                        三角形ANPの面積の最大値を求めよ。
+                        また、そのときの $\overrightarrow{\mathrm{OP}}$ を
+                        $\vec a,\vec b$ で表せ。
+                    </li>
+                </ol>
+            </div>
+
+            <div class="mt-4 rounded-lg border border-blue-200 bg-blue-50 p-4">
+                <h3 class="mb-2 font-bold text-blue-900">【条件の整理】</h3>
+                <ul class="list-disc space-y-2 pl-5 text-sm text-slate-700">
+                    <li>
+                        与えられた条件は
+                        \[
+                        \vec a\cdot\vec a=2,\qquad
+                        \vec b\cdot\vec b=3,\qquad
+                        \vec a\cdot\vec b=-\frac32
+                        \]
+                        と読み替えます。
+                    </li>
+                    <li>
+                        MはABの中点なので、
+                        \[
+                        \overrightarrow{\mathrm{OM}}
+                        =\frac{\vec a+\vec b}{2}
+                        \]
+                        です。
+                    </li>
+                    <li>
+                        NはOBを $1:2$ に内分するので、
+                        \[
+                        \overrightarrow{\mathrm{ON}}=\frac13\vec b
+                        \]
+                        です。
+                    </li>
+                    <li>
+                        Hは直線AN上にあり、さらに
+                        \[
+                        \overrightarrow{\mathrm{MH}}
+                        \perp
+                        \overrightarrow{\mathrm{AN}}
+                        \]
+                        を満たします。
+                    </li>
+                    <li>
+                        円Kの中心はM、半径は
+                        \[
+                        \frac{\mathrm{AB}}2
+                        \]
+                        です。
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="mt-6 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+            <h2 class="flex items-center gap-2 text-xl font-bold text-slate-900">
+                <span class="grid h-8 w-8 place-items-center rounded-full bg-slate-700 text-base text-white">2</span>
+                解説
+            </h2>
+
+            <p class="mt-4 text-sm leading-8 text-slate-600">
+                内積による長さの計算、垂直条件、円上の点から直線までの距離を順に利用します。
+            </p>
+
+            <div class="mt-8 rounded-xl border border-amber-200 bg-amber-50 p-5">
+                <h3 class="border-b-2 border-amber-400 pb-2 text-lg font-bold text-amber-900">解法選択のトリガー</h3>
+
+                <div class="mt-4 space-y-4">
+                    <div class="rounded-lg border border-amber-200 bg-amber-100/60 p-4">
+                        <p class="text-sm font-bold text-amber-900">ベクトルの長さを求めるとき</p>
+                        <p class="mt-1 text-sm text-amber-800">
+                            先に長さの2乗を内積で計算します。
+                            \[
+                            |\vec u|^2=\vec u\cdot\vec u
+                            \]
+                            とすれば、展開に与えられた内積を直接使えます。
+                        </p>
+                    </div>
+
+                    <div class="rounded-lg border border-amber-200 bg-amber-100/60 p-4">
+                        <p class="text-sm font-bold text-amber-900">垂線の足Hを求めるとき</p>
+                        <p class="mt-1 text-sm text-amber-800">
+                            Hを直線AN上の点として1文字で表し、
+                            \[
+                            \overrightarrow{\mathrm{MH}}
+                            \cdot
+                            \overrightarrow{\mathrm{AN}}=0
+                            \]
+                            を立てます。
+                        </p>
+                    </div>
+
+                    <div class="rounded-lg border border-amber-200 bg-amber-100/60 p-4">
+                        <p class="text-sm font-bold text-amber-900">円上で固定された直線から最も遠い点</p>
+                        <p class="mt-1 text-sm text-amber-800">
+                            面積最大となる点Pでは、円の中心MとPを結ぶ半径が直線ANに垂直になります。
+                            そこで
+                            \[
+                            \overrightarrow{\mathrm{OP}}
+                            =x\vec a+y\vec b
+                            \]
+                            と置き、
+                            \[
+                            \overrightarrow{\mathrm{MP}}
+                            \cdot
+                            \overrightarrow{\mathrm{AN}}=0,
+                            \qquad
+                            \left|\overrightarrow{\mathrm{MP}}\right|=\sqrt2
+                            \]
+                            の2条件を使います。
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-8 rounded-xl border border-emerald-200 bg-emerald-50 p-5">
+                <h3 class="border-b-2 border-emerald-400 pb-2 text-lg font-bold text-emerald-900">思考プロセス</h3>
+
+                <div class="mt-4 space-y-4">
+                    <div class="rounded-lg border border-emerald-200 bg-emerald-100/60 p-4 text-sm text-emerald-900">
+                        <strong>（1）（2）位置ベクトルを作ってから長さを計算する</strong><br>
+                        中点Mは $(\vec a+\vec b)/2$、ABは $\vec b-\vec a$ です。
+                    </div>
+
+                    <div class="rounded-lg border border-emerald-200 bg-emerald-100/60 p-4 text-sm text-emerald-900">
+                        <strong>（3）直線ANをAからの実数倍で表す</strong><br>
+                        \[
+                        \overrightarrow{\mathrm{OH}}
+                        =
+                        \vec a+k\left(\frac13\vec b-\vec a\right)
+                        \]
+                        と置き、垂直条件から $k$ を求めます。
+                    </div>
+
+                    <div class="rounded-lg border border-emerald-200 bg-emerald-100/60 p-4 text-sm text-emerald-900">
+                        <strong>（4）OPを2つの基底ベクトルで設定する</strong><br>
+                        \[
+                        \overrightarrow{\mathrm{OP}}=x\vec a+y\vec b
+                        \]
+                        と置きます。面積最大の候補は
+                        $\overrightarrow{\mathrm{MP}}\perp\overrightarrow{\mathrm{AN}}$
+                        を満たし、さらにPは円K上にあるので
+                        $\left|\overrightarrow{\mathrm{MP}}\right|=\sqrt2$
+                        を満たします。
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-10">
+                <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">実際の答案</h3>
+
+                <div class="mt-4 space-y-7 text-slate-700">
+                    <div>
+                        <p class="border-b border-slate-200 pb-1 font-bold text-blue-800">（1）</p>
+
+                        <p class="mt-2">
+                            Mは辺ABの中点であるから、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            \overrightarrow{\mathrm{OM}}
+                            =
+                            \frac{
+                            \overrightarrow{\mathrm{OA}}
+                            +
+                            \overrightarrow{\mathrm{OB}}
+                            }2
+                            =
+                            \frac12(\vec a+\vec b).
+                            \]
+                        </div>
+
+                        <div class="mt-2 inline-block rounded-xl border-2 border-blue-500 bg-blue-50 p-3 font-bold text-slate-900">
+                            答：
+                            $\displaystyle
+                            \overrightarrow{\mathrm{OM}}
+                            =\frac12(\vec a+\vec b)$
+                        </div>
+                    </div>
+
+                    <div class="border-t border-slate-200 pt-6">
+                        <p class="border-b border-slate-200 pb-1 font-bold text-blue-800">（2）</p>
+
+                        <p class="mt-2">
+                            （1）より、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            \begin{aligned}
+                            \left|\overrightarrow{\mathrm{OM}}\right|^2
+                            &=
+                            \left|
+                            \frac{\vec a+\vec b}{2}
+                            \right|^2\\
+                            &=
+                            \frac14
+                            (\vec a+\vec b)\cdot(\vec a+\vec b)\\
+                            &=
+                            \frac14
+                            \left(
+                            |\vec a|^2
+                            +2\vec a\cdot\vec b
+                            +|\vec b|^2
+                            \right)\\
+                            &=
+                            \frac14
+                            \left(
+                            2+2\left(-\frac32\right)+3
+                            \right)\\
+                            &=
+                            \frac12.
+                            \end{aligned}
+                            \]
+                        </div>
+
+                        <p>
+                            よって、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            \left|\overrightarrow{\mathrm{OM}}\right|
+                            =
+                            \frac{\sqrt2}{2}.
+                            \]
+                        </div>
+
+                        <p class="mt-3">
+                            また、
+                            \[
+                            \overrightarrow{\mathrm{AB}}=\vec b-\vec a
+                            \]
+                            であるから、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            \begin{aligned}
+                            \left|\overrightarrow{\mathrm{AB}}\right|^2
+                            &=
+                            (\vec b-\vec a)\cdot(\vec b-\vec a)\\
+                            &=
+                            |\vec b|^2
+                            -2\vec a\cdot\vec b
+                            +|\vec a|^2\\
+                            &=
+                            3-2\left(-\frac32\right)+2\\
+                            &=8.
+                            \end{aligned}
+                            \]
+                        </div>
+
+                        <p>
+                            したがって、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            \left|\overrightarrow{\mathrm{AB}}\right|
+                            =2\sqrt2.
+                            \]
+                        </div>
+
+                        <div class="mt-2 rounded-xl border-2 border-blue-500 bg-blue-50 p-3 font-bold text-slate-900">
+                            \[
+                            \left|\overrightarrow{\mathrm{OM}}\right|
+                            =\frac{\sqrt2}{2},
+                            \qquad
+                            \left|\overrightarrow{\mathrm{AB}}\right|
+                            =2\sqrt2
+                            \]
+                        </div>
+                    </div>
+
+                    <div class="border-t border-slate-200 pt-6">
+                        <p class="border-b border-slate-200 pb-1 font-bold text-blue-800">（3）</p>
+
+                        <p class="mt-2">
+                            NはOBを $1:2$ に内分するので、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            \overrightarrow{\mathrm{ON}}
+                            =\frac13\vec b.
+                            \]
+                        </div>
+
+                        <p>
+                            Hは直線AN上にあるから、実数 $k$ を用いて
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            \begin{aligned}
+                            \overrightarrow{\mathrm{OH}}
+                            &=
+                            \overrightarrow{\mathrm{OA}}
+                            +
+                            k\overrightarrow{\mathrm{AN}}\\
+                            &=
+                            \vec a
+                            +
+                            k\left(
+                            \frac13\vec b-\vec a
+                            \right)
+                            \end{aligned}
+                            \qquad\text{(1)}
+                            \]
+                        </div>
+
+                        <p>
+                            と表せる。
+                        </p>
+
+                        <p class="mt-3">
+                            また、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            \overrightarrow{\mathrm{OM}}
+                            =\frac12(\vec a+\vec b),
+                            \qquad
+                            \overrightarrow{\mathrm{AN}}
+                            =\frac13\vec b-\vec a.
+                            \]
+                        </div>
+
+                        <p>
+                            HはMから直線ANに下ろした垂線の足なので、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            \overrightarrow{\mathrm{MH}}
+                            \cdot
+                            \overrightarrow{\mathrm{AN}}
+                            =0.
+                            \]
+                        </div>
+
+                        <p>
+                            （1）より、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            \overrightarrow{\mathrm{MH}}
+                            =
+                            \overrightarrow{\mathrm{OH}}
+                            -
+                            \overrightarrow{\mathrm{OM}}
+                            =
+                            \vec a
+                            +
+                            k\left(
+                            \frac13\vec b-\vec a
+                            \right)
+                            -
+                            \frac12(\vec a+\vec b).
+                            \]
+                        </div>
+
+                        <p>
+                            よって、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            \left\{
+                            \frac12(\vec b-\vec a)
+                            -
+                            k\left(
+                            \frac13\vec b-\vec a
+                            \right)
+                            \right\}
+                            \cdot
+                            \left(
+                            \frac13\vec b-\vec a
+                            \right)
+                            =0.
+                            \]
+                        </div>
+
+                        <p class="mt-3">
+                            ここで、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            \begin{aligned}
+                            (\vec b-\vec a)
+                            \cdot
+                            \left(
+                            \frac13\vec b-\vec a
+                            \right)
+                            &=
+                            \frac13|\vec b|^2
+                            -\vec a\cdot\vec b
+                            -\frac13\vec a\cdot\vec b
+                            +|\vec a|^2\\
+                            &=
+                            1+\frac32+\frac12+2\\
+                            &=5,
+                            \end{aligned}
+                            \]
+                            \[
+                            \begin{aligned}
+                            \left|
+                            \frac13\vec b-\vec a
+                            \right|^2
+                            &=
+                            \frac19|\vec b|^2
+                            -\frac23\vec a\cdot\vec b
+                            +|\vec a|^2\\
+                            &=
+                            \frac13+1+2\\
+                            &=
+                            \frac{10}{3}.
+                            \end{aligned}
+                            \]
+                        </div>
+
+                        <p>
+                            したがって、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            \frac12\cdot5
+                            -
+                            k\cdot\frac{10}{3}
+                            =0
+                            \]
+                            \[
+                            k=\frac34.
+                            \]
+                        </div>
+
+                        <p>
+                            これを（1）に代入すると、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            \begin{aligned}
+                            \overrightarrow{\mathrm{OH}}
+                            &=
+                            \vec a
+                            +
+                            \frac34
+                            \left(
+                            \frac13\vec b-\vec a
+                            \right)\\
+                            &=
+                            \frac14\vec a+\frac14\vec b\\
+                            &=
+                            \frac14(\vec a+\vec b).
+                            \end{aligned}
+                            \]
+                        </div>
+
+                        <div class="mt-2 inline-block rounded-xl border-2 border-blue-500 bg-blue-50 p-3 font-bold text-slate-900">
+                            答：
+                            $\displaystyle
+                            \overrightarrow{\mathrm{OH}}
+                            =\frac14(\vec a+\vec b)$
+                        </div>
+                    </div>
+
+                    <div class="border-t border-slate-200 pt-6">
+                        <p class="border-b border-slate-200 pb-1 font-bold text-blue-800">（4）円Kと直線ANの準備</p>
+
+                        <p class="mt-2">
+                            円Kは線分ABを直径とするので、中心はM、半径 $r$ は
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            r
+                            =
+                            \frac12
+                            \left|\overrightarrow{\mathrm{AB}}\right|
+                            =
+                            \sqrt2.
+                            \]
+                        </div>
+
+                        <p class="mt-3">
+                            また、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            \overrightarrow{\mathrm{AN}}
+                            =
+                            \frac13\vec b-\vec a
+                            \]
+                        </div>
+
+                        <p>
+                            であり、（3）で計算した結果から
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            \begin{aligned}
+                            \left|\overrightarrow{\mathrm{AN}}\right|^2
+                            &=
+                            \left|
+                            \frac13\vec b-\vec a
+                            \right|^2\\
+                            &=
+                            \frac{10}{3}.
+                            \end{aligned}
+                            \]
+                        </div>
+
+                        <p>
+                            よって、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            \left|\overrightarrow{\mathrm{AN}}\right|
+                            =
+                            \sqrt{\frac{10}{3}}
+                            =
+                            \frac{\sqrt{30}}{3}.
+                            \]
+                        </div>
+                    </div>
+
+                    <div class="border-t border-slate-200 pt-6">
+                        <p class="border-b border-slate-200 pb-1 font-bold text-blue-800">（4）最大となる点Pをベクトルで求める</p>
+
+                        <p class="mt-2">
+                            底辺ANは固定されているので、三角形ANPの面積が最大となるのは、
+                            Pから直線ANまでの距離が最大となるときである。
+                            このとき、円Kの半径MPは直線ANに垂直になる。
+                        </p>
+
+                        <p class="mt-3">
+                            そこで、実数 $x,y$ を用いて
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            \overrightarrow{\mathrm{OP}}
+                            =
+                            x\vec a+y\vec b
+                            \qquad\text{(1)}
+                            \]
+                        </div>
+
+                        <p>
+                            とおく。（1）と
+                            \[
+                            \overrightarrow{\mathrm{OM}}
+                            =
+                            \frac12(\vec a+\vec b)
+                            \]
+                            より、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            \overrightarrow{\mathrm{MP}}
+                            =
+                            \left(x-\frac12\right)\vec a
+                            +
+                            \left(y-\frac12\right)\vec b.
+                            \qquad\text{(2)}
+                            \]
+                        </div>
+
+                        <p class="mt-3">
+                            面積最大となる候補では
+                            \[
+                            \overrightarrow{\mathrm{MP}}
+                            \perp
+                            \overrightarrow{\mathrm{AN}}
+                            \]
+                            であるから、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            \overrightarrow{\mathrm{MP}}
+                            \cdot
+                            \overrightarrow{\mathrm{AN}}
+                            =0.
+                            \qquad\text{(3)}
+                            \]
+                        </div>
+
+                        <p>
+                            ここで、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            \begin{aligned}
+                            \vec a\cdot
+                            \left(
+                            \frac13\vec b-\vec a
+                            \right)
+                            &=
+                            \frac13\vec a\cdot\vec b
+                            -|\vec a|^2\\
+                            &=
+                            -\frac12-2\\
+                            &=
+                            -\frac52,
+                            \end{aligned}
+                            \]
+                            \[
+                            \begin{aligned}
+                            \vec b\cdot
+                            \left(
+                            \frac13\vec b-\vec a
+                            \right)
+                            &=
+                            \frac13|\vec b|^2
+                            -\vec a\cdot\vec b\\
+                            &=
+                            1+\frac32\\
+                            &=
+                            \frac52.
+                            \end{aligned}
+                            \]
+                        </div>
+
+                        <p>
+                            したがって、（2）、（3）より、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            -\frac52
+                            \left(x-\frac12\right)
+                            +
+                            \frac52
+                            \left(y-\frac12\right)
+                            =0
+                            \]
+                            \[
+                            y=x.
+                            \qquad\text{(4)}
+                            \]
+                        </div>
+
+                        <p class="mt-3">
+                            （4）を（2）に代入すると、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            \overrightarrow{\mathrm{MP}}
+                            =
+                            \left(x-\frac12\right)
+                            (\vec a+\vec b).
+                            \qquad\text{(5)}
+                            \]
+                        </div>
+
+                        <p>
+                            また、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            \begin{aligned}
+                            |\vec a+\vec b|^2
+                            &=
+                            |\vec a|^2
+                            +2\vec a\cdot\vec b
+                            +|\vec b|^2\\
+                            &=
+                            2-3+3\\
+                            &=
+                            2.
+                            \end{aligned}
+                            \]
+                        </div>
+
+                        <p>
+                            Pは円K上にあり、円Kの半径は $\sqrt2$ なので、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            \left|\overrightarrow{\mathrm{MP}}\right|
+                            =
+                            \sqrt2.
+                            \qquad\text{(6)}
+                            \]
+                        </div>
+
+                        <p>
+                            （5）、（6）より、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            \left|
+                            x-\frac12
+                            \right|
+                            |\vec a+\vec b|
+                            =
+                            \sqrt2
+                            \]
+                            \[
+                            \left|
+                            x-\frac12
+                            \right|
+                            \sqrt2
+                            =
+                            \sqrt2
+                            \]
+                            \[
+                            \left|
+                            x-\frac12
+                            \right|
+                            =1.
+                            \]
+                        </div>
+
+                        <p>
+                            よって、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            x=\frac32,\qquad -\frac12.
+                            \]
+                        </div>
+
+                        <p>
+                            $y=x$ であるから、面積が最大・最小となる候補点の位置ベクトルは
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            \overrightarrow{\mathrm{OP}_1}
+                            =
+                            \frac32(\vec a+\vec b),
+                            \qquad
+                            \overrightarrow{\mathrm{OP}_2}
+                            =
+                            -\frac12(\vec a+\vec b).
+                            \]
+                        </div>
+                    </div>
+
+                    <div class="border-t border-slate-200 pt-6">
+                        <p class="border-b border-slate-200 pb-1 font-bold text-blue-800">（4）2つの候補から最大となる点を選ぶ</p>
+
+                        <p class="mt-2">
+                            （3）より、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            \overrightarrow{\mathrm{OH}}
+                            =
+                            \frac14(\vec a+\vec b).
+                            \]
+                        </div>
+
+                        <p>
+                            したがって、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            \begin{aligned}
+                            \overrightarrow{\mathrm{HP}_1}
+                            &=
+                            \overrightarrow{\mathrm{OP}_1}
+                            -
+                            \overrightarrow{\mathrm{OH}}\\
+                            &=
+                            \left(
+                            \frac32-\frac14
+                            \right)(\vec a+\vec b)\\
+                            &=
+                            \frac54(\vec a+\vec b),
+                            \end{aligned}
+                            \]
+                            \[
+                            \begin{aligned}
+                            \overrightarrow{\mathrm{HP}_2}
+                            &=
+                            \overrightarrow{\mathrm{OP}_2}
+                            -
+                            \overrightarrow{\mathrm{OH}}\\
+                            &=
+                            \left(
+                            -\frac12-\frac14
+                            \right)(\vec a+\vec b)\\
+                            &=
+                            -\frac34(\vec a+\vec b).
+                            \end{aligned}
+                            \]
+                        </div>
+
+                        <p>
+                            $\vec a+\vec b$ は直線ANに垂直であるから、
+                            $\left|\overrightarrow{\mathrm{HP}_1}\right|$、
+                            $\left|\overrightarrow{\mathrm{HP}_2}\right|$ は、
+                            それぞれの点から直線ANまでの距離である。
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            \left|\overrightarrow{\mathrm{HP}_1}\right|
+                            =
+                            \frac54\sqrt2,
+                            \qquad
+                            \left|\overrightarrow{\mathrm{HP}_2}\right|
+                            =
+                            \frac34\sqrt2.
+                            \]
+                        </div>
+
+                        <p>
+                            よって、距離が大きい点は $\mathrm{P}_1$ であり、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            \overrightarrow{\mathrm{OP}}
+                            =
+                            \frac32(\vec a+\vec b).
+                            \]
+                        </div>
+
+                        <p class="mt-3">
+                            このとき、三角形ANPの面積は
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            \begin{aligned}
+                            \frac12
+                            \left|\overrightarrow{\mathrm{AN}}\right|
+                            \left|\overrightarrow{\mathrm{HP}}\right|
+                            &=
+                            \frac12
+                            \cdot
+                            \frac{\sqrt{30}}{3}
+                            \cdot
+                            \frac{5\sqrt2}{4}\\
+                            &=
+                            \frac{5\sqrt{60}}{24}\\
+                            &=
+                            \frac{5\sqrt{15}}{12}.
+                            \end{aligned}
+                            \]
+                        </div>
+
+                        <div class="mt-2 rounded-xl border-2 border-blue-500 bg-blue-50 p-3 font-bold text-slate-900">
+                            \[
+                            \text{面積の最大値}
+                            =
+                            \frac{5\sqrt{15}}{12},
+                            \qquad
+                            \overrightarrow{\mathrm{OP}}
+                            =
+                            \frac32(\vec a+\vec b)
+                            \]
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-10">
+                <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">図解・可視化</h3>
+
+                <p class="mt-4 text-sm leading-relaxed text-slate-700">
+                    Pを円K上で動かすと、三角形ANPの高さが変化します。
+                    H、M、Pが一直線上に並び、PがMからHと反対側へ最も離れたときに面積が最大になります。
+                </p>
+
+                <div class="mt-4 rounded-lg border border-slate-200 bg-slate-50 p-4 sm:p-6">
+                    <div class="mx-auto max-w-xl">
+                        <label for="angle-slider" class="mb-2 block text-sm font-medium text-slate-700">
+                            円周上の位置：
+                            <span id="angle-display" class="text-lg font-bold text-blue-700">0.000 rad</span>
+                        </label>
+
+                        <input id="angle-slider" type="range" min="0" max="6.2831853072" step="0.003" value="1.3181160717"
+                               class="h-2 w-full cursor-pointer appearance-none rounded-lg bg-slate-200 accent-blue-600">
+
+                        <div class="mt-3 flex flex-wrap justify-center gap-2">
+                            <button id="max-button" type="button"
+                                    class="rounded-lg border border-emerald-200 bg-white px-4 py-2 text-sm font-bold text-emerald-700 hover:bg-emerald-50">
+                                面積最大の位置
+                            </button>
+
+                            <button id="a-button" type="button"
+                                    class="rounded-lg border border-slate-300 bg-white px-4 py-2 text-sm font-bold text-slate-700 hover:bg-slate-100">
+                                P = A
+                            </button>
+
+                            <button id="b-button" type="button"
+                                    class="rounded-lg border border-slate-300 bg-white px-4 py-2 text-sm font-bold text-slate-700 hover:bg-slate-100">
+                                P = B
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="mt-5 overflow-x-auto">
+                        <svg id="geometry-svg" width="680" height="500" viewBox="0 0 680 500"
+                             class="mx-auto h-auto w-full max-w-[680px] rounded-xl border border-slate-200 bg-white"
+                             aria-label="三角形OAB、直線AN、円Kと点Pの可視化">
+
+                            <g id="grid"></g>
+
+                            <line id="x-axis" stroke="#cbd5e1" stroke-width="1.3"></line>
+                            <line id="y-axis" stroke="#cbd5e1" stroke-width="1.3"></line>
+
+                            <polygon id="triangle-oab" fill="rgba(148,163,184,.08)" stroke="#475569" stroke-width="2.2"></polygon>
+                            <circle id="circle-k" fill="rgba(59,130,246,.05)" stroke="#2563eb" stroke-width="2.2"></circle>
+
+                            <line id="an-line" stroke="#7c3aed" stroke-width="2.5"></line>
+                            <line id="mh-line" stroke="#f59e0b" stroke-width="2.5" stroke-dasharray="7 5"></line>
+                            <line id="hp-line" stroke="#e11d48" stroke-width="2.8"></line>
+
+                            <polygon id="triangle-anp" fill="rgba(16,185,129,.18)" stroke="#10b981" stroke-width="2.4"></polygon>
+
+                            <circle id="point-o" r="5" fill="#111827"></circle>
+                            <circle id="point-a" r="5" fill="#111827"></circle>
+                            <circle id="point-b" r="5" fill="#111827"></circle>
+                            <circle id="point-m" r="6" fill="#2563eb"></circle>
+                            <circle id="point-n" r="6" fill="#7c3aed"></circle>
+                            <circle id="point-h" r="6" fill="#f59e0b"></circle>
+                            <circle id="point-p" r="7" fill="#e11d48"></circle>
+
+                            <g font-size="14" font-weight="700">
+                                <text id="label-o" fill="#111827">O</text>
+                                <text id="label-a" fill="#111827">A</text>
+                                <text id="label-b" fill="#111827">B</text>
+                                <text id="label-m" fill="#1d4ed8">M</text>
+                                <text id="label-n" fill="#6d28d9">N</text>
+                                <text id="label-h" fill="#b45309">H</text>
+                                <text id="label-p" fill="#be123c">P</text>
+                                <text id="label-area" fill="#047857">△ANP</text>
+                                <text id="label-circle" fill="#1d4ed8">円K</text>
+                            </g>
+                        </svg>
+                    </div>
+
+                    <div class="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+                        <div class="rounded-lg border border-slate-200 bg-white p-3 text-center">
+                            <div class="text-xs font-bold text-slate-500">Pから直線ANまで</div>
+                            <div id="distance-display" class="mt-1 text-lg font-bold text-rose-700"></div>
+                        </div>
+
+                        <div class="rounded-lg border border-emerald-200 bg-emerald-50 p-3 text-center">
+                            <div class="text-xs font-bold text-emerald-700">三角形ANPの面積</div>
+                            <div id="area-display" class="mt-1 text-lg font-bold text-emerald-800"></div>
+                        </div>
+
+                        <div class="rounded-lg border border-blue-200 bg-blue-50 p-3 text-center">
+                            <div class="text-xs font-bold text-blue-700">最大値</div>
+                            <div class="mt-1 text-lg font-bold text-blue-900">5√15 / 12</div>
+                        </div>
+
+                        <div class="rounded-lg border border-violet-200 bg-violet-50 p-3 text-center">
+                            <div class="text-xs font-bold text-violet-700">現在のOP</div>
+                            <div id="op-display" class="mt-1 text-sm font-bold text-violet-800"></div>
+                        </div>
+                    </div>
+
+                    <div id="status" class="mt-4 rounded-lg border border-slate-300 bg-white p-4 text-center text-sm font-bold text-slate-700">
+                        Pを動かして面積の変化を確認してください
+                    </div>
+                </div>
+
+                <script>
+                    document.addEventListener("DOMContentLoaded", () => {
+                        const slider = document.getElementById("angle-slider");
+                        const angleDisplay = document.getElementById("angle-display");
+
+                        const sqrt2 = Math.sqrt(2);
+                        const sqrt30 = Math.sqrt(30);
+
+                        const O = {x:0, y:0};
+                        const A = {x:sqrt2, y:0};
+                        const B = {x:-3*sqrt2/4, y:sqrt30/4};
+                        const M = {x:(A.x+B.x)/2, y:(A.y+B.y)/2};
+                        const N = {x:B.x/3, y:B.y/3};
+                        const H = {x:(A.x+B.x)/4, y:(A.y+B.y)/4};
+                        const radius = sqrt2;
+
+                        const an = {x:N.x-A.x, y:N.y-A.y};
+                        const anLength = Math.hypot(an.x, an.y);
+                        const maxAngle = Math.atan2(A.y+B.y, A.x+B.x);
+
+                        const xMin = -2.2;
+                        const xMax = 2.4;
+                        const yMin = -1.7;
+                        const yMax = 2.1;
+
+                        const W = 680;
+                        const Hsvg = 500;
+
+                        const sx = x => (x-xMin)/(xMax-xMin)*W;
+                        const sy = y => Hsvg-(y-yMin)/(yMax-yMin)*Hsvg;
+
+                        const setPoint = (id, p) => {
+                            const el = document.getElementById(id);
+                            el.setAttribute("cx", sx(p.x));
+                            el.setAttribute("cy", sy(p.y));
+                        };
+
+                        const setText = (id, p) => {
+                            const el = document.getElementById(id);
+                            el.setAttribute("x", sx(p.x));
+                            el.setAttribute("y", sy(p.y));
+                        };
+
+                        const setLine = (id, p1, p2) => {
+                            const el = document.getElementById(id);
+                            el.setAttribute("x1", sx(p1.x));
+                            el.setAttribute("y1", sy(p1.y));
+                            el.setAttribute("x2", sx(p2.x));
+                            el.setAttribute("y2", sy(p2.y));
+                        };
+
+                        const poly = pts => pts.map(p => `${sx(p.x)},${sy(p.y)}`).join(" ");
+
+                        const grid = document.getElementById("grid");
+                        let markup = "";
+
+                        for (let x = -2; x <= 2; x += 0.5) {
+                            markup += `<line x1="${sx(x)}" y1="0" x2="${sx(x)}" y2="${Hsvg}" stroke="#f1f5f9" stroke-width="1"/>`;
+                        }
+
+                        for (let y = -1.5; y <= 2; y += 0.5) {
+                            markup += `<line x1="0" y1="${sy(y)}" x2="${W}" y2="${sy(y)}" stroke="#f1f5f9" stroke-width="1"/>`;
+                        }
+
+                        grid.innerHTML = markup;
+
+                        setLine("x-axis", {x:xMin,y:0}, {x:xMax,y:0});
+                        setLine("y-axis", {x:0,y:yMin}, {x:0,y:yMax});
+
+                        document.getElementById("triangle-oab").setAttribute("points", poly([O,A,B]));
+
+                        const circle = document.getElementById("circle-k");
+                        circle.setAttribute("cx", sx(M.x));
+                        circle.setAttribute("cy", sy(M.y));
+                        circle.setAttribute("r", Math.abs(sx(M.x+radius)-sx(M.x)));
+
+                        const lineScale = 2.4;
+                        const A1 = {
+                            x:A.x-lineScale*an.x,
+                            y:A.y-lineScale*an.y
+                        };
+                        const A2 = {
+                            x:A.x+lineScale*an.x,
+                            y:A.y+lineScale*an.y
+                        };
+
+                        setLine("an-line", A1, A2);
+                        setLine("mh-line", H, M);
+
+                        setPoint("point-o", O);
+                        setPoint("point-a", A);
+                        setPoint("point-b", B);
+                        setPoint("point-m", M);
+                        setPoint("point-n", N);
+                        setPoint("point-h", H);
+
+                        setText("label-o", {x:O.x-0.10,y:O.y-0.08});
+                        setText("label-a", {x:A.x+0.05,y:A.y-0.05});
+                        setText("label-b", {x:B.x-0.12,y:B.y+0.10});
+                        setText("label-m", {x:M.x+0.05,y:M.y+0.08});
+                        setText("label-n", {x:N.x-0.12,y:N.y+0.07});
+                        setText("label-h", {x:H.x-0.10,y:H.y-0.07});
+                        setText("label-circle", {x:M.x+0.85,y:M.y+1.10});
+
+                        function signedDistanceToLine(p) {
+                            return ((p.x-A.x)*an.y-(p.y-A.y)*an.x)/anLength;
+                        }
+
+                        function update() {
+                            const angle = parseFloat(slider.value);
+                            const P = {
+                                x:M.x+radius*Math.cos(angle),
+                                y:M.y+radius*Math.sin(angle)
+                            };
+
+                            const distance = Math.abs(signedDistanceToLine(P));
+                            const area = 0.5*anLength*distance;
+
+                            setPoint("point-p", P);
+                            setText("label-p", {x:P.x+0.07,y:P.y+0.08});
+                            setLine("hp-line", H, P);
+
+                            document.getElementById("triangle-anp").setAttribute("points", poly([A,N,P]));
+                            setText("label-area", {
+                                x:(A.x+N.x+P.x)/3,
+                                y:(A.y+N.y+P.y)/3
+                            });
+
+                            angleDisplay.textContent = `${angle.toFixed(3)} rad`;
+                            document.getElementById("distance-display").textContent = distance.toFixed(5);
+                            document.getElementById("area-display").textContent = area.toFixed(5);
+                            document.getElementById("op-display").textContent =
+                                `(${P.x.toFixed(3)}, ${P.y.toFixed(3)})`;
+
+                            const status = document.getElementById("status");
+
+                            let diff = Math.abs(angle-maxAngle);
+                            diff = Math.min(diff, 2*Math.PI-diff);
+
+                            if (diff < 0.006) {
+                                status.textContent = "H・M・Pが一直線上に並び、面積が最大";
+                                status.className = "mt-4 rounded-lg border border-emerald-300 bg-emerald-50 p-4 text-center text-sm font-bold text-emerald-800";
+                            } else {
+                                status.textContent = "Pから直線ANまでの距離が面積を決める";
+                                status.className = "mt-4 rounded-lg border border-slate-300 bg-white p-4 text-center text-sm font-bold text-slate-700";
+                            }
+                        }
+
+                        slider.addEventListener("input", update);
+
+                        document.getElementById("max-button").addEventListener("click", () => {
+                            slider.value = maxAngle;
+                            update();
+                        });
+
+                        document.getElementById("a-button").addEventListener("click", () => {
+                            slider.value = Math.atan2(A.y-M.y, A.x-M.x);
+                            if (parseFloat(slider.value) < 0) {
+                                slider.value = parseFloat(slider.value)+2*Math.PI;
+                            }
+                            update();
+                        });
+
+                        document.getElementById("b-button").addEventListener("click", () => {
+                            let angle = Math.atan2(B.y-M.y, B.x-M.x);
+                            if (angle < 0) angle += 2*Math.PI;
+                            slider.value = angle;
+                            update();
+                        });
+
+                        update();
+                    });
+                </script>
+            </div>
+
+            <div class="mt-10">
+                <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">別解：（4）中心から直線までの距離を利用する</h3>
+
+                <div class="mt-4 rounded-xl border border-indigo-200 bg-indigo-50 p-5 text-sm leading-relaxed text-slate-700">
+                    <p>
+                        底辺ANは固定されているので、三角形ANPの面積を最大にするには、
+                        Pから直線ANまでの距離を最大にすればよい。
+                    </p>
+
+                    <p class="mt-3">
+                        円Kの中心はM、半径は
+                        \[
+                        \mathrm{MP}=\sqrt2
+                        \]
+                        である。また、HはMから直線ANに下ろした垂線の足なので、
+                        円上の点から直線ANまでの距離が最大となるのは、
+                        H、M、Pがこの順に一直線上に並ぶときである。
+                    </p>
+
+                    <p class="mt-3">
+                        （1）、（3）より、
+                    </p>
+
+                    <div class="math-scroll">
+                        \[
+                        \overrightarrow{\mathrm{OM}}
+                        =
+                        \frac12(\vec a+\vec b),
+                        \qquad
+                        \overrightarrow{\mathrm{OH}}
+                        =
+                        \frac14(\vec a+\vec b).
+                        \]
+                    </div>
+
+                    <p>
+                        よって、
+                    </p>
+
+                    <div class="math-scroll">
+                        \[
+                        \overrightarrow{\mathrm{HM}}
+                        =
+                        \overrightarrow{\mathrm{OM}}
+                        -
+                        \overrightarrow{\mathrm{OH}}
+                        =
+                        \frac14(\vec a+\vec b).
+                        \qquad\text{(1)}
+                        \]
+                    </div>
+
+                    <p class="mt-3">
+                        面積が最大となるとき、
+                        $\overrightarrow{\mathrm{MP}}$ と
+                        $\overrightarrow{\mathrm{HM}}$ は平行である。
+                        そこで、実数 $k$ を用いて
+                    </p>
+
+                    <div class="math-scroll">
+                        \[
+                        \overrightarrow{\mathrm{MP}}
+                        =
+                        k\overrightarrow{\mathrm{HM}}
+                        \qquad\text{(2)}
+                        \]
+                    </div>
+
+                    <p>
+                        とおく。最大となる点PはHからMへ進んだ先にあるので、$k>0$ である。
+                    </p>
+
+                    <p class="mt-3">
+                        （1）、（2）より、
+                    </p>
+
+                    <div class="math-scroll">
+                        \[
+                        \overrightarrow{\mathrm{MP}}
+                        =
+                        \frac{k}{4}(\vec a+\vec b).
+                        \]
+                    </div>
+
+                    <p>
+                        したがって、
+                    </p>
+
+                    <div class="math-scroll">
+                        \[
+                        \begin{aligned}
+                        \overrightarrow{\mathrm{OP}}
+                        &=
+                        \overrightarrow{\mathrm{OM}}
+                        +
+                        \overrightarrow{\mathrm{MP}}\\
+                        &=
+                        \frac12(\vec a+\vec b)
+                        +
+                        \frac{k}{4}(\vec a+\vec b)\\
+                        &=
+                        \left(
+                        \frac12+\frac{k}{4}
+                        \right)(\vec a+\vec b).
+                        \qquad\text{(3)}
+                        \end{aligned}
+                        \]
+                    </div>
+
+                    <p class="mt-3">
+                        ここで、Pは円K上にあるので、
+                    </p>
+
+                    <div class="math-scroll">
+                        \[
+                        \left|\overrightarrow{\mathrm{MP}}\right|
+                        =
+                        \sqrt2.
+                        \qquad\text{(4)}
+                        \]
+                    </div>
+
+                    <p>
+                        また、
+                    </p>
+
+                    <div class="math-scroll">
+                        \[
+                        |\vec a+\vec b|=\sqrt2.
+                        \]
+                    </div>
+
+                    <p>
+                        （2）、（4）より、
+                    </p>
+
+                    <div class="math-scroll">
+                        \[
+                        \begin{aligned}
+                        \left|\overrightarrow{\mathrm{MP}}\right|
+                        &=
+                        |k|
+                        \left|\overrightarrow{\mathrm{HM}}\right|\\
+                        &=
+                        |k|\cdot\frac{\sqrt2}{4}\\
+                        &=
+                        \sqrt2.
+                        \end{aligned}
+                        \]
+                    </div>
+
+                    <p>
+                        よって、
+                    </p>
+
+                    <div class="math-scroll">
+                        \[
+                        |k|=4.
+                        \]
+                    </div>
+
+                    <p>
+                        $k>0$ であるから、
+                    </p>
+
+                    <div class="math-scroll">
+                        \[
+                        k=4.
+                        \]
+                    </div>
+
+                    <p>
+                        これを（3）に代入すると、
+                    </p>
+
+                    <div class="math-scroll">
+                        \[
+                        \begin{aligned}
+                        \overrightarrow{\mathrm{OP}}
+                        &=
+                        \left(
+                        \frac12+\frac44
+                        \right)(\vec a+\vec b)\\
+                        &=
+                        \frac32(\vec a+\vec b).
+                        \end{aligned}
+                        \]
+                    </div>
+
+                    <p class="mt-3">
+                        また、
+                    </p>
+
+                    <div class="math-scroll">
+                        \[
+                        \left|\overrightarrow{\mathrm{HM}}\right|
+                        =
+                        \frac{\sqrt2}{4}
+                        \]
+                    </div>
+
+                    <p>
+                        なので、Pから直線ANまでの最大距離は
+                    </p>
+
+                    <div class="math-scroll">
+                        \[
+                        \begin{aligned}
+                        \mathrm{HP}
+                        &=
+                        \mathrm{HM}+\mathrm{MP}\\
+                        &=
+                        \frac{\sqrt2}{4}+\sqrt2\\
+                        &=
+                        \frac{5\sqrt2}{4}.
+                        \end{aligned}
+                        \]
+                    </div>
+
+                    <p>
+                        よって、面積の最大値は
+                    </p>
+
+                    <div class="math-scroll">
+                        \[
+                        \begin{aligned}
+                        \frac12
+                        \left|\overrightarrow{\mathrm{AN}}\right|
+                        \cdot\mathrm{HP}
+                        &=
+                        \frac12
+                        \cdot
+                        \frac{\sqrt{30}}{3}
+                        \cdot
+                        \frac{5\sqrt2}{4}\\
+                        &=
+                        \frac{5\sqrt{15}}{12}.
+                        \end{aligned}
+                        \]
+                    </div>
+
+                    <div class="mt-4 rounded-lg border border-indigo-300 bg-white p-4 text-center font-bold text-indigo-950">
+                        \[
+                        \text{面積の最大値}
+                        =
+                        \frac{5\sqrt{15}}{12},
+                        \qquad
+                        \overrightarrow{\mathrm{OP}}
+                        =
+                        \frac32(\vec a+\vec b)
+                        \]
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-10">
+                <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">受験生のつまずきポイント</h3>
+
+                <div class="mt-4 space-y-4">
+                    <div class="rounded-lg border border-red-200 bg-red-50 p-4">
+                        <p class="text-sm font-bold text-red-900">長さを直接展開しようとする</p>
+                        <p class="mt-1 text-sm text-red-800">
+                            ベクトルの長さは、まず2乗を内積で計算します。最後に正の平方根を取ります。
+                        </p>
+                    </div>
+
+                    <div class="rounded-lg border border-red-200 bg-red-50 p-4">
+                        <p class="text-sm font-bold text-red-900">Hが直線AN上にある条件だけで止まる</p>
+                        <p class="mt-1 text-sm text-red-800">
+                            Hは垂線の足なので、直線上の条件に加えて
+                            $\overrightarrow{\mathrm{MH}}\cdot\overrightarrow{\mathrm{AN}}=0$
+                            が必要です。
+                        </p>
+                    </div>
+
+                    <div class="rounded-lg border border-red-200 bg-red-50 p-4">
+                        <p class="text-sm font-bold text-red-900">面積最大を円の直径だけで判断する</p>
+                        <p class="mt-1 text-sm text-red-800">
+                            底辺ANに対する高さを最大にします。中心Mが直線AN上にないため、最大距離は半径だけでなく
+                            $\mathrm{HM}+\text{半径}$ です。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mt-6 rounded-2xl bg-blue-900 p-6 text-white shadow-sm sm:p-8">
+            <h2 class="border-b-2 border-blue-400 pb-2 text-lg font-bold">アクティブリコール（復習テスト）</h2>
+
+            <p class="mt-4 text-sm text-blue-200">
+                質問をクリックし、答えを頭の中で作ってから開いてください。
+            </p>
+
+            <div class="mt-6 space-y-3">
+                <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                    <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                        <span>Q1. 中点Mの位置ベクトルは何ですか？</span>
+                        <span class="transition duration-300 group-open:-rotate-180">⌄</span>
+                    </summary>
+
+                    <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                        \[
+                        \overrightarrow{\mathrm{OM}}
+                        =
+                        \frac12(\vec a+\vec b)
+                        \]
+                        です。
+                    </div>
+                </details>
+
+                <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                    <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                        <span>Q2. ABの長さは何ですか？</span>
+                        <span class="transition duration-300 group-open:-rotate-180">⌄</span>
+                    </summary>
+
+                    <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                        \[
+                        \left|\overrightarrow{\mathrm{AB}}\right|
+                        =
+                        2\sqrt2
+                        \]
+                        です。
+                    </div>
+                </details>
+
+                <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                    <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                        <span>Q3. 垂線の足Hを求めるための内積条件は何ですか？</span>
+                        <span class="transition duration-300 group-open:-rotate-180">⌄</span>
+                    </summary>
+
+                    <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                        \[
+                        \overrightarrow{\mathrm{MH}}
+                        \cdot
+                        \overrightarrow{\mathrm{AN}}
+                        =0
+                        \]
+                        です。
+                    </div>
+                </details>
+
+                <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                    <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                        <span>Q4. Hの位置ベクトルは何ですか？</span>
+                        <span class="transition duration-300 group-open:-rotate-180">⌄</span>
+                    </summary>
+
+                    <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                        \[
+                        \overrightarrow{\mathrm{OH}}
+                        =
+                        \frac14(\vec a+\vec b)
+                        \]
+                        です。
+                    </div>
+                </details>
+
+                <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                    <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                        <span>Q5. 面積の最大値と、そのときのOPを答えてください。</span>
+                        <span class="transition duration-300 group-open:-rotate-180">⌄</span>
+                    </summary>
+
+                    <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                        \[
+                        \text{面積の最大値}
+                        =
+                        \frac{5\sqrt{15}}{12},
+                        \qquad
+                        \overrightarrow{\mathrm{OP}}
+                        =
+                        \frac32(\vec a+\vec b)
+                        \]
+                        です。
+                    </div>
+                </details>
+            </div>
+        </section>
+
+        <nav class="mt-7 grid gap-3 sm:grid-cols-2">
+            <a href="no48.html" class="nav-button rounded-xl border border-slate-300 bg-white px-5 py-4 text-center font-bold text-slate-700 hover:border-blue-300 hover:text-blue-800">
+                ← No.48へ
+            </a>
+
+            <a href="no50.html" class="nav-button rounded-xl bg-blue-700 px-5 py-4 text-center font-bold text-white hover:bg-blue-800">
+                No.50 →
+            </a>
+        </nav>
+    </main>
+
+    <footer class="py-10 text-center text-sm text-slate-500">
+        医進・サイエンスコース　夏期数学課題 解説サイト
+    </footer>
+</div>
+</body>
+</html>

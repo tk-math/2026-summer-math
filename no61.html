@@ -1,0 +1,1034 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>夏期課題 No.61 高次方程式 - 医進・サイエンスコース</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        MathJax = {
+            chtml: { matchFontHeight: false },
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body { font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif; }
+        .nav-button { transition: transform .16s ease, box-shadow .16s ease; }
+        .nav-button:hover { transform: translateY(-2px); box-shadow: 0 8px 18px rgba(15, 23, 42, .12); }
+        .math-scroll { overflow-x: auto; overflow-y: hidden; padding-bottom: .5rem; margin-bottom: .5rem; }
+        button:focus-visible, summary:focus-visible, a:focus-visible {
+            outline: 3px solid rgba(37, 99, 235, .35);
+            outline-offset: 3px;
+        }
+    </style>
+</head>
+<body class="bg-slate-100 text-slate-800">
+<div class="mx-auto max-w-4xl px-4 py-6 sm:px-6 lg:py-10">
+
+    <a href="index.html" class="inline-flex items-center gap-2 text-sm font-bold text-blue-700 hover:text-blue-900">
+        ← 問題一覧へ戻る
+    </a>
+
+    <header class="mt-4 overflow-hidden rounded-3xl bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-800 text-white shadow-xl">
+        <div class="p-7 sm:p-10">
+            <span class="inline-flex items-center rounded-full bg-white/15 px-4 py-1.5 text-sm font-semibold tracking-wide text-blue-100">医進・サイエンスコース</span>
+            <div class="mt-4 flex flex-wrap items-center gap-3">
+                <span class="rounded-lg bg-white/20 px-3 py-1 text-sm font-bold">No.61</span>
+                <span class="rounded-full bg-rose-100 px-3 py-1 text-xs font-bold text-rose-800">発展</span>
+            </div>
+            <h1 class="mt-4 text-3xl font-bold leading-tight sm:text-4xl">高次方程式</h1>
+            <div class="mt-3 text-lg text-blue-100">目標解答時間：25分</div>
+        </div>
+    </header>
+
+    <main>
+        <section class="mt-7 rounded-2xl border border-blue-100 bg-white p-6 shadow-sm sm:p-8">
+            <h2 class="flex items-center gap-2 text-xl font-bold text-blue-900">
+                <span class="grid h-8 w-8 place-items-center rounded-full bg-blue-700 text-base text-white">1</span>
+                問題
+            </h2>
+
+            <div class="mt-4 rounded-lg border border-slate-200 bg-slate-50 p-4 text-slate-700 leading-relaxed">
+                <p>
+                    2つの整式
+                </p>
+
+                <div class="math-scroll">
+                    \[
+                    f(x)=x^2+x-3,
+                    \]
+                    \[
+                    g(x)=x^3+2x^2+px+q
+                    \qquad
+                    (p,q\text{ は実数の定数})
+                    \]
+                </div>
+
+                <p>
+                    があり、方程式 $f(x)=0$ の2解を
+                    \[
+                    \alpha,\beta
+                    \qquad
+                    (\alpha&lt;\beta)
+                    \]
+                    とする。
+                </p>
+
+                <ol class="mt-4 list-decimal space-y-4 pl-6">
+                    <li>方程式 $f(x)=0$ を解け。</li>
+                    <li>$g(x)$ を $f(x)$ で割ったときの商と余りを求めよ。</li>
+                    <li>
+                        \[
+                        g(\alpha)=\beta,
+                        \qquad
+                        g(\beta)=\alpha
+                        \]
+                        が成り立つような $p,q$ を求めよ。
+                    </li>
+                    <li>
+                        \[
+                        \{g(\alpha)\}^2+g(\alpha)-3=0,
+                        \]
+                        \[
+                        \{g(\beta)\}^2+g(\beta)-3=0
+                        \]
+                        が成り立つような $p,q$ の組をすべて求めよ。
+                    </li>
+                </ol>
+            </div>
+
+            <div class="mt-4 rounded-lg border border-blue-200 bg-blue-50 p-4">
+                <h3 class="mb-2 font-bold text-blue-900">【条件の整理】</h3>
+
+                <ul class="list-disc space-y-2 pl-5 text-sm text-slate-700">
+                    <li>
+                        解と係数の関係より、
+                        \[
+                        \alpha+\beta=-1,
+                        \qquad
+                        \alpha\beta=-3
+                        \]
+                        です。
+                    </li>
+                    <li>
+                        $g(x)$ を $f(x)$ で割った余りを $r(x)$ とすると、
+                        \[
+                        g(\alpha)=r(\alpha),
+                        \qquad
+                        g(\beta)=r(\beta)
+                        \]
+                        です。
+                    </li>
+                    <li>
+                        （4）の条件は、
+                        \[
+                        f(g(\alpha))=0,
+                        \qquad
+                        f(g(\beta))=0
+                        \]
+                        と同じです。
+                    </li>
+                    <li>
+                        $f(x)=0$ の解は $\alpha,\beta$ だけなので、
+                        $g(\alpha),g(\beta)$ はそれぞれ $\alpha$ または $\beta$ です。
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="mt-6 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+            <h2 class="flex items-center gap-2 text-xl font-bold text-slate-900">
+                <span class="grid h-8 w-8 place-items-center rounded-full bg-slate-700 text-base text-white">2</span>
+                解説
+            </h2>
+
+            <p class="mt-4 text-sm leading-8 text-slate-600">
+                高次式を直接扱わず、$f(x)$ で割った余りだけに注目します。
+            </p>
+
+            <div class="mt-8 rounded-xl border border-amber-200 bg-amber-50 p-5">
+                <h3 class="border-b-2 border-amber-400 pb-2 text-lg font-bold text-amber-900">解法選択のトリガー</h3>
+
+                <div class="mt-4 space-y-4">
+                    <div class="rounded-lg border border-amber-200 bg-amber-100/60 p-4">
+                        <p class="text-sm font-bold text-amber-900">$f(\alpha)=0$ での $g(\alpha)$</p>
+                        <p class="mt-1 text-sm text-amber-800">
+                            $g(x)=f(x)Q(x)+r(x)$ と表せば、
+                            \[
+                            g(\alpha)=r(\alpha)
+                            \]
+                            となります。商の部分は消えます。
+                        </p>
+                    </div>
+
+                    <div class="rounded-lg border border-amber-200 bg-amber-100/60 p-4">
+                        <p class="text-sm font-bold text-amber-900">2つの値を入れ替える一次式</p>
+                        <p class="mt-1 text-sm text-amber-800">
+                            $r(\alpha)=\beta$、$r(\beta)=\alpha$ の2式を引くと、
+                            一次式の傾きが決まります。
+                        </p>
+                    </div>
+
+                    <div class="rounded-lg border border-amber-200 bg-amber-100/60 p-4">
+                        <p class="text-sm font-bold text-amber-900">2つの根を根の集合へ移す</p>
+                        <p class="mt-1 text-sm text-amber-800">
+                            $\{\alpha,\beta\}$ から $\{\alpha,\beta\}$ への対応は、
+                            2点それぞれの行き先を選ぶので4通りです。
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-8 rounded-xl border border-emerald-200 bg-emerald-50 p-5">
+                <h3 class="border-b-2 border-emerald-400 pb-2 text-lg font-bold text-emerald-900">思考プロセス</h3>
+
+                <div class="mt-4 space-y-4">
+                    <div class="rounded-lg border border-emerald-200 bg-emerald-100/60 p-4 text-sm text-emerald-900">
+                        <strong>（2）余りは1次以下</strong><br>
+                        2次式で割るので、余りは
+                        \[
+                        ax+b
+                        \]
+                        の形です。
+                    </div>
+
+                    <div class="rounded-lg border border-emerald-200 bg-emerald-100/60 p-4 text-sm text-emerald-900">
+                        <strong>（3）$\alpha\ne\beta$ を利用する</strong><br>
+                        2式を引いた後、$\alpha-\beta\ne0$ なので割ることができます。
+                    </div>
+
+                    <div class="rounded-lg border border-emerald-200 bg-emerald-100/60 p-4 text-sm text-emerald-900">
+                        <strong>（4）同じ根に移る場合も忘れない</strong><br>
+                        恒等対応と入れ替えだけでなく、
+                        $\alpha,\beta$ の両方が $\alpha$ へ移る場合と、
+                        両方が $\beta$ へ移る場合も条件を満たします。
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-10">
+                <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">実際の答案</h3>
+
+                <div class="mt-4 space-y-8 text-slate-700">
+                    <div>
+                        <p class="border-b border-slate-200 pb-1 font-bold text-blue-800">（1）</p>
+
+                        <p class="mt-2">
+                            方程式
+                            \[
+                            x^2+x-3=0
+                            \]
+                            に解の公式を用いると、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            x
+                            =
+                            \frac{-1\pm\sqrt{1+12}}{2}
+                            =
+                            \frac{-1\pm\sqrt{13}}{2}.
+                            \]
+                        </div>
+
+                        <p>
+                            $\alpha&lt;\beta$ より、
+                        </p>
+
+                        <div class="mt-2 rounded-xl border-2 border-blue-500 bg-blue-50 p-3 font-bold text-slate-900">
+                            \[
+                            \alpha
+                            =
+                            \frac{-1-\sqrt{13}}{2},
+                            \qquad
+                            \beta
+                            =
+                            \frac{-1+\sqrt{13}}{2}
+                            \]
+                        </div>
+                    </div>
+
+                    <div class="border-t border-slate-200 pt-6">
+                        <p class="border-b border-slate-200 pb-1 font-bold text-blue-800">（2）</p>
+
+                        <p class="mt-2">
+                            $g(x)$ を $f(x)$ で割る。
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            \begin{aligned}
+                            g(x)
+                            &=
+                            x^3+2x^2+px+q\\
+                            &=
+                            (x^2+x-3)(x+1)
+                            +(p+2)x+q+3.
+                            \end{aligned}
+                            \]
+                        </div>
+
+                        <div class="mt-2 rounded-xl border-2 border-blue-500 bg-blue-50 p-3 font-bold text-slate-900">
+                            \[
+                            \text{商 }x+1,
+                            \qquad
+                            \text{余り }(p+2)x+q+3
+                            \]
+                        </div>
+                    </div>
+
+                    <div class="border-t border-slate-200 pt-6">
+                        <p class="border-b border-slate-200 pb-1 font-bold text-blue-800">（3）</p>
+
+                        <p class="mt-2">
+                            （2）より、
+                            \[
+                            g(x)
+                            =
+                            f(x)(x+1)+(p+2)x+q+3.
+                            \]
+                        </p>
+
+                        <p>
+                            $f(\alpha)=f(\beta)=0$ なので、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            g(\alpha)
+                            =
+                            (p+2)\alpha+q+3,
+                            \]
+                            \[
+                            g(\beta)
+                            =
+                            (p+2)\beta+q+3.
+                            \]
+                        </div>
+
+                        <p>
+                            条件から、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            (p+2)\alpha+q+3=\beta,
+                            \]
+                            \[
+                            (p+2)\beta+q+3=\alpha.
+                            \]
+                        </div>
+
+                        <p>
+                            第1式から第2式を引くと、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            (p+2)(\alpha-\beta)
+                            =
+                            \beta-\alpha
+                            =
+                            -(\alpha-\beta).
+                            \]
+                        </div>
+
+                        <p>
+                            $\alpha\ne\beta$ なので、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            p+2=-1,
+                            \]
+                            \[
+                            p=-3.
+                            \]
+                        </div>
+
+                        <p>
+                            これを第1式へ代入すると、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            -\alpha+q+3=\beta,
+                            \]
+                            \[
+                            q+3=\alpha+\beta=-1.
+                            \]
+                        </div>
+
+                        <p>
+                            よって、
+                        </p>
+
+                        <div class="mt-2 rounded-xl border-2 border-blue-500 bg-blue-50 p-3 font-bold text-slate-900">
+                            \[
+                            p=-3,
+                            \qquad
+                            q=-4
+                            \]
+                        </div>
+                    </div>
+
+                    <div class="border-t border-slate-200 pt-6">
+                        <p class="border-b border-slate-200 pb-1 font-bold text-blue-800">（4）条件を対応として読み替える</p>
+
+                        <p class="mt-2">
+                            与えられた条件は、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            f(g(\alpha))=0,
+                            \qquad
+                            f(g(\beta))=0
+                            \]
+                        </div>
+
+                        <p>
+                            と同じである。
+                            $f(x)=0$ の解は $\alpha,\beta$ なので、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            g(\alpha)\in\{\alpha,\beta\},
+                            \qquad
+                            g(\beta)\in\{\alpha,\beta\}.
+                            \]
+                        </div>
+
+                        <p>
+                            余りを
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            r(x)
+                            =
+                            (p+2)x+q+3
+                            \]
+                        </div>
+
+                        <p>
+                            とおくと、
+                            \[
+                            g(\alpha)=r(\alpha),
+                            \qquad
+                            g(\beta)=r(\beta).
+                            \]
+                            したがって、$\alpha,\beta$ の行き先を次の4通りに分ける。
+                        </p>
+                    </div>
+
+                    <div class="border-t border-slate-200 pt-6">
+                        <p class="border-b border-slate-200 pb-1 font-bold text-blue-800">（4）場合1：恒等対応</p>
+
+                        <div class="math-scroll">
+                            \[
+                            r(\alpha)=\alpha,
+                            \qquad
+                            r(\beta)=\beta.
+                            \]
+                        </div>
+
+                        <p>
+                            2式を引くと、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            (p+2)(\alpha-\beta)
+                            =
+                            \alpha-\beta.
+                            \]
+                        </div>
+
+                        <p>
+                            よって、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            p+2=1,
+                            \qquad
+                            p=-1.
+                            \]
+                        </div>
+
+                        <p>
+                            $r(\alpha)=\alpha$ より、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            \alpha+q+3=\alpha,
+                            \qquad
+                            q=-3.
+                            \]
+                        </div>
+
+                        <p>
+                            したがって、
+                            \[
+                            (p,q)=(-1,-3).
+                            \]
+                        </p>
+                    </div>
+
+                    <div class="border-t border-slate-200 pt-6">
+                        <p class="border-b border-slate-200 pb-1 font-bold text-blue-800">（4）場合2：入れ替え</p>
+
+                        <div class="math-scroll">
+                            \[
+                            r(\alpha)=\beta,
+                            \qquad
+                            r(\beta)=\alpha.
+                            \]
+                        </div>
+
+                        <p>
+                            これは（3）と同じ条件なので、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            (p,q)=(-3,-4).
+                            \]
+                        </div>
+                    </div>
+
+                    <div class="border-t border-slate-200 pt-6">
+                        <p class="border-b border-slate-200 pb-1 font-bold text-blue-800">（4）場合3：両方が $\alpha$ へ移る</p>
+
+                        <div class="math-scroll">
+                            \[
+                            r(\alpha)=\alpha,
+                            \qquad
+                            r(\beta)=\alpha.
+                            \]
+                        </div>
+
+                        <p>
+                            2式を引くと、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            (p+2)(\alpha-\beta)=0.
+                            \]
+                        </div>
+
+                        <p>
+                            $\alpha\ne\beta$ なので、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            p+2=0,
+                            \qquad
+                            p=-2.
+                            \]
+                        </div>
+
+                        <p>
+                            このとき $r(x)=q+3$ は定数であり、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            q+3=\alpha
+                            =
+                            \frac{-1-\sqrt{13}}2.
+                            \]
+                        </div>
+
+                        <p>
+                            よって、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            q
+                            =
+                            \frac{-7-\sqrt{13}}2.
+                            \]
+                        </div>
+                    </div>
+
+                    <div class="border-t border-slate-200 pt-6">
+                        <p class="border-b border-slate-200 pb-1 font-bold text-blue-800">（4）場合4：両方が $\beta$ へ移る</p>
+
+                        <p class="mt-2">
+                            同様に、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            p=-2,
+                            \qquad
+                            q+3=\beta
+                            =
+                            \frac{-1+\sqrt{13}}2.
+                            \]
+                        </div>
+
+                        <p>
+                            よって、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            q
+                            =
+                            \frac{-7+\sqrt{13}}2.
+                            \]
+                        </div>
+
+                        <div class="mt-4 rounded-xl border-2 border-blue-500 bg-blue-50 p-4 font-bold text-slate-900">
+                            \[
+                            (p,q)=(-1,-3),
+                            \]
+                            \[
+                            (p,q)=(-3,-4),
+                            \]
+                            \[
+                            (p,q)
+                            =
+                            \left(
+                            -2,
+                            \frac{-7-\sqrt{13}}2
+                            \right),
+                            \]
+                            \[
+                            (p,q)
+                            =
+                            \left(
+                            -2,
+                            \frac{-7+\sqrt{13}}2
+                            \right)
+                            \]
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-10">
+                <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">別解：（4）整式の割り算だけで条件を作る</h3>
+
+                <div class="mt-4 rounded-xl border border-indigo-200 bg-indigo-50 p-5 text-sm leading-relaxed text-slate-700">
+                    <p>
+                        余りを
+                        \[
+                        r(x)=Ax+B
+                        \]
+                        とおく。ただし、
+                        \[
+                        A=p+2,
+                        \qquad
+                        B=q+3.
+                        \]
+                    </p>
+
+                    <p class="mt-3">
+                        （4）の条件は
+                        \[
+                        f(r(\alpha))=0,
+                        \qquad
+                        f(r(\beta))=0
+                        \]
+                        である。
+                        したがって、整式 $f(r(x))$ を $f(x)$ で割った余りが0になればよい。
+                    </p>
+
+                    <p>
+                        $f(x)=0$ を法として、
+                        \[
+                        x^2=-x+3
+                        \]
+                        と考える。
+                    </p>
+
+                    <div class="math-scroll">
+                        \[
+                        \begin{aligned}
+                        f(r(x))
+                        &=
+                        (Ax+B)^2+(Ax+B)-3\\
+                        &=
+                        A^2x^2+2ABx+B^2+Ax+B-3\\
+                        &\equiv
+                        \{-A^2+2AB+A\}x\\
+                        &\quad
+                        +3A^2+B^2+B-3.
+                        \end{aligned}
+                        \]
+                    </div>
+
+                    <p>
+                        余りが恒等的に0になる条件は、
+                        </p>
+
+                    <div class="math-scroll">
+                        \[
+                        A(-A+2B+1)=0,
+                        \]
+                        \[
+                        3A^2+B^2+B-3=0.
+                        \]
+                    </div>
+
+                    <p>
+                        $A=0$ のとき、
+                        \[
+                        B^2+B-3=0
+                        \]
+                        より
+                        \[
+                        B=\alpha,\beta.
+                        \]
+                    </p>
+
+                    <p class="mt-3">
+                        $A\ne0$ のとき、
+                        \[
+                        A=2B+1.
+                        \]
+                        これを第2式へ代入すると、
+                        \[
+                        13B(B+1)=0.
+                        \]
+                        よって、
+                        \[
+                        (A,B)=(1,0),\ (-1,-1).
+                        \]
+                    </p>
+
+                    <p>
+                        最後に
+                        \[
+                        p=A-2,
+                        \qquad
+                        q=B-3
+                        \]
+                        へ戻せば、主解法と同じ4組を得る。
+                    </p>
+                </div>
+            </div>
+
+            <div class="mt-10">
+                <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">図解・可視化① 高次式が余りに変わる仕組み</h3>
+
+                <div class="mt-4 rounded-xl border border-slate-200 bg-slate-50 p-5">
+                    <div class="grid gap-4 md:grid-cols-3">
+                        <div class="rounded-xl border border-blue-200 bg-white p-5 text-center">
+                            <div class="text-sm font-bold text-blue-800">高次式</div>
+                            <div class="mt-3 text-lg font-bold text-slate-900">
+                                \[
+                                g(x)
+                                \]
+                            </div>
+                        </div>
+
+                        <div class="rounded-xl border border-slate-300 bg-white p-5 text-center">
+                            <div class="text-sm font-bold text-slate-700">割り算</div>
+                            <div class="mt-3 text-sm text-slate-700">
+                                \[
+                                g(x)
+                                =
+                                f(x)(x+1)+r(x)
+                                \]
+                            </div>
+                        </div>
+
+                        <div class="rounded-xl border border-emerald-200 bg-white p-5 text-center">
+                            <div class="text-sm font-bold text-emerald-800">根を代入</div>
+                            <div class="mt-3 text-sm text-slate-900">
+                                \[
+                                f(\alpha)=0
+                                \]
+                                \[
+                                g(\alpha)=r(\alpha)
+                                \]
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-5 rounded-lg border border-amber-200 bg-amber-50 p-4 text-center font-bold text-amber-900">
+                        \[
+                        r(x)=(p+2)x+q+3
+                        \]
+                        だけを調べればよい。
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-10">
+                <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">図解・可視化② $\alpha,\beta$ の4つの対応</h3>
+
+                <p class="mt-4 text-sm leading-relaxed text-slate-700">
+                    ボタンを押すと、一次式 $r(x)$ が $\alpha,\beta$ をどこへ移すかを確認できます。
+                </p>
+
+                <div class="mt-4 rounded-xl border border-slate-200 bg-slate-50 p-4 sm:p-6">
+                    <div class="flex flex-wrap justify-center gap-2">
+                        <button type="button" data-case="identity"
+                                class="rounded-lg border border-blue-200 bg-white px-3 py-2 text-sm font-bold text-blue-700 hover:bg-blue-50">
+                            恒等対応
+                        </button>
+                        <button type="button" data-case="swap"
+                                class="rounded-lg border border-violet-200 bg-white px-3 py-2 text-sm font-bold text-violet-700 hover:bg-violet-50">
+                            入れ替え
+                        </button>
+                        <button type="button" data-case="alpha"
+                                class="rounded-lg border border-emerald-200 bg-white px-3 py-2 text-sm font-bold text-emerald-700 hover:bg-emerald-50">
+                            両方→α
+                        </button>
+                        <button type="button" data-case="beta"
+                                class="rounded-lg border border-rose-200 bg-white px-3 py-2 text-sm font-bold text-rose-700 hover:bg-rose-50">
+                            両方→β
+                        </button>
+                    </div>
+
+                    <div class="mt-5 overflow-x-auto">
+                        <svg id="mapping-svg" width="760" height="420" viewBox="0 0 760 420"
+                             class="mx-auto h-auto min-w-[700px] max-w-[760px] rounded-xl border border-slate-200 bg-white"
+                             aria-label="アルファとベータの対応">
+
+                            <defs>
+                                <marker id="arrow-blue" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+                                    <path d="M0,0 L0,6 L9,3 z" fill="#2563eb"></path>
+                                </marker>
+                                <marker id="arrow-rose" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+                                    <path d="M0,0 L0,6 L9,3 z" fill="#e11d48"></path>
+                                </marker>
+                            </defs>
+
+                            <text x="130" y="55" text-anchor="middle" font-size="16" font-weight="700" fill="#475569">入力</text>
+                            <text x="630" y="55" text-anchor="middle" font-size="16" font-weight="700" fill="#475569">出力</text>
+
+                            <circle cx="130" cy="150" r="46" fill="#dbeafe" stroke="#2563eb" stroke-width="3"></circle>
+                            <circle cx="130" cy="300" r="46" fill="#ede9fe" stroke="#7c3aed" stroke-width="3"></circle>
+                            <circle cx="630" cy="150" r="46" fill="#dcfce7" stroke="#10b981" stroke-width="3"></circle>
+                            <circle cx="630" cy="300" r="46" fill="#ffe4e6" stroke="#e11d48" stroke-width="3"></circle>
+
+                            <text x="130" y="158" text-anchor="middle" font-size="26" font-weight="700" fill="#1d4ed8">α</text>
+                            <text x="130" y="308" text-anchor="middle" font-size="26" font-weight="700" fill="#6d28d9">β</text>
+                            <text x="630" y="158" text-anchor="middle" font-size="26" font-weight="700" fill="#047857">α</text>
+                            <text x="630" y="308" text-anchor="middle" font-size="26" font-weight="700" fill="#be123c">β</text>
+
+                            <path id="arrow-a" fill="none" stroke="#2563eb" stroke-width="4" marker-end="url(#arrow-blue)"></path>
+                            <path id="arrow-b" fill="none" stroke="#e11d48" stroke-width="4" marker-end="url(#arrow-rose)"></path>
+                        </svg>
+                    </div>
+
+                    <div class="mt-4 grid gap-3 sm:grid-cols-3">
+                        <div class="rounded-lg border border-blue-200 bg-blue-50 p-4 text-center">
+                            <div class="text-xs font-bold text-blue-700">余りr(x)</div>
+                            <div id="remainder-display" class="mt-1 text-sm font-bold text-blue-900"></div>
+                        </div>
+
+                        <div class="rounded-lg border border-violet-200 bg-violet-50 p-4 text-center">
+                            <div class="text-xs font-bold text-violet-700">(p,q)</div>
+                            <div id="pq-display" class="mt-1 text-sm font-bold text-violet-900"></div>
+                        </div>
+
+                        <div class="rounded-lg border border-emerald-200 bg-emerald-50 p-4 text-center">
+                            <div class="text-xs font-bold text-emerald-700">対応</div>
+                            <div id="case-display" class="mt-1 text-sm font-bold text-emerald-900"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <script>
+                    document.addEventListener("DOMContentLoaded", () => {
+                        const cases = {
+                            identity: {
+                                a: "M176 150 C330 100 470 100 576 150",
+                                b: "M176 300 C330 350 470 350 576 300",
+                                remainder: "r(x) = x",
+                                pq: "(−1, −3)",
+                                label: "α→α、β→β"
+                            },
+                            swap: {
+                                a: "M176 150 C330 160 470 275 576 300",
+                                b: "M176 300 C330 290 470 175 576 150",
+                                remainder: "r(x) = −x−1",
+                                pq: "(−3, −4)",
+                                label: "α→β、β→α"
+                            },
+                            alpha: {
+                                a: "M176 150 C330 110 470 110 576 150",
+                                b: "M176 300 C330 250 470 170 576 150",
+                                remainder: "r(x) = α",
+                                pq: "(−2, (−7−√13)/2)",
+                                label: "α→α、β→α"
+                            },
+                            beta: {
+                                a: "M176 150 C330 200 470 280 576 300",
+                                b: "M176 300 C330 340 470 340 576 300",
+                                remainder: "r(x) = β",
+                                pq: "(−2, (−7+√13)/2)",
+                                label: "α→β、β→β"
+                            }
+                        };
+
+                        function update(name) {
+                            const data = cases[name];
+                            document.getElementById("arrow-a").setAttribute("d",data.a);
+                            document.getElementById("arrow-b").setAttribute("d",data.b);
+                            document.getElementById("remainder-display").textContent = data.remainder;
+                            document.getElementById("pq-display").textContent = data.pq;
+                            document.getElementById("case-display").textContent = data.label;
+                        }
+
+                        document.querySelectorAll("[data-case]").forEach(button => {
+                            button.addEventListener("click",()=>{
+                                update(button.dataset.case);
+                            });
+                        });
+
+                        update("identity");
+                    });
+                </script>
+            </div>
+
+            <div class="mt-10">
+                <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">受験生のつまずきポイント</h3>
+
+                <div class="mt-4 space-y-4">
+                    <div class="rounded-lg border border-red-200 bg-red-50 p-4">
+                        <p class="text-sm font-bold text-red-900">$g(\alpha)$ を3次式へ直接代入して計算する</p>
+                        <p class="mt-1 text-sm text-red-800">
+                            $f(\alpha)=0$ なので、$f(x)$ で割った余りだけを代入すれば十分です。
+                        </p>
+                    </div>
+
+                    <div class="rounded-lg border border-red-200 bg-red-50 p-4">
+                        <p class="text-sm font-bold text-red-900">（3）で $\alpha-\beta$ を0として扱う</p>
+                        <p class="mt-1 text-sm text-red-800">
+                            $\alpha&lt;\beta$ なので、
+                            \[
+                            \alpha-\beta\ne0
+                            \]
+                            です。したがって両辺を $\alpha-\beta$ で割れます。
+                        </p>
+                    </div>
+
+                    <div class="rounded-lg border border-red-200 bg-red-50 p-4">
+                        <p class="text-sm font-bold text-red-900">（4）で恒等対応と入れ替えだけを調べる</p>
+                        <p class="mt-1 text-sm text-red-800">
+                            $g(\alpha)$ と $g(\beta)$ は同じ根になっても構いません。
+                            定数写像の2通りも必要です。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mt-6 rounded-2xl bg-blue-900 p-6 text-white shadow-sm sm:p-8">
+            <h2 class="border-b-2 border-blue-400 pb-2 text-lg font-bold">アクティブリコール（本質確認）</h2>
+
+            <p class="mt-4 text-sm text-blue-200">
+                答えではなく、問題を低い次数へ落とす理由を説明してから開いてください。
+            </p>
+
+            <div class="mt-6 space-y-3">
+                <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                    <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                        <span>Q1. なぜ $g(\alpha)$ は、$g(x)$ を $f(x)$ で割った余りだけで求められますか？</span>
+                        <span class="transition duration-300 group-open:-rotate-180">⌄</span>
+                    </summary>
+                    <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                        \[
+                        g(x)=f(x)Q(x)+r(x)
+                        \]
+                        と表せます。$f(\alpha)=0$ なので、
+                        \[
+                        g(\alpha)=r(\alpha)
+                        \]
+                        となり、商の部分が消えるからです。
+                    </div>
+                </details>
+
+                <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                    <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                        <span>Q2. （3）で2つの式を引くと、何が分かりますか？</span>
+                        <span class="transition duration-300 group-open:-rotate-180">⌄</span>
+                    </summary>
+                    <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                        定数項 $q+3$ が消え、余りの一次式の傾き $p+2$ が分かります。
+                        $\alpha\ne\beta$ なので、$\alpha-\beta$ で割ることができます。
+                    </div>
+                </details>
+
+                <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                    <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                        <span>Q3. （4）の条件は、$g(\alpha),g(\beta)$ について何を意味しますか？</span>
+                        <span class="transition duration-300 group-open:-rotate-180">⌄</span>
+                    </summary>
+                    <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                        \[
+                        f(g(\alpha))=f(g(\beta))=0
+                        \]
+                        なので、$g(\alpha),g(\beta)$ はそれぞれ
+                        \[
+                        \alpha,\beta
+                        \]
+                        のいずれかであることを意味します。
+                    </div>
+                </details>
+
+                <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                    <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                        <span>Q4. （4）で調べる対応が4通りになるのはなぜですか？</span>
+                        <span class="transition duration-300 group-open:-rotate-180">⌄</span>
+                    </summary>
+                    <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                        $\alpha$ の行き先が2通り、$\beta$ の行き先も2通りあるため、
+                        \[
+                        2\cdot2=4
+                        \]
+                        通りです。同じ根へ移る場合も含みます。
+                    </div>
+                </details>
+
+                <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                    <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                        <span>Q5. 両方の根が同じ根へ移るとき、余りが定数になるのはなぜですか？</span>
+                        <span class="transition duration-300 group-open:-rotate-180">⌄</span>
+                    </summary>
+                    <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                        一次式 $r(x)=Ax+B$ が異なる2点 $\alpha,\beta$ で同じ値をとるなら、
+                        \[
+                        A(\alpha-\beta)=0
+                        \]
+                        です。$\alpha\ne\beta$ なので $A=0$ となり、$r(x)$ は定数になります。
+                    </div>
+                </details>
+            </div>
+        </section>
+
+        <nav class="mt-7 grid gap-3 sm:grid-cols-2">
+            <a href="no60.html" class="nav-button rounded-xl border border-slate-300 bg-white px-5 py-4 text-center font-bold text-slate-700 hover:border-blue-300 hover:text-blue-800">
+                ← No.60へ
+            </a>
+
+            <a href="no62.html" class="nav-button rounded-xl bg-blue-700 px-5 py-4 text-center font-bold text-white hover:bg-blue-800">
+                No.62 →
+            </a>
+        </nav>
+    </main>
+
+    <footer class="py-10 text-center text-sm text-slate-500">
+        医進・サイエンスコース　夏期数学課題 解説サイト
+    </footer>
+</div>
+</body>
+</html>

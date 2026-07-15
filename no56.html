@@ -1,0 +1,1187 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>夏期課題 No.56 図形と方程式 - 医進・サイエンスコース</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        MathJax = {
+            chtml: { matchFontHeight: false },
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body { font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif; }
+        .nav-button { transition: transform .16s ease, box-shadow .16s ease; }
+        .nav-button:hover { transform: translateY(-2px); box-shadow: 0 8px 18px rgba(15, 23, 42, .12); }
+        .math-scroll { overflow-x: auto; overflow-y: hidden; padding-bottom: .5rem; margin-bottom: .5rem; }
+        button:focus-visible, summary:focus-visible, a:focus-visible, input:focus-visible {
+            outline: 3px solid rgba(37, 99, 235, .35);
+            outline-offset: 3px;
+        }
+    </style>
+</head>
+<body class="bg-slate-100 text-slate-800">
+<div class="mx-auto max-w-4xl px-4 py-6 sm:px-6 lg:py-10">
+
+    <a href="index.html" class="inline-flex items-center gap-2 text-sm font-bold text-blue-700 hover:text-blue-900">
+        ← 問題一覧へ戻る
+    </a>
+
+    <header class="mt-4 overflow-hidden rounded-3xl bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-800 text-white shadow-xl">
+        <div class="p-7 sm:p-10">
+            <span class="inline-flex items-center rounded-full bg-white/15 px-4 py-1.5 text-sm font-semibold tracking-wide text-blue-100">医進・サイエンスコース</span>
+            <div class="mt-4 flex flex-wrap items-center gap-3">
+                <span class="rounded-lg bg-white/20 px-3 py-1 text-sm font-bold">No.56</span>
+                <span class="rounded-full bg-amber-100 px-3 py-1 text-xs font-bold text-amber-800">標準</span>
+            </div>
+            <h1 class="mt-4 text-3xl font-bold leading-tight sm:text-4xl">図形と方程式</h1>
+            <div class="mt-3 text-lg text-blue-100">目標解答時間：20分</div>
+        </div>
+    </header>
+
+    <main>
+        <section class="mt-7 rounded-2xl border border-blue-100 bg-white p-6 shadow-sm sm:p-8">
+            <h2 class="flex items-center gap-2 text-xl font-bold text-blue-900">
+                <span class="grid h-8 w-8 place-items-center rounded-full bg-blue-700 text-base text-white">1</span>
+                問題
+            </h2>
+
+            <div class="mt-4 rounded-lg border border-slate-200 bg-slate-50 p-4 text-slate-700 leading-relaxed">
+                <p>
+                    $xy$ 平面上に、中心が $\mathrm{A}(2,1)$、半径が1の円 $C$ と、
+                    直線
+                    \[
+                    l:y=ax
+                    \]
+                    がある。ただし、$a$ は実数の定数とする。
+                </p>
+
+                <ol class="mt-4 list-decimal space-y-4 pl-6">
+                    <li>$C$ の方程式を求めよ。</li>
+                    <li>
+                        Aと $l$ の距離が
+                        \[
+                        \frac1{\sqrt2}
+                        \]
+                        となるような $a$ の値を求めよ。
+                    </li>
+                    <li>
+                        （2）で求めた $a$ のうち、Aが $l$ の下側にあるような値を $a_0$ とする。
+                        $C$ の周および内部にあり、不等式
+                        \[
+                        y\ge a_0x
+                        \]
+                        を満たす領域を $D$ とする。
+                        点 $\mathrm{P}(x,y)$ が $D$ 上を動くとき、$y-2x$ の最大値と、そのときのPの座標を求めよ。
+                    </li>
+                </ol>
+            </div>
+
+            <div class="mt-4 rounded-lg border border-blue-200 bg-blue-50 p-4">
+                <h3 class="mb-2 font-bold text-blue-900">【条件の整理】</h3>
+
+                <ul class="list-disc space-y-2 pl-5 text-sm text-slate-700">
+                    <li>
+                        中心 $(p,q)$、半径 $r$ の円の方程式は
+                        \[
+                        (x-p)^2+(y-q)^2=r^2
+                        \]
+                        です。
+                    </li>
+                    <li>
+                        点 $(x_0,y_0)$ と直線 $Ax+By+C=0$ の距離は
+                        \[
+                        \frac{|Ax_0+By_0+C|}{\sqrt{A^2+B^2}}
+                        \]
+                        です。
+                    </li>
+                    <li>
+                        「Aが直線 $y=ax$ の下側」とは
+                        \[
+                        1&lt;2a
+                        \]
+                        を意味します。
+                    </li>
+                    <li>
+                        一次式 $y-2x$ の値が一定の点は
+                        \[
+                        y=2x+k
+                        \]
+                        という互いに平行な直線上にあります。
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="mt-6 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+            <h2 class="flex items-center gap-2 text-xl font-bold text-slate-900">
+                <span class="grid h-8 w-8 place-items-center rounded-full bg-slate-700 text-base text-white">2</span>
+                解説
+            </h2>
+
+            <p class="mt-4 text-sm leading-8 text-slate-600">
+                点と直線の距離、領域の判定、一次式の最大化を順に処理します。
+            </p>
+
+            <div class="mt-8 rounded-xl border border-amber-200 bg-amber-50 p-5">
+                <h3 class="border-b-2 border-amber-400 pb-2 text-lg font-bold text-amber-900">解法選択のトリガー</h3>
+
+                <div class="mt-4 space-y-4">
+                    <div class="rounded-lg border border-amber-200 bg-amber-100/60 p-4">
+                        <p class="text-sm font-bold text-amber-900">点と直線の距離が与えられる</p>
+                        <p class="mt-1 text-sm text-amber-800">
+                            直線を
+                            \[
+                            ax-y=0
+                            \]
+                            と標準形にして距離公式へ代入します。
+                        </p>
+                    </div>
+
+                    <div class="rounded-lg border border-amber-200 bg-amber-100/60 p-4">
+                        <p class="text-sm font-bold text-amber-900">一次式の最大値を求める</p>
+                        <p class="mt-1 text-sm text-amber-800">
+                            \[
+                            y-2x=k
+                            \]
+                            と置くと、傾き2の直線を平行移動する問題になります。
+                            円に最後に接するときが最大候補です。
+                        </p>
+                    </div>
+
+                    <div class="rounded-lg border border-amber-200 bg-amber-100/60 p-4">
+                        <p class="text-sm font-bold text-amber-900">制約領域に最大候補が入るか確認する</p>
+                        <p class="mt-1 text-sm text-amber-800">
+                            円全体での最大点を求めても、
+                            \[
+                            y\ge x
+                            \]
+                            を満たさなければ採用できません。最後に必ず確認します。
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-8 rounded-xl border border-emerald-200 bg-emerald-50 p-5">
+                <h3 class="border-b-2 border-emerald-400 pb-2 text-lg font-bold text-emerald-900">思考プロセス</h3>
+
+                <div class="mt-4 space-y-4">
+                    <div class="rounded-lg border border-emerald-200 bg-emerald-100/60 p-4 text-sm text-emerald-900">
+                        <strong>（2）絶対値を外す前に2乗する</strong><br>
+                        \[
+                        \frac{|2a-1|}{\sqrt{a^2+1}}
+                        =
+                        \frac1{\sqrt2}
+                        \]
+                        は両辺とも0以上なので、そのまま2乗できます。
+                    </div>
+
+                    <div class="rounded-lg border border-emerald-200 bg-emerald-100/60 p-4 text-sm text-emerald-900">
+                        <strong>（3）単位法線ベクトルの逆方向へ半径1だけ進む</strong><br>
+                        \[
+                        m:2x-y+k=0
+                        \]
+                        の単位法線ベクトルを
+                        \[
+                        \vec{h}
+                        =
+                        \frac1{\sqrt5}
+                        \begin{pmatrix}
+                        2\\
+                        -1
+                        \end{pmatrix}
+                        \]
+                        とします。最大となる接点Pは、中心Aから $\vec h$ と逆方向へ
+                        半径1だけ進んだ点なので、
+                        \[
+                        \overrightarrow{\mathrm{OP}}
+                        =
+                        \overrightarrow{\mathrm{OA}}
+                        +
+                        (-1)\vec{h}
+                        \]
+                        と表します。
+                    </div>
+
+                    <div class="rounded-lg border border-emerald-200 bg-emerald-100/60 p-4 text-sm text-emerald-900">
+                        <strong>（3）領域条件を最後に代入確認する</strong><br>
+                        最大候補で
+                        \[
+                        y-x=-1+\frac3{\sqrt5}&gt;0
+                        \]
+                        となるため、候補点は領域Dに含まれます。
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-10">
+                <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">実際の答案</h3>
+
+                <div class="mt-4 space-y-8 text-slate-700">
+                    <div>
+                        <p class="border-b border-slate-200 pb-1 font-bold text-blue-800">（1）</p>
+
+                        <p class="mt-2">
+                            円Cの中心は $(2,1)$、半径は1なので、
+                        </p>
+
+                        <div class="mt-2 inline-block rounded-xl border-2 border-blue-500 bg-blue-50 p-3 font-bold text-slate-900">
+                            \[
+                            (x-2)^2+(y-1)^2=1
+                            \]
+                        </div>
+                    </div>
+
+                    <div class="border-t border-slate-200 pt-6">
+                        <p class="border-b border-slate-200 pb-1 font-bold text-blue-800">（2）</p>
+
+                        <p class="mt-2">
+                            直線 $l:y=ax$ を
+                            \[
+                            ax-y=0
+                            \]
+                            と表す。
+                        </p>
+
+                        <p>
+                            A$(2,1)$ と $l$ の距離は
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            \frac{|2a-1|}{\sqrt{a^2+1}}.
+                            \]
+                        </div>
+
+                        <p>
+                            これが $\dfrac1{\sqrt2}$ に等しいので、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            \frac{|2a-1|}{\sqrt{a^2+1}}
+                            =
+                            \frac1{\sqrt2}.
+                            \]
+                        </div>
+
+                        <p>
+                            両辺を2乗すると、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            \frac{(2a-1)^2}{a^2+1}
+                            =
+                            \frac12,
+                            \]
+                            \[
+                            2(2a-1)^2=a^2+1.
+                            \]
+                        </div>
+
+                        <p>
+                            展開して整理すると、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            8a^2-8a+2=a^2+1,
+                            \]
+                            \[
+                            7a^2-8a+1=0.
+                            \]
+                        </div>
+
+                        <p>
+                            因数分解すると、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            (7a-1)(a-1)=0.
+                            \]
+                        </div>
+
+                        <div class="mt-2 inline-block rounded-xl border-2 border-blue-500 bg-blue-50 p-3 font-bold text-slate-900">
+                            \[
+                            a=1,\qquad\frac17
+                            \]
+                        </div>
+                    </div>
+
+                    <div class="border-t border-slate-200 pt-6">
+                        <p class="border-b border-slate-200 pb-1 font-bold text-blue-800">（3）$a_0$ と領域Dを確認する</p>
+
+                        <p class="mt-2">
+                            A$(2,1)$ が直線 $y=ax$ の下側にある条件は、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            1&lt;2a.
+                            \]
+                        </div>
+
+                        <p>
+                            （2）の2つの値のうち、この条件を満たすのは $a=1$ なので、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            a_0=1.
+                            \]
+                        </div>
+
+                        <p>
+                            したがって、領域Dは
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            (x-2)^2+(y-1)^2\le1,
+                            \qquad
+                            y\ge x
+                            \]
+                        </div>
+
+                        <p>
+                            を同時に満たす部分である。
+                        </p>
+                    </div>
+
+                    <div class="border-t border-slate-200 pt-6">
+                        <p class="border-b border-slate-200 pb-1 font-bold text-blue-800">（3）直線の法線ベクトルから接点を求める</p>
+
+                        <p class="mt-2">
+                            \[
+                            y-2x=k
+                            \]
+                            とおき、この直線を $m$ とする。
+                            標準形で表すと、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            m:2x-y+k=0.
+                            \]
+                        </div>
+
+                        <p>
+                            $k$ を大きくすると直線 $m$ は左上方向へ平行移動する。
+                            円Cと共有点をもつ範囲で $k$ が最大となるのは、
+                            $m$ が円Cに接するときである。
+                            その接点をPとする。
+                        </p>
+
+                        <p class="mt-3">
+                            直線 $m$ の法線ベクトルは
+                            \[
+                            \begin{pmatrix}
+                            2\\
+                            -1
+                            \end{pmatrix}
+                            \]
+                            であり、その大きさは $\sqrt5$ である。
+                            そこで、$m$ の単位法線ベクトルを
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            \vec{h}
+                            =
+                            \frac1{\sqrt5}
+                            \begin{pmatrix}
+                            2\\
+                            -1
+                            \end{pmatrix}
+                            \]
+                        </div>
+
+                        <p>
+                            とする。
+                        </p>
+
+                        <p class="mt-3">
+                            $k$ を大きくすると、直線 $m$ は
+                            $\vec h$ と逆方向へ平行移動する。
+                            したがって、最大となる接点Pは、中心Aから
+                            $\vec h$ と逆方向へ半径1だけ進んだ点である。
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            \overrightarrow{\mathrm{OP}}
+                            =
+                            \overrightarrow{\mathrm{OA}}
+                            +
+                            (-1)\vec{h}.
+                            \]
+                        </div>
+
+                        <div class="mt-3 rounded-lg border border-amber-200 bg-amber-50 p-4 text-sm text-amber-900">
+                            <strong>注：</strong>
+                            \[
+                            (-1)\vec h
+                            \]
+                            は、$\vec h$ と逆方向に、円の半径1の分だけ進むことを表している。
+                            $\vec h$ は単位ベクトルなので、その大きさは1である。
+                        </div>
+
+                        <p class="mt-3">
+                            Aの位置ベクトルは
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            \overrightarrow{\mathrm{OA}}
+                            =
+                            \begin{pmatrix}
+                            2\\
+                            1
+                            \end{pmatrix}
+                            \]
+                        </div>
+
+                        <p>
+                            であるから、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            \begin{aligned}
+                            \overrightarrow{\mathrm{OP}}
+                            &=
+                            \begin{pmatrix}
+                            2\\
+                            1
+                            \end{pmatrix}
+                            +
+                            (-1)
+                            \frac1{\sqrt5}
+                            \begin{pmatrix}
+                            2\\
+                            -1
+                            \end{pmatrix}\\
+                            &=
+                            \begin{pmatrix}
+                            2-\dfrac2{\sqrt5}\\
+                            1+\dfrac1{\sqrt5}
+                            \end{pmatrix}.
+                            \end{aligned}
+                            \]
+                        </div>
+
+                        <p>
+                            よって、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            \mathrm{P}
+                            \left(
+                            2-\frac2{\sqrt5},
+                            1+\frac1{\sqrt5}
+                            \right).
+                            \]
+                        </div>
+
+                        <p class="mt-3">
+                            この点における $k=y-2x$ は
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            \begin{aligned}
+                            k
+                            &=
+                            1+\frac1{\sqrt5}
+                            -
+                            2\left(
+                            2-\frac2{\sqrt5}
+                            \right)\\
+                            &=
+                            -3+\frac5{\sqrt5}\\
+                            &=
+                            \sqrt5-3.
+                            \end{aligned}
+                            \]
+                        </div>
+
+                        <p>
+                            したがって、$y-2x$ の最大値は
+                            \[
+                            \sqrt5-3
+                            \]
+                            である。
+                        </p>
+
+                        <p class="mt-3">
+                            この点について、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            \begin{aligned}
+                            y-x
+                            &=
+                            1+\frac1{\sqrt5}
+                            -
+                            \left(
+                            2-\frac2{\sqrt5}
+                            \right)\\
+                            &=
+                            -1+\frac3{\sqrt5}.
+                            \end{aligned}
+                            \]
+                        </div>
+
+                        <p>
+                            $\sqrt5&lt;3$ より
+                            \[
+                            \frac3{\sqrt5}&gt;1
+                            \]
+                            なので、
+                            \[
+                            y-x&gt;0.
+                            \]
+                            よって、この点は領域Dに含まれる。
+                        </p>
+
+                        <div class="mt-4 rounded-xl border-2 border-blue-500 bg-blue-50 p-4 font-bold text-slate-900">
+                            \[
+                            \text{最大値}=\sqrt5-3
+                            \]
+                            \[
+                            \mathrm{P}
+                            \left(
+                            2-\frac2{\sqrt5},
+                            1+\frac1{\sqrt5}
+                            \right)
+                            \]
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-10">
+                <h3 class="border-b-2 border-rose-200 pb-2 text-lg font-bold text-rose-900">公式：コーシー・シュワルツの不等式</h3>
+
+                <div class="mt-4 rounded-xl border border-rose-200 bg-rose-50 p-5 text-sm leading-relaxed text-slate-700">
+                    <p>
+                        2つのベクトル
+                    </p>
+
+                    <div class="math-scroll">
+                        \[
+                        \boldsymbol{u}
+                        =
+                        \begin{pmatrix}
+                        u_1\\
+                        u_2
+                        \end{pmatrix},
+                        \qquad
+                        \boldsymbol{v}
+                        =
+                        \begin{pmatrix}
+                        v_1\\
+                        v_2
+                        \end{pmatrix}
+                        \]
+                    </div>
+
+                    <p>
+                        に対して、
+                    </p>
+
+                    <div class="math-scroll">
+                        \[
+                        \left|
+                        \boldsymbol{u}\cdot\boldsymbol{v}
+                        \right|
+                        \le
+                        |\boldsymbol{u}|\,
+                        |\boldsymbol{v}|
+                        \]
+                    </div>
+
+                    <p>
+                        が成り立つ。
+                        特に、
+                    </p>
+
+                    <div class="math-scroll">
+                        \[
+                        \boldsymbol{u}\cdot\boldsymbol{v}
+                        \le
+                        |\boldsymbol{u}|\,
+                        |\boldsymbol{v}|.
+                        \]
+                    </div>
+
+                    <p>
+                        右側の等号が成り立つのは、
+                        $\boldsymbol{u}$ と $\boldsymbol{v}$ が同じ向きのときである。
+                    </p>
+                </div>
+            </div>
+
+            <div class="mt-10">
+                <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">別解：コーシー・シュワルツの不等式を用いる</h3>
+
+                <div class="mt-4 rounded-xl border border-indigo-200 bg-indigo-50 p-5 text-sm leading-relaxed text-slate-700">
+                    <p>
+                        点Pの座標を $\mathrm{P}(x,y)$ とする。
+                        円の中心AからPへのベクトルは
+                    </p>
+
+                    <div class="math-scroll">
+                        \[
+                        \overrightarrow{\mathrm{AP}}
+                        =
+                        \begin{pmatrix}
+                        x-2\\
+                        y-1
+                        \end{pmatrix}.
+                        \]
+                    </div>
+
+                    <p>
+                        Pが円Cの周および内部にあるので、
+                    </p>
+
+                    <div class="math-scroll">
+                        \[
+                        \left|
+                        \overrightarrow{\mathrm{AP}}
+                        \right|
+                        \le1.
+                        \]
+                    </div>
+
+                    <p class="mt-3">
+                        また、
+                    </p>
+
+                    <div class="math-scroll">
+                        \[
+                        \begin{aligned}
+                        y-2x
+                        &=
+                        (y-1)-2(x-2)-3\\
+                        &=
+                        \begin{pmatrix}
+                        -2\\
+                        1
+                        \end{pmatrix}
+                        \cdot
+                        \begin{pmatrix}
+                        x-2\\
+                        y-1
+                        \end{pmatrix}
+                        -3.
+                        \end{aligned}
+                        \]
+                    </div>
+
+                    <p>
+                        コーシー・シュワルツの不等式より、
+                    </p>
+
+                    <div class="math-scroll">
+                        \[
+                        \begin{aligned}
+                        \begin{pmatrix}
+                        -2\\
+                        1
+                        \end{pmatrix}
+                        \cdot
+                        \begin{pmatrix}
+                        x-2\\
+                        y-1
+                        \end{pmatrix}
+                        &\le
+                        \left|
+                        \begin{pmatrix}
+                        -2\\
+                        1
+                        \end{pmatrix}
+                        \right|
+                        \left|
+                        \begin{pmatrix}
+                        x-2\\
+                        y-1
+                        \end{pmatrix}
+                        \right|\\
+                        &\le
+                        \sqrt5.
+                        \end{aligned}
+                        \]
+                    </div>
+
+                    <p>
+                        したがって、
+                    </p>
+
+                    <div class="math-scroll">
+                        \[
+                        y-2x\le\sqrt5-3.
+                        \]
+                    </div>
+
+                    <p class="mt-3">
+                        等号が成り立つのは、
+                        \[
+                        \left|
+                        \overrightarrow{\mathrm{AP}}
+                        \right|
+                        =1
+                        \]
+                        かつ
+                        $\overrightarrow{\mathrm{AP}}$ が
+                    </p>
+
+                    <div class="math-scroll">
+                        \[
+                        \begin{pmatrix}
+                        -2\\
+                        1
+                        \end{pmatrix}
+                        \]
+                    </div>
+
+                    <p>
+                        と同じ向きのときである。
+                        よって、
+                    </p>
+
+                    <div class="math-scroll">
+                        \[
+                        \overrightarrow{\mathrm{AP}}
+                        =
+                        \frac1{\sqrt5}
+                        \begin{pmatrix}
+                        -2\\
+                        1
+                        \end{pmatrix}.
+                        \]
+                    </div>
+
+                    <p>
+                        したがって、
+                    </p>
+
+                    <div class="math-scroll">
+                        \[
+                        \begin{pmatrix}
+                        x\\
+                        y
+                        \end{pmatrix}
+                        =
+                        \begin{pmatrix}
+                        2\\
+                        1
+                        \end{pmatrix}
+                        +
+                        \frac1{\sqrt5}
+                        \begin{pmatrix}
+                        -2\\
+                        1
+                        \end{pmatrix}
+                        =
+                        \begin{pmatrix}
+                        2-\dfrac2{\sqrt5}\\
+                        1+\dfrac1{\sqrt5}
+                        \end{pmatrix}.
+                        \]
+                    </div>
+
+                    <p>
+                        この点は $y&gt;x$ を満たすため、領域Dに含まれる。
+                    </p>
+
+                    <div class="mt-4 rounded-lg border border-indigo-300 bg-white p-4 text-center font-bold text-indigo-950">
+                        \[
+                        \text{最大値}=\sqrt5-3
+                        \]
+                        \[
+                        \mathrm{P}
+                        \left(
+                        2-\frac2{\sqrt5},
+                        1+\frac1{\sqrt5}
+                        \right)
+                        \]
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-10">
+                <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">図解・可視化</h3>
+
+                <p class="mt-4 text-sm leading-relaxed text-slate-700">
+                    直線 $y=2x+k$ を動かし、領域Dと共有点をもつ範囲で最大の $k$ を確認してください。
+                </p>
+
+                <div class="mt-4 rounded-lg border border-slate-200 bg-slate-50 p-4 sm:p-6">
+                    <div class="mx-auto max-w-xl">
+                        <label for="k-slider" class="mb-2 block text-sm font-medium text-slate-700">
+                            k：
+                            <span id="k-display" class="text-lg font-bold text-blue-700">-0.764</span>
+                        </label>
+
+                        <input id="k-slider" type="range" min="-2.5" max="-0.5" step="0.002" value="-0.7639320225"
+                               class="h-2 w-full cursor-pointer appearance-none rounded-lg bg-slate-200 accent-blue-600">
+
+                        <div class="mt-3 flex flex-wrap justify-center gap-2">
+                            <button type="button" data-k="-2"
+                                    class="rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm font-bold text-slate-700 hover:bg-slate-100">
+                                k = -2
+                            </button>
+                            <button type="button" id="max-k-button"
+                                    class="rounded-lg border border-emerald-200 bg-white px-3 py-2 text-sm font-bold text-emerald-700 hover:bg-emerald-50">
+                                最大位置
+                            </button>
+                            <button type="button" data-k="-0.6"
+                                    class="rounded-lg border border-rose-200 bg-white px-3 py-2 text-sm font-bold text-rose-700 hover:bg-rose-50">
+                                円と離れる
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="mt-5 overflow-x-auto">
+                        <svg id="geometry-svg" width="720" height="560" viewBox="0 0 720 560"
+                             class="mx-auto h-auto w-full max-w-[720px] rounded-xl border border-slate-200 bg-white"
+                             aria-label="円C、領域D、直線y=2x+kの可視化">
+
+                            <defs>
+                                <clipPath id="circle-clip">
+                                    <circle cx="440" cy="280" r="140"></circle>
+                                </clipPath>
+                            </defs>
+
+                            <g id="grid"></g>
+                            <line id="x-axis" stroke="#64748b" stroke-width="1.5"></line>
+                            <line id="y-axis" stroke="#64748b" stroke-width="1.5"></line>
+
+                            <polygon points="0,0 720,0 720,-140 0,560"
+                                     fill="rgba(16,185,129,.18)"
+                                     clip-path="url(#circle-clip)"
+                                     id="region-fill"></polygon>
+
+                            <circle cx="440" cy="280" r="140" fill="none" stroke="#2563eb" stroke-width="3"></circle>
+
+                            <line id="boundary-line" stroke="#10b981" stroke-width="3"></line>
+                            <line id="objective-line" stroke="#e11d48" stroke-width="3" stroke-dasharray="9 6"></line>
+
+                            <circle id="point-a" cx="440" cy="280" r="7" fill="#111827"></circle>
+                            <circle id="point-p" r="9" fill="#7c3aed"></circle>
+
+                            <g font-size="15" font-weight="700">
+                                <text x="452" y="270" fill="#111827">A(2,1)</text>
+                                <text id="point-p-label" fill="#6d28d9">P</text>
+                                <text id="objective-label" fill="#be123c"></text>
+                                <text id="boundary-label" fill="#047857">y = x</text>
+                                <text x="625" y="290" fill="#64748b">x</text>
+                                <text x="303" y="35" fill="#64748b">y</text>
+                                <text x="465" y="130" fill="#1d4ed8">円C</text>
+                                <text x="350" y="165" fill="#047857">領域D</text>
+                            </g>
+                        </svg>
+                    </div>
+
+                    <div class="mt-4 grid gap-3 sm:grid-cols-3">
+                        <div class="rounded-lg border border-slate-200 bg-white p-4 text-center">
+                            <div class="text-xs font-bold text-slate-500">中心から直線までの距離</div>
+                            <div id="distance-display" class="mt-1 text-lg font-bold text-slate-800"></div>
+                        </div>
+
+                        <div class="rounded-lg border border-violet-200 bg-violet-50 p-4 text-center">
+                            <div class="text-xs font-bold text-violet-700">接点P</div>
+                            <div id="point-display" class="mt-1 text-sm font-bold text-violet-900"></div>
+                        </div>
+
+                        <div class="rounded-lg border border-emerald-200 bg-emerald-50 p-4 text-center">
+                            <div class="text-xs font-bold text-emerald-700">判定</div>
+                            <div id="status-display" class="mt-1 text-sm font-bold text-emerald-800"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <script>
+                    document.addEventListener("DOMContentLoaded", () => {
+                        const slider = document.getElementById("k-slider");
+                        const kMax = Math.sqrt(5)-3;
+
+                        const W = 720;
+                        const H = 560;
+                        const xMin = -1;
+                        const xMax = 4;
+                        const yMin = -1;
+                        const yMax = 3;
+
+                        const sx = x => (x-xMin)/(xMax-xMin)*W;
+                        const sy = y => H-(y-yMin)/(yMax-yMin)*H;
+
+                        const setLine = (id,x1,y1,x2,y2) => {
+                            const el = document.getElementById(id);
+                            el.setAttribute("x1",sx(x1));
+                            el.setAttribute("y1",sy(y1));
+                            el.setAttribute("x2",sx(x2));
+                            el.setAttribute("y2",sy(y2));
+                        };
+
+                        let gridMarkup = "";
+                        for (let x=-1; x<=4; x+=0.5) {
+                            gridMarkup += `<line x1="${sx(x)}" y1="0" x2="${sx(x)}" y2="${H}" stroke="#f1f5f9" stroke-width="1"/>`;
+                        }
+                        for (let y=-1; y<=3; y+=0.5) {
+                            gridMarkup += `<line x1="0" y1="${sy(y)}" x2="${W}" y2="${sy(y)}" stroke="#f1f5f9" stroke-width="1"/>`;
+                        }
+                        document.getElementById("grid").innerHTML = gridMarkup;
+
+                        setLine("x-axis",xMin,0,xMax,0);
+                        setLine("y-axis",0,yMin,0,yMax);
+                        setLine("boundary-line",xMin,xMin,xMax,xMax);
+
+                        document.getElementById("boundary-label").setAttribute("x",sx(2.7));
+                        document.getElementById("boundary-label").setAttribute("y",sy(2.7)-8);
+
+                        const maxPoint = {
+                            x: 2-2/Math.sqrt(5),
+                            y: 1+1/Math.sqrt(5)
+                        };
+
+                        function update() {
+                            const k = parseFloat(slider.value);
+
+                            setLine(
+                                "objective-line",
+                                xMin,
+                                2*xMin+k,
+                                xMax,
+                                2*xMax+k
+                            );
+
+                            const objectiveLabel = document.getElementById("objective-label");
+                            objectiveLabel.setAttribute("x",sx(1.3));
+                            objectiveLabel.setAttribute("y",sy(2*1.3+k)-10);
+                            objectiveLabel.textContent = `y = 2x ${k>=0?"+":""}${k.toFixed(3)}`;
+
+                            const distance = Math.abs(k+3)/Math.sqrt(5);
+                            document.getElementById("distance-display").textContent = distance.toFixed(5);
+                            document.getElementById("k-display").textContent = k.toFixed(3);
+
+                            const p = document.getElementById("point-p");
+                            const pLabel = document.getElementById("point-p-label");
+                            const status = document.getElementById("status-display");
+                            const pointDisplay = document.getElementById("point-display");
+
+                            if (Math.abs(k-kMax)<0.004) {
+                                p.style.display = "";
+                                pLabel.style.display = "";
+
+                                p.setAttribute("cx",sx(maxPoint.x));
+                                p.setAttribute("cy",sy(maxPoint.y));
+                                pLabel.setAttribute("x",sx(maxPoint.x)+12);
+                                pLabel.setAttribute("y",sy(maxPoint.y)-12);
+
+                                pointDisplay.textContent =
+                                    `(${maxPoint.x.toFixed(4)}, ${maxPoint.y.toFixed(4)})`;
+                                status.textContent = "円に接し、D上で最大";
+                                status.className = "mt-1 text-sm font-bold text-emerald-800";
+                            } else {
+                                p.style.display = "none";
+                                pLabel.style.display = "none";
+                                pointDisplay.textContent = "—";
+
+                                if (distance < 1) {
+                                    status.textContent = "円と2点で交わる";
+                                    status.className = "mt-1 text-sm font-bold text-blue-800";
+                                } else if (Math.abs(distance-1)<0.006) {
+                                    status.textContent = "円に接する";
+                                    status.className = "mt-1 text-sm font-bold text-amber-800";
+                                } else {
+                                    status.textContent = "円と共有点なし";
+                                    status.className = "mt-1 text-sm font-bold text-red-700";
+                                }
+                            }
+                        }
+
+                        slider.addEventListener("input",update);
+
+                        document.querySelectorAll("[data-k]").forEach(button => {
+                            button.addEventListener("click",()=>{
+                                slider.value = button.dataset.k;
+                                update();
+                            });
+                        });
+
+                        document.getElementById("max-k-button").addEventListener("click",()=>{
+                            slider.value = kMax;
+                            update();
+                        });
+
+                        update();
+                    });
+                </script>
+            </div>
+
+            <div class="mt-10">
+                <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">受験生のつまずきポイント</h3>
+
+                <div class="mt-4 space-y-4">
+                    <div class="rounded-lg border border-red-200 bg-red-50 p-4">
+                        <p class="text-sm font-bold text-red-900">点と直線の距離で分母を $\sqrt{a+1}$ とする</p>
+                        <p class="mt-1 text-sm text-red-800">
+                            直線 $ax-y=0$ の係数は $a,-1$ なので、分母は
+                            \[
+                            \sqrt{a^2+1}
+                            \]
+                            です。
+                        </p>
+                    </div>
+
+                    <div class="rounded-lg border border-red-200 bg-red-50 p-4">
+                        <p class="text-sm font-bold text-red-900">「下側」の判定を逆にする</p>
+                        <p class="mt-1 text-sm text-red-800">
+                            Aの $x$ 座標2を直線へ代入した高さは $2a$ です。
+                            Aの $y$ 座標1がそれより小さいので、
+                            \[
+                            1&lt;2a
+                            \]
+                            となります。
+                        </p>
+                    </div>
+
+                    <div class="rounded-lg border border-red-200 bg-red-50 p-4">
+                        <p class="text-sm font-bold text-red-900">円全体での最大点を求めて終える</p>
+                        <p class="mt-1 text-sm text-red-800">
+                            本問では $y\ge x$ という制約があります。
+                            求めた最大候補が領域Dに含まれることを最後に確認します。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+                <section class="mt-6 rounded-2xl bg-blue-900 p-6 text-white shadow-sm sm:p-8">
+            <h2 class="border-b-2 border-blue-400 pb-2 text-lg font-bold">アクティブリコール（本質確認）</h2>
+
+            <p class="mt-4 text-sm text-blue-200">
+                答えの数値ではなく、「なぜその考え方を使うのか」を説明してから開いてください。
+            </p>
+
+            <div class="mt-6 space-y-3">
+                <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                    <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                        <span>Q1. （2）で直線 $y=ax$ を $ax-y=0$ と直すのはなぜですか？</span>
+                        <span class="transition duration-300 group-open:-rotate-180">⌄</span>
+                    </summary>
+                    <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                        点と直線の距離公式
+                        \[
+                        \frac{|Ax_0+By_0+C|}{\sqrt{A^2+B^2}}
+                        \]
+                        を使うためです。直線を
+                        \[
+                        Ax+By+C=0
+                        \]
+                        の形にそろえることで、係数 $A,B,C$ を読み取れます。
+                    </div>
+                </details>
+
+                <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                    <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                        <span>Q2. 「Aが直線 $y=ax$ の下側にある」という条件は、なぜ $1&lt;2a$ になりますか？</span>
+                        <span class="transition duration-300 group-open:-rotate-180">⌄</span>
+                    </summary>
+                    <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                        Aの $x$ 座標は2なので、直線上の同じ $x$ 座標における高さは
+                        \[
+                        y=2a
+                        \]
+                        です。A自身の高さは1なので、Aが直線より下にある条件は
+                        \[
+                        1&lt;2a
+                        \]
+                        となります。
+                    </div>
+                </details>
+
+                <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                    <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                        <span>Q3. $y-2x$ の最大化で、なぜ $m:y-2x=k$ と置いて直線を動かすのですか？</span>
+                        <span class="transition duration-300 group-open:-rotate-180">⌄</span>
+                    </summary>
+                    <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                        $y-2x$ の値が同じ点は、すべて
+                        \[
+                        y-2x=k
+                        \]
+                        という1本の直線上にあります。したがって、$k$ を大きくすることは、
+                        傾き2の直線を平行移動して、領域Dと最後に接する位置を探すことに対応します。
+                    </div>
+                </details>
+
+                <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                    <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                        <span>Q4. 最大となる接点Pを求めるとき、なぜ単位法線ベクトル $\vec h$ を使えるのですか？</span>
+                        <span class="transition duration-300 group-open:-rotate-180">⌄</span>
+                    </summary>
+                    <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                        円の接点では、半径APと接線 $m$ が垂直です。したがって、
+                        $\overrightarrow{\mathrm{AP}}$ は直線 $m$ の法線方向にあります。
+                        さらに $\vec h$ は長さ1の単位法線ベクトルなので、
+                        \[
+                        \overrightarrow{\mathrm{OP}}
+                        =
+                        \overrightarrow{\mathrm{OA}}
+                        +
+                        (-1)\vec h
+                        \]
+                        とすれば、中心Aから $\vec h$ と逆方向へ半径1だけ進んだ接点を直接表せます。
+                    </div>
+                </details>
+
+                <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                    <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                        <span>Q5. 円全体で最大となる点を求めた後、なぜ $y\ge x$ を確認する必要がありますか？</span>
+                        <span class="transition duration-300 group-open:-rotate-180">⌄</span>
+                    </summary>
+                    <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                        点Pが動く範囲は円全体ではなく、
+                        \[
+                        (x-2)^2+(y-1)^2\le1,
+                        \qquad
+                        y\ge x
+                        \]
+                        を同時に満たす領域Dだからです。円全体での最大候補が
+                        $y\ge x$ を満たさなければ、その点は採用できず、境界上で改めて最大値を探す必要があります。
+                    </div>
+                </details>
+            </div>
+        </section>
+
+<nav class="mt-7 grid gap-3 sm:grid-cols-2">
+            <a href="no55.html" class="nav-button rounded-xl border border-slate-300 bg-white px-5 py-4 text-center font-bold text-slate-700 hover:border-blue-300 hover:text-blue-800">
+                ← No.55へ
+            </a>
+
+            <a href="no57.html" class="nav-button rounded-xl bg-blue-700 px-5 py-4 text-center font-bold text-white hover:bg-blue-800">
+                No.57 →
+            </a>
+        </nav>
+    </main>
+
+    <footer class="py-10 text-center text-sm text-slate-500">
+        医進・サイエンスコース　夏期数学課題 解説サイト
+    </footer>
+</div>
+</body>
+</html>

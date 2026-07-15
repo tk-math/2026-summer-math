@@ -291,6 +291,227 @@
                 </div>
 
                 <div class="mt-10">
+                    <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">別解：（4）パラメータ表示と三角関数の合成</h3>
+
+                    <div class="mt-4 rounded-xl border border-indigo-200 bg-indigo-50 p-5 text-sm leading-relaxed text-slate-700">
+                        <p>
+                            円 $E$ は
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            (x-1)^2+(y-3)^2=4
+                            \]
+                        </div>
+
+                        <p>
+                            であるから、円上の点Pを
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            \mathrm{P}
+                            \left(
+                            1+2\cos\theta,\,
+                            3+2\sin\theta
+                            \right)
+                            \qquad
+                            (0\le\theta&lt;2\pi)
+                            \]
+                        </div>
+
+                        <p>
+                            と表す。
+                        </p>
+
+                        <div class="mt-3 rounded-lg border border-amber-200 bg-amber-50 p-4 text-amber-900">
+                            <strong>パラメータ表示の確認：</strong><br>
+                            中心が原点ではなく $(1,3)$、半径が2なので、
+                            \[
+                            x=1+2\cos\theta,
+                            \qquad
+                            y=3+2\sin\theta
+                            \]
+                            とする。中心の座標を加えることを忘れない。
+                        </div>
+
+                        <p class="mt-4">
+                            主解法で求めた
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            S=-2x+3y+6
+                            \]
+                        </div>
+
+                        <p>
+                            に代入すると、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            \begin{aligned}
+                            S
+                            &=
+                            -2(1+2\cos\theta)
+                            +3(3+2\sin\theta)
+                            +6\\
+                            &=
+                            13-4\cos\theta+6\sin\theta.
+                            \end{aligned}
+                            \]
+                        </div>
+
+                        <p class="mt-3">
+                            ここで、角 $\varphi$ を
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            \cos\varphi=\frac3{\sqrt{13}},
+                            \qquad
+                            \sin\varphi=\frac2{\sqrt{13}}
+                            \qquad
+                            \left(0&lt;\varphi&lt;\frac{\pi}{2}\right)
+                            \]
+                        </div>
+
+                        <p>
+                            と定める。すると、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            \begin{aligned}
+                            -4\cos\theta+6\sin\theta
+                            &=
+                            2\sqrt{13}
+                            \left(
+                            \frac3{\sqrt{13}}\sin\theta
+                            -
+                            \frac2{\sqrt{13}}\cos\theta
+                            \right)\\
+                            &=
+                            2\sqrt{13}
+                            \left(
+                            \sin\theta\cos\varphi
+                            -
+                            \cos\theta\sin\varphi
+                            \right)\\
+                            &=
+                            2\sqrt{13}\sin(\theta-\varphi).
+                            \end{aligned}
+                            \]
+                        </div>
+
+                        <p>
+                            よって、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            S
+                            =
+                            13+2\sqrt{13}\sin(\theta-\varphi).
+                            \]
+                        </div>
+
+                        <p class="mt-3">
+                            $0\le\theta&lt;2\pi$ の範囲で
+                            \[
+                            \sin(\theta-\varphi)=-1
+                            \]
+                            となる $\theta$ が存在する。実際、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            \theta
+                            =
+                            \frac{3\pi}{2}+\varphi
+                            \]
+                        </div>
+
+                        <p>
+                            とすればよい。$0&lt;\varphi&lt;\dfrac{\pi}{2}$ なので、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            0
+                            \le
+                            \frac{3\pi}{2}+\varphi
+                            &lt;
+                            2\pi
+                            \]
+                        </div>
+
+                        <p>
+                            も満たされる。
+                        </p>
+
+                        <p class="mt-3">
+                            したがって、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            S_{\min}
+                            =
+                            13-2\sqrt{13}.
+                            \]
+                        </div>
+
+                        <div class="mt-3 rounded-xl border-2 border-blue-500 bg-white p-4 text-center font-bold text-slate-900">
+                            \[
+                            \boxed{13-2\sqrt{13}}
+                            \]
+                        </div>
+
+                        <p class="mt-4">
+                            なお、最小となるとき、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            \cos\theta
+                            =
+                            \sin\varphi
+                            =
+                            \frac2{\sqrt{13}},
+                            \qquad
+                            \sin\theta
+                            =
+                            -\cos\varphi
+                            =
+                            -\frac3{\sqrt{13}}.
+                            \]
+                        </div>
+
+                        <p>
+                            よって、そのときの点Pは
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            \mathrm{P}
+                            \left(
+                            1+\frac4{\sqrt{13}},
+                            \,
+                            3-\frac6{\sqrt{13}}
+                            \right)
+                            \]
+                        </div>
+
+                        <p>
+                            である。
+                        </p>
+                    </div>
+                </div>
+
+
+                <div class="mt-10">
                     <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">図解・可視化</h3>
                     <p class="mt-4 text-sm text-slate-700 leading-relaxed">
                         (3)の $\triangle\mathrm{PAB}$ の面積と、(4)の $S = \triangle\mathrm{POM} + \triangle\mathrm{PBM}$ の関係を視覚的に確認しましょう。<br>

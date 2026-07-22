@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>夏期課題 × Focus Gold 対応表</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+body {
+  font-family: "Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic","Meiryo",sans-serif;
+}
+.filter-control {
+  min-height: 44px;
+}
+.problem-card {
+  content-visibility: auto;
+  contain-intrinsic-size: 460px;
+}
+@media print {
+  body { background: white !important; }
+  header, #filter-panel, #empty-state, footer, .screen-only { display: none !important; }
+  #result-grid { display: block !important; }
+  .problem-card {
+    break-inside: avoid;
+    box-shadow: none !important;
+    margin-bottom: 12px;
+    border: 1px solid #94a3b8 !important;
+  }
+  .details-print { display: block !important; }
+}
+</style>
+</head>
+<body class="bg-slate-100 text-slate-800">
+<div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:py-10">
+
+<a href="index.html" class="inline-flex items-center gap-2 text-sm font-bold text-blue-700 hover:text-blue-900">
+  ← 問題一覧へ戻る
+</a>
+
+<header class="mt-4 overflow-hidden rounded-3xl bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-800 text-white shadow-xl">
+  <div class="p-7 sm:p-10">
+    <span class="inline-flex rounded-full bg-white/15 px-4 py-1.5 text-sm font-semibold text-blue-100">
+      医進・サイエンスコース
+    </span>
+    <h1 class="mt-4 text-3xl font-bold leading-tight sm:text-4xl">
+      夏期課題 × Focus Gold 対応表
+    </h1>
+    <p class="mt-4 max-w-3xl leading-relaxed text-blue-100">
+      夏期課題で止まったときに、どのFocus Gold例題をどの順番で確認すればよいかを調べるページです。
+      問題文や紙面は掲載せず、例題番号・ページ・題名のみを示しています。例題番号・題名・書籍ページはPDFの例題タイトル一覧で全件照合し、対応が疑わしい箇所は実際の例題内容まで確認しています。
+    </p>
+  </div>
+</header>
+
+<section id="filter-panel" class="mt-6 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm sm:p-7">
+  <div class="flex flex-col gap-3 lg:flex-row lg:items-end lg:justify-between">
+    <div>
+      <h2 class="text-xl font-bold text-slate-900">対応問題を探す</h2>
+      <p class="mt-1 text-sm text-slate-600">複数の条件を組み合わせて絞り込めます。</p>
+    </div>
+    <div class="flex flex-wrap gap-2">
+      <button id="print-button" type="button"
+        class="rounded-lg border border-slate-300 bg-white px-4 py-2 text-sm font-bold text-slate-700 hover:bg-slate-50">
+        表示結果を印刷
+      </button>
+      <button id="reset-button" type="button"
+        class="rounded-lg bg-slate-700 px-4 py-2 text-sm font-bold text-white hover:bg-slate-800">
+        条件をリセット
+      </button>
+    </div>
+  </div>
+
+  <div class="mt-5 grid gap-4 md:grid-cols-2 xl:grid-cols-6">
+    <label class="block xl:col-span-2">
+      <span class="mb-1 block text-sm font-bold text-slate-700">キーワード</span>
+      <input id="search-input" type="search"
+        placeholder="例：空間ベクトル、例題157、対数"
+        class="filter-control w-full rounded-lg border border-slate-300 bg-white px-3 py-2 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200">
+    </label>
+
+    <label class="block">
+      <span class="mb-1 block text-sm font-bold text-slate-700">問題No.</span>
+      <input id="number-input" type="number" min="1" max="71" placeholder="1〜71"
+        class="filter-control w-full rounded-lg border border-slate-300 bg-white px-3 py-2 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200">
+    </label>
+
+    <label class="block">
+      <span class="mb-1 block text-sm font-bold text-slate-700">配布回</span>
+      <select id="round-select"
+        class="filter-control w-full rounded-lg border border-slate-300 bg-white px-3 py-2 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200">
+        <option value="">すべて</option>
+        <option value="第1回">第1回（No.1〜19）</option>
+        <option value="第2回">第2回（No.20〜32）</option>
+        <option value="第3回">第3回（No.33〜45）</option>
+        <option value="第4回">第4回（No.46〜58）</option>
+        <option value="第5回">第5回（No.59〜71）</option>
+      </select>
+    </label>
+
+    <label class="block">
+      <span class="mb-1 block text-sm font-bold text-slate-700">難度</span>
+      <select id="difficulty-select"
+        class="filter-control w-full rounded-lg border border-slate-300 bg-white px-3 py-2 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200">
+        <option value="">すべて</option>
+        <option value="基礎">基礎</option>
+        <option value="標準">標準</option>
+        <option value="発展">発展</option>
+      </select>
+    </label>
+
+    <label class="block">
+      <span class="mb-1 block text-sm font-bold text-slate-700">対応度</span>
+      <select id="match-select"
+        class="filter-control w-full rounded-lg border border-slate-300 bg-white px-3 py-2 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200">
+        <option value="">すべて</option>
+        <option value="前提">前提</option>
+<option value="前提＋発展接続">前提＋発展接続</option>
+<option value="前提＋類題">前提＋類題</option>
+<option value="同型">同型</option>
+<option value="同型に近い">同型に近い</option>
+<option value="発展接続">発展接続</option>
+<option value="類題">類題</option>
+      </select>
+    </label>
+
+    <label class="block md:col-span-2 xl:col-span-3">
+      <span class="mb-1 block text-sm font-bold text-slate-700">単元</span>
+      <select id="unit-select"
+        class="filter-control w-full rounded-lg border border-slate-300 bg-white px-3 py-2 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200">
+        <option value="">すべて</option>
+        <option value="2次方程式">2次方程式</option>
+<option value="2次関数">2次関数</option>
+<option value="データの分析">データの分析</option>
+<option value="三角関数">三角関数</option>
+<option value="三角関数・図形">三角関数・図形</option>
+<option value="三角関数・方程式">三角関数・方程式</option>
+<option value="図形と方程式">図形と方程式</option>
+<option value="図形と計量">図形と計量</option>
+<option value="場合の数">場合の数</option>
+<option value="場合の数・確率">場合の数・確率</option>
+<option value="対数関数">対数関数</option>
+<option value="対数関数・図形">対数関数・図形</option>
+<option value="小問集合">小問集合</option>
+<option value="平面ベクトル">平面ベクトル</option>
+<option value="指数関数">指数関数</option>
+<option value="指数関数と方程式">指数関数と方程式</option>
+<option value="指数関数・対数関数">指数関数・対数関数</option>
+<option value="確率">確率</option>
+<option value="確率・期待値">確率・期待値</option>
+<option value="空間ベクトル">空間ベクトル</option>
+<option value="高次方程式">高次方程式</option>
+<option value="高次方程式・剰余">高次方程式・剰余</option>
+<option value="高次方程式・複素数">高次方程式・複素数</option>
+<option value="高次方程式・軌跡">高次方程式・軌跡</option>
+      </select>
+    </label>
+  </div>
+</section>
+
+<section class="mt-6">
+  <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+    <div>
+      <h2 class="text-xl font-bold text-slate-900">検索結果</h2>
+      <p id="result-count" class="mt-1 text-sm text-slate-600">71問を表示しています。</p>
+    </div>
+    <div class="screen-only flex flex-wrap gap-2 text-xs font-bold">
+      <span class="rounded-full bg-emerald-100 px-3 py-1 text-emerald-800">基礎</span>
+      <span class="rounded-full bg-amber-100 px-3 py-1 text-amber-800">標準</span>
+      <span class="rounded-full bg-rose-100 px-3 py-1 text-rose-800">発展</span>
+    </div>
+  </div>
+
+  <div id="result-grid" class="mt-4 grid gap-5 lg:grid-cols-2"></div>
+
+  <div id="empty-state" class="mt-6 hidden rounded-2xl border border-slate-200 bg-white p-10 text-center shadow-sm">
+    <div class="text-4xl">🔍</div>
+    <h3 class="mt-3 text-lg font-bold text-slate-900">該当する問題がありません</h3>
+    <p class="mt-2 text-sm text-slate-600">条件を減らすか、キーワードを変更してください。</p>
+  </div>
+</section>
+
+<section class="mt-7 rounded-2xl border border-amber-200 bg-amber-50 p-5 text-sm leading-relaxed text-amber-900">
+  <h2 class="font-bold">使い方</h2>
+  <p class="mt-2">
+    「まず見るFocus Gold」を先に解き、解法の仕組みを確認してから夏期課題へ戻ってください。
+    主参照だけでは不足する場合に「補助参照」を開きます。
+    対応問題は完全な同一問題とは限らず、中心解法・前提知識・発展へのつながりを基準に選んでいます。
+  </p>
+</section>
+
+<footer class="py-10 text-center text-sm text-slate-500">
+  医進・サイエンスコース　夏期数学課題 解説サイト
+</footer>
+</div>
+
+<script>
+const DATA = [{"no":1,"unit":"確率","difficulty":"標準","summary":"復元抽出3回の和・3で割った余り・期待値","primary":["数学Ⅰ・A 例題203（p.407）「独立な試行⑴」","数学Ⅰ・A 例題200（p.400）「期待値」"],"secondary":["数学Ⅰ・A 例題208（p.413）「反復試行⑷」","数学Ⅰ・A 例題211（p.417）「反復試行と期待値」"],"match":"前提＋類題","route":"例題203で反復試行、例題200で期待値を確認してから課題へ戻る。","round":"第1回","href":"no01.html"},{"no":2,"unit":"指数関数と方程式","difficulty":"基礎","summary":"指数方程式を置換し、解・係数の範囲を調べる","primary":["数学Ⅱ・B・C 例題156（p.309）「指数関数を含む方程式」"],"secondary":["数学Ⅱ・B・C 例題159（p.312）「指数関数の最大・最小⑴」","数学Ⅱ・B・C 例題160（p.314）「指数関数の最大・最小⑵」"],"match":"類題","route":"例題156を解き、範囲条件で止まる場合は例題159へ。","round":"第1回","href":"no02.html"},{"no":3,"unit":"図形と方程式","difficulty":"基礎","summary":"円と直線の接触、円と線分の共有条件","primary":["数学Ⅱ・B・C 例題87（p.170）「円と直線の位置関係⑴」","数学Ⅱ・B・C 例題80（p.157）「点と直線の距離」"],"secondary":["数学Ⅱ・B・C 例題89（p.172）「弦の長さ⑴」"],"match":"類題","route":"例題80→87の順。最後に「交点が線分上か」を課題で確認する。","round":"第1回","href":"no03.html"},{"no":4,"unit":"高次方程式","difficulty":"標準","summary":"3次式の除法、虚数解、解の平方和","primary":["数学Ⅱ・B・C 例題2（p.24）「多項式の除法」","数学Ⅱ・B・C 例題64（p.127）「3 次方程式と虚数解」"],"secondary":["数学Ⅱ・B・C 例題66（p.131）「3 次方程式の解と係数の関係⑴」","数学Ⅱ・B・C 例題67（p.132）「3 次方程式の解と係数の関係⑵」"],"match":"前提＋類題","route":"例題2→64→66の順に確認する。","round":"第1回","href":"no04.html"},{"no":5,"unit":"三角関数","difficulty":"標準","summary":"加法定理、三角方程式、積を含む式の最小値","primary":["数学Ⅱ・B・C 例題134（p.264）「三角関数の加法定理⑴」","数学Ⅱ・B・C 例題143（p.280）「三角関数の合成」"],"secondary":["数学Ⅱ・B・C 例題147（p.287）「三角関数の最大・最小⑷」"],"match":"前提＋類題","route":"例題134で展開、143で合成、147で最大・最小を確認。","round":"第1回","href":"no05.html"},{"no":6,"unit":"平面ベクトル","difficulty":"標準","summary":"平行四辺形、内積、垂直条件、交点、面積比","primary":["数学Ⅱ・B・C 例題C1.6（p.C1-12）「平行四辺形とベクトル」","数学Ⅱ・B・C 例題C1.10（p.C1-21）「ベクトルの垂直条件」","数学Ⅱ・B・C 例題C1.23（p.C1-42）「交点の位置ベクトル⑴」"],"secondary":["数学Ⅱ・B・C 例題C1.17（p.C1-30）「内積と三角形の面積」"],"match":"前提＋類題","route":"C1.6→C1.10→C1.23。面積比だけ不安ならC1.17も確認。","round":"第1回","href":"no06.html"},{"no":7,"unit":"図形と計量","difficulty":"標準","summary":"面積から辺、余弦・正弦定理、2三角形の辺、交点比","primary":["数学Ⅰ・A 例題128（p.253）「三角形の面積」","数学Ⅰ・A 例題123（p.241）「余弦定理の基本」","数学Ⅰ・A 例題122（p.240）「正弦定理の基本」"],"secondary":[],"match":"前提＋類題","route":"例題128→123→122の順で公式の役割を整理する。","round":"第1回","href":"no07.html"},{"no":8,"unit":"図形と方程式","difficulty":"発展","summary":"円と接線、|x|+|y|=m、共有条件と通過領域","primary":["数学Ⅱ・B・C 例題87（p.170）「円と直線の位置関係⑴」","数学Ⅱ・B・C 例題110（p.210）「いろいろな不等式の表す領域⑴」","数学Ⅱ・B・C 例題119（p.221）「条件を満たす点の存在範囲」"],"secondary":["数学Ⅱ・B・C 例題115（p.217）「領域と最大・最小⑵」"],"match":"発展接続","route":"87で接線を確認後、110→119。最後は図を描いてmの極値を考える。","round":"第1回","href":"no08.html"},{"no":9,"unit":"三角関数","difficulty":"基礎","summary":"二倍角を使った置換、値域、方程式の解の個数","primary":["数学Ⅱ・B・C 例題137（p.267）「2 倍角・3 倍角・半角の公式」","数学Ⅱ・B・C 例題149（p.289）「三角関数の最大・最小⑹」"],"secondary":["数学Ⅱ・B・C 例題133（p.258）「三角関数を含む方程式の解の個数」"],"match":"同型に近い","route":"例題137を確認後、149を自力で解いてから課題へ。","round":"第1回","href":"no09.html"},{"no":10,"unit":"場合の数・確率","difficulty":"標準","summary":"異なる球を袋へ分配し、最大個数の確率・期待値","primary":["数学Ⅰ・A 例題171（p.348）「部屋割りの問題」","数学Ⅰ・A 例題200（p.400）「期待値」"],"secondary":[],"match":"前提＋発展接続","route":"例題171で「異なるものを部屋へ分ける」数え方を確認し、例題200で期待値を復習する。","round":"第1回","href":"no10.html"},{"no":11,"unit":"三角関数","difficulty":"標準","summary":"sin²・cos²・sin cosを含む式の最大・最小","primary":["数学Ⅱ・B・C 例題137（p.267）「2 倍角・3 倍角・半角の公式」","数学Ⅱ・B・C 例題147（p.287）「三角関数の最大・最小⑷」"],"secondary":["数学Ⅱ・B・C 例題143（p.280）「三角関数の合成」"],"match":"類題","route":"137→147。合成で止まる場合は143。","round":"第1回","href":"no11.html"},{"no":12,"unit":"2次関数","difficulty":"基礎","summary":"放物線がx軸から切り取る線分と平行移動","primary":["数学Ⅰ・A 例題58（p.128）「x 軸から切りとる線分の長さ」"],"secondary":["数学Ⅰ・A 例題32（p.82）「平行移動⑴」"],"match":"同型","route":"まず例題58。平行移動の意味が曖昧なら例題32。","round":"第1回","href":"no12.html"},{"no":13,"unit":"指数関数","difficulty":"標準","summary":"指数関数の交点、囲まれた領域、格子点","primary":["数学Ⅱ・B・C 例題156（p.309）「指数関数を含む方程式」","数学Ⅱ・B・C 例題155（p.308）「指数の大小」"],"secondary":[],"match":"前提＋発展接続","route":"例題156→例題155の順に確認する。格子点は解説サイトの図で、整数座標を縦線ごとに数える。","round":"第1回","href":"no13.html"},{"no":14,"unit":"データの分析","difficulty":"基礎","summary":"中央値・平均・分散・標準偏差・相関係数","primary":["数学Ⅰ・A 例題146（p.293）「代表値と四分位数」","数学Ⅰ・A 例題151（p.298）「分散と標準偏差」","数学Ⅰ・A 例題153（p.302）「散布図と相関係数⑴」"],"secondary":[],"match":"前提＋類題","route":"146→151→153の順に復習。","round":"第1回","href":"no14.html"},{"no":15,"unit":"図形と計量","difficulty":"標準","summary":"余弦定理、外接円、円に内接する四角形の辺と面積","primary":["数学Ⅰ・A 例題123（p.241）「余弦定理の基本」","数学Ⅰ・A 例題122（p.240）「正弦定理の基本」","数学Ⅰ・A 例題132（p.258）「円に内接する四角形⑴」"],"secondary":["数学Ⅰ・A 例題128（p.253）「三角形の面積」"],"match":"前提＋類題","route":"123→122→132。面積は128で確認。","round":"第1回","href":"no15.html"},{"no":16,"unit":"データの分析","difficulty":"発展","summary":"度数分布・二変量表・欠損値・相関","primary":["数学Ⅰ・A 例題144（p.291）「代表値と度数分布表⑴」","数学Ⅰ・A 例題151（p.298）「分散と標準偏差」","数学Ⅰ・A 例題154（p.304）「散布図と相関係数⑵」"],"secondary":["数学Ⅰ・A 例題155（p.306）「総合問題」"],"match":"発展接続","route":"144で度数表、154で相関。最後に155で総合問題へ。","round":"第1回","href":"no16.html"},{"no":17,"unit":"対数関数","difficulty":"標準","summary":"logを置換した二次関数、最大最小、パラメータ方程式","primary":["数学Ⅱ・B・C 例題172（p.338）「対数関数の最大・最小⑴」","数学Ⅱ・B・C 例題173（p.339）「対数関数の最大・最小⑵」"],"secondary":["数学Ⅱ・B・C 例題168（p.334）「対数関数を含む方程式⑵」"],"match":"類題","route":"172→173。方程式処理が不安なら168。","round":"第1回","href":"no17.html"},{"no":18,"unit":"図形と計量","difficulty":"発展","summary":"三角形の辺・外接円中心・四面体体積","primary":["数学Ⅰ・A 例題123（p.241）「余弦定理の基本」","数学Ⅰ・A 例題122（p.240）「正弦定理の基本」","数学Ⅰ・A 例題137（p.266）「三角比と内心・外心」"],"secondary":["数学Ⅰ・A 例題139（p.268）「正四面体の種々の量」"],"match":"前提＋発展接続","route":"123→122→137。四面体の高さで止まる場合のみ139の高さ・体積部分を見る。","round":"第1回","href":"no18.html"},{"no":19,"unit":"三角関数","difficulty":"標準","summary":"tanθの二次式、方程式、区間での最大最小","primary":["数学Ⅱ・B・C 例題132（p.256）「三角関数の最大・最小⑴」","数学Ⅱ・B・C 例題130（p.253）「三角関数を含む方程式・不等式⑴」"],"secondary":["数学Ⅰ・A 例題119（p.233）「三角比の2 次関数」"],"match":"類題","route":"130で方程式、132で最大・最小。","round":"第1回","href":"no19.html"},{"no":20,"unit":"図形と方程式","difficulty":"標準","summary":"円、垂直二等分線、対称移動、距離平方和の最小","primary":["数学Ⅱ・B・C 例題74（p.150）「線分の垂直二等分線」","数学Ⅱ・B・C 例題86（p.169）「方程式の表す図形」","数学Ⅰ・A 例題136（p.265）「中線定理」"],"secondary":["数学Ⅱ・B・C 例題104（p.200）「対称な直線・角の二等分線」"],"match":"前提＋類題","route":"74→86→136。対称移動は104も参照。","round":"第2回","href":"no20.html"},{"no":21,"unit":"確率","difficulty":"基礎","summary":"3枚選択で作る整数の倍数判定の確率","primary":["数学Ⅰ・A 例題192（p.390）「組合せと確率」","数学Ⅰ・A 例題190（p.388）「順列と確率⑴」"],"secondary":["数学Ⅰ・A 例題268（p.554）「余りによる場合分け⑴」"],"match":"類題","route":"192で分母、190で整数を作る確率、268で余り分類。","round":"第2回","href":"no21.html"},{"no":22,"unit":"図形と方程式","difficulty":"標準","summary":"円上の動点と三角形面積、面積和の最小","primary":["数学Ⅱ・B・C 例題80（p.157）「点と直線の距離」","数学Ⅱ・B・C 例題83（p.163）「三角形の面積の最大・最小」"],"secondary":["数学Ⅰ・A 例題136（p.265）「中線定理」"],"match":"前提＋類題","route":"80→83。面積和で止まれば136。","round":"第2回","href":"no22.html"},{"no":23,"unit":"三角関数","difficulty":"発展","summary":"文字係数を含む三角方程式の解の個数","primary":["数学Ⅱ・B・C 例題133（p.258）「三角関数を含む方程式の解の個数」","数学Ⅱ・B・C 例題152（p.292）「三角関数を含む方程式の 解の存在条件」"],"secondary":["数学Ⅱ・B・C 例題143（p.280）「三角関数の合成」"],"match":"発展接続","route":"143で変形→133→152。","round":"第2回","href":"no23.html"},{"no":24,"unit":"平面ベクトル","difficulty":"標準","summary":"重み付きベクトル方程式、直線上条件、定点通過","primary":["数学Ⅱ・B・C 例題C1.20（p.C1-37）「点Pの位置ベクトル⑴」","数学Ⅱ・B・C 例題C1.23（p.C1-42）「交点の位置ベクトル⑴」"],"secondary":["数学Ⅱ・B・C 例題C1.24（p.C1-46）「交点の位置ベクトル⑵」"],"match":"類題","route":"C1.20→C1.23。固定点の証明はC1.24も確認。","round":"第2回","href":"no24.html"},{"no":25,"unit":"対数関数","difficulty":"標準","summary":"対数の積を二次関数化し、方程式・パラメータ範囲","primary":["数学Ⅱ・B・C 例題173（p.339）「対数関数の最大・最小⑵」","数学Ⅱ・B・C 例題168（p.334）「対数関数を含む方程式⑵」"],"secondary":["数学Ⅱ・B・C 例題172（p.338）「対数関数の最大・最小⑴」"],"match":"同型に近い","route":"168→173。グラフを必ず描く。","round":"第2回","href":"no25.html"},{"no":26,"unit":"平面ベクトル","difficulty":"標準","summary":"内積、垂線の足、円の軌跡、三角形面積最大","primary":["数学Ⅱ・B・C 例題C1.10（p.C1-21）「ベクトルの垂直条件」","数学Ⅱ・B・C 例題C1.36（p.C1-65）「円のベクトル方程式⑴」","数学Ⅱ・B・C 例題C1.17（p.C1-30）「内積と三角形の面積」"],"secondary":["数学Ⅱ・B・C 例題C1.23（p.C1-42）「交点の位置ベクトル⑴」"],"match":"前提＋類題","route":"C1.10→C1.36→C1.17。","round":"第2回","href":"no26.html"},{"no":27,"unit":"図形と方程式","difficulty":"標準","summary":"垂線の足、直径円、直線と円への接円","primary":["数学Ⅱ・B・C 例題80（p.157）「点と直線の距離」","数学Ⅱ・B・C 例題94（p.178）「2 円の位置関係」"],"secondary":["数学Ⅱ・B・C 例題85（p.168）「円の方程式⑵」"],"match":"類題","route":"80→94。円の設定が苦手なら85。","round":"第2回","href":"no27.html"},{"no":28,"unit":"場合の数","difficulty":"基礎","summary":"同じ文字を含む順列、隣接条件、非隣接条件","primary":["数学Ⅰ・A 例題180（p.362）「同じものを含む順列」","数学Ⅰ・A 例題162（p.339）「条件のついた並び方⑴」","数学Ⅰ・A 例題163（p.340）「条件のついた並び方⑵」"],"secondary":[],"match":"類題","route":"180で同じ文字の処理を確認し、162・163で隣接／非隣接条件を復習する。","round":"第2回","href":"no28.html"},{"no":29,"unit":"小問集合","difficulty":"標準","summary":"2次方程式の実数解と対称式／四面体の外接球","primary":["数学Ⅰ・A 例題50（p.118）「2 次方程式が実数解を もつ条件⑴」","数学Ⅱ・B・C 例題46（p.100）「解と係数の関係⑵」","数学Ⅰ・A 例題123（p.241）「余弦定理の基本」","数学Ⅰ・A 例題122（p.240）「正弦定理の基本」"],"secondary":["数学Ⅰ・A 例題139（p.268）「正四面体の種々の量」"],"match":"前提＋発展接続","route":"50→ⅡBC46。空間問題は123→122で底面を処理し、外接球の考え方だけ139を参照する。","round":"第2回","href":"no29.html"},{"no":30,"unit":"図形と計量","difficulty":"標準","summary":"三角形の辺・外接円、直径を使う四角形、対角線の角","primary":["数学Ⅰ・A 例題123（p.241）「余弦定理の基本」","数学Ⅰ・A 例題122（p.240）「正弦定理の基本」","数学Ⅰ・A 例題132（p.258）「円に内接する四角形⑴」"],"secondary":["数学Ⅰ・A 例題128（p.253）「三角形の面積」"],"match":"前提＋類題","route":"123→122→132。","round":"第2回","href":"no30.html"},{"no":31,"unit":"図形と計量","difficulty":"発展","summary":"角の二等分線、円周角、接線と割線","primary":["数学Ⅰ・A 例題134（p.261）「角の二等分線の長さ⑴」","数学Ⅰ・A 例題123（p.241）「余弦定理の基本」","数学Ⅰ・A 例題234（p.476）「接弦定理の利用」"],"secondary":["数学Ⅰ・A 例題135（p.263）「角の二等分線の長さ⑵」","数学Ⅰ・A 例題235（p.477）「円周角と接弦定理」"],"match":"発展接続","route":"134→123→234。長さの処理が重い場合は135、円周角との関係は235を確認する。","round":"第2回","href":"no31.html"},{"no":32,"unit":"高次方程式・軌跡","difficulty":"標準","summary":"因数定理と虚数解／中点を介した軌跡","primary":["数学Ⅱ・B・C 例題52（p.113）「因数定理」","数学Ⅱ・B・C 例題64（p.127）「3 次方程式と虚数解」","数学Ⅱ・B・C 例題106（p.204）「中点の軌跡」"],"secondary":["数学Ⅱ・B・C 例題103（p.199）「媒介変数と軌跡」"],"match":"前提＋類題","route":"52→64、軌跡は106→103。","round":"第2回","href":"no32.html"},{"no":33,"unit":"三角関数","difficulty":"標準","summary":"sinθ−cosθの置換とパラメータ最大値","primary":["数学Ⅱ・B・C 例題143（p.280）「三角関数の合成」","数学Ⅱ・B・C 例題147（p.287）「三角関数の最大・最小⑷」"],"secondary":["数学Ⅱ・B・C 例題145（p.285）「三角関数の最大・最小⑵」"],"match":"類題","route":"143→147。","round":"第3回","href":"no33.html"},{"no":34,"unit":"対数関数","difficulty":"標準","summary":"対数置換した方程式の解の個数と解の変換","primary":["数学Ⅱ・B・C 例題168（p.334）「対数関数を含む方程式⑵」","数学Ⅱ・B・C 例題173（p.339）「対数関数の最大・最小⑵」"],"secondary":["数学Ⅱ・B・C 例題46（p.100）「解と係数の関係⑵」"],"match":"前提＋類題","route":"168→173→IIBC46。","round":"第3回","href":"no34.html"},{"no":35,"unit":"空間ベクトル","difficulty":"標準","summary":"重心・中点、直線と平面の交点、体積比","primary":["数学Ⅱ・B・C 例題C1.58（p.C1-116）「空間の位置ベクトルと四面体の重心」","数学Ⅱ・B・C 例題C1.59（p.C1-117）「同一平面上にある条件」","数学Ⅱ・B・C 例題C1.65（p.C1-124）「点の位置と体積比」"],"secondary":[],"match":"類題","route":"C1.58→C1.59→C1.65。","round":"第3回","href":"no35.html"},{"no":36,"unit":"小問集合","difficulty":"標準","summary":"常用対数の桁数／円と三角関数による面積最大","primary":["数学Ⅱ・B・C 例題178（p.344）「常用対数の応用」","数学Ⅱ・B・C 例題151（p.291）「図形への応用」"],"secondary":["数学Ⅰ・A 例題128（p.253）「三角形の面積」"],"match":"前提＋類題","route":"前半は178、後半は151→IA128。","round":"第3回","href":"no36.html"},{"no":37,"unit":"高次方程式","difficulty":"標準","summary":"x+1/xの置換と相反型方程式、実数解条件","primary":["数学Ⅱ・B・C 例題62（p.125）「相反方程式」"],"secondary":["数学Ⅰ・A 例題45（p.107）「おき換えによる最大・最小」","数学Ⅱ・B・C 例題63（p.126）「高次不等式」"],"match":"同型に近い","route":"まず例題62。tの範囲はIA45で確認。","round":"第3回","href":"no37.html"},{"no":38,"unit":"確率・期待値","difficulty":"基礎","summary":"無作為な対応付けと条件一致個数の期待値","primary":["数学Ⅰ・A 例題190（p.388）「順列と確率⑴」","数学Ⅰ・A 例題200（p.400）「期待値」"],"secondary":[],"match":"前提＋類題","route":"例題190で無作為な並べ替えを確認し、例題200で期待値の定義へ戻る。","round":"第3回","href":"no38.html"},{"no":39,"unit":"空間ベクトル","difficulty":"発展","summary":"平面の法線、垂線の足、球面上の点と体積最大","primary":["数学Ⅱ・B・C 例題C1.70（p.C1-137）「平面の方程式の決定」","数学Ⅱ・B・C 例題C1.74（p.C1-142）「平面への垂線の足」","数学Ⅱ・B・C 例題C1.80（p.C1-152）「点と平面の距離」"],"secondary":["数学Ⅱ・B・C 例題C1.75（p.C1-145）「球面の方程式⑴」"],"match":"類題","route":"C1.70→C1.74→C1.80。","round":"第3回","href":"no39.html"},{"no":40,"unit":"小問集合","difficulty":"基礎","summary":"三角比、余事象確率、球と円錐","primary":["数学Ⅰ・A 例題109（p.222）「三角比の相互関係⑴」","数学Ⅰ・A 例題198（p.397）「余事象の確率⑵」","数学Ⅰ・A 例題141（p.271）「球と接する立体」"],"secondary":[],"match":"前提","route":"109→198→141の順に、該当する小問だけ確認する。","round":"第3回","href":"no40.html"},{"no":41,"unit":"図形と方程式","difficulty":"発展","summary":"円の接線、弦長条件、動点による面積最大","primary":["数学Ⅱ・B・C 例題87（p.170）「円と直線の位置関係⑴」","数学Ⅱ・B・C 例題89（p.172）「弦の長さ⑴」","数学Ⅱ・B・C 例題83（p.163）「三角形の面積の最大・最小」"],"secondary":["数学Ⅱ・B・C 例題90（p.173）「弦の長さ⑵」"],"match":"前提＋発展接続","route":"87→89→83。","round":"第3回","href":"no41.html"},{"no":42,"unit":"確率","difficulty":"標準","summary":"復元抽出n回の和を指定する確率","primary":["数学Ⅰ・A 例題208（p.413）「反復試行⑷」","数学Ⅰ・A 例題203（p.407）「独立な試行⑴」"],"secondary":["数学Ⅰ・A 例題205（p.410）「反復試行⑴」"],"match":"類題","route":"203で独立性確認後、208。","round":"第3回","href":"no42.html"},{"no":43,"unit":"高次方程式・剰余","difficulty":"標準","summary":"二次式で割った商・余り、根での値から係数決定","primary":["数学Ⅱ・B・C 例題3（p.26）「等式A=BQ+R」","数学Ⅱ・B・C 例題55（p.116）「剰余の定理⑵」"],"secondary":[],"match":"同型に近い","route":"例題3で A=BQ+R を確認し、例題55で根への代入を復習する。","round":"第3回","href":"no43.html"},{"no":44,"unit":"三角関数・図形","difficulty":"標準","summary":"扇形内の垂線、線分・面積をθで表す","primary":["数学Ⅱ・B・C 例題151（p.291）「図形への応用」","数学Ⅰ・A 例題128（p.253）「三角形の面積」"],"secondary":["数学Ⅱ・B・C 例題134（p.264）「三角関数の加法定理⑴」"],"match":"類題","route":"151→IA128。必要なら134。","round":"第3回","href":"no44.html"},{"no":45,"unit":"平面ベクトル","difficulty":"標準","summary":"内分点、交点、面積比、重心の動く範囲","primary":["数学Ⅱ・B・C 例題C1.19（p.C1-36）「分点と重心の位置ベクトル」","数学Ⅱ・B・C 例題C1.23（p.C1-42）「交点の位置ベクトル⑴」","数学Ⅱ・B・C 例題C1.39（p.C1-72）「条件を満たす点の動く範囲⑴」"],"secondary":["数学Ⅱ・B・C 例題C1.17（p.C1-30）「内積と三角形の面積」"],"match":"前提＋類題","route":"C1.19→C1.23→C1.39。","round":"第3回","href":"no45.html"},{"no":46,"unit":"三角関数・図形","difficulty":"基礎","summary":"単位円の座標、三角形面積の最大","primary":["数学Ⅱ・B・C 例題121（p.239）「弧度法と三角関数の値」","数学Ⅱ・B・C 例題137（p.267）「2 倍角・3 倍角・半角の公式」"],"secondary":["数学Ⅱ・B・C 例題145（p.285）「三角関数の最大・最小⑵」"],"match":"類題","route":"121→137→145。","round":"第4回","href":"no46.html"},{"no":47,"unit":"対数関数","difficulty":"標準","summary":"対数置換した二次式の方程式・不等式・整数解個数","primary":["数学Ⅱ・B・C 例題169（p.335）「対数関数を含む不等式⑴」","数学Ⅱ・B・C 例題173（p.339）「対数関数の最大・最小⑵」"],"secondary":["数学Ⅰ・A 例題75（p.152）「不等式を満たす整数」"],"match":"前提＋類題","route":"169→173→IA75。","round":"第4回","href":"no47.html"},{"no":48,"unit":"図形と方程式","difficulty":"標準","summary":"周上を異速で動く2点と三角形面積の最大","primary":["数学Ⅱ・B・C 例題83（p.163）「三角形の面積の最大・最小」","数学Ⅰ・A 例題39（p.97）「定義域が定められたときの 最大・最小」"],"secondary":[],"match":"類題","route":"例題83で面積の座標表示、例題39で定義域内の最大・最小を確認する。","round":"第4回","href":"no48.html"},{"no":49,"unit":"平面ベクトル","difficulty":"標準","summary":"垂線の足、直径円上の動点、面積最大","primary":["数学Ⅱ・B・C 例題C1.10（p.C1-21）「ベクトルの垂直条件」","数学Ⅱ・B・C 例題C1.36（p.C1-65）「円のベクトル方程式⑴」","数学Ⅱ・B・C 例題C1.17（p.C1-30）「内積と三角形の面積」"],"secondary":["数学Ⅱ・B・C 例題C1.23（p.C1-42）「交点の位置ベクトル⑴」"],"match":"前提＋類題","route":"C1.10→C1.36→C1.17。","round":"第4回","href":"no49.html"},{"no":50,"unit":"小問集合","difficulty":"標準","summary":"放物線の実数解・切片長・比／不等式の解集合一致","primary":["数学Ⅰ・A 例題58（p.128）「x 軸から切りとる線分の長さ」","数学Ⅰ・A 例題67（p.142）「不等式の解から係数決定」","数学Ⅰ・A 例題69（p.144）「解の存在範囲⑴」"],"secondary":["数学Ⅰ・A 例題66（p.141）「文字係数の2 次不等式」"],"match":"前提＋類題","route":"58→67→69。","round":"第4回","href":"no50.html"},{"no":51,"unit":"小問集合","difficulty":"標準","summary":"得点過程の確率／放物線頂点と交点条件・軌跡","primary":["数学Ⅰ・A 例題208（p.413）「反復試行⑷」","数学Ⅱ・B・C 例題106（p.204）「中点の軌跡」"],"secondary":["数学Ⅰ・A 例題61（p.133）「放物線と直線の共有点⑴」","数学Ⅱ・B・C 例題103（p.199）「媒介変数と軌跡」"],"match":"前提＋類題","route":"前半208、後半IA61→IIBC106。","round":"第4回","href":"no51.html"},{"no":52,"unit":"三角関数・方程式","difficulty":"発展","summary":"三角式の合成・二乗変形・4解条件","primary":["数学Ⅱ・B・C 例題143（p.280）「三角関数の合成」","数学Ⅱ・B・C 例題133（p.258）「三角関数を含む方程式の解の個数」"],"secondary":["数学Ⅱ・B・C 例題152（p.292）「三角関数を含む方程式の 解の存在条件」","数学Ⅱ・B・C 例題137（p.267）「2 倍角・3 倍角・半角の公式」"],"match":"発展接続","route":"143→137→133→152。","round":"第4回","href":"no52.html"},{"no":53,"unit":"空間ベクトル","difficulty":"標準","summary":"内分点の合成、直線と平面の交点、四面体体積","primary":["数学Ⅱ・B・C 例題C1.58（p.C1-116）「空間の位置ベクトルと四面体の重心」","数学Ⅱ・B・C 例題C1.59（p.C1-117）「同一平面上にある条件」","数学Ⅱ・B・C 例題C1.65（p.C1-124）「点の位置と体積比」"],"secondary":["数学Ⅱ・B・C 例題C1.60（p.C1-119）「空間の位置ベクトル⑴」"],"match":"類題","route":"C1.58→C1.59→C1.65。","round":"第4回","href":"no53.html"},{"no":54,"unit":"対数関数・図形","difficulty":"標準","summary":"常用対数による桁・小数位置／円周上の面積最大","primary":["数学Ⅱ・B・C 例題178（p.344）「常用対数の応用」","数学Ⅱ・B・C 例題151（p.291）「図形への応用」"],"secondary":["数学Ⅰ・A 例題128（p.253）「三角形の面積」"],"match":"前提＋類題","route":"前半178、後半151→IA128。","round":"第4回","href":"no54.html"},{"no":55,"unit":"高次方程式","difficulty":"標準","summary":"共通解、係数決定、x^2028の余り","primary":["数学Ⅱ・B・C 例題52（p.113）「因数定理」","数学Ⅱ・B・C 例題57（p.119）「x²+x+1 による割り算」"],"secondary":["数学Ⅱ・B・C 例題53（p.114）「剰余の定理⑴」","数学Ⅱ・B・C 例題64（p.127）「3 次方程式と虚数解」"],"match":"同型に近い","route":"52→57→53。","round":"第4回","href":"no55.html"},{"no":56,"unit":"図形と方程式","difficulty":"標準","summary":"円と直線の距離、半円領域、一次式の最大","primary":["数学Ⅱ・B・C 例題80（p.157）「点と直線の距離」","数学Ⅱ・B・C 例題113（p.214）「領域と最大・最小⑴」"],"secondary":["数学Ⅱ・B・C 例題115（p.217）「領域と最大・最小⑵」","数学Ⅱ・B・C 例題119（p.221）「条件を満たす点の存在範囲」"],"match":"前提＋類題","route":"80→113→115。","round":"第4回","href":"no56.html"},{"no":57,"unit":"確率","difficulty":"標準","summary":"カードを戻さない特殊な取り出し規則と積の確率","primary":["数学Ⅰ・A 例題214（p.420）「確率の乗法定理⑴」","数学Ⅰ・A 例題215（p.424）「確率の乗法定理⑵」"],"secondary":["数学Ⅰ・A 例題197（p.396）「和事象の確率」"],"match":"発展接続","route":"214→215。樹形図で全分岐を整理する。","round":"第4回","href":"no57.html"},{"no":58,"unit":"図形と計量","difficulty":"基礎","summary":"三角形の面積・辺・外接円上の弦","primary":["数学Ⅰ・A 例題128（p.253）「三角形の面積」","数学Ⅰ・A 例題123（p.241）「余弦定理の基本」","数学Ⅰ・A 例題132（p.258）「円に内接する四角形⑴」"],"secondary":["数学Ⅰ・A 例題122（p.240）「正弦定理の基本」"],"match":"前提＋類題","route":"128→123→132。","round":"第4回","href":"no58.html"},{"no":59,"unit":"2次方程式","difficulty":"標準","summary":"解の変換で新しい二次方程式、4次方程式の異なる解の個数","primary":["数学Ⅱ・B・C 例題46（p.100）「解と係数の関係⑵」","数学Ⅱ・B・C 例題45（p.98）「2 つの数を解とする2 次方程式」","数学Ⅱ・B・C 例題49（p.104）「2 次方程式の解の存在範囲」"],"secondary":[],"match":"類題","route":"46→45→49の順に確認する。","round":"第5回","href":"no59.html"},{"no":60,"unit":"図形と方程式","difficulty":"標準","summary":"円と直線の2交点、弦長、交点までの距離","primary":["数学Ⅱ・B・C 例題87（p.170）「円と直線の位置関係⑴」","数学Ⅱ・B・C 例題89（p.172）「弦の長さ⑴」"],"secondary":["数学Ⅱ・B・C 例題90（p.173）「弦の長さ⑵」"],"match":"同型に近い","route":"87→89。","round":"第5回","href":"no60.html"},{"no":61,"unit":"高次方程式","difficulty":"発展","summary":"二次式で割った余り、根での関数値条件","primary":["数学Ⅱ・B・C 例題3（p.26）「等式A=BQ+R」","数学Ⅱ・B・C 例題55（p.116）「剰余の定理⑵」"],"secondary":[],"match":"同型に近い","route":"例題3で除法の形を確認し、例題55で根に代入して余りを決める。","round":"第5回","href":"no61.html"},{"no":62,"unit":"高次方程式","difficulty":"基礎","summary":"既知解で因数分解、虚数解の対称式・高い累乗","primary":["数学Ⅱ・B・C 例題52（p.113）「因数定理」","数学Ⅱ・B・C 例題56（p.118）「1の3乗根ω」","数学Ⅱ・B・C 例題58（p.120）「3 次式の因数分解」"],"secondary":["数学Ⅱ・B・C 例題64（p.127）「3 次方程式と虚数解」"],"match":"前提＋類題","route":"52→58→56。","round":"第5回","href":"no62.html"},{"no":63,"unit":"図形と方程式","difficulty":"標準","summary":"円への接線、接点、円弧領域で一次式最大","primary":["数学Ⅱ・B・C 例題92（p.175）「傾きが与えられた円の接線」","数学Ⅱ・B・C 例題113（p.214）「領域と最大・最小⑴」","数学Ⅱ・B・C 例題119（p.221）「条件を満たす点の存在範囲」"],"secondary":["数学Ⅱ・B・C 例題87（p.170）「円と直線の位置関係⑴」"],"match":"前提＋類題","route":"92→113→119。","round":"第5回","href":"no63.html"},{"no":64,"unit":"空間ベクトル","difficulty":"標準","summary":"重心、平面への垂線の足、接球上の内積最大","primary":["数学Ⅱ・B・C 例題C1.58（p.C1-116）「空間の位置ベクトルと四面体の重心」","数学Ⅱ・B・C 例題C1.74（p.C1-142）「平面への垂線の足」","数学Ⅱ・B・C 例題C1.75（p.C1-145）「球面の方程式⑴」"],"secondary":["数学Ⅱ・B・C 例題C1.80（p.C1-152）「点と平面の距離」"],"match":"前提＋類題","route":"C1.58→C1.74→C1.75。","round":"第5回","href":"no64.html"},{"no":65,"unit":"三角関数","difficulty":"基礎","summary":"cos2x+a cosxの値域と方程式の解の個数","primary":["数学Ⅱ・B・C 例題149（p.289）「三角関数の最大・最小⑹」","数学Ⅱ・B・C 例題133（p.258）「三角関数を含む方程式の解の個数」"],"secondary":["数学Ⅱ・B・C 例題137（p.267）「2 倍角・3 倍角・半角の公式」"],"match":"同型に近い","route":"137→149→133。","round":"第5回","href":"no65.html"},{"no":66,"unit":"対数関数","difficulty":"基礎","summary":"常用対数の計算と指数不等式の最小整数","primary":["数学Ⅱ・B・C 例題178（p.344）「常用対数の応用」"],"secondary":["数学Ⅱ・B・C 例題162（p.323）「対数の計算⑵」"],"match":"同型に近い","route":"例題178を確認し、最後は隣接整数で検算。","round":"第5回","href":"no66.html"},{"no":67,"unit":"高次方程式・剰余","difficulty":"標準","summary":"因数定理・剰余定理、1の3乗根と累乗和","primary":["数学Ⅱ・B・C 例題52（p.113）「因数定理」","数学Ⅱ・B・C 例題53（p.114）「剰余の定理⑴」","数学Ⅱ・B・C 例題56（p.118）「1の3乗根ω」"],"secondary":["数学Ⅱ・B・C 例題57（p.119）「x²+x+1 による割り算」"],"match":"同型に近い","route":"52→53→56→57。","round":"第5回","href":"no67.html"},{"no":68,"unit":"空間ベクトル","difficulty":"発展","summary":"対称な内積、重心と法線、直線と平面の交点、体積","primary":["数学Ⅱ・B・C 例題C1.58（p.C1-116）「空間の位置ベクトルと四面体の重心」","数学Ⅱ・B・C 例題C1.59（p.C1-117）「同一平面上にある条件」","数学Ⅱ・B・C 例題C1.56（p.C1-110）「三角形の面積と四面体の高さ」"],"secondary":["数学Ⅱ・B・C 例題C1.65（p.C1-124）「点の位置と体積比」","数学Ⅱ・B・C 例題C1.80（p.C1-152）「点と平面の距離」"],"match":"発展接続","route":"C1.58→C1.59→C1.56。高さはC1.80も参照。","round":"第5回","href":"no68.html"},{"no":69,"unit":"指数関数・対数関数","difficulty":"標準","summary":"指数不等式の置換と、全xで成り立つ対数不等式の底","primary":["数学Ⅱ・B・C 例題157（p.310）「指数関数を含む不等式」","数学Ⅱ・B・C 例題169（p.335）「対数関数を含む不等式⑴」"],"secondary":["数学Ⅱ・B・C 例題170（p.336）「対数関数を含む不等式⑵」","数学Ⅱ・B・C 例題175（p.341）「対数の大小⑵」"],"match":"前提＋類題","route":"157→169→170。最後に真数の値域を確認。","round":"第5回","href":"no69.html"},{"no":70,"unit":"高次方程式・複素数","difficulty":"基礎","summary":"1の3乗根とiの累乗周期、周期和の最大","primary":["数学Ⅱ・B・C 例題56（p.118）「1の3乗根ω」","数学Ⅱ・B・C 例題57（p.119）「x²+x+1 による割り算」"],"secondary":["数学Ⅱ・B・C 例題38（p.84）「複素数と式の値」"],"match":"同型に近い","route":"56→57。iの累乗は最初の4項を書き出す。","round":"第5回","href":"no70.html"},{"no":71,"unit":"場合の数","difficulty":"基礎","summary":"3枚の組合せ、少なくとも1偶数、和の余り、6の倍数","primary":["数学Ⅰ・A 例題175（p.356）「特定のものを含む組合せ」","数学Ⅰ・A 例題158（p.330）「補集合の考え方の利用」","数学Ⅰ・A 例題268（p.554）「余りによる場合分け⑴」"],"secondary":[],"match":"前提＋類題","route":"175→158→268。最後に、偶数を一の位へ置けるかを確認する。","round":"第5回","href":"no71.html"}];
+
+const difficultyClasses = {
+  "基礎": "bg-emerald-100 text-emerald-800",
+  "標準": "bg-amber-100 text-amber-800",
+  "発展": "bg-rose-100 text-rose-800"
+};
+
+const matchClasses = {
+  "同型": "bg-green-100 text-green-800",
+  "同型に近い": "bg-green-100 text-green-800",
+  "類題": "bg-blue-100 text-blue-800",
+  "前提＋類題": "bg-indigo-100 text-indigo-800",
+  "発展接続": "bg-orange-100 text-orange-800",
+  "前提＋発展接続": "bg-fuchsia-100 text-fuchsia-800",
+  "前提": "bg-slate-200 text-slate-700"
+};
+
+const els = {
+  search: document.getElementById("search-input"),
+  number: document.getElementById("number-input"),
+  round: document.getElementById("round-select"),
+  difficulty: document.getElementById("difficulty-select"),
+  match: document.getElementById("match-select"),
+  unit: document.getElementById("unit-select"),
+  grid: document.getElementById("result-grid"),
+  count: document.getElementById("result-count"),
+  empty: document.getElementById("empty-state")
+};
+
+function escapeHtml(value) {
+  return String(value)
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
+}
+
+function listItems(items) {
+  if (!items.length) {
+    return '<p class="text-sm text-slate-500">補助参照はありません。</p>';
+  }
+  return `<ul class="space-y-2">${items.map(item => `
+    <li class="flex gap-2">
+      <span class="mt-1 text-blue-600">●</span>
+      <span>${escapeHtml(item)}</span>
+    </li>`).join("")}</ul>`;
+}
+
+function cardTemplate(item) {
+  const difficultyClass = difficultyClasses[item.difficulty] || "bg-slate-100 text-slate-700";
+  const matchClass = matchClasses[item.match] || "bg-slate-100 text-slate-700";
+
+  return `
+  <article id="problem-${item.no}" class="problem-card overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
+    <div class="border-b border-slate-200 bg-slate-50 p-5">
+      <div class="flex flex-wrap items-center gap-2">
+        <span class="rounded-lg bg-blue-800 px-3 py-1 text-sm font-bold text-white">No.${item.no}</span>
+        <span class="rounded-full px-3 py-1 text-xs font-bold ${difficultyClass}">${escapeHtml(item.difficulty)}</span>
+        <span class="rounded-full px-3 py-1 text-xs font-bold ${matchClass}">${escapeHtml(item.match)}</span>
+        <span class="rounded-full bg-slate-200 px-3 py-1 text-xs font-bold text-slate-700">${escapeHtml(item.round)}</span>
+      </div>
+      <h3 class="mt-3 text-xl font-bold text-slate-900">${escapeHtml(item.unit)}</h3>
+      <p class="mt-2 text-sm leading-relaxed text-slate-600">${escapeHtml(item.summary)}</p>
+    </div>
+
+    <div class="space-y-5 p-5">
+      <div>
+        <h4 class="flex items-center gap-2 font-bold text-blue-900">
+          <span class="grid h-7 w-7 place-items-center rounded-full bg-blue-100 text-sm text-blue-800">1</span>
+          まず見るFocus Gold
+        </h4>
+        <div class="mt-3 rounded-xl border border-blue-200 bg-blue-50 p-4 text-sm leading-relaxed text-slate-800">
+          ${listItems(item.primary)}
+        </div>
+      </div>
+
+      <details class="details-print group rounded-xl border border-slate-200 bg-slate-50">
+        <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-bold text-slate-800 [&::-webkit-details-marker]:hidden">
+          <span>補助参照を見る（${item.secondary.length}件）</span>
+          <span class="screen-only transition group-open:-rotate-180">⌄</span>
+        </summary>
+        <div class="border-t border-slate-200 p-4 text-sm leading-relaxed">
+          ${listItems(item.secondary)}
+        </div>
+      </details>
+
+      <div class="rounded-xl border border-emerald-200 bg-emerald-50 p-4">
+        <h4 class="font-bold text-emerald-900">復習の進め方</h4>
+        <p class="mt-2 text-sm leading-relaxed text-emerald-950">${escapeHtml(item.route)}</p>
+      </div>
+
+      <a href="${item.href}"
+         class="screen-only block rounded-xl bg-blue-700 px-4 py-3 text-center font-bold text-white hover:bg-blue-800">
+        No.${item.no}の解説ページを開く →
+      </a>
+    </div>
+  </article>`;
+}
+
+function normalizedText(item) {
+  return [
+    item.no, item.unit, item.difficulty, item.summary,
+    ...item.primary, ...item.secondary, item.match, item.route, item.round
+  ].join(" ").toLowerCase();
+}
+
+function applyFilters() {
+  const keyword = els.search.value.trim().toLowerCase();
+  const numberValue = els.number.value.trim();
+  const roundValue = els.round.value;
+  const difficultyValue = els.difficulty.value;
+  const matchValue = els.match.value;
+  const unitValue = els.unit.value;
+
+  const filtered = DATA.filter(item => {
+    if (numberValue && item.no !== Number(numberValue)) return false;
+    if (roundValue && item.round !== roundValue) return false;
+    if (difficultyValue && item.difficulty !== difficultyValue) return false;
+    if (matchValue && item.match !== matchValue) return false;
+    if (unitValue && item.unit !== unitValue) return false;
+    if (keyword && !normalizedText(item).includes(keyword)) return false;
+    return true;
+  });
+
+  els.grid.innerHTML = filtered.map(cardTemplate).join("");
+  els.count.textContent = `${filtered.length}問を表示しています。`;
+  els.empty.classList.toggle("hidden", filtered.length !== 0);
+
+  const params = new URLSearchParams();
+  if (numberValue) params.set("no", numberValue);
+  if (keyword) params.set("q", els.search.value.trim());
+  if (roundValue) params.set("round", roundValue);
+  if (difficultyValue) params.set("difficulty", difficultyValue);
+  if (matchValue) params.set("match", matchValue);
+  if (unitValue) params.set("unit", unitValue);
+
+  const newUrl = `${location.pathname}${params.toString() ? "?" + params.toString() : ""}`;
+  history.replaceState(null, "", newUrl);
+}
+
+function resetFilters() {
+  els.search.value = "";
+  els.number.value = "";
+  els.round.value = "";
+  els.difficulty.value = "";
+  els.match.value = "";
+  els.unit.value = "";
+  applyFilters();
+}
+
+function loadFromUrl() {
+  const params = new URLSearchParams(location.search);
+  els.number.value = params.get("no") || "";
+  els.search.value = params.get("q") || "";
+  els.round.value = params.get("round") || "";
+  els.difficulty.value = params.get("difficulty") || "";
+  els.match.value = params.get("match") || "";
+  els.unit.value = params.get("unit") || "";
+}
+
+[els.search, els.number, els.round, els.difficulty, els.match, els.unit]
+  .forEach(element => element.addEventListener("input", applyFilters));
+
+document.getElementById("reset-button").addEventListener("click", resetFilters);
+document.getElementById("print-button").addEventListener("click", () => window.print());
+
+loadFromUrl();
+applyFilters();
+</script>
+</body>
+</html>

@@ -1,0 +1,1125 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>夏期課題 No.62 高次方程式 - 医進・サイエンスコース</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        MathJax = {
+            chtml: { matchFontHeight: false },
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body { font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif; }
+        .nav-button { transition: transform .16s ease, box-shadow .16s ease; }
+        .nav-button:hover { transform: translateY(-2px); box-shadow: 0 8px 18px rgba(15, 23, 42, .12); }
+        .math-scroll { overflow-x: auto; overflow-y: hidden; padding-bottom: .5rem; margin-bottom: .5rem; }
+        button:focus-visible, summary:focus-visible, a:focus-visible, input:focus-visible {
+            outline: 3px solid rgba(37, 99, 235, .35);
+            outline-offset: 3px;
+        }
+    </style>
+</head>
+<body class="bg-slate-100 text-slate-800">
+<div class="mx-auto max-w-4xl px-4 py-6 sm:px-6 lg:py-10">
+
+    <a href="index.html" class="inline-flex items-center gap-2 text-sm font-bold text-blue-700 hover:text-blue-900">
+        ← 問題一覧へ戻る
+    </a>
+
+    <header class="mt-4 overflow-hidden rounded-3xl bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-800 text-white shadow-xl">
+        <div class="p-7 sm:p-10">
+            <span class="inline-flex items-center rounded-full bg-white/15 px-4 py-1.5 text-sm font-semibold tracking-wide text-blue-100">医進・サイエンスコース</span>
+            <div class="mt-4 flex flex-wrap items-center gap-3">
+                <span class="rounded-lg bg-white/20 px-3 py-1 text-sm font-bold">No.62</span>
+                <span class="rounded-full bg-emerald-100 px-3 py-1 text-xs font-bold text-emerald-800">基礎</span>
+            </div>
+            <h1 class="mt-4 text-3xl font-bold leading-tight sm:text-4xl">高次方程式</h1>
+            <div class="mt-3 text-lg text-blue-100">目標解答時間：20分</div>
+        </div>
+    </header>
+
+    <main>
+        <section class="mt-7 rounded-2xl border border-blue-100 bg-white p-6 shadow-sm sm:p-8">
+            <h2 class="flex items-center gap-2 text-xl font-bold text-blue-900">
+                <span class="grid h-8 w-8 place-items-center rounded-full bg-blue-700 text-base text-white">1</span>
+                問題
+            </h2>
+
+            <div class="mt-4 rounded-lg border border-slate-200 bg-slate-50 p-4 text-slate-700 leading-relaxed">
+                <p>
+                    3次方程式
+                </p>
+
+                <div class="math-scroll">
+                    \[
+                    x^3+ax^2+6x+a+1=0
+                    \qquad\cdots(*)
+                    \]
+                </div>
+
+                <p>
+                    があり、$x=-1$ を解にもつ。ただし、$a$ は実数の定数とする。
+                </p>
+
+                <ol class="mt-4 list-decimal space-y-4 pl-6">
+                    <li>$a$ の値を求め、$-1$ 以外の $(*)$ の解を求めよ。</li>
+                    <li>
+                        $(*)$ の $-1$ 以外の解を $\alpha,\beta$ とする。
+                        <ol class="mt-2 list-[lower-roman] space-y-3 pl-6">
+                            <li>
+                                \[
+                                \frac{\beta}{\alpha}+\frac{\alpha}{\beta},
+                                \qquad
+                                \left(\frac{\beta}{\alpha}\right)^3
+                                +
+                                \left(\frac{\alpha}{\beta}\right)^3
+                                \]
+                                の値をそれぞれ求めよ。
+                            </li>
+                            <li>
+                                \[
+                                \left(\frac{\beta}{\alpha}\right)^{2009}
+                                +
+                                \left(\frac{\alpha}{\beta}\right)^{2009}
+                                \]
+                                の値を求めよ。
+                            </li>
+                        </ol>
+                    </li>
+                </ol>
+            </div>
+
+            <div class="mt-4 rounded-lg border border-blue-200 bg-blue-50 p-4">
+                <h3 class="mb-2 font-bold text-blue-900">【条件の整理】</h3>
+
+                <ul class="list-disc space-y-2 pl-5 text-sm text-slate-700">
+                    <li>
+                        $x=-1$ が解なので、左辺へ $x=-1$ を代入すれば $a$ が求まります。
+                    </li>
+                    <li>
+                        $a$ を求めた後は、因数定理より左辺は $x+1$ を因数にもちます。
+                    </li>
+                    <li>
+                        $\alpha,\beta$ は2次方程式
+                        \[
+                        x^2+2x+4=0
+                        \]
+                        の2解なので、
+                        \[
+                        \alpha+\beta=-2,\qquad \alpha\beta=4
+                        \]
+                        です。
+                    </li>
+                    <li>
+                        比
+                        \[
+                        t=\frac{\beta}{\alpha}
+                        \]
+                        とおくと、
+                        \[
+                        \frac{\alpha}{\beta}=\frac1t
+                        \]
+                        となります。
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="mt-6 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+            <h2 class="flex items-center gap-2 text-xl font-bold text-slate-900">
+                <span class="grid h-8 w-8 place-items-center rounded-full bg-slate-700 text-base text-white">2</span>
+                解説
+            </h2>
+
+            <p class="mt-4 text-sm leading-8 text-slate-600">
+                因数定理、解と係数の関係、3乗すると1になる数の周期性を利用します。
+            </p>
+
+            <div class="mt-8 rounded-xl border border-amber-200 bg-amber-50 p-5">
+                <h3 class="border-b-2 border-amber-400 pb-2 text-lg font-bold text-amber-900">解法選択のトリガー</h3>
+
+                <div class="mt-4 space-y-4">
+                    <div class="rounded-lg border border-amber-200 bg-amber-100/60 p-4">
+                        <p class="text-sm font-bold text-amber-900">ある数が方程式の解</p>
+                        <p class="mt-1 text-sm text-amber-800">
+                            その数を方程式へ代入して文字定数を決め、因数定理で次数を下げます。
+                        </p>
+                    </div>
+
+                    <div class="rounded-lg border border-amber-200 bg-amber-100/60 p-4">
+                        <p class="text-sm font-bold text-amber-900">解の比とその逆数の和</p>
+                        <p class="mt-1 text-sm text-amber-800">
+                            分母をまとめて
+                            \[
+                            \frac{\alpha^2+\beta^2}{\alpha\beta}
+                            \]
+                            とし、解の和と積で処理します。
+                        </p>
+                    </div>
+
+                    <div class="rounded-lg border border-amber-200 bg-amber-100/60 p-4">
+                        <p class="text-sm font-bold text-amber-900">非常に大きい指数</p>
+                        <p class="mt-1 text-sm text-amber-800">
+                            小さいべき乗で元に戻る周期性がないかを探します。本問では3乗すると1になります。
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-8 rounded-xl border border-emerald-200 bg-emerald-50 p-5">
+                <h3 class="border-b-2 border-emerald-400 pb-2 text-lg font-bold text-emerald-900">思考プロセス</h3>
+
+                <div class="mt-4 space-y-4">
+                    <div class="rounded-lg border border-emerald-200 bg-emerald-100/60 p-4 text-sm text-emerald-900">
+                        <strong>（1）既知の解から因数分解する</strong><br>
+                        $x=-1$ が解なので、$x+1$ を因数として3次式を2次式へ下げます。
+                    </div>
+
+                    <div class="rounded-lg border border-emerald-200 bg-emerald-100/60 p-4 text-sm text-emerald-900">
+                        <strong>（2）（i）$\alpha,\beta$ を直接代入しない</strong><br>
+                        対称式は
+                        \[
+                        \alpha+\beta,\qquad\alpha\beta
+                        \]
+                        を用いると根号計算を避けられます。
+                    </div>
+
+                    <div class="rounded-lg border border-emerald-200 bg-emerald-100/60 p-4 text-sm text-emerald-900">
+                        <strong>（2）（ii）比の累乗を実際に調べて周期を見つける</strong><br>
+                        \[
+                        \frac{\beta}{\alpha},
+                        \qquad
+                        \frac{\alpha}{\beta}
+                        \]
+                        の値を求め、2乗、3乗と順に計算します。
+                        3乗で1に戻ることが分かれば、指数は3で割った余りだけで処理できます。
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-10">
+                <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">実際の答案</h3>
+
+                <div class="mt-4 space-y-8 text-slate-700">
+                    <div>
+                        <p class="border-b border-slate-200 pb-1 font-bold text-blue-800">（1）</p>
+
+                        <p class="mt-2">
+                            $x=-1$ が $(*)$ の解なので、左辺へ $x=-1$ を代入すると、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            -1+a-6+a+1=0.
+                            \]
+                        </div>
+
+                        <p>
+                            よって、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            2a-6=0,
+                            \qquad
+                            a=3.
+                            \]
+                        </div>
+
+                        <p>
+                            したがって、$(*)$ は
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            x^3+3x^2+6x+4=0.
+                            \]
+                        </div>
+
+                        <p>
+                            $x=-1$ を解にもつので、因数定理より、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            \begin{aligned}
+                            x^3+3x^2+6x+4
+                            &=
+                            (x+1)(x^2+2x+4).
+                            \end{aligned}
+                            \]
+                        </div>
+
+                        <p>
+                            よって、$-1$ 以外の解は
+                        \[
+                        x^2+2x+4=0
+                        \]
+                        の解である。
+                        解の公式より、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            \begin{aligned}
+                            x
+                            &=
+                            \frac{-2\pm\sqrt{4-16}}2\\
+                            &=
+                            -1\pm\sqrt3\,i.
+                            \end{aligned}
+                            \]
+                        </div>
+
+                        <div class="mt-2 rounded-xl border-2 border-blue-500 bg-blue-50 p-3 font-bold text-slate-900">
+                            \[
+                            a=3,
+                            \qquad
+                            -1\text{ 以外の解は }
+                            -1\pm\sqrt3\,i
+                            \]
+                        </div>
+                    </div>
+
+                    <div class="border-t border-slate-200 pt-6">
+                        <p class="border-b border-slate-200 pb-1 font-bold text-blue-800">（2）（i）1つ目</p>
+
+                        <p class="mt-2">
+                            $\alpha,\beta$ は
+                            \[
+                            x^2+2x+4=0
+                            \]
+                            の2解なので、解と係数の関係より、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            \alpha+\beta=-2,
+                            \qquad
+                            \alpha\beta=4.
+                            \]
+                        </div>
+
+                        <p>
+                            したがって、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            \begin{aligned}
+                            \frac{\beta}{\alpha}
+                            +
+                            \frac{\alpha}{\beta}
+                            &=
+                            \frac{\alpha^2+\beta^2}{\alpha\beta}\\
+                            &=
+                            \frac{(\alpha+\beta)^2-2\alpha\beta}{\alpha\beta}\\
+                            &=
+                            \frac{(-2)^2-2\cdot4}{4}\\
+                            &=
+                            -1.
+                            \end{aligned}
+                            \]
+                        </div>
+
+                        <div class="mt-2 inline-block rounded-xl border-2 border-blue-500 bg-blue-50 p-3 font-bold text-slate-900">
+                            \[
+                            \frac{\beta}{\alpha}
+                            +
+                            \frac{\alpha}{\beta}
+                            =
+                            -1
+                            \]
+                        </div>
+                    </div>
+
+                    <div class="border-t border-slate-200 pt-6">
+                        <p class="border-b border-slate-200 pb-1 font-bold text-blue-800">（2）（i）2つ目</p>
+
+                        <p class="mt-2">
+                            $\alpha,\beta$ のまま通分すると、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            \left(\frac{\beta}{\alpha}\right)^3
+                            +
+                            \left(\frac{\alpha}{\beta}\right)^3
+                            =
+                            \frac{\alpha^6+\beta^6}
+                            {(\alpha\beta)^3}.
+                            \]
+                        </div>
+
+                        <p>
+                            まず、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            \begin{aligned}
+                            \alpha^3+\beta^3
+                            &=
+                            (\alpha+\beta)^3
+                            -3\alpha\beta(\alpha+\beta)\\
+                            &=
+                            (-2)^3
+                            -3\cdot4\cdot(-2)\\
+                            &=16.
+                            \end{aligned}
+                            \]
+                        </div>
+
+                        <p>
+                            また、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            \alpha^3\beta^3
+                            =
+                            (\alpha\beta)^3
+                            =
+                            4^3
+                            =
+                            64.
+                            \]
+                        </div>
+
+                        <p>
+                            したがって、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            \begin{aligned}
+                            \alpha^6+\beta^6
+                            &=
+                            (\alpha^3+\beta^3)^2
+                            -2\alpha^3\beta^3\\
+                            &=
+                            16^2-2\cdot64\\
+                            &=128.
+                            \end{aligned}
+                            \]
+                        </div>
+
+                        <p>
+                            よって、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            \begin{aligned}
+                            \left(\frac{\beta}{\alpha}\right)^3
+                            +
+                            \left(\frac{\alpha}{\beta}\right)^3
+                            &=
+                            \frac{128}{4^3}\\
+                            &=2.
+                            \end{aligned}
+                            \]
+                        </div>
+
+                        <div class="mt-2 inline-block rounded-xl border-2 border-blue-500 bg-blue-50 p-3 font-bold text-slate-900">
+                            \[
+                            \left(\frac{\beta}{\alpha}\right)^3
+                            +
+                            \left(\frac{\alpha}{\beta}\right)^3
+                            =
+                            2
+                            \]
+                        </div>
+                    </div>
+
+                    <div class="border-t border-slate-200 pt-6">
+                        <p class="border-b border-slate-200 pb-1 font-bold text-blue-800">（2）（ii）</p>
+
+                        <p class="mt-2">
+                            $\alpha,\beta$ のどちらをどちらの解としても最終的な和は変わらないので、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            \alpha=-1+\sqrt3\,i,
+                            \qquad
+                            \beta=-1-\sqrt3\,i
+                            \]
+                        </div>
+
+                        <p>
+                            とする。
+                        </p>
+
+                        <p class="mt-3">
+                            まず、2つの比を求める。
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            \begin{aligned}
+                            \frac{\beta}{\alpha}
+                            &=
+                            \frac{-1-\sqrt3\,i}{-1+\sqrt3\,i}\\
+                            &=
+                            \frac{(-1-\sqrt3\,i)^2}
+                            {(-1)^2+(\sqrt3)^2}\\
+                            &=
+                            \frac{-2+2\sqrt3\,i}{4}\\
+                            &=
+                            -\frac12+\frac{\sqrt3}{2}i,
+                            \end{aligned}
+                            \]
+                            \[
+                            \begin{aligned}
+                            \frac{\alpha}{\beta}
+                            &=
+                            -\frac12-\frac{\sqrt3}{2}i.
+                            \end{aligned}
+                            \]
+                        </div>
+
+                        <p class="mt-3">
+                            次に、それぞれを累乗して、1に戻るまで調べる。
+                        </p>
+
+                        <div class="mt-3 overflow-x-auto">
+                            <table class="w-full min-w-[650px] border-collapse text-center text-sm">
+                                <thead>
+                                    <tr class="bg-slate-100">
+                                        <th class="border border-slate-300 px-3 py-3">累乗</th>
+                                        <th class="border border-slate-300 px-3 py-3">
+                                            $\left(\dfrac{\beta}{\alpha}\right)^n$
+                                        </th>
+                                        <th class="border border-slate-300 px-3 py-3">
+                                            $\left(\dfrac{\alpha}{\beta}\right)^n$
+                                        </th>
+                                        <th class="border border-slate-300 px-3 py-3">和</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="border border-slate-300 px-3 py-3">$n=1$</td>
+                                        <td class="border border-slate-300 px-3 py-3">
+                                            $-\dfrac12+\dfrac{\sqrt3}{2}i$
+                                        </td>
+                                        <td class="border border-slate-300 px-3 py-3">
+                                            $-\dfrac12-\dfrac{\sqrt3}{2}i$
+                                        </td>
+                                        <td class="border border-slate-300 px-3 py-3 font-bold">$-1$</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-slate-300 px-3 py-3">$n=2$</td>
+                                        <td class="border border-slate-300 px-3 py-3">
+                                            $-\dfrac12-\dfrac{\sqrt3}{2}i$
+                                        </td>
+                                        <td class="border border-slate-300 px-3 py-3">
+                                            $-\dfrac12+\dfrac{\sqrt3}{2}i$
+                                        </td>
+                                        <td class="border border-slate-300 px-3 py-3 font-bold">$-1$</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-slate-300 px-3 py-3">$n=3$</td>
+                                        <td class="border border-slate-300 px-3 py-3">$1$</td>
+                                        <td class="border border-slate-300 px-3 py-3">$1$</td>
+                                        <td class="border border-slate-300 px-3 py-3 font-bold">$2$</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <p class="mt-4">
+                            3乗するとどちらも1に戻るので、累乗は3を周期として繰り返す。
+                            したがって、指数を3で割った余りによって分類すればよい。
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            2009
+                            =
+                            3\cdot669+2,
+                            \qquad
+                            2009\equiv2\pmod3.
+                            \]
+                        </div>
+
+                        <p>
+                            よって、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            \left(\frac{\beta}{\alpha}\right)^{2009}
+                            =
+                            \left(\frac{\beta}{\alpha}\right)^2,
+                            \]
+                            \[
+                            \left(\frac{\alpha}{\beta}\right)^{2009}
+                            =
+                            \left(\frac{\alpha}{\beta}\right)^2.
+                            \]
+                        </div>
+
+                        <p>
+                            したがって、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            \begin{aligned}
+                            \left(\frac{\beta}{\alpha}\right)^{2009}
+                            +
+                            \left(\frac{\alpha}{\beta}\right)^{2009}
+                            &=
+                            \left(
+                            -\frac12-\frac{\sqrt3}{2}i
+                            \right)
+                            +
+                            \left(
+                            -\frac12+\frac{\sqrt3}{2}i
+                            \right)\\
+                            &=
+                            -1.
+                            \end{aligned}
+                            \]
+                        </div>
+
+                        <div class="mt-2 rounded-xl border-2 border-blue-500 bg-blue-50 p-3 font-bold text-slate-900">
+                            \[
+                            \left(\frac{\beta}{\alpha}\right)^{2009}
+                            +
+                            \left(\frac{\alpha}{\beta}\right)^{2009}
+                            =
+                            -1
+                            \]
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-10">
+                <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">別解：比を1文字で置く方法</h3>
+
+                <div class="mt-4 rounded-xl border border-amber-300 bg-amber-50 p-4 text-sm leading-relaxed text-amber-950">
+                    <strong>難関大志望者には持っていてほしい視点：</strong><br>
+                    互いに逆数となる2つの数が繰り返し現れるとき、一方を $t$ と置き、
+                    もう一方を $\dfrac1t$ と表すと、構造が非常に見やすくなります。
+                    初見では思いつきにくい方法ですが、難関大の式変形では有効な視点です。
+                </div>
+
+                <div class="mt-4 rounded-xl border border-indigo-200 bg-indigo-50 p-5 text-sm leading-relaxed text-slate-700">
+                    <p>
+                        \[
+                        t=\frac{\beta}{\alpha}
+                        \]
+                        とおくと、
+                        \[
+                        \frac{\alpha}{\beta}=\frac1t.
+                        \]
+                    </p>
+
+                    <p>
+                        （2）（i）の1つ目より、
+                        </p>
+
+                    <div class="math-scroll">
+                        \[
+                        t+\frac1t=-1.
+                        \]
+                    </div>
+
+                    <p>
+                        また、
+                        </p>
+
+                    <div class="math-scroll">
+                        \[
+                        t\cdot\frac1t=1.
+                        \]
+                    </div>
+
+                    <p>
+                        したがって、
+                        </p>
+
+                    <div class="math-scroll">
+                        \[
+                        \begin{aligned}
+                        t^3+\frac1{t^3}
+                        &=
+                        \left(t+\frac1t\right)^3
+                        -3\left(t\cdot\frac1t\right)
+                        \left(t+\frac1t\right)\\
+                        &=
+                        (-1)^3-3\cdot1\cdot(-1)\\
+                        &=2.
+                        \end{aligned}
+                        \]
+                    </div>
+
+                    <p class="mt-3">
+                        さらに、
+                        \[
+                        t+\frac1t=-1
+                        \]
+                        の両辺に $t$ を掛けると、
+                        </p>
+
+                    <div class="math-scroll">
+                        \[
+                        t^2+t+1=0.
+                        \]
+                    </div>
+
+                    <p>
+                        \[
+                        t^3-1=(t-1)(t^2+t+1)
+                        \]
+                        より、
+                        \[
+                        t^3=1.
+                        \]
+                    </p>
+
+                    <p class="mt-3">
+                        \[
+                        2009\equiv2\pmod3
+                        \]
+                        なので、
+                        </p>
+
+                    <div class="math-scroll">
+                        \[
+                        t^{2009}+t^{-2009}
+                        =
+                        t^2+t^{-2}
+                        =
+                        -1.
+                        \]
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-10">
+                <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">別解（数学C）：複素数の極形式を用いる</h3>
+
+                <div class="mt-4 rounded-lg border border-amber-300 bg-amber-50 p-4 text-sm leading-relaxed text-amber-950">
+                    <strong>数学Cの内容：</strong><br>
+                    この解法では、複素数の極形式とド・モアブルの定理の考え方を用います。
+                    数学Cを学習済みの生徒向けの別解です。
+                </div>
+
+                <div class="mt-4 rounded-xl border border-indigo-200 bg-indigo-50 p-5 text-sm leading-relaxed text-slate-700">
+                    <p>
+                        例えば、
+                        \[
+                        \alpha=-1+\sqrt3\,i,
+                        \qquad
+                        \beta=-1-\sqrt3\,i
+                        \]
+                        とする。
+                    </p>
+
+                    <p>
+                        それぞれの絶対値は2であり、
+                        </p>
+
+                    <div class="math-scroll">
+                        \[
+                        \alpha
+                        =
+                        2\left(
+                        \cos\frac{2\pi}{3}
+                        +
+                        i\sin\frac{2\pi}{3}
+                        \right),
+                        \]
+                        \[
+                        \beta
+                        =
+                        2\left(
+                        \cos\frac{4\pi}{3}
+                        +
+                        i\sin\frac{4\pi}{3}
+                        \right).
+                        \]
+                    </div>
+
+                    <p>
+                        よって、
+                        </p>
+
+                    <div class="math-scroll">
+                        \[
+                        \frac{\beta}{\alpha}
+                        =
+                        \cos\frac{2\pi}{3}
+                        +
+                        i\sin\frac{2\pi}{3},
+                        \]
+                        \[
+                        \frac{\alpha}{\beta}
+                        =
+                        \cos\frac{4\pi}{3}
+                        +
+                        i\sin\frac{4\pi}{3}.
+                        \]
+                    </div>
+
+                    <p>
+                        これらは1の3乗根なので、3乗するとどちらも1である。
+                        また、2009を3で割った余りは2であるから、
+                        </p>
+
+                    <div class="math-scroll">
+                        \[
+                        \begin{aligned}
+                        \left(\frac{\beta}{\alpha}\right)^{2009}
+                        +
+                        \left(\frac{\alpha}{\beta}\right)^{2009}
+                        &=
+                        \cos\frac{4\pi}{3}
+                        +i\sin\frac{4\pi}{3}\\
+                        &\quad+
+                        \cos\frac{8\pi}{3}
+                        +i\sin\frac{8\pi}{3}\\
+                        &=
+                        -1.
+                        \end{aligned}
+                        \]
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-10">
+                <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">図解・可視化① 3周期の確認</h3>
+
+                <p class="mt-4 text-sm leading-relaxed text-slate-700">
+                    \[
+                    A_n
+                    =
+                    \left(\frac{\beta}{\alpha}\right)^n
+                    +
+                    \left(\frac{\alpha}{\beta}\right)^n
+                    \]
+                    とすると、値は指数を3で割った余りによって周期的に変化します。
+                </p>
+
+                <div class="mt-4 rounded-xl border border-slate-200 bg-slate-50 p-4 sm:p-6">
+                    <div class="grid gap-4 sm:grid-cols-3">
+                        <div class="rounded-xl border border-blue-200 bg-white p-5 text-center">
+                            <div class="text-sm font-bold text-blue-700">$n\equiv0\pmod3$</div>
+                            <div class="mt-3 text-3xl font-bold text-blue-900">2</div>
+                            <div class="mt-2 text-xs text-slate-500">2つの比の累乗がともに1</div>
+                        </div>
+
+                        <div class="rounded-xl border border-violet-200 bg-white p-5 text-center">
+                            <div class="text-sm font-bold text-violet-700">$n\equiv1\pmod3$</div>
+                            <div class="mt-3 text-3xl font-bold text-violet-900">−1</div>
+                            <div class="mt-2 text-xs text-slate-500">1乗の和は $-1$</div>
+                        </div>
+
+                        <div class="rounded-xl border border-emerald-200 bg-white p-5 text-center">
+                            <div class="text-sm font-bold text-emerald-700">$n\equiv2\pmod3$</div>
+                            <div class="mt-3 text-3xl font-bold text-emerald-900">−1</div>
+                            <div class="mt-2 text-xs text-slate-500">2乗の和は $-1$</div>
+                        </div>
+                    </div>
+
+                    <div class="mt-5 rounded-lg border border-amber-200 bg-amber-50 p-4 text-center font-bold text-amber-900">
+                        \[
+                        2009\equiv2\pmod3
+                        \]
+                        なので、求める値は $-1$。
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-10">
+                <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">図解・可視化② 複素数平面上の回転</h3>
+
+                <p class="mt-4 text-sm leading-relaxed text-slate-700">
+                    指数 $n$ を動かすと、比の $n$ 乗は単位円上の3点を繰り返し移動します。
+                </p>
+
+                <div class="mt-4 rounded-xl border border-slate-200 bg-slate-50 p-4 sm:p-6">
+                    <div class="mx-auto max-w-xl">
+                        <label for="n-slider" class="mb-2 block text-sm font-medium text-slate-700">
+                            n：
+                            <span id="n-display" class="text-lg font-bold text-blue-700">1</span>
+                        </label>
+
+                        <input id="n-slider" type="range" min="0" max="12" step="1" value="1"
+                               class="h-2 w-full cursor-pointer appearance-none rounded-lg bg-slate-200 accent-blue-600">
+
+                        <div class="mt-3 flex flex-wrap justify-center gap-2">
+                            <button type="button" data-n="0"
+                                    class="rounded-lg border border-blue-200 bg-white px-3 py-2 text-sm font-bold text-blue-700 hover:bg-blue-50">
+                                n=0
+                            </button>
+                            <button type="button" data-n="1"
+                                    class="rounded-lg border border-violet-200 bg-white px-3 py-2 text-sm font-bold text-violet-700 hover:bg-violet-50">
+                                n=1
+                            </button>
+                            <button type="button" data-n="2"
+                                    class="rounded-lg border border-emerald-200 bg-white px-3 py-2 text-sm font-bold text-emerald-700 hover:bg-emerald-50">
+                                n=2
+                            </button>
+                            <button type="button" data-n="2009"
+                                    class="rounded-lg border border-rose-200 bg-white px-3 py-2 text-sm font-bold text-rose-700 hover:bg-rose-50">
+                                n=2009
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="mt-5 overflow-x-auto">
+                        <svg id="complex-svg" width="620" height="500" viewBox="0 0 620 500"
+                             class="mx-auto h-auto min-w-[580px] max-w-[620px] rounded-xl border border-slate-200 bg-white"
+                             aria-label="1の3乗根の複素数平面">
+
+                            <circle cx="310" cy="250" r="180"
+                                    fill="rgba(37,99,235,.03)"
+                                    stroke="#2563eb"
+                                    stroke-width="2.5"></circle>
+
+                            <line x1="80" y1="250" x2="540" y2="250" stroke="#64748b" stroke-width="1.5"></line>
+                            <line x1="310" y1="35" x2="310" y2="465" stroke="#64748b" stroke-width="1.5"></line>
+
+                            <circle cx="490" cy="250" r="7" fill="#94a3b8"></circle>
+                            <circle cx="220" cy="94.115" r="7" fill="#94a3b8"></circle>
+                            <circle cx="220" cy="405.885" r="7" fill="#94a3b8"></circle>
+
+                            <line id="vector-line" x1="310" y1="250" x2="220" y2="94.115"
+                                  stroke="#e11d48" stroke-width="4"></line>
+                            <circle id="moving-point" cx="220" cy="94.115" r="11" fill="#e11d48"></circle>
+
+                            <g font-size="14" font-weight="700">
+                                <text x="500" y="242" fill="#475569">1</text>
+                                <text x="185" y="82" fill="#475569">t</text>
+                                <text x="175" y="430" fill="#475569">t²</text>
+                                <text x="545" y="242" fill="#64748b">実軸</text>
+                                <text x="320" y="30" fill="#64748b">虚軸</text>
+                                <text id="moving-label" x="235" y="86" fill="#be123c">tⁿ</text>
+                            </g>
+                        </svg>
+                    </div>
+
+                    <div class="mt-4 grid gap-3 sm:grid-cols-3">
+                        <div class="rounded-lg border border-blue-200 bg-blue-50 p-4 text-center">
+                            <div class="text-xs font-bold text-blue-700">nを3で割った余り</div>
+                            <div id="remainder-display" class="mt-1 text-2xl font-bold text-blue-900"></div>
+                        </div>
+
+                        <div class="rounded-lg border border-violet-200 bg-violet-50 p-4 text-center">
+                            <div class="text-xs font-bold text-violet-700">$t^n$</div>
+                            <div id="power-display" class="mt-1 text-sm font-bold text-violet-900"></div>
+                        </div>
+
+                        <div class="rounded-lg border border-emerald-200 bg-emerald-50 p-4 text-center">
+                            <div class="text-xs font-bold text-emerald-700">$t^n+t^{-n}$</div>
+                            <div id="sum-display" class="mt-1 text-2xl font-bold text-emerald-900"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <script>
+                    document.addEventListener("DOMContentLoaded", () => {
+                        const slider = document.getElementById("n-slider");
+                        const positions = [
+                            {x:490, y:250, label:"1"},
+                            {x:220, y:94.115, label:"−1/2 + (√3/2)i"},
+                            {x:220, y:405.885, label:"−1/2 − (√3/2)i"}
+                        ];
+
+                        function update(n) {
+                            const r = ((n%3)+3)%3;
+                            const pos = positions[r];
+
+                            document.getElementById("n-display").textContent = n;
+                            document.getElementById("remainder-display").textContent = r;
+                            document.getElementById("power-display").textContent = pos.label;
+                            document.getElementById("sum-display").textContent = r===0 ? "2" : "−1";
+
+                            const point = document.getElementById("moving-point");
+                            const line = document.getElementById("vector-line");
+                            const label = document.getElementById("moving-label");
+
+                            point.setAttribute("cx",pos.x);
+                            point.setAttribute("cy",pos.y);
+                            line.setAttribute("x2",pos.x);
+                            line.setAttribute("y2",pos.y);
+                            label.setAttribute("x",pos.x+14);
+                            label.setAttribute("y",pos.y-12);
+                        }
+
+                        slider.addEventListener("input",()=>{
+                            update(Number(slider.value));
+                        });
+
+                        document.querySelectorAll("[data-n]").forEach(button => {
+                            button.addEventListener("click",()=>{
+                                const n = Number(button.dataset.n);
+                                if (n<=12) slider.value=n;
+                                update(n);
+                            });
+                        });
+
+                        update(1);
+                    });
+                </script>
+            </div>
+
+            <div class="mt-10">
+                <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">受験生のつまずきポイント</h3>
+
+                <div class="mt-4 space-y-4">
+                    <div class="rounded-lg border border-red-200 bg-red-50 p-4">
+                        <p class="text-sm font-bold text-red-900">$x=-1$ を代入するときの符号ミス</p>
+                        <p class="mt-1 text-sm text-red-800">
+                            \[
+                            (-1)^3=-1,\qquad (-1)^2=1
+                            \]
+                            を区別して計算します。
+                        </p>
+                    </div>
+
+                    <div class="rounded-lg border border-red-200 bg-red-50 p-4">
+                        <p class="text-sm font-bold text-red-900">比の和で分母を $\alpha+\beta$ とする</p>
+                        <p class="mt-1 text-sm text-red-800">
+                            \[
+                            \frac{\beta}{\alpha}+\frac{\alpha}{\beta}
+                            =
+                            \frac{\alpha^2+\beta^2}{\alpha\beta}
+                            \]
+                            です。分母は積です。
+                        </p>
+                    </div>
+
+                    <div class="rounded-lg border border-red-200 bg-red-50 p-4">
+                        <p class="text-sm font-bold text-red-900">$t^3=1$ から $t=1$ と決める</p>
+                        <p class="mt-1 text-sm text-red-800">
+                            複素数まで考えると、1以外にも3乗して1になる数があります。
+                            本問の $t$ は
+                            \[
+                            t^2+t+1=0
+                            \]
+                            を満たすため、$t\ne1$ です。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mt-6 rounded-2xl bg-blue-900 p-6 text-white shadow-sm sm:p-8">
+            <h2 class="border-b-2 border-blue-400 pb-2 text-lg font-bold">アクティブリコール（本質確認）</h2>
+
+            <p class="mt-4 text-sm text-blue-200">
+                答えの数値ではなく、なぜ大きな指数を小さくできるのかを説明してから開いてください。
+            </p>
+
+            <div class="mt-6 space-y-3">
+                <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                    <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                        <span>Q1. 既知の解 $x=-1$ は、文字定数の決定と因数分解にどう使われますか？</span>
+                        <span class="transition duration-300 group-open:-rotate-180">⌄</span>
+                    </summary>
+                    <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                        $x=-1$ を方程式へ代入して $a$ を決めます。
+                        その後、因数定理から左辺が $x+1$ を因数にもつと分かり、3次式を2次式へ下げられます。
+                    </div>
+                </details>
+
+                <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                    <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                        <span>Q2. なぜ $\dfrac{\beta}{\alpha}+\dfrac{\alpha}{\beta}$ は解と係数の関係で求められますか？</span>
+                        <span class="transition duration-300 group-open:-rotate-180">⌄</span>
+                    </summary>
+                    <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                        通分すると
+                        \[
+                        \frac{\alpha^2+\beta^2}{\alpha\beta}
+                        \]
+                        となり、
+                        \[
+                        \alpha^2+\beta^2
+                        =
+                        (\alpha+\beta)^2-2\alpha\beta
+                        \]
+                        によって和と積だけで表せるからです。
+                    </div>
+                </details>
+
+                <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                    <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                        <span>Q3. （2）（ii）で、なぜ比を3乗まで調べれば周期が分かりますか？</span>
+                        <span class="transition duration-300 group-open:-rotate-180">⌄</span>
+                    </summary>
+                    <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                        実際に計算すると、
+                        \[
+                        \left(\frac{\beta}{\alpha}\right)^3
+                        =
+                        \left(\frac{\alpha}{\beta}\right)^3
+                        =
+                        1
+                        \]
+                        となります。3乗で1に戻るため、その後の累乗は3個ごとに同じ値を繰り返します。
+                    </div>
+                </details>
+
+                <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                    <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                        <span>Q4. 2009乗を考えるとき、なぜ2009を3で割るのですか？</span>
+                        <span class="transition duration-300 group-open:-rotate-180">⌄</span>
+                    </summary>
+                    <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                        $t^3=1$ なので、指数が3増えても値は変わりません。
+                        したがって指数を3で割った余りだけを見ればよく、
+                        \[
+                        2009\equiv2\pmod3
+                        \]
+                        を用います。
+                    </div>
+                </details>
+
+                <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                    <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                        <span>Q5. 2009乗を求めるとき、比の値そのものを2009回掛ける必要がないのはなぜですか？</span>
+                        <span class="transition duration-300 group-open:-rotate-180">⌄</span>
+                    </summary>
+                    <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                        2つの比はどちらも3乗すると1に戻るため、累乗は3周期です。
+                        したがって、指数2009を3で割った余り
+                        \[
+                        2009\equiv2\pmod3
+                        \]
+                        だけを調べればよく、2009乗は2乗と同じ値になります。
+                    </div>
+                </details>
+            </div>
+        </section>
+
+        <nav class="mt-7 grid gap-3 sm:grid-cols-2">
+            <a href="no61.html" class="nav-button rounded-xl border border-slate-300 bg-white px-5 py-4 text-center font-bold text-slate-700 hover:border-blue-300 hover:text-blue-800">
+                ← No.61へ
+            </a>
+
+            <a href="no63.html" class="nav-button rounded-xl bg-blue-700 px-5 py-4 text-center font-bold text-white hover:bg-blue-800">
+                No.63 →
+            </a>
+        </nav>
+    </main>
+
+    <footer class="py-10 text-center text-sm text-slate-500">
+        医進・サイエンスコース　夏期数学課題 解説サイト
+    </footer>
+</div>
+</body>
+</html>

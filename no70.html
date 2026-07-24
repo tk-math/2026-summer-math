@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>夏期課題 No.70 高次方程式と複素数</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']]}};
+</script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<style>
+body{font-family:"Hiragino Kaku Gothic ProN","Yu Gothic","Meiryo",sans-serif}
+.math-scroll{overflow-x:auto;overflow-y:hidden;padding-bottom:.4rem}
+.nav-button{transition:.16s}.nav-button:hover{transform:translateY(-2px)}
+</style>
+</head>
+<body class="bg-slate-100 text-slate-800">
+<div class="mx-auto max-w-4xl px-4 py-6 sm:px-6 lg:py-10">
+<a href="index.html" class="text-sm font-bold text-blue-700">← 問題一覧へ戻る</a>
+
+<header class="mt-4 rounded-3xl bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-800 p-7 text-white shadow-xl sm:p-10">
+<div class="inline-flex rounded-full bg-white/15 px-4 py-1.5 text-sm font-semibold text-blue-100">医進・サイエンスコース</div>
+<div class="mt-4 flex gap-3">
+<span class="rounded-lg bg-white/20 px-3 py-1 text-sm font-bold">No.70</span>
+<span class="rounded-full bg-emerald-100 px-3 py-1 text-xs font-bold text-emerald-800">基礎</span>
+</div>
+<h1 class="mt-4 text-3xl font-bold sm:text-4xl">高次方程式と複素数</h1>
+<div class="mt-3 text-lg text-blue-100">目標解答時間：15分</div>
+</header>
+
+<main>
+<section class="mt-7 rounded-2xl border border-blue-100 bg-white p-6 shadow-sm sm:p-8">
+<h2 class="text-xl font-bold text-blue-900">1　問題</h2>
+<div class="mt-4 rounded-lg border border-slate-200 bg-slate-50 p-4 leading-relaxed">
+<div class="math-scroll">\[
+f(x)=(x^2+1)(x^2+x+1)
+\]</div>
+<div class="mt-5 space-y-5">
+<p><strong>（1）</strong> $\alpha^2+\alpha+1=0$ のとき、$\alpha^3$ の値を求めよ。</p>
+<p><strong>（2）</strong> $x^2+1=0$ の解を $\beta_1,\beta_2$ とする。
+\[
+\beta_1^n+\beta_2^n\qquad(n=1,2,3,\ldots)
+\]
+のとり得る値を求めよ。</p>
+<p><strong>（3）</strong> $f(x)=0$ の解を $t_1,t_2,t_3,t_4$ とする。
+\[
+t_1^n+t_2^n+t_3^n+t_4^n\qquad(n=1,2,3,\ldots)
+\]
+の最大値と、そのときの $n$ を求めよ。</p>
+</div>
+</div>
+
+<div class="mt-4 rounded-lg border border-blue-200 bg-blue-50 p-4">
+<h3 class="font-bold text-blue-900">【条件の整理】</h3>
+<ul class="mt-2 list-disc space-y-2 pl-5 text-sm">
+<li>$f(x)=0$ の4解は、2つの二次方程式の解を合わせたものです。</li>
+<li>4解の順序は指定されていませんが、累乗和は順序を入れ替えても変わりません。</li>
+</ul>
+</div>
+</section>
+
+<section class="mt-6 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+<h2 class="text-xl font-bold">2　解説</h2>
+
+<div class="mt-7 rounded-xl border border-amber-200 bg-amber-50 p-5">
+<h3 class="border-b-2 border-amber-400 pb-2 text-lg font-bold text-amber-900">解法選択のトリガー</h3>
+<div class="mt-4 space-y-4 text-sm text-amber-900">
+
+<div class="rounded-lg border border-amber-200 bg-amber-100/60 p-4">
+<strong>複素数の累乗が続くときは、周期性に着目する</strong><br>
+高い累乗を一つずつ計算し続けるのではなく、最初の数項を実際に調べます。
+同じ値の並びへ戻ったところで周期を見つけ、その後のすべての累乗を同じ規則で処理します。
+</div>
+
+<div class="rounded-lg border border-amber-200 bg-amber-100/60 p-4">
+<strong>周期3と周期4が同時に現れたら、最小公倍数12まで調べる</strong><br>
+一方の和が3項ごと、もう一方の和が4項ごとに繰り返すなら、
+全体の和には
+\[
+\operatorname{lcm}(3,4)=12
+\]
+を周期とする規則性があると予想できます。
+そこで、$n=1$ から $12$ までの表を作り、最大値をとる場所を確認します。
+</div>
+
+</div>
+</div>
+
+<div class="mt-7 rounded-xl border border-emerald-200 bg-emerald-50 p-5">
+<h3 class="border-b-2 border-emerald-400 pb-2 text-lg font-bold text-emerald-900">思考プロセス</h3>
+<div class="mt-4 space-y-4 text-sm text-emerald-900">
+
+<div class="rounded-lg border border-emerald-200 bg-emerald-100/60 p-4">
+<strong>（1）次数を下げる</strong><br>
+\[
+\alpha^2=-\alpha-1
+\]
+を使い、3次式 $\alpha^3$ を2次以下の式へ戻して計算します。
+</div>
+
+<div class="rounded-lg border border-emerald-200 bg-emerald-100/60 p-4">
+<strong>（2）最初の累乗を並べて周期を発見する</strong><br>
+$\beta_1,\beta_2$ の1乗、2乗、3乗、4乗、5乗を調べ、
+5乗目が1乗目と同じ状態へ戻ることから4周期と判断します。
+</div>
+
+<div class="rounded-lg border border-emerald-200 bg-emerald-100/60 p-4">
+<strong>（3）もう一方の2解について3周期を確認する</strong><br>
+$x^2+x+1=0$ の2解の累乗和を、1乗から4乗まで計算します。
+4乗目の和が1乗目へ戻ることから、3周期であると確認します。
+</div>
+
+<div class="rounded-lg border border-emerald-200 bg-emerald-100/60 p-4">
+<strong>（3）周期12までの表を作る</strong><br>
+周期4の列と周期3の列を $n=1$ から $12$ まで並べ、
+各列の和から最大値と、その最大値をとる $n$ を読み取ります。
+</div>
+
+</div>
+</div>
+
+<div class="mt-9">
+<h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">実際の答案</h3>
+<div class="mt-5 space-y-8">
+
+<div>
+<p class="font-bold text-blue-800">（1）次数下げ</p>
+
+<p>
+\[
+\alpha^2+\alpha+1=0
+\]
+より、
+</p>
+
+<div class="math-scroll">
+\[
+\alpha^2=-\alpha-1.
+\]
+</div>
+
+<p>
+したがって、
+</p>
+
+<div class="math-scroll">
+\[
+\begin{aligned}
+\alpha^3
+&=
+\alpha\cdot\alpha^2\\
+&=
+\alpha(-\alpha-1)\\
+&=
+-\alpha^2-\alpha\\
+&=
+-(-\alpha-1)-\alpha\\
+&=
+1.
+\end{aligned}
+\]
+</div>
+
+<div class="mt-2 inline-block rounded-xl border-2 border-blue-500 bg-blue-50 p-3 font-bold">
+\[
+\alpha^3=1
+\]
+</div>
+</div>
+
+<div class="border-t border-slate-200 pt-6">
+<p class="font-bold text-indigo-800">（1）の別解：整式の割り算</p>
+
+<p>
+$x^3$ を $x^2+x+1$ で割ると、
+</p>
+
+<div class="math-scroll">
+\[
+x^3=(x-1)(x^2+x+1)+1.
+\]
+</div>
+
+<p>
+ここで $x=\alpha$ とすると、
+</p>
+
+<div class="math-scroll">
+\[
+\begin{aligned}
+\alpha^3
+&=
+(\alpha-1)(\alpha^2+\alpha+1)+1\\
+&=
+1.
+\end{aligned}
+\]
+</div>
+
+<div class="mt-3 rounded-lg border border-indigo-200 bg-indigo-50 p-4 text-sm leading-relaxed text-indigo-900">
+整式を、$\alpha$ が満たす二次式で割った余りに置き換える方法です。
+本問では余りが1なので、すぐに $\alpha^3=1$ と分かります。
+</div>
+</div>
+
+<div class="border-t border-slate-200 pt-6">
+<p class="font-bold text-blue-800">（2）累乗を調べて周期を確認する</p>
+
+<p>
+$x^2+1=0$ の2解は、順序を除いて
+</p>
+
+<div class="math-scroll">
+\[
+\beta_1=i,
+\qquad
+\beta_2=-i
+\]
+</div>
+
+<p>
+である。それぞれの累乗を順に調べると、
+</p>
+
+<div class="mt-3 overflow-x-auto">
+<table class="w-full min-w-[680px] border-collapse text-center text-sm">
+<thead>
+<tr class="bg-slate-100">
+<th class="border border-slate-300 px-3 py-3">$n$</th>
+<th class="border border-slate-300 px-3 py-3">1</th>
+<th class="border border-slate-300 px-3 py-3">2</th>
+<th class="border border-slate-300 px-3 py-3">3</th>
+<th class="border border-slate-300 px-3 py-3">4</th>
+<th class="border border-slate-300 px-3 py-3">5</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="border border-slate-300 bg-blue-50 px-3 py-3">$\beta_1^n$</th>
+<td class="border border-slate-300 px-3 py-3">$i$</td>
+<td class="border border-slate-300 px-3 py-3">$-1$</td>
+<td class="border border-slate-300 px-3 py-3">$-i$</td>
+<td class="border border-slate-300 px-3 py-3">$1$</td>
+<td class="border border-slate-300 bg-blue-50 px-3 py-3">$i$</td>
+</tr>
+<tr>
+<th class="border border-slate-300 bg-violet-50 px-3 py-3">$\beta_2^n$</th>
+<td class="border border-slate-300 px-3 py-3">$-i$</td>
+<td class="border border-slate-300 px-3 py-3">$-1$</td>
+<td class="border border-slate-300 px-3 py-3">$i$</td>
+<td class="border border-slate-300 px-3 py-3">$1$</td>
+<td class="border border-slate-300 bg-violet-50 px-3 py-3">$-i$</td>
+</tr>
+<tr>
+<th class="border border-slate-300 bg-emerald-50 px-3 py-3">$\beta_1^n+\beta_2^n$</th>
+<td class="border border-slate-300 px-3 py-3 font-bold">$0$</td>
+<td class="border border-slate-300 px-3 py-3 font-bold">$-2$</td>
+<td class="border border-slate-300 px-3 py-3 font-bold">$0$</td>
+<td class="border border-slate-300 px-3 py-3 font-bold">$2$</td>
+<td class="border border-slate-300 bg-emerald-50 px-3 py-3 font-bold">$0$</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<p class="mt-4">
+$n=5$ の列が $n=1$ の列と同じになっているので、この並びは4項ごとに繰り返す。
+したがって、
+</p>
+
+<div class="math-scroll">
+\[
+\beta_1^n+\beta_2^n
+=
+0,\ -2,\ 0,\ 2,\ 0,\ -2,\ 0,\ 2,\ldots
+\]
+</div>
+
+<p>
+となる。よって、とり得る値は
+</p>
+
+<div class="mt-2 inline-block rounded-xl border-2 border-blue-500 bg-blue-50 p-3 font-bold">
+\[
+-2,\ 0,\ 2
+\]
+</div>
+</div>
+
+<div class="border-t border-slate-200 pt-6">
+<p class="font-bold text-blue-800">（3）2つの周期を確認する</p>
+
+<p>
+$x^2+x+1=0$ の2解を $\alpha_1,\alpha_2$ とし、
+</p>
+
+<div class="math-scroll">
+\[
+A_n=\beta_1^n+\beta_2^n,
+\qquad
+B_n=\alpha_1^n+\alpha_2^n
+\]
+</div>
+
+<p>
+とおく。このとき、求める累乗和を $S_n$ とすると、
+</p>
+
+<div class="math-scroll">
+\[
+S_n=A_n+B_n.
+\]
+</div>
+
+<p>
+（2）より、$A_n$ は
+</p>
+
+<div class="math-scroll">
+\[
+0,\ -2,\ 0,\ 2
+\]
+</div>
+
+<p>
+を4項ごとに繰り返す。
+</p>
+
+<p class="mt-4">
+次に $B_n$ の最初の値を調べる。
+解と係数の関係より、
+</p>
+
+<div class="math-scroll">
+\[
+\alpha_1+\alpha_2=-1,
+\qquad
+\alpha_1\alpha_2=1.
+\]
+</div>
+
+<p>
+したがって、
+</p>
+
+<div class="math-scroll">
+\[
+B_1=\alpha_1+\alpha_2=-1,
+\]
+\[
+\begin{aligned}
+B_2
+&=
+\alpha_1^2+\alpha_2^2\\
+&=
+(\alpha_1+\alpha_2)^2-2\alpha_1\alpha_2\\
+&=
+1-2\\
+&=
+-1,
+\end{aligned}
+\]
+\[
+B_3=\alpha_1^3+\alpha_2^3=1+1=2.
+\]
+</div>
+
+<p>
+さらに、$\alpha_1^3=\alpha_2^3=1$ より、
+</p>
+
+<div class="math-scroll">
+\[
+B_4
+=
+\alpha_1^4+\alpha_2^4
+=
+\alpha_1+\alpha_2
+=
+-1.
+\]
+</div>
+
+<p>
+$n=4$ で $n=1$ と同じ値へ戻るため、
+</p>
+
+<div class="math-scroll">
+\[
+B_n=-1,\ -1,\ 2,\ -1,\ -1,\ 2,\ldots
+\]
+</div>
+
+<p>
+と3項ごとに繰り返す。
+</p>
+</div>
+
+<div class="border-t border-slate-200 pt-6">
+<p class="font-bold text-blue-800">（3）周期12までの表を作る</p>
+
+<p>
+$A_n$ は周期4、$B_n$ は周期3である。
+3と4の最小公倍数は12なので、$S_n=A_n+B_n$ は12項ごとに同じ並びを繰り返す。
+そこで、$n=1$ から $12$ までを調べる。
+</p>
+
+<div class="mt-4 overflow-x-auto">
+<table class="w-full min-w-[900px] border-collapse text-center text-sm">
+<thead>
+<tr class="bg-slate-100">
+<th class="border border-slate-300 px-2 py-3">$n$</th>
+<th class="border border-slate-300 px-2 py-3">1</th>
+<th class="border border-slate-300 px-2 py-3">2</th>
+<th class="border border-slate-300 px-2 py-3">3</th>
+<th class="border border-slate-300 px-2 py-3">4</th>
+<th class="border border-slate-300 px-2 py-3">5</th>
+<th class="border border-slate-300 px-2 py-3">6</th>
+<th class="border border-slate-300 px-2 py-3">7</th>
+<th class="border border-slate-300 px-2 py-3">8</th>
+<th class="border border-slate-300 px-2 py-3">9</th>
+<th class="border border-slate-300 px-2 py-3">10</th>
+<th class="border border-slate-300 px-2 py-3">11</th>
+<th class="border border-slate-300 px-2 py-3">12</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="border border-slate-300 bg-blue-50 px-2 py-3">$A_n$</th>
+<td class="border border-slate-300 px-2 py-3">0</td>
+<td class="border border-slate-300 px-2 py-3">-2</td>
+<td class="border border-slate-300 px-2 py-3">0</td>
+<td class="border border-slate-300 px-2 py-3">2</td>
+<td class="border border-slate-300 px-2 py-3">0</td>
+<td class="border border-slate-300 px-2 py-3">-2</td>
+<td class="border border-slate-300 px-2 py-3">0</td>
+<td class="border border-slate-300 px-2 py-3">2</td>
+<td class="border border-slate-300 px-2 py-3">0</td>
+<td class="border border-slate-300 px-2 py-3">-2</td>
+<td class="border border-slate-300 px-2 py-3">0</td>
+<td class="border border-slate-300 bg-blue-100 px-2 py-3 font-bold">2</td>
+</tr>
+<tr>
+<th class="border border-slate-300 bg-violet-50 px-2 py-3">$B_n$</th>
+<td class="border border-slate-300 px-2 py-3">-1</td>
+<td class="border border-slate-300 px-2 py-3">-1</td>
+<td class="border border-slate-300 px-2 py-3">2</td>
+<td class="border border-slate-300 px-2 py-3">-1</td>
+<td class="border border-slate-300 px-2 py-3">-1</td>
+<td class="border border-slate-300 px-2 py-3">2</td>
+<td class="border border-slate-300 px-2 py-3">-1</td>
+<td class="border border-slate-300 px-2 py-3">-1</td>
+<td class="border border-slate-300 px-2 py-3">2</td>
+<td class="border border-slate-300 px-2 py-3">-1</td>
+<td class="border border-slate-300 px-2 py-3">-1</td>
+<td class="border border-slate-300 bg-violet-100 px-2 py-3 font-bold">2</td>
+</tr>
+<tr>
+<th class="border border-slate-300 bg-emerald-50 px-2 py-3">$S_n$</th>
+<td class="border border-slate-300 px-2 py-3">-1</td>
+<td class="border border-slate-300 px-2 py-3">-3</td>
+<td class="border border-slate-300 px-2 py-3">2</td>
+<td class="border border-slate-300 px-2 py-3">1</td>
+<td class="border border-slate-300 px-2 py-3">-1</td>
+<td class="border border-slate-300 px-2 py-3">0</td>
+<td class="border border-slate-300 px-2 py-3">-1</td>
+<td class="border border-slate-300 px-2 py-3">1</td>
+<td class="border border-slate-300 px-2 py-3">2</td>
+<td class="border border-slate-300 px-2 py-3">-3</td>
+<td class="border border-slate-300 px-2 py-3">-1</td>
+<td class="border border-slate-300 bg-emerald-100 px-2 py-3 text-lg font-bold text-emerald-900">4</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<p class="mt-4">
+この表より、1つの周期の中で最大値は4であり、$n=12$ のときにとる。
+同じ並びは12項ごとに繰り返すので、最大値をとるのは
+</p>
+
+<div class="math-scroll">
+\[
+n=12,\ 24,\ 36,\ldots
+\]
+</div>
+
+<p>
+すなわち、正の整数 $m$ を用いて
+</p>
+
+<div class="math-scroll">
+\[
+n=12m
+\qquad
+(m=1,2,3,\ldots)
+\]
+</div>
+
+<p>
+と表されるときである。
+</p>
+
+<div class="mt-2 rounded-xl border-2 border-blue-500 bg-blue-50 p-3 font-bold">
+\[
+\text{最大値は }4,
+\qquad
+n=12m
+\quad
+(m=1,2,3,\ldots)
+\]
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="mt-9">
+<h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">図解① 4周期と3周期を重ねる</h3>
+<p class="mt-4 text-sm text-slate-700">
+$n$ を動かし、
+\[
+A_n=i^n+(-i)^n,
+\qquad
+B_n=\alpha_1^n+\alpha_2^n
+\]
+と、その和を確認できます。
+$A_n$ は4項ごと、$B_n$ は3項ごとに繰り返し、両方が最初の状態へ戻るのは12項ごとです。
+</p>
+
+<div class="mt-4 rounded-xl border border-slate-200 bg-slate-50 p-4 sm:p-6">
+<div class="mx-auto max-w-xl">
+<label for="n-slider-70" class="mb-2 block text-sm font-medium">
+$n$：<span id="n-display-70" class="font-bold text-blue-700">12</span>
+</label>
+<input id="n-slider-70" type="range" min="1" max="24" step="1" value="12"
+class="h-2 w-full cursor-pointer appearance-none rounded-lg bg-slate-200 accent-blue-600">
+<div class="mt-3 flex justify-center gap-2">
+<button type="button" data-n70="4" class="rounded-lg border bg-white px-3 py-2 text-sm font-bold">n=4</button>
+<button type="button" data-n70="6" class="rounded-lg border bg-white px-3 py-2 text-sm font-bold">n=6</button>
+<button type="button" data-n70="12" class="rounded-lg border bg-white px-3 py-2 text-sm font-bold">n=12</button>
+</div>
+</div>
+
+<div class="mt-5 overflow-x-auto">
+<svg width="760" height="440" viewBox="0 0 760 440"
+class="mx-auto h-auto min-w-[700px] max-w-[760px] rounded-xl border bg-white">
+<line x1="90" y1="220" x2="670" y2="220" stroke="#cbd5e1" stroke-width="2"/>
+<line x1="380" y1="40" x2="380" y2="400" stroke="#cbd5e1" stroke-width="2"/>
+<circle cx="380" cy="220" r="150" fill="rgba(37,99,235,.03)" stroke="#94a3b8" stroke-width="2"/>
+
+<circle cx="530" cy="220" r="7" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+<circle cx="230" cy="220" r="7" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+<circle cx="380" cy="70" r="7" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+<circle cx="380" cy="370" r="7" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+<circle cx="305" cy="90.096" r="7" fill="#ede9fe" stroke="#7c3aed" stroke-width="2"/>
+<circle cx="305" cy="349.904" r="7" fill="#ede9fe" stroke="#7c3aed" stroke-width="2"/>
+
+<circle id="b1-70" cx="530" cy="220" r="15" fill="none" stroke="#2563eb" stroke-width="5"/>
+<circle id="b2-70" cx="530" cy="220" r="22" fill="none" stroke="#60a5fa" stroke-width="4"/>
+<circle id="a1-70" cx="530" cy="220" r="29" fill="none" stroke="#7c3aed" stroke-width="4"/>
+<circle id="a2-70" cx="530" cy="220" r="36" fill="none" stroke="#a78bfa" stroke-width="4"/>
+
+<g font-size="15" font-weight="700">
+<text x="540" y="214" fill="#b45309">1</text>
+<text x="205" y="214" fill="#b45309">-1</text>
+<text x="390" y="66" fill="#1d4ed8">i</text>
+<text x="390" y="392" fill="#1d4ed8">-i</text>
+<text x="266" y="80" fill="#6d28d9">α₁</text>
+<text x="266" y="376" fill="#6d28d9">α₂</text>
+</g>
+</svg>
+</div>
+
+<div class="mt-4 grid gap-3 sm:grid-cols-3">
+<div class="rounded-lg border border-blue-200 bg-blue-50 p-4 text-center">
+<div class="text-xs font-bold text-blue-700">$A_n$</div>
+<div id="av-70" class="mt-1 text-2xl font-bold text-blue-900">2</div>
+<div id="m4-70" class="text-xs text-blue-700"></div>
+</div>
+<div class="rounded-lg border border-violet-200 bg-violet-50 p-4 text-center">
+<div class="text-xs font-bold text-violet-700">$B_n$</div>
+<div id="bv-70" class="mt-1 text-2xl font-bold text-violet-900">2</div>
+<div id="m3-70" class="text-xs text-violet-700"></div>
+</div>
+<div id="sum-card-70" class="rounded-lg border border-emerald-200 bg-emerald-50 p-4 text-center">
+<div class="text-xs font-bold text-emerald-700">$S_n$</div>
+<div id="sv-70" class="mt-1 text-3xl font-bold text-emerald-900">4</div>
+<div id="max-70" class="text-xs font-bold text-emerald-700">最大値</div>
+</div>
+</div>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded",()=>{
+const slider=document.getElementById("n-slider-70");
+const P={
+one:[530,220],minusOne:[230,220],i:[380,70],minusI:[380,370],
+a1:[305,90.096],a2:[305,349.904]
+};
+function set(id,p){const e=document.getElementById(id);e.setAttribute("cx",p[0]);e.setAttribute("cy",p[1]);}
+function update(){
+const n=Number(slider.value),r4=n%4,r3=n%3;
+const A=r4===0?2:r4===2?-2:0;
+const B=r3===0?2:-1;
+const S=A+B;
+document.getElementById("n-display-70").textContent=n;
+document.getElementById("av-70").textContent=A;
+document.getElementById("bv-70").textContent=B;
+document.getElementById("sv-70").textContent=S;
+const p4=r4===0?4:r4;
+const p3=r3===0?3:r3;
+document.getElementById("m4-70").textContent=`4周期の第${p4}番目`;
+document.getElementById("m3-70").textContent=`3周期の第${p3}番目`;
+document.getElementById("max-70").textContent=S===4?"最大値":"最大値ではない";
+const card=document.getElementById("sum-card-70");
+card.className=S===4
+?"rounded-lg border border-emerald-200 bg-emerald-50 p-4 text-center"
+:"rounded-lg border border-slate-200 bg-white p-4 text-center";
+
+const b1=[P.one,P.i,P.minusOne,P.minusI][r4];
+const b2=[P.one,P.minusI,P.minusOne,P.i][r4];
+const a1=[P.one,P.a1,P.a2][r3];
+const a2=[P.one,P.a2,P.a1][r3];
+set("b1-70",b1);set("b2-70",b2);set("a1-70",a1);set("a2-70",a2);
+}
+slider.addEventListener("input",update);
+document.querySelectorAll("[data-n70]").forEach(b=>b.addEventListener("click",()=>{slider.value=b.dataset.n70;update();}));
+update();
+});
+</script>
+</div>
+
+<div class="mt-9">
+<h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">補足：$\omega$ の性質とのつながり</h3>
+
+<div class="mt-4 rounded-xl border border-indigo-200 bg-indigo-50 p-5 text-sm leading-relaxed text-slate-700">
+<p>
+$x^2+x+1=0$ の2解の一方を $\omega$ とすると、もう一方は $\omega^2$ と表せます。
+これらは1ではない3乗根であり、
+</p>
+
+<div class="math-scroll">
+\[
+1+\omega+\omega^2=0,
+\qquad
+\omega^3=1
+\]
+</div>
+
+<p>
+を満たします。したがって、
+</p>
+
+<div class="math-scroll">
+\[
+\omega,\ \omega^2,\ 1,\ \omega,\ \omega^2,\ 1,\ldots
+\]
+</div>
+
+<p>
+と3項ごとに同じ状態へ戻ります。
+複素平面では、$\omega$ を掛けることは原点を中心に120度回転することに対応します。
+3回掛けると360度回転して元へ戻るため、3周期になると理解できます。
+</p>
+
+<p class="mt-3">
+本問の（1）で次数下げによって得た
+\[
+\alpha^3=1
+\]
+は、この $\omega$ の性質を文字 $\alpha$ のまま確かめたものです。
+</p>
+</div>
+</div>
+
+<div class="mt-9">
+<h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">受験生のつまずきポイント</h3>
+<div class="mt-4 space-y-4 text-sm">
+
+<div class="rounded-lg border border-red-200 bg-red-50 p-4">
+<strong>（1）で、すぐに解の公式を使う</strong><br>
+求めたいのは $\alpha$ 自身ではなく $\alpha^3$ です。
+\[
+\alpha^2=-\alpha-1
+\]
+を使って次数を下げれば、解を具体的に求めずに計算できます。
+</div>
+
+<div class="rounded-lg border border-red-200 bg-red-50 p-4">
+<strong>（2）を偶数・奇数だけで分類する</strong><br>
+偶数のときにも $-2$ と $2$ の両方が現れます。
+実際に1乗から順に並べ、4項ごとに同じ状態へ戻ることを確認します。
+</div>
+
+<div class="rounded-lg border border-red-200 bg-red-50 p-4">
+<strong>周期が3と4なので、最大値をすぐ12の倍数と決める</strong><br>
+周期12で繰り返すことは予想できますが、どの位置で最大になるかは表で確認する必要があります。
+本問では $n=12$ の列で初めて4になります。
+</div>
+
+<div class="rounded-lg border border-red-200 bg-red-50 p-4">
+<strong>1周期分の表を作った後、その先を説明しない</strong><br>
+$A_n$ は4周期、$B_n$ は3周期なので、和 $S_n$ は12項ごとに同じ並びを繰り返します。
+したがって、$n=12$ だけでなく $24,36,\ldots$ でも最大値をとります。
+</div>
+
+</div>
+</div>
+</section>
+
+<section class="mt-6 rounded-2xl bg-blue-900 p-6 text-white shadow-sm sm:p-8">
+<h2 class="border-b-2 border-blue-400 pb-2 text-lg font-bold">アクティブリコール（本質確認）</h2>
+<div class="mt-5 space-y-3">
+
+<details class="rounded-lg bg-white text-slate-800">
+<summary class="cursor-pointer p-4 font-semibold">Q1. （1）で「次数を下げる」とは、何をすることですか？</summary>
+<div class="border-t bg-blue-50 p-4 text-sm">
+\[
+\alpha^2=-\alpha-1
+\]
+を使って、$\alpha^3$ のような高い次数を $\alpha$ 以下の式へ変形することです。
+</div>
+</details>
+
+<details class="rounded-lg bg-white text-slate-800">
+<summary class="cursor-pointer p-4 font-semibold">Q2. （2）で周期4をどのように発見しますか？</summary>
+<div class="border-t bg-blue-50 p-4 text-sm">
+$\beta_1,\beta_2$ の1乗から5乗までを並べ、5乗目が1乗目と同じ組へ戻ることを確認します。
+そのため、その後も4項ごとに同じ並びが繰り返されます。
+</div>
+</details>
+
+<details class="rounded-lg bg-white text-slate-800">
+<summary class="cursor-pointer p-4 font-semibold">Q3. なぜ（3）では12項まで表を作ればよいのですか？</summary>
+<div class="border-t bg-blue-50 p-4 text-sm">
+$A_n$ は4項ごと、$B_n$ は3項ごとに繰り返します。
+3と4の最小公倍数が12なので、両方の状態が同時に元へ戻るのが12項後だからです。
+</div>
+</details>
+
+<details class="rounded-lg bg-white text-slate-800">
+<summary class="cursor-pointer p-4 font-semibold">Q4. 最大値4をとる場所は、どのように判断しますか？</summary>
+<div class="border-t bg-blue-50 p-4 text-sm">
+$n=1$ から $12$ までの $A_n,B_n,S_n$ の表を作り、$S_n$ の最大値を直接確認します。
+表では $n=12$ の列だけが4になります。
+</div>
+</details>
+
+<details class="rounded-lg bg-white text-slate-800">
+<summary class="cursor-pointer p-4 font-semibold">Q5. $\omega^3=1$ と3周期には、どのような関係がありますか？</summary>
+<div class="border-t bg-blue-50 p-4 text-sm">
+$\omega$ を3回掛けると1になるため、
+\[
+\omega^{n+3}=\omega^n
+\]
+です。したがって、累乗は3項ごとに同じ値へ戻ります。
+</div>
+</details>
+
+</div>
+</section>
+
+<nav class="mt-7 grid gap-3 sm:grid-cols-2">
+<a href="no69.html" class="nav-button rounded-xl border border-slate-300 bg-white px-5 py-4 text-center font-bold">← No.69へ</a>
+<a href="no71.html" class="nav-button rounded-xl bg-blue-700 px-5 py-4 text-center font-bold text-white">No.71 →</a>
+</nav>
+</main>
+<footer class="py-10 text-center text-sm text-slate-500">医進・サイエンスコース　夏期数学課題 解説サイト</footer>
+</div>
+</body>
+</html>

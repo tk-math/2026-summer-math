@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>夏期課題 No.68 空間ベクトル</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+MathJax={
+  chtml:{matchFontHeight:false},
+  tex:{
+    inlineMath:[['$','$'],['\\(','\\)']],
+    displayMath:[['$$','$$'],['\\[','\\]']],
+    macros:{Vec:["\\overrightarrow{\\mathrm{#1}}",1]}
+  }
+};
+</script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<style>
+body{font-family:"Hiragino Kaku Gothic ProN","Yu Gothic","Meiryo",sans-serif}
+.math-scroll{overflow-x:auto;overflow-y:hidden;padding-bottom:.4rem}
+.nav-button{transition:.16s}
+.nav-button:hover{transform:translateY(-2px)}
+</style>
+</head>
+<body class="bg-slate-100 text-slate-800">
+<div class="mx-auto max-w-4xl px-4 py-6 sm:px-6 lg:py-10">
+
+<a href="index.html" class="text-sm font-bold text-blue-700">← 問題一覧へ戻る</a>
+
+<header class="mt-4 rounded-3xl bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-800 p-7 text-white shadow-xl sm:p-10">
+  <div class="inline-flex rounded-full bg-white/15 px-4 py-1.5 text-sm font-semibold text-blue-100">医進・サイエンスコース</div>
+  <div class="mt-4 flex gap-3">
+    <span class="rounded-lg bg-white/20 px-3 py-1 text-sm font-bold">No.68</span>
+    <span class="rounded-full bg-rose-100 px-3 py-1 text-xs font-bold text-rose-800">発展</span>
+  </div>
+  <h1 class="mt-4 text-3xl font-bold sm:text-4xl">空間ベクトル</h1>
+  <div class="mt-3 text-lg text-blue-100">目標解答時間：30分</div>
+</header>
+
+<main>
+<section class="mt-7 rounded-2xl border border-blue-100 bg-white p-6 shadow-sm sm:p-8">
+<h2 class="text-xl font-bold text-blue-900">1　問題</h2>
+<div class="mt-4 rounded-lg border border-slate-200 bg-slate-50 p-4 leading-relaxed">
+<p>Oを中心とする半径1の球面 $S$ 上に異なる4点A、B、C、Dがある。ただし、Oは平面ABC上にないものとする。</p>
+<div class="math-scroll">
+\[
+\Vec{OA}\cdot\Vec{OB}
+=
+\Vec{OB}\cdot\Vec{OC}
+=
+\Vec{OC}\cdot\Vec{OA}
+=
+-\frac15,
+\]
+\[
+k\Vec{OD}=2\Vec{OA}+\Vec{OB}+\Vec{OC}
+\qquad(k&lt;0)
+\]
+</div>
+<div class="mt-4 space-y-4">
+<p><strong>（1）</strong> 三角形ABCの重心をGとするとき、$\Vec{OG}$ を $\Vec{OA},\Vec{OB},\Vec{OC}$ を用いて表せ。また、$|\Vec{OG}|$ を求めよ。</p>
+<p><strong>（2）</strong> $k$ の値を求めよ。</p>
+<p><strong>（3）</strong> 直線ODと平面ABCの交点をPとする。$\Vec{OP}$ を $\Vec{OA},\Vec{OB},\Vec{OC}$ を用いて表せ。</p>
+<p><strong>（4）</strong> 四面体ABCDの体積 $V$ を求めよ。</p>
+</div>
+</div>
+
+<div class="mt-4 rounded-lg border border-blue-200 bg-blue-50 p-4">
+<h3 class="font-bold text-blue-900">【条件の整理】</h3>
+<ul class="mt-2 list-disc space-y-2 pl-5 text-sm">
+<li>A、B、C、Dは単位球面上にあるので、4本の位置ベクトルの大きさはすべて1。</li>
+<li>相互の内積がすべて等しいので、3本の和と平面内の差ベクトルとの内積を調べる。</li>
+<li>Oが平面ABC上にないため、$\Vec{OA},\Vec{OB},\Vec{OC}$ は一次独立。</li>
+<li>
+平面ABC上の任意の点Xは、実数 $s,t$ を用いて
+\[
+\Vec{OX}
+=
+s\Vec{OA}
++t\Vec{OB}
++(1-s-t)\Vec{OC}
+\]
+と表せます。
+</li>
+<li>体積は「底面積」と「Dから平面ABCまでの垂直距離」に分ける。</li>
+</ul>
+</div>
+</section>
+
+<section class="mt-6 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+<h2 class="text-xl font-bold text-slate-900">2　解説</h2>
+
+<div class="mt-7 rounded-xl border border-amber-200 bg-amber-50 p-5">
+<h3 class="border-b-2 border-amber-400 pb-2 text-lg font-bold text-amber-900">解法選択のトリガー</h3>
+<div class="mt-4 space-y-4 text-sm text-amber-900">
+<div class="rounded-lg border border-amber-200 bg-amber-100/60 p-4">
+<strong>長さと相互の内積が対称</strong><br>
+$\Vec{OA}+\Vec{OB}+\Vec{OC}$ を作り、$\Vec{AB},\Vec{AC}$ との内積を調べる。等しい項が差し引きで消えれば、平面の法線方向が得られる。
+</div>
+<div class="rounded-lg border border-amber-200 bg-amber-100/60 p-4">
+<strong>未知の実数倍を含むベクトル方程式</strong><br>
+両辺の大きさの2乗をとると、向きの情報が消えて $k^2$ の方程式になる。最後に $k&lt;0$ で符号を決める。
+</div>
+<div class="rounded-lg border border-amber-200 bg-amber-100/60 p-4">
+<strong>直線と平面の交点</strong><br>
+正体の分からないPを
+\[
+\Vec{OP}=u\Vec{OD}
+\]
+の1か所にまとめます。一方、平面ABC上の点は
+\[
+\Vec{OP}
+=
+s\Vec{OA}
++t\Vec{OB}
++(1-s-t)\Vec{OC}
+\]
+と表し、一次独立性を用いて係数を比較します。
+</div>
+<div class="rounded-lg border border-amber-200 bg-amber-100/60 p-4">
+<strong>体積に先の設問をつなぐ</strong><br>
+（1）で得た法線方向からOと平面の距離を求め、（3）で得たOPとDPの比からDの高さへ変換する。
+</div>
+</div>
+</div>
+
+<div class="mt-7 rounded-xl border border-emerald-200 bg-emerald-50 p-5">
+<h3 class="border-b-2 border-emerald-400 pb-2 text-lg font-bold text-emerald-900">思考プロセス</h3>
+<div class="mt-4 space-y-4 text-sm text-emerald-900">
+<div class="rounded-lg border border-emerald-200 bg-emerald-100/60 p-4"><strong>（1）</strong> 重心ベクトルを法線候補として調べる。</div>
+<div class="rounded-lg border border-emerald-200 bg-emerald-100/60 p-4"><strong>（2）</strong> 単位ベクトルODを利用し、$k$ だけの式にする。</div>
+<div class="rounded-lg border border-emerald-200 bg-emerald-100/60 p-4"><strong>（3）</strong> 交点Pの位置を媒介変数1つに集約する。</div>
+<div class="rounded-lg border border-emerald-200 bg-emerald-100/60 p-4"><strong>（4）</strong> 底面積はAB、ACの内積、高さはOGと断面の相似から求める。</div>
+</div>
+</div>
+
+<div class="mt-9">
+<h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">実際の答案</h3>
+
+<div class="mt-5 space-y-8">
+<div>
+<p class="font-bold text-blue-800">（1）</p>
+<div class="math-scroll">
+\[
+\Vec{OG}
+=
+\frac13
+\left(
+\Vec{OA}+\Vec{OB}+\Vec{OC}
+\right).
+\]
+\[
+\begin{aligned}
+|\Vec{OG}|^2
+&=
+\left|
+\frac13
+\left(
+\Vec{OA}+\Vec{OB}+\Vec{OC}
+\right)
+\right|^2\\
+&=
+\frac19
+\left|
+\Vec{OA}+\Vec{OB}+\Vec{OC}
+\right|^2\\
+&=
+\frac19
+\Bigl(
+|\Vec{OA}|^2
++
+|\Vec{OB}|^2
++
+|\Vec{OC}|^2\\
+&\hspace{18mm}
++
+2\Vec{OA}\cdot\Vec{OB}
++
+2\Vec{OB}\cdot\Vec{OC}
++
+2\Vec{OC}\cdot\Vec{OA}
+\Bigr)\\
+&=
+\frac19
+\left(
+1+1+1
++
+2\left(-\frac15\right)
++
+2\left(-\frac15\right)
++
+2\left(-\frac15\right)
+\right)\\
+&=
+\frac19
+\left(
+3-\frac65
+\right)\\
+&=
+\frac19\cdot\frac95\\
+&=
+\frac15.
+\end{aligned}
+\]
+</div>
+
+<p>
+したがって、
+\[
+|\Vec{OG}|^2=\frac15&gt;0.
+\]
+よって $|\Vec{OG}|$ は正であり、
+</p>
+
+<div class="math-scroll">
+\[
+|\Vec{OG}|=\sqrt{\frac15}=\frac1{\sqrt5}.
+\]
+</div>
+
+<div class="mt-2 rounded-xl border-2 border-blue-500 bg-blue-50 p-3 font-bold">
+\[
+\Vec{OG}
+=
+\frac13(\Vec{OA}+\Vec{OB}+\Vec{OC}),
+\qquad
+|\Vec{OG}|=\frac1{\sqrt5}
+\]
+</div>
+
+<p class="mt-4">さらに、後の体積計算のために向きを確認する。</p>
+<div class="math-scroll">
+\[
+\Vec{OG}\cdot\Vec{AB}
+=
+\frac13
+(\Vec{OA}+\Vec{OB}+\Vec{OC})
+\cdot
+(\Vec{OB}-\Vec{OA})
+=0.
+\]
+\[
+\Vec{OG}\cdot\Vec{AC}=0.
+\]
+</div>
+<p>$\Vec{AB},\Vec{AC}$ は平面ABC内の一次独立な2ベクトルなので、</p>
+<div class="math-scroll">
+\[
+\Vec{OG}\perp\text{平面ABC}.
+\]
+</div>
+<p>Gは平面ABC上にあるため、GはOから平面ABCへ下ろした垂線の足である。</p>
+</div>
+
+<div class="border-t border-slate-200 pt-6">
+<p class="font-bold text-blue-800">（2）</p>
+<div class="math-scroll">
+\[
+k^2|\Vec{OD}|^2
+=
+|2\Vec{OA}+\Vec{OB}+\Vec{OC}|^2.
+\]
+\[
+\begin{aligned}
+|2\Vec{OA}+\Vec{OB}+\Vec{OC}|^2
+&=
+4+1+1\\
+&\quad+2\left(
+-\frac25-\frac25-\frac15
+\right)\\
+&=4.
+\end{aligned}
+\]
+</div>
+<p>$|\Vec{OD}|=1$ より $k^2=4$。$k&lt;0$ なので、</p>
+<div class="mt-2 inline-block rounded-xl border-2 border-blue-500 bg-blue-50 p-3 font-bold">
+\[
+k=-2
+\]
+</div>
+</div>
+
+<div class="border-t border-slate-200 pt-6">
+<p class="font-bold text-blue-800">（3）</p>
+<p>Oは平面ABC上にないので、$\Vec{OA},\Vec{OB},\Vec{OC}$ は一次独立である。したがって係数は一意に比較できる。</p>
+<p class="mt-3">（2）より、</p>
+<div class="math-scroll">
+\[
+\Vec{OD}
+=
+-\frac12
+\left(
+2\Vec{OA}+\Vec{OB}+\Vec{OC}
+\right).
+\]
+</div>
+<p>Pは直線OD上にあるので、実数 $u$ を用いて、</p>
+<div class="math-scroll">
+\[
+\begin{aligned}
+\Vec{OP}
+&=
+u\Vec{OD}\\
+&=
+-u\Vec{OA}
+-\frac{u}{2}\Vec{OB}
+-\frac{u}{2}\Vec{OC}.
+\end{aligned}
+\]
+</div>
+
+<p>
+一方、Pは平面ABC上にあるので、実数 $s,t$ を用いて、
+</p>
+
+<div class="math-scroll">
+\[
+\Vec{OP}
+=
+s\Vec{OA}
++t\Vec{OB}
++(1-s-t)\Vec{OC}.
+\]
+</div>
+
+<p>
+$\Vec{OA},\Vec{OB},\Vec{OC}$ は一次独立であるから、係数を比較して、
+</p>
+
+<div class="math-scroll">
+\[
+s=-u,
+\qquad
+t=-\frac{u}{2},
+\qquad
+1-s-t=-\frac{u}{2}.
+\]
+</div>
+
+<p>
+最初の2式を3つ目の式へ代入すると、
+</p>
+
+<div class="math-scroll">
+\[
+1-(-u)-\left(-\frac{u}{2}\right)
+=
+-\frac{u}{2},
+\]
+\[
+1+u+\frac{u}{2}
+=
+-\frac{u}{2},
+\]
+\[
+1+2u=0.
+\]
+</div>
+
+<p>
+よって、
+</p>
+
+<div class="math-scroll">
+\[
+u=-\frac12.
+\]
+</div>
+<div class="mt-2 rounded-xl border-2 border-blue-500 bg-blue-50 p-3 font-bold">
+\[
+\Vec{OP}
+=
+\frac12\Vec{OA}
++
+\frac14\Vec{OB}
++
+\frac14\Vec{OC}
+\]
+</div>
+
+<div class="mt-4 rounded-lg border border-amber-200 bg-amber-50 p-4 text-sm leading-relaxed text-amber-900">
+<strong>表し方の選び方：</strong><br>
+平面上の点は、
+\[
+s\Vec{OA}+t\Vec{OB}+(1-s-t)\Vec{OC}
+\]
+のほか、$1-s-t$ を $\Vec{OA}$ や $\Vec{OB}$ の係数にしても表せます。
+一般には、成分や式が複雑なベクトルには $s$ や $t$ のような単項式を付け、
+比較的簡単なベクトルに $1-s-t$ を付けると、展開や係数比較が軽くなります。
+本問では3本を記号のまま扱うため差は小さいですが、指定に合わせて
+$\Vec{OC}$ の係数を $1-s-t$ としています。
+</div>
+<p class="mt-3">
+\[
+\Vec{OP}=-\frac12\Vec{OD}
+\]
+なので、
+\[
+OP=\frac12,\qquad DP=\frac32.
+\]
+</p>
+</div>
+
+<div class="border-t border-slate-200 pt-6">
+<p class="font-bold text-blue-800">（4）底面積</p>
+<div class="math-scroll">
+\[
+\Vec{AB}=\Vec{OB}-\Vec{OA},
+\qquad
+\Vec{AC}=\Vec{OC}-\Vec{OA}.
+\]
+\[
+|\Vec{AB}|^2=|\Vec{AC}|^2
+=
+1+1-2\left(-\frac15\right)
+=
+\frac{12}{5}.
+\]
+\[
+\Vec{AB}\cdot\Vec{AC}
+=
+-\frac15+\frac15+\frac15+1
+=
+\frac65.
+\]
+</div>
+<p>三角形ABCの面積を $T$ とすると、</p>
+<div class="math-scroll">
+\[
+\begin{aligned}
+T
+&=
+\frac12
+\sqrt{
+|\Vec{AB}|^2|\Vec{AC}|^2
+-
+(\Vec{AB}\cdot\Vec{AC})^2
+}\\
+&=
+\frac12
+\sqrt{
+\frac{144}{25}-\frac{36}{25}
+}\\
+&=
+\frac{3\sqrt3}{5}.
+\end{aligned}
+\]
+</div>
+</div>
+
+<div class="border-t border-slate-200 pt-6">
+<p class="font-bold text-blue-800">（4）高さ</p>
+<p>（1）より、Oから平面ABCまでの距離は</p>
+<div class="math-scroll">
+\[
+OG=\frac1{\sqrt5}.
+\]
+</div>
+<p>O、D、Pと平面ABCの法線方向を含む断面を考える。断面内で、OおよびDから平面へ下ろした垂線が作る2つの直角三角形は相似である。</p>
+<div class="math-scroll">
+\[
+OP:DP=\frac12:\frac32=1:3.
+\]
+</div>
+<p>Dから平面ABCまでの高さを $h$ とすると、</p>
+<div class="math-scroll">
+\[
+OG:h=OP:DP=1:3.
+\]
+\[
+h=\frac3{\sqrt5}.
+\]
+</div>
+</div>
+
+<div class="border-t border-slate-200 pt-6">
+<p class="font-bold text-blue-800">（4）体積</p>
+<div class="math-scroll">
+\[
+\begin{aligned}
+V
+&=
+\frac13\times
+\frac{3\sqrt3}{5}
+\times
+\frac3{\sqrt5}\\
+&=
+\frac{3\sqrt{15}}{25}.
+\end{aligned}
+\]
+</div>
+<div class="mt-2 inline-block rounded-xl border-2 border-blue-500 bg-blue-50 p-3 font-bold">
+\[
+V=\frac{3\sqrt{15}}{25}
+\]
+</div>
+</div>
+</div>
+</div>
+
+<div class="mt-9">
+<h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">別解：法線ベクトルから高さを直接求める</h3>
+<div class="mt-4 rounded-xl border border-indigo-200 bg-indigo-50 p-5 text-sm leading-relaxed">
+<p>平面ABCの法線ベクトルとして $\Vec{OG}$ を使う。Dから平面ABCまでの距離 $h$ は、</p>
+<div class="math-scroll">
+\[
+h
+=
+\frac{
+|(\Vec{OD}-\Vec{OG})\cdot\Vec{OG}|
+}{|\Vec{OG}|}.
+\]
+</div>
+<p>
+\[
+|\Vec{OG}|^2=\frac15,
+\qquad
+\Vec{OD}\cdot\Vec{OG}=-\frac25
+\]
+より、
+</p>
+<div class="math-scroll">
+\[
+h
+=
+\frac{
+\left|-\frac25-\frac15\right|
+}{1/\sqrt5}
+=
+\frac3{\sqrt5}.
+\]
+</div>
+</div>
+</div>
+
+<div class="mt-9">
+<h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">図解① 条件を満たす具体的な配置</h3>
+<p class="mt-4 text-sm text-slate-700">次の座標は与えられた内積条件を正確に満たします。</p>
+<div class="math-scroll mt-3">
+\[
+A\left(\frac2{\sqrt5},0,\frac1{\sqrt5}\right),
+\quad
+B\left(-\frac1{\sqrt5},\frac{\sqrt3}{\sqrt5},\frac1{\sqrt5}\right),
+\]
+\[
+C\left(-\frac1{\sqrt5},-\frac{\sqrt3}{\sqrt5},\frac1{\sqrt5}\right),
+\quad
+D\left(-\frac1{\sqrt5},0,-\frac2{\sqrt5}\right).
+\]
+</div>
+<div class="mt-4 overflow-x-auto rounded-xl border border-slate-200 bg-slate-50 p-4">
+<svg width="760" height="500" viewBox="0 0 760 500" class="mx-auto h-auto min-w-[700px] max-w-[760px] rounded-xl bg-white">
+  <circle cx="380" cy="250" r="190" fill="rgba(37,99,235,.03)" stroke="#cbd5e1" stroke-width="2"/>
+  <ellipse cx="380" cy="250" rx="190" ry="70" fill="none" stroke="#e2e8f0" stroke-width="2" stroke-dasharray="7 5"/>
+  <polygon points="550,205 285,95 285,315" fill="rgba(37,99,235,.14)" stroke="#2563eb" stroke-width="3"/>
+  <line x1="550" y1="205" x2="295" y2="405" stroke="#94a3b8" stroke-width="2"/>
+  <line x1="285" y1="95" x2="295" y2="405" stroke="#94a3b8" stroke-width="2"/>
+  <line x1="285" y1="315" x2="295" y2="405" stroke="#94a3b8" stroke-width="2"/>
+  <line x1="380" y1="250" x2="380" y2="205" stroke="#7c3aed" stroke-width="5"/>
+  <line x1="295" y1="405" x2="420" y2="205" stroke="#e11d48" stroke-width="4"/>
+  <circle cx="380" cy="250" r="7" fill="#111827"/>
+  <circle cx="550" cy="205" r="8" fill="#2563eb"/>
+  <circle cx="285" cy="95" r="8" fill="#2563eb"/>
+  <circle cx="285" cy="315" r="8" fill="#2563eb"/>
+  <circle cx="295" cy="405" r="9" fill="#e11d48"/>
+  <circle cx="380" cy="205" r="8" fill="#7c3aed"/>
+  <circle cx="420" cy="205" r="8" fill="#f59e0b"/>
+  <g font-size="16" font-weight="700">
+    <text x="390" y="270">O</text>
+    <text x="560" y="198" fill="#1d4ed8">A</text>
+    <text x="260" y="85" fill="#1d4ed8">B</text>
+    <text x="260" y="340" fill="#1d4ed8">C</text>
+    <text x="305" y="430" fill="#be123c">D</text>
+    <text x="388" y="195" fill="#6d28d9">G</text>
+    <text x="430" y="195" fill="#b45309">P</text>
+  </g>
+</svg>
+</div>
+<div class="mt-4 grid gap-3 sm:grid-cols-3">
+<div class="rounded-lg border border-violet-200 bg-violet-50 p-4 text-center"><strong>OG ⟂ 平面ABC</strong></div>
+<div class="rounded-lg border border-amber-200 bg-amber-50 p-4 text-center"><strong>P ∈ OD ∩ 平面ABC</strong></div>
+<div class="rounded-lg border border-rose-200 bg-rose-50 p-4 text-center"><strong>OP : DP = 1 : 3</strong></div>
+</div>
+</div>
+
+<div class="mt-9">
+<h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">図解② 高さを求める断面</h3>
+<p class="mt-4 text-sm text-slate-700">直線ODと平面ABCの法線方向を含む平面で切ると、平面ABCは1本の直線として見えます。</p>
+<div class="mt-4 overflow-x-auto rounded-xl border border-slate-200 bg-slate-50 p-4">
+<svg width="760" height="430" viewBox="0 0 760 430" class="mx-auto h-auto min-w-[700px] max-w-[760px] rounded-xl bg-white">
+  <line x1="80" y1="135" x2="690" y2="135" stroke="#2563eb" stroke-width="4"/>
+  <line x1="290" y1="365" x2="425" y2="135" stroke="#e11d48" stroke-width="4"/>
+  <line x1="380" y1="215" x2="380" y2="135" stroke="#7c3aed" stroke-width="5"/>
+  <line x1="290" y1="365" x2="290" y2="135" stroke="#10b981" stroke-width="5"/>
+  <path d="M380 135 L380 150 L395 150 L395 135" fill="none" stroke="#7c3aed" stroke-width="2"/>
+  <path d="M290 135 L290 151 L306 151 L306 135" fill="none" stroke="#10b981" stroke-width="2"/>
+  <circle cx="380" cy="215" r="9" fill="#111827"/>
+  <circle cx="290" cy="365" r="10" fill="#e11d48"/>
+  <circle cx="425" cy="135" r="10" fill="#f59e0b"/>
+  <circle cx="380" cy="135" r="9" fill="#7c3aed"/>
+  <circle cx="290" cy="135" r="9" fill="#10b981"/>
+  <g font-size="16" font-weight="700">
+    <text x="390" y="220">O</text>
+    <text x="265" y="395" fill="#be123c">D</text>
+    <text x="438" y="126" fill="#b45309">P</text>
+    <text x="390" y="125" fill="#6d28d9">G</text>
+    <text x="262" y="125" fill="#047857">H</text>
+    <text x="535" y="120" fill="#1d4ed8">平面ABC</text>
+    <text x="395" y="180" fill="#6d28d9">OG=1/√5</text>
+    <text x="210" y="260" fill="#047857">DH=h</text>
+    <text x="390" y="245" fill="#be123c">OP=1/2</text>
+    <text x="300" y="320" fill="#be123c">DP=3/2</text>
+  </g>
+</svg>
+</div>
+<div class="mt-4 grid gap-3 md:grid-cols-3">
+<div class="rounded-lg border border-rose-200 bg-rose-50 p-4 text-center"><strong>OP : DP = 1 : 3</strong></div>
+<div class="rounded-lg border border-violet-200 bg-violet-50 p-4 text-center"><strong>OG : DH = 1 : 3</strong></div>
+<div class="rounded-lg border border-emerald-200 bg-emerald-50 p-4 text-center"><strong>DH = 3/√5</strong></div>
+</div>
+</div>
+
+<div class="mt-9">
+<h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">受験生のつまずきポイント</h3>
+<div class="mt-4 space-y-4 text-sm">
+<div class="rounded-lg border border-red-200 bg-red-50 p-4"><strong>内積条件を角度計算だけに使う</strong><br>対称な条件では、和ベクトルと差ベクトルの内積を優先する。</div>
+<div class="rounded-lg border border-red-200 bg-red-50 p-4"><strong>$k^2=4$ から符号条件を戻さない</strong><br>$k&lt;0$ より $k=-2$。</div>
+<div class="rounded-lg border border-red-200 bg-red-50 p-4">
+<strong>平面上の点の3つの係数を独立に置く</strong><br>
+平面ABC上の点は
+\[
+s\Vec{OA}
++t\Vec{OB}
++(1-s-t)\Vec{OC}
+\]
+と表します。3つ目の係数を $1-s-t$ とすることで、係数の和が自動的に1になります。
+</div>
+<div class="rounded-lg border border-red-200 bg-red-50 p-4"><strong>ODを高さと考える</strong><br>高さは平面への垂直距離。ODは平面ABCに垂直とは限らない。</div>
+</div>
+</div>
+</section>
+
+<section class="mt-6 rounded-2xl bg-blue-900 p-6 text-white shadow-sm sm:p-8">
+<h2 class="border-b-2 border-blue-400 pb-2 text-lg font-bold">アクティブリコール（本質確認）</h2>
+<div class="mt-5 space-y-3">
+<details class="rounded-lg bg-white text-slate-800"><summary class="cursor-pointer p-4 font-semibold">Q1. なぜ3本の和が法線候補になりますか？</summary><div class="border-t bg-blue-50 p-4 text-sm">長さと相互の内積が対称なので、和とAB・ACとの内積で等しい項が消え、0になるからです。</div></details>
+<details class="rounded-lg bg-white text-slate-800"><summary class="cursor-pointer p-4 font-semibold">Q2. なぜ（2）で大きさをとりますか？</summary><div class="border-t bg-blue-50 p-4 text-sm">ベクトルの向きを消し、未知数 $k$ を $k^2$ の1か所にまとめるためです。</div></details>
+<details class="rounded-lg bg-white text-slate-800">
+<summary class="cursor-pointer p-4 font-semibold">Q3. 平面ABC上の点を、なぜ $s,t,1-s-t$ の係数で表すのですか？</summary>
+<div class="border-t bg-blue-50 p-4 text-sm">
+\[
+s+t+(1-s-t)=1
+\]
+となるため、3点A、B、Cを基準とする平面上の点を2つの実数 $s,t$ だけで表せるからです。
+また、3つの係数を独立に置く必要がなくなります。
+</div>
+</details>
+<details class="rounded-lg bg-white text-slate-800"><summary class="cursor-pointer p-4 font-semibold">Q4. なぜOGがOから平面までの距離ですか？</summary><div class="border-t bg-blue-50 p-4 text-sm">Gが平面上にあり、OGが平面内の独立な2方向AB、ACの両方に垂直だからです。</div></details>
+<details class="rounded-lg bg-white text-slate-800"><summary class="cursor-pointer p-4 font-semibold">Q5. なぜDの高さはOの高さの3倍ですか？</summary><div class="border-t bg-blue-50 p-4 text-sm">断面内の2つの直角三角形が相似で、斜辺の比が $OP:DP=1:3$ だからです。</div></details>
+</div>
+</section>
+
+<nav class="mt-7 grid gap-3 sm:grid-cols-2">
+<a href="no67.html" class="nav-button rounded-xl border border-slate-300 bg-white px-5 py-4 text-center font-bold">← No.67へ</a>
+<a href="no69.html" class="nav-button rounded-xl bg-blue-700 px-5 py-4 text-center font-bold text-white">No.69 →</a>
+</nav>
+</main>
+
+<footer class="py-10 text-center text-sm text-slate-500">医進・サイエンスコース　夏期数学課題 解説サイト</footer>
+</div>
+</body>
+</html>

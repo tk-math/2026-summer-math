@@ -1,0 +1,1327 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>夏期課題 No.63 図形と方程式 - 医進・サイエンスコース</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        MathJax = {
+            chtml: { matchFontHeight: false },
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body { font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif; }
+        .nav-button { transition: transform .16s ease, box-shadow .16s ease; }
+        .nav-button:hover { transform: translateY(-2px); box-shadow: 0 8px 18px rgba(15, 23, 42, .12); }
+        .math-scroll { overflow-x: auto; overflow-y: hidden; padding-bottom: .5rem; margin-bottom: .5rem; }
+        button:focus-visible, summary:focus-visible, a:focus-visible, input:focus-visible {
+            outline: 3px solid rgba(37, 99, 235, .35);
+            outline-offset: 3px;
+        }
+    </style>
+</head>
+<body class="bg-slate-100 text-slate-800">
+<div class="mx-auto max-w-4xl px-4 py-6 sm:px-6 lg:py-10">
+
+    <a href="index.html" class="inline-flex items-center gap-2 text-sm font-bold text-blue-700 hover:text-blue-900">
+        ← 問題一覧へ戻る
+    </a>
+
+    <header class="mt-4 overflow-hidden rounded-3xl bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-800 text-white shadow-xl">
+        <div class="p-7 sm:p-10">
+            <span class="inline-flex items-center rounded-full bg-white/15 px-4 py-1.5 text-sm font-semibold tracking-wide text-blue-100">医進・サイエンスコース</span>
+            <div class="mt-4 flex flex-wrap items-center gap-3">
+                <span class="rounded-lg bg-white/20 px-3 py-1 text-sm font-bold">No.63</span>
+                <span class="rounded-full bg-amber-100 px-3 py-1 text-xs font-bold text-amber-800">標準</span>
+            </div>
+            <h1 class="mt-4 text-3xl font-bold leading-tight sm:text-4xl">図形と方程式</h1>
+            <div class="mt-3 text-lg text-blue-100">目標解答時間：25分</div>
+        </div>
+    </header>
+
+    <main>
+        <section class="mt-7 rounded-2xl border border-blue-100 bg-white p-6 shadow-sm sm:p-8">
+            <h2 class="flex items-center gap-2 text-xl font-bold text-blue-900">
+                <span class="grid h-8 w-8 place-items-center rounded-full bg-blue-700 text-base text-white">1</span>
+                問題
+            </h2>
+
+            <div class="mt-4 rounded-lg border border-slate-200 bg-slate-50 p-4 text-slate-700 leading-relaxed">
+                <p>$xy$ 平面上に</p>
+
+                <div class="math-scroll">
+                    \[
+                    C:x^2+y^2-4x-2y+4=0,
+                    \]
+                    \[
+                    l:y=mx
+                    \]
+                </div>
+
+                <p>
+                    がある。ただし、$m$ は正の定数である。
+                </p>
+
+                <ol class="mt-4 list-decimal space-y-4 pl-6">
+                    <li>$C$ の中心の座標と半径を求めよ。</li>
+                    <li>$C$ と $l$ が接するときの、$m$ の値と接点の座標を求めよ。</li>
+                    <li>
+                        （2）のとき、接点の $y$ 座標を $y_0$ とし、
+                        \[
+                        \begin{cases}
+                        x^2+y^2-4x-2y+4\le0,\\
+                        y\le y_0
+                        \end{cases}
+                        \]
+                        が表す領域を $D$ とする。
+                        <ol class="mt-2 list-[lower-roman] space-y-3 pl-6">
+                            <li>$D$ 上の点 $(x,y)$ について、$y-x$ の最大値を求めよ。</li>
+                            <li>
+                                $p$ を実数の定数とする。$D$ 上の点 $(x,y)$ について
+                                $y-px$ の最大値が1となるような $p$ の値を求めよ。
+                            </li>
+                        </ol>
+                    </li>
+                </ol>
+            </div>
+
+            <div class="mt-4 rounded-lg border border-blue-200 bg-blue-50 p-4">
+                <h3 class="mb-2 font-bold text-blue-900">【条件の整理】</h3>
+
+                <ul class="list-disc space-y-2 pl-5 text-sm text-slate-700">
+                    <li>
+                        円の方程式を平方完成すると、
+                        \[
+                        (x-2)^2+(y-1)^2=1
+                        \]
+                        です。
+                    </li>
+                    <li>
+                        接線の条件は、円の中心と直線の距離が半径に等しいことです。
+                    </li>
+                    <li>
+                        接点は、円の中心から接線へ下ろした垂線の足です。
+                    </li>
+                    <li>
+                        領域 $D$ は、円板を水平線
+                        \[
+                        y=\frac85
+                        \]
+                        で切り、下側だけを残した領域です。
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="mt-6 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+            <h2 class="flex items-center gap-2 text-xl font-bold text-slate-900">
+                <span class="grid h-8 w-8 place-items-center rounded-full bg-slate-700 text-base text-white">2</span>
+                解説
+            </h2>
+
+            <p class="mt-4 text-sm leading-8 text-slate-600">
+                円と直線の接触条件、接点の決定、切り取られた円板上での1次式の最大化を順に扱います。
+            </p>
+
+            <div class="mt-8 rounded-xl border border-amber-200 bg-amber-50 p-5">
+                <h3 class="border-b-2 border-amber-400 pb-2 text-lg font-bold text-amber-900">解法選択のトリガー</h3>
+
+                <div class="mt-4 space-y-4">
+                    <div class="rounded-lg border border-amber-200 bg-amber-100/60 p-4">
+                        <p class="text-sm font-bold text-amber-900">円と直線が接する</p>
+                        <p class="mt-1 text-sm text-amber-800">
+                            円の中心から直線までの距離を半径と等しくします。
+                        </p>
+                    </div>
+
+                    <div class="rounded-lg border border-amber-200 bg-amber-100/60 p-4">
+                        <p class="text-sm font-bold text-amber-900">領域上で1次式を最大化する</p>
+                        <p class="mt-1 text-sm text-amber-800">
+                            \[
+                            y-px=k
+                            \]
+                            とおき、傾き $p$ の直線を平行移動して、領域Dと最後に接する位置を探します。
+                        </p>
+                    </div>
+
+                    <div class="rounded-lg border border-amber-200 bg-amber-100/60 p-4">
+                        <p class="text-sm font-bold text-amber-900">円全体での最大点が切り取られている</p>
+                        <p class="mt-1 text-sm text-amber-800">
+                            円全体での最大点が
+                            \[
+                            y\le\frac85
+                            \]
+                            を満たさない場合、最大値は水平な境界線分上で調べます。
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-8 rounded-xl border border-emerald-200 bg-emerald-50 p-5">
+                <h3 class="border-b-2 border-emerald-400 pb-2 text-lg font-bold text-emerald-900">思考プロセス</h3>
+
+                <div class="mt-4 space-y-4">
+                    <div class="rounded-lg border border-emerald-200 bg-emerald-100/60 p-4 text-sm text-emerald-900">
+                        <strong>（2）接点は垂線の足</strong><br>
+                        中心 $(2,1)$ から接線 $4x-3y=0$ へ下ろした垂線の足を求めます。
+                    </div>
+
+                    <div class="rounded-lg border border-emerald-200 bg-emerald-100/60 p-4 text-sm text-emerald-900">
+                        <strong>（3）（i）まず円全体で考える</strong><br>
+                        $y-x$ が最大となる円周上の点は上左方向ですが、その点は
+                        $y\le\dfrac85$ を満たしません。したがって切り口の左端を調べます。
+                    </div>
+
+                    <div class="rounded-lg border border-emerald-200 bg-emerald-100/60 p-4 text-sm text-emerald-900">
+                        <strong>（3）（ii）傾きpによって最大点が変わる</strong><br>
+                        円全体での最大点が領域Dに残る場合と、水平な境界線分上で最大となる場合に分けます。
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-10">
+                <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">実際の答案</h3>
+
+                <div class="mt-4 space-y-8 text-slate-700">
+                    <div>
+                        <p class="border-b border-slate-200 pb-1 font-bold text-blue-800">（1）</p>
+
+                        <p class="mt-2">
+                            円Cの方程式を平方完成すると、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            \begin{aligned}
+                            x^2-4x+y^2-2y+4&=0,\\
+                            (x-2)^2-4+(y-1)^2-1+4&=0,\\
+                            (x-2)^2+(y-1)^2&=1.
+                            \end{aligned}
+                            \]
+                        </div>
+
+                        <div class="mt-2 rounded-xl border-2 border-blue-500 bg-blue-50 p-3 font-bold text-slate-900">
+                            \[
+                            \text{中心 }(2,1),
+                            \qquad
+                            \text{半径 }1
+                            \]
+                        </div>
+                    </div>
+
+                    <div class="border-t border-slate-200 pt-6">
+                        <p class="border-b border-slate-200 pb-1 font-bold text-blue-800">（2）$m$ の値</p>
+
+                        <p class="mt-2">
+                            直線 $l:y=mx$ を
+                            \[
+                            mx-y=0
+                            \]
+                            と表す。
+                        </p>
+
+                        <p>
+                            円Cの中心 $(2,1)$ と直線 $l$ の距離が半径1に等しいので、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            \frac{|2m-1|}{\sqrt{m^2+1}}=1.
+                            \]
+                        </div>
+
+                        <p>
+                            両辺を2乗すると、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            (2m-1)^2=m^2+1,
+                            \]
+                            \[
+                            4m^2-4m+1=m^2+1,
+                            \]
+                            \[
+                            3m^2-4m=0,
+                            \]
+                            \[
+                            m(3m-4)=0.
+                            \]
+                        </div>
+
+                        <p>
+                            $m&gt;0$ より、
+                        </p>
+
+                        <div class="mt-2 inline-block rounded-xl border-2 border-blue-500 bg-blue-50 p-3 font-bold text-slate-900">
+                            \[
+                            m=\frac43
+                            \]
+                        </div>
+                    </div>
+
+                    <div class="border-t border-slate-200 pt-6">
+                        <p class="border-b border-slate-200 pb-1 font-bold text-blue-800">（2）接点の座標</p>
+
+                        <p class="mt-2">
+                            接線は
+                            \[
+                            4x-3y=0
+                            \]
+                            である。
+                            接点をTとすると、ATは接線に垂直である。
+                        </p>
+
+                        <p>
+                            直線 $4x-3y=0$ の傾きは $\dfrac43$ なので、
+                            垂線ATの傾きは $-\dfrac34$ である。
+                            よって、A$(2,1)$ を通る垂線は
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            y-1=-\frac34(x-2).
+                            \]
+                        </div>
+
+                        <p>
+                            これと
+                            \[
+                            y=\frac43x
+                            \]
+                            を連立する。
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            \frac43x-1=-\frac34(x-2).
+                            \]
+                        </div>
+
+                        <p>
+                            両辺を12倍すると、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            16x-12=-9x+18,
+                            \]
+                            \[
+                            25x=30,
+                            \]
+                            \[
+                            x=\frac65.
+                            \]
+                        </div>
+
+                        <p>
+                            したがって、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            y=\frac43\cdot\frac65=\frac85.
+                            \]
+                        </div>
+
+                        <div class="mt-2 rounded-xl border-2 border-blue-500 bg-blue-50 p-3 font-bold text-slate-900">
+                            \[
+                            \text{接点 }
+                            \left(\frac65,\frac85\right)
+                            \]
+                        </div>
+                    </div>
+
+                    <div class="border-t border-slate-200 pt-6">
+                        <p class="border-b border-slate-200 pb-1 font-bold text-blue-800">（3）領域Dの確認</p>
+
+                        <p class="mt-2">
+                            （2）より、
+                            \[
+                            y_0=\frac85.
+                            \]
+                            したがってDは、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            \begin{cases}
+                            (x-2)^2+(y-1)^2\le1,\\
+                            y\le\dfrac85
+                            \end{cases}
+                            \]
+                        </div>
+
+                        <p>
+                            が表す領域である。
+                        水平な境界
+                            \[
+                            y=\frac85
+                            \]
+                            と円との交点を求めると、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            (x-2)^2+\left(\frac85-1\right)^2=1,
+                            \]
+                            \[
+                            (x-2)^2+\frac9{25}=1,
+                            \]
+                            \[
+                            (x-2)^2=\frac{16}{25}.
+                            \]
+                        </div>
+
+                        <p>
+                            よって、境界線分の両端は
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            \left(\frac65,\frac85\right),
+                            \qquad
+                            \left(\frac{14}{5},\frac85\right)
+                            \]
+                        </div>
+
+                        <p>
+                            である。
+                        </p>
+                    </div>
+
+                    <div class="border-t border-slate-200 pt-6">
+                        <p class="border-b border-slate-200 pb-1 font-bold text-blue-800">（3）（i）</p>
+
+                        <p class="mt-2">
+                            \[
+                            y-x=k
+                            \]
+                            とおくと、
+                            \[
+                            y=x+k
+                            \]
+                            は傾き1の直線である。
+                            $k$ を大きくしながら平行移動し、領域Dと最後に共有点をもつ位置を考える。
+                        </p>
+
+                        <p class="mt-3">
+                            円全体で $y-x$ が最大となる点は、中心 $(2,1)$ から
+                            \[
+                            \frac1{\sqrt2}
+                            \begin{pmatrix}
+                            -1\\
+                            1
+                            \end{pmatrix}
+                            \]
+                            の方向へ半径1だけ進んだ点である。
+                            その $y$ 座標は
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            1+\frac1{\sqrt2}.
+                            \]
+                        </div>
+
+                        <p>
+                            ここで、
+                            \[
+                            1+\frac1{\sqrt2}&gt;\frac85
+                            \]
+                            なので、この点は領域Dに含まれない。
+                        </p>
+
+                        <p class="mt-3">
+                            したがって最大値は、水平な境界線分
+                            \[
+                            y=\frac85,
+                            \qquad
+                            \frac65\le x\le\frac{14}{5}
+                            \]
+                            上でとる。
+                        </p>
+
+                        <p>
+                            この線分上では
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            y-x=\frac85-x
+                            \]
+                        </div>
+
+                        <p>
+                            なので、$x$ が最小のとき最大となる。
+                            よって、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            \max(y-x)
+                            =
+                            \frac85-\frac65
+                            =
+                            \frac25.
+                            \]
+                        </div>
+
+                        <div class="mt-2 inline-block rounded-xl border-2 border-blue-500 bg-blue-50 p-3 font-bold text-slate-900">
+                            \[
+                            \frac25
+                            \]
+                        </div>
+                    </div>
+
+                    <div class="border-t border-slate-200 pt-6">
+                        <p class="border-b border-slate-200 pb-1 font-bold text-blue-800">（3）（ii）最大値の位置による場合分け</p>
+
+                        <p class="mt-2">
+                            \[
+                            y-px=k
+                            \]
+                            とおく。
+                            円全体での最大値は、中心 $(2,1)$ における値と半径1による増加量から、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            1-2p+\sqrt{p^2+1}
+                            \]
+                        </div>
+
+                        <p>
+                            である。
+                            その最大点の $y$ 座標は
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            1+\frac1{\sqrt{p^2+1}}.
+                            \]
+                        </div>
+
+                        <p>
+                            この点が領域Dに含まれる条件は、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            1+\frac1{\sqrt{p^2+1}}
+                            \le
+                            \frac85.
+                            \]
+                        </div>
+
+                        <p>
+                            よって、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            \frac1{\sqrt{p^2+1}}\le\frac35,
+                            \]
+                            \[
+                            p^2+1\ge\frac{25}{9},
+                            \]
+                            \[
+                            p^2\ge\frac{16}{9}.
+                            \]
+                        </div>
+
+                        <p>
+                            したがって、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            |p|\ge\frac43
+                            \]
+                        </div>
+
+                        <p>
+                            のとき、円全体での最大点が領域Dに残る。
+                        一方、
+                        \[
+                        |p|&lt;\frac43
+                        \]
+                        のとき、最大値は水平な境界線分上でとる。
+                        </p>
+                    </div>
+
+                    <div class="border-t border-slate-200 pt-6">
+                        <p class="border-b border-slate-200 pb-1 font-bold text-blue-800">（3）（ii）最大値が1となる条件</p>
+
+                        <p class="mt-2">
+                            まず、
+                            \[
+                            |p|\ge\frac43
+                            \]
+                            の場合を考える。
+                            最大値が1なら、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            1-2p+\sqrt{p^2+1}=1.
+                            \]
+                        </div>
+
+                        <p>
+                            よって、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            \sqrt{p^2+1}=2p.
+                            \]
+                        </div>
+
+                        <p>
+                            左辺は正なので $p&gt;0$ であり、両辺を2乗すると、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            p^2+1=4p^2,
+                            \]
+                            \[
+                            p=\frac1{\sqrt3}.
+                            \]
+                        </div>
+
+                        <p>
+                            しかし、
+                        \[
+                            \frac1{\sqrt3}&lt;\frac43
+                            \]
+                            なので、この場合の条件に反する。
+                            したがって解はない。
+                        </p>
+
+                        <p class="mt-4">
+                            次に、
+                            \[
+                            |p|&lt;\frac43
+                            \]
+                            の場合を考える。
+                            水平な境界線分上では、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            y-px
+                            =
+                            \frac85-px,
+                            \qquad
+                            \frac65\le x\le\frac{14}{5}.
+                            \]
+                        </div>
+
+                        <p>
+                            $p&gt;0$ のときは $x$ が最小の
+                            \[
+                            x=\frac65
+                            \]
+                            で最大となる。
+                            最大値が1なので、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            \frac85-\frac65p=1.
+                            \]
+                        </div>
+
+                        <p>
+                            よって、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            8-6p=5,
+                            \]
+                            \[
+                            p=\frac12.
+                            \]
+                        </div>
+
+                        <p>
+                            これは
+                            \[
+                            0&lt;p&lt;\frac43
+                            \]
+                            を満たす。
+                        </p>
+
+                        <p class="mt-3">
+                            $p=0$ のとき、最大値は
+                            \[
+                            \frac85
+                            \]
+                            であり1ではない。
+                        </p>
+
+                        <p>
+                            $p&lt;0$ のときは $x$ が最大の
+                            \[
+                            x=\frac{14}{5}
+                            \]
+                            で最大となる。
+                            最大値が1なら、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            \frac85-\frac{14}{5}p=1,
+                            \]
+                            \[
+                            p=\frac3{14},
+                            \]
+                        </div>
+
+                        <p>
+                            となるが、$p&lt;0$ に反する。
+                        </p>
+
+                        <p>
+                            以上より、
+                        </p>
+
+                        <div class="mt-2 inline-block rounded-xl border-2 border-blue-500 bg-blue-50 p-3 font-bold text-slate-900">
+                            \[
+                            p=\frac12
+                            \]
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-10">
+                <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">別解：（3）（ii）$p=\dfrac12$ を先に予想する</h3>
+
+                <div class="mt-4 rounded-xl border border-indigo-200 bg-indigo-50 p-5 text-sm leading-relaxed text-slate-700">
+                    <p>
+                        最大値が1となるとき、最大点が水平な境界の左端
+                        \[
+                        \left(\frac65,\frac85\right)
+                        \]
+                        であると予想する。
+                    </p>
+
+                    <p>
+                        この点で
+                        \[
+                        y-px=1
+                        \]
+                        なので、
+                        </p>
+
+                    <div class="math-scroll">
+                        \[
+                        \frac85-\frac65p=1.
+                        \]
+                    </div>
+
+                    <p>
+                        よって、
+                        \[
+                        p=\frac12.
+                        \]
+                    </p>
+
+                    <p class="mt-3">
+                        あとは、この値で本当に領域D全体に対して
+                        \[
+                        y-\frac12x\le1
+                        \]
+                        が成り立つことを確認する。
+                    </p>
+
+                    <p>
+                        これは
+                        \[
+                        y\le\frac12x+1
+                        \]
+                        と同値である。
+                        境界直線
+                        \[
+                        y=\frac12x+1
+                        \]
+                        は点
+                        \[
+                        \left(\frac65,\frac85\right)
+                        \]
+                        を通り、領域Dはその下側にある。
+                        したがって最大値は確かに1である。
+                    </p>
+
+                    <div class="mt-3 rounded-lg border border-amber-200 bg-amber-50 p-4 text-amber-900">
+                        <strong>注意：</strong>
+                        この方法では、候補を求めた後に領域全体で最大値が1であることを必ず確認します。
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-10">
+                <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">図解・可視化① 円、接線、領域D</h3>
+
+                <p class="mt-4 text-sm leading-relaxed text-slate-700">
+                    すべての点を同一の座標尺度で配置しています。
+                    接点
+                    \[
+                    \left(\frac65,\frac85\right)
+                    \]
+                    は円周上にあり、接線
+                    \[
+                    y=\frac43x
+                    \]
+                    と半径が正確に垂直になります。
+                </p>
+
+                <div class="mt-4 rounded-xl border border-slate-200 bg-slate-50 p-4 sm:p-6">
+                    <div class="overflow-x-auto">
+                        <svg width="760" height="540" viewBox="0 0 760 540"
+                             class="mx-auto h-auto min-w-[700px] max-w-[760px] rounded-xl border border-slate-200 bg-white"
+                             aria-label="円C、接線、接点、領域Dの正確な座標図">
+
+                            <!--
+                                座標変換：
+                                X = 110 + 150x
+                                Y = 465 - 150y
+
+                                中心 (2,1)      -> (410,315)
+                                半径 1          -> 150px
+                                接点 (6/5,8/5)  -> (290,225)
+                                右端 (14/5,8/5) -> (530,225)
+                            -->
+
+                            <defs>
+                                <clipPath id="disk-clip-63">
+                                    <circle cx="410" cy="315" r="150"></circle>
+                                </clipPath>
+                            </defs>
+
+                            <g stroke="#f1f5f9" stroke-width="1">
+                                <line x1="50" y1="465" x2="710" y2="465"></line>
+                                <line x1="110" y1="40" x2="110" y2="510"></line>
+
+                                <line x1="260" y1="40" x2="260" y2="510"></line>
+                                <line x1="410" y1="40" x2="410" y2="510"></line>
+                                <line x1="560" y1="40" x2="560" y2="510"></line>
+                                <line x1="710" y1="40" x2="710" y2="510"></line>
+
+                                <line x1="50" y1="315" x2="710" y2="315"></line>
+                                <line x1="50" y1="165" x2="710" y2="165"></line>
+                            </g>
+
+                            <line x1="50" y1="465" x2="710" y2="465"
+                                  stroke="#64748b" stroke-width="2"></line>
+                            <line x1="110" y1="510" x2="110" y2="40"
+                                  stroke="#64748b" stroke-width="2"></line>
+
+                            <!-- y <= 8/5 の部分だけを円内で塗る -->
+                            <rect x="0" y="225" width="760" height="315"
+                                  fill="rgba(16,185,129,.18)"
+                                  clip-path="url(#disk-clip-63)"></rect>
+
+                            <circle cx="410" cy="315" r="150"
+                                    fill="none"
+                                    stroke="#2563eb"
+                                    stroke-width="3"></circle>
+
+                            <!-- y = 8/5 -->
+                            <line x1="50" y1="225" x2="710" y2="225"
+                                  stroke="#10b981"
+                                  stroke-width="3"
+                                  stroke-dasharray="9 7"></line>
+
+                            <!-- y = (4/3)x：(-1/5,-4/15) から (11/5,44/15) -->
+                            <line x1="80" y1="505" x2="440" y2="25"
+                                  stroke="#e11d48"
+                                  stroke-width="3"></line>
+
+                            <!-- 中心から接点への半径 -->
+                            <line x1="410" y1="315" x2="290" y2="225"
+                                  stroke="#7c3aed"
+                                  stroke-width="3"
+                                  stroke-dasharray="7 5"></line>
+
+                            <!-- 垂直を示す直角記号 -->
+                            <polyline points="302,234 311,222 299,213"
+                                      fill="none"
+                                      stroke="#7c3aed"
+                                      stroke-width="2"></polyline>
+
+                            <circle cx="410" cy="315" r="7" fill="#111827"></circle>
+                            <circle cx="290" cy="225" r="9" fill="#f59e0b"></circle>
+                            <circle cx="530" cy="225" r="7" fill="#10b981"></circle>
+
+                            <g font-size="15" font-weight="700">
+                                <text x="424" y="308" fill="#111827">中心 (2,1)</text>
+                                <text x="245" y="205" fill="#b45309">接点 (6/5,8/5)</text>
+                                <text x="540" y="211" fill="#047857">(14/5,8/5)</text>
+                                <text x="605" y="212" fill="#047857">y=8/5</text>
+                                <text x="448" y="68" fill="#be123c">y=(4/3)x</text>
+                                <text x="390" y="410" fill="#047857">領域D</text>
+                                <text x="715" y="458" fill="#64748b">x</text>
+                                <text x="120" y="35" fill="#64748b">y</text>
+                                <text x="94" y="485" fill="#64748b">O</text>
+                            </g>
+                        </svg>
+                    </div>
+
+                    <div class="mt-4 rounded-lg border border-blue-200 bg-blue-50 p-4 text-sm text-blue-900">
+                        接点の確認：
+                        \[
+                        \left(\frac65-2\right)^2
+                        +
+                        \left(\frac85-1\right)^2
+                        =
+                        \frac{16}{25}+\frac9{25}
+                        =
+                        1
+                        \]
+                        であるため、接点は正確に円周上にあります。
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-10">
+                <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">図解・可視化② $y-px$ の最大値</h3>
+
+                <p class="mt-4 text-sm leading-relaxed text-slate-700">
+                    $p$ を動かして、最大となる点と目的直線を確認できます。
+                    円、水平境界、最大点、目的直線にはすべて同じ座標変換を使用しています。
+                </p>
+
+                <div class="mt-4 rounded-xl border border-slate-200 bg-slate-50 p-4 sm:p-6">
+                    <div class="mx-auto max-w-xl">
+                        <label for="p-slider" class="mb-2 block text-sm font-medium text-slate-700">
+                            p：
+                            <span id="p-display" class="text-lg font-bold text-blue-700">0.500</span>
+                        </label>
+
+                        <input id="p-slider" type="range" min="-2" max="2" step="0.001" value="0.5"
+                               class="h-2 w-full cursor-pointer appearance-none rounded-lg bg-slate-200 accent-blue-600">
+
+                        <div class="mt-3 flex flex-wrap justify-center gap-2">
+                            <button type="button" data-p="-1.5"
+                                    class="rounded-lg border border-violet-200 bg-white px-3 py-2 text-sm font-bold text-violet-700 hover:bg-violet-50">
+                                p = -1.5
+                            </button>
+                            <button type="button" data-p="0"
+                                    class="rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm font-bold text-slate-700 hover:bg-slate-50">
+                                p = 0
+                            </button>
+                            <button type="button" data-p="0.5"
+                                    class="rounded-lg border border-emerald-200 bg-white px-3 py-2 text-sm font-bold text-emerald-700 hover:bg-emerald-50">
+                                p = 1/2
+                            </button>
+                            <button type="button" data-p="1.5"
+                                    class="rounded-lg border border-rose-200 bg-white px-3 py-2 text-sm font-bold text-rose-700 hover:bg-rose-50">
+                                p = 1.5
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="mt-5 overflow-x-auto">
+                        <svg id="support-svg" width="760" height="540" viewBox="0 0 760 540"
+                             class="mx-auto h-auto min-w-[700px] max-w-[760px] rounded-xl border border-slate-200 bg-white"
+                             aria-label="領域Dと目的直線の正確な座標図">
+
+                            <defs>
+                                <clipPath id="support-disk-clip-63">
+                                    <circle cx="410" cy="315" r="150"></circle>
+                                </clipPath>
+                                <clipPath id="plot-clip-63">
+                                    <rect x="50" y="35" width="660" height="475"></rect>
+                                </clipPath>
+                            </defs>
+
+                            <g stroke="#f1f5f9" stroke-width="1">
+                                <line x1="50" y1="465" x2="710" y2="465"></line>
+                                <line x1="110" y1="35" x2="110" y2="510"></line>
+                                <line x1="260" y1="35" x2="260" y2="510"></line>
+                                <line x1="410" y1="35" x2="410" y2="510"></line>
+                                <line x1="560" y1="35" x2="560" y2="510"></line>
+                                <line x1="710" y1="35" x2="710" y2="510"></line>
+                                <line x1="50" y1="315" x2="710" y2="315"></line>
+                                <line x1="50" y1="165" x2="710" y2="165"></line>
+                            </g>
+
+                            <line x1="50" y1="465" x2="710" y2="465"
+                                  stroke="#64748b" stroke-width="2"></line>
+                            <line x1="110" y1="510" x2="110" y2="35"
+                                  stroke="#64748b" stroke-width="2"></line>
+
+                            <rect x="0" y="225" width="760" height="315"
+                                  fill="rgba(16,185,129,.18)"
+                                  clip-path="url(#support-disk-clip-63)"></rect>
+
+                            <circle cx="410" cy="315" r="150"
+                                    fill="none"
+                                    stroke="#2563eb"
+                                    stroke-width="3"></circle>
+
+                            <line x1="50" y1="225" x2="710" y2="225"
+                                  stroke="#10b981"
+                                  stroke-width="3"
+                                  stroke-dasharray="9 7"></line>
+
+                            <line id="max-segment"
+                                  x1="290" y1="225" x2="530" y2="225"
+                                  stroke="#f59e0b"
+                                  stroke-width="8"
+                                  stroke-linecap="round"
+                                  style="display:none"></line>
+
+                            <line id="support-line"
+                                  stroke="#e11d48"
+                                  stroke-width="3"
+                                  clip-path="url(#plot-clip-63)"></line>
+
+                            <circle id="max-point" r="10" fill="#f59e0b"></circle>
+
+                            <g font-size="15" font-weight="700">
+                                <text id="max-label" fill="#b45309">最大点</text>
+                                <text id="line-label" fill="#be123c"></text>
+                                <text x="715" y="458" fill="#64748b">x</text>
+                                <text x="120" y="30" fill="#64748b">y</text>
+                            </g>
+                        </svg>
+                    </div>
+
+                    <div class="mt-4 grid gap-3 sm:grid-cols-3">
+                        <div class="rounded-lg border border-blue-200 bg-blue-50 p-4 text-center">
+                            <div class="text-xs font-bold text-blue-700">最大値</div>
+                            <div id="max-value-display" class="mt-1 text-2xl font-bold text-blue-900"></div>
+                        </div>
+
+                        <div class="rounded-lg border border-emerald-200 bg-emerald-50 p-4 text-center">
+                            <div class="text-xs font-bold text-emerald-700">最大点</div>
+                            <div id="max-point-display" class="mt-1 text-sm font-bold text-emerald-900"></div>
+                        </div>
+
+                        <div class="rounded-lg border border-violet-200 bg-violet-50 p-4 text-center">
+                            <div class="text-xs font-bold text-violet-700">最大点の位置</div>
+                            <div id="max-case-display" class="mt-1 text-sm font-bold text-violet-900"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <script>
+                    document.addEventListener("DOMContentLoaded", () => {
+                        const slider = document.getElementById("p-slider");
+
+                        // 図解①と共通の厳密な座標変換
+                        const originX = 110;
+                        const originY = 465;
+                        const scale = 150;
+
+                        const xMin = -0.4;
+                        const xMax = 4.0;
+                        const yMin = -0.3;
+                        const yMax = 2.8;
+
+                        const sx = x => originX + scale*x;
+                        const sy = y => originY - scale*y;
+
+                        function maxData(p) {
+                            if (Math.abs(p) >= 4/3) {
+                                const norm = Math.sqrt(p*p+1);
+                                const x = 2-p/norm;
+                                const y = 1+1/norm;
+                                const value = 1-2*p+norm;
+                                return {x,y,value,where:"円周上"};
+                            }
+
+                            if (p > 0) {
+                                return {
+                                    x:6/5,
+                                    y:8/5,
+                                    value:8/5-(6/5)*p,
+                                    where:"水平境界の左端"
+                                };
+                            }
+
+                            if (p < 0) {
+                                return {
+                                    x:14/5,
+                                    y:8/5,
+                                    value:8/5-(14/5)*p,
+                                    where:"水平境界の右端"
+                                };
+                            }
+
+                            return {
+                                x:2,
+                                y:8/5,
+                                value:8/5,
+                                where:"水平境界全体"
+                            };
+                        }
+
+                        // y = px + k と表示範囲の長方形との交点を求める
+                        function clippedLinePoints(p,k) {
+                            const candidates = [];
+
+                            function add(x,y) {
+                                const eps = 1e-9;
+                                if (
+                                    x >= xMin-eps && x <= xMax+eps &&
+                                    y >= yMin-eps && y <= yMax+eps
+                                ) {
+                                    const duplicate = candidates.some(
+                                        point => Math.hypot(point.x-x,point.y-y) < 1e-7
+                                    );
+                                    if (!duplicate) candidates.push({x,y});
+                                }
+                            }
+
+                            add(xMin,p*xMin+k);
+                            add(xMax,p*xMax+k);
+
+                            if (Math.abs(p) > 1e-12) {
+                                add((yMin-k)/p,yMin);
+                                add((yMax-k)/p,yMax);
+                            }
+
+                            if (candidates.length < 2) {
+                                return [
+                                    {x:xMin,y:p*xMin+k},
+                                    {x:xMax,y:p*xMax+k}
+                                ];
+                            }
+
+                            // 最も離れた2点を選ぶ
+                            let best = [candidates[0],candidates[1]];
+                            let bestDistance = -1;
+
+                            for (let i=0; i<candidates.length; i++) {
+                                for (let j=i+1; j<candidates.length; j++) {
+                                    const distance = Math.hypot(
+                                        candidates[i].x-candidates[j].x,
+                                        candidates[i].y-candidates[j].y
+                                    );
+                                    if (distance > bestDistance) {
+                                        bestDistance = distance;
+                                        best = [candidates[i],candidates[j]];
+                                    }
+                                }
+                            }
+
+                            return best;
+                        }
+
+                        function setSupportLine(p,k) {
+                            const [a,b] = clippedLinePoints(p,k);
+                            const line = document.getElementById("support-line");
+                            line.setAttribute("x1",sx(a.x));
+                            line.setAttribute("y1",sy(a.y));
+                            line.setAttribute("x2",sx(b.x));
+                            line.setAttribute("y2",sy(b.y));
+                        }
+
+                        function update() {
+                            const p = Number(slider.value);
+                            const data = maxData(p);
+
+                            document.getElementById("p-display").textContent = p.toFixed(3);
+                            document.getElementById("max-value-display").textContent = data.value.toFixed(5);
+                            document.getElementById("max-point-display").textContent =
+                                Math.abs(p) < 1e-12
+                                    ? "y=8/5 上の線分全体"
+                                    : `(${data.x.toFixed(4)}, ${data.y.toFixed(4)})`;
+                            document.getElementById("max-case-display").textContent = data.where;
+
+                            const point = document.getElementById("max-point");
+                            const maxLabel = document.getElementById("max-label");
+                            const maxSegment = document.getElementById("max-segment");
+
+                            if (Math.abs(p) < 1e-12) {
+                                point.style.display = "none";
+                                maxLabel.style.display = "none";
+                                maxSegment.style.display = "";
+                            } else {
+                                point.style.display = "";
+                                maxLabel.style.display = "";
+                                maxSegment.style.display = "none";
+
+                                point.setAttribute("cx",sx(data.x));
+                                point.setAttribute("cy",sy(data.y));
+                                maxLabel.setAttribute("x",sx(data.x)+12);
+                                maxLabel.setAttribute("y",sy(data.y)-12);
+                            }
+
+                            setSupportLine(p,data.value);
+
+                            const labelX = p >= 0 ? 2.9 : 0.15;
+                            const labelY = p*labelX+data.value;
+                            const lineLabel = document.getElementById("line-label");
+                            lineLabel.setAttribute("x",sx(labelX)+8);
+                            lineLabel.setAttribute("y",sy(labelY)-10);
+                            lineLabel.textContent =
+                                `y − (${p.toFixed(2)})x = ${data.value.toFixed(2)}`;
+                        }
+
+                        slider.addEventListener("input",update);
+
+                        document.querySelectorAll("[data-p]").forEach(button => {
+                            button.addEventListener("click",()=>{
+                                slider.value = button.dataset.p;
+                                update();
+                            });
+                        });
+
+                        update();
+                    });
+                </script>
+            </div>
+
+            <div class="mt-10">
+                <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">受験生のつまずきポイント</h3>
+
+                <div class="mt-4 space-y-4">
+                    <div class="rounded-lg border border-red-200 bg-red-50 p-4">
+                        <p class="text-sm font-bold text-red-900">接する条件で $m=0$ も採用する</p>
+                        <p class="mt-1 text-sm text-red-800">
+                            方程式上は $m=0$ も出ますが、問題文で $m$ は正の定数と指定されています。
+                        </p>
+                    </div>
+
+                    <div class="rounded-lg border border-red-200 bg-red-50 p-4">
+                        <p class="text-sm font-bold text-red-900">（3）で円全体の最大値をそのまま答える</p>
+                        <p class="mt-1 text-sm text-red-800">
+                            領域Dには
+                            \[
+                            y\le\frac85
+                            \]
+                            という追加条件があります。円全体の最大点がDに含まれるかを必ず確認します。
+                        </p>
+                    </div>
+
+                    <div class="rounded-lg border border-red-200 bg-red-50 p-4">
+                        <p class="text-sm font-bold text-red-900">（3）（ii）で $p$ の符号を無視する</p>
+                        <p class="mt-1 text-sm text-red-800">
+                            水平境界上の式
+                            \[
+                            \frac85-px
+                            \]
+                            は、$p&gt;0$ なら左端、$p&lt;0$ なら右端で最大になります。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mt-6 rounded-2xl bg-blue-900 p-6 text-white shadow-sm sm:p-8">
+            <h2 class="border-b-2 border-blue-400 pb-2 text-lg font-bold">アクティブリコール（本質確認）</h2>
+
+            <p class="mt-4 text-sm text-blue-200">
+                答えの数値ではなく、最大点がどの境界に現れるかを説明してから開いてください。
+            </p>
+
+            <div class="mt-6 space-y-3">
+                <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                    <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                        <span>Q1. 円と直線が接する条件を、中心と直線の距離でどう表しますか？</span>
+                        <span class="transition duration-300 group-open:-rotate-180">⌄</span>
+                    </summary>
+                    <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                        円の中心から直線までの距離が、円の半径に等しくなることです。
+                        本問では、
+                        \[
+                        \frac{|2m-1|}{\sqrt{m^2+1}}=1
+                        \]
+                        と表します。
+                    </div>
+                </details>
+
+                <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                    <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                        <span>Q2. 接点を求めるとき、なぜ中心から接線へ下ろした垂線を考えるのですか？</span>
+                        <span class="transition duration-300 group-open:-rotate-180">⌄</span>
+                    </summary>
+                    <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                        接点へ引いた半径は接線と垂直だからです。
+                        したがって、中心を通り接線に垂直な直線と接線との交点が接点になります。
+                    </div>
+                </details>
+
+                <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                    <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                        <span>Q3. （3）（i）で、なぜ円全体での最大点をそのまま採用できませんか？</span>
+                        <span class="transition duration-300 group-open:-rotate-180">⌄</span>
+                    </summary>
+                    <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                        円全体で $y-x$ が最大となる点の $y$ 座標は
+                        \[
+                        1+\frac1{\sqrt2}
+                        \]
+                        であり、
+                        \[
+                        \frac85
+                        \]
+                        より大きいため、領域Dから切り取られているからです。
+                    </div>
+                </details>
+
+                <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                    <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                        <span>Q4. 円全体での最大点が領域Dに含まれるかを、何で判定しますか？</span>
+                        <span class="transition duration-300 group-open:-rotate-180">⌄</span>
+                    </summary>
+                    <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                        円全体で $y-px$ が最大となる点の $y$ 座標
+                        \[
+                        1+\frac1{\sqrt{p^2+1}}
+                        \]
+                        が、
+                        \[
+                        \frac85
+                        \]
+                        以下かどうかで判定します。
+                    </div>
+                </details>
+
+                <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
+                    <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
+                        <span>Q5. 水平な境界線分上で、$p$ の符号によって最大点が左右に分かれるのはなぜですか？</span>
+                        <span class="transition duration-300 group-open:-rotate-180">⌄</span>
+                    </summary>
+                    <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
+                        水平境界上では
+                        \[
+                        y-px=\frac85-px
+                        \]
+                        です。$p&gt;0$ なら $x$ が小さいほど大きくなり、$p&lt;0$ なら $x$ が大きいほど大きくなるからです。
+                    </div>
+                </details>
+            </div>
+        </section>
+
+        <nav class="mt-7 grid gap-3 sm:grid-cols-2">
+            <a href="no62.html" class="nav-button rounded-xl border border-slate-300 bg-white px-5 py-4 text-center font-bold text-slate-700 hover:border-blue-300 hover:text-blue-800">
+                ← No.62へ
+            </a>
+
+            <a href="no64.html" class="nav-button rounded-xl bg-blue-700 px-5 py-4 text-center font-bold text-white hover:bg-blue-800">
+                No.64 →
+            </a>
+        </nav>
+    </main>
+
+    <footer class="py-10 text-center text-sm text-slate-500">
+        医進・サイエンスコース　夏期数学課題 解説サイト
+    </footer>
+</div>
+</body>
+</html>

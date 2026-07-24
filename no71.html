@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>夏期課題 No.71 場合の数</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+MathJax={
+  chtml:{matchFontHeight:false},
+  tex:{
+    inlineMath:[['$','$'],['\\(','\\)']],
+    displayMath:[['$$','$$'],['\\[','\\]']]
+  }
+};
+</script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<style>
+body{font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic","Meiryo",sans-serif}
+.math-scroll{overflow-x:auto;overflow-y:hidden;padding-bottom:.4rem}
+.nav-button{transition:.16s}
+.nav-button:hover{transform:translateY(-2px)}
+.card-button{transition:.14s}
+.card-button:hover{transform:translateY(-2px)}
+.card-button.selected{box-shadow:0 0 0 4px rgba(37,99,235,.22)}
+button:focus-visible,summary:focus-visible,a:focus-visible{
+outline:3px solid rgba(37,99,235,.35);outline-offset:3px
+}
+</style>
+</head>
+<body class="bg-slate-100 text-slate-800">
+<div class="mx-auto max-w-4xl px-4 py-6 sm:px-6 lg:py-10">
+
+<a href="index.html" class="text-sm font-bold text-blue-700">← 問題一覧へ戻る</a>
+
+<header class="mt-4 rounded-3xl bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-800 p-7 text-white shadow-xl sm:p-10">
+<div class="inline-flex rounded-full bg-white/15 px-4 py-1.5 text-sm font-semibold text-blue-100">医進・サイエンスコース</div>
+<div class="mt-4 flex gap-3">
+<span class="rounded-lg bg-white/20 px-3 py-1 text-sm font-bold">No.71</span>
+<span class="rounded-full bg-emerald-100 px-3 py-1 text-xs font-bold text-emerald-800">基礎</span>
+</div>
+<h1 class="mt-4 text-3xl font-bold sm:text-4xl">場合の数</h1>
+<div class="mt-3 text-lg text-blue-100">目標解答時間：20分</div>
+</header>
+
+<main>
+<section class="mt-7 rounded-2xl border border-blue-100 bg-white p-6 shadow-sm sm:p-8">
+<h2 class="text-xl font-bold text-blue-900">1　問題</h2>
+
+<div class="mt-4 rounded-lg border border-slate-200 bg-slate-50 p-4 leading-relaxed">
+<p>
+1、2、3、4、5、6、7、8、9の9枚のカードから、3枚のカードを同時に取り出して組を作る。
+</p>
+
+<div class="mt-5 grid grid-cols-3 gap-2 sm:grid-cols-9">
+<div class="rounded-lg border-2 border-slate-300 bg-white py-3 text-center text-xl font-bold">1</div>
+<div class="rounded-lg border-2 border-slate-300 bg-white py-3 text-center text-xl font-bold">2</div>
+<div class="rounded-lg border-2 border-slate-300 bg-white py-3 text-center text-xl font-bold">3</div>
+<div class="rounded-lg border-2 border-slate-300 bg-white py-3 text-center text-xl font-bold">4</div>
+<div class="rounded-lg border-2 border-slate-300 bg-white py-3 text-center text-xl font-bold">5</div>
+<div class="rounded-lg border-2 border-slate-300 bg-white py-3 text-center text-xl font-bold">6</div>
+<div class="rounded-lg border-2 border-slate-300 bg-white py-3 text-center text-xl font-bold">7</div>
+<div class="rounded-lg border-2 border-slate-300 bg-white py-3 text-center text-xl font-bold">8</div>
+<div class="rounded-lg border-2 border-slate-300 bg-white py-3 text-center text-xl font-bold">9</div>
+</div>
+
+<div class="mt-5 space-y-5">
+<p><strong>（1）</strong> 組は全部で何通りあるか。</p>
+<p><strong>（2）</strong> 少なくとも1枚偶数のカードを含む組は何通りあるか。</p>
+<p><strong>（3）</strong> 3枚のカードの数の和が3の倍数となる組は何通りあるか。</p>
+<p><strong>（4）</strong> 組の3枚のカードを適当に並べて3桁の整数を作る。このとき、6の倍数ができる組は何通りあるか。</p>
+</div>
+</div>
+
+<div class="mt-4 rounded-lg border border-blue-200 bg-blue-50 p-4">
+<h3 class="font-bold text-blue-900">【条件の整理】</h3>
+<ul class="mt-2 list-disc space-y-2 pl-5 text-sm">
+<li>3枚は「同時に」取り出すので、取り出す順序は区別しません。</li>
+<li>（2）の「少なくとも1枚」は、反対の「3枚とも奇数」を数えて全体から引くと簡単です。</li>
+<li>（3）では、カードを3で割った余りによって3つのグループに分けます。</li>
+<li>（4）では、「その組から適切に並べれば6の倍数を作れるか」を判定します。</li>
+</ul>
+</div>
+</section>
+
+<section class="mt-6 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+<h2 class="text-xl font-bold">2　解説</h2>
+
+<div class="mt-7 rounded-xl border border-amber-200 bg-amber-50 p-5">
+<h3 class="border-b-2 border-amber-400 pb-2 text-lg font-bold text-amber-900">解法選択のトリガー</h3>
+<div class="mt-4 space-y-4 text-sm text-amber-900">
+
+<div class="rounded-lg border border-amber-200 bg-amber-100/60 p-4">
+<strong>同時に3枚を取り出して「組」を作る</strong><br>
+順序を区別しないので、順列ではなく組合せ
+\[
+{}_n\mathrm{C}_r
+\]
+を使います。
+</div>
+
+<div class="rounded-lg border border-amber-200 bg-amber-100/60 p-4">
+<strong>「少なくとも1枚」とある</strong><br>
+該当する枚数が1枚、2枚、3枚の場合に分けるより、反対の事象を全体から引きます。
+</div>
+
+<div class="rounded-lg border border-amber-200 bg-amber-100/60 p-4">
+<strong>和が3の倍数になる</strong><br>
+各カードの値そのものではなく、3で割った余りだけに情報をまとめます。
+3枚の余りの和が3の倍数となる組合せを分類します。
+</div>
+
+<div class="rounded-lg border border-amber-200 bg-amber-100/60 p-4">
+<strong>並べて6の倍数を作る</strong><br>
+6の倍数であるためには、2の倍数かつ3の倍数であることが必要十分です。
+したがって、カードの和が3の倍数で、偶数カードを1枚以上含めば、その偶数を一の位に置けます。
+</div>
+
+</div>
+</div>
+
+<div class="mt-7 rounded-xl border border-emerald-200 bg-emerald-50 p-5">
+<h3 class="border-b-2 border-emerald-400 pb-2 text-lg font-bold text-emerald-900">思考プロセス</h3>
+<div class="mt-4 space-y-4 text-sm text-emerald-900">
+
+<div class="rounded-lg border border-emerald-200 bg-emerald-100/60 p-4">
+<strong>（1）</strong> 9枚から順序を考えずに3枚選ぶ。
+</div>
+
+<div class="rounded-lg border border-emerald-200 bg-emerald-100/60 p-4">
+<strong>（2）</strong> 全84組から、5枚の奇数カードだけで作る組を引く。
+</div>
+
+<div class="rounded-lg border border-emerald-200 bg-emerald-100/60 p-4">
+<strong>（3）</strong> 余り0、1、2のカードを3枚ずつに分類し、余りの組合せを列挙する。
+</div>
+
+<div class="rounded-lg border border-emerald-200 bg-emerald-100/60 p-4">
+<strong>（4）</strong> （3）の30組から、偶数を1枚も含まない組を除く。
+</div>
+
+</div>
+</div>
+
+<div class="mt-9">
+<h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">実際の答案</h3>
+<div class="mt-5 space-y-8">
+
+<div>
+<p class="font-bold text-blue-800">（1）</p>
+<p>
+9枚から3枚を選ぶ組合せの数は、
+</p>
+<div class="math-scroll">
+\[
+{}_9\mathrm{C}_3
+=
+\frac{9\cdot8\cdot7}{3\cdot2\cdot1}
+=
+84.
+\]
+</div>
+<div class="mt-2 inline-block rounded-xl border-2 border-blue-500 bg-blue-50 p-3 font-bold">
+\[
+84\text{通り}
+\]
+</div>
+</div>
+
+<div class="border-t border-slate-200 pt-6">
+<p class="font-bold text-blue-800">（2）</p>
+
+<p>
+奇数のカードは
+</p>
+<div class="math-scroll">
+\[
+1,\ 3,\ 5,\ 7,\ 9
+\]
+</div>
+<p>
+の5枚である。
+</p>
+
+<p>
+「少なくとも1枚偶数を含む組」の反対は、「3枚とも奇数である組」である。
+したがって、
+</p>
+
+<div class="math-scroll">
+\[
+\begin{aligned}
+{}_9\mathrm{C}_3-{}_5\mathrm{C}_3
+&=
+84-10\\
+&=
+74.
+\end{aligned}
+\]
+</div>
+
+<div class="mt-2 inline-block rounded-xl border-2 border-blue-500 bg-blue-50 p-3 font-bold">
+\[
+74\text{通り}
+\]
+</div>
+</div>
+
+<div class="border-t border-slate-200 pt-6">
+<p class="font-bold text-blue-800">（3）</p>
+
+<p>
+1から9までのカードを、3で割った余りによって分類すると、
+</p>
+
+<div class="mt-3 grid gap-3 sm:grid-cols-3">
+<div class="rounded-xl border border-blue-200 bg-blue-50 p-4 text-center">
+<div class="text-sm font-bold text-blue-800">余り0</div>
+<div class="mt-2 text-lg font-bold">3、6、9</div>
+</div>
+<div class="rounded-xl border border-emerald-200 bg-emerald-50 p-4 text-center">
+<div class="text-sm font-bold text-emerald-800">余り1</div>
+<div class="mt-2 text-lg font-bold">1、4、7</div>
+</div>
+<div class="rounded-xl border border-violet-200 bg-violet-50 p-4 text-center">
+<div class="text-sm font-bold text-violet-800">余り2</div>
+<div class="mt-2 text-lg font-bold">2、5、8</div>
+</div>
+</div>
+
+<p class="mt-4">
+3枚の余りの和が3の倍数になるのは、次の4通りである。
+</p>
+
+<div class="mt-3 overflow-x-auto">
+<table class="w-full min-w-[620px] border-collapse text-center text-sm">
+<thead>
+<tr class="bg-slate-100">
+<th class="border border-slate-300 px-3 py-3">余りの選び方</th>
+<th class="border border-slate-300 px-3 py-3">組の数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="border border-slate-300 px-3 py-3">0、0、0</td>
+<td class="border border-slate-300 px-3 py-3">${}_3\mathrm{C}_3=1$</td>
+</tr>
+<tr>
+<td class="border border-slate-300 px-3 py-3">1、1、1</td>
+<td class="border border-slate-300 px-3 py-3">${}_3\mathrm{C}_3=1$</td>
+</tr>
+<tr>
+<td class="border border-slate-300 px-3 py-3">2、2、2</td>
+<td class="border border-slate-300 px-3 py-3">${}_3\mathrm{C}_3=1$</td>
+</tr>
+<tr>
+<td class="border border-slate-300 px-3 py-3">0、1、2</td>
+<td class="border border-slate-300 px-3 py-3">$3\cdot3\cdot3=27$</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<p class="mt-4">
+よって、
+</p>
+
+<div class="math-scroll">
+\[
+1+1+1+27=30.
+\]
+</div>
+
+<div class="mt-2 inline-block rounded-xl border-2 border-blue-500 bg-blue-50 p-3 font-bold">
+\[
+30\text{通り}
+\]
+</div>
+</div>
+
+<div class="border-t border-slate-200 pt-6">
+<p class="font-bold text-blue-800">（4）</p>
+
+<p>
+3桁の整数が6の倍数となるための条件は、
+</p>
+
+<div class="math-scroll">
+\[
+\text{2の倍数であり、かつ3の倍数であること}
+\]
+</div>
+
+<p>
+である。
+</p>
+
+<p>
+選んだ3枚の数の和が3の倍数なら、その3枚をどの順に並べても、できる整数は3の倍数である。
+また、組の中に偶数カードが1枚以上あれば、その偶数を一の位に置くことで2の倍数にできる。
+</p>
+
+<p>
+したがって、求める組は、
+</p>
+
+<div class="math-scroll">
+\[
+\text{和が3の倍数で、偶数カードを1枚以上含む組}
+\]
+</div>
+
+<p>
+である。
+</p>
+
+<p>
+（3）より、和が3の倍数となる組は30通りある。
+ここから、偶数カードを1枚も含まない、すなわち3枚とも奇数である組を除く。
+</p>
+
+<p>
+奇数カードを3で割った余りによって分類すると、
+</p>
+
+<div class="mt-3 grid gap-3 sm:grid-cols-3">
+<div class="rounded-xl border border-blue-200 bg-blue-50 p-4 text-center">
+<div class="text-sm font-bold text-blue-800">余り0</div>
+<div class="mt-2 text-lg font-bold">3、9</div>
+</div>
+<div class="rounded-xl border border-emerald-200 bg-emerald-50 p-4 text-center">
+<div class="text-sm font-bold text-emerald-800">余り1</div>
+<div class="mt-2 text-lg font-bold">1、7</div>
+</div>
+<div class="rounded-xl border border-violet-200 bg-violet-50 p-4 text-center">
+<div class="text-sm font-bold text-violet-800">余り2</div>
+<div class="mt-2 text-lg font-bold">5</div>
+</div>
+</div>
+
+<p class="mt-4">
+3枚とも奇数で、和が3の倍数となるには、各グループから1枚ずつ選ぶ必要がある。
+その組の数は、
+</p>
+
+<div class="math-scroll">
+\[
+2\cdot2\cdot1=4.
+\]
+</div>
+
+<p>
+したがって、求める組の数は、
+</p>
+
+<div class="math-scroll">
+\[
+30-4=26.
+\]
+</div>
+
+<div class="mt-2 inline-block rounded-xl border-2 border-blue-500 bg-blue-50 p-3 font-bold">
+\[
+26\text{通り}
+\]
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="mt-9">
+<h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">図解① 3枚を選んで条件を確認する</h3>
+
+<p class="mt-4 text-sm leading-relaxed text-slate-700">
+カードを3枚選ぶと、和を3で割った余り、偶数カードの有無、6の倍数を作れるかが表示されます。
+</p>
+
+<div class="mt-4 rounded-xl border border-slate-200 bg-slate-50 p-4 sm:p-6">
+<div class="grid grid-cols-3 gap-2 sm:grid-cols-9">
+<button type="button" data-card71="1" class="card-button rounded-lg border-2 border-slate-300 bg-white py-3 text-xl font-bold">1</button>
+<button type="button" data-card71="2" class="card-button rounded-lg border-2 border-slate-300 bg-white py-3 text-xl font-bold">2</button>
+<button type="button" data-card71="3" class="card-button rounded-lg border-2 border-slate-300 bg-white py-3 text-xl font-bold">3</button>
+<button type="button" data-card71="4" class="card-button rounded-lg border-2 border-slate-300 bg-white py-3 text-xl font-bold">4</button>
+<button type="button" data-card71="5" class="card-button rounded-lg border-2 border-slate-300 bg-white py-3 text-xl font-bold">5</button>
+<button type="button" data-card71="6" class="card-button rounded-lg border-2 border-slate-300 bg-white py-3 text-xl font-bold">6</button>
+<button type="button" data-card71="7" class="card-button rounded-lg border-2 border-slate-300 bg-white py-3 text-xl font-bold">7</button>
+<button type="button" data-card71="8" class="card-button rounded-lg border-2 border-slate-300 bg-white py-3 text-xl font-bold">8</button>
+<button type="button" data-card71="9" class="card-button rounded-lg border-2 border-slate-300 bg-white py-3 text-xl font-bold">9</button>
+</div>
+
+<p class="mt-3 text-center text-sm text-slate-500">3枚まで選択できます。もう一度押すと解除されます。</p>
+
+<div class="mt-5 grid gap-3 sm:grid-cols-4">
+<div class="rounded-lg border border-blue-200 bg-blue-50 p-4 text-center">
+<div class="text-xs font-bold text-blue-700">選んだカード</div>
+<div id="selected-71" class="mt-1 text-lg font-bold text-blue-900">1、2、3</div>
+</div>
+<div class="rounded-lg border border-violet-200 bg-violet-50 p-4 text-center">
+<div class="text-xs font-bold text-violet-700">和</div>
+<div id="sum-71" class="mt-1 text-2xl font-bold text-violet-900">6</div>
+</div>
+<div class="rounded-lg border border-amber-200 bg-amber-50 p-4 text-center">
+<div class="text-xs font-bold text-amber-700">偶数カード</div>
+<div id="even-71" class="mt-1 text-lg font-bold text-amber-900">あり</div>
+</div>
+<div id="result-card-71" class="rounded-lg border border-emerald-200 bg-emerald-50 p-4 text-center">
+<div class="text-xs font-bold text-emerald-700">6の倍数を作れるか</div>
+<div id="result-71" class="mt-1 text-lg font-bold text-emerald-900">作れる</div>
+</div>
+</div>
+
+<div id="example-71" class="mt-4 rounded-lg border border-emerald-200 bg-emerald-50 p-4 text-center text-sm font-bold text-emerald-900">
+例：偶数の2を一の位に置けば、312は6の倍数です。
+</div>
+
+<div class="mt-4 flex flex-wrap justify-center gap-2">
+<button type="button" data-set71="1,3,5" class="rounded-lg border bg-white px-3 py-2 text-sm font-bold">1・3・5</button>
+<button type="button" data-set71="1,2,3" class="rounded-lg border bg-white px-3 py-2 text-sm font-bold">1・2・3</button>
+<button type="button" data-set71="2,4,6" class="rounded-lg border bg-white px-3 py-2 text-sm font-bold">2・4・6</button>
+<button type="button" data-set71="3,5,7" class="rounded-lg border bg-white px-3 py-2 text-sm font-bold">3・5・7</button>
+</div>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded",()=>{
+  let selected=[1,2,3];
+  const cardButtons=[...document.querySelectorAll("[data-card71]")];
+
+  function findExample(cards){
+    const even=cards.filter(x=>x%2===0);
+    if(even.length===0)return null;
+    const last=even[0];
+    const rest=cards.filter(x=>x!==last);
+    return Number(`${rest[0]}${rest[1]}${last}`);
+  }
+
+  function render(){
+    cardButtons.forEach(button=>{
+      const n=Number(button.dataset.card71);
+      const on=selected.includes(n);
+      button.classList.toggle("selected",on);
+      button.classList.toggle("border-blue-500",on);
+      button.classList.toggle("bg-blue-50",on);
+      button.classList.toggle("border-slate-300",!on);
+      button.classList.toggle("bg-white",!on);
+    });
+
+    document.getElementById("selected-71").textContent=
+      selected.length ? selected.join("、") : "未選択";
+
+    if(selected.length!==3){
+      document.getElementById("sum-71").textContent="―";
+      document.getElementById("even-71").textContent="―";
+      document.getElementById("result-71").textContent="3枚選んでください";
+      document.getElementById("example-71").textContent="3枚を選ぶと判定します。";
+      return;
+    }
+
+    const sum=selected.reduce((a,b)=>a+b,0);
+    const hasEven=selected.some(x=>x%2===0);
+    const canMake=sum%3===0 && hasEven;
+    const example=findExample(selected);
+
+    document.getElementById("sum-71").textContent=sum;
+    document.getElementById("even-71").textContent=hasEven?"あり":"なし";
+    document.getElementById("result-71").textContent=canMake?"作れる":"作れない";
+
+    const resultCard=document.getElementById("result-card-71");
+    const result=document.getElementById("result-71");
+    const exampleBox=document.getElementById("example-71");
+
+    if(canMake){
+      resultCard.className="rounded-lg border border-emerald-200 bg-emerald-50 p-4 text-center";
+      result.className="mt-1 text-lg font-bold text-emerald-900";
+      exampleBox.className="mt-4 rounded-lg border border-emerald-200 bg-emerald-50 p-4 text-center text-sm font-bold text-emerald-900";
+      exampleBox.textContent=`例：偶数を一の位に置けば、${example}は6の倍数です。`;
+    }else{
+      resultCard.className="rounded-lg border border-rose-200 bg-rose-50 p-4 text-center";
+      result.className="mt-1 text-lg font-bold text-rose-900";
+      exampleBox.className="mt-4 rounded-lg border border-rose-200 bg-rose-50 p-4 text-center text-sm font-bold text-rose-900";
+      if(sum%3!==0){
+        exampleBox.textContent="カードの和が3の倍数ではないため、並べ方を変えても3の倍数になりません。";
+      }else{
+        exampleBox.textContent="和は3の倍数ですが、偶数カードがないため2の倍数にできません。";
+      }
+    }
+  }
+
+  cardButtons.forEach(button=>{
+    button.addEventListener("click",()=>{
+      const n=Number(button.dataset.card71);
+      if(selected.includes(n)){
+        selected=selected.filter(x=>x!==n);
+      }else if(selected.length<3){
+        selected=[...selected,n].sort((a,b)=>a-b);
+      }
+      render();
+    });
+  });
+
+  document.querySelectorAll("[data-set71]").forEach(button=>{
+    button.addEventListener("click",()=>{
+      selected=button.dataset.set71.split(",").map(Number);
+      render();
+    });
+  });
+
+  render();
+});
+</script>
+</div>
+
+<div class="mt-9">
+<h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">図解② 余りによる分類</h3>
+
+<div class="mt-4 rounded-xl border border-slate-200 bg-slate-50 p-5">
+<div class="grid gap-4 sm:grid-cols-3">
+<div class="rounded-xl border-2 border-blue-300 bg-blue-50 p-5 text-center">
+<div class="text-sm font-bold text-blue-800">3で割った余りが0</div>
+<div class="mt-3 flex justify-center gap-2">
+<span class="rounded-lg bg-white px-4 py-3 text-xl font-bold shadow-sm">3</span>
+<span class="rounded-lg bg-white px-4 py-3 text-xl font-bold shadow-sm">6</span>
+<span class="rounded-lg bg-white px-4 py-3 text-xl font-bold shadow-sm">9</span>
+</div>
+</div>
+<div class="rounded-xl border-2 border-emerald-300 bg-emerald-50 p-5 text-center">
+<div class="text-sm font-bold text-emerald-800">3で割った余りが1</div>
+<div class="mt-3 flex justify-center gap-2">
+<span class="rounded-lg bg-white px-4 py-3 text-xl font-bold shadow-sm">1</span>
+<span class="rounded-lg bg-white px-4 py-3 text-xl font-bold shadow-sm">4</span>
+<span class="rounded-lg bg-white px-4 py-3 text-xl font-bold shadow-sm">7</span>
+</div>
+</div>
+<div class="rounded-xl border-2 border-violet-300 bg-violet-50 p-5 text-center">
+<div class="text-sm font-bold text-violet-800">3で割った余りが2</div>
+<div class="mt-3 flex justify-center gap-2">
+<span class="rounded-lg bg-white px-4 py-3 text-xl font-bold shadow-sm">2</span>
+<span class="rounded-lg bg-white px-4 py-3 text-xl font-bold shadow-sm">5</span>
+<span class="rounded-lg bg-white px-4 py-3 text-xl font-bold shadow-sm">8</span>
+</div>
+</div>
+</div>
+
+<div class="mt-5 rounded-lg border border-amber-200 bg-amber-50 p-4 text-center text-sm font-bold text-amber-900">
+和が3の倍数になる余りの組は、
+\[
+(0,0,0),\quad(1,1,1),\quad(2,2,2),\quad(0,1,2)
+\]
+の4種類です。
+</div>
+</div>
+</div>
+
+<div class="mt-9">
+<h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">受験生のつまずきポイント</h3>
+<div class="mt-4 space-y-4 text-sm">
+
+<div class="rounded-lg border border-red-200 bg-red-50 p-4">
+<strong>（1）で ${}_9\mathrm{P}_3$ を使う</strong><br>
+同時に取り出して組を作るため、順序は区別しません。組合せ ${}_9\mathrm{C}_3$ を使います。
+</div>
+
+<div class="rounded-lg border border-red-200 bg-red-50 p-4">
+<strong>（2）を、偶数が1枚・2枚・3枚の場合に細かく分ける</strong><br>
+分けても解けますが、全体から「3枚とも奇数」を引く方が短く、重複も起こりません。
+</div>
+
+<div class="rounded-lg border border-red-200 bg-red-50 p-4">
+<strong>（3）で、和そのものを一つずつ計算する</strong><br>
+3の倍数かどうかは、3で割った余りだけで決まります。余り0、1、2の3グループに分類します。
+</div>
+
+<div class="rounded-lg border border-red-200 bg-red-50 p-4">
+<strong>（4）で、6の倍数となる3桁の整数の個数を数える</strong><br>
+求めるのは整数の個数ではなく、6の倍数を作れる「組」の個数です。同じ組から複数の6の倍数ができても1通りと数えます。
+</div>
+
+</div>
+</div>
+</section>
+
+<section class="mt-6 rounded-2xl bg-blue-900 p-6 text-white shadow-sm sm:p-8">
+<h2 class="border-b-2 border-blue-400 pb-2 text-lg font-bold">アクティブリコール（本質確認）</h2>
+<div class="mt-5 space-y-3">
+
+<details class="rounded-lg bg-white text-slate-800">
+<summary class="cursor-pointer p-4 font-semibold">Q1. なぜ（1）では順列ではなく組合せを使いますか？</summary>
+<div class="border-t bg-blue-50 p-4 text-sm">
+カードを同時に取り出して「組」を作り、取り出す順序を区別しないからです。
+</div>
+</details>
+
+<details class="rounded-lg bg-white text-slate-800">
+<summary class="cursor-pointer p-4 font-semibold">Q2. 「少なくとも1枚偶数」を、なぜ余事象で数えますか？</summary>
+<div class="border-t bg-blue-50 p-4 text-sm">
+反対の「3枚とも奇数」が1つの条件で数えられるからです。偶数が1枚、2枚、3枚の場合を別々に数える必要がありません。
+</div>
+</details>
+
+<details class="rounded-lg bg-white text-slate-800">
+<summary class="cursor-pointer p-4 font-semibold">Q3. 和が3の倍数となる余りの組は、なぜ4種類だけですか？</summary>
+<div class="border-t bg-blue-50 p-4 text-sm">
+3枚の余りは0、1、2のいずれかであり、その和が3の倍数になる組を順序を考えずに整理すると、
+\[
+(0,0,0),(1,1,1),(2,2,2),(0,1,2)
+\]
+だけだからです。
+</div>
+</details>
+
+<details class="rounded-lg bg-white text-slate-800">
+<summary class="cursor-pointer p-4 font-semibold">Q4. 6の倍数を作れる組の条件は何ですか？</summary>
+<div class="border-t bg-blue-50 p-4 text-sm">
+3枚の和が3の倍数であり、偶数カードを1枚以上含むことです。偶数を一の位に置けば、2と3の両方で割り切れる数を作れます。
+</div>
+</details>
+
+<details class="rounded-lg bg-white text-slate-800">
+<summary class="cursor-pointer p-4 font-semibold">Q5. （4）で30から引く4組は、どのように数えますか？</summary>
+<div class="border-t bg-blue-50 p-4 text-sm">
+奇数カードの余り0、1、2のグループは、それぞれ
+\[
+\{3,9\},\quad\{1,7\},\quad\{5\}
+\]
+です。各グループから1枚ずつ選ぶので、
+\[
+2\cdot2\cdot1=4
+\]
+組です。
+</div>
+</details>
+
+</div>
+</section>
+
+<nav class="mt-7 grid gap-3 sm:grid-cols-2">
+<a href="no70.html" class="nav-button rounded-xl border border-slate-300 bg-white px-5 py-4 text-center font-bold">← No.70へ</a>
+<a href="index.html" class="nav-button rounded-xl bg-blue-700 px-5 py-4 text-center font-bold text-white">問題一覧へ →</a>
+</nav>
+</main>
+
+<footer class="py-10 text-center text-sm text-slate-500">医進・サイエンスコース　夏期数学課題 解説サイト</footer>
+</div>
+</body>
+</html>

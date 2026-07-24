@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>夏期課題 No.64 空間ベクトル - 医進・サイエンスコース</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+MathJax={chtml:{matchFontHeight:false},tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],macros:{Vec:["\\overrightarrow{\\mathrm{#1}}",1]}}};
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<style>
+body{font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic","Meiryo",sans-serif}.nav-button{transition:transform .16s ease,box-shadow .16s ease}.nav-button:hover{transform:translateY(-2px);box-shadow:0 8px 18px rgba(15,23,42,.12)}.math-scroll{overflow-x:auto;overflow-y:hidden;padding-bottom:.5rem;margin-bottom:.5rem}button:focus-visible,summary:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid rgba(37,99,235,.35);outline-offset:3px}
+</style>
+</head>
+<body class="bg-slate-100 text-slate-800">
+<div class="mx-auto max-w-4xl px-4 py-6 sm:px-6 lg:py-10">
+<a href="index.html" class="inline-flex items-center gap-2 text-sm font-bold text-blue-700 hover:text-blue-900">← 問題一覧へ戻る</a>
+<header class="mt-4 overflow-hidden rounded-3xl bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-800 text-white shadow-xl">
+<div class="p-7 sm:p-10">
+<span class="inline-flex items-center rounded-full bg-white/15 px-4 py-1.5 text-sm font-semibold tracking-wide text-blue-100">医進・サイエンスコース</span>
+<div class="mt-4 flex flex-wrap items-center gap-3"><span class="rounded-lg bg-white/20 px-3 py-1 text-sm font-bold">No.64</span><span class="rounded-full bg-amber-100 px-3 py-1 text-xs font-bold text-amber-800">標準</span></div>
+<h1 class="mt-4 text-3xl font-bold leading-tight sm:text-4xl">空間ベクトル</h1><div class="mt-3 text-lg text-blue-100">目標解答時間：25分</div>
+</div></header>
+<main>
+<section class="mt-7 rounded-2xl border border-blue-100 bg-white p-6 shadow-sm sm:p-8">
+<h2 class="flex items-center gap-2 text-xl font-bold text-blue-900"><span class="grid h-8 w-8 place-items-center rounded-full bg-blue-700 text-base text-white">1</span>問題</h2>
+<div class="mt-4 rounded-lg border border-slate-200 bg-slate-50 p-4 text-slate-700 leading-relaxed">
+<p>Oを原点とする座標空間に3点</p>
+<div class="math-scroll">\[\mathrm{A}(2,0,0),\qquad \mathrm{B}(0,1,0),\qquad \mathrm{C}(0,0,2)\]</div>
+<p>がある。A、B、Cを通る平面を $\pi$、三角形ABCの重心をGとする。また、線分OGを $1:2$ に内分する点をDとする。</p>
+<div class="mt-5 space-y-5">
+<div class="grid grid-cols-[auto_1fr] gap-x-3"><div class="font-bold text-slate-900">（1）</div><div>G、Dの座標をそれぞれ求めよ。</div></div>
+<div class="grid grid-cols-[auto_1fr] gap-x-3"><div class="font-bold text-slate-900">（2）</div><div>Dから平面 $\pi$ に下ろした垂線の足をHとする。\[\Vec{AH}=\alpha\Vec{AB}+\beta\Vec{AC}\]を満たす実数 $\alpha,\beta$ の値を求めよ。また、Hの座標を求めよ。</div></div>
+<div class="grid grid-cols-[auto_1fr] gap-x-3"><div class="font-bold text-slate-900">（3）</div><div>Dを中心として平面 $\pi$ と接する球面を $S$ とする。点Pが $S$ 上を動くとき、内積\[\Vec{OP}\cdot\Vec{AP}\]の最大値を求めよ。</div></div>
+</div></div>
+<div class="mt-4 rounded-lg border border-blue-200 bg-blue-50 p-4">
+<h3 class="mb-2 font-bold text-blue-900">【条件の整理】</h3>
+<ul class="list-disc space-y-2 pl-5 text-sm text-slate-700">
+<li>重心Gの座標は、3頂点の各座標の平均です。</li>
+<li>$\mathrm{OD}:\mathrm{DG}=1:2$ より、$\Vec{OD}=\dfrac13\Vec{OG}$ です。</li>
+<li>Hは平面ABC上にあるので、$\Vec{AH}=\alpha\Vec{AB}+\beta\Vec{AC}$ と表せます。</li>
+<li>DHは平面 $\pi$ に垂直なので、$\Vec{DH}\cdot\Vec{AB}=0$、$\Vec{DH}\cdot\Vec{AC}=0$ です。</li>
+<li>球面Sの半径は、中心Dと平面 $\pi$ の距離DHです。</li>
+</ul></div>
+</section>
+<section class="mt-6 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+<h2 class="flex items-center gap-2 text-xl font-bold text-slate-900"><span class="grid h-8 w-8 place-items-center rounded-full bg-slate-700 text-base text-white">2</span>解説</h2>
+<p class="mt-4 text-sm leading-8 text-slate-600">重心・内分点、平面への垂線条件、内積の図形的変形を順に利用します。</p>
+<div class="mt-8 rounded-xl border border-amber-200 bg-amber-50 p-5"><h3 class="border-b-2 border-amber-400 pb-2 text-lg font-bold text-amber-900">解法選択のトリガー</h3>
+<div class="mt-4 space-y-4">
+<div class="rounded-lg border border-amber-200 bg-amber-100/60 p-4"><p class="text-sm font-bold text-amber-900">平面上の点</p><p class="mt-1 text-sm text-amber-800">Aを基準に、平面上の点を $\Vec{AB},\Vec{AC}$ の1次結合で表します。</p></div>
+<div class="rounded-lg border border-amber-200 bg-amber-100/60 p-4"><p class="text-sm font-bold text-amber-900">平面への垂線</p><p class="mt-1 text-sm text-amber-800">平面内の独立な2方向の両方と内積が0になります。</p></div>
+<div class="rounded-lg border border-amber-200 bg-amber-100/60 p-4"><p class="text-sm font-bold text-amber-900">動点Pに関する量が2か所に現れる</p><p class="mt-1 text-sm text-amber-800">$|\Vec{OP}|^2-\Vec{OP}\cdot\Vec{OA}$ のままでは、動点Pが異なる2つの形で現れ、何に着目して最大化すればよいかが見えません。そこで $\Vec{OP}$ について平方完成し、$\left|\Vec{OP}-\dfrac12\Vec{OA}\right|^2-\dfrac14|\Vec{OA}|^2$ とします。すると、Pを含む部分が1つの絶対値にまとまり、その部分だけに着目すればよくなります。</p></div>
+</div></div>
+<div class="mt-8 rounded-xl border border-emerald-200 bg-emerald-50 p-5"><h3 class="border-b-2 border-emerald-400 pb-2 text-lg font-bold text-emerald-900">思考プロセス</h3>
+<div class="mt-4 space-y-4">
+<div class="rounded-lg border border-emerald-200 bg-emerald-100/60 p-4 text-sm text-emerald-900"><strong>（2）Hが平面上にある条件と垂直条件を分ける</strong><br>平面上の条件は $\alpha,\beta$ による表示、垂直条件は2本の内積が0になることです。</div>
+<div class="rounded-lg border border-emerald-200 bg-emerald-100/60 p-4 text-sm text-emerald-900"><strong>（3）内積を展開してから、ベクトルで平方完成する</strong><br>まず $\Vec{AP}=\Vec{OP}-\Vec{OA}$ を代入し、$\Vec{OP}$ について平方完成します。その結果として、基準となる定点が自然に現れます。</div>
+<div class="rounded-lg border border-emerald-200 bg-emerald-100/60 p-4 text-sm text-emerald-900"><strong>（3）Pによって変化する部分と定数部分を分ける</strong><br>平方完成後の $-\dfrac14|\Vec{OA}|^2$ はPによらない定数です。したがって、Pを含む $\left|\Vec{OP}-\dfrac12\Vec{OA}\right|$ だけを最大にすればよいと分かります。その後、この絶対値を固定点からPまでの距離として図形的に解釈します。</div>
+</div></div>
+<div class="mt-10"><h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">実際の答案</h3>
+<div class="mt-4 space-y-8 text-slate-700">
+<div><p class="border-b border-slate-200 pb-1 font-bold text-blue-800">（1）</p>
+<p class="mt-2">重心Gの座標は、3頂点の各座標の平均なので、</p>
+<div class="math-scroll">\[\mathrm{G}\left(\frac{2+0+0}{3},\frac{0+1+0}{3},\frac{0+0+2}{3}\right)=\mathrm{G}\left(\frac23,\frac13,\frac23\right).\]</div>
+<p>$\mathrm{OD}:\mathrm{DG}=1:2$ より、</p>
+<div class="math-scroll">\[\Vec{OD}=\frac13\Vec{OG}.\]</div>
+<div class="mt-2 rounded-xl border-2 border-blue-500 bg-blue-50 p-3 font-bold text-slate-900">\[\mathrm{G}\left(\frac23,\frac13,\frac23\right),\qquad \mathrm{D}\left(\frac29,\frac19,\frac29\right)\]</div>
+</div>
+<div class="border-t border-slate-200 pt-6"><p class="border-b border-slate-200 pb-1 font-bold text-blue-800">（2）Hの表示</p>
+<p class="mt-2">Hは平面ABC上にあるので、</p><div class="math-scroll">\[\Vec{AH}=\alpha\Vec{AB}+\beta\Vec{AC}.\]</div>
+<p>ここで、</p><div class="math-scroll">\[\Vec{AB}=\begin{pmatrix}-2\\1\\0\end{pmatrix},\qquad \Vec{AC}=\begin{pmatrix}-2\\0\\2\end{pmatrix},\qquad \Vec{AD}=\begin{pmatrix}-\dfrac{16}{9}\\[1mm]\dfrac19\\[1mm]\dfrac29\end{pmatrix}.\]</div>
+<p>また、$\Vec{DH}=\Vec{AH}-\Vec{AD}$ である。</p>
+</div>
+<div class="border-t border-slate-200 pt-6"><p class="border-b border-slate-200 pb-1 font-bold text-blue-800">（2）垂直条件</p>
+<p class="mt-2">DHは平面 $\pi$ に垂直なので、</p><div class="math-scroll">\[\Vec{DH}\cdot\Vec{AB}=0,\qquad \Vec{DH}\cdot\Vec{AC}=0.\]</div>
+<p>必要な内積は、</p><div class="math-scroll">\[\Vec{AB}\cdot\Vec{AB}=5,\quad \Vec{AC}\cdot\Vec{AB}=4,\quad \Vec{AD}\cdot\Vec{AB}=\frac{11}{3},\]\[\Vec{AB}\cdot\Vec{AC}=4,\quad \Vec{AC}\cdot\Vec{AC}=8,\quad \Vec{AD}\cdot\Vec{AC}=4.\]</div>
+<p>したがって、</p><div class="math-scroll">\[5\alpha+4\beta-\frac{11}{3}=0,\qquad 4\alpha+8\beta-4=0.\]</div>
+<p>すなわち、</p><div class="math-scroll">\[15\alpha+12\beta=11,\qquad \alpha+2\beta=1.\]</div>
+<p>これを解くと、</p><div class="math-scroll">\[\alpha=\frac59,\qquad \beta=\frac29.\]</div>
+</div>
+<div class="border-t border-slate-200 pt-6"><p class="border-b border-slate-200 pb-1 font-bold text-blue-800">（2）Hの座標</p>
+<div class="math-scroll">\[\begin{aligned}\Vec{OH}&=\Vec{OA}+\frac59\Vec{AB}+\frac29\Vec{AC}\\&=\begin{pmatrix}2\\0\\0\end{pmatrix}+\frac59\begin{pmatrix}-2\\1\\0\end{pmatrix}+\frac29\begin{pmatrix}-2\\0\\2\end{pmatrix}\\&=\begin{pmatrix}\dfrac49\\[1mm]\dfrac59\\[1mm]\dfrac49\end{pmatrix}.\end{aligned}\]</div>
+<div class="mt-2 rounded-xl border-2 border-blue-500 bg-blue-50 p-3 font-bold text-slate-900">\[\alpha=\frac59,\qquad \beta=\frac29,\qquad \mathrm{H}\left(\frac49,\frac59,\frac49\right)\]</div>
+</div>
+<div class="border-t border-slate-200 pt-6"><p class="border-b border-slate-200 pb-1 font-bold text-blue-800">（3）球面Sの半径</p>
+<p class="mt-2">球面Sは平面 $\pi$ とHで接するので、半径はDHである。</p><div class="math-scroll">\[\Vec{DH}=\begin{pmatrix}\dfrac29\\[1mm]\dfrac49\\[1mm]\dfrac29\end{pmatrix}\]</div>
+<div class="math-scroll">\[\mathrm{DH}=\sqrt{\left(\frac29\right)^2+\left(\frac49\right)^2+\left(\frac29\right)^2}=\frac{2\sqrt6}{9}.\]</div>
+</div>
+<div class="border-t border-slate-200 pt-6"><p class="border-b border-slate-200 pb-1 font-bold text-blue-800">（3）内積を展開し、$\Vec{OP}$ について平方完成する</p>
+<p class="mt-2">$\Vec{AP}=\Vec{OP}-\Vec{OA}$ であるから、</p>
+<div class="math-scroll">\[\begin{aligned}\Vec{OP}\cdot\Vec{AP}&=\Vec{OP}\cdot(\Vec{OP}-\Vec{OA})\\&=|\Vec{OP}|^2-\Vec{OP}\cdot\Vec{OA}.\end{aligned}\]</div>
+<p>ここで、$\Vec{OP}$ について平方完成すると、</p>
+<div class="math-scroll">\[\begin{aligned}|\Vec{OP}|^2-\Vec{OP}\cdot\Vec{OA}&=\left|\Vec{OP}-\frac12\Vec{OA}\right|^2-\frac14|\Vec{OA}|^2.\end{aligned}\]</div>
+<p>実際、</p>
+<div class="math-scroll">\[\left|\Vec{OP}-\frac12\Vec{OA}\right|^2=|\Vec{OP}|^2-\Vec{OP}\cdot\Vec{OA}+\frac14|\Vec{OA}|^2\]</div>
+<p>である。したがって、</p>
+<div class="math-scroll">\[\Vec{OP}\cdot\Vec{AP}=\left|\Vec{OP}-\frac12\Vec{OA}\right|^2-\frac14|\Vec{OA}|^2.\]</div>
+<p>A$(2,0,0)$ より $|\Vec{OA}|=2$ なので、$-\dfrac14|\Vec{OA}|^2=-1$ はPによらない定数である。よって、内積を最大にするには、</p>
+<div class="math-scroll">\[\left|\Vec{OP}-\frac12\Vec{OA}\right|\]</div>
+<p>を最大にすればよい。</p>
+<div class="mt-3 rounded-lg border border-amber-200 bg-amber-50 p-4 text-sm text-amber-900"><strong>この変形の一般性：</strong><br>定ベクトル $\vec a$ に対して、$|\vec x|^2-\vec x\cdot\vec a=\left|\vec x-\dfrac12\vec a\right|^2-\dfrac14|\vec a|^2$ と平方完成できます。中点を先に思いつく必要はなく、平方完成の結果として基準点が現れます。</div>
+</div>
+<div class="border-t border-slate-200 pt-6"><p class="border-b border-slate-200 pb-1 font-bold text-blue-800">（3）平方完成で現れた距離を図形的に解釈する</p>
+<p class="mt-2">$\Vec{OM}=\dfrac12\Vec{OA}$ を満たす点をMとする。このMは線分OAの中点であり、</p>
+<div class="math-scroll">\[\Vec{OP}-\frac12\Vec{OA}=\Vec{OP}-\Vec{OM}=\Vec{MP}.\]</div>
+<p>よって、</p><div class="math-scroll">\[\Vec{OP}\cdot\Vec{AP}=MP^2-1.\]</div>
+<p>A$(2,0,0)$ なので、$\mathrm{M}(1,0,0)$ である。DとMの距離は、</p>
+<div class="math-scroll">\[\begin{aligned}MD&=\sqrt{\left(1-\frac29\right)^2+\left(0-\frac19\right)^2+\left(0-\frac29\right)^2}\\&=\frac{\sqrt{54}}9=\frac{\sqrt6}{3}.\end{aligned}\]</div>
+<p>Pは中心D、半径 $\dfrac{2\sqrt6}{9}$ の球面上を動く。MPが最大となるのは、M、D、Pがこの順に一直線上に並ぶときである。</p>
+<div class="math-scroll">\[\max MP=MD+DP=\frac{\sqrt6}{3}+\frac{2\sqrt6}{9}=\frac{5\sqrt6}{9}.\]</div>
+<div class="math-scroll">\[\begin{aligned}\max\left(\Vec{OP}\cdot\Vec{AP}\right)&=\left(\frac{5\sqrt6}{9}\right)^2-1\\&=\frac{50}{27}-1=\frac{23}{27}.\end{aligned}\]</div>
+<div class="mt-2 rounded-xl border-2 border-blue-500 bg-blue-50 p-3 font-bold text-slate-900">\[\text{最大値 }\frac{23}{27}\]</div>
+</div>
+</div></div>
+<div class="mt-10"><h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">別解：（2）平面の方程式を用いる</h3>
+<div class="mt-4 rounded-xl border border-indigo-200 bg-indigo-50 p-5 text-sm leading-relaxed text-slate-700">
+<p>平面ABCは切片形より、</p><div class="math-scroll">\[\frac{x}{2}+y+\frac{z}{2}=1\]</div><p>すなわち、$x+2y+z=2$ である。法線ベクトルは $\begin{pmatrix}1\\2\\1\end{pmatrix}$ なので、垂線DH上の点は、</p>
+<div class="math-scroll">\[\begin{pmatrix}x\\y\\z\end{pmatrix}=\begin{pmatrix}\dfrac29\\[1mm]\dfrac19\\[1mm]\dfrac29\end{pmatrix}+t\begin{pmatrix}1\\2\\1\end{pmatrix}\]</div>
+<p>と表せる。平面の方程式へ代入すると、$\dfrac23+6t=2$ より $t=\dfrac29$。したがって、</p><div class="math-scroll">\[\mathrm{H}\left(\frac49,\frac59,\frac49\right).\]</div>
+</div></div>
+<div class="mt-10"><h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">図解・可視化① 平面ABCと垂線DH</h3>
+<p class="mt-4 text-sm leading-relaxed text-slate-700">スライダーで視点を回転できます。すべての点は実際の3次元座標から同じ射影式で描画しています。</p>
+<div class="mt-4 rounded-xl border border-slate-200 bg-slate-50 p-4 sm:p-6">
+<div class="mx-auto max-w-xl"><label for="angle-slider" class="mb-2 block text-sm font-medium text-slate-700">水平方向の回転角：<span id="angle-display" class="font-bold text-blue-700">35°</span></label><input id="angle-slider" type="range" min="-40" max="80" step="1" value="35" class="h-2 w-full cursor-pointer appearance-none rounded-lg bg-slate-200 accent-blue-600"></div>
+<div class="mt-5 overflow-x-auto"><svg id="space-svg" width="760" height="560" viewBox="0 0 760 560" class="mx-auto h-auto min-w-[700px] max-w-[760px] rounded-xl border border-slate-200 bg-white" aria-label="平面ABCと垂線DHの空間図">
+<g id="axes-group"></g><polygon id="plane-triangle" fill="rgba(37,99,235,.13)" stroke="#2563eb" stroke-width="3"></polygon><line id="line-og" stroke="#94a3b8" stroke-width="2.5" stroke-dasharray="7 5"></line><line id="line-dh" stroke="#e11d48" stroke-width="4"></line>
+<circle id="point-o" r="6" fill="#111827"></circle><circle id="point-a" r="7" fill="#2563eb"></circle><circle id="point-b" r="7" fill="#2563eb"></circle><circle id="point-c" r="7" fill="#2563eb"></circle><circle id="point-g" r="7" fill="#7c3aed"></circle><circle id="point-d" r="8" fill="#e11d48"></circle><circle id="point-h" r="8" fill="#f59e0b"></circle>
+<g font-size="15" font-weight="700"><text id="label-o" fill="#111827">O</text><text id="label-a" fill="#1d4ed8">A</text><text id="label-b" fill="#1d4ed8">B</text><text id="label-c" fill="#1d4ed8">C</text><text id="label-g" fill="#6d28d9">G</text><text id="label-d" fill="#be123c">D</text><text id="label-h" fill="#b45309">H</text></g></svg></div>
+<div class="mt-4 grid gap-3 sm:grid-cols-3"><div class="rounded-lg border border-blue-200 bg-blue-50 p-4 text-center"><div class="text-xs font-bold text-blue-700">平面π</div><div class="mt-1 text-sm font-bold text-blue-900">x + 2y + z = 2</div></div><div class="rounded-lg border border-rose-200 bg-rose-50 p-4 text-center"><div class="text-xs font-bold text-rose-700">法線方向</div><div class="mt-1 text-sm font-bold text-rose-900">(1, 2, 1)</div></div><div class="rounded-lg border border-amber-200 bg-amber-50 p-4 text-center"><div class="text-xs font-bold text-amber-700">垂線の足H</div><div class="mt-1 text-sm font-bold text-amber-900">(4/9, 5/9, 4/9)</div></div></div>
+</div>
+<script>
+document.addEventListener("DOMContentLoaded",()=>{const slider=document.getElementById("angle-slider");const points={O:[0,0,0],A:[2,0,0],B:[0,1,0],C:[0,0,2],G:[2/3,1/3,2/3],D:[2/9,1/9,2/9],H:[4/9,5/9,4/9]};const cx=355,cy=360,scale=120,elevation=28*Math.PI/180;function project(point,angleDeg){const angle=angleDeg*Math.PI/180;const[x,y,z]=point;const xr=x*Math.cos(angle)-y*Math.sin(angle);const yr=x*Math.sin(angle)+y*Math.cos(angle);return[cx+scale*xr,cy-scale*(z*Math.cos(elevation)-yr*Math.sin(elevation))]}function setPoint(name,angle,dx,dy){const[x,y]=project(points[name],angle),key=name.toLowerCase(),point=document.getElementById(`point-${key}`),label=document.getElementById(`label-${key}`);point.setAttribute("cx",x);point.setAttribute("cy",y);label.setAttribute("x",x+dx);label.setAttribute("y",y+dy)}function setLine(id,p1,p2,angle){const a=project(points[p1],angle),b=project(points[p2],angle),line=document.getElementById(id);line.setAttribute("x1",a[0]);line.setAttribute("y1",a[1]);line.setAttribute("x2",b[0]);line.setAttribute("y2",b[1])}function updateAxes(angle){const axes=[{end:[2.8,0,0],label:"x"},{end:[0,2.2,0],label:"y"},{end:[0,0,2.8],label:"z"}],origin=project([0,0,0],angle);let content="";axes.forEach(axis=>{const end=project(axis.end,angle);content+=`<line x1="${origin[0]}" y1="${origin[1]}" x2="${end[0]}" y2="${end[1]}" stroke="#cbd5e1" stroke-width="2"/><text x="${end[0]+7}" y="${end[1]-7}" fill="#64748b" font-size="14" font-weight="700">${axis.label}</text>`});document.getElementById("axes-group").innerHTML=content}function update(){const angle=Number(slider.value);document.getElementById("angle-display").textContent=`${angle}°`;updateAxes(angle);const a=project(points.A,angle),b=project(points.B,angle),c=project(points.C,angle);document.getElementById("plane-triangle").setAttribute("points",`${a[0]},${a[1]} ${b[0]},${b[1]} ${c[0]},${c[1]}`);setLine("line-og","O","G",angle);setLine("line-dh","D","H",angle);setPoint("O",angle,-16,20);setPoint("A",angle,10,-10);setPoint("B",angle,-18,-10);setPoint("C",angle,10,-10);setPoint("G",angle,10,-10);setPoint("D",angle,-20,20);setPoint("H",angle,10,-10)}slider.addEventListener("input",update);update()});
+</script>
+</div>
+<div class="mt-10"><h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">図解・可視化② 球面の断面円で最大点を確認する</h3>
+<p class="mt-4 text-sm leading-relaxed text-slate-700">M、球の中心D、球面上の点Pを含む平面で球を切ると、断面はDを中心とする円になります。したがって、空間内の問題をこの断面円上で考えることができます。スライダーでPを動かし、Mから最も遠くなる位置を確認してください。</p>
+<div class="mt-4 rounded-xl border border-slate-200 bg-slate-50 p-4 sm:p-6">
+<div class="mx-auto max-w-xl">
+<label for="section-angle-slider" class="mb-2 block text-sm font-medium text-slate-700">円周上の点Pの位置：<span id="section-angle-display" class="font-bold text-blue-700">0°</span></label>
+<input id="section-angle-slider" type="range" min="0" max="360" step="1" value="0" class="h-2 w-full cursor-pointer appearance-none rounded-lg bg-slate-200 accent-blue-600">
+<div class="mt-3 flex flex-wrap justify-center gap-2">
+<button type="button" id="show-max-point" class="rounded-lg border border-rose-200 bg-white px-3 py-2 text-sm font-bold text-rose-700 hover:bg-rose-50">最大となる位置</button>
+<button type="button" id="show-min-point" class="rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm font-bold text-slate-700 hover:bg-slate-50">反対側と比較</button>
+</div>
+</div>
+<div class="mt-5 overflow-x-auto"><svg id="sphere-section-svg" width="760" height="520" viewBox="0 0 760 520" class="mx-auto h-auto min-w-[700px] max-w-[760px] rounded-xl border border-slate-200 bg-white" aria-label="球面をMとDを含む平面で切った断面円">
+<defs>
+<radialGradient id="section-disk-fill" cx="38%" cy="32%" r="70%"><stop offset="0%" stop-color="#dbeafe" stop-opacity="0.95"></stop><stop offset="100%" stop-color="#bfdbfe" stop-opacity="0.45"></stop></radialGradient>
+<marker id="section-arrow-blue" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#2563eb"></path></marker>
+</defs>
+<text x="380" y="38" text-anchor="middle" fill="#1e3a8a" font-size="17" font-weight="700">球面SをM・D・Pを含む平面で切った断面</text>
+<circle cx="450" cy="270" r="120" fill="url(#section-disk-fill)" stroke="#2563eb" stroke-width="3"></circle>
+<line x1="330" y1="270" x2="570" y2="270" stroke="#93c5fd" stroke-width="2" stroke-dasharray="7 6"></line>
+<circle cx="330" cy="270" r="6" fill="#94a3b8"></circle>
+<text x="304" y="246" fill="#64748b" font-size="14" font-weight="700">反対側</text>
+<line id="section-line-md" x1="270" y1="270" x2="450" y2="270" stroke="#7c3aed" stroke-width="5"></line>
+<line id="section-line-dp" x1="450" y1="270" x2="570" y2="270" stroke="#e11d48" stroke-width="5"></line>
+<line id="section-line-mp" x1="270" y1="270" x2="570" y2="270" stroke="#2563eb" stroke-width="3" marker-end="url(#section-arrow-blue)"></line>
+<circle cx="270" cy="270" r="10" fill="#111827"></circle>
+<circle cx="450" cy="270" r="10" fill="#7c3aed"></circle>
+<circle id="section-point-p" cx="570" cy="270" r="11" fill="#e11d48"></circle>
+<text x="251" y="244" fill="#111827" font-size="17" font-weight="700">M</text>
+<text x="438" y="244" fill="#6d28d9" font-size="17" font-weight="700">D</text>
+<text id="section-label-p" x="584" y="257" fill="#be123c" font-size="17" font-weight="700">P</text>
+<text x="344" y="301" fill="#6d28d9" font-size="14" font-weight="700">MD = √6/3</text>
+<text id="section-radius-label" x="474" y="301" fill="#be123c" font-size="14" font-weight="700">DP = 2√6/9</text>
+<text x="450" y="425" text-anchor="middle" fill="#475569" font-size="14">円の中心はD、円の半径は球の半径DH</text>
+<g id="section-max-callout">
+<path d="M 590 235 Q 650 195 680 145" fill="none" stroke="#e11d48" stroke-width="2.5"></path>
+<text x="680" y="120" text-anchor="end" fill="#be123c" font-size="15" font-weight="700">Mから最も遠い円周上の点</text>
+<text x="680" y="142" text-anchor="end" fill="#be123c" font-size="14">M、D、Pがこの順に一直線</text>
+</g>
+</svg></div>
+<div class="mt-4 grid gap-3 sm:grid-cols-3">
+<div class="rounded-lg border border-violet-200 bg-violet-50 p-4 text-center"><div class="text-xs font-bold text-violet-700">中心までの距離</div><div class="mt-1 text-sm font-bold text-violet-900">MD = √6/3</div></div>
+<div class="rounded-lg border border-rose-200 bg-rose-50 p-4 text-center"><div class="text-xs font-bold text-rose-700">断面円の半径</div><div class="mt-1 text-sm font-bold text-rose-900">DP = DH = 2√6/9</div></div>
+<div class="rounded-lg border border-blue-200 bg-blue-50 p-4 text-center"><div class="text-xs font-bold text-blue-700">現在のMP</div><div id="section-mp-display" class="mt-1 text-sm font-bold text-blue-900">MP = 5√6/9</div></div>
+</div>
+<div id="section-maximum-message" class="mt-4 rounded-lg border border-emerald-200 bg-emerald-50 p-4 text-sm leading-relaxed text-emerald-900"><strong>最大となる位置：</strong>Mから見てDの反対側の円周上にPがあるとき、三角不等式の等号が成立し、$MP=MD+DP=\dfrac{5\sqrt6}{9}$ となります。</div>
+</div>
+<script>
+document.addEventListener("DOMContentLoaded",()=>{
+const slider=document.getElementById("section-angle-slider");
+const angleDisplay=document.getElementById("section-angle-display");
+const pointP=document.getElementById("section-point-p");
+const labelP=document.getElementById("section-label-p");
+const lineDP=document.getElementById("section-line-dp");
+const lineMP=document.getElementById("section-line-mp");
+const mpDisplay=document.getElementById("section-mp-display");
+const message=document.getElementById("section-maximum-message");
+const callout=document.getElementById("section-max-callout");
+const D={x:450,y:270};
+const M={x:270,y:270};
+const radius=120;
+function update(){
+const deg=Number(slider.value);
+const rad=deg*Math.PI/180;
+const px=D.x+radius*Math.cos(rad);
+const py=D.y-radius*Math.sin(rad);
+pointP.setAttribute("cx",px);
+pointP.setAttribute("cy",py);
+labelP.setAttribute("x",px+14);
+labelP.setAttribute("y",py-13);
+lineDP.setAttribute("x2",px);
+lineDP.setAttribute("y2",py);
+lineMP.setAttribute("x2",px);
+lineMP.setAttribute("y2",py);
+angleDisplay.textContent=`${deg}°`;
+const coefficient=Math.sqrt(13+12*Math.cos(rad));
+mpDisplay.textContent=`MP = ${coefficient.toFixed(3)} × √6/9`;
+const isMaximum=deg===0||deg===360;
+callout.style.display=isMaximum?"":"none";
+if(isMaximum){
+message.innerHTML='<strong>最大となる位置：</strong>Mから見てDの反対側の円周上にPがあるとき、三角不等式の等号が成立し、MP = MD + DP = 5√6/9 となります。';
+message.className='mt-4 rounded-lg border border-emerald-200 bg-emerald-50 p-4 text-sm leading-relaxed text-emerald-900';
+}else if(deg===180){
+message.innerHTML='<strong>反対側との比較：</strong>PがMに最も近い側にあるときは、MP = MD − DP = √6/9 です。最大点とは円の直径の反対側になります。';
+message.className='mt-4 rounded-lg border border-slate-300 bg-slate-100 p-4 text-sm leading-relaxed text-slate-800';
+}else{
+message.innerHTML='<strong>比較中：</strong>Pが円周上を動くとMPも変化します。Mから最も遠い位置は、DをはさんでMと反対側の円周上です。';
+message.className='mt-4 rounded-lg border border-blue-200 bg-blue-50 p-4 text-sm leading-relaxed text-blue-900';
+}
+}
+document.getElementById("show-max-point").addEventListener("click",()=>{slider.value=0;update()});
+document.getElementById("show-min-point").addEventListener("click",()=>{slider.value=180;update()});
+slider.addEventListener("input",update);
+update();
+});
+</script>
+</div>
+<div class="mt-10"><h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">受験生のつまずきポイント</h3><div class="mt-4 space-y-4">
+<div class="rounded-lg border border-red-200 bg-red-50 p-4"><p class="text-sm font-bold text-red-900">Dの内分比を逆にする</p><p class="mt-1 text-sm text-red-800">DはOからGへ3分の1進んだ点です。</p></div>
+<div class="rounded-lg border border-red-200 bg-red-50 p-4"><p class="text-sm font-bold text-red-900">DHとAHを混同する</p><p class="mt-1 text-sm text-red-800">垂直条件を満たすのはAHではなくDHです。$\Vec{DH}=\Vec{AH}-\Vec{AD}$ としてから内積をとります。</p></div>
+<div class="rounded-lg border border-red-200 bg-red-50 p-4"><p class="text-sm font-bold text-red-900">（3）を座標で直接最大化する</p><p class="mt-1 text-sm text-red-800">$\Vec{OP}\cdot\Vec{AP}=MP^2-1$ と変形するのが本質です。</p></div>
+</div></div>
+</section>
+<section class="mt-6 rounded-2xl bg-blue-900 p-6 text-white shadow-sm sm:p-8"><h2 class="border-b-2 border-blue-400 pb-2 text-lg font-bold">アクティブリコール（本質確認）</h2><p class="mt-4 text-sm text-blue-200">答えの座標ではなく、なぜその条件や変形が使えるのかを説明してから開いてください。</p><div class="mt-6 space-y-3">
+<details class="group rounded-lg bg-white text-slate-800 shadow-sm"><summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden"><span>Q1. Dの座標を求めるとき、なぜGの座標を3分の1にしますか？</span><span class="transition duration-300 group-open:-rotate-180">⌄</span></summary><div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">$\mathrm{OD}:\mathrm{DG}=1:2$ なので、OG全体は3等分され、ODはその1つ分です。</div></details>
+<details class="group rounded-lg bg-white text-slate-800 shadow-sm"><summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden"><span>Q2. なぜHは $\Vec{AH}=\alpha\Vec{AB}+\beta\Vec{AC}$ と表せますか？</span><span class="transition duration-300 group-open:-rotate-180">⌄</span></summary><div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">Hは平面ABC上にあり、$\Vec{AB},\Vec{AC}$ が平面内の独立な2方向だからです。</div></details>
+<details class="group rounded-lg bg-white text-slate-800 shadow-sm"><summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden"><span>Q3. DHが平面に垂直であることを、なぜ2本の内積が0になる条件で表せますか？</span><span class="transition duration-300 group-open:-rotate-180">⌄</span></summary><div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">平面内で平行でない2方向の両方に垂直なら、平面内のすべての方向に垂直となるからです。</div></details>
+<details class="group rounded-lg bg-white text-slate-800 shadow-sm"><summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden"><span>Q4. （3）で、なぜ $\Vec{OP}$ について平方完成するのですか？</span><span class="transition duration-300 group-open:-rotate-180">⌄</span></summary><div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">内積を展開したままでは、動点Pが $|\Vec{OP}|^2$ と $\Vec{OP}\cdot\Vec{OA}$ の2か所に現れ、何を最大にすべきかが見えません。平方完成すると、Pを含む部分が $\left|\Vec{OP}-\dfrac12\Vec{OA}\right|^2$ の1か所にまとまり、残りはPによらない定数になります。これにより、その絶対値だけに着目できます。</div></details>
+<details class="group rounded-lg bg-white text-slate-800 shadow-sm"><summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden"><span>Q5. 球面上でMPが最大になるとき、M、D、Pはどのように並びますか？</span><span class="transition duration-300 group-open:-rotate-180">⌄</span></summary><div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">M、D、Pがこの順に一直線に並び、$MP=MD+DP$ となります。</div></details>
+</div></section>
+<nav class="mt-7 grid gap-3 sm:grid-cols-2"><a href="no63.html" class="nav-button rounded-xl border border-slate-300 bg-white px-5 py-4 text-center font-bold text-slate-700 hover:border-blue-300 hover:text-blue-800">← No.63へ</a><a href="no65.html" class="nav-button rounded-xl bg-blue-700 px-5 py-4 text-center font-bold text-white hover:bg-blue-800">No.65 →</a></nav>
+</main>
+<footer class="py-10 text-center text-sm text-slate-500">医進・サイエンスコース　夏期数学課題 解説サイト</footer>
+</div>
+</body>
+</html>

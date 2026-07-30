@@ -63,7 +63,7 @@
                     <h3 class="font-bold text-blue-900 mb-2">【条件の整理】</h3>
                     <ul class="list-disc pl-5 space-y-2 text-sm text-slate-700">
                         <li><strong>方程式の形：</strong> $\sin 2\theta$ と $\sin\theta, \cos\theta$ が混在している。まずは倍角の公式 $\sin 2\theta = 2\sin\theta\cos\theta$ で角を $\theta$ に統一する。</li>
-                        <li><strong>定石の落とし穴：</strong> $\sin\theta$ と $\cos\theta$ の和を含む対称式を見ると、即座に $t = \sin\theta + \cos\theta$ と置換したくなるが、本問でそれを実行すると $t$ の方程式は解けても $\theta$ に戻す処理が極めて難解になる。</li>
+                        <li><strong>置換の使い分け：</strong> (1)〜(3)では因数分解の方が短い。一方、(4)では $t=\sin\theta+\cos\theta$ とおき、$t$ の二次方程式を平方完成して定数部分を分離すると、最小解と最大解の関係を別の角度から整理できる。</li>
                         <li><strong>項のグループ分けと因数分解：</strong> 展開した式を見ると、項が4つあり、うまく2つずつペアにすると共通因数が見えてくる。これが最大の突破口である。</li>
                     </ul>
                 </div>
@@ -99,6 +99,12 @@
                                 例えば第4象限の $\beta$ を第1象限の $\alpha$ で表したい場合、<strong>$\cos(2\pi - \beta)$ などの公式を用いて、一旦「すべて第1象限の角」に変換して比較する</strong>のが定石です。
                             </p>
                         </div>
+                        <div class="bg-amber-100/60 border border-amber-200 rounded-lg p-4">
+                            <p class="font-bold text-amber-900 text-sm">(4)を別の見方で処理したいとき</p>
+                            <p class="mt-1 text-sm text-amber-800">
+                                $t=\sin\theta+\cos\theta$ とおき、$\sin2\theta=t^2-1$ を使います。得られた $t$ の二次方程式を平方完成すると、$t$ の2つの値が「和」と「差」に分かれ、$\alpha$ と $\beta$ の位置関係を比較できます。
+                            </p>
+                        </div>
                     </div>
                 </div>
 
@@ -111,11 +117,13 @@
                             $\sin 2\theta = 2\sin\theta\cos\theta$ より、
                         </p>
                         <div class="math-scroll bg-slate-50 p-4 rounded-lg border border-slate-200">
-                            \begin{aligned}
+                            \[
+\begin{aligned}
                             4\sin\theta\cos\theta - 2k\sin\theta - 2k\cos\theta + k^2 &= 0 \\
                             2\sin\theta(2\cos\theta - k) - k(2\cos\theta - k) &= 0 \\
                             (2\sin\theta - k)(2\cos\theta - k) &= 0
                             \end{aligned}
+\]
                         </div>
                         <p class="mt-2">
                             よって、$(*)$ の解は $\sin\theta = \frac{k}{2} \cdots$① または $\cos\theta = \frac{k}{2} \cdots$② を満たす $\theta$ である。
@@ -163,11 +171,13 @@
                                 $\sin^2\theta + \cos^2\theta = 1$ より、
                             </p>
                             <div class="math-scroll">
-                                \begin{aligned}
+                                \[
+\begin{aligned}
                                 \left(\frac{k}{2}\right)^2 + \left(\frac{k}{2}\right)^2 &= 1 \\
                                 \frac{k^2}{2} &= 1 \\
                                 k^2 &= 2
                                 \end{aligned}
+\]
                             </div>
                             <p class="mt-2">
                                 $k \geq 0$ より $k = \sqrt{2}$。<br>
@@ -203,10 +213,12 @@
                                 ここで、$2\pi - \beta$ と $\frac{\pi}{2} - \alpha$ はともに第1象限の角であるため等しくなる。
                             </p>
                             <div class="math-scroll">
-                                \begin{aligned}
+                                \[
+\begin{aligned}
                                 2\pi - \beta &= \frac{\pi}{2} - \alpha \\
                                 \beta &= \alpha + \frac{3}{2}\pi
                                 \end{aligned}
+\]
                             </div>
                             
                             <p class="mt-6 font-bold text-blue-800">[ii] $\sqrt{2} < k < 2$ すなわち $\frac{1}{\sqrt{2}} < c < 1$ のとき</p>
@@ -222,16 +234,302 @@
                                 $2\pi - \beta$ と $\alpha$ はともに第1象限の角であるため等しくなる。
                             </p>
                             <div class="math-scroll">
-                                \begin{aligned}
+                                \[
+\begin{aligned}
                                 2\pi - \beta &= \alpha \\
                                 \beta &= -\alpha + 2\pi
                                 \end{aligned}
+\]
                             </div>
 
                             <div class="mt-4 rounded-xl border-2 border-blue-500 bg-blue-50 p-5 text-slate-900 font-bold inline-block w-full">
                                 答:<br>
                                 $0 \leq k < \sqrt{2}$ のとき、 $\beta = \alpha + \frac{3}{2}\pi$<br>
                                 $\sqrt{2} < k < 2$ のとき、 $\beta = -\alpha + 2\pi$
+                            </div>
+
+                            
+                            <div class="mt-7 rounded-2xl border border-indigo-200 bg-indigo-50 p-5 sm:p-6">
+                                <h4 class="text-lg font-bold text-indigo-900">別解：$t=\sin\theta+\cos\theta$ の2次方程式の $t$ 切片を円周上で読む</h4>
+                                <p class="mt-3 text-sm leading-relaxed text-indigo-950">
+                                    定数分離をするのではなく、$t$ の2次方程式がもつ2つの $t$ 切片を求め、
+                                    $t=\sqrt2\sin\left(\theta+\dfrac{\pi}{4}\right)$ を半径 $\sqrt2$ の円周上の高さとして読みます。
+                                </p>
+
+                                <div class="mt-5 rounded-xl border border-indigo-200 bg-white p-4">
+                                    <p class="font-bold text-indigo-900">1．置換・合成・定義域の確認</p>
+                                    <p class="mt-2 text-sm leading-relaxed text-slate-700">$t=\sin\theta+\cos\theta$ とおくと、</p>
+                                    <div class="math-scroll mt-2">
+                                        \[
+                                        \begin{aligned}
+                                        t&=\sin\theta+\cos\theta\\
+                                         &=\sqrt2\sin\left(\theta+\frac{\pi}{4}\right)
+                                        \end{aligned}
+                                        \]
+                                    </div>
+                                    <div class="math-scroll mt-2">
+                                        \[
+                                        -\sqrt2\leq t\leq\sqrt2,\qquad
+                                        \frac{\pi}{4}\leq\varphi=\theta+\frac{\pi}{4}&lt;\frac{9\pi}{4}
+                                        \]
+                                    </div>
+                                    <p class="mt-2 text-sm leading-relaxed text-slate-700">
+                                        したがって、$t$ は半径 $\sqrt2$ の円 $x^2+y^2=2$ 上を、偏角
+                                        $\varphi=\dfrac{\pi}{4}$ の点 $S=(1,1)$ から反時計回りに1周するときの $y$ 座標とみなせる。
+                                    </p>
+                                </div>
+
+                                <div class="mt-4 rounded-xl border border-indigo-200 bg-white p-4">
+                                    <p class="font-bold text-indigo-900">2．$t$ の2次関数と $t$ 切片</p>
+                                    <p class="mt-2 text-sm leading-relaxed text-slate-700">
+                                        $t^2=1+\sin2\theta$ より $\sin2\theta=t^2-1$ であるから、$(*)$ は
+                                    </p>
+                                    <div class="math-scroll mt-2">
+                                        \[
+                                        f(t)=2t^2-2kt+k^2-2=0
+                                        \]
+                                    </div>
+                                    <p class="mt-2 text-sm leading-relaxed text-slate-700">
+                                        となる。(3)より $0\leq k&lt;2$ かつ $k\neq\sqrt2$ であり、
+                                        判別式は $4(4-k^2)&gt;0$ だから、放物線 $y=f(t)$ は相異なる2つの $t$ 切片をもつ。
+                                        その $t$ 座標を $t_1&lt;t_2$ とすると、
+                                    </p>
+                                    <div class="math-scroll mt-2">
+                                        \[
+                                        t_1=\frac{k-\sqrt{4-k^2}}{2},\qquad
+                                        t_2=\frac{k+\sqrt{4-k^2}}{2}
+                                        \]
+                                    </div>
+                                    <p class="mt-2 text-sm leading-relaxed text-slate-700">また、解と係数の関係より</p>
+                                    <div class="math-scroll mt-2">
+                                        \[
+                                        \begin{aligned}
+                                        t_1+t_2&=k,\qquad t_1t_2=\frac{k^2-2}{2},\\
+                                        t_1^2+t_2^2&=(t_1+t_2)^2-2t_1t_2=2
+                                        \end{aligned}
+                                        \]
+                                    </div>
+                                    <p class="mt-2 text-sm leading-relaxed text-slate-700">
+                                        よって $|t_1|,|t_2|\leq\sqrt2$ であり、両方とも合成後の定義域内にある。
+                                        なお $k=\sqrt2$ では $t_2=\sqrt2$ となり、円の最上点に接するため、その $t$ に対応する角は1個しかない。
+                                        これは(3)で $k=\sqrt2$ を除く理由にも一致する。
+                                    </p>
+                                </div>
+
+                                <div class="mt-4 rounded-xl border border-indigo-200 bg-white p-4">
+                                    <p class="font-bold text-indigo-900">3．円周上で $\alpha,\beta$ の位置を読む</p>
+                                    <p class="mt-2 text-sm leading-relaxed text-slate-700">
+                                        $\varphi_\alpha=\alpha+\dfrac{\pi}{4}$、$\varphi_\beta=\beta+\dfrac{\pi}{4}$ とする。
+                                        円周は $S=(1,1)$ から反時計回りに進むので、最初に現れる点が $P_\alpha$、最後に現れる点が $P_\beta$ である。
+                                    </p>
+
+                                    <div class="mt-4 rounded-xl border border-violet-200 bg-violet-50 p-4">
+                                        <p class="font-bold text-violet-900">円周上の点の座標をどう決めるか</p>
+                                        <p class="mt-2 text-sm leading-relaxed text-slate-700">
+                                            角 $\theta$ に対応する円周上の点を
+                                        </p>
+                                        <div class="math-scroll mt-2">
+                                            \[
+                                            P(\theta)=\left(
+                                            \sqrt2\cos\left(\theta+\frac{\pi}{4}\right),
+                                            \sqrt2\sin\left(\theta+\frac{\pi}{4}\right)
+                                            \right)
+                                            \]
+                                        </div>
+                                        <p class="mt-2 text-sm leading-relaxed text-slate-700">
+                                            この点は半径 $\sqrt2$ の円 $x^2+y^2=2$ 上にあり、$y$ 座標は
+                                            $t=\sqrt2\sin\left(\theta+\dfrac{\pi}{4}\right)$ そのものである。
+                                            したがって、$t=t_i$ に対応する点では
+                                        </p>
+                                        <div class="math-scroll mt-2">
+                                            \[
+                                            y=t_i,\qquad x^2=2-t_i^2
+                                            \]
+                                        </div>
+                                        <p class="mt-2 text-sm leading-relaxed text-slate-700">
+                                            となる。さらに $t_1^2+t_2^2=2$ だから、$y$ 座標が $t_2$ の点では
+                                            $x^2=t_1^2$、$y$ 座標が $t_1$ の点では $x^2=t_2^2$ となる。
+                                            あとは、その点がどの象限にあるかを見て $x$ の符号を決めればよい。
+                                        </p>
+                                    </div>
+
+                                    <div class="mt-4 grid gap-5">
+                                        <div class="rounded-xl border border-slate-200 bg-slate-50 p-3">
+                                            <p class="font-bold text-blue-900">[i] $0\leq k&lt;\sqrt2$</p>
+                                            <p class="mt-2 text-sm leading-relaxed text-slate-700">
+                                                $t_1t_2=\dfrac{k^2-2}{2}&lt;0$ より $t_1&lt;0&lt;t_2$ である。
+                                                また、この範囲では $t_2\geq1$ なので、開始点 $S=(1,1)$ から反時計回りに進むと、
+                                                最初に出会うのは第1象限にある高さ $t_2$ の点である。
+                                            </p>
+
+                                            <div class="mt-3 rounded-lg border border-emerald-200 bg-emerald-50 p-3">
+                                                <p class="font-bold text-emerald-900">最小の解 $\alpha$ に対応する点 $P_\alpha$</p>
+                                                <p class="mt-2 text-sm leading-relaxed text-slate-700">
+                                                    $P_\alpha$ の $y$ 座標は $t_2$ である。円 $x^2+y^2=2$ 上にあるから、
+                                                </p>
+                                                <div class="math-scroll mt-2">
+                                                    \[
+                                                    x^2+t_2^2=2=t_1^2+t_2^2
+                                                    \quad\Longrightarrow\quad x^2=t_1^2
+                                                    \]
+                                                </div>
+                                                <p class="mt-2 text-sm leading-relaxed text-slate-700">
+                                                    $P_\alpha$ は第1象限にあるので $x&gt;0$。一方 $t_1&lt;0$ だから
+                                                    $|t_1|=-t_1$ である。よって $x=-t_1$ となり、
+                                                </p>
+                                                <div class="math-scroll mt-2">
+                                                    \[
+                                                    P_\alpha=(-t_1,t_2)
+                                                    \]
+                                                </div>
+                                            </div>
+
+                                            <div class="mt-3 rounded-lg border border-rose-200 bg-rose-50 p-3">
+                                                <p class="font-bold text-rose-900">最大の解 $\beta$ に対応する点 $P_\beta$</p>
+                                                <p class="mt-2 text-sm leading-relaxed text-slate-700">
+                                                    一周する直前に現れるのは、第4象限にある高さ $t_1$ の点である。
+                                                    したがって $P_\beta$ の $y$ 座標は $t_1$ であり、
+                                                </p>
+                                                <div class="math-scroll mt-2">
+                                                    \[
+                                                    x^2+t_1^2=2=t_1^2+t_2^2
+                                                    \quad\Longrightarrow\quad x^2=t_2^2
+                                                    \]
+                                                </div>
+                                                <p class="mt-2 text-sm leading-relaxed text-slate-700">
+                                                    第4象限では $x&gt;0$、また $t_2&gt;0$ だから $x=t_2$ である。よって
+                                                </p>
+                                                <div class="math-scroll mt-2">
+                                                    \[
+                                                    P_\beta=(t_2,t_1)
+                                                    \]
+                                                </div>
+                                            </div>
+
+                                            <p class="mt-3 text-sm leading-relaxed text-slate-700">
+                                                ここで、点 $(x,y)$ を原点のまわりに時計回りに $\dfrac{\pi}{2}$ 回転すると
+                                                $(y,-x)$ になる。したがって、
+                                            </p>
+                                            <div class="math-scroll mt-2">
+                                                \[
+                                                (-t_1,t_2)\longmapsto(t_2,t_1)
+                                                \]
+                                            </div>
+                                            <p class="mt-2 text-sm leading-relaxed text-slate-700">
+                                                となり、$P_\alpha$ を時計回りに $\dfrac{\pi}{2}$ 回転すると $P_\beta$ になる。
+                                                しかし円周は反時計回りに進んでいるので、$P_\alpha$ から $P_\beta$ までの角の差は
+                                                $2\pi-\dfrac{\pi}{2}=\dfrac{3\pi}{2}$ である。
+                                            </p>
+                                            <div class="math-scroll mt-2">
+                                                \[
+                                                \varphi_\beta=\varphi_\alpha+\frac{3\pi}{2}
+                                                \quad\Longrightarrow\quad
+                                                \beta=\alpha+\frac{3\pi}{2}
+                                                \]
+                                            </div>
+                                            <svg viewBox="0 0 300 300" class="mx-auto mt-3 h-auto w-full max-w-sm" role="img" aria-label="0 ≤ k &lt; √2 の代表図（k=1）">
+  <rect x="0" y="0" width="300" height="300" rx="16" fill="#ffffff" />
+  <line x1="24" y1="150" x2="276" y2="150" stroke="#cbd5e1" stroke-width="1.5" />
+  <line x1="150" y1="24" x2="150" y2="276" stroke="#cbd5e1" stroke-width="1.5" />
+  <circle cx="150" cy="150" r="110.31" fill="#eef2ff" fill-opacity="0.6" stroke="#64748b" stroke-width="2" />
+  <line x1="35" y1="43.45" x2="265" y2="43.45" stroke="#2563eb" stroke-width="1.8" stroke-dasharray="5 4" />
+  <line x1="35" y1="178.55" x2="265" y2="178.55" stroke="#d97706" stroke-width="1.8" stroke-dasharray="5 4" />
+  <path d="M 178.55 43.45 A 110.31 110.31 0 1 1 256.55 178.55" fill="none" stroke="#7c3aed" stroke-width="3" stroke-dasharray="7 5" opacity="0.8" />
+  <line x1="150" y1="150" x2="178.55" y2="43.45" stroke="#10b981" stroke-width="2" />
+  <line x1="150" y1="150" x2="256.55" y2="178.55" stroke="#f43f5e" stroke-width="2" />
+  <line x1="178.55" y1="43.45" x2="178.55" y2="150" stroke="#10b981" stroke-width="1.2" stroke-dasharray="4 4" opacity="0.75" />
+  <line x1="256.55" y1="178.55" x2="256.55" y2="150" stroke="#f43f5e" stroke-width="1.2" stroke-dasharray="4 4" opacity="0.75" />
+  <circle cx="228.00" cy="72.00" r="5" fill="#334155" />
+  <circle cx="178.55" cy="43.45" r="6.5" fill="#10b981" />
+  <circle cx="256.55" cy="178.55" r="6.5" fill="#f43f5e" />
+  <text x="172.00" y="88.00" fill="#334155" font-size="12" font-weight="700">開始 S=(1,1)</text>
+  <text x="218" y="57" text-anchor="middle" fill="#047857" font-size="11" font-weight="700">Pα=(-t₁,t₂)</text>
+  <text x="238" y="201" text-anchor="middle" fill="#be123c" font-size="11" font-weight="700">Pβ=(t₂,t₁)</text>
+  <text x="178.55" y="164" text-anchor="middle" fill="#047857" font-size="10">x=-t₁</text>
+  <text x="256.55" y="164" text-anchor="middle" fill="#be123c" font-size="10">x=t₂</text>
+  <text x="37" y="37.45" fill="#1d4ed8" font-size="12" font-weight="700">t₂</text>
+  <text x="37" y="172.55" fill="#b45309" font-size="12" font-weight="700">t₁</text>
+  <text x="150" y="20" text-anchor="middle" fill="#312e81" font-size="13" font-weight="700">0 ≤ k &lt; √2 の代表図（k=1）</text>
+  <text x="150" y="288" text-anchor="middle" fill="#475569" font-size="11">Pα を時計回りに π/2 回転すると Pβ</text>
+</svg>
+                                        </div>
+
+                                        <div class="rounded-xl border border-slate-200 bg-slate-50 p-3">
+                                            <p class="font-bold text-blue-900">[ii] $\sqrt2&lt;k&lt;2$</p>
+                                            <p class="mt-2 text-sm leading-relaxed text-slate-700">
+                                                $t_1t_2&gt;0$ かつ $t_1+t_2=k&gt;0$ より $0&lt;t_1&lt;t_2$ である。
+                                                最初に現れる点は第1象限にある高さ $t_2$ の点なので、
+                                            </p>
+                                            <div class="math-scroll mt-2">
+                                                \[
+                                                x^2+t_2^2=2=t_1^2+t_2^2
+                                                \quad\Longrightarrow\quad x=t_1
+                                                \]
+                                            </div>
+                                            <p class="mt-2 text-sm leading-relaxed text-slate-700">
+                                                よって $P_\alpha=(t_1,t_2)$ である。一方、最後に現れる点は、開始点を越えて
+                                                次の周回で出会う高さ $t_1$ の第1象限の点であるから、同様に
+                                            </p>
+                                            <div class="math-scroll mt-2">
+                                                \[
+                                                x^2+t_1^2=2=t_1^2+t_2^2
+                                                \quad\Longrightarrow\quad x=t_2
+                                                \]
+                                            </div>
+                                            <div class="math-scroll mt-2">
+                                                \[
+                                                P_\alpha=(t_1,t_2),\qquad P_\beta=(t_2,t_1)
+                                                \]
+                                            </div>
+                                            <p class="mt-2 text-sm leading-relaxed text-slate-700">
+                                                2点は座標を入れ替えた関係にあるため、直線 $y=x$ に関して対称である。
+                                                $P_\beta$ は開始点 $S$ を越えて次の周回で現れるので、
+                                            </p>
+                                            <div class="math-scroll mt-2">
+                                                \[
+                                                \begin{aligned}
+                                                \varphi_\beta
+                                                &=2\pi+\left(\frac{\pi}{2}-\varphi_\alpha\right)
+                                                 =\frac{5\pi}{2}-\varphi_\alpha,\\
+                                                \beta+\frac{\pi}{4}
+                                                &=\frac{5\pi}{2}-\left(\alpha+\frac{\pi}{4}\right),\\
+                                                \beta&=2\pi-\alpha
+                                                \end{aligned}
+                                                \]
+                                            </div>
+                                            <svg viewBox="0 0 300 300" class="mx-auto mt-3 h-auto w-full max-w-sm" role="img" aria-label="√2 &lt; k &lt; 2 の代表図（k=1.6）">
+  <rect x="0" y="0" width="300" height="300" rx="16" fill="#ffffff" />
+  <line x1="24" y1="150" x2="276" y2="150" stroke="#cbd5e1" stroke-width="1.5" />
+  <line x1="150" y1="24" x2="150" y2="276" stroke="#cbd5e1" stroke-width="1.5" />
+  <circle cx="150" cy="150" r="110.31" fill="#eef2ff" fill-opacity="0.6" stroke="#64748b" stroke-width="2" />
+  <line x1="35" y1="40.80" x2="265" y2="40.80" stroke="#2563eb" stroke-width="1.8" stroke-dasharray="5 4" />
+  <line x1="35" y1="134.40" x2="265" y2="134.40" stroke="#d97706" stroke-width="1.8" stroke-dasharray="5 4" />
+  <line x1="52.50" y1="247.50" x2="247.50" y2="52.50" stroke="#7c3aed" stroke-width="2" stroke-dasharray="6 5" />
+  <line x1="150" y1="150" x2="165.60" y2="40.80" stroke="#10b981" stroke-width="2" />
+  <line x1="150" y1="150" x2="259.20" y2="134.40" stroke="#f43f5e" stroke-width="2" />
+  <line x1="165.60" y1="40.80" x2="165.60" y2="150" stroke="#10b981" stroke-width="1.2" stroke-dasharray="4 4" opacity="0.75" />
+  <line x1="259.20" y1="134.40" x2="259.20" y2="150" stroke="#f43f5e" stroke-width="1.2" stroke-dasharray="4 4" opacity="0.75" />
+  <circle cx="228.00" cy="72.00" r="5" fill="#334155" />
+  <circle cx="165.60" cy="40.80" r="6.5" fill="#10b981" />
+  <circle cx="259.20" cy="134.40" r="6.5" fill="#f43f5e" />
+  <text x="172.00" y="88.00" fill="#334155" font-size="12" font-weight="700">開始 S=(1,1)</text>
+  <text x="205" y="56" text-anchor="middle" fill="#047857" font-size="11" font-weight="700">Pα=(t₁,t₂)</text>
+  <text x="230" y="124" text-anchor="middle" fill="#be123c" font-size="11" font-weight="700">Pβ=(t₂,t₁)</text>
+  <text x="165.60" y="164" text-anchor="middle" fill="#047857" font-size="10">x=t₁</text>
+  <text x="259.20" y="164" text-anchor="middle" fill="#be123c" font-size="10">x=t₂</text>
+  <text x="37" y="34.80" fill="#1d4ed8" font-size="12" font-weight="700">t₂</text>
+  <text x="37" y="128.40" fill="#b45309" font-size="12" font-weight="700">t₁</text>
+  <text x="150" y="20" text-anchor="middle" fill="#312e81" font-size="13" font-weight="700">√2 &lt; k &lt; 2 の代表図（k=1.6）</text>
+  <text x="150" y="288" text-anchor="middle" fill="#475569" font-size="11">Pα と Pβ は直線 y=x に関して対称</text>
+</svg>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="mt-5 rounded-xl border-2 border-indigo-500 bg-indigo-100 p-4 font-bold text-indigo-950">
+                                    $0\leq k&lt;\sqrt2$ のとき $\beta=\alpha+\dfrac{3\pi}{2}$、<br>
+                                    $\sqrt2&lt;k&lt;2$ のとき $\beta=2\pi-\alpha$。
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -388,9 +686,9 @@
                     <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">受験生のつまずきポイント</h3>
                     <div class="mt-4 space-y-4">
                         <div class="bg-red-50 border border-red-200 rounded-lg p-4">
-                            <p class="font-bold text-red-900 text-sm">定石（$t = \sin\theta + \cos\theta$）に固執してタイムアップ</p>
+                            <p class="font-bold text-red-900 text-sm">$t = \sin\theta + \cos\theta$ を全設問に無理に使う</p>
                             <p class="mt-1 text-sm text-red-800">
-                                確かに $t$ の方程式に帰着させることはできます（$2t^2 - 2kt + k^2 - 2 = 0$ となる）が、ここから $t$ を求めても、さらに合成して $\theta$ を求めるプロセスが難解で、解の個数や $\alpha, \beta$ の関係を追うのが非常に困難になります。項の形を見たら「まずは因数分解」を試みる柔軟性が求められます。
+                                (1)〜(3)では因数分解が最短です。一方、(4)では $t$ の2次関数の $t$ 切片 $t_1,t_2$ を求め、$t=\sqrt2\sin\left(\theta+\dfrac{\pi}{4}\right)$ と合成して定義域を確認した後、半径 $\sqrt2$ の円周上の高さとして読むと、$\alpha$ と $\beta$ の位置関係を図形的に導けます。
                             </p>
                         </div>
                         <div class="bg-red-50 border border-red-200 rounded-lg p-4">

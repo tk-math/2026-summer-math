@@ -60,8 +60,8 @@ body{font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic","Meiryo
 <h3 class="border-b-2 border-emerald-400 pb-2 text-lg font-bold text-emerald-900">思考プロセス</h3>
 <div class="mt-4 space-y-4">
 <div class="rounded-lg border border-emerald-200 bg-emerald-100/60 p-4 text-sm text-emerald-900"><strong>（3）和と積をそのまま使う</strong><br>\[(2\alpha-1)(2\beta-1)=4\alpha\beta-2(\alpha+\beta)+1\]と変形します。</div>
-<div class="rounded-lg border border-emerald-200 bg-emerald-100/60 p-4 text-sm text-emerald-900"><strong>（4）（ii）特殊値を先に確認する</strong><br>$p=0,1$ では重解が生じるため、一般の場合と分けます。</div>
-<div class="rounded-lg border border-emerald-200 bg-emerald-100/60 p-4 text-sm text-emerald-900"><strong>（4）（ii）共通解は差をとって探す</strong><br>共通解 $r$ なら \[f(r)-g(r)=0\] です。2次項が消えるので候補を絞れます。</div>
+<div class="rounded-lg border border-emerald-200 bg-emerald-100/60 p-4 text-sm text-emerald-900"><strong>（4）（ii）判別式から解の個数を表にする</strong><br>$f(x)=0$ と $g(x)=0$ の判別式の符号を調べ、$p$ の範囲ごとに実数解の個数を整理します。</div>
+<div class="rounded-lg border border-emerald-200 bg-emerald-100/60 p-4 text-sm text-emerald-900"><strong>（4）（ii）共通解の組合せを4通り調べる</strong><br>$g(x)=0$ の解は $\alpha,\beta$、$f(x)=0$ の解は $2\alpha-1,2\beta-1$ です。どの2つが一致するかを4通りに分けます。</div>
 </div>
 </div>
 
@@ -72,13 +72,215 @@ body{font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic","Meiryo
 
 <div class="border-t border-slate-200 pt-6"><p class="border-b border-slate-200 pb-1 font-bold text-blue-800">（4）（i）</p><p class="mt-2">新しい2解の和は、</p><div class="math-scroll">\[\begin{aligned}(2\alpha-1)+(2\beta-1)&=2(\alpha+\beta)-2\\&=4p-2.\end{aligned}\]</div><p>積は（3）より1である。したがって、</p><div class="mt-2 rounded-xl border-2 border-blue-500 bg-blue-50 p-3 font-bold text-slate-900">\[f(x)=x^2-(4p-2)x+1\]</div></div>
 
-<div class="border-t border-slate-200 pt-6"><p class="border-b border-slate-200 pb-1 font-bold text-blue-800">（4）（ii）重解となる場合</p><p class="mt-2">$g(x)$ の判別式は $4p(p-1)$、$f(x)$ の判別式は</p><div class="math-scroll">\[\begin{aligned}(4p-2)^2-4&=16p^2-16p\\&=16p(p-1).\end{aligned}\]</div><p>よって、重解が生じるのは $p=0,1$ のときである。</p>
-<div class="mt-3 overflow-x-auto"><table class="w-full min-w-[600px] border-collapse text-center text-sm"><thead><tr class="bg-slate-100"><th class="border border-slate-300 px-3 py-3">$p$</th><th class="border border-slate-300 px-3 py-3">$g(x)$</th><th class="border border-slate-300 px-3 py-3">$f(x)$</th><th class="border border-slate-300 px-3 py-3">異なる解の個数</th></tr></thead><tbody><tr><td class="border border-slate-300 px-3 py-3">$0$</td><td class="border border-slate-300 px-3 py-3">$x^2$</td><td class="border border-slate-300 px-3 py-3">$(x+1)^2$</td><td class="border border-slate-300 px-3 py-3 font-bold">2個</td></tr><tr><td class="border border-slate-300 px-3 py-3">$1$</td><td class="border border-slate-300 px-3 py-3">$(x-1)^2$</td><td class="border border-slate-300 px-3 py-3">$(x-1)^2$</td><td class="border border-slate-300 px-3 py-3 font-bold">1個</td></tr></tbody></table></div><p class="mt-3">したがって、$p=0,1$ は条件を満たさない。</p></div>
+<div class="border-t border-slate-200 pt-6">
+<p class="border-b border-slate-200 pb-1 font-bold text-blue-800">（4）（ii）判別式から解の個数を整理する</p>
+<p class="mt-2">$g(x)=0$ の判別式を $D_g$、$f(x)=0$ の判別式を $D_f$ とすると、</p>
+<div class="math-scroll">
+\[
+\begin{aligned}
+D_g&=(-2p)^2-4p=4p(p-1),\\
+D_f&=(4p-2)^2-4=16p(p-1).
+\end{aligned}
+\]
+</div>
+<p>したがって、どちらの方程式についても、実数解をもつ条件は</p>
+<div class="math-scroll">
+\[
+p\leqq0\quad\text{または}\quad p\geqq1
+\]
+</div>
+<p>である。$p$ の範囲ごとに、実数解の個数を整理すると次の表になる。</p>
 
-<div class="border-t border-slate-200 pt-6"><p class="border-b border-slate-200 pb-1 font-bold text-blue-800">（4）（ii）共通解を求める</p><p class="mt-2">以下、$p\ne0,1$ とする。このとき、$f(x)=0$ と $g(x)=0$ はそれぞれ異なる2解をもつ。</p><p>異なる解が全部で3個になるためには、2つの方程式が共通解をちょうど1個もてばよい。</p><p class="mt-3">共通解を $r$ とすると、$f(r)=g(r)=0$ なので、</p><div class="math-scroll">\[f(r)-g(r)=0\]</div><p>ここで、</p><div class="math-scroll">\[\begin{aligned}f(x)-g(x)&=\{x^2-(4p-2)x+1\}-(x^2-2px+p)\\&=(2-2p)x+1-p\\&=(1-p)(2x+1).\end{aligned}\]</div><p>$p\ne1$ なので、</p><div class="math-scroll">\[2r+1=0\qquad r=-\frac12\]</div><p>これが $g(x)=0$ の解であるから、</p><div class="math-scroll">\[\begin{aligned}g\left(-\frac12\right)&=\frac14+p+p\\&=\frac14+2p\\&=0.\end{aligned}\]</div><p>よって、</p><div class="math-scroll">\[p=-\frac18\]</div><p class="mt-3">実際、$p=-\dfrac18$ のとき、</p><div class="math-scroll">\[\begin{aligned}g(x)&=x^2+\frac14x-\frac18\\&=\left(x+\frac12\right)\left(x-\frac14\right),\end{aligned}\]\[\begin{aligned}f(x)&=x^2+\frac52x+1\\&=\left(x+\frac12\right)(x+2).\end{aligned}\]</div><p>異なる解は $-2,-\dfrac12,\dfrac14$ の3個である。</p><div class="mt-2 inline-block rounded-xl border-2 border-blue-500 bg-blue-50 p-3 font-bold text-slate-900">\[p=-\frac18\]</div></div>
+<div class="mt-4 overflow-x-auto">
+<table class="w-full min-w-[720px] border-collapse text-center text-sm">
+<thead>
+<tr class="bg-slate-100">
+<th class="border border-slate-300 px-3 py-3">$p$ の範囲</th>
+<th class="border border-slate-300 px-3 py-3">$g(x)=0$</th>
+<th class="border border-slate-300 px-3 py-3">$f(x)=0$</th>
+<th class="border border-slate-300 px-3 py-3">$f(x)g(x)=0$ の異なる実数解</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="border border-slate-300 px-3 py-3">$p&lt;0$ または $1&lt;p$</td>
+<td class="border border-slate-300 px-3 py-3">異なる2個</td>
+<td class="border border-slate-300 px-3 py-3">異なる2個</td>
+<td class="border border-slate-300 px-3 py-3 font-bold">共通解の個数により2～4個<br>（3個の可能性あり）</td>
+</tr>
+<tr>
+<td class="border border-slate-300 px-3 py-3">$p=0$</td>
+<td class="border border-slate-300 px-3 py-3">$x=0$ の1個（重解）</td>
+<td class="border border-slate-300 px-3 py-3">$x=-1$ の1個（重解）</td>
+<td class="border border-slate-300 px-3 py-3 font-bold">2個</td>
+</tr>
+<tr>
+<td class="border border-slate-300 px-3 py-3">$p=1$</td>
+<td class="border border-slate-300 px-3 py-3">$x=1$ の1個（重解）</td>
+<td class="border border-slate-300 px-3 py-3">$x=1$ の1個（重解）</td>
+<td class="border border-slate-300 px-3 py-3 font-bold">1個</td>
+</tr>
+<tr>
+<td class="border border-slate-300 px-3 py-3">$0&lt;p&lt;1$</td>
+<td class="border border-slate-300 px-3 py-3">実数解なし</td>
+<td class="border border-slate-300 px-3 py-3">実数解なし</td>
+<td class="border border-slate-300 px-3 py-3 font-bold">0個</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<p class="mt-4">表より、異なる実数解がちょうど3個になる可能性があるのは、</p>
+<div class="math-scroll">
+\[
+p&lt;0\quad\text{または}\quad 1&lt;p
+\]
+</div>
+<p>の場合だけである。この範囲では $D_g&gt;0$、$D_f&gt;0$ であるから、$g(x)=0$ と $f(x)=0$ のいずれも重解をもたず、それぞれ異なる2個の実数解をもつ。</p>
+<p>したがって、全部で異なる解が3個になるためには、$g(x)=0$ の解の一方が、$f(x)=0$ の解の一方と一致しなければならない。</p>
+</div>
+
+<div class="border-t border-slate-200 pt-6">
+<p class="border-b border-slate-200 pb-1 font-bold text-blue-800">（4）（ii）共通解の4つの組合せを調べる</p>
+<p class="mt-2">$g(x)=0$ の異なる2解は $\alpha,\beta$ であり、$f(x)=0$ の異なる2解は</p>
+<div class="math-scroll">
+\[
+2\alpha-1,\qquad 2\beta-1
+\]
+</div>
+<p>である。したがって、共通解が生じる組合せは次の4通りである。</p>
+
+<div class="mt-4 overflow-x-auto">
+<table class="mx-auto w-full max-w-2xl border-collapse text-center text-sm">
+<thead>
+<tr class="bg-slate-100"><th class="border border-slate-300 px-4 py-3">場合</th><th class="border border-slate-300 px-4 py-3">一致する解</th></tr>
+</thead>
+<tbody>
+<tr><td class="border border-slate-300 px-4 py-3">①</td><td class="border border-slate-300 px-4 py-3">$\alpha=2\alpha-1$</td></tr>
+<tr><td class="border border-slate-300 px-4 py-3">②</td><td class="border border-slate-300 px-4 py-3">$\alpha=2\beta-1$</td></tr>
+<tr><td class="border border-slate-300 px-4 py-3">③</td><td class="border border-slate-300 px-4 py-3">$\beta=2\alpha-1$</td></tr>
+<tr><td class="border border-slate-300 px-4 py-3">④</td><td class="border border-slate-300 px-4 py-3">$\beta=2\beta-1$</td></tr>
+</tbody>
+</table>
+</div>
+
+<p class="mt-4"><strong>①の場合</strong>、$\alpha=1$ である。$\alpha$ は $g(x)=0$ の解なので、</p>
+<div class="math-scroll">
+\[
+g(1)=1-2p+p=1-p=0
+\]
+</div>
+<p>より $p=1$ となり、$1&lt;p$ に反する。したがって、①は不適。</p>
+
+<p class="mt-4"><strong>④の場合</strong>も同様に、$\beta=1$ から $p=1$ となるので不適である。</p>
+
+<p class="mt-4"><strong>②の場合</strong>、</p>
+<div class="math-scroll">
+\[
+\alpha=2\beta-1
+\]
+</div>
+<p>である。解と係数の関係</p>
+<div class="math-scroll">
+\[
+\alpha+\beta=2p,\qquad \alpha\beta=p
+\]
+</div>
+<p>に代入すると、</p>
+<div class="math-scroll">
+\[
+3\beta-1=2p,\qquad \beta(2\beta-1)=p
+\]
+</div>
+<p>である。2つの式から $p$ を消去して、</p>
+<div class="math-scroll">
+\[
+\begin{aligned}
+2\beta(2\beta-1)&=3\beta-1,\\
+4\beta^2-5\beta+1&=0,\\
+(4\beta-1)(\beta-1)&=0.
+\end{aligned}
+\]
+</div>
+<p>$\beta=1$ のときは $p=1$ となるので不適。したがって、</p>
+<div class="math-scroll">
+\[
+\beta=\frac14,\qquad \alpha=-\frac12
+\]
+</div>
+<p>となり、</p>
+<div class="math-scroll">
+\[
+p=\alpha\beta=-\frac12\cdot\frac14=-\frac18.
+\]
+</div>
+
+<p class="mt-4"><strong>③の場合</strong>は、②で $\alpha$ と $\beta$ を入れ替えた場合であるから、同じく</p>
+<div class="math-scroll">
+\[
+p=-\frac18
+\]
+</div>
+<p>を得る。</p>
+
+<p class="mt-4">実際、$p=-\dfrac18$ のとき、</p>
+<div class="math-scroll">
+\[
+\begin{aligned}
+g(x)&=x^2+\frac14x-\frac18
+=\left(x+\frac12\right)\left(x-\frac14\right),\\
+f(x)&=x^2+\frac52x+1
+=\left(x+\frac12\right)(x+2).
+\end{aligned}
+\]
+</div>
+<p>異なる実数解は</p>
+<div class="math-scroll">
+\[
+-2,\qquad -\frac12,\qquad \frac14
+\]
+</div>
+<p>の3個である。</p>
+<div class="mt-2 inline-block rounded-xl border-2 border-blue-500 bg-blue-50 p-3 font-bold text-slate-900">
+\[
+p=-\frac18
+\]
+</div>
+</div>
 </div></div>
 
-<div class="mt-10"><h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">別解：（4）（ii）解の変換から考える</h3><div class="mt-4 rounded-xl border border-indigo-200 bg-indigo-50 p-5 text-sm leading-relaxed text-slate-700"><p>$p\ne0,1$ のとき、$g(x)=0$ の異なる2解を $\alpha,\beta$ とすると、$f(x)=0$ の解は $2\alpha-1,2\beta-1$ である。</p><p class="mt-3">異なる解が3個になるには、元の解と変換後の解が1個だけ一致する必要がある。$\alpha=2\alpha-1$ または $\beta=2\beta-1$ なら、その解は1であり、$g(1)=0$ から $p=1$ となるので除外する。</p><p>したがって、例えば $\alpha=2\beta-1$ としてよい。解と係数の関係より、</p><div class="math-scroll">\[\alpha+\beta=2p,\qquad\alpha\beta=p\]</div><p>$\alpha=2\beta-1$ を用いると、</p><div class="math-scroll">\[3\beta-1=2p,\qquad\beta(2\beta-1)=p\]</div><p>よって、</p><div class="math-scroll">\[2\beta^2-\beta=\frac{3\beta-1}{2}\]\[4\beta^2-5\beta+1=0\]\[(4\beta-1)(\beta-1)=0\]</div><p>$\beta=1$ は $p=1$ となるので除外し、$\beta=\dfrac14$ から</p><div class="math-scroll">\[p=\frac{3\cdot\dfrac14-1}{2}=-\frac18\]</div></div></div>
+<div class="mt-10"><h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">別解：（4）（ii）差をとって共通解を求める</h3>
+<div class="mt-4 rounded-xl border border-indigo-200 bg-indigo-50 p-5 text-sm leading-relaxed text-slate-700">
+<p>$p&lt;0$ または $p&gt;1$ のとき、$f(x)=0$ と $g(x)=0$ はそれぞれ異なる2解をもつ。異なる解が全部で3個になるには、両方程式が共通解をちょうど1個もてばよい。</p>
+<p class="mt-3">共通解を $r$ とすると、$f(r)=g(r)=0$ なので、</p>
+<div class="math-scroll">\[f(r)-g(r)=0\]</div>
+<p>ここで、</p>
+<div class="math-scroll">
+\[
+\begin{aligned}
+f(x)-g(x)
+&=\{x^2-(4p-2)x+1\}-(x^2-2px+p)\\
+&=(2-2p)x+1-p\\
+&=(1-p)(2x+1).
+\end{aligned}
+\]
+</div>
+<p>$p&gt;1$ または $p&lt;0$ なので $p\ne1$ であり、</p>
+<div class="math-scroll">\[2r+1=0\qquad r=-\frac12\]</div>
+<p>これが $g(x)=0$ の解であるから、</p>
+<div class="math-scroll">
+\[
+\begin{aligned}
+g\left(-\frac12\right)
+&=\frac14+p+p\\
+&=\frac14+2p=0.
+\end{aligned}
+\]
+</div>
+<p>よって、</p>
+<div class="math-scroll">\[p=-\frac18\]</div>
+</div></div>
+
 <div class="mt-10"><h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">図解・可視化 解の変換と重なり</h3><p class="mt-4 text-sm leading-relaxed text-slate-700">$g(x)=0$ の解 $\alpha,\beta$ と、その変換 $2\alpha-1,2\beta-1$ を複素数平面上に表示します。$p=-\dfrac18$ では1組だけが重なります。</p>
 <div class="mt-4 rounded-xl border border-slate-200 bg-slate-50 p-4 sm:p-6">
 <div class="mx-auto max-w-xl"><label for="p-slider" class="mb-2 block text-sm font-medium text-slate-700">p：<span id="p-display" class="text-lg font-bold text-blue-700">-0.125</span></label><input id="p-slider" type="range" min="-0.5" max="1.5" step="0.001" value="-0.125" class="h-2 w-full cursor-pointer appearance-none rounded-lg bg-slate-200 accent-blue-600"><div class="mt-3 flex flex-wrap justify-center gap-2"><button type="button" data-p="-0.125" class="rounded-lg border border-emerald-200 bg-white px-3 py-2 text-sm font-bold text-emerald-700 hover:bg-emerald-50">p = -1/8</button><button type="button" data-p="0" class="rounded-lg border border-amber-200 bg-white px-3 py-2 text-sm font-bold text-amber-700 hover:bg-amber-50">p = 0</button><button type="button" data-p="0.5" class="rounded-lg border border-violet-200 bg-white px-3 py-2 text-sm font-bold text-violet-700 hover:bg-violet-50">p = 1/2</button><button type="button" data-p="1" class="rounded-lg border border-rose-200 bg-white px-3 py-2 text-sm font-bold text-rose-700 hover:bg-rose-50">p = 1</button></div></div>
@@ -100,7 +302,7 @@ document.addEventListener("DOMContentLoaded",()=>{const slider=document.getEleme
 <details class="group rounded-lg bg-white text-slate-800 shadow-sm"><summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden"><span>Q2. 変換された2数を解にもつ2次方程式を作るには、まず何を求めますか？</span><span class="transition duration-300 group-open:-rotate-180">⌄</span></summary><div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">新しい2解の和と積です。和が $S$、積が $P$ なら、\[x^2-Sx+P=0\]となります。</div></details>
 <details class="group rounded-lg bg-white text-slate-800 shadow-sm"><summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden"><span>Q3. （4）（ii）で、なぜ $p=0,1$ を先に分けますか？</span><span class="transition duration-300 group-open:-rotate-180">⌄</span></summary><div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">この2つでは $f(x)$、$g(x)$ の判別式が0となり、各方程式が異なる2解をもたないからです。</div></details>
 <details class="group rounded-lg bg-white text-slate-800 shadow-sm"><summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden"><span>Q4. 2つの2次方程式が各2解をもち、合わせて異なる解が3個になるのはどんなときですか？</span><span class="transition duration-300 group-open:-rotate-180">⌄</span></summary><div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">共通解をちょうど1個もつときです。共通解がなければ4個、2個とも共通なら2個です。</div></details>
-<details class="group rounded-lg bg-white text-slate-800 shadow-sm"><summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden"><span>Q5. 共通解を探すとき、なぜ $f(x)-g(x)$ を考えるのですか？</span><span class="transition duration-300 group-open:-rotate-180">⌄</span></summary><div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">共通解 $r$ では $f(r)=g(r)=0$ なので、\[f(r)-g(r)=0\]が成り立ちます。2次項が消え、候補を簡単に絞れます。</div></details>
+<details class="group rounded-lg bg-white text-slate-800 shadow-sm"><summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden"><span>Q5. $g(x)=0$ と $f(x)=0$ の共通解を調べるとき、考えるべき4つの組合せは何ですか？</span><span class="transition duration-300 group-open:-rotate-180">⌄</span></summary><div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">$g(x)=0$ の解は $\alpha,\beta$、$f(x)=0$ の解は $2\alpha-1,2\beta-1$ なので、\[\alpha=2\alpha-1,\quad\alpha=2\beta-1,\quad\beta=2\alpha-1,\quad\beta=2\beta-1\]の4通りです。</div></details>
 </div>
 </section>
 <nav class="mt-7 grid gap-3 sm:grid-cols-2"><a href="no58.html" class="nav-button rounded-xl border border-slate-300 bg-white px-5 py-4 text-center font-bold text-slate-700 hover:border-blue-300 hover:text-blue-800">← No.58へ</a><a href="no60.html" class="nav-button rounded-xl bg-blue-700 px-5 py-4 text-center font-bold text-white hover:bg-blue-800">No.60 →</a></nav>

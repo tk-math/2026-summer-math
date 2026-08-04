@@ -341,27 +341,201 @@
                     </div>
 
                     <div class="border-t border-slate-200 pt-6">
-                        <p class="border-b border-slate-200 pb-1 font-bold text-blue-800">（4）OP、OQを解にもつ方程式を作る</p>
+                        <p class="border-b border-slate-200 pb-1 font-bold text-blue-800">（4）（i）方べきの定理で OP を求める</p>
+
+                        <div class="mt-4 grid gap-6 lg:grid-cols-[minmax(0,1fr)_280px] lg:items-start">
+                            <div>
+                                <p>
+                                    円Cは $x$ 軸に接しているので、接点を T とすると
+                                    \[
+                                    \mathrm{T}(4,0)
+                                    \]
+                                    である。したがって、
+                                    \[
+                                    \mathrm{OT}=4
+                                    \]
+                                    となる。
+                                </p>
+
+                                <p class="mt-3">
+                                    ここで、点Oから円Cへ引いた接線 OT と、割線 OPQ に対して方べきの定理を用いると、
+                                </p>
+
+                                <div class="math-scroll">
+                                    \[
+                                    \mathrm{OP}\cdot\mathrm{OQ}=\mathrm{OT}^2=4^2=16
+                                    \]
+                                </div>
+
+                                <p>
+                                    ここで、条件
+                                    \[
+                                    \mathrm{OQ}=3\mathrm{OP}-2\sqrt2
+                                    \]
+                                    を用いる。
+                                    \(\mathrm{OP}=x\) とおくと、
+                                </p>
+
+                                <div class="math-scroll">
+                                    \[
+                                    x(3x-2\sqrt2)=16
+                                    \]
+                                    \[
+                                    3x^2-2\sqrt2\,x-16=0
+                                    \]
+                                </div>
+
+                                <p>
+                                    解の公式より、
+                                </p>
+
+                                <div class="math-scroll">
+                                    \[
+                                    \begin{aligned}
+                                    x
+                                    &=
+                                    \frac{2\sqrt2\pm\sqrt{8+192}}{6}\\
+                                    &=
+                                    \frac{2\sqrt2\pm10\sqrt2}{6}.
+                                    \end{aligned}
+                                    \]
+                                </div>
+
+                                <p>
+                                    OPは長さなので正の値をとるから、
+                                </p>
+
+                                <div class="mt-2 inline-block rounded-xl border-2 border-blue-500 bg-blue-50 p-3 font-bold text-slate-900">
+                                    \[
+                                    \mathrm{OP}=2\sqrt2
+                                    \]
+                                </div>
+
+                                <p class="mt-3">
+                                    よって、
+                                </p>
+
+                                <div class="mt-2 inline-block rounded-xl border-2 border-blue-500 bg-blue-50 p-3 font-bold text-slate-900">
+                                    \[
+                                    \mathrm{OQ}=3\cdot2\sqrt2-2\sqrt2=4\sqrt2
+                                    \]
+                                </div>
+                            </div>
+
+                            <div class="rounded-2xl border border-slate-200 bg-white p-4">
+                                <p class="text-center text-sm font-bold text-slate-700">本問の図（方べきの定理）</p>
+                                <img src="data:image/png;base64,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" alt="方べきの定理の図" class="mt-3 w-full h-auto rounded-xl border border-slate-200 bg-white" />
+                                <p class="mt-3 text-xs leading-relaxed text-slate-600">
+                                    $x$ 軸が円Cの接線で、接点は $\mathrm{T}(4,0)$ である。したがって、
+                                    方べきの定理より \(\mathrm{OP}\cdot\mathrm{OQ}=\mathrm{OT}^2\) を用いることができる。
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="border-t border-slate-200 pt-6">
+                        <p class="border-b border-slate-200 pb-1 font-bold text-blue-800">（4）（ii）$m$ の値を求める</p>
 
                         <p class="mt-2">
-                            （2）より
+                            （i）より、
                             \[
-                            0&lt;m&lt;\frac{24}{7}
+                            \mathrm{OP}=2\sqrt2,\qquad \mathrm{OQ}=4\sqrt2
                             \]
-                            である。
-                            交点の $x$ 座標を解にもつ方程式
+                            である。したがって、
                         </p>
 
                         <div class="math-scroll">
                             \[
-                            (1+m^2)x^2-(8+6m)x+16=0
+                            \mathrm{PQ}=\mathrm{OQ}-\mathrm{OP}=4\sqrt2-2\sqrt2=2\sqrt2
                             \]
                         </div>
 
                         <p>
-                            では、2解の積が正、和も正なので、P、Qの $x$ 座標はともに正である。
-                            したがって、P、Qは直線 $l$ 上で原点から同じ方向にある。
+                            ここで、Aから直線 $l$ に下ろした垂線の足をHとする。
+                            円の中心から弦PQに下ろした垂線は、弦PQを二等分するから、
                         </p>
+
+                        <div class="math-scroll">
+                            \[
+                            \mathrm{PH}=\mathrm{QH}=\frac{\mathrm{PQ}}{2}=\sqrt2
+                            \]
+                        </div>
+
+                        <p>
+                            また、半径は3だから、直角三角形APHにおいて、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            \mathrm{AH}=\sqrt{\mathrm{AP}^2-\mathrm{PH}^2}
+                            =\sqrt{3^2-(\sqrt2)^2}
+                            =\sqrt7
+                            \]
+                        </div>
+
+                        <p>
+                            一方、直線 $l:y=mx$ を
+                            \[
+                            mx-y=0
+                            \]
+                            とみると、点A$(4,3)$ から直線 $l$ までの距離は、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            \frac{|4m-3|}{\sqrt{m^2+1}}
+                            \]
+                        </div>
+
+                        <p>
+                            である。これは \(\mathrm{AH}\) に等しいので、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            \frac{|4m-3|}{\sqrt{m^2+1}}=\sqrt7
+                            \]
+                        </div>
+
+                        <p>
+                            両辺を2乗して、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            (4m-3)^2=7(m^2+1)
+                            \]
+                            \[
+                            16m^2-24m+9=7m^2+7
+                            \]
+                            \[
+                            9m^2-24m+2=0
+                            \]
+                        </div>
+
+                        <p>
+                            よって、
+                        </p>
+
+                        <div class="math-scroll">
+                            \[
+                            \begin{aligned}
+                            m
+                            &=\frac{24\pm\sqrt{576-72}}{18}\\
+                            &=\frac{24\pm6\sqrt{14}}{18}\\
+                            &=\frac{4\pm\sqrt{14}}{3}.
+                            \end{aligned}
+                            \]
+                        </div>
+
+                        <div class="mt-2 rounded-xl border-2 border-blue-500 bg-blue-50 p-3 font-bold text-slate-900">
+                            \[
+                            m=\frac{4-\sqrt{14}}{3},\qquad \frac{4+\sqrt{14}}{3}
+                            \]
+                        </div>
+                    </div>
+                    <div class="border-t border-slate-200 pt-6">
+                        <h4 class="text-base font-bold text-blue-900">別解：（4）OP、OQを解にもつ方程式を作る</h4>
 
                         <p class="mt-3">
                             直線 $l$ 上で原点からの距離が $t$ の点Rの座標は、
@@ -378,8 +552,7 @@
                         </div>
 
                         <p>
-                            と表せる。
-                            これを円Cの方程式に代入すると、
+                            と表せる。これを円Cの方程式に代入すると、
                         </p>
 
                         <div class="math-scroll">
@@ -391,217 +564,47 @@
                             \left(
                             \frac{mt}{\sqrt{1+m^2}}-3
                             \right)^2
-                            =
-                            9.
+                            =9
                             \]
                         </div>
 
                         <p>
-                            展開して整理すると、
+                            整理して、
                         </p>
 
                         <div class="math-scroll">
                             \[
-                            t^2
-                            -
-                            \frac{2(4+3m)}{\sqrt{1+m^2}}t
-                            +16
-                            =
-                            0.
+                            t^2-
+                            \frac{2(4+3m)}{\sqrt{1+m^2}}t+16=0
                             \]
                         </div>
 
                         <p>
-                            この方程式の小さい方の解がOP、大きい方の解がOQである。
-                            よって、解と係数の関係から、
+                            を得る。この方程式の小さい方の解がOP、大きい方の解がOQである。したがって、解と係数の関係から、
                         </p>
 
                         <div class="math-scroll">
                             \[
                             \mathrm{OP}\cdot\mathrm{OQ}=16,
-                            \]
-                            \[
-                            \mathrm{OP}+\mathrm{OQ}
-                            =
-                            \frac{2(4+3m)}{\sqrt{1+m^2}}.
-                            \]
-                        </div>
-                    </div>
-
-                    <div class="border-t border-slate-200 pt-6">
-                        <p class="border-b border-slate-200 pb-1 font-bold text-blue-800">（4）（i）</p>
-
-                        <p class="mt-2">
-                            \[
-                            \mathrm{OQ}
-                            =
-                            3\mathrm{OP}-2\sqrt2
-                            \]
-                            と
-                            \[
-                            \mathrm{OP}\cdot\mathrm{OQ}=16
-                            \]
-                            より、
-                        </p>
-
-                        <div class="math-scroll">
-                            \[
-                            \mathrm{OP}
-                            \left(
-                            3\mathrm{OP}-2\sqrt2
-                            \right)
-                            =
-                            16.
-                            \]
-                        </div>
-
-                        <p>
-                            整理すると、
-                        </p>
-
-                        <div class="math-scroll">
-                            \[
-                            3\mathrm{OP}^2
-                            -2\sqrt2\,\mathrm{OP}
-                            -16
-                            =
-                            0.
-                            \]
-                        </div>
-
-                        <p>
-                            解の公式より、
-                        </p>
-
-                        <div class="math-scroll">
-                            \[
-                            \begin{aligned}
-                            \mathrm{OP}
-                            &=
-                            \frac{2\sqrt2
-                            \pm
-                            \sqrt{8+192}}{6}\\
-                            &=
-                            \frac{2\sqrt2\pm10\sqrt2}{6}.
-                            \end{aligned}
-                            \]
-                        </div>
-
-                        <p>
-                            OPは長さなので正の解をとり、
-                        </p>
-
-                        <div class="mt-2 inline-block rounded-xl border-2 border-blue-500 bg-blue-50 p-3 font-bold text-slate-900">
-                            \[
-                            \mathrm{OP}=2\sqrt2
-                            \]
-                        </div>
-
-                        <p class="mt-3">
-                            このとき、
-                        </p>
-
-                        <div class="math-scroll">
-                            \[
-                            \mathrm{OQ}
-                            =
-                            3\cdot2\sqrt2-2\sqrt2
-                            =
-                            4\sqrt2.
-                            \]
-                        </div>
-                    </div>
-
-                    <div class="border-t border-slate-200 pt-6">
-                        <p class="border-b border-slate-200 pb-1 font-bold text-blue-800">（4）（ii）</p>
-
-                        <p class="mt-2">
-                            解の和の関係から、
-                        </p>
-
-                        <div class="math-scroll">
-                            \[
-                            2\sqrt2+4\sqrt2
-                            =
-                            \frac{2(4+3m)}{\sqrt{1+m^2}}.
-                            \]
-                        </div>
-
-                        <p>
-                            よって、
-                        </p>
-
-                        <div class="math-scroll">
-                            \[
-                            \frac{4+3m}{\sqrt{1+m^2}}
-                            =
-                            3\sqrt2.
-                            \]
-                        </div>
-
-                        <p>
-                            （2）より $m&gt;0$ なので両辺は正である。
-                            両辺を2乗すると、
-                        </p>
-
-                        <div class="math-scroll">
-                            \[
-                            (4+3m)^2
-                            =
-                            18(1+m^2).
-                            \]
-                        </div>
-
-                        <p>
-                            展開して整理すると、
-                        </p>
-
-                        <div class="math-scroll">
-                            \[
-                            16+24m+9m^2
-                            =
-                            18+18m^2,
-                            \]
-                            \[
-                            9m^2-24m+2=0.
-                            \]
-                        </div>
-
-                        <p>
-                            解の公式より、
-                        </p>
-
-                        <div class="math-scroll">
-                            \[
-                            \begin{aligned}
-                            m
-                            &=
-                            \frac{24\pm\sqrt{576-72}}{18}\\
-                            &=
-                            \frac{24\pm6\sqrt{14}}{18}\\
-                            &=
-                            \frac{4\pm\sqrt{14}}{3}.
-                            \end{aligned}
-                            \]
-                        </div>
-
-                        <p>
-                            どちらも
-                            \[
-                            0&lt;m&lt;\frac{24}{7}
-                            \]
-                            を満たす。
-                        </p>
-
-                        <div class="mt-2 rounded-xl border-2 border-blue-500 bg-blue-50 p-3 font-bold text-slate-900">
-                            \[
-                            m
-                            =
-                            \frac{4-\sqrt{14}}{3},
                             \qquad
-                            \frac{4+\sqrt{14}}{3}
+                            \mathrm{OP}+\mathrm{OQ}=\frac{2(4+3m)}{\sqrt{1+m^2}}
                             \]
                         </div>
+
+                        <p>
+                            ここから本解と同様に、
+                            \(\mathrm{OQ}=3\mathrm{OP}-2\sqrt2\)
+                            を用いて
+                            \(\mathrm{OP}=2\sqrt2\)、
+                            \(\mathrm{OQ}=4\sqrt2\)
+                            を求めればよい。
+                            さらに、
+                            \[
+                            2\sqrt2+4\sqrt2=\frac{2(4+3m)}{\sqrt{1+m^2}}
+                            \]
+                            から
+                            \(m\) を求めることができる。
+                        </p>
                     </div>
                 </div>
             </div>
@@ -669,7 +672,7 @@
 
                 <p class="mt-4 text-sm leading-relaxed text-slate-700">
                     $m$ を動かし、直線と円の交点P、Q、弦PQの変化を確認できます。
-                    判別式が正の範囲だけで2点の交点が現れます。
+                    判別式が正の範囲だけで2点の交点が現れます。ボタンの $m=24/7$ は接する場合を正確に表示するため、内部では $24/7$ の値をできるだけそのまま用いています。
                 </p>
 
                 <div class="mt-4 rounded-xl border border-slate-200 bg-slate-50 p-4 sm:p-6">
@@ -691,7 +694,7 @@
                                     class="rounded-lg border border-blue-200 bg-white px-3 py-2 text-sm font-bold text-blue-700 hover:bg-blue-50">
                                 m = 2
                             </button>
-                            <button type="button" data-m="3.428571"
+                            <button type="button" data-m="3.4285714285714284"
                                     class="rounded-lg border border-rose-200 bg-white px-3 py-2 text-sm font-bold text-rose-700 hover:bg-rose-50">
                                 m = 24/7
                             </button>
@@ -858,7 +861,7 @@
                                 chord.style.display = "none";
 
                                 document.getElementById("pq-display").textContent = "0";
-                                document.getElementById("intersection-status").textContent = "接する";
+                                document.getElementById("intersection-status").textContent = "接する（接点は1個）";
                             } else {
                                 p.style.display = "none";
                                 q.style.display = "none";

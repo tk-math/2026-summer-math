@@ -1,92 +1,785 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>No.69｜指数関数と対数関数｜2026年 夏期数学課題 解説サイト</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    body {
-      font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
-    }
-    .nav-button {
-      transition: transform .16s ease, box-shadow .16s ease;
-    }
-    .nav-button:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 18px rgba(15, 23, 42, .12);
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>夏期課題 No.69 指数関数と対数関数</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+MathJax={
+  chtml:{matchFontHeight:false},
+  tex:{
+    inlineMath:[['$','$'],['\\(','\\)']],
+    displayMath:[['$$','$$'],['\\[','\\]']]
+  }
+};
+</script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<style>
+body{font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic","Meiryo",sans-serif}
+.math-scroll{overflow-x:auto;overflow-y:hidden;padding-bottom:.4rem}
+.nav-button{transition:.16s}
+.nav-button:hover{transform:translateY(-2px)}
+button:focus-visible,summary:focus-visible,a:focus-visible,input:focus-visible{
+outline:3px solid rgba(37,99,235,.35);outline-offset:3px
+}
+</style>
 </head>
-
 <body class="bg-slate-100 text-slate-800">
-  <main class="mx-auto max-w-4xl px-4 py-6 sm:px-6 lg:py-10">
+<div class="mx-auto max-w-4xl px-4 py-6 sm:px-6 lg:py-10">
 
-    <a href="index.html" class="inline-flex items-center gap-2 text-sm font-bold text-blue-700 hover:text-blue-900">
-      ← 問題一覧へ戻る
-    </a>
+<a href="index.html" class="text-sm font-bold text-blue-700">← 問題一覧へ戻る</a>
 
-    <header class="mt-4 overflow-hidden rounded-3xl bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-800 text-white shadow-xl">
-      <div class="p-7 sm:p-10">
-        <p class="inline-flex items-center rounded-full bg-white/15 px-4 py-1.5 text-sm font-semibold tracking-wide text-blue-100">
-          医進・サイエンスコース
-        </p>
-        <div class="mt-4 flex flex-wrap items-center gap-3">
-          <span class="rounded-lg bg-white/20 px-3 py-1 text-sm font-bold">No.69</span>
-          <span class="rounded-full px-3 py-1 text-xs font-bold bg-amber-100 text-amber-800">標準</span>
-        </div>
-        <h1 class="mt-4 text-3xl font-bold leading-tight sm:text-4xl">
-          指数関数と対数関数
-        </h1>
-        <p class="mt-3 text-lg text-blue-100">
-          目標解答時間：25分
-        </p>
-      </div>
-    </header>
+<header class="mt-4 rounded-3xl bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-800 p-7 text-white shadow-xl sm:p-10">
+  <div class="inline-flex rounded-full bg-white/15 px-4 py-1.5 text-sm font-semibold text-blue-100">医進・サイエンスコース</div>
+  <div class="mt-4 flex gap-3">
+    <span class="rounded-lg bg-white/20 px-3 py-1 text-sm font-bold">No.69</span>
+    <span class="rounded-full bg-amber-100 px-3 py-1 text-xs font-bold text-amber-800">標準</span>
+  </div>
+  <h1 class="mt-4 text-3xl font-bold sm:text-4xl">指数関数と対数関数</h1>
+  <div class="mt-3 text-lg text-blue-100">目標解答時間：25分</div>
+</header>
 
-    <section class="mt-7 rounded-2xl border border-blue-100 bg-white p-6 shadow-sm sm:p-8">
-      <h2 class="flex items-center gap-2 text-xl font-bold text-blue-900">
-        <span class="grid h-8 w-8 place-items-center rounded-full bg-blue-700 text-base text-white">1</span>
-        問題
-      </h2>
-      <div class="mt-4 rounded-xl bg-slate-50 p-5 text-sm leading-8 text-slate-600">
-        このページは No.69 の解説ページです。<br>
-        問題文・図・解説は、作成後にこの欄へ追加します。
-      </div>
-    </section>
+<main>
+<section class="mt-7 rounded-2xl border border-blue-100 bg-white p-6 shadow-sm sm:p-8">
+<h2 class="text-xl font-bold text-blue-900">1　問題</h2>
 
-    <section class="mt-6 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
-      <h2 class="flex items-center gap-2 text-xl font-bold text-slate-900">
-        <span class="grid h-8 w-8 place-items-center rounded-full bg-slate-700 text-base text-white">2</span>
-        解説
-      </h2>
-      <div class="mt-4 rounded-xl border border-dashed border-slate-300 bg-slate-50 p-5 text-sm leading-8 text-slate-500">
-        解説を作成後、この欄に「考え方」「答案」「図解」「アクティブリコール」を追加します。
-      </div>
-    </section>
+<div class="mt-4 rounded-lg border border-slate-200 bg-slate-50 p-4 leading-relaxed">
+<p>$x$ の不等式</p>
+<div class="math-scroll">
+\[
+3^{2x}-3^{x+1}-3^{x-1}+1&lt;0
+\qquad\cdots(*)
+\]
+</div>
+<p>がある。</p>
 
-    <!-- 手書き答案PDFを追加するときは、下のコメントを外してファイル名を合わせてください。 -->
-    <!--
-    <section class="mt-6 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-      <a href="answers/no69.pdf" target="_blank" rel="noopener"
-         class="inline-flex items-center rounded-xl bg-slate-700 px-5 py-3 font-bold text-white hover:bg-slate-800">
-        手書き答案を見る
-      </a>
-    </section>
-    -->
+<div class="mt-5 space-y-4">
+<p><strong>（1）</strong> $t=3^x$ とおくとき、$(*)$ の左辺を $t$ で表せ。</p>
+<p><strong>（2）</strong> $(*)$ を解け。</p>
+<p>
+<strong>（3）</strong>
+$a&gt;0,\ a\ne1$ とする。$(*)$ を満たすすべての実数 $x$ について、
+</p>
+<div class="math-scroll">
+\[
+\log_a(2-x)+\log_a(2+x)\ge1
+\]
+</div>
+<p>が成り立つような定数 $a$ の値の範囲を求めよ。</p>
+</div>
+</div>
 
-    <nav class="mt-7 grid gap-3 sm:grid-cols-2">
-      <a href="no68.html" class="nav-button rounded-xl border border-slate-300 bg-white px-5 py-4 text-center font-bold text-slate-700 hover:border-blue-300 hover:text-blue-800">
-        ← No.68
-      </a>
-      <a href="no70.html" class="nav-button rounded-xl bg-blue-700 px-5 py-4 text-center font-bold text-white hover:bg-blue-800">
-        No.70 →
-      </a>
-    </nav>
+<div class="mt-4 rounded-lg border border-blue-200 bg-blue-50 p-4">
+<h3 class="font-bold text-blue-900">【条件の整理】</h3>
+<ul class="mt-2 list-disc space-y-2 pl-5 text-sm">
+<li>
+$t=3^x$ とおくと、
+\[
+t&gt;0
+\]
+です。この条件を二次不等式へ戻すときに忘れないようにします。
+</li>
+<li>
+$3^{2x},3^{x+1},3^{x-1}$ はすべて $3^x$ の式に統一できます。
+</li>
+<li>
+（3）では、まず（2）で得た $x$ の範囲から
+\[
+(2-x)(2+x)=4-x^2
+\]
+の値域を求めます。
+</li>
+<li>
+対数不等式は、底が $a&gt;1$ か $0&lt;a&lt;1$ かで不等号の扱いが変わります。
+</li>
+</ul>
+</div>
+</section>
 
-    <footer class="py-10 text-center text-sm text-slate-500">
-      2026年 夏期数学課題 解説サイト
-    </footer>
-  </main>
+<section class="mt-6 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+<h2 class="text-xl font-bold text-slate-900">2　解説</h2>
+
+<div class="mt-7 rounded-xl border border-amber-200 bg-amber-50 p-5">
+<h3 class="border-b-2 border-amber-400 pb-2 text-lg font-bold text-amber-900">解法選択のトリガー</h3>
+<div class="mt-4 space-y-4 text-sm text-amber-900">
+
+<div class="rounded-lg border border-amber-200 bg-amber-100/60 p-4">
+<strong>指数に $2x,x+1,x-1$ が混在している</strong><br>
+正体の分からない $x$ が異なる指数の形で複数箇所に現れています。
+\[
+t=3^x
+\]
+とおいて、変化する量を $t$ の1か所にまとめ、二次不等式へ変換します。
+</div>
+
+<div class="rounded-lg border border-amber-200 bg-amber-100/60 p-4">
+<strong>対数の和が現れる</strong><br>
+真数がともに正であることを確認して、
+\[
+\log_a(2-x)+\log_a(2+x)
+=
+\log_a(4-x^2)
+\]
+と1つの対数へまとめます。
+</div>
+
+<div class="rounded-lg border border-amber-200 bg-amber-100/60 p-4">
+<strong>「すべての $x$ について成立」とある</strong><br>
+個々の $x$ を代入するのではなく、まず真数
+\[
+4-x^2
+\]
+が動く範囲を求め、その範囲全体で不等式が成立する条件を考えます。
+</div>
+
+<div class="rounded-lg border border-amber-200 bg-amber-100/60 p-4">
+<strong>底 $a$ が文字である対数不等式</strong><br>
+$a&gt;1$ では対数関数は増加、$0&lt;a&lt;1$ では減少です。
+底による場合分けを先に行い、単調性に従って真数を比較します。
+</div>
+</div>
+</div>
+
+<div class="mt-7 rounded-xl border border-emerald-200 bg-emerald-50 p-5">
+<h3 class="border-b-2 border-emerald-400 pb-2 text-lg font-bold text-emerald-900">思考プロセス</h3>
+<div class="mt-4 space-y-4 text-sm text-emerald-900">
+
+<div class="rounded-lg border border-emerald-200 bg-emerald-100/60 p-4">
+<strong>（1）指数式を二次式にする</strong><br>
+\[
+3^{2x}=t^2,\qquad
+3^{x+1}=3t,\qquad
+3^{x-1}=\frac{t}{3}
+\]
+と変換します。
+</div>
+
+<div class="rounded-lg border border-emerald-200 bg-emerald-100/60 p-4">
+<strong>（2）$t$ の範囲を求めてから $x$ に戻す</strong><br>
+二次不等式を解くときは $t&gt;0$ を保ち、最後に $t=3^x$ と底3の増加性を使います。
+</div>
+
+<div class="rounded-lg border border-emerald-200 bg-emerald-100/60 p-4">
+<strong>（3）$x$ を直接追わず、真数の範囲に置き換える</strong><br>
+\[
+-1&lt;x&lt;1
+\]
+から
+\[
+3&lt;4-x^2\le4
+\]
+を得ます。以後は、この区間全体で $\log_a y\ge1$ が成立する条件を考えます。
+</div>
+
+<div class="rounded-lg border border-emerald-200 bg-emerald-100/60 p-4">
+<strong>（3）開区間の端を丁寧に扱う</strong><br>
+$x=\pm1$ は含まれないため、$4-x^2=3$ は実際には取りません。ただし $a=3$ では、すべての真数が3より大きいため条件を満たします。
+</div>
+
+</div>
+</div>
+
+<div class="mt-9">
+<h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">実際の答案</h3>
+
+<div class="mt-5 space-y-8">
+
+<div>
+<p class="font-bold text-blue-800">（1）</p>
+<p>$t=3^x$ とおくと、</p>
+<div class="math-scroll">
+\[
+3^{2x}=t^2,
+\qquad
+3^{x+1}=3t,
+\qquad
+3^{x-1}=\frac{t}{3}.
+\]
+</div>
+<p>したがって、$(*)$ の左辺は、</p>
+<div class="math-scroll">
+\[
+\begin{aligned}
+3^{2x}-3^{x+1}-3^{x-1}+1
+&=
+t^2-3t-\frac{t}{3}+1\\
+&=
+t^2-\frac{10}{3}t+1.
+\end{aligned}
+\]
+</div>
+<div class="mt-2 rounded-xl border-2 border-blue-500 bg-blue-50 p-3 font-bold">
+\[
+t^2-\frac{10}{3}t+1
+\]
+</div>
+</div>
+
+<div class="border-t border-slate-200 pt-6">
+<p class="font-bold text-blue-800">（2）</p>
+<p>$t=3^x&gt;0$ である。（1）より、</p>
+<div class="math-scroll">
+\[
+t^2-\frac{10}{3}t+1&lt;0.
+\]
+</div>
+
+<p>両辺に正の数3を掛けると、</p>
+<div class="math-scroll">
+\[
+3t^2-10t+3&lt;0,
+\]
+\[
+(3t-1)(t-3)&lt;0.
+\]
+</div>
+
+<p>よって、</p>
+<div class="math-scroll">
+\[
+\frac13&lt;t&lt;3.
+\]
+</div>
+
+<p>$t=3^x$ であるから、</p>
+<div class="math-scroll">
+\[
+3^{-1}&lt;3^x&lt;3^1.
+\]
+</div>
+
+<p>
+ここで、底の3は1より大きいので、指数関数 $3^x$ は増加関数である。
+したがって、指数を比較して、
+</p>
+<div class="mt-2 inline-block rounded-xl border-2 border-blue-500 bg-blue-50 p-3 font-bold">
+\[
+-1&lt;x&lt;1
+\]
+</div>
+</div>
+
+<div class="border-t border-slate-200 pt-6">
+<p class="font-bold text-blue-800">（3）真数を1か所にまとめる</p>
+<p>（2）より、</p>
+<div class="math-scroll">
+\[
+-1&lt;x&lt;1.
+\]
+</div>
+<p>
+まず、2つの対数の真数条件を確認する。
+</p>
+
+<div class="math-scroll">
+\[
+2-x&gt;0
+\quad\Longleftrightarrow\quad
+x&lt;2,
+\]
+\[
+2+x&gt;0
+\quad\Longleftrightarrow\quad
+x&gt;-2.
+\]
+</div>
+
+<p>
+したがって、真数条件の共通部分は
+</p>
+
+<div class="math-scroll">
+\[
+-2&lt;x&lt;2.
+\]
+</div>
+
+<p>
+これと $(*)$ の解
+\[
+-1&lt;x&lt;1
+\]
+との共通部分は
+\[
+-1&lt;x&lt;1
+\]
+である。この範囲では両方の真数が正なので、対数の積の公式を用いて、
+</p>
+
+<div class="math-scroll">
+\[
+\begin{aligned}
+\log_a(2-x)+\log_a(2+x)
+&=
+\log_a\{(2-x)(2+x)\}\\
+&=
+\log_a(4-x^2).
+\end{aligned}
+\]
+</div>
+<p>また、$-1&lt;x&lt;1$ より、</p>
+<div class="math-scroll">
+\[
+0\le x^2&lt;1.
+\]
+</div>
+<p>したがって、</p>
+<div class="math-scroll">
+\[
+3&lt;4-x^2\le4.
+\]
+</div>
+<p>ここで、</p>
+<div class="math-scroll">
+\[
+y=4-x^2
+\]
+</div>
+<p>とおけば、求める条件は、すべての $y$ が</p>
+<div class="math-scroll">
+\[
+3&lt;y\le4
+\]
+</div>
+<p>を動くとき、</p>
+<div class="math-scroll">
+\[
+\log_a y\ge1
+\]
+</div>
+<p>が成り立つことである。</p>
+</div>
+
+<div class="border-t border-slate-200 pt-6">
+<p class="font-bold text-blue-800">（3）底による場合分け</p>
+
+<p class="mt-3 font-bold">① $a&gt;1$ のとき</p>
+<p>対数関数 $y=\log_a x$ は増加関数であるから、</p>
+<div class="math-scroll">
+\[
+\log_a y\ge1=\log_a a
+\quad\Longleftrightarrow\quad
+y\ge a.
+\]
+</div>
+<p>
+これがすべての $3&lt;y\le4$ について成立するには、
+</p>
+<div class="math-scroll">
+\[
+a\le3
+\]
+</div>
+<p>であればよい。$a&gt;1$ と合わせて、</p>
+<div class="math-scroll">
+\[
+1&lt;a\le3.
+\]
+</div>
+
+<div class="mt-4 rounded-lg border border-amber-200 bg-amber-50 p-4 text-sm text-amber-900">
+<strong>$a=3$ が含まれる理由：</strong><br>
+真数 $y=4-x^2$ は3そのものにはなりませんが、常に $y&gt;3=a$ です。
+したがって、
+\[
+\log_3 y&gt;1
+\]
+となり、条件を満たします。
+</div>
+
+<p class="mt-5 font-bold">② $0&lt;a&lt;1$ のとき</p>
+<p>対数関数 $y=\log_a x$ は減少関数なので、</p>
+<div class="math-scroll">
+\[
+\log_a y\ge1=\log_a a
+\quad\Longleftrightarrow\quad
+y\le a.
+\]
+</div>
+<p>
+しかし、
+\[
+y&gt;3,\qquad 0&lt;a&lt;1
+\]
+であるため、$y\le a$ は成り立たない。
+</p>
+
+<p>以上より、</p>
+<div class="mt-2 inline-block rounded-xl border-2 border-blue-500 bg-blue-50 p-3 font-bold">
+\[
+1&lt;a\le3
+\]
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="mt-9">
+<h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">図解① 底 $a$ を動かして成立条件を確認</h3>
+
+<p class="mt-4 text-sm leading-relaxed text-slate-700">
+まず、置換
+\[
+t=3^x
+\]
+によって得られる放物線
+\[
+y=t^2-rac{10}{3}t+1
+\]
+を見て、（2）の解
+\[
+rac13&lt;t&lt;3
+\]
+を確認します。さらに、真数を
+\[
+y=4-x^2
+\]
+とおくと
+\[
+3&lt;y\le4
+\]
+なので、底 $a$ を動かし、すべての $y$ について
+\[
+\log_a y\ge1
+\]
+が成立するか確認します。
+</p>
+
+<div class="mt-4 rounded-xl border border-slate-200 bg-slate-50 p-4 sm:p-6">
+
+<div class="rounded-xl border border-slate-200 bg-white p-4">
+  <div class="mb-3 text-sm font-bold text-slate-700">放物線と不等式の範囲</div>
+  <div class="overflow-x-auto">
+    <svg width="760" height="420" viewBox="0 0 760 420"
+    class="mx-auto h-auto min-w-[700px] max-w-[760px] rounded-lg bg-white"
+    aria-label="放物線 y=t^2-10/3 t+1 と不等式の解の図">
+      <line x1="70" y1="295" x2="705" y2="295" stroke="#64748b" stroke-width="2"/>
+      <line x1="120" y1="40" x2="120" y2="375" stroke="#64748b" stroke-width="2"/>
+
+      <path d="M120 205
+               C 180 255, 245 315, 322 295
+               C 395 275, 485 130, 650 10"
+            fill="none" stroke="#2563eb" stroke-width="4"/>
+
+      <line x1="155" y1="295" x2="470" y2="295" stroke="#10b981" stroke-width="8" opacity=".4"/>
+      <circle cx="155" cy="295" r="8" fill="white" stroke="#10b981" stroke-width="4"/>
+      <circle cx="470" cy="295" r="8" fill="white" stroke="#10b981" stroke-width="4"/>
+
+      <circle cx="312.5" cy="339" r="7" fill="#f59e0b"/>
+      <line x1="312.5" y1="339" x2="312.5" y2="295" stroke="#f59e0b" stroke-width="2" stroke-dasharray="5 5"/>
+
+      <g font-size="15" font-weight="700">
+        <text x="693" y="283" fill="#64748b">t</text>
+        <text x="98" y="55" fill="#64748b">y</text>
+        <text x="145" y="322" fill="#047857">1/3</text>
+        <text x="463" y="322" fill="#047857">3</text>
+        <text x="300" y="368" fill="#b45309">頂点 \((5/3,-16/9)\)</text>
+        <text x="415" y="82" fill="#1d4ed8">\(y=t^2-\dfrac{10}{3}t+1\)</text>
+        <text x="208" y="270" fill="#047857">この区間で \(y&lt;0\)</text>
+      </g>
+    </svg>
+  </div>
+  <div class="mt-3 grid gap-3 sm:grid-cols-3">
+    <div class="rounded-lg border border-blue-200 bg-blue-50 p-3 text-center text-sm font-bold text-blue-900">
+      置換：\(t=3^x\)
+    </div>
+    <div class="rounded-lg border border-emerald-200 bg-emerald-50 p-3 text-center text-sm font-bold text-emerald-900">
+      解：\(1/3&lt;t&lt;3\)
+    </div>
+    <div class="rounded-lg border border-violet-200 bg-violet-50 p-3 text-center text-sm font-bold text-violet-900">
+      よって：\(-1&lt;x&lt;1\)
+    </div>
+  </div>
+</div>
+
+<div class="mt-5 mx-auto max-w-xl">
+<label for="a-slider-69" class="mb-2 block text-sm font-medium text-slate-700">
+底 $a$：
+<span id="a-display-69" class="text-lg font-bold text-blue-700">3.00</span>
+</label>
+
+<input id="a-slider-69" type="range" min="0.20" max="5.00" step="0.05" value="3.00"
+class="h-2 w-full cursor-pointer appearance-none rounded-lg bg-slate-200 accent-blue-600">
+
+<div class="mt-3 flex flex-wrap justify-center gap-2">
+<button type="button" data-a69="0.50"
+class="rounded-lg border border-violet-200 bg-white px-3 py-2 text-sm font-bold text-violet-700 hover:bg-violet-50">
+$a=0.5$
+</button>
+<button type="button" data-a69="1.00"
+class="rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm font-bold text-slate-700 hover:bg-slate-50">
+$a=1$
+</button>
+<button type="button" data-a69="2.00"
+class="rounded-lg border border-emerald-200 bg-white px-3 py-2 text-sm font-bold text-emerald-700 hover:bg-emerald-50">
+$a=2$
+</button>
+<button type="button" data-a69="3.00"
+class="rounded-lg border border-blue-200 bg-white px-3 py-2 text-sm font-bold text-blue-700 hover:bg-blue-50">
+$a=3$
+</button>
+<button type="button" data-a69="3.50"
+class="rounded-lg border border-rose-200 bg-white px-3 py-2 text-sm font-bold text-rose-700 hover:bg-rose-50">
+$a=3.5$
+</button>
+</div>
+</div>
+
+<div class="mt-5 overflow-x-auto">
+<svg width="760" height="300" viewBox="0 0 760 300"
+class="mx-auto h-auto min-w-[700px] max-w-[760px] rounded-xl border border-slate-200 bg-white"
+aria-label="底aの位置と成立範囲">
+
+  <!-- a の数直線 -->
+  <line x1="90" y1="105" x2="690" y2="105" stroke="#64748b" stroke-width="3"/>
+  <line x1="210" y1="92" x2="210" y2="118" stroke="#64748b" stroke-width="3"/>
+  <line x1="450" y1="92" x2="450" y2="118" stroke="#64748b" stroke-width="3"/>
+  <line x1="570" y1="92" x2="570" y2="118" stroke="#64748b" stroke-width="3"/>
+
+  <!-- 答えの範囲 (1,3] -->
+  <line x1="210" y1="105" x2="450" y2="105" stroke="#10b981" stroke-width="12" opacity=".38"/>
+  <circle cx="210" cy="105" r="9" fill="white" stroke="#10b981" stroke-width="4"/>
+  <circle cx="450" cy="105" r="9" fill="#10b981"/>
+
+  <!-- 可動点 a -->
+  <line id="a-guide-69" x1="450" y1="48" x2="450" y2="105" stroke="#2563eb" stroke-width="3" stroke-dasharray="6 5"/>
+  <circle id="a-point-69" cx="450" cy="105" r="12" fill="#2563eb"/>
+  <text id="a-label-69" x="462" y="50" fill="#1d4ed8" font-size="17" font-weight="700">a=3.00</text>
+
+  <!-- 真数の値域 -->
+  <line x1="450" y1="215" x2="570" y2="215" stroke="#f59e0b" stroke-width="12" opacity=".42"/>
+  <circle cx="450" cy="215" r="9" fill="white" stroke="#f59e0b" stroke-width="4"/>
+  <circle cx="570" cy="215" r="9" fill="#f59e0b"/>
+
+  <g font-size="15" font-weight="700">
+    <text x="80" y="92" fill="#64748b">0</text>
+    <text x="202" y="140" fill="#64748b">1</text>
+    <text x="442" y="140" fill="#64748b">3</text>
+    <text x="562" y="140" fill="#64748b">4</text>
+    <text x="682" y="92" fill="#64748b">5</text>
+
+    <text x="90" y="75" fill="#64748b">底 a</text>
+    <text x="280" y="82" fill="#047857">成立する範囲 1&lt;a≤3</text>
+
+    <text x="90" y="220" fill="#64748b">真数 y</text>
+    <text x="465" y="198" fill="#b45309">3&lt;y≤4</text>
+  </g>
+</svg>
+</div>
+
+<div class="mt-4 grid gap-3 md:grid-cols-3">
+<div class="rounded-lg border border-blue-200 bg-blue-50 p-4 text-center">
+<div class="text-xs font-bold text-blue-700">底の範囲</div>
+<div id="base-type-69" class="mt-1 text-lg font-bold text-blue-900">a&gt;1</div>
+</div>
+
+<div class="rounded-lg border border-violet-200 bg-violet-50 p-4 text-center">
+<div class="text-xs font-bold text-violet-700">対数関数の性質</div>
+<div id="monotonicity-69" class="mt-1 text-lg font-bold text-violet-900">増加関数</div>
+</div>
+
+<div id="judgment-card-69" class="rounded-lg border border-emerald-200 bg-emerald-50 p-4 text-center">
+<div class="text-xs font-bold text-emerald-700">すべての $x$ で成立するか</div>
+<div id="judgment-69" class="mt-1 text-lg font-bold text-emerald-900">成立する</div>
+</div>
+</div>
+
+<div id="reason-69" class="mt-4 rounded-lg border border-emerald-200 bg-emerald-50 p-4 text-sm leading-relaxed text-emerald-900">
+$a=3$ のときも、真数は常に $y&gt;3=a$ なので、すべての $x$ で不等式が成立します。
+</div>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded",()=>{
+  const slider=document.getElementById("a-slider-69");
+  const x0=90;
+  const x1=690;
+  const minA=0;
+  const maxA=5;
+
+  const toX=a=>x0+(a-minA)/(maxA-minA)*(x1-x0);
+
+  function update(){
+    const a=Number(slider.value);
+    const px=toX(a);
+
+    document.getElementById("a-display-69").textContent=a.toFixed(2);
+
+    const point=document.getElementById("a-point-69");
+    const guide=document.getElementById("a-guide-69");
+    const label=document.getElementById("a-label-69");
+
+    point.setAttribute("cx",px);
+    guide.setAttribute("x1",px);
+    guide.setAttribute("x2",px);
+    label.setAttribute("x",Math.min(px+12,620));
+    label.textContent=`a=${a.toFixed(2)}`;
+
+    const baseType=document.getElementById("base-type-69");
+    const monotonicity=document.getElementById("monotonicity-69");
+    const judgment=document.getElementById("judgment-69");
+    const card=document.getElementById("judgment-card-69");
+    const reason=document.getElementById("reason-69");
+
+    const isOne=Math.abs(a-1)<1e-9;
+    const valid=a>1 && a<=3;
+
+    if(a<1){
+      baseType.textContent="0<a<1";
+      monotonicity.textContent="減少関数";
+      judgment.textContent="成立しない";
+      card.className="rounded-lg border border-rose-200 bg-rose-50 p-4 text-center";
+      judgment.className="mt-1 text-lg font-bold text-rose-900";
+      reason.className="mt-4 rounded-lg border border-rose-200 bg-rose-50 p-4 text-sm leading-relaxed text-rose-900";
+      reason.textContent="真数は y>3>1 です。0<a<1 では対数関数が減少するため、log_a y は0より小さくなり、1以上にはなりません。";
+      point.setAttribute("fill","#e11d48");
+    }else if(isOne){
+      baseType.textContent="a=1";
+      monotonicity.textContent="底として不可";
+      judgment.textContent="定義されない";
+      card.className="rounded-lg border border-slate-300 bg-slate-100 p-4 text-center";
+      judgment.className="mt-1 text-lg font-bold text-slate-800";
+      reason.className="mt-4 rounded-lg border border-slate-300 bg-slate-100 p-4 text-sm leading-relaxed text-slate-800";
+      reason.textContent="対数の底は1にはできません。問題の条件 a≠1 に反します。";
+      point.setAttribute("fill","#64748b");
+    }else if(valid){
+      baseType.textContent="1<a≤3";
+      monotonicity.textContent="増加関数";
+      judgment.textContent="成立する";
+      card.className="rounded-lg border border-emerald-200 bg-emerald-50 p-4 text-center";
+      judgment.className="mt-1 text-lg font-bold text-emerald-900";
+      reason.className="mt-4 rounded-lg border border-emerald-200 bg-emerald-50 p-4 text-sm leading-relaxed text-emerald-900";
+      if(Math.abs(a-3)<1e-9){
+        reason.textContent="a=3 のときも、真数は常に y>3=a なので、すべての x で不等式が成立します。";
+      }else{
+        reason.textContent="すべての真数は y>3>a です。底が1より大きいので log_a y>log_a a=1 となり、条件を満たします。";
+      }
+      point.setAttribute("fill","#10b981");
+    }else{
+      baseType.textContent="a>3";
+      monotonicity.textContent="増加関数";
+      judgment.textContent="成立しない";
+      card.className="rounded-lg border border-rose-200 bg-rose-50 p-4 text-center";
+      judgment.className="mt-1 text-lg font-bold text-rose-900";
+      reason.className="mt-4 rounded-lg border border-rose-200 bg-rose-50 p-4 text-sm leading-relaxed text-rose-900";
+      reason.textContent="真数の範囲には a より小さい値が含まれます。その x では log_a y<log_a a=1 となるため、すべての x については成立しません。";
+      point.setAttribute("fill","#e11d48");
+    }
+  }
+
+  slider.addEventListener("input",update);
+
+  document.querySelectorAll("[data-a69]").forEach(button=>{
+    button.addEventListener("click",()=>{
+      slider.value=button.dataset.a69;
+      update();
+    });
+  });
+
+  update();
+});
+</script>
+</div>
+
+<div class="mt-9">
+<h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">受験生のつまずきポイント</h3>
+<div class="mt-4 space-y-4 text-sm">
+
+<div class="rounded-lg border border-red-200 bg-red-50 p-4">
+<strong>$t=3^x$ とおいた後、$t&gt;0$ を書かない</strong><br>
+置換後の変数には、元の指数関数から生じる範囲があります。本問では二次不等式の解が正なので結論には影響しませんが、必ず確認します。
+</div>
+
+<div class="rounded-lg border border-red-200 bg-red-50 p-4">
+<strong>$3^{x-1}=3^x-1$ とする</strong><br>
+指数法則より、
+\[
+3^{x-1}=\frac{3^x}{3}
+\]
+です。指数の引き算は、値の引き算ではなく商になります。
+</div>
+
+<div class="rounded-lg border border-red-200 bg-red-50 p-4">
+<strong>（3）で $4-x^2$ の最小値を3と断定する</strong><br>
+$x=\pm1$ は範囲に含まれないため、3は最小値ではなく下限です。値域は
+\[
+3&lt;4-x^2\le4
+\]
+です。
+</div>
+
+<div class="rounded-lg border border-red-200 bg-red-50 p-4">
+<strong>$0&lt;a&lt;1$ でも不等号の向きを変えない</strong><br>
+底が1未満の対数関数は減少関数です。
+\[
+\log_a y\ge\log_a a
+\]
+から導かれるのは $y\le a$ です。
+</div>
+
+</div>
+</div>
+</section>
+
+<section class="mt-6 rounded-2xl bg-blue-900 p-6 text-white shadow-sm sm:p-8">
+<h2 class="border-b-2 border-blue-400 pb-2 text-lg font-bold">アクティブリコール（本質確認）</h2>
+<div class="mt-5 space-y-3">
+
+<details class="rounded-lg bg-white text-slate-800">
+<summary class="cursor-pointer p-4 font-semibold">Q1. なぜ $t=3^x$ とおくのですか？</summary>
+<div class="border-t bg-blue-50 p-4 text-sm">
+$x$ が複数の指数の形で現れているため、すべてを $3^x$ の式に直し、未知の量を $t$ の1か所にまとめるためです。
+</div>
+</details>
+
+<details class="rounded-lg bg-white text-slate-800">
+<summary class="cursor-pointer p-4 font-semibold">Q2. $t$ の不等式から $x$ に戻すとき、何を確認しますか？</summary>
+<div class="border-t bg-blue-50 p-4 text-sm">
+$t=3^x&gt;0$ であることと、底3が1より大きいため $3^x$ が増加関数であることを確認します。
+</div>
+</details>
+
+<details class="rounded-lg bg-white text-slate-800">
+<summary class="cursor-pointer p-4 font-semibold">Q3. 「すべての $x$ について成立」をどう処理しますか？</summary>
+<div class="border-t bg-blue-50 p-4 text-sm">
+$x$ を1つずつ調べず、式の中で変化する真数
+\[
+4-x^2
+\]
+の値域を求め、その値域全体で対数不等式が成立する条件へ置き換えます。
+</div>
+</details>
+
+<details class="rounded-lg bg-white text-slate-800">
+<summary class="cursor-pointer p-4 font-semibold">Q4. なぜ $a=3$ は答えに含まれますか？</summary>
+<div class="border-t bg-blue-50 p-4 text-sm">
+$x=\pm1$ は含まれないため、真数は常に3より大きいからです。したがって、
+\[
+\log_3(4-x^2)&gt;1
+\]
+がすべての $-1&lt;x&lt;1$ で成り立ちます。
+</div>
+</details>
+
+<details class="rounded-lg bg-white text-slate-800">
+<summary class="cursor-pointer p-4 font-semibold">Q5. なぜ $0&lt;a&lt;1$ には解がないのですか？</summary>
+<div class="border-t bg-blue-50 p-4 text-sm">
+対数関数が減少するため、$\log_a y\ge1$ には $y\le a$ が必要です。しかし真数は $y&gt;3$、底は $a&lt;1$ なので両立しません。
+</div>
+</details>
+
+</div>
+</section>
+
+<nav class="mt-7 grid gap-3 sm:grid-cols-2">
+<a href="no68.html" class="nav-button rounded-xl border border-slate-300 bg-white px-5 py-4 text-center font-bold">← No.68へ</a>
+<a href="no70.html" class="nav-button rounded-xl bg-blue-700 px-5 py-4 text-center font-bold text-white">No.70 →</a>
+</nav>
+</main>
+
+<footer class="py-10 text-center text-sm text-slate-500">医進・サイエンスコース　夏期数学課題 解説サイト</footer>
+</div>
 </body>
 </html>

@@ -85,7 +85,7 @@
                     <ul class="list-disc space-y-2 pl-5 text-sm text-slate-700">
                         <li><strong>平面内の2方向：</strong> $\overrightarrow{\mathrm{AB}}$ と $\overrightarrow{\mathrm{AC}}$ は平面ABC上のベクトルです。</li>
                         <li><strong>平面の法線ベクトル：</strong> 平面ABCに垂直なベクトルは、$\overrightarrow{\mathrm{AB}}$ と $\overrightarrow{\mathrm{AC}}$ の両方に垂直です。</li>
-                        <li><strong>垂線の足H：</strong> $\overrightarrow{\mathrm{OH}}$ は平面ABCの法線ベクトルと平行であり、H自身は平面ABC上にあります。</li>
+                        <li><strong>垂線の足H：</strong> Hは平面ABC上にあるため、$\overrightarrow{\mathrm{OH}}=s\overrightarrow{\mathrm{OA}}+t\overrightarrow{\mathrm{OB}}+(1-s-t)\overrightarrow{\mathrm{OC}}$ と表せます。また、$\overrightarrow{\mathrm{OH}}$ は平面内の $\overrightarrow{\mathrm{AB}}$、$\overrightarrow{\mathrm{AC}}$ の両方に垂直です。</li>
                         <li><strong>点と平面の距離：</strong> 平面の方程式が分かれば、原点Oから平面ABCまでの距離を公式で直接求めることもできます。</li>
                         <li><strong>四面体の体積：</strong> 底面ABCは固定されているので、体積を最大にするには、Pと平面ABCとの距離を最大にすればよいことになります。</li>
                         <li><strong>球面の中心と半径：</strong> 球面 $S$ の中心はO、半径は $\sqrt{11}$ です。</li>
@@ -112,9 +112,20 @@
                             </p>
                         </div>
                         <div class="rounded-lg border border-amber-200 bg-amber-100/60 p-4">
-                            <p class="text-sm font-bold text-amber-900">原点から平面に下ろした垂線の足</p>
+                            <p class="text-sm font-bold text-amber-900">平面上の点を3頂点の位置ベクトルで表す</p>
                             <p class="mt-1 text-sm text-amber-800">
-                                Hは法線方向にあるため、$\overrightarrow{\mathrm{OH}}=\lambda\vec n$ と置きます。さらにHが平面の方程式を満たすことから $\lambda$ を決定します。
+                                Hが平面ABC上にあることから、係数の和が1になるように
+                                $\overrightarrow{\mathrm{OH}}=s\overrightarrow{\mathrm{OA}}+t\overrightarrow{\mathrm{OB}}+(1-s-t)\overrightarrow{\mathrm{OC}}$
+                                と置きます。さらに垂線の条件
+                                $\overrightarrow{\mathrm{OH}}\cdot\overrightarrow{\mathrm{AB}}=0$、
+                                $\overrightarrow{\mathrm{OH}}\cdot\overrightarrow{\mathrm{AC}}=0$
+                                から $s,t$ を決めます。
+                            </p>
+                        </div>
+                        <div class="rounded-lg border border-amber-200 bg-amber-100/60 p-4">
+                            <p class="text-sm font-bold text-amber-900">法線ベクトルを利用する方法（別解）</p>
+                            <p class="mt-1 text-sm text-amber-800">
+                                $\overrightarrow{\mathrm{OH}}$ は法線方向にあるため、$\overrightarrow{\mathrm{OH}}=\lambda\vec n$ と置きます。さらにHが平面の方程式を満たすことから $\lambda$ を決定します。
                             </p>
                         </div>
                         <div class="rounded-lg border border-amber-200 bg-amber-100/60 p-4">
@@ -151,8 +162,8 @@
                             $\vec n\cdot\overrightarrow{\mathrm{AB}}=0$、$\vec n\cdot\overrightarrow{\mathrm{AC}}=0$ の連立方程式を立て、$a$、$b$ を求めます。
                         </div>
                         <div class="rounded-lg border border-emerald-200 bg-emerald-100/60 p-4 text-sm text-emerald-900">
-                            <strong>(3) Hを法線上の点として表す</strong><br>
-                            $\vec n=\begin{pmatrix}1\\-1\\2\end{pmatrix}$ なので、$\overrightarrow{\mathrm{OH}}=\lambda\vec n$ と置けば $\mathrm{H}(\lambda,-\lambda,2\lambda)$ です。平面ABCの方程式に代入して $\lambda$ を決めます。別解では、点と平面の距離の公式で $\mathrm{OH}$ を求め、法線の向きからHの座標を復元します。
+                            <strong>(3) Hを平面上の点として表し、垂直条件を使う</strong><br>
+                            Hが平面ABC上にあるので、$\overrightarrow{\mathrm{OH}}=s\overrightarrow{\mathrm{OA}}+t\overrightarrow{\mathrm{OB}}+(1-s-t)\overrightarrow{\mathrm{OC}}$ と置きます。次に、$\overrightarrow{\mathrm{OH}}$ が $\overrightarrow{\mathrm{AB}}$、$\overrightarrow{\mathrm{AC}}$ の両方に垂直であることから、$s,t$ の連立方程式を作ります。法線ベクトルと平面方程式を使う方法、点と平面の距離の公式を使う方法は別解として確認します。
                         </div>
                         <div class="rounded-lg border border-emerald-200 bg-emerald-100/60 p-4 text-sm text-emerald-900">
                             <strong>(4) 底面積を求め、高さを最大化する</strong><br>
@@ -238,41 +249,156 @@
                         <div class="border-t border-slate-200 pt-6">
                             <p class="border-b border-slate-200 pb-1 font-bold text-blue-800">（3）</p>
                             <p class="mt-2">
-                                平面ABCは点Aを通り、法線ベクトルとして $\vec n=\begin{pmatrix}1\\-1\\2\end{pmatrix}$ をもつ。したがって、その方程式は
-                            </p>
-                            <div class="math-scroll">
-                                \[
-                                (x+1)-(y-5)+2z=0
-                                \]
-                                \[
-                                x-y+2z+6=0
-                                \]
-                            </div>
-                            <p>
-                                また、$\overrightarrow{\mathrm{OH}}$ は $\vec n$ と平行であるから、実数 $\lambda$ を用いて
+                                Hは平面ABC上の点である。そこで、実数 $s,t$ を用いて
                             </p>
                             <div class="math-scroll">
                                 \[
                                 \overrightarrow{\mathrm{OH}}
-                                =\lambda\begin{pmatrix}1\\-1\\2\end{pmatrix}
+                                =s\overrightarrow{\mathrm{OA}}
+                                +t\overrightarrow{\mathrm{OB}}
+                                +(1-s-t)\overrightarrow{\mathrm{OC}}
                                 \]
                             </div>
-                            <p>と表せる。よって、$\mathrm{H}(\lambda,-\lambda,2\lambda)$ である。Hは平面ABC上にあるから、</p>
+                            <p class="mt-2">
+                                と表す。係数の和が $s+t+(1-s-t)=1$ であるため、この式は
+                            </p>
                             <div class="math-scroll">
                                 \[
-                                \lambda-(-\lambda)+2\cdot2\lambda+6=0
-                                \]
-                                \[
-                                6\lambda+6=0
+                                \overrightarrow{\mathrm{OH}}
+                                =\overrightarrow{\mathrm{OC}}
+                                +s\overrightarrow{\mathrm{CA}}
+                                +t\overrightarrow{\mathrm{CB}}
                                 \]
                             </div>
-                            <p>したがって $\lambda=-1$ である。</p>
+                            <p class="mt-2">
+                                と書き換えられ、Hが平面ABC上を動くことを表している。
+                            </p>
+                            <p class="mt-3">各点の位置ベクトルを代入すると、</p>
+                            <div class="math-scroll">
+                                \[
+                                \begin{aligned}
+                                \overrightarrow{\mathrm{OH}}
+                                &=s\begin{pmatrix}-1\\5\\0\end{pmatrix}
+                                +t\begin{pmatrix}-3\\1\\-1\end{pmatrix}
+                                +(1-s-t)\begin{pmatrix}-1\\-1\\-3\end{pmatrix}\\
+                                &=\begin{pmatrix}
+                                -1-2t\\
+                                6s+2t-1\\
+                                3s+2t-3
+                                \end{pmatrix}
+                                \end{aligned}
+                                \]
+                            </div>
+                            <p class="mt-2">
+                                また、OHは平面ABCに垂直であるから、平面内の2方向
+                                $\overrightarrow{\mathrm{AB}}$、$\overrightarrow{\mathrm{AC}}$ の両方に垂直である。したがって、
+                            </p>
+                            <div class="math-scroll">
+                                \[
+                                \begin{cases}
+                                \overrightarrow{\mathrm{OH}}\cdot\overrightarrow{\mathrm{AB}}=0\\[2mm]
+                                \overrightarrow{\mathrm{OH}}\cdot\overrightarrow{\mathrm{AC}}=0
+                                \end{cases}
+                                \]
+                            </div>
+                            <p class="mt-2">（1）で求めた
+                                $\overrightarrow{\mathrm{AB}}=\begin{pmatrix}-2\\-4\\-1\end{pmatrix}$、
+                                $\overrightarrow{\mathrm{AC}}=\begin{pmatrix}0\\-6\\-3\end{pmatrix}$
+                                を用いると、
+                            </p>
+                            <div class="math-scroll">
+                                \[
+                                \begin{aligned}
+                                \overrightarrow{\mathrm{OH}}\cdot\overrightarrow{\mathrm{AB}}
+                                &=(-1-2t)(-2)+(6s+2t-1)(-4)+(3s+2t-3)(-1)\\
+                                &=9-27s-6t
+                                \end{aligned}
+                                \]
+                                \[
+                                \begin{aligned}
+                                \overrightarrow{\mathrm{OH}}\cdot\overrightarrow{\mathrm{AC}}
+                                &=(6s+2t-1)(-6)+(3s+2t-3)(-3)\\
+                                &=15-45s-18t
+                                \end{aligned}
+                                \]
+                            </div>
+                            <p class="mt-2">よって、$s,t$ は</p>
+                            <div class="math-scroll">
+                                \[
+                                \begin{cases}
+                                9s+2t=3\\
+                                15s+6t=5
+                                \end{cases}
+                                \]
+                            </div>
+                            <p class="mt-2">
+                                を満たす。第1式を3倍して第2式を引くと $12s=4$ であるから、
+                                $s=\dfrac13$。これを第1式に代入して $t=0$ を得る。したがって、
+                                $1-s-t=\dfrac23$ である。
+                            </p>
+                            <div class="math-scroll">
+                                \[
+                                \begin{aligned}
+                                \overrightarrow{\mathrm{OH}}
+                                &=\frac13\overrightarrow{\mathrm{OA}}
+                                +0\overrightarrow{\mathrm{OB}}
+                                +\frac23\overrightarrow{\mathrm{OC}}\\
+                                &=\frac13\begin{pmatrix}-1\\5\\0\end{pmatrix}
+                                +\frac23\begin{pmatrix}-1\\-1\\-3\end{pmatrix}\\
+                                &=\begin{pmatrix}-1\\1\\-2\end{pmatrix}
+                                \end{aligned}
+                                \]
+                            </div>
+                            <p class="mt-2 text-sm leading-relaxed text-slate-600">
+                                なお、$t=0$ であるためHは辺AC上にあり、
+                                $\overrightarrow{\mathrm{OH}}=\dfrac13\overrightarrow{\mathrm{OA}}+\dfrac23\overrightarrow{\mathrm{OC}}$ より
+                                $\mathrm{AH}:\mathrm{HC}=2:1$ である。
+                            </p>
                             <div class="mt-2 inline-block rounded-xl border-2 border-blue-500 bg-blue-50 p-3 font-bold text-slate-900">
                                 答：$\mathrm{H}(-1,1,-2)$
                             </div>
 
                             <div class="mt-6 rounded-xl border border-indigo-200 bg-indigo-50 p-5">
-                                <p class="font-bold text-indigo-900">別解：（3）点と平面の距離の公式を利用</p>
+                                <p class="font-bold text-indigo-900">別解1：（3）法線ベクトルと平面の方程式を利用</p>
+                                <p class="mt-3 text-sm leading-relaxed text-slate-700">
+                                    平面ABCは点Aを通り、法線ベクトルとして
+                                    $\vec n=\begin{pmatrix}1\\-1\\2\end{pmatrix}$ をもつ。したがって、その方程式は
+                                </p>
+                                <div class="math-scroll">
+                                    \[
+                                    (x+1)-(y-5)+2z=0
+                                    \]
+                                    \[
+                                    x-y+2z+6=0
+                                    \]
+                                </div>
+                                <p class="text-sm leading-relaxed text-slate-700">
+                                    また、$\overrightarrow{\mathrm{OH}}$ は $\vec n$ と平行であるから、実数 $\lambda$ を用いて
+                                </p>
+                                <div class="math-scroll">
+                                    \[
+                                    \overrightarrow{\mathrm{OH}}
+                                    =\lambda\begin{pmatrix}1\\-1\\2\end{pmatrix}
+                                    \]
+                                </div>
+                                <p class="text-sm leading-relaxed text-slate-700">
+                                    と表せる。よって、$\mathrm{H}(\lambda,-\lambda,2\lambda)$ である。Hは平面ABC上にあるから、
+                                </p>
+                                <div class="math-scroll">
+                                    \[
+                                    \lambda-(-\lambda)+2\cdot2\lambda+6=0
+                                    \]
+                                    \[
+                                    6\lambda+6=0
+                                    \]
+                                </div>
+                                <p class="text-sm leading-relaxed text-slate-700">
+                                    したがって $\lambda=-1$ であり、$\mathrm H(-1,1,-2)$ である。
+                                </p>
+                            </div>
+
+                            <div class="mt-4 rounded-xl border border-violet-200 bg-violet-50 p-5">
+                                <p class="font-bold text-violet-900">別解2：（3）点と平面の距離の公式を利用</p>
                                 <p class="mt-3 text-sm leading-relaxed text-slate-700">
                                     点 $\mathrm Q(x_0,y_0,z_0)$ と平面 $Ax+By+Cz+D=0$ の距離は
                                 </p>
@@ -376,7 +502,7 @@
                 <div class="mt-10">
                     <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">図解・可視化（平面ABCと垂線OH）</h3>
                     <p class="mt-4 text-sm leading-relaxed text-slate-700">
-                        三角形ABCが平面の一部を表し、破線OHがその平面に垂直です。$\overrightarrow{\mathrm{OH}}=\begin{pmatrix}-1\\1\\-2\end{pmatrix}=-\vec n$ となっていることにも注目してください。
+                        三角形ABCが平面の一部を表し、破線OHがその平面に垂直です。本解では $s=\dfrac13,t=0$ となるため、Hは辺AC上にあり、$\overrightarrow{\mathrm{OH}}=\dfrac13\overrightarrow{\mathrm{OA}}+\dfrac23\overrightarrow{\mathrm{OC}}$、すなわち $\mathrm{AH}:\mathrm{HC}=2:1$ となります。さらに、$\overrightarrow{\mathrm{OH}}=\begin{pmatrix}-1\\1\\-2\end{pmatrix}=-\vec n$ です。
                     </p>
 
                     <div class="mt-4 rounded-lg border border-slate-200 bg-slate-50 p-4 sm:p-6">
@@ -410,6 +536,9 @@
                                 <text x="256" y="309" font-size="18" font-weight="700" fill="#be123c">H</text>
                                 <text x="373" y="196" font-size="16" font-weight="700" fill="#2563eb">法線方向</text>
                                 <text x="215" y="335" font-size="16" font-weight="700" fill="#1e40af">平面ABC</text>
+                                <line x1="286" y1="287" x2="420" y2="287" stroke="#be123c" stroke-width="1.8" stroke-dasharray="5 4" />
+                                <text x="428" y="281" font-size="14" font-weight="700" fill="#be123c">H=(1/3)A+(2/3)C</text>
+                                <text x="428" y="302" font-size="14" font-weight="700" fill="#be123c">AH:HC=2:1</text>
 
                                 <rect x="291" y="264" width="14" height="14" fill="none" stroke="#f43f5e" stroke-width="2" transform="rotate(-42 298 271)" />
                             </svg>
@@ -417,17 +546,20 @@
 
                         <div class="mt-4 grid gap-3 sm:grid-cols-3">
                             <div class="rounded-lg border border-slate-200 bg-white p-3 text-center text-sm">
-                                <div class="font-bold text-slate-500">法線ベクトル</div>
-                                <div class="mt-1 font-bold text-blue-800">$\vec n=\begin{pmatrix}1\\-1\\2\end{pmatrix}$</div>
+                                <div class="font-bold text-slate-500">平面上の係数</div>
+                                <div class="mt-1 font-bold text-blue-800">$s=\dfrac13,\ t=0$</div>
                             </div>
                             <div class="rounded-lg border border-slate-200 bg-white p-3 text-center text-sm">
                                 <div class="font-bold text-slate-500">垂線の足</div>
                                 <div class="mt-1 font-bold text-rose-700">$\mathrm H(-1,1,-2)$</div>
                             </div>
                             <div class="rounded-lg border border-slate-200 bg-white p-3 text-center text-sm">
-                                <div class="font-bold text-slate-500">平面までの距離</div>
-                                <div class="mt-1 font-bold text-emerald-700">$\mathrm{OH}=\sqrt6$</div>
+                                <div class="font-bold text-slate-500">辺AC上の位置</div>
+                                <div class="mt-1 font-bold text-emerald-700">$\mathrm{AH}:\mathrm{HC}=2:1$</div>
                             </div>
+                        </div>
+                        <div class="mt-3 rounded-lg border border-blue-200 bg-blue-50 p-3 text-center text-sm text-slate-700">
+                            $\overrightarrow{\mathrm{OH}}=\dfrac13\overrightarrow{\mathrm{OA}}+\dfrac23\overrightarrow{\mathrm{OC}}=\begin{pmatrix}-1\\1\\-2\end{pmatrix}=-\vec n$
                         </div>
                     </div>
                 </div>
@@ -615,6 +747,12 @@
                             </p>
                         </div>
                         <div class="rounded-lg border border-red-200 bg-red-50 p-4">
+                            <p class="text-sm font-bold text-red-900">位置ベクトルの係数の和を1にしない</p>
+                            <p class="mt-1 text-sm text-red-800">
+                                平面ABC上の点を $\overrightarrow{\mathrm{OA}},\overrightarrow{\mathrm{OB}},\overrightarrow{\mathrm{OC}}$ の一次結合で表すときは、係数の和を1にします。本問では $s,t,1-s-t$ と置くことで、Hが平面ABC上にある条件を最初から組み込んでいます。
+                            </p>
+                        </div>
+                        <div class="rounded-lg border border-red-200 bg-red-50 p-4">
                             <p class="text-sm font-bold text-red-900">Hを求めるとき、平面上にある条件を使わない</p>
                             <p class="mt-1 text-sm text-red-800">
                                 $\overrightarrow{\mathrm{OH}}=\lambda\vec n$ だけでは、法線上のどの点か決まりません。Hが平面の方程式を満たすことを必ず使います。
@@ -655,13 +793,13 @@
 
                     <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
                         <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
-                            <span>Q2. 原点Oから平面ABCに下ろした垂線の足Hを、法線ベクトルからどのように表しますか？</span>
+                            <span>Q2. 平面ABC上の点Hの位置ベクトルを、3頂点A、B、Cの位置ベクトルでどのように表しますか？</span>
                             <span class="transition duration-300 group-open:-rotate-180">
                                 <svg fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path></svg>
                             </span>
                         </summary>
                         <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
-                            $\overrightarrow{\mathrm{OH}}$ が法線ベクトル $\vec n=\begin{pmatrix}1\\-1\\2\end{pmatrix}$ と平行なので、$\overrightarrow{\mathrm{OH}}=\lambda\vec n$、すなわち $\mathrm H(\lambda,-\lambda,2\lambda)$ と置きます。
+                            係数の和が1になるように、$\overrightarrow{\mathrm{OH}}=s\overrightarrow{\mathrm{OA}}+t\overrightarrow{\mathrm{OB}}+(1-s-t)\overrightarrow{\mathrm{OC}}$ と表します。そのうえで、垂線の条件 $\overrightarrow{\mathrm{OH}}\cdot\overrightarrow{\mathrm{AB}}=0$、$\overrightarrow{\mathrm{OH}}\cdot\overrightarrow{\mathrm{AC}}=0$ から $s,t$ を求めます。本問では $s=\dfrac13,t=0$ です。
                         </div>
                     </details>
 

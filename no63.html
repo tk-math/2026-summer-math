@@ -151,13 +151,14 @@
                     </div>
 
                     <div class="rounded-lg border border-amber-200 bg-amber-100/60 p-4">
-                        <p class="text-sm font-bold text-amber-900">円全体での最大点が切り取られている</p>
+                        <p class="text-sm font-bold text-amber-900">最大点が変わる境目を接線の傾きで決める</p>
                         <p class="mt-1 text-sm text-amber-800">
-                            円全体での最大点が
+                            水平な境界線分の両端
                             \[
-                            y\le\frac85
+                            \left(\frac65,\frac85\right),\qquad
+                            \left(\frac{14}{5},\frac85\right)
                             \]
-                            を満たさない場合、最大値は水平な境界線分上で調べます。
+                            における円の接線の傾きを求めると、目的直線 $y=px+k$ の最大点がどこに現れるかを場合分けできます。
                         </p>
                     </div>
                 </div>
@@ -179,8 +180,10 @@
                     </div>
 
                     <div class="rounded-lg border border-emerald-200 bg-emerald-100/60 p-4 text-sm text-emerald-900">
-                        <strong>（3）（ii）傾きpによって最大点が変わる</strong><br>
-                        円全体での最大点が領域Dに残る場合と、水平な境界線分上で最大となる場合に分けます。
+                        <strong>（3）（ii）両端での接線の傾きを境目にする</strong><br>
+                        \(\left(\frac65,\frac85\right)\) での接線の傾きは \(\frac43\)、
+                        \(\left(\frac{14}{5},\frac85\right)\) での接線の傾きは \(-\frac43\) です。
+                        この2つと $p=0$ を境に4通りに分けます。
                     </div>
                 </div>
             </div>
@@ -481,218 +484,240 @@
                     </div>
 
                     <div class="border-t border-slate-200 pt-6">
-                        <p class="border-b border-slate-200 pb-1 font-bold text-blue-800">（3）（ii）最大値の位置による場合分け</p>
+                        <p class="border-b border-slate-200 pb-1 font-bold text-blue-800">（3）（ii）境界の両端における接線の傾きを調べる</p>
 
                         <p class="mt-2">
                             \[
                             y-px=k
                             \]
-                            とおく。
-                            円全体での最大値は、中心 $(2,1)$ における値と半径1による増加量から、
-                        </p>
-
-                        <div class="math-scroll">
+                            とおくと、
                             \[
-                            1-2p+\sqrt{p^2+1}
+                            y=px+k
                             \]
-                        </div>
-
-                        <p>
-                            である。
-                            その最大点の $y$ 座標は
-                        </p>
-
-                        <div class="math-scroll">
-                            \[
-                            1+\frac1{\sqrt{p^2+1}}.
-                            \]
-                        </div>
-
-                        <p>
-                            この点が領域Dに含まれる条件は、
-                        </p>
-
-                        <div class="math-scroll">
-                            \[
-                            1+\frac1{\sqrt{p^2+1}}
-                            \le
-                            \frac85.
-                            \]
-                        </div>
-
-                        <p>
-                            よって、
-                        </p>
-
-                        <div class="math-scroll">
-                            \[
-                            \frac1{\sqrt{p^2+1}}\le\frac35,
-                            \]
-                            \[
-                            p^2+1\ge\frac{25}{9},
-                            \]
-                            \[
-                            p^2\ge\frac{16}{9}.
-                            \]
-                        </div>
-
-                        <p>
-                            したがって、
-                        </p>
-
-                        <div class="math-scroll">
-                            \[
-                            |p|\ge\frac43
-                            \]
-                        </div>
-
-                        <p>
-                            のとき、円全体での最大点が領域Dに残る。
-                        一方、
-                        \[
-                        |p|&lt;\frac43
-                        \]
-                        のとき、最大値は水平な境界線分上でとる。
-                        </p>
-                    </div>
-
-                    <div class="border-t border-slate-200 pt-6">
-                        <p class="border-b border-slate-200 pb-1 font-bold text-blue-800">（3）（ii）最大値が1となる条件</p>
-
-                        <p class="mt-2">
-                            まず、
-                            \[
-                            |p|\ge\frac43
-                            \]
-                            の場合を考える。
-                            最大値が1なら、
-                        </p>
-
-                        <div class="math-scroll">
-                            \[
-                            1-2p+\sqrt{p^2+1}=1.
-                            \]
-                        </div>
-
-                        <p>
-                            よって、
-                        </p>
-
-                        <div class="math-scroll">
-                            \[
-                            \sqrt{p^2+1}=2p.
-                            \]
-                        </div>
-
-                        <p>
-                            左辺は正なので $p&gt;0$ であり、両辺を2乗すると、
-                        </p>
-
-                        <div class="math-scroll">
-                            \[
-                            p^2+1=4p^2,
-                            \]
-                            \[
-                            p=\frac1{\sqrt3}.
-                            \]
-                        </div>
-
-                        <p>
-                            しかし、
-                        \[
-                            \frac1{\sqrt3}&lt;\frac43
-                            \]
-                            なので、この場合の条件に反する。
-                            したがって解はない。
-                        </p>
-
-                        <p class="mt-4">
-                            次に、
-                            \[
-                            |p|&lt;\frac43
-                            \]
-                            の場合を考える。
-                            水平な境界線分上では、
-                        </p>
-
-                        <div class="math-scroll">
-                            \[
-                            y-px
-                            =
-                            \frac85-px,
-                            \qquad
-                            \frac65\le x\le\frac{14}{5}.
-                            \]
-                        </div>
-
-                        <p>
-                            $p&gt;0$ のときは $x$ が最小の
-                            \[
-                            x=\frac65
-                            \]
-                            で最大となる。
-                            最大値が1なので、
-                        </p>
-
-                        <div class="math-scroll">
-                            \[
-                            \frac85-\frac65p=1.
-                            \]
-                        </div>
-
-                        <p>
-                            よって、
-                        </p>
-
-                        <div class="math-scroll">
-                            \[
-                            8-6p=5,
-                            \]
-                            \[
-                            p=\frac12.
-                            \]
-                        </div>
-
-                        <p>
-                            これは
-                            \[
-                            0&lt;p&lt;\frac43
-                            \]
-                            を満たす。
+                            は傾き $p$ の直線である。
+                            この直線を上方へ平行移動したとき、領域Dと最後に接する位置を考える。
                         </p>
 
                         <p class="mt-3">
-                            $p=0$ のとき、最大値は
+                            水平な境界線分の両端を
                             \[
-                            \frac85
+                            \mathrm{P}\left(\frac65,\frac85\right),
+                            \qquad
+                            \mathrm{Q}\left(\frac{14}{5},\frac85\right)
                             \]
-                            であり1ではない。
+                            とする。
+                            円Cは
+                            \[
+                            (x-2)^2+(y-1)^2=1
+                            \]
+                            であるから、円周上の点 $(x_1,y_1)$ における接線は
+                            \[
+                            (x_1-2)(x-2)+(y_1-1)(y-1)=1
+                            \]
+                            で表される。
                         </p>
 
-                        <p>
-                            $p&lt;0$ のときは $x$ が最大の
-                            \[
-                            x=\frac{14}{5}
-                            \]
-                            で最大となる。
-                            最大値が1なら、
-                        </p>
-
+                        <p class="mt-3 font-bold text-slate-800">Pにおける接線</p>
                         <div class="math-scroll">
                             \[
-                            \frac85-\frac{14}{5}p=1,
+                            -\frac45(x-2)+\frac35(y-1)=1
                             \]
                             \[
-                            p=\frac3{14},
+                            -4x+3y=0
+                            \]
+                            \[
+                            y=\frac43x.
                             \]
                         </div>
-
                         <p>
-                            となるが、$p&lt;0$ に反する。
+                            よって、Pにおける接線の傾きは
+                            \[
+                            \frac43
+                            \]
+                            である。
                         </p>
 
+                        <p class="mt-3 font-bold text-slate-800">Qにおける接線</p>
+                        <div class="math-scroll">
+                            \[
+                            \frac45(x-2)+\frac35(y-1)=1
+                            \]
+                            \[
+                            4x+3y=16
+                            \]
+                            \[
+                            y=-\frac43x+\frac{16}{3}.
+                            \]
+                        </div>
                         <p>
-                            以上より、
+                            よって、Qにおける接線の傾きは
+                            \[
+                            -\frac43
+                            \]
+                            である。
+                        </p>
+
+                        <p class="mt-4">
+                            したがって、目的直線の傾き $p$ と
+                            \[
+                            \frac43,\qquad -\frac43
+                            \]
+                            の大小、および $p$ の符号によって、最大値をとる位置を次の4通りに分けて調べる。
+                            また、最大値が1であるとき、その位置で領域Dを支える直線は
+                            \[
+                            y-px=1,
+                            \qquad\text{すなわち}\qquad
+                            y=px+1
+                            \]
+                            である。
+                        </p>
+
+                        <div class="mt-4 overflow-x-auto">
+                            <table class="w-full min-w-[680px] border-collapse text-center text-sm">
+                                <thead>
+                                    <tr class="bg-slate-100">
+                                        <th class="border border-slate-300 px-3 py-3">$p$ の範囲</th>
+                                        <th class="border border-slate-300 px-3 py-3">最大値をとる位置</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="border border-slate-300 px-3 py-3">$p\ge\dfrac43$</td>
+                                        <td class="border border-slate-300 px-3 py-3">Pより左側の円周上（$p=\dfrac43$ ではP）</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-slate-300 px-3 py-3">$0\le p&lt;\dfrac43$</td>
+                                        <td class="border border-slate-300 px-3 py-3">P</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-slate-300 px-3 py-3">$-\dfrac43&lt;p&lt;0$</td>
+                                        <td class="border border-slate-300 px-3 py-3">Q</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-slate-300 px-3 py-3">$p\le-\dfrac43$</td>
+                                        <td class="border border-slate-300 px-3 py-3">Qより右側の円周上（$p=-\dfrac43$ ではQ）</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="border-t border-slate-200 pt-6">
+                        <p class="border-b border-slate-200 pb-1 font-bold text-blue-800">（3）（ii）4通りをそれぞれ確認する</p>
+
+                        <div class="mt-4 rounded-lg border border-slate-200 bg-slate-50 p-4">
+                            <p class="font-bold text-slate-800">① $p\ge\dfrac43$ のとき</p>
+                            <p class="mt-2 text-sm leading-relaxed">
+                                最大値はPより左側の円周上でとる。最大値が1であるなら、直線
+                                \[
+                                y=px+1
+                                \]
+                                は円Cに接する。
+                            </p>
+                            <p class="text-sm">
+                                円Cの中心 $(2,1)$ と直線
+                                \[
+                                px-y+1=0
+                                \]
+                                との距離が半径1に等しいので、
+                            </p>
+                            <div class="math-scroll mt-2">
+                                \[
+                                \frac{|2p-1+1|}{\sqrt{p^2+1}}=1
+                                \]
+                                \[
+                                \frac{|2p|}{\sqrt{p^2+1}}=1.
+                                \]
+                            </div>
+                            <p class="text-sm">
+                                $p\ge\dfrac43&gt;0$ より、
+                            </p>
+                            <div class="math-scroll mt-2">
+                                \[
+                                4p^2=p^2+1
+                                \]
+                                \[
+                                p=\frac1{\sqrt3}.
+                                \]
+                            </div>
+                            <p class="text-sm">
+                                しかし、\(\dfrac1{\sqrt3}&lt;\dfrac43\) であり、この場合の条件に反する。よって解はない。
+                            </p>
+                        </div>
+
+                        <div class="mt-4 rounded-lg border border-slate-200 bg-slate-50 p-4">
+                            <p class="font-bold text-slate-800">② $0\le p&lt;\dfrac43$ のとき</p>
+                            <p class="mt-2 text-sm leading-relaxed">
+                                最大値は
+                                \[
+                                \mathrm{P}\left(\frac65,\frac85\right)
+                                \]
+                                でとる。したがって、最大値が1となる条件は
+                            </p>
+                            <div class="math-scroll mt-2">
+                                \[
+                                \frac85-\frac65p=1.
+                                \]
+                                \[
+                                8-6p=5,
+                                \qquad
+                                p=\frac12.
+                                \]
+                            </div>
+                            <p class="text-sm">
+                                \(0\le\dfrac12&lt;\dfrac43\) なので、この値は条件を満たす。
+                            </p>
+                        </div>
+
+                        <div class="mt-4 rounded-lg border border-slate-200 bg-slate-50 p-4">
+                            <p class="font-bold text-slate-800">③ $-\dfrac43&lt;p&lt;0$ のとき</p>
+                            <p class="mt-2 text-sm leading-relaxed">
+                                最大値は
+                                \[
+                                \mathrm{Q}\left(\frac{14}{5},\frac85\right)
+                                \]
+                                でとる。したがって、最大値が1となる条件は
+                            </p>
+                            <div class="math-scroll mt-2">
+                                \[
+                                \frac85-\frac{14}{5}p=1,
+                                \]
+                                \[
+                                p=\frac3{14}.
+                                \]
+                            </div>
+                            <p class="text-sm">
+                                これは $p&lt;0$ に反する。よって解はない。
+                            </p>
+                        </div>
+
+                        <div class="mt-4 rounded-lg border border-slate-200 bg-slate-50 p-4">
+                            <p class="font-bold text-slate-800">④ $p\le-\dfrac43$ のとき</p>
+                            <p class="mt-2 text-sm leading-relaxed">
+                                最大値はQより右側の円周上でとる。最大値が1であるなら、①と同様に直線
+                                \[
+                                y=px+1
+                                \]
+                                が円Cに接するので、
+                            </p>
+                            <div class="math-scroll mt-2">
+                                \[
+                                \frac{|2p|}{\sqrt{p^2+1}}=1
+                                \]
+                                \[
+                                4p^2=p^2+1
+                                \]
+                                \[
+                                p=\pm\frac1{\sqrt3}.
+                                \]
+                            </div>
+                            <p class="text-sm">
+                                いずれも \(p\le-\dfrac43\) を満たさない。よって解はない。
+                            </p>
+                        </div>
+
+                        <p class="mt-4">
+                            以上より、求める $p$ は
                         </p>
 
                         <div class="mt-2 inline-block rounded-xl border-2 border-blue-500 bg-blue-50 p-3 font-bold text-slate-900">
@@ -700,72 +725,6 @@
                             p=\frac12
                             \]
                         </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="mt-10">
-                <h3 class="border-b-2 border-blue-200 pb-2 text-lg font-bold text-blue-900">別解：（3）（ii）$p=\dfrac12$ を先に予想する</h3>
-
-                <div class="mt-4 rounded-xl border border-indigo-200 bg-indigo-50 p-5 text-sm leading-relaxed text-slate-700">
-                    <p>
-                        最大値が1となるとき、最大点が水平な境界の左端
-                        \[
-                        \left(\frac65,\frac85\right)
-                        \]
-                        であると予想する。
-                    </p>
-
-                    <p>
-                        この点で
-                        \[
-                        y-px=1
-                        \]
-                        なので、
-                        </p>
-
-                    <div class="math-scroll">
-                        \[
-                        \frac85-\frac65p=1.
-                        \]
-                    </div>
-
-                    <p>
-                        よって、
-                        \[
-                        p=\frac12.
-                        \]
-                    </p>
-
-                    <p class="mt-3">
-                        あとは、この値で本当に領域D全体に対して
-                        \[
-                        y-\frac12x\le1
-                        \]
-                        が成り立つことを確認する。
-                    </p>
-
-                    <p>
-                        これは
-                        \[
-                        y\le\frac12x+1
-                        \]
-                        と同値である。
-                        境界直線
-                        \[
-                        y=\frac12x+1
-                        \]
-                        は点
-                        \[
-                        \left(\frac65,\frac85\right)
-                        \]
-                        を通り、領域Dはその下側にある。
-                        したがって最大値は確かに1である。
-                    </p>
-
-                    <div class="mt-3 rounded-lg border border-amber-200 bg-amber-50 p-4 text-amber-900">
-                        <strong>注意：</strong>
-                        この方法では、候補を求めた後に領域全体で最大値が1であることを必ず確認します。
                     </div>
                 </div>
             </div>
@@ -1276,19 +1235,20 @@
 
                 <details class="group rounded-lg bg-white text-slate-800 shadow-sm">
                     <summary class="flex cursor-pointer list-none items-center justify-between gap-3 p-4 font-semibold [&::-webkit-details-marker]:hidden">
-                        <span>Q4. 円全体での最大点が領域Dに含まれるかを、何で判定しますか？</span>
+                        <span>Q4. （3）（ii）で場合分けの境目となる傾きは、どのように求めますか？</span>
                         <span class="transition duration-300 group-open:-rotate-180">⌄</span>
                     </summary>
                     <div class="border-t border-blue-100 bg-blue-50 p-4 text-sm leading-relaxed">
-                        円全体で $y-px$ が最大となる点の $y$ 座標
+                        水平な境界線分の両端
                         \[
-                        1+\frac1{\sqrt{p^2+1}}
+                        \left(\frac65,\frac85\right),\qquad
+                        \left(\frac{14}{5},\frac85\right)
                         \]
-                        が、
+                        における円の接線を求めます。傾きはそれぞれ
                         \[
-                        \frac85
+                        \frac43,\qquad-\frac43
                         \]
-                        以下かどうかで判定します。
+                        となり、この2つが最大点の位置が切り替わる境目になります。
                     </div>
                 </details>
 
